@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DnsClient.resolveMX - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.core.dns</a>&nbsp;/&nbsp;<a href="index.html">DnsClient</a>&nbsp;/&nbsp;<a href=".">resolveMX</a><br/>
+<br/>
+<h1>resolveMX</h1>
+<a name="io.vertx.core.dns.DnsClient$resolveMX(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((io.vertx.core.dns.MxRecord)))))))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">resolveMX</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.dns.DnsClient$resolveMX(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((io.vertx.core.dns.MxRecord)))))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.dns.DnsClient$resolveMX(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((io.vertx.core.dns.MxRecord)))))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../-mx-record/index.html"><span class="identifier">MxRecord</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">DnsClient</span></a></code>
+<p>Try to resolve the MX records for the given name.</p>
+<h3>Parameters</h3>
+<p><a name="name"></a>
+<code>name</code> - the name for which the MX records should be resolved</p>
+<p><a name="handler"></a>
+<code>handler</code> - the io.vertx.core.Handler to notify with the io.vertx.core.AsyncResult. The handler will get notified with a List that contains all resolved MxRecords, sorted by their <code><a href="../-mx-record/priority.html">MxRecord#priority()</a></code>. If non was found it will get notified with an empty java.util.List. If an error accours it will get failed.</p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently.</p>
+</BODY>
+</HTML>

@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HealthChecks.register - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.healthchecks</a>&nbsp;/&nbsp;<a href="index.html">HealthChecks</a>&nbsp;/&nbsp;<a href=".">register</a><br/>
+<br/>
+<h1>register</h1>
+<a name="io.vertx.ext.healthchecks.HealthChecks$register(kotlin.String, io.vertx.core.Handler((io.vertx.core.Future((io.vertx.ext.healthchecks.Status)))))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">register</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.healthchecks.HealthChecks$register(kotlin.String, io.vertx.core.Handler((io.vertx.core.Future((io.vertx.ext.healthchecks.Status)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.healthchecks.HealthChecks$register(kotlin.String, io.vertx.core.Handler((io.vertx.core.Future((io.vertx.ext.healthchecks.Status)))))/procedure">procedure</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Future</span><span class="symbol">&lt;</span><a href="../-status/index.html"><span class="identifier">Status</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">HealthChecks</span></a></code>
+<p>Registers a health check procedure. 
+<p> The procedure is a Handler taking a Future of Status as parameter. Procedures are asynchronous, and <strong>must</strong> complete or fail the given Future. If the future object is failed, the procedure outcome is considered as `DOWN`. If the future is completed without any object, the procedure outcome is considered as `UP`. If the future is completed with a (not-null) Status, the procedure outcome is the received status. </p>
+<p> This method uses a 1s timeout. Use <code><a href="#">#register(String, long, Handler)</a></code> to configure the timeout.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="name"></a>
+<code>name</code> - the name of the procedure, must not be <code>null</code> or empty</p>
+<p><a name="procedure"></a>
+<code>procedure</code> - the procedure, must not be <code>null</code></p>
+<p><strong>Return</strong><br/>
+the current HealthChecks</p>
+<a name="io.vertx.ext.healthchecks.HealthChecks$register(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.Future((io.vertx.ext.healthchecks.Status)))))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">register</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.healthchecks.HealthChecks$register(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.Future((io.vertx.ext.healthchecks.Status)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.healthchecks.HealthChecks$register(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.Future((io.vertx.ext.healthchecks.Status)))))/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.healthchecks.HealthChecks$register(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.Future((io.vertx.ext.healthchecks.Status)))))/procedure">procedure</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Future</span><span class="symbol">&lt;</span><a href="../-status/index.html"><span class="identifier">Status</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">HealthChecks</span></a></code>
+<p>Registers a health check procedure. 
+<p> The procedure is a Handler taking a Future of Status as parameter. Procedures are asynchronous, and <strong>must</strong> complete or fail the given Future. If the future object is failed, the procedure outcome is considered as `DOWN`. If the future is completed without any object, the procedure outcome is considered as `UP`. If the future is completed with a (not-null) Status, the procedure outcome is the received status.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="name"></a>
+<code>name</code> - the name of the procedure, must not be <code>null</code> or empty</p>
+<p><a name="timeout"></a>
+<code>timeout</code> - the procedure timeout in milliseconds</p>
+<p><a name="procedure"></a>
+<code>procedure</code> - the procedure, must not be <code>null</code></p>
+<p><strong>Return</strong><br/>
+the current HealthChecks</p>
+</BODY>
+</HTML>

@@ -1,0 +1,276 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MongoAuth - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.ext.auth.mongo</a>&nbsp;/&nbsp;<a href=".">MongoAuth</a><br/>
+<br/>
+<h1>MongoAuth</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MongoAuth</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AuthProvider</span></code>
+<p>An extension of AuthProvider which is using as store  NOTE: This class has been automatically generated from the io.vertx.ext.auth.mongo.MongoAuth non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MongoAuth</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$<init>(io.vertx.ext.auth.mongo.MongoAuth)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.auth.mongo/-mongo-auth/index.html"><span class="identifier">MongoAuth</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><span class="identifier">TypeArg</span><span class="symbol">&lt;</span><span class="identifier">MongoAuth</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$create(io.vertx.rxjava.ext.mongo.MongoClient, io.vertx.core.json.JsonObject)/mongoClient">mongoClient</span><span class="symbol">:</span>&nbsp;<span class="identifier">MongoClient</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$create(io.vertx.rxjava.ext.mongo.MongoClient, io.vertx.core.json.JsonObject)/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Creates an instance of MongoAuth by using the given and configuration object. An example for a configuration object: <pre><code> JsonObject js = new JsonObject(); js.put(MongoAuth.PROPERTY_COLLECTION_NAME, createCollectionName(MongoAuth.DEFAULT_COLLECTION_NAME)); </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-collection-name.html">getCollectionName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCollectionName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The name of the collection used to store User objects inside. Defaults to io.vertx.rxjava.ext.auth.mongo.MongoAuth</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.ext.auth.mongo/-mongo-auth/index.html"><span class="identifier">MongoAuth</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-hash-strategy.html">getHashStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getHashStrategy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-hash-strategy/index.html"><span class="identifier">HashStrategy</span></a></code>
+<p>The HashStrategy which is used by the current instance</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-password-credential-field.html">getPasswordCredentialField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPasswordCredentialField</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the field to be used as property for the password of credentials in the method <code><a href="#">io.vertx.rxjava.ext.auth.AuthProvider#authenticate</a></code>. Defaults to io.vertx.rxjava.ext.auth.mongo.MongoAuth</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-password-field.html">getPasswordField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPasswordField</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the field to be used for the password Defaults to io.vertx.rxjava.ext.auth.mongo.MongoAuth</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-permission-field.html">getPermissionField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPermissionField</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the field to be used for the permissions. Defaults to io.vertx.rxjava.ext.auth.mongo.MongoAuth. Permissions are expected to be saved as JsonArray</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-role-field.html">getRoleField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRoleField</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the field to be used for the roles. Defaults to io.vertx.rxjava.ext.auth.mongo.MongoAuth. Roles are expected to be saved as JsonArray</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-salt-field.html">getSaltField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSaltField</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the field to be used for the salt. Only used when <code><a href="../-hash-strategy/set-salt-style.html">io.vertx.rxjava.ext.auth.mongo.HashStrategy#setSaltStyle</a></code> is set to</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-username-credential-field.html">getUsernameCredentialField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUsernameCredentialField</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the field to be used as property for the username in the method <code><a href="#">io.vertx.rxjava.ext.auth.AuthProvider#authenticate</a></code>. Defaults to io.vertx.rxjava.ext.auth.mongo.MongoAuth</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-username-field.html">getUsernameField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUsernameField</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the field to be used for the username. Defaults to io.vertx.rxjava.ext.auth.mongo.MongoAuth</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="insert-user.html">insertUser</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">insertUser</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$insertUser(kotlin.String, kotlin.String, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$insertUser(kotlin.String, kotlin.String, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$insertUser(kotlin.String, kotlin.String, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/roles">roles</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$insertUser(kotlin.String, kotlin.String, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/permissions">permissions</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$insertUser(kotlin.String, kotlin.String, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Insert a new user into mongo in the convenient way</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$newInstance(io.vertx.ext.auth.mongo.MongoAuth)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.auth.mongo/-mongo-auth/index.html"><span class="identifier">MongoAuth</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-insert-user.html">rxInsertUser</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxInsertUser</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$rxInsertUser(kotlin.String, kotlin.String, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)))/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$rxInsertUser(kotlin.String, kotlin.String, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)))/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$rxInsertUser(kotlin.String, kotlin.String, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)))/roles">roles</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$rxInsertUser(kotlin.String, kotlin.String, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)))/permissions">permissions</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Insert a new user into mongo in the convenient way</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-collection-name.html">setCollectionName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCollectionName</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$setCollectionName(kotlin.String)/collectionName">collectionName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Set the name of the collection to be used. Defaults to io.vertx.rxjava.ext.auth.mongo.MongoAuth</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-hash-algorithm.html">setHashAlgorithm</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHashAlgorithm</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$setHashAlgorithm(io.vertx.ext.auth.mongo.HashAlgorithm)/hashAlgorithm">hashAlgorithm</span><span class="symbol">:</span>&nbsp;<span class="identifier">HashAlgorithm</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>The Hash Algorithm which is used by the current instance</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-hash-strategy.html">setHashStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHashStrategy</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$setHashStrategy(io.vertx.rxjava.ext.auth.mongo.HashStrategy)/hashStrategy">hashStrategy</span><span class="symbol">:</span>&nbsp;<a href="../-hash-strategy/index.html"><span class="identifier">HashStrategy</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>The HashStrategy which is used by the current instance</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-password-credential-field.html">setPasswordCredentialField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPasswordCredentialField</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$setPasswordCredentialField(kotlin.String)/fieldName">fieldName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Set the name of the field to be used as property for the password of credentials in the method <code><a href="#">io.vertx.rxjava.ext.auth.AuthProvider#authenticate</a></code>. Defaults to io.vertx.rxjava.ext.auth.mongo.MongoAuth</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-password-field.html">setPasswordField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPasswordField</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$setPasswordField(kotlin.String)/fieldName">fieldName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Set the name of the field to be used for the password Defaults to io.vertx.rxjava.ext.auth.mongo.MongoAuth</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-permission-field.html">setPermissionField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPermissionField</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$setPermissionField(kotlin.String)/fieldName">fieldName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Set the name of the field to be used for the permissions. Defaults to io.vertx.rxjava.ext.auth.mongo.MongoAuth. Permissions are expected to be saved as JsonArray</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-role-field.html">setRoleField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRoleField</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$setRoleField(kotlin.String)/fieldName">fieldName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Set the name of the field to be used for the roles. Defaults to io.vertx.rxjava.ext.auth.mongo.MongoAuth. Roles are expected to be saved as JsonArray</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-salt-field.html">setSaltField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSaltField</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$setSaltField(kotlin.String)/fieldName">fieldName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Set the name of the field to be used for the salt. Only used when <code><a href="../-hash-strategy/set-salt-style.html">io.vertx.rxjava.ext.auth.mongo.HashStrategy#setSaltStyle</a></code> is set to</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-username-credential-field.html">setUsernameCredentialField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUsernameCredentialField</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$setUsernameCredentialField(kotlin.String)/fieldName">fieldName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Set the name of the field to be used as property for the username in the method <code><a href="#">io.vertx.rxjava.ext.auth.AuthProvider#authenticate</a></code>. Defaults to io.vertx.rxjava.ext.auth.mongo.MongoAuth</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-username-field.html">setUsernameField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUsernameField</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.MongoAuth$setUsernameField(kotlin.String)/fieldName">fieldName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Set the name of the field to be used for the username. Defaults to io.vertx.rxjava.ext.auth.mongo.MongoAuth</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

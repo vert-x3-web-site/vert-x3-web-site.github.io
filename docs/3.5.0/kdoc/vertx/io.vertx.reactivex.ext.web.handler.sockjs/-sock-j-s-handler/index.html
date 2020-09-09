@@ -1,0 +1,126 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SockJSHandler - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.ext.web.handler.sockjs</a>&nbsp;/&nbsp;<a href=".">SockJSHandler</a><br/>
+<br/>
+<h1>SockJSHandler</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SockJSHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>A handler that allows you to handle SockJS connections from clients. 
+<p> We currently support version 0.3.3 of the SockJS protocol, which can be found in <a href="#">this tag:</a> </p>
+ NOTE: This class has been automatically generated from the io.vertx.ext.web.handler.sockjs.SockJSHandler non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SockJSHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.sockjs.SockJSHandler$<init>(io.vertx.ext.web.handler.sockjs.SockJSHandler)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.web.handler.sockjs/-sock-j-s-handler/index.html"><span class="identifier">SockJSHandler</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">SockJSHandler</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="bridge.html">bridge</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">bridge</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.sockjs.SockJSHandler$bridge(io.vertx.ext.web.handler.sockjs.BridgeOptions)/bridgeOptions">bridgeOptions</span><span class="symbol">:</span>&nbsp;<span class="identifier">BridgeOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SockJSHandler</span></code>
+<p>Bridge the SockJS handler to the Vert.x event bus. This basically installs a built-in SockJS socket handler which takes SockJS traffic and bridges it to the event bus, thus allowing you to extend the server-side Vert.x event bus to browsers</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">bridge</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.sockjs.SockJSHandler$bridge(io.vertx.ext.web.handler.sockjs.BridgeOptions, io.vertx.core.Handler((io.vertx.reactivex.ext.web.handler.sockjs.BridgeEvent)))/bridgeOptions">bridgeOptions</span><span class="symbol">:</span>&nbsp;<span class="identifier">BridgeOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.sockjs.SockJSHandler$bridge(io.vertx.ext.web.handler.sockjs.BridgeOptions, io.vertx.core.Handler((io.vertx.reactivex.ext.web.handler.sockjs.BridgeEvent)))/bridgeEventHandler">bridgeEventHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">BridgeEvent</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SockJSHandler</span></code>
+<p>Like <code><a href="bridge.html">io.vertx.reactivex.ext.web.handler.sockjs.SockJSHandler#bridge</a></code> but specifying a handler that will receive bridge events.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.sockjs.SockJSHandler$create(io.vertx.reactivex.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core/-vertx/index.html"><span class="identifier">Vertx</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SockJSHandler</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.sockjs.SockJSHandler$create(io.vertx.reactivex.core.Vertx, io.vertx.ext.web.handler.sockjs.SockJSHandlerOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core/-vertx/index.html"><span class="identifier">Vertx</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.sockjs.SockJSHandler$create(io.vertx.reactivex.core.Vertx, io.vertx.ext.web.handler.sockjs.SockJSHandlerOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">SockJSHandlerOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SockJSHandler</span></code>
+<p>Create a SockJS handler</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.sockjs.SockJSHandler$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.ext.web.handler.sockjs/-sock-j-s-handler/index.html"><span class="identifier">SockJSHandler</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="handle.html">handle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">handle</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.sockjs.SockJSHandler$handle(io.vertx.reactivex.ext.web.RoutingContext)/arg0">arg0</span><span class="symbol">:</span>&nbsp;<span class="identifier">RoutingContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="install-test-applications.html">installTestApplications</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">installTestApplications</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.sockjs.SockJSHandler$installTestApplications(io.vertx.reactivex.ext.web.Router, io.vertx.reactivex.core.Vertx)/router">router</span><span class="symbol">:</span>&nbsp;<span class="identifier">Router</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.sockjs.SockJSHandler$installTestApplications(io.vertx.reactivex.ext.web.Router, io.vertx.reactivex.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core/-vertx/index.html"><span class="identifier">Vertx</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Install SockJS test applications on a router - used when running the SockJS test suite</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.sockjs.SockJSHandler$newInstance(io.vertx.ext.web.handler.sockjs.SockJSHandler)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.web.handler.sockjs/-sock-j-s-handler/index.html"><span class="identifier">SockJSHandler</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SockJSHandler</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="socket-handler.html">socketHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">socketHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.sockjs.SockJSHandler$socketHandler(io.vertx.core.Handler((io.vertx.reactivex.ext.web.handler.sockjs.SockJSSocket)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">SockJSSocket</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SockJSHandler</span></code>
+<p>Set a SockJS socket handler. This handler will be called with a SockJS socket whenever a SockJS connection is made from a client</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

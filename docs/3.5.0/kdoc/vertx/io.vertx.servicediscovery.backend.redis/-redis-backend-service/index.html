@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RedisBackendService - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.servicediscovery.backend.redis</a>&nbsp;/&nbsp;<a href=".">RedisBackendService</a><br/>
+<br/>
+<h1>RedisBackendService</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RedisBackendService</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServiceDiscoveryBackend</span></code>
+<p>An implementation of the discovery backend based on Redis.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Clement Escoffier</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">RedisBackendService</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>An implementation of the discovery backend based on Redis.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-record.html">getRecord</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRecord</span><span class="symbol">(</span><span class="identifier" id="io.vertx.servicediscovery.backend.redis.RedisBackendService$getRecord(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.servicediscovery.Record)))))/uuid">uuid</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.servicediscovery.backend.redis.RedisBackendService$getRecord(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.servicediscovery.Record)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Record</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-records.html">getRecords</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRecords</span><span class="symbol">(</span><span class="identifier" id="io.vertx.servicediscovery.backend.redis.RedisBackendService$getRecords(io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((io.vertx.servicediscovery.Record)))))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Record</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="init.html">init</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">init</span><span class="symbol">(</span><span class="identifier" id="io.vertx.servicediscovery.backend.redis.RedisBackendService$init(io.vertx.core.Vertx, io.vertx.core.json.JsonObject)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.servicediscovery.backend.redis.RedisBackendService$init(io.vertx.core.Vertx, io.vertx.core.json.JsonObject)/configuration">configuration</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="remove.html">remove</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">remove</span><span class="symbol">(</span><span class="identifier" id="io.vertx.servicediscovery.backend.redis.RedisBackendService$remove(io.vertx.servicediscovery.Record, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.servicediscovery.Record)))))/record">record</span><span class="symbol">:</span>&nbsp;<span class="identifier">Record</span><span class="symbol">, </span><span class="identifier" id="io.vertx.servicediscovery.backend.redis.RedisBackendService$remove(io.vertx.servicediscovery.Record, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.servicediscovery.Record)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Record</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">remove</span><span class="symbol">(</span><span class="identifier" id="io.vertx.servicediscovery.backend.redis.RedisBackendService$remove(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.servicediscovery.Record)))))/uuid">uuid</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.servicediscovery.backend.redis.RedisBackendService$remove(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.servicediscovery.Record)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Record</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="store.html">store</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">store</span><span class="symbol">(</span><span class="identifier" id="io.vertx.servicediscovery.backend.redis.RedisBackendService$store(io.vertx.servicediscovery.Record, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.servicediscovery.Record)))))/record">record</span><span class="symbol">:</span>&nbsp;<span class="identifier">Record</span><span class="symbol">, </span><span class="identifier" id="io.vertx.servicediscovery.backend.redis.RedisBackendService$store(io.vertx.servicediscovery.Record, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.servicediscovery.Record)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Record</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="update.html">update</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">update</span><span class="symbol">(</span><span class="identifier" id="io.vertx.servicediscovery.backend.redis.RedisBackendService$update(io.vertx.servicediscovery.Record, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/record">record</span><span class="symbol">:</span>&nbsp;<span class="identifier">Record</span><span class="symbol">, </span><span class="identifier" id="io.vertx.servicediscovery.backend.redis.RedisBackendService$update(io.vertx.servicediscovery.Record, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

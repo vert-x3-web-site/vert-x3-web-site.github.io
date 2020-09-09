@@ -1,0 +1,24 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ServerWebSocket.writePong - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.http</a>&nbsp;/&nbsp;<a href="index.html">ServerWebSocket</a>&nbsp;/&nbsp;<a href=".">writePong</a><br/>
+<br/>
+<h1>writePong</h1>
+<a name="io.vertx.reactivex.core.http.ServerWebSocket$writePong(io.vertx.reactivex.core.buffer.Buffer)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">writePong</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.ServerWebSocket$writePong(io.vertx.reactivex.core.buffer.Buffer)/data">data</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-web-socket-base/index.html"><span class="identifier">WebSocketBase</span></a></code>
+<p>Overrides <a href="../-web-socket-base/write-pong.html">WebSocketBase.writePong</a></p>
+<p>Writes a pong to the connection. This will be written in a single frame. Pong frames may be at most 125 bytes (octets). 
+<p> This method should not be used to write application data and should only be used for implementing a keep alive or to ensure the client is still responsive, see RFC 6455 Section 5.5.2. </p>
+<p> There is no need to manually write a Pong, as the server and client both handle responding to a ping with a pong automatically and this is exposed to users.RFC 6455 Section 5.5.3 states that pongs may be sent unsolicited in order to implement a one way heartbeat.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="data"></a>
+<code>data</code> - the data to write, may be at most 125 bytes</p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently</p>
+</BODY>
+</HTML>

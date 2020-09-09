@@ -1,0 +1,143 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>VertxPrometheusOptions - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.micrometer</a>&nbsp;/&nbsp;<a href=".">VertxPrometheusOptions</a><br/>
+<br/>
+<h1>VertxPrometheusOptions</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">VertxPrometheusOptions</span></code>
+<p>Options for Prometheus metrics backend.</p>
+<p><strong>Author</strong><br/>
+Joel Takvorian</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">VertxPrometheusOptions</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Default constructor</p>
+<code><span class="identifier">VertxPrometheusOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxPrometheusOptions$<init>(io.vertx.micrometer.VertxPrometheusOptions)/other">other</span><span class="symbol">:</span>&nbsp;<span class="identifier">VertxPrometheusOptions</span><span class="symbol">)</span></code>
+<p>Copy constructor</p>
+<code><span class="identifier">VertxPrometheusOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxPrometheusOptions$<init>(io.vertx.core.json.JsonObject)/json">json</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span></code>
+<p>Create an instance from a io.vertx.core.json.JsonObject</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-e-m-b-e-d-d-e-d_-s-e-r-v-e-r_-e-n-d-p-o-i-n-t.html">DEFAULT_EMBEDDED_SERVER_ENDPOINT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_EMBEDDED_SERVER_ENDPOINT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default metrics endpoint = /metrics when using an embedded server.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-e-n-a-b-l-e-d.html">DEFAULT_ENABLED</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_ENABLED</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Default value for enabled = false.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-s-t-a-r-t_-e-m-b-e-d-d-e-d_-s-e-r-v-e-r.html">DEFAULT_START_EMBEDDED_SERVER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_START_EMBEDDED_SERVER</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Default value for starting an embedded server = false.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-embedded-server-endpoint.html">getEmbeddedServerEndpoint</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getEmbeddedServerEndpoint</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the HTTP endpoint used if an embedded server is configured</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-embedded-server-options.html">getEmbeddedServerOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getEmbeddedServerOptions</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerOptions</span></code>
+<p>Get the HTTP server options of the embedded server, if any</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-enabled.html">isEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isEnabled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Will Prometheus reporting be enabled?</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-start-embedded-server.html">isStartEmbeddedServer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isStartEmbeddedServer</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Returns true if it is configured to start an embedded web server to expose Prometheus metrics</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-embedded-server-endpoint.html">setEmbeddedServerEndpoint</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEmbeddedServerEndpoint</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxPrometheusOptions$setEmbeddedServerEndpoint(kotlin.String)/embeddedServerEndpoint">embeddedServerEndpoint</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxPrometheusOptions</span></code>
+<p>Set metrics endpoint. Use conjointly with the embedded server options. Defaults to <em>/metrics</em>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-embedded-server-options.html">setEmbeddedServerOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEmbeddedServerOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxPrometheusOptions$setEmbeddedServerOptions(io.vertx.core.http.HttpServerOptions)/embeddedServerOptions">embeddedServerOptions</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServerOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxPrometheusOptions</span></code>
+<p>HTTP server options for the embedded server</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-enabled.html">setEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEnabled</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxPrometheusOptions$setEnabled(kotlin.Boolean)/enabled">enabled</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxPrometheusOptions</span></code>
+<p>Set true to enable Prometheus reporting</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-start-embedded-server.html">setStartEmbeddedServer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setStartEmbeddedServer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxPrometheusOptions$setStartEmbeddedServer(kotlin.Boolean)/startEmbeddedServer">startEmbeddedServer</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxPrometheusOptions</span></code>
+<p>When true, an embedded server will start to expose metrics with Prometheus format.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

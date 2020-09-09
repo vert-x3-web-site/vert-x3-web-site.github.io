@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.reactivex.ext.healthchecks - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.reactivex.ext.healthchecks</a><br/>
+<br/>
+<h2>Package io.vertx.reactivex.ext.healthchecks</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-health-check-handler/index.html">HealthCheckHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HealthCheckHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>A Vert.x Web handler on which you register health check procedure. It computes the outcome status (`UP` or `DOWN`) . When the handler process a HTTP request, it computes the global outcome and build a HTTP response as follows: 
+<p> </p>
+<ul> <li>204 - status is `UP` but no procedures installed (no payload)</li>
+ <li>200 - status is `UP`, the payload contains the result of the installed procedures</li>
+ <li>503 - status is `DOWN`, the payload contains the result of the installed procedures</li>
+ <li>500 - status is `DOWN`, the payload contains the result of the installed procedures, one of the procedure has failed</li>
+ </ul>
+  NOTE: This class has been automatically generated from the io.vertx.ext.healthchecks.HealthCheckHandler non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-health-checks/index.html">HealthChecks</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HealthChecks</span></code>
+<p> NOTE: This class has been automatically generated from the io.vertx.ext.healthchecks.HealthChecks non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

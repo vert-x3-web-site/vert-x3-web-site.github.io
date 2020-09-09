@@ -1,0 +1,123 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ServiceExporter - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.servicediscovery.spi</a>&nbsp;/&nbsp;<a href=".">ServiceExporter</a><br/>
+<br/>
+<h1>ServiceExporter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServiceExporter</span></code>
+<p>The service exporter allows integrate other discovery technologies with the Vert.x service discovery. It maps entries from another technology to a and maps to a publication in this other technology. The exporter is one side of a service discovery bridge.  NOTE: This class has been automatically generated from the io.vertx.servicediscovery.spi.ServiceExporter non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ServiceExporter</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.servicediscovery.spi.ServiceExporter$<init>(io.vertx.servicediscovery.spi.ServiceExporter)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServiceExporter</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><span class="identifier">TypeArg</span><span class="symbol">&lt;</span><span class="identifier">ServiceExporter</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.servicediscovery.spi.ServiceExporter$close(io.vertx.core.Handler((java.lang.Void)))/closeHandler">closeHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the exporter</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.servicediscovery.spi.ServiceExporter$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServiceExporter</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="init.html">init</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">init</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.servicediscovery.spi.ServiceExporter$init(io.vertx.rxjava.core.Vertx, io.vertx.rxjava.servicediscovery.spi.ServicePublisher, io.vertx.core.json.JsonObject, io.vertx.rxjava.core.Future((java.lang.Void)))/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.servicediscovery.spi.ServiceExporter$init(io.vertx.rxjava.core.Vertx, io.vertx.rxjava.servicediscovery.spi.ServicePublisher, io.vertx.core.json.JsonObject, io.vertx.rxjava.core.Future((java.lang.Void)))/publisher">publisher</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServicePublisher</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.servicediscovery.spi.ServiceExporter$init(io.vertx.rxjava.core.Vertx, io.vertx.rxjava.servicediscovery.spi.ServicePublisher, io.vertx.core.json.JsonObject, io.vertx.rxjava.core.Future((java.lang.Void)))/configuration">configuration</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.servicediscovery.spi.ServiceExporter$init(io.vertx.rxjava.core.Vertx, io.vertx.rxjava.servicediscovery.spi.ServicePublisher, io.vertx.core.json.JsonObject, io.vertx.rxjava.core.Future((java.lang.Void)))/future">future</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.rxjava.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Starts the exporter.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.servicediscovery.spi.ServiceExporter$newInstance(io.vertx.servicediscovery.spi.ServiceExporter)/arg">arg</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServiceExporter</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServiceExporter</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="on-publish.html">onPublish</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onPublish</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.servicediscovery.spi.ServiceExporter$onPublish(io.vertx.servicediscovery.Record)/record">record</span><span class="symbol">:</span>&nbsp;<span class="identifier">Record</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Notify a new record has been published, the record's registration can be used to uniquely identify the record</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="on-unpublish.html">onUnpublish</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onUnpublish</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.servicediscovery.spi.ServiceExporter$onUnpublish(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Notify an existing record has been removed</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="on-update.html">onUpdate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onUpdate</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.servicediscovery.spi.ServiceExporter$onUpdate(io.vertx.servicediscovery.Record)/record">record</span><span class="symbol">:</span>&nbsp;<span class="identifier">Record</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Notify an existing record has been updated, the record's registration can be used to uniquely identify the record</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,175 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Message - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.eventbus</a>&nbsp;/&nbsp;<a href=".">Message</a><br/>
+<br/>
+<h1>Message</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Represents a message that is received from the event bus in a handler. 
+<p> Messages have a <code><a href="body.html">io.vertx.reactivex.core.eventbus.Message#body</a></code>, which can be null, and also <code><a href="headers.html">io.vertx.reactivex.core.eventbus.Message#headers</a></code>, which can be empty. </p>
+<p> If the message was sent specifying a reply handler, it can be replied to using <code><a href="#">io.vertx.reactivex.core.eventbus.Message#reply</a></code>. </p>
+<p> If you want to notify the sender that processing failed, then <code><a href="#">io.vertx.reactivex.core.eventbus.Message#fail</a></code> can be called. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.eventbus.Message non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">Message</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$<init>(io.vertx.core.eventbus.Message((kotlin.Any)))/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.eventbus/-message/index.html"><span class="identifier">Message</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">Message</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$<init>(io.vertx.core.eventbus.Message((kotlin.Any)), io.vertx.lang.reactivex.TypeArg((io.vertx.reactivex.core.eventbus.Message.T)))/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.eventbus/-message/index.html"><span class="identifier">Message</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$<init>(io.vertx.core.eventbus.Message((kotlin.Any)), io.vertx.lang.reactivex.TypeArg((io.vertx.reactivex.core.eventbus.Message.T)))/typeArg_0">typeArg_0</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">Message</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="__type-arg_0.html">__typeArg_0</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">__typeArg_0</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="address.html">address</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">address</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The address the message was sent to</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="body.html">body</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">body</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>The body of the message. Can be null.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="fail.html">fail</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fail</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$fail(kotlin.Int, kotlin.String)/failureCode">failureCode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$fail(kotlin.Int, kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Signal to the sender that processing of this message failed. 
+<p> If the message was sent specifying a result handler the handler will be called with a failure corresponding to the failure code and message specified here.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.core.eventbus/-message/index.html"><span class="identifier">Message</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="headers.html">headers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">headers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-multi-map/index.html"><span class="identifier">MultiMap</span></a></code>
+<p>Multi-map of message headers. Can be empty</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-send.html">isSend</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSend</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Signals if this message represents a send or publish event.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$newInstance(io.vertx.core.eventbus.Message((kotlin.Any)))/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.eventbus/-message/index.html"><span class="identifier">Message</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$newInstance(io.vertx.core.eventbus.Message((kotlin.Any)), io.vertx.lang.reactivex.TypeArg((io.vertx.reactivex.core.eventbus.Message.newInstance.T)))/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.eventbus/-message/index.html"><span class="identifier">Message</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$newInstance(io.vertx.core.eventbus.Message((kotlin.Any)), io.vertx.lang.reactivex.TypeArg((io.vertx.reactivex.core.eventbus.Message.newInstance.T)))/__typeArg_T">__typeArg_T</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="reply.html">reply</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">reply</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$reply(kotlin.Any)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Reply to this message. 
+<p> If the message was sent specifying a reply handler, that handler will be called when it has received a reply. If the message wasn't sent specifying a receipt handler this method does nothing.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">R</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">reply</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$reply(kotlin.Any, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.eventbus.Message((io.vertx.reactivex.core.eventbus.Message.reply.R)))))))/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$reply(kotlin.Any, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.eventbus.Message((io.vertx.reactivex.core.eventbus.Message.reply.R)))))))/replyHandler">replyHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">R</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>The same as <code>reply(R message)</code> but you can specify handler for the reply - i.e. to receive the reply to the reply.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">reply</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$reply(kotlin.Any, io.vertx.core.eventbus.DeliveryOptions)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$reply(kotlin.Any, io.vertx.core.eventbus.DeliveryOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">DeliveryOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Link <code><a href="#">io.vertx.reactivex.core.eventbus.Message#reply</a></code> but allows you to specify delivery options for the reply.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">R</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">reply</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$reply(kotlin.Any, io.vertx.core.eventbus.DeliveryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.eventbus.Message((io.vertx.reactivex.core.eventbus.Message.reply.R)))))))/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$reply(kotlin.Any, io.vertx.core.eventbus.DeliveryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.eventbus.Message((io.vertx.reactivex.core.eventbus.Message.reply.R)))))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">DeliveryOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$reply(kotlin.Any, io.vertx.core.eventbus.DeliveryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.eventbus.Message((io.vertx.reactivex.core.eventbus.Message.reply.R)))))))/replyHandler">replyHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">R</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>The same as <code>reply(R message, DeliveryOptions)</code> but you can specify handler for the reply - i.e. to receive the reply to the reply.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="reply-address.html">replyAddress</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">replyAddress</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The reply address. Can be null.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-reply.html">rxReply</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">R</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">rxReply</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$rxReply(kotlin.Any)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">R</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>The same as <code>reply(R message)</code> but you can specify handler for the reply - i.e. to receive the reply to the reply.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">R</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">rxReply</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$rxReply(kotlin.Any, io.vertx.core.eventbus.DeliveryOptions)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.eventbus.Message$rxReply(kotlin.Any, io.vertx.core.eventbus.DeliveryOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">DeliveryOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">R</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>The same as <code>reply(R message, DeliveryOptions)</code> but you can specify handler for the reply - i.e. to receive the reply to the reply.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

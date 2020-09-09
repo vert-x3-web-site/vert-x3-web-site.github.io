@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HTTPOperationRequestValidationHandler - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.ext.web.api.contract</a>&nbsp;/&nbsp;<a href=".">HTTPOperationRequestValidationHandler</a><br/>
+<br/>
+<h1>HTTPOperationRequestValidationHandler</h1>
+<code><span class="keyword">interface </span><span class="identifier">HTTPOperationRequestValidationHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.ext.web.api.validation/-validation-handler/index.html"><span class="identifier">ValidationHandler</span></a><span class="symbol">, </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>Base interface for HTTP request validation with API specification  NOTE: This class has been automatically generated from the io.vertx.ext.web.api.contract.HTTPOperationRequestValidationHandler non RX-ified interface using Vert.x codegen.</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.ext.web.api.contract/-h-t-t-p-operation-request-validation-handler/index.html"><span class="identifier">HTTPOperationRequestValidationHandler</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="handle.html">handle</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">handle</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.api.contract.HTTPOperationRequestValidationHandler$handle(io.vertx.reactivex.ext.web.RoutingContext)/arg0">arg0</span><span class="symbol">:</span>&nbsp;<span class="identifier">RoutingContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.api.contract.HTTPOperationRequestValidationHandler$newInstance(io.vertx.ext.web.api.contract.HTTPOperationRequestValidationHandler)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.web.api.contract/-h-t-t-p-operation-request-validation-handler/index.html"><span class="identifier">HTTPOperationRequestValidationHandler</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HTTPOperationRequestValidationHandler</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="parse-operation-spec.html">parseOperationSpec</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">parseOperationSpec</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Function that parse the operation specification and generate validation rules</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.ext.web.api.contract.openapi3/-open-a-p-i3-request-validation-handler/index.html">OpenAPI3RequestValidationHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpenAPI3RequestValidationHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HTTPOperationRequestValidationHandler</span><span class="symbol">, </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p> NOTE: This class has been automatically generated from the io.vertx.ext.web.api.contract.openapi3.OpenAPI3RequestValidationHandler non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

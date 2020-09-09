@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.rxjava.ext.stomp - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.rxjava.ext.stomp</a><br/>
+<br/>
+<h2>Package io.vertx.rxjava.ext.stomp</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-acknowledgement/index.html">Acknowledgement</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Acknowledgement</span></code>
+<p>Structure passed to acknowledgement handler called when a <code>ACK</code> or <code>NACK</code> frame is received. The handler receives an instance of io.vertx.rxjava.ext.stomp.Acknowledgement with the subscription io.vertx.ext.stomp.Frame and the impacted messages. The list of messages depends on the type of acknowledgment used by the subscription.  Subscriptions using the <code>client</code> mode receives all messages that were waiting for acknowledgment that were sent before the acknowledged messages. The list also contains the acknowledged message. This is a cumulative acknowledgement. Subscriptions using the <code>client-individual</code> mode receives a singleton list containing only the acknowledged message.  NOTE: This class has been automatically generated from the io.vertx.ext.stomp.Acknowledgement non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-destination/index.html">Destination</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Destination</span></code>
+<p>Represents a STOMP destination. Depending on the implementation, the message delivery is different. Queue are sending message to only one subscribers, while topics are broadcasting the message to all subscribers.  Implementations <strong>must</strong> be thread-safe.  NOTE: This class has been automatically generated from the io.vertx.ext.stomp.Destination non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-destination-factory/index.html">DestinationFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DestinationFactory</span></code>
+<p>Interface implemented to customize the destination creation.  NOTE: This class has been automatically generated from the io.vertx.ext.stomp.DestinationFactory non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-frames/index.html">Frames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Frames</span></code>
+<p>Utility methods to build common io.vertx.ext.stomp.Frames. It defines a non-STOMP frame (<code>PING</code>) that is used for heartbeats. When such frame is written on the wire it is just the <code>0</code> byte.  This class is thread-safe.  NOTE: This class has been automatically generated from the io.vertx.ext.stomp.Frames non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-stomp-client-connection/index.html">StompClientConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StompClientConnection</span></code>
+<p>Once a connection to the STOMP server has been made, client receives a io.vertx.rxjava.ext.stomp.StompClientConnection, that let send and receive STOMP frames.  NOTE: This class has been automatically generated from the io.vertx.ext.stomp.StompClientConnection non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-stomp-server/index.html">StompServer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StompServer</span></code>
+<p>Defines a STOMP server. STOMP servers delegates to a io.vertx.rxjava.ext.stomp.StompServerHandler that let customize the behavior of the server. By default, it uses a handler compliant with the STOMP specification, but let you change anything.  NOTE: This class has been automatically generated from the io.vertx.ext.stomp.StompServer non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,21 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WebSocket.binaryMessageHandler - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.http</a>&nbsp;/&nbsp;<a href="index.html">WebSocket</a>&nbsp;/&nbsp;<a href=".">binaryMessageHandler</a><br/>
+<br/>
+<h1>binaryMessageHandler</h1>
+<a name="io.vertx.reactivex.core.http.WebSocket$binaryMessageHandler(io.vertx.core.Handler((io.vertx.reactivex.core.buffer.Buffer)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">binaryMessageHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.WebSocket$binaryMessageHandler(io.vertx.core.Handler((io.vertx.reactivex.core.buffer.Buffer)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-web-socket-base/index.html"><span class="identifier">WebSocketBase</span></a></code>
+<p>Overrides <a href="../-web-socket-base/binary-message-handler.html">WebSocketBase.binaryMessageHandler</a></p>
+<p>Set a binary message handler on the connection. This handler serves a similar purpose to <code><a href="#">io.vertx.reactivex.core.http.WebSocket#handler</a></code> except that if a message comes into the socket in multiple frames, the data from the frames will be aggregated into a single buffer before calling the handler (using <code><a href="../-web-socket-frame/is-final.html">io.vertx.reactivex.core.http.WebSocketFrame#isFinal</a></code> to find the boundaries).</p>
+<h3>Parameters</h3>
+<p><a name="handler"></a>
+<code>handler</code> - the handler</p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently</p>
+</BODY>
+</HTML>

@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RxHelper.toFuture - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rx.java</a>&nbsp;/&nbsp;<a href="index.html">RxHelper</a>&nbsp;/&nbsp;<a href=".">toFuture</a><br/>
+<br/>
+<h1>toFuture</h1>
+<a name="io.vertx.rx.java.RxHelper$toFuture(rx.Observer((io.vertx.rx.java.RxHelper.toFuture.T)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">toFuture</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rx.java.RxHelper$toFuture(rx.Observer((io.vertx.rx.java.RxHelper.toFuture.T)))/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Observer.html"><span class="identifier">Observer</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Adapt a Subscriber as a <code>Handler&lt;AsyncResult&lt;T&gt;&gt;;</code>.</p>
+<h3>Parameters</h3>
+<p><a name="observer"></a>
+<code>observer</code> - the subscriber to adapt</p>
+<p><strong>Return</strong><br/>
+a <code>Handler&lt;AsyncResult&lt;T&gt;&gt;</code></p>
+<a name="io.vertx.rx.java.RxHelper$toFuture(rx.functions.Action1((io.vertx.rx.java.RxHelper.toFuture.T)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">toFuture</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rx.java.RxHelper$toFuture(rx.functions.Action1((io.vertx.rx.java.RxHelper.toFuture.T)))/onNext">onNext</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/1.x/javadoc/rx/functions/Action1.html"><span class="identifier">Action1</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Adapt an item callback as a <code>Handler&lt;AsyncResult&lt;T&gt;&gt;</code>.</p>
+<h3>Parameters</h3>
+<p><a name="onNext"></a>
+<code>onNext</code> - the <code>Action1&lt;T&gt;</code> you have designed to accept the resolution from the <code>Handler&lt;AsyncResult&lt;T&gt;&gt;</code></p>
+<p><strong>Return</strong><br/>
+a <code>Handler&lt;AsyncResult&lt;T&gt;&gt;</code></p>
+<a name="io.vertx.rx.java.RxHelper$toFuture(rx.functions.Action1((io.vertx.rx.java.RxHelper.toFuture.T)), rx.functions.Action1((kotlin.Throwable)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">toFuture</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rx.java.RxHelper$toFuture(rx.functions.Action1((io.vertx.rx.java.RxHelper.toFuture.T)), rx.functions.Action1((kotlin.Throwable)))/onNext">onNext</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/1.x/javadoc/rx/functions/Action1.html"><span class="identifier">Action1</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rx.java.RxHelper$toFuture(rx.functions.Action1((io.vertx.rx.java.RxHelper.toFuture.T)), rx.functions.Action1((kotlin.Throwable)))/onError">onError</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/1.x/javadoc/rx/functions/Action1.html"><span class="identifier">Action1</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Adapt an item callback and an error callback as a <code>Handler&lt;AsyncResult&lt;T&gt;&gt;</code>.</p>
+<h3>Parameters</h3>
+<p><a name="onNext"></a>
+<code>onNext</code> - the <code>Action1&lt;T&gt;</code> you have designed to accept the resolution from the <code>Handler&lt;AsyncResult&lt;T&gt;&gt;</code></p>
+<p><a name="onError"></a>
+<code>onError</code> - the <code>Action1&lt;Throwable&gt;</code> you have designed to accept the eventual failure from the <code>Handler&lt;AsyncResult&lt;T&gt;&gt;</code></p>
+<p><strong>Return</strong><br/>
+a <code>Handler&lt;AsyncResult&lt;T&gt;&gt;</code></p>
+<a name="io.vertx.rx.java.RxHelper$toFuture(rx.functions.Action1((io.vertx.rx.java.RxHelper.toFuture.T)), rx.functions.Action1((kotlin.Throwable)), rx.functions.Action0)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">toFuture</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rx.java.RxHelper$toFuture(rx.functions.Action1((io.vertx.rx.java.RxHelper.toFuture.T)), rx.functions.Action1((kotlin.Throwable)), rx.functions.Action0)/onNext">onNext</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/1.x/javadoc/rx/functions/Action1.html"><span class="identifier">Action1</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rx.java.RxHelper$toFuture(rx.functions.Action1((io.vertx.rx.java.RxHelper.toFuture.T)), rx.functions.Action1((kotlin.Throwable)), rx.functions.Action0)/onError">onError</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/1.x/javadoc/rx/functions/Action1.html"><span class="identifier">Action1</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rx.java.RxHelper$toFuture(rx.functions.Action1((io.vertx.rx.java.RxHelper.toFuture.T)), rx.functions.Action1((kotlin.Throwable)), rx.functions.Action0)/onComplete">onComplete</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/1.x/javadoc/rx/functions/Action0.html"><span class="identifier">Action0</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Adapt an item callback and an error callback as a <code>Handler&lt;AsyncResult&lt;T&gt;&gt;</code>.</p>
+<h3>Parameters</h3>
+<p><a name="onNext"></a>
+<code>onNext</code> - the <code>Action1&lt;T&gt;</code> you have designed to accept the resolution from the <code>Handler&lt;AsyncResult&lt;T&gt;&gt;</code></p>
+<p><a name="onError"></a>
+<code>onError</code> - the <code>Action1&lt;Throwable&gt;</code> you have designed to accept the eventual failure from the <code>Handler&lt;AsyncResult&lt;T&gt;&gt;</code></p>
+<p><a name="onComplete"></a>
+<code>onComplete</code> - the <code>Action0</code> you have designed to accept a completion notification from the <code>Handler&lt;AsyncResult&lt;T&gt;&gt;</code></p>
+<p><strong>Return</strong><br/>
+a <code>Handler&lt;AsyncResult&lt;T&gt;&gt;</code></p>
+</BODY>
+</HTML>

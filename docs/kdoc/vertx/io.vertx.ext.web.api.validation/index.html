@@ -1,0 +1,127 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.ext.web.api.validation - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.ext.web.api.validation</a><br/>
+<br/>
+<h2>Package io.vertx.ext.web.api.validation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-container-deserializer/index.html">ContainerDeserializer</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ContainerDeserializer</span></code>
+<p>Interface that define methods for deserialization of array and objects</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-container-serialization-style/index.html">ContainerSerializationStyle</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ContainerSerializationStyle</span></code>
+<p>This enum contains supported object and arrays serialization styles. Every style has a enum value, and an array of strings to refeer to it.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-custom-validator/index.html">CustomValidator</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">CustomValidator</span></code>
+<p>This interface is used to add custom <strong>synchronous</strong> functions inside validation process. You can add it in HTTPRequestValidationHandler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-h-t-t-p-request-validation-handler/index.html">HTTPRequestValidationHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">HTTPRequestValidationHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-validation-handler.html"><span class="identifier">ValidationHandler</span></a></code>
+<p>An interface for add HTTP Request validation. This class can validate parameters inside query, path, headers an body (watch below)  You can assign multiple body type at the same time(for example a JSON schema together with a XML schema). This interface support: <ul> <li>application/x-www-form-urlencoded</li>
+ <li>multipart/form-data</li>
+ <li>application/xml</li>
+ <li>application/json</li>
+ </ul>
+ Also you can add a form parameter for validation without care about content type of your request. For form parameters this interface support both "multipart/form-data" and "application/x-www-form-urlencoded"  This interface allow extra parameters in the request, so it doesn't care if in a request there's a parameter without a specified validation rule  If a parameter is flagged as an array, it will be validated also if the size of array is 1 element</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-parameter-location/index.html">ParameterLocation</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ParameterLocation</span></code>
+<p>ParameterLocation describe the location of parameter inside HTTP Request</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-parameter-type/index.html">ParameterType</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ParameterType</span></code>
+<p>ParameterType contains prebuilt type validators. To access to ParameterTypeValidator of every ParameterType, use <code><a href="-parameter-type/validation-method.html">ParameterType#validationMethod()</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-parameter-type-validator/index.html">ParameterTypeValidator</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ParameterTypeValidator</span></code>
+<p>Interface for declaration of method for validate a specific parameter type. If you want to implement your own type validator, you need only to implement <code><a href="#">ParameterTypeValidator#isValid(String)</a></code>: <ul> <li>If parameter is valid, call <code><a href="#">RequestParameter#create(Object)</a></code> to put value (maybe modified) inside RequestParameters. The validation flow will care about set parameter name</li>
+ <li>If parameter is invalid, throw a new ValidationException with message (<code><a href="#">ValidationException#ValidationException(String)</a></code>) and/or with io.vertx.ext.web.api.validation.ValidationException.ErrorType (<code><a href="#">ValidationException#ValidationException(String, ValidationException.ErrorType)</a></code>). As for value, the validation flow will care about setting all other ValidationException fields</li>
+ </ul>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-parameter-validation-rule/index.html">ParameterValidationRule</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ParameterValidationRule</span></code>
+<p>This function is an inner wrapper for ParameterTypeValidator inside ValidationHandler parameter maps. <strong>Don't instantiate this class</strong>, if you want to add custom ParameterTypeValidator to a parameter use functions in HTTPRequestValidationHandler</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-validation-handler.html">ValidationHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ValidationHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>Base interface for validation. For basic HTTP Request Validator, use HTTPRequestValidationHandler</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-spec-feature-not-supported-exception/index.html">SpecFeatureNotSupportedException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpecFeatureNotSupportedException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RuntimeException</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-validation-exception/index.html">ValidationException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ValidationException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">VertxException</span></code>
+<p>This is the main class for every Validation flow related errors</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

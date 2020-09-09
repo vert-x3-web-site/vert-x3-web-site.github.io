@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MessageProducer.send - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.eventbus</a>&nbsp;/&nbsp;<a href="index.html">MessageProducer</a>&nbsp;/&nbsp;<a href=".">send</a><br/>
+<br/>
+<h1>send</h1>
+<a name="io.vertx.reactivex.core.eventbus.MessageProducer$send(io.vertx.reactivex.core.eventbus.MessageProducer.T)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">send</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.eventbus.MessageProducer$send(io.vertx.reactivex.core.eventbus.MessageProducer.T)/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">MessageProducer</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>This method actually sends a message using the send semantic regardless this producer is a sender or a publisher.</p>
+<h3>Parameters</h3>
+<p><a name="message"></a>
+<code>message</code> - the message to send</p>
+<p><strong>Return</strong><br/>
+reference to this for fluency</p>
+<a name="io.vertx.reactivex.core.eventbus.MessageProducer$send(io.vertx.reactivex.core.eventbus.MessageProducer.T, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.eventbus.Message((io.vertx.reactivex.core.eventbus.MessageProducer.send.R)))))))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">R</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">send</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.eventbus.MessageProducer$send(io.vertx.reactivex.core.eventbus.MessageProducer.T, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.eventbus.Message((io.vertx.reactivex.core.eventbus.MessageProducer.send.R)))))))/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.eventbus.MessageProducer$send(io.vertx.reactivex.core.eventbus.MessageProducer.T, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.eventbus.Message((io.vertx.reactivex.core.eventbus.MessageProducer.send.R)))))))/replyHandler">replyHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../-message/index.html"><span class="identifier">Message</span></a><span class="symbol">&lt;</span><span class="identifier">R</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">MessageProducer</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Like <code><a href="#">io.vertx.reactivex.core.eventbus.MessageProducer#send</a></code> but specifying a <code>replyHandler</code> that will be called if the recipient subsequently replies to the message.</p>
+<h3>Parameters</h3>
+<p><a name="message"></a>
+<code>message</code> - the message to send</p>
+<p><a name="replyHandler"></a>
+<code>replyHandler</code> - reply handler will be called when any reply from the recipient is received, may be <code>null</code></p>
+<p><strong>Return</strong><br/>
+reference to this for fluency</p>
+</BODY>
+</HTML>

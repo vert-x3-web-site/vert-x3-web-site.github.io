@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.ext.sync - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.ext.sync</a><br/>
+<br/>
+<h2>Package io.vertx.ext.sync</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-handler-receiver-adaptor.html">HandlerReceiverAdaptor</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">HandlerReceiverAdaptor</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><a href="-receiver/index.html"><span class="identifier">Receiver</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Represents an object that is both a handler of a particular event and also a receiver of that event. 
+<p> In other words it converts an asynchronous stream of events into a synchronous receiver of events</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-receiver/index.html">Receiver</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">Receiver</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Represents a synchronous receiver of events. 
+<p> Note that the `receive` methods may block the calling fiber but will not block an underlying kernel thread.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-suspendable-runnable/index.html">SuspendableRunnable</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SuspendableRunnable</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-sync/index.html">Sync</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Sync</span></code>
+<p>This class contains various static methods to allowing events and asynchronous results to be accessed in a synchronous way.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sync-verticle/index.html">SyncVerticle</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">SyncVerticle</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractVerticle</span></code>
+<p>A `Verticle` which runs its `start` and `stop` methods using fibers. You should subclass this class instead of `AbstractVerticle` to create any verticles that use vertx-sync.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

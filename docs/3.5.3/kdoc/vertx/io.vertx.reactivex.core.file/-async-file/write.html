@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AsyncFile.write - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.file</a>&nbsp;/&nbsp;<a href="index.html">AsyncFile</a>&nbsp;/&nbsp;<a href=".">write</a><br/>
+<br/>
+<h1>write</h1>
+<a name="io.vertx.reactivex.core.file.AsyncFile$write(io.vertx.reactivex.core.buffer.Buffer)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$write(io.vertx.reactivex.core.buffer.Buffer)/data">data</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">AsyncFile</span></a></code><a name="io.vertx.reactivex.core.file.AsyncFile$write(io.vertx.reactivex.core.buffer.Buffer, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$write(io.vertx.reactivex.core.buffer.Buffer, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/buffer">buffer</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$write(io.vertx.reactivex.core.buffer.Buffer, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/position">position</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$write(io.vertx.reactivex.core.buffer.Buffer, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">AsyncFile</span></a></code>
+<p>Write a io.vertx.reactivex.core.buffer.Buffer to the file at position <code>position</code> in the file, asynchronously. 
+<p> If <code>position</code> lies outside of the current size of the file, the file will be enlarged to encompass it. </p>
+<p> When multiple writes are invoked on the same file there are no guarantees as to order in which those writes actually occur </p>
+<p> The handler will be called when the write is complete, or if an error occurs.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="buffer"></a>
+<code>buffer</code> - the buffer to write</p>
+<p><a name="position"></a>
+<code>position</code> - the position in the file to write it at</p>
+<p><a name="handler"></a>
+<code>handler</code> - the handler to call when the write is complete</p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently</p>
+</BODY>
+</HTML>

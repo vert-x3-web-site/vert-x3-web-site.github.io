@@ -1,0 +1,207 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HttpServer - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.http</a>&nbsp;/&nbsp;<a href=".">HttpServer</a><br/>
+<br/>
+<h1>HttpServer</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpServer</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.metrics/-measured/index.html"><span class="identifier">Measured</span></a></code>
+<p>An HTTP and WebSockets server. 
+<p> You receive HTTP requests by providing a <code><a href="#">io.vertx.reactivex.core.http.HttpServer#requestHandler</a></code>. As requests arrive on the server the handler will be called with the requests. </p>
+<p> You receive WebSockets by providing a <code><a href="#">io.vertx.reactivex.core.http.HttpServer#websocketHandler</a></code>. As WebSocket connections arrive on the server, the WebSocket is passed to the handler. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.http.HttpServer non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HttpServer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$<init>(io.vertx.core.http.HttpServer)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServer</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">HttpServer</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="actual-port.html">actualPort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">actualPort</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The actual port the server is listening on. This is useful if you bound the server specifying 0 as port number signifying an ephemeral port</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the server. Any open HTTP connections will be closed. 
+<p> The close happens asynchronously and the server may not be closed until some time after the call has returned.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$close(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Like <code><a href="close.html">io.vertx.reactivex.core.http.HttpServer#close</a></code> but supplying a handler that will be called when the server is actually closed (or has failed).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="connection-handler.html">connectionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">connectionHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$connectionHandler(io.vertx.core.Handler((io.vertx.reactivex.core.http.HttpConnection)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../-http-connection/index.html"><span class="identifier">HttpConnection</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServer</span></code>
+<p>Set a connection handler for the server.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="exception-handler.html">exceptionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">exceptionHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$exceptionHandler(io.vertx.core.Handler((kotlin.Throwable)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServer</span></code>
+<p>Set an exception handler called for socket errors happening before the HTTP connection is established, e.g during the TLS handshake.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServer</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-metrics-enabled.html">isMetricsEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isMetricsEnabled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether the metrics are enabled for this measured object</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="listen.html">listen</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServer</span></code>
+<p>Tell the server to start listening. The server will listen on the port and host specified in the io.vertx.core.http.HttpServerOptions that was used when creating the server. 
+<p> The listen happens asynchronously and the server may not be listening until some time after the call has returned.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$listen(kotlin.Int, kotlin.String)/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$listen(kotlin.Int, kotlin.String)/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServer</span></code>
+<p>Tell the server to start listening. The server will listen on the port and host specified here, ignoring any value set in the io.vertx.core.http.HttpServerOptions that was used when creating the server. 
+<p> The listen happens asynchronously and the server may not be listening until some time after the call has returned.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$listen(kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.http.HttpServer)))))/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$listen(kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.http.HttpServer)))))/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$listen(kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.http.HttpServer)))))/listenHandler">listenHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">HttpServer</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServer</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$listen(kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.http.HttpServer)))))/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$listen(kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.http.HttpServer)))))/listenHandler">listenHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">HttpServer</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServer</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$listen(io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.http.HttpServer)))))/listenHandler">listenHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">HttpServer</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServer</span></code>
+<p>Like <code><a href="listen.html">io.vertx.reactivex.core.http.HttpServer#listen</a></code> but supplying a handler that will be called when the server is actually listening (or has failed).</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$listen(kotlin.Int)/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServer</span></code>
+<p>Like <code><a href="listen.html">io.vertx.reactivex.core.http.HttpServer#listen</a></code> but the server will listen on host "0.0.0.0" and port specified here ignoring any value in the io.vertx.core.http.HttpServerOptions that was used when creating the server.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$newInstance(io.vertx.core.http.HttpServer)/arg">arg</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServer</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServer</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="request-handler.html">requestHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">requestHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$requestHandler(io.vertx.core.Handler((io.vertx.reactivex.core.http.HttpServerRequest)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../-http-server-request/index.html"><span class="identifier">HttpServerRequest</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServer</span></code>
+<p>Set the request handler for the server to <code>requestHandler</code>. As HTTP requests are received by the server, instances of io.vertx.reactivex.core.http.HttpServerRequest will be created and passed to this handler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="request-stream.html">requestStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">requestStream</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core.streams/-read-stream/index.html"><span class="identifier">ReadStream</span></a><span class="symbol">&lt;</span><a href="../-http-server-request/index.html"><span class="identifier">HttpServerRequest</span></a><span class="symbol">&gt;</span></code>
+<p>Return the request stream for the server. As HTTP requests are received by the server, instances of io.vertx.reactivex.core.http.HttpServerRequest will be created and passed to the stream .</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-close.html">rxClose</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxClose</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Completable.html"><span class="identifier">Completable</span></a></code>
+<p>Like <code><a href="close.html">io.vertx.reactivex.core.http.HttpServer#close</a></code> but supplying a handler that will be called when the server is actually closed (or has failed).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-listen.html">rxListen</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxListen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$rxListen(kotlin.Int, kotlin.String)/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$rxListen(kotlin.Int, kotlin.String)/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">HttpServer</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxListen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$rxListen(kotlin.Int)/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">HttpServer</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxListen</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">HttpServer</span><span class="symbol">&gt;</span></code>
+<p>Like <code><a href="listen.html">io.vertx.reactivex.core.http.HttpServer#listen</a></code> but supplying a handler that will be called when the server is actually listening (or has failed).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="websocket-handler.html">websocketHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">websocketHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpServer$websocketHandler(io.vertx.core.Handler((io.vertx.reactivex.core.http.ServerWebSocket)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../-server-web-socket/index.html"><span class="identifier">ServerWebSocket</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServer</span></code>
+<p>Set the websocket handler for the server to <code>wsHandler</code>. If a websocket connect handshake is successful a new io.vertx.reactivex.core.http.ServerWebSocket instance will be created and passed to the handler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="websocket-stream.html">websocketStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">websocketStream</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core.streams/-read-stream/index.html"><span class="identifier">ReadStream</span></a><span class="symbol">&lt;</span><a href="../-server-web-socket/index.html"><span class="identifier">ServerWebSocket</span></a><span class="symbol">&gt;</span></code>
+<p>Return the websocket stream for the server. If a websocket connect handshake is successful a new io.vertx.reactivex.core.http.ServerWebSocket instance will be created and passed to the stream .</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

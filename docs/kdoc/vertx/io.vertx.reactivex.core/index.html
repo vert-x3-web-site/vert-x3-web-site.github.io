@@ -1,0 +1,158 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.reactivex.core - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.reactivex.core</a><br/>
+<br/>
+<h2>Package io.vertx.reactivex.core</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-verticle/index.html">AbstractVerticle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AbstractVerticle</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractVerticle</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-composite-future/index.html">CompositeFuture</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CompositeFuture</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><a href="-composite-future/index.html"><span class="identifier">CompositeFuture</span></a><span class="symbol">&gt;</span></code>
+<p>The composite future wraps a list of io.vertx.reactivex.core.Future, it is useful when several futures needs to be coordinated. The handlers set for the coordinated futures are overridden by the handler of the composite future.  NOTE: This class has been automatically generated from the io.vertx.core.CompositeFuture non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-context/index.html">Context</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Context</span></code>
+<p>The execution context of a io.vertx.reactivex.core.Handler execution. 
+<p> When Vert.x provides an event to a handler or calls the start or stop methods of a io.vertx.reactivex.core.Verticle, the execution is associated with a <code>Context</code>. </p>
+<p> Usually a context is an *event-loop context* and is tied to a specific event loop thread. So executions for that context always occur on that exact same event loop thread. </p>
+<p> In the case of worker verticles and running inline blocking code a worker context will be associated with the execution which will use a thread from the worker thread pool. </p>
+<p> When a handler is set by a thread associated with a specific context, the Vert.x will guarantee that when that handler is executed, that execution will be associated with the same context. </p>
+<p> If a handler is set by a thread not associated with a context (i.e. a non Vert.x thread). Then a new context will be created for that handler. </p>
+<p> In other words, a context is propagated. </p>
+<p> This means that when a verticle is deployed, any handlers it sets will be associated with the same context - the context of the verticle. </p>
+<p> This means (in the case of a standard verticle) that the verticle code will always be executed with the exact same thread, so you don't have to worry about multi-threaded acccess to the verticle state and you can code your application as single threaded. </p>
+<p> This class also allows arbitrary data to be <code><a href="#">io.vertx.reactivex.core.Context#put</a></code> and <code><a href="#">io.vertx.reactivex.core.Context#get</a></code> on the context so it can be shared easily amongst different handlers of, for example, a verticle instance. </p>
+<p> This class also provides <code><a href="#">io.vertx.reactivex.core.Context#runOnContext</a></code> which allows an action to be executed asynchronously using the same context. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.Context non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-flowable-helper/index.html">FlowableHelper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FlowableHelper</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-future/index.html">Future</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Future</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Represents the result of an action that may, or may not, have occurred yet. 
+<p> </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.Future non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-maybe-helper/index.html">MaybeHelper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MaybeHelper</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-multi-map/index.html">MultiMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MultiMap</span></code>
+<p>This class represents a MultiMap of String keys to a List of String values. 
+<p> It's useful in Vert.x to represent things in Vert.x like HTTP headers and HTTP parameters which allow multiple values for keys. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.MultiMap non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-observable-helper/index.html">ObservableHelper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ObservableHelper</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-rx-helper/index.html">RxHelper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RxHelper</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-single-helper/index.html">SingleHelper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SingleHelper</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-timeout-stream/index.html">TimeoutStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TimeoutStream</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../io.vertx.reactivex.core.streams/-read-stream/index.html"><span class="identifier">ReadStream</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">&gt;</span></code>
+<p>A timeout stream is triggered by a timer, the io.vertx.reactivex.core.Handler will be call when the timer is fired, it can be once or several times depending on the nature of the timer related to this stream. The will be called after the timer handler has been called. 
+<p> Pausing the timer inhibits the timer shots until the stream is resumed. Setting a null handler callback cancels the timer. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.TimeoutStream non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-vertx/index.html">Vertx</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Vertx</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../io.vertx.reactivex.core.metrics/-measured/index.html"><span class="identifier">Measured</span></a></code>
+<p>The entry point into the Vert.x Core API. 
+<p> You use an instance of this class for functionality including: </p>
+<ul> <li>Creating TCP clients and servers</li>
+ <li>Creating HTTP clients and servers</li>
+ <li>Creating DNS clients</li>
+ <li>Creating Datagram sockets</li>
+ <li>Setting and cancelling periodic and one-shot timers</li>
+ <li>Getting a reference to the event bus API</li>
+ <li>Getting a reference to the file system API</li>
+ <li>Getting a reference to the shared data API</li>
+ <li>Deploying and undeploying verticles</li>
+ </ul>
+ 
+<p> Most functionality in Vert.x core is fairly low level. </p>
+<p> To create an instance of this class you can use the static factory methods: <code><a href="-vertx/vertx.html">io.vertx.reactivex.core.Vertx#vertx</a></code>, <code><a href="-vertx/vertx.html">io.vertx.reactivex.core.Vertx#vertx</a></code> and <code><a href="#">io.vertx.reactivex.core.Vertx#clusteredVertx</a></code>. </p>
+<p> Please see the user manual for more detailed usage information. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.Vertx non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-worker-executor/index.html">WorkerExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WorkerExecutor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../io.vertx.reactivex.core.metrics/-measured/index.html"><span class="identifier">Measured</span></a></code>
+<p>An executor for executing blocking code in Vert.x .
+<p> It provides the same <code>executeBlocking</code> operation than io.vertx.reactivex.core.Context and io.vertx.reactivex.core.Vertx but on a separate worker pool.</p>
+<p> </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.WorkerExecutor non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Destination - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.stomp</a>&nbsp;/&nbsp;<a href=".">Destination</a><br/>
+<br/>
+<h1>Destination</h1>
+<code><span class="keyword">interface </span><span class="identifier">Destination</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.shareddata/-shareable.html"><span class="identifier">Shareable</span></a></code>
+<p>Represents a STOMP destination. Depending on the implementation, the message delivery is different. Queue are sending message to only one subscribers, while topics are broadcasting the message to all subscribers.  Implementations <strong>must</strong> be thread-safe.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Clement Escoffier</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="ack.html">ack</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">ack</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.Destination$ack(io.vertx.ext.stomp.StompServerConnection, io.vertx.ext.stomp.Frame)/connection">connection</span><span class="symbol">:</span>&nbsp;<span class="identifier">StompServerConnection</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.stomp.Destination$ack(io.vertx.ext.stomp.StompServerConnection, io.vertx.ext.stomp.Frame)/frame">frame</span><span class="symbol">:</span>&nbsp;<span class="identifier">Frame</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Handles a <code>ACK</code> frame.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="bridge.html">bridge</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">bridge</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.Destination$bridge(io.vertx.core.Vertx, io.vertx.ext.stomp.BridgeOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.stomp.Destination$bridge(io.vertx.core.Vertx, io.vertx.ext.stomp.BridgeOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BridgeOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Destination</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="destination.html">destination</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">destination</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="dispatch.html">dispatch</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">dispatch</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.Destination$dispatch(io.vertx.ext.stomp.StompServerConnection, io.vertx.ext.stomp.Frame)/connection">connection</span><span class="symbol">:</span>&nbsp;<span class="identifier">StompServerConnection</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.stomp.Destination$dispatch(io.vertx.ext.stomp.StompServerConnection, io.vertx.ext.stomp.Frame)/frame">frame</span><span class="symbol">:</span>&nbsp;<span class="identifier">Frame</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Destination</span></code>
+<p>Dispatches the given frame.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-subscriptions.html">getSubscriptions</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getSubscriptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.Destination$getSubscriptions(io.vertx.ext.stomp.StompServerConnection)/connection">connection</span><span class="symbol">:</span>&nbsp;<span class="identifier">StompServerConnection</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Gets all subscription ids for the given destination hold by the given client</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="matches.html">matches</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">matches</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.Destination$matches(kotlin.String)/address">address</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Checks whether or not the given address matches with the current destination.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="nack.html">nack</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">nack</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.Destination$nack(io.vertx.ext.stomp.StompServerConnection, io.vertx.ext.stomp.Frame)/connection">connection</span><span class="symbol">:</span>&nbsp;<span class="identifier">StompServerConnection</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.stomp.Destination$nack(io.vertx.ext.stomp.StompServerConnection, io.vertx.ext.stomp.Frame)/frame">frame</span><span class="symbol">:</span>&nbsp;<span class="identifier">Frame</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Handles a <code>NACK</code> frame.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="number-of-subscriptions.html">numberOfSubscriptions</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">numberOfSubscriptions</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Gets the number of subscriptions attached to the current Destination.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="queue.html">queue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">queue</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.Destination$queue(io.vertx.core.Vertx, kotlin.String)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.stomp.Destination$queue(io.vertx.core.Vertx, kotlin.String)/destination">destination</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Destination</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="subscribe.html">subscribe</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">subscribe</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.Destination$subscribe(io.vertx.ext.stomp.StompServerConnection, io.vertx.ext.stomp.Frame)/connection">connection</span><span class="symbol">:</span>&nbsp;<span class="identifier">StompServerConnection</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.stomp.Destination$subscribe(io.vertx.ext.stomp.StompServerConnection, io.vertx.ext.stomp.Frame)/frame">frame</span><span class="symbol">:</span>&nbsp;<span class="identifier">Frame</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Destination</span></code>
+<p>Handles a subscription request to the current Destination.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="topic.html">topic</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">topic</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.Destination$topic(io.vertx.core.Vertx, kotlin.String)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.stomp.Destination$topic(io.vertx.core.Vertx, kotlin.String)/destination">destination</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Destination</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="unsubscribe.html">unsubscribe</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">unsubscribe</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.Destination$unsubscribe(io.vertx.ext.stomp.StompServerConnection, io.vertx.ext.stomp.Frame)/connection">connection</span><span class="symbol">:</span>&nbsp;<span class="identifier">StompServerConnection</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.stomp.Destination$unsubscribe(io.vertx.ext.stomp.StompServerConnection, io.vertx.ext.stomp.Frame)/frame">frame</span><span class="symbol">:</span>&nbsp;<span class="identifier">Frame</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Handles a un-subscription request to the current Destination.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="unsubscribe-connection.html">unsubscribeConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">unsubscribeConnection</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.Destination$unsubscribeConnection(io.vertx.ext.stomp.StompServerConnection)/connection">connection</span><span class="symbol">:</span>&nbsp;<span class="identifier">StompServerConnection</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Destination</span></code>
+<p>Removes all subscriptions of the given connection</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

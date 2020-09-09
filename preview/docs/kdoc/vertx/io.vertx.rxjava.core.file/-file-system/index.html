@@ -1,0 +1,841 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>FileSystem - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.core.file</a>&nbsp;/&nbsp;<a href=".">FileSystem</a><br/>
+<br/>
+<h1>FileSystem</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FileSystem</span></code>
+<p>Contains a broad set of operations for manipulating files on the file system. 
+<p> A (potential) blocking and non blocking version of each operation is provided. </p>
+<p> The non blocking versions take a handler which is called when the operation completes or an error occurs. </p>
+<p> The blocking versions are named <code>xxxBlocking</code> and return the results, or throw exceptions directly. In many cases, depending on the operating system and file system some of the potentially blocking operations can return quickly, which is why we provide them, but it's highly recommended that you test how long they take to return in your particular application before using them on an event loop. </p>
+<p> Please consult the documentation for more information on file system support. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.file.FileSystem non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">FileSystem</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$<init>(io.vertx.core.file.FileSystem)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.file/-file-system/index.html"><span class="identifier">FileSystem</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><span class="identifier">TypeArg</span><span class="symbol">&lt;</span><span class="identifier">FileSystem</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="chmod.html">chmod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">chmod</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chmod(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chmod(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/perms">perms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chmod(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Change the permissions on the file represented by <code>path</code> to <code>perms</code>, asynchronously. 
+<p> The permission String takes the form rwxr-x--- as specified <a href="#">here</a>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="chmod-blocking.html">chmodBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">chmodBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chmodBlocking(kotlin.String, kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chmodBlocking(kotlin.String, kotlin.String)/perms">perms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Blocking version of io.vertx.rxjava.core.file.FileSystem</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="chmod-recursive.html">chmodRecursive</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">chmodRecursive</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chmodRecursive(kotlin.String, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chmodRecursive(kotlin.String, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/perms">perms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chmodRecursive(kotlin.String, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/dirPerms">dirPerms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chmodRecursive(kotlin.String, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Change the permissions on the file represented by <code>path</code> to <code>perms</code>, asynchronously.
+<p> The permission String takes the form rwxr-x--- as specified in {<a href="#">here</a>}. </p>
+<p> If the file is directory then all contents will also have their permissions changed recursively. Any directory permissions will be set to <code>dirPerms</code>, whilst any normal file permissions will be set to <code>perms</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="chmod-recursive-blocking.html">chmodRecursiveBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">chmodRecursiveBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chmodRecursiveBlocking(kotlin.String, kotlin.String, kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chmodRecursiveBlocking(kotlin.String, kotlin.String, kotlin.String)/perms">perms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chmodRecursiveBlocking(kotlin.String, kotlin.String, kotlin.String)/dirPerms">dirPerms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#chmodRecursive</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="chown.html">chown</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">chown</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chown(kotlin.String, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chown(kotlin.String, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/user">user</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chown(kotlin.String, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/group">group</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chown(kotlin.String, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Change the ownership on the file represented by <code>path</code> to <code>user</code> and {code group}, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="chown-blocking.html">chownBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">chownBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chownBlocking(kotlin.String, kotlin.String, kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chownBlocking(kotlin.String, kotlin.String, kotlin.String)/user">user</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$chownBlocking(kotlin.String, kotlin.String, kotlin.String)/group">group</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Blocking version of</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="copy.html">copy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">copy</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$copy(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/from">from</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$copy(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/to">to</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$copy(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Copy a file from the path <code>from</code> to path <code>to</code>, asynchronously. 
+<p> The copy will fail if the destination already exists.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">copy</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$copy(kotlin.String, kotlin.String, io.vertx.core.file.CopyOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/from">from</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$copy(kotlin.String, kotlin.String, io.vertx.core.file.CopyOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/to">to</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$copy(kotlin.String, kotlin.String, io.vertx.core.file.CopyOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">CopyOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$copy(kotlin.String, kotlin.String, io.vertx.core.file.CopyOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Copy a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="copy-blocking.html">copyBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">copyBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$copyBlocking(kotlin.String, kotlin.String)/from">from</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$copyBlocking(kotlin.String, kotlin.String)/to">to</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#copy</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="copy-recursive.html">copyRecursive</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">copyRecursive</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$copyRecursive(kotlin.String, kotlin.String, kotlin.Boolean, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/from">from</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$copyRecursive(kotlin.String, kotlin.String, kotlin.Boolean, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/to">to</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$copyRecursive(kotlin.String, kotlin.String, kotlin.Boolean, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/recursive">recursive</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$copyRecursive(kotlin.String, kotlin.String, kotlin.Boolean, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Copy a file from the path <code>from</code> to path <code>to</code>, asynchronously. 
+<p> If <code>recursive</code> is <code>true</code> and <code>from</code> represents a directory, then the directory and its contents will be copied recursively to the destination <code>to</code>. </p>
+<p> The copy will fail if the destination if the destination already exists.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="copy-recursive-blocking.html">copyRecursiveBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">copyRecursiveBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$copyRecursiveBlocking(kotlin.String, kotlin.String, kotlin.Boolean)/from">from</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$copyRecursiveBlocking(kotlin.String, kotlin.String, kotlin.Boolean)/to">to</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$copyRecursiveBlocking(kotlin.String, kotlin.String, kotlin.Boolean)/recursive">recursive</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#copyRecursive</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-file.html">createFile</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$createFile(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$createFile(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Creates an empty file with the specified <code>path</code>, asynchronously.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$createFile(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$createFile(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/perms">perms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$createFile(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Creates an empty file with the specified <code>path</code> and permissions <code>perms</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-file-blocking.html">createFileBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createFileBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$createFileBlocking(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createFileBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$createFileBlocking(kotlin.String, kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$createFileBlocking(kotlin.String, kotlin.String)/perms">perms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#createFile</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="delete.html">delete</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">delete</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$delete(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$delete(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Deletes the file represented by the specified <code>path</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="delete-blocking.html">deleteBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">deleteBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$deleteBlocking(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#delete</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="delete-recursive.html">deleteRecursive</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">deleteRecursive</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$deleteRecursive(kotlin.String, kotlin.Boolean, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$deleteRecursive(kotlin.String, kotlin.Boolean, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/recursive">recursive</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$deleteRecursive(kotlin.String, kotlin.Boolean, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Deletes the file represented by the specified <code>path</code>, asynchronously. 
+<p> If the path represents a directory and <code>recursive = true</code> then the directory and its contents will be deleted recursively.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="delete-recursive-blocking.html">deleteRecursiveBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">deleteRecursiveBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$deleteRecursiveBlocking(kotlin.String, kotlin.Boolean)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$deleteRecursiveBlocking(kotlin.String, kotlin.Boolean)/recursive">recursive</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#deleteRecursive</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="exists.html">exists</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">exists</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$exists(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Boolean)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$exists(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Boolean)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Determines whether the file as specified by the path <code>path</code> exists, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="exists-blocking.html">existsBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">existsBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$existsBlocking(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#exists</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="fs-props.html">fsProps</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fsProps</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$fsProps(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.file.FileSystemProps)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$fsProps(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.file.FileSystemProps)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">FileSystemProps</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Returns properties of the file-system being used by the specified <code>path</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="fs-props-blocking.html">fsPropsBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fsPropsBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$fsPropsBlocking(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystemProps</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#fsProps</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.core.file/-file-system/index.html"><span class="identifier">FileSystem</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="link.html">link</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">link</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$link(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/link">link</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$link(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/existing">existing</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$link(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Create a hard link on the file system from <code>link</code> to <code>existing</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="link-blocking.html">linkBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">linkBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$linkBlocking(kotlin.String, kotlin.String)/link">link</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$linkBlocking(kotlin.String, kotlin.String)/existing">existing</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#link</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="lprops.html">lprops</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">lprops</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$lprops(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.file.FileProps)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$lprops(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.file.FileProps)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../-file-props/index.html"><span class="identifier">FileProps</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Obtain properties for the link represented by <code>path</code>, asynchronously. 
+<p> The link will not be followed.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="lprops-blocking.html">lpropsBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">lpropsBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$lpropsBlocking(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-file-props/index.html"><span class="identifier">FileProps</span></a></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#lprops</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="mkdir.html">mkdir</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">mkdir</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$mkdir(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$mkdir(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Create the directory represented by <code>path</code>, asynchronously. 
+<p> The operation will fail if the directory already exists.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">mkdir</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$mkdir(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$mkdir(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/perms">perms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$mkdir(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Create the directory represented by <code>path</code>, asynchronously. 
+<p> The new directory will be created with permissions as specified by <code>perms</code>. </p>
+<p> The permission String takes the form rwxr-x--- as specified in <a href="#">here</a>. </p>
+<p> The operation will fail if the directory already exists.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="mkdir-blocking.html">mkdirBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">mkdirBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$mkdirBlocking(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">mkdirBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$mkdirBlocking(kotlin.String, kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$mkdirBlocking(kotlin.String, kotlin.String)/perms">perms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#mkdir</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="mkdirs.html">mkdirs</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">mkdirs</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$mkdirs(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$mkdirs(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Create the directory represented by <code>path</code> and any non existent parents, asynchronously. 
+<p> The operation will fail if the directory already exists.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">mkdirs</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$mkdirs(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$mkdirs(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/perms">perms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$mkdirs(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Create the directory represented by <code>path</code> and any non existent parents, asynchronously. 
+<p> The new directory will be created with permissions as specified by <code>perms</code>. </p>
+<p> The permission String takes the form rwxr-x--- as specified in <a href="#">here</a>. </p>
+<p> The operation will fail if the directory already exists.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="mkdirs-blocking.html">mkdirsBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">mkdirsBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$mkdirsBlocking(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">mkdirsBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$mkdirsBlocking(kotlin.String, kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$mkdirsBlocking(kotlin.String, kotlin.String)/perms">perms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#mkdirs</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="move.html">move</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">move</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$move(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/from">from</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$move(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/to">to</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$move(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Move a file from the path <code>from</code> to path <code>to</code>, asynchronously. 
+<p> The move will fail if the destination already exists.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">move</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$move(kotlin.String, kotlin.String, io.vertx.core.file.CopyOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/from">from</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$move(kotlin.String, kotlin.String, io.vertx.core.file.CopyOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/to">to</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$move(kotlin.String, kotlin.String, io.vertx.core.file.CopyOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">CopyOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$move(kotlin.String, kotlin.String, io.vertx.core.file.CopyOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Move a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="move-blocking.html">moveBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">moveBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$moveBlocking(kotlin.String, kotlin.String)/from">from</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$moveBlocking(kotlin.String, kotlin.String)/to">to</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#move</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$newInstance(io.vertx.core.file.FileSystem)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.file/-file-system/index.html"><span class="identifier">FileSystem</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="open.html">open</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">open</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$open(kotlin.String, io.vertx.core.file.OpenOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.file.AsyncFile)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$open(kotlin.String, io.vertx.core.file.OpenOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.file.AsyncFile)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">OpenOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$open(kotlin.String, io.vertx.core.file.OpenOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.file.AsyncFile)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">AsyncFile</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Open the file represented by <code>path</code>, asynchronously. 
+<p> The file is opened for both reading and writing. If the file does not already exist it will be created.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="open-blocking.html">openBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">openBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$openBlocking(kotlin.String, io.vertx.core.file.OpenOptions)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$openBlocking(kotlin.String, io.vertx.core.file.OpenOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">OpenOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#open</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="props.html">props</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">props</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$props(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.file.FileProps)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$props(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.file.FileProps)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../-file-props/index.html"><span class="identifier">FileProps</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Obtain properties for the file represented by <code>path</code>, asynchronously. 
+<p> If the file is a link, the link will be followed.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="props-blocking.html">propsBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">propsBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$propsBlocking(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-file-props/index.html"><span class="identifier">FileProps</span></a></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#props</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="read-dir.html">readDir</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">readDir</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$readDir(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$readDir(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Read the contents of the directory specified by <code>path</code>, asynchronously. 
+<p> The result is an array of String representing the paths of the files inside the directory.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">readDir</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$readDir(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$readDir(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/filter">filter</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$readDir(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Read the contents of the directory specified by <code>path</code>, asynchronously. 
+<p> The parameter <code>filter</code> is a regular expression. If <code>filter</code> is specified then only the paths that match @{filter}will be returned. </p>
+<p> The result is an array of String representing the paths of the files inside the directory.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="read-dir-blocking.html">readDirBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">readDirBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$readDirBlocking(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">readDirBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$readDirBlocking(kotlin.String, kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$readDirBlocking(kotlin.String, kotlin.String)/filter">filter</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#readDir</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="read-file.html">readFile</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">readFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$readFile(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.buffer.Buffer)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$readFile(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.buffer.Buffer)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Buffer</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Reads the entire file as represented by the path <code>path</code> as a , asynchronously. 
+<p> Do not use this method to read very large files or you risk running out of available RAM.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="read-file-blocking.html">readFileBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">readFileBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$readFileBlocking(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#readFile</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="read-symlink.html">readSymlink</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">readSymlink</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$readSymlink(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/link">link</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$readSymlink(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Returns the path representing the file that the symbolic link specified by <code>link</code> points to, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="read-symlink-blocking.html">readSymlinkBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">readSymlinkBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$readSymlinkBlocking(kotlin.String)/link">link</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#readSymlink</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-chmod.html">rxChmod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxChmod</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxChmod(kotlin.String, kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxChmod(kotlin.String, kotlin.String)/perms">perms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Change the permissions on the file represented by <code>path</code> to <code>perms</code>, asynchronously. 
+<p> The permission String takes the form rwxr-x--- as specified <a href="#">here</a>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-chmod-recursive.html">rxChmodRecursive</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxChmodRecursive</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxChmodRecursive(kotlin.String, kotlin.String, kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxChmodRecursive(kotlin.String, kotlin.String, kotlin.String)/perms">perms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxChmodRecursive(kotlin.String, kotlin.String, kotlin.String)/dirPerms">dirPerms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Change the permissions on the file represented by <code>path</code> to <code>perms</code>, asynchronously.
+<p> The permission String takes the form rwxr-x--- as specified in {<a href="#">here</a>}. </p>
+<p> If the file is directory then all contents will also have their permissions changed recursively. Any directory permissions will be set to <code>dirPerms</code>, whilst any normal file permissions will be set to <code>perms</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-chown.html">rxChown</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxChown</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxChown(kotlin.String, kotlin.String, kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxChown(kotlin.String, kotlin.String, kotlin.String)/user">user</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxChown(kotlin.String, kotlin.String, kotlin.String)/group">group</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Change the ownership on the file represented by <code>path</code> to <code>user</code> and {code group}, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-copy.html">rxCopy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCopy</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxCopy(kotlin.String, kotlin.String)/from">from</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxCopy(kotlin.String, kotlin.String)/to">to</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Copy a file from the path <code>from</code> to path <code>to</code>, asynchronously. 
+<p> The copy will fail if the destination already exists.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCopy</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxCopy(kotlin.String, kotlin.String, io.vertx.core.file.CopyOptions)/from">from</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxCopy(kotlin.String, kotlin.String, io.vertx.core.file.CopyOptions)/to">to</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxCopy(kotlin.String, kotlin.String, io.vertx.core.file.CopyOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">CopyOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Copy a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-copy-recursive.html">rxCopyRecursive</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCopyRecursive</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxCopyRecursive(kotlin.String, kotlin.String, kotlin.Boolean)/from">from</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxCopyRecursive(kotlin.String, kotlin.String, kotlin.Boolean)/to">to</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxCopyRecursive(kotlin.String, kotlin.String, kotlin.Boolean)/recursive">recursive</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Copy a file from the path <code>from</code> to path <code>to</code>, asynchronously. 
+<p> If <code>recursive</code> is <code>true</code> and <code>from</code> represents a directory, then the directory and its contents will be copied recursively to the destination <code>to</code>. </p>
+<p> The copy will fail if the destination if the destination already exists.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-create-file.html">rxCreateFile</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCreateFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxCreateFile(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Creates an empty file with the specified <code>path</code>, asynchronously.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCreateFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxCreateFile(kotlin.String, kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxCreateFile(kotlin.String, kotlin.String)/perms">perms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Creates an empty file with the specified <code>path</code> and permissions <code>perms</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-delete.html">rxDelete</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxDelete</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxDelete(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Deletes the file represented by the specified <code>path</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-delete-recursive.html">rxDeleteRecursive</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxDeleteRecursive</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxDeleteRecursive(kotlin.String, kotlin.Boolean)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxDeleteRecursive(kotlin.String, kotlin.Boolean)/recursive">recursive</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Deletes the file represented by the specified <code>path</code>, asynchronously. 
+<p> If the path represents a directory and <code>recursive = true</code> then the directory and its contents will be deleted recursively.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-exists.html">rxExists</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxExists</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxExists(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code>
+<p>Determines whether the file as specified by the path <code>path</code> exists, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-fs-props.html">rxFsProps</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxFsProps</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxFsProps(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">FileSystemProps</span><span class="symbol">&gt;</span></code>
+<p>Returns properties of the file-system being used by the specified <code>path</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-link.html">rxLink</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxLink</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxLink(kotlin.String, kotlin.String)/link">link</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxLink(kotlin.String, kotlin.String)/existing">existing</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Create a hard link on the file system from <code>link</code> to <code>existing</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-lprops.html">rxLprops</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxLprops</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxLprops(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="../-file-props/index.html"><span class="identifier">FileProps</span></a><span class="symbol">&gt;</span></code>
+<p>Obtain properties for the link represented by <code>path</code>, asynchronously. 
+<p> The link will not be followed.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-mkdir.html">rxMkdir</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxMkdir</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxMkdir(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Create the directory represented by <code>path</code>, asynchronously. 
+<p> The operation will fail if the directory already exists.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxMkdir</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxMkdir(kotlin.String, kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxMkdir(kotlin.String, kotlin.String)/perms">perms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Create the directory represented by <code>path</code>, asynchronously. 
+<p> The new directory will be created with permissions as specified by <code>perms</code>. </p>
+<p> The permission String takes the form rwxr-x--- as specified in <a href="#">here</a>. </p>
+<p> The operation will fail if the directory already exists.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-mkdirs.html">rxMkdirs</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxMkdirs</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxMkdirs(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Create the directory represented by <code>path</code> and any non existent parents, asynchronously. 
+<p> The operation will fail if the directory already exists.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxMkdirs</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxMkdirs(kotlin.String, kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxMkdirs(kotlin.String, kotlin.String)/perms">perms</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Create the directory represented by <code>path</code> and any non existent parents, asynchronously. 
+<p> The new directory will be created with permissions as specified by <code>perms</code>. </p>
+<p> The permission String takes the form rwxr-x--- as specified in <a href="#">here</a>. </p>
+<p> The operation will fail if the directory already exists.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-move.html">rxMove</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxMove</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxMove(kotlin.String, kotlin.String)/from">from</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxMove(kotlin.String, kotlin.String)/to">to</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Move a file from the path <code>from</code> to path <code>to</code>, asynchronously. 
+<p> The move will fail if the destination already exists.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxMove</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxMove(kotlin.String, kotlin.String, io.vertx.core.file.CopyOptions)/from">from</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxMove(kotlin.String, kotlin.String, io.vertx.core.file.CopyOptions)/to">to</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxMove(kotlin.String, kotlin.String, io.vertx.core.file.CopyOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">CopyOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Move a file from the path <code>from</code> to path <code>to</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-open.html">rxOpen</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxOpen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxOpen(kotlin.String, io.vertx.core.file.OpenOptions)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxOpen(kotlin.String, io.vertx.core.file.OpenOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">OpenOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">AsyncFile</span><span class="symbol">&gt;</span></code>
+<p>Open the file represented by <code>path</code>, asynchronously. 
+<p> The file is opened for both reading and writing. If the file does not already exist it will be created.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-props.html">rxProps</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxProps</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxProps(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="../-file-props/index.html"><span class="identifier">FileProps</span></a><span class="symbol">&gt;</span></code>
+<p>Obtain properties for the file represented by <code>path</code>, asynchronously. 
+<p> If the file is a link, the link will be followed.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-read-dir.html">rxReadDir</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxReadDir</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxReadDir(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Read the contents of the directory specified by <code>path</code>, asynchronously. 
+<p> The result is an array of String representing the paths of the files inside the directory.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxReadDir</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxReadDir(kotlin.String, kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxReadDir(kotlin.String, kotlin.String)/filter">filter</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Read the contents of the directory specified by <code>path</code>, asynchronously. 
+<p> The parameter <code>filter</code> is a regular expression. If <code>filter</code> is specified then only the paths that match @{filter}will be returned. </p>
+<p> The result is an array of String representing the paths of the files inside the directory.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-read-file.html">rxReadFile</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxReadFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxReadFile(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Buffer</span><span class="symbol">&gt;</span></code>
+<p>Reads the entire file as represented by the path <code>path</code> as a , asynchronously. 
+<p> Do not use this method to read very large files or you risk running out of available RAM.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-read-symlink.html">rxReadSymlink</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxReadSymlink</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxReadSymlink(kotlin.String)/link">link</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Returns the path representing the file that the symbolic link specified by <code>link</code> points to, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-symlink.html">rxSymlink</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxSymlink</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxSymlink(kotlin.String, kotlin.String)/link">link</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxSymlink(kotlin.String, kotlin.String)/existing">existing</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Create a symbolic link on the file system from <code>link</code> to <code>existing</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-truncate.html">rxTruncate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxTruncate</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxTruncate(kotlin.String, kotlin.Long)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxTruncate(kotlin.String, kotlin.Long)/len">len</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Truncate the file represented by <code>path</code> to length <code>len</code> in bytes, asynchronously. 
+<p> The operation will fail if the file does not exist or <code>len</code> is less than <code>zero</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-unlink.html">rxUnlink</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxUnlink</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxUnlink(kotlin.String)/link">link</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Unlinks the link on the file system represented by the path <code>link</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-write-file.html">rxWriteFile</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxWriteFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxWriteFile(kotlin.String, io.vertx.rxjava.core.buffer.Buffer)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$rxWriteFile(kotlin.String, io.vertx.rxjava.core.buffer.Buffer)/data">data</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Creates the file, and writes the specified <code>Buffer data</code> to the file represented by the path <code>path</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="symlink.html">symlink</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">symlink</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$symlink(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/link">link</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$symlink(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/existing">existing</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$symlink(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Create a symbolic link on the file system from <code>link</code> to <code>existing</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="symlink-blocking.html">symlinkBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">symlinkBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$symlinkBlocking(kotlin.String, kotlin.String)/link">link</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$symlinkBlocking(kotlin.String, kotlin.String)/existing">existing</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#link</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="truncate.html">truncate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">truncate</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$truncate(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$truncate(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/len">len</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$truncate(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Truncate the file represented by <code>path</code> to length <code>len</code> in bytes, asynchronously. 
+<p> The operation will fail if the file does not exist or <code>len</code> is less than <code>zero</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="truncate-blocking.html">truncateBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">truncateBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$truncateBlocking(kotlin.String, kotlin.Long)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$truncateBlocking(kotlin.String, kotlin.Long)/len">len</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#truncate</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="unlink.html">unlink</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">unlink</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$unlink(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/link">link</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$unlink(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Unlinks the link on the file system represented by the path <code>link</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="unlink-blocking.html">unlinkBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">unlinkBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$unlinkBlocking(kotlin.String)/link">link</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#unlink</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="write-file.html">writeFile</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">writeFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$writeFile(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$writeFile(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/data">data</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$writeFile(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Creates the file, and writes the specified <code>Buffer data</code> to the file represented by the path <code>path</code>, asynchronously.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="write-file-blocking.html">writeFileBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">writeFileBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$writeFileBlocking(kotlin.String, io.vertx.rxjava.core.buffer.Buffer)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.file.FileSystem$writeFileBlocking(kotlin.String, io.vertx.rxjava.core.buffer.Buffer)/data">data</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileSystem</span></code>
+<p>Blocking version of <code><a href="#">io.vertx.rxjava.core.file.FileSystem#writeFile</a></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,179 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.ext.stomp - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.ext.stomp</a><br/>
+<br/>
+<h2>Package io.vertx.ext.stomp</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-acknowledgement/index.html">Acknowledgement</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">Acknowledgement</span></code>
+<p>Structure passed to acknowledgement handler called when a <code>ACK</code> or <code>NACK</code> frame is received. The handler receives an instance of Acknowledgement with the subscription Frame and the impacted messages. The list of messages depends on the type of acknowledgment used by the subscription.  Subscriptions using the <code>client</code> mode receives all messages that were waiting for acknowledgment that were sent before the acknowledged messages. The list also contains the acknowledged message. This is a cumulative acknowledgement. Subscriptions using the <code>client-individual</code> mode receives a singleton list containing only the acknowledged message.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-abort-handler/index.html">DefaultAbortHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultAbortHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">ServerFrame</span><span class="symbol">&gt;</span></code>
+<p>STOMP compliant actions executed when receiving a <code>ABORT</code> frame. This handler is thread safe.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-ack-handler/index.html">DefaultAckHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultAckHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">ServerFrame</span><span class="symbol">&gt;</span></code>
+<p>STOMP compliant actions executed when receiving a <code>ACK</code> frame. It removes the acknowledges messages from the list of messages waiting for acknowledgment. If the <code>ACK</code> frame specifies a transaction id, the acknowledgment is delayed until the transaction commit.  This handler is thread safe.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-begin-handler/index.html">DefaultBeginHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultBeginHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">ServerFrame</span><span class="symbol">&gt;</span></code>
+<p>STOMP compliant actions executed when receiving a <code>BEGIN</code> frame.  This handler is thread safe.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-commit-handler/index.html">DefaultCommitHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultCommitHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">ServerFrame</span><span class="symbol">&gt;</span></code>
+<p>STOMP compliant actions executed when receiving a <code>COMMIT</code> frame. All frames that are part of the transactions are processed (<code>ACK/NACK</code> and <code>SEND</code> frames). If the <code>COMMIT</code> frame defines a <code>receipt</code>, the <code>RECEIPT</code> frame is sent once all frames have been replayed.  This handler is thread safe.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-connect-handler/index.html">DefaultConnectHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultConnectHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">ServerFrame</span><span class="symbol">&gt;</span></code>
+<p>STOMP compliant actions executed when receiving a <code>CONNECT</code> frame. It may also be called when receiving a <code>STOMP</code> frame depending on the io.vertx.ext.stomp.StompServerHandler configuration.  This handler manages the STOMP version negotiation and authentication (if enabled). Once all the checks have been passed, the <code>CONNECTED</code> frame is sent to the client.  This handler is thread safe.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-nack-handler/index.html">DefaultNackHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultNackHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">ServerFrame</span><span class="symbol">&gt;</span></code>
+<p>STOMP compliant actions executed when receiving a <code>NACK</code> sf.frame(). It removes the acknowledges messages from the list of messages waiting for acknowledgment and trigger an StompServerHandler#onNack(Subscription, List) calls.  If the <code>NACK</code> frame specifies a transaction id, the acknowledgment is delayed until the transaction commit.  This handler is thread safe.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-send-handler/index.html">DefaultSendHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultSendHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">ServerFrame</span><span class="symbol">&gt;</span></code>
+<p>STOMP compliant actions executed when receiving a <code>SEND</code> sf.frame().  If the <code>SEND</code> frame specifies a transaction, the message delivery is postponed until the transaction commit.  The handler computes the <code>MESSAGE</code> frame from the <code>SEND</code> sf.frame(). It computes a <code>message-id</code> and <code>ack</code> id if needed. If requested the <code>RECEIPT</code> frame is sent once the <code>MESSAGE</code> frame has been sent to all matching subscriptions.  If the <code>SEND</code> frame requires an acknowledgment, the <code>message-id</code> is added to the list of messages waiting for acknowledgment.  This handler is thread safe.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-subscribe-handler/index.html">DefaultSubscribeHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultSubscribeHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">ServerFrame</span><span class="symbol">&gt;</span></code>
+<p>STOMP compliant actions executed when receiving a <code>SUBSCRIBE</code> frame.  This handler is thread safe.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-unsubscribe-handler/index.html">DefaultUnsubscribeHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultUnsubscribeHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">ServerFrame</span><span class="symbol">&gt;</span></code>
+<p>STOMP compliant actions executed when receiving a <code>UNSUBSCRIBE</code> frame.  This handler is thread safe.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-destination/index.html">Destination</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">Destination</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../io.vertx.core.shareddata/-shareable.html"><span class="identifier">Shareable</span></a></code>
+<p>Represents a STOMP destination. Depending on the implementation, the message delivery is different. Queue are sending message to only one subscribers, while topics are broadcasting the message to all subscribers.  Implementations <strong>must</strong> be thread-safe.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-destination-factory/index.html">DestinationFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">DestinationFactory</span></code>
+<p>Interface implemented to customize the destination creation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-frame-converter/index.html">FrameConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FrameConverter</span></code>
+<p>Converter for io.vertx.ext.stomp.Frame. NOTE: This class has been automatically generated from the io.vertx.ext.stomp.Frame original class using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-frames/index.html">Frames</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">Frames</span></code>
+<p>Utility methods to build common Frames. It defines a non-STOMP frame (<code>PING</code>) that is used for heartbeats. When such frame is written on the wire it is just the <code>0</code> byte.  This class is thread-safe.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-stomp-client-connection/index.html">StompClientConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">StompClientConnection</span></code>
+<p>Once a connection to the STOMP server has been made, client receives a StompClientConnection, that let send and receive STOMP frames.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-stomp-client-options-converter/index.html">StompClientOptionsConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StompClientOptionsConverter</span></code>
+<p>Converter for io.vertx.ext.stomp.StompClientOptions. NOTE: This class has been automatically generated from the io.vertx.ext.stomp.StompClientOptions original class using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-stomp-server/index.html">StompServer</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">StompServer</span></code>
+<p>Defines a STOMP server. STOMP servers delegates to a StompServerHandler that let customize the behavior of the server. By default, it uses a handler compliant with the STOMP specification, but let you change anything.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-stomp-server-options-converter/index.html">StompServerOptionsConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StompServerOptionsConverter</span></code>
+<p>Converter for io.vertx.ext.stomp.StompServerOptions. NOTE: This class has been automatically generated from the io.vertx.ext.stomp.StompServerOptions original class using Vert.x codegen.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

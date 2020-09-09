@@ -1,0 +1,20 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JDBCAuth.setNonces - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.auth.jdbc</a>&nbsp;/&nbsp;<a href="index.html">JDBCAuth</a>&nbsp;/&nbsp;<a href=".">setNonces</a><br/>
+<br/>
+<h1>setNonces</h1>
+<a name="io.vertx.ext.auth.jdbc.JDBCAuth$setNonces(io.vertx.core.json.JsonArray)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setNonces</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.jdbc.JDBCAuth$setNonces(io.vertx.core.json.JsonArray)/nonces">nonces</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">JDBCAuth</span></a></code>
+<p>Provide a application configuration level on hash nonce's as a ordered list of nonces where each position corresponds to a version. The nonces are supposed not to be stored in the underlying jdbc storage but to be provided as a application configuration. The idea is to add one extra variable to the hash function in order to make breaking the passwords using rainbow tables or precomputed hashes harder. Leaving the attacker only with the brute force approach. The implementation relays to the JDBCHashStrategy provided.</p>
+<h3>Parameters</h3>
+<p><a name="nonces"></a>
+<code>nonces</code> - a List of non null Strings.</p>
+<p><strong>Return</strong><br/>
+a reference to this for fluency</p>
+</BODY>
+</HTML>

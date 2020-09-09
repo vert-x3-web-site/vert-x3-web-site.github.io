@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EventBus.localConsumer - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.core.eventbus</a>&nbsp;/&nbsp;<a href="index.html">EventBus</a>&nbsp;/&nbsp;<a href=".">localConsumer</a><br/>
+<br/>
+<h1>localConsumer</h1>
+<a name="io.vertx.core.eventbus.EventBus$localConsumer(kotlin.String)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">localConsumer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.eventbus.EventBus$localConsumer(kotlin.String)/address">address</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageConsumer</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Like <code><a href="#">#consumer(String)</a></code> but the address won't be propagated across the cluster.</p>
+<h3>Parameters</h3>
+<p><a name="address"></a>
+<code>address</code> - the address to register it at</p>
+<p><strong>Return</strong><br/>
+the event bus message consumer</p>
+<a name="io.vertx.core.eventbus.EventBus$localConsumer(kotlin.String, io.vertx.core.Handler((io.vertx.core.eventbus.Message((io.vertx.core.eventbus.EventBus.localConsumer.T)))))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">localConsumer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.eventbus.EventBus$localConsumer(kotlin.String, io.vertx.core.Handler((io.vertx.core.eventbus.Message((io.vertx.core.eventbus.EventBus.localConsumer.T)))))/address">address</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.eventbus.EventBus$localConsumer(kotlin.String, io.vertx.core.Handler((io.vertx.core.eventbus.Message((io.vertx.core.eventbus.EventBus.localConsumer.T)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../-message/index.html"><span class="identifier">Message</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageConsumer</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Like <code><a href="#">#consumer(String, Handler)</a></code> but the address won't be propagated across the cluster.</p>
+<h3>Parameters</h3>
+<p><a name="address"></a>
+<code>address</code> - the address that will register it at</p>
+<p><a name="handler"></a>
+<code>handler</code> - the handler that will process the received messages</p>
+<p><strong>Return</strong><br/>
+the event bus message consumer</p>
+</BODY>
+</HTML>

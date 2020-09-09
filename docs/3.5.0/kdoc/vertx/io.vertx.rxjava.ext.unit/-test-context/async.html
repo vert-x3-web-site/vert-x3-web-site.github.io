@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TestContext.async - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.ext.unit</a>&nbsp;/&nbsp;<a href="index.html">TestContext</a>&nbsp;/&nbsp;<a href=".">async</a><br/>
+<br/>
+<h1>async</h1>
+<a name="io.vertx.rxjava.ext.unit.TestContext$async()"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">async</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-async/index.html"><span class="identifier">Async</span></a></code>
+<p>Create and returns a new async object, the returned async controls the completion of the test. Calling the <code><a href="../-async/complete.html">io.vertx.rxjava.ext.unit.Async#complete</a></code> completes the async operation. The test case will complete when all the async objects have their <code><a href="../-async/complete.html">io.vertx.rxjava.ext.unit.Async#complete</a></code> method called at least once. This method shall be used for creating asynchronous exit points for the executed test.</p>
+<p><strong>Return</strong><br/>
+the async instance</p>
+<a name="io.vertx.rxjava.ext.unit.TestContext$async(kotlin.Int)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">async</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestContext$async(kotlin.Int)/count">count</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-async/index.html"><span class="identifier">Async</span></a></code>
+<p>Create and returns a new async object, the returned async controls the completion of the test. This async operation completes when the <code><a href="../-async/complete.html">io.vertx.rxjava.ext.unit.Async#complete</a></code> is called <code>count</code> times. The test case will complete when all the async objects have their <code><a href="../-async/complete.html">io.vertx.rxjava.ext.unit.Async#complete</a></code> method called at least once. This method shall be used for creating asynchronous exit points for the executed test.</p>
+<h3>Parameters</h3>
+<p><a name="count"></a>
+<code>count</code> - </p>
+<p><strong>Return</strong><br/>
+the async instance</p>
+</BODY>
+</HTML>

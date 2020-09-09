@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vert.x Kafka client - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="http://vertx.io/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="http://vertx.io/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="http://vertx.io/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="http://vertx.io/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="http://vertx.io/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="http://vertx.io/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="http://vertx.io/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="http://vertx.io/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="http://vertx.io/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="http://vertx.io/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="http://vertx.io/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="http://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="http://vertx.io/" class="navbar-brand"><img alt="Brand" src="http://vertx.io/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="http://vertx.io/download/">Download</a></li>
+        <li><a href="http://vertx.io/docs/3.5.0/">Documentation</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+        <li><a href="http://vertx.io/community/">Community</a></li>
+        <li><a href="http://vertx.io/materials/">Materials</a></li>
+        <li><a href="http://vertx.io/blog/">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Vert.x Kafka client</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_using_the_vert_x_kafka_client">Using the Vert.x Kafka client</a></li>
+<li><a href="#_creating_kafka_clients">Creating Kafka clients</a></li>
+<li><a href="#_receiving_messages_from_a_topic_joining_a_consumer_group">Receiving messages from a topic joining a consumer group</a></li>
+<li><a href="#_receiving_messages_from_a_topic_requesting_specific_partitions">Receiving messages from a topic requesting specific partitions</a></li>
+<li><a href="#_getting_topic_partition_information">Getting topic partition information</a></li>
+<li><a href="#_manual_offset_commit">Manual offset commit</a></li>
+<li><a href="#_seeking_in_a_topic_partition">Seeking in a topic partition</a></li>
+<li><a href="#_offset_lookup">Offset lookup</a></li>
+<li><a href="#_message_flow_control">Message flow control</a></li>
+<li><a href="#_closing_a_consumer">Closing a consumer</a></li>
+<li><a href="#_sending_messages_to_a_topic">Sending messages to a topic</a></li>
+<li><a href="#_sharing_a_producer">Sharing a producer</a></li>
+<li><a href="#_closing_a_producer">Closing a producer</a></li>
+<li><a href="#_getting_topic_partition_information_2">Getting topic partition information</a></li>
+<li><a href="#_handling_errors">Handling errors</a></li>
+<li><a href="#_automatic_clean_up_in_verticles">Automatic clean-up in verticles</a></li>
+<li><a href="#_using_vert_x_serializers_deserizaliers">Using Vert.x serializers/deserizaliers</a></li>
+<li><a href="#_rxjava_api">RxJava API</a></li>
+<li><a href="#_stream_implementation_and_native_kafka_objects">Stream implementation and native Kafka objects</a></li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_using_the_vert_x_kafka_client">Using the Vert.x Kafka client</a></li>
+<li><a href="#_creating_kafka_clients">Creating Kafka clients</a></li>
+<li><a href="#_receiving_messages_from_a_topic_joining_a_consumer_group">Receiving messages from a topic joining a consumer group</a></li>
+<li><a href="#_receiving_messages_from_a_topic_requesting_specific_partitions">Receiving messages from a topic requesting specific partitions</a></li>
+<li><a href="#_getting_topic_partition_information">Getting topic partition information</a></li>
+<li><a href="#_manual_offset_commit">Manual offset commit</a></li>
+<li><a href="#_seeking_in_a_topic_partition">Seeking in a topic partition</a></li>
+<li><a href="#_offset_lookup">Offset lookup</a></li>
+<li><a href="#_message_flow_control">Message flow control</a></li>
+<li><a href="#_closing_a_consumer">Closing a consumer</a></li>
+<li><a href="#_sending_messages_to_a_topic">Sending messages to a topic</a></li>
+<li><a href="#_sharing_a_producer">Sharing a producer</a></li>
+<li><a href="#_closing_a_producer">Closing a producer</a></li>
+<li><a href="#_getting_topic_partition_information_2">Getting topic partition information</a></li>
+<li><a href="#_handling_errors">Handling errors</a></li>
+<li><a href="#_automatic_clean_up_in_verticles">Automatic clean-up in verticles</a></li>
+<li><a href="#_using_vert_x_serializers_deserizaliers">Using Vert.x serializers/deserizaliers</a></li>
+<li><a href="#_rxjava_api">RxJava API</a></li>
+<li><a href="#_stream_implementation_and_native_kafka_objects">Stream implementation and native Kafka objects</a></li>
+</ul>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This component provides a Kafka client for reading and sending messages from/to an <a href="https://kafka.apache.org/">Apache Kafka</a> cluster.</p>
+</div>
+<div class="paragraph">
+<p>As consumer, the API provides methods for subscribing to a topic partition receiving
+messages asynchronously or reading them as a stream (even with the possibility to pause/resume the stream).</p>
+</div>
+<div class="paragraph">
+<p>As producer, the API provides methods for sending message to a topic partition like writing on a stream.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+this module has the tech preview status, this means the API can change between versions.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_the_vert_x_kafka_client">Using the Vert.x Kafka client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To use this component, add the following dependency to the dependencies section of your build descriptor:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven (in your <code>pom.xml</code>):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>vertx-kafka-client<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>3.5.0<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Gradle (in your <code>build.gradle</code> file):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">compile io.vertx:vertx-kafka-<span class="key">client</span>:<span class="float">3.5</span><span class="float">.0</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_kafka_clients">Creating Kafka clients</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Creating consumers and producers is quite similar and on how it works using the native Kafka client library.</p>
+</div>
+<div class="paragraph">
+<p>They need to be configured with a bunch of properties as described in the official
+Apache Kafka documentation, for the <a href="https://kafka.apache.org/documentation/#newconsumerconfigs">consumer</a> and
+for the <a href="https://kafka.apache.org/documentation/#producerconfigs">producer</a>.</p>
+</div>
+<div class="paragraph">
+<p>To achieve that, a map can be configured with such properties passing it to one of the
+static creation methods exposed by <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html">KafkaConsumer</a></code> and
+<code><a href="../../apidocs/io/vertx/kafka/client/producer/KafkaProducer.html">KafkaProducer</a></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; config = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">bootstrap.servers</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost:9092</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">key.deserializer</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">org.apache.kafka.common.serialization.StringDeserializer</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">value.deserializer</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">org.apache.kafka.common.serialization.StringDeserializer</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">group.id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">my_group</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">auto.offset.reset</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">earliest</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">enable.auto.commit</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>);
+
+<span class="comment">// use consumer for interacting with Apache Kafka</span>
+KafkaConsumer&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; consumer = KafkaConsumer.create(vertx, config);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above example, a <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html">KafkaConsumer</a></code> instance is created using
+a map instance in order to specify the Kafka nodes list to connect (just one) and
+the deserializers to use for getting key and value from each received message.</p>
+</div>
+<div class="paragraph">
+<p>Likewise a producer can be created</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; config = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">bootstrap.servers</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost:9092</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">key.serializer</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">org.apache.kafka.common.serialization.StringSerializer</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">value.serializer</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">org.apache.kafka.common.serialization.StringSerializer</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">acks</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>);
+
+<span class="comment">// use producer for interacting with Apache Kafka</span>
+KafkaProducer&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; producer = KafkaProducer.create(vertx, config);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another way is to use a <code><a href="../../apidocs/java/util/Properties.html">Properties</a></code> instance instead of the map.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Properties</span> config = <span class="keyword">new</span> <span class="predefined-type">Properties</span>();
+config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost:9092</span><span class="delimiter">&quot;</span></span>);
+config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+config.put(ConsumerConfig.GROUP_ID_CONFIG, <span class="string"><span class="delimiter">&quot;</span><span class="content">my_group</span><span class="delimiter">&quot;</span></span>);
+config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, <span class="string"><span class="delimiter">&quot;</span><span class="content">earliest</span><span class="delimiter">&quot;</span></span>);
+config.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, <span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>);
+
+<span class="comment">// use consumer for interacting with Apache Kafka</span>
+KafkaConsumer&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; consumer = KafkaConsumer.create(vertx, config);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More advanced creation methods allow to specify the class type for the key and the value used for sending messages
+or provided by received messages; this is a way for setting the key and value serializers/deserializers instead of
+using the related properties for that</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Properties</span> config = <span class="keyword">new</span> <span class="predefined-type">Properties</span>();
+config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost:9092</span><span class="delimiter">&quot;</span></span>);
+config.put(ProducerConfig.ACKS_CONFIG, <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>);
+
+<span class="comment">// use producer for interacting with Apache Kafka</span>
+KafkaProducer&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; producer = KafkaProducer.create(vertx, config, <span class="predefined-type">String</span>.class, <span class="predefined-type">String</span>.class);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here the <code><a href="../../apidocs/io/vertx/kafka/client/producer/KafkaProducer.html">KafkaProducer</a></code> instance is created in using a <code><a href="../../apidocs/java/util/Properties.html">Properties</a></code> for
+specifying Kafka nodes list to connect (just one) and the acknowledgment mode; the key and value deserializers are
+specified as parameters of <code><a href="../../apidocs/io/vertx/kafka/client/producer/KafkaProducer.html#create-io.vertx.core.Vertx-java.util.Properties-java.lang.Class-java.lang.Class-">KafkaProducer.create</a></code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_receiving_messages_from_a_topic_joining_a_consumer_group">Receiving messages from a topic joining a consumer group</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to start receiving messages from Kafka topics, the consumer can use the
+<code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#subscribe-java.util.Set-">subscribe</a></code> method for
+subscribing to a set of topics being part of a consumer group (specified by the properties on creation).</p>
+</div>
+<div class="paragraph">
+<p>You also need to register a handler for handling incoming messages using the
+<code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#handler-io.vertx.core.Handler-">handler</a></code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">consumer.handler(record -&gt; {
+  <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Processing key=</span><span class="delimiter">&quot;</span></span> + record.key() + <span class="string"><span class="delimiter">&quot;</span><span class="content">,value=</span><span class="delimiter">&quot;</span></span> + record.value() +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">,partition=</span><span class="delimiter">&quot;</span></span> + record.partition() + <span class="string"><span class="delimiter">&quot;</span><span class="content">,offset=</span><span class="delimiter">&quot;</span></span> + record.offset());
+});
+
+<span class="comment">// subscribe to several topics</span>
+<span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt; topics = <span class="keyword">new</span> <span class="predefined-type">HashSet</span>&lt;&gt;();
+topics.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">topic1</span><span class="delimiter">&quot;</span></span>);
+topics.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">topic2</span><span class="delimiter">&quot;</span></span>);
+topics.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">topic3</span><span class="delimiter">&quot;</span></span>);
+consumer.subscribe(topics);
+
+<span class="comment">// or just subscribe to a single topic</span>
+consumer.subscribe(<span class="string"><span class="delimiter">&quot;</span><span class="content">a-single-topic</span><span class="delimiter">&quot;</span></span>);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The handler can be registered before or after the call to <code>subscribe()</code>; messages won&#8217;t be consumed until both
+methods have been called. This allows you to call <code>subscribe()</code>, then <code>seek()</code> and finally <code>handler()</code> in
+order to only consume messages starting from a particular offset, for example.</p>
+</div>
+<div class="paragraph">
+<p>A handler can also be passed during subscription to be aware of the subscription result and being notified when the operation
+is completed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">consumer.handler(record -&gt; {
+  <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Processing key=</span><span class="delimiter">&quot;</span></span> + record.key() + <span class="string"><span class="delimiter">&quot;</span><span class="content">,value=</span><span class="delimiter">&quot;</span></span> + record.value() +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">,partition=</span><span class="delimiter">&quot;</span></span> + record.partition() + <span class="string"><span class="delimiter">&quot;</span><span class="content">,offset=</span><span class="delimiter">&quot;</span></span> + record.offset());
+});
+
+<span class="comment">// subscribe to several topics</span>
+<span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt; topics = <span class="keyword">new</span> <span class="predefined-type">HashSet</span>&lt;&gt;();
+topics.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">topic1</span><span class="delimiter">&quot;</span></span>);
+topics.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">topic2</span><span class="delimiter">&quot;</span></span>);
+topics.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">topic3</span><span class="delimiter">&quot;</span></span>);
+consumer.subscribe(topics, ar -&gt; {
+  <span class="keyword">if</span> (ar.succeeded()) {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">subscribed</span><span class="delimiter">&quot;</span></span>);
+  } <span class="keyword">else</span> {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Could not subscribe </span><span class="delimiter">&quot;</span></span> + ar.cause().getMessage());
+  }
+});
+
+<span class="comment">// or just subscribe to a single topic</span>
+consumer.subscribe(<span class="string"><span class="delimiter">&quot;</span><span class="content">a-single-topic</span><span class="delimiter">&quot;</span></span>, ar -&gt; {
+  <span class="keyword">if</span> (ar.succeeded()) {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">subscribed</span><span class="delimiter">&quot;</span></span>);
+  } <span class="keyword">else</span> {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Could not subscribe </span><span class="delimiter">&quot;</span></span> + ar.cause().getMessage());
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Using the consumer group way, the Kafka cluster assigns partitions to the consumer taking into account other connected
+consumers in the same consumer group, so that partitions can be spread across them.</p>
+</div>
+<div class="paragraph">
+<p>The Kafka cluster handles partitions re-balancing when a consumer leaves the group (so assigned partitions are free
+to be assigned to other consumers) or a new consumer joins the group (so it wants partitions to read from).</p>
+</div>
+<div class="paragraph">
+<p>You can register handlers on a <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html">KafkaConsumer</a></code> to be notified
+of the partitions revocations and assignments by the Kafka cluster using
+<code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#partitionsRevokedHandler-io.vertx.core.Handler-">partitionsRevokedHandler</a></code> and
+<code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#partitionsAssignedHandler-io.vertx.core.Handler-">partitionsAssignedHandler</a></code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">consumer.handler(record -&gt; {
+  <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Processing key=</span><span class="delimiter">&quot;</span></span> + record.key() + <span class="string"><span class="delimiter">&quot;</span><span class="content">,value=</span><span class="delimiter">&quot;</span></span> + record.value() +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">,partition=</span><span class="delimiter">&quot;</span></span> + record.partition() + <span class="string"><span class="delimiter">&quot;</span><span class="content">,offset=</span><span class="delimiter">&quot;</span></span> + record.offset());
+});
+
+<span class="comment">// registering handlers for assigned and revoked partitions</span>
+consumer.partitionsAssignedHandler(topicPartitions -&gt; {
+
+  <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Partitions assigned</span><span class="delimiter">&quot;</span></span>);
+  <span class="keyword">for</span> (TopicPartition topicPartition : topicPartitions) {
+    <span class="predefined-type">System</span>.out.println(topicPartition.getTopic() + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + topicPartition.getPartition());
+  }
+});
+
+consumer.partitionsRevokedHandler(topicPartitions -&gt; {
+
+  <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Partitions revoked</span><span class="delimiter">&quot;</span></span>);
+  <span class="keyword">for</span> (TopicPartition topicPartition : topicPartitions) {
+    <span class="predefined-type">System</span>.out.println(topicPartition.getTopic() + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + topicPartition.getPartition());
+  }
+});
+
+<span class="comment">// subscribes to the topic</span>
+consumer.subscribe(<span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>, ar -&gt; {
+
+  <span class="keyword">if</span> (ar.succeeded()) {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Consumer subscribed</span><span class="delimiter">&quot;</span></span>);
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After joining a consumer group for receiving messages, a consumer can decide to leave the consumer group in order to
+not get messages anymore using <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#unsubscribe--">unsubscribe</a></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">consumer.unsubscribe();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can add an handler to be notified of the result</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">consumer.unsubscribe(ar -&gt; {
+
+  <span class="keyword">if</span> (ar.succeeded()) {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Consumer unsubscribed</span><span class="delimiter">&quot;</span></span>);
+  }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_receiving_messages_from_a_topic_requesting_specific_partitions">Receiving messages from a topic requesting specific partitions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Besides being part of a consumer group for receiving messages from a topic, a consumer can ask for a specific
+topic partition. When the consumer is not part part of a consumer group the overall application cannot
+rely on the re-balancing feature.</p>
+</div>
+<div class="paragraph">
+<p>You can use <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#assign-java.util.Set-io.vertx.core.Handler-">assign</a></code>
+in order to ask for specific partitions.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">consumer.handler(record -&gt; {
+  <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">key=</span><span class="delimiter">&quot;</span></span> + record.key() + <span class="string"><span class="delimiter">&quot;</span><span class="content">,value=</span><span class="delimiter">&quot;</span></span> + record.value() +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">,partition=</span><span class="delimiter">&quot;</span></span> + record.partition() + <span class="string"><span class="delimiter">&quot;</span><span class="content">,offset=</span><span class="delimiter">&quot;</span></span> + record.offset());
+});
+
+<span class="comment">//</span>
+<span class="predefined-type">Set</span>&lt;TopicPartition&gt; topicPartitions = <span class="keyword">new</span> <span class="predefined-type">HashSet</span>&lt;&gt;();
+topicPartitions.add(<span class="keyword">new</span> TopicPartition()
+  .setTopic(<span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>)
+  .setPartition(<span class="integer">0</span>));
+
+<span class="comment">// requesting to be assigned the specific partition</span>
+consumer.assign(topicPartitions, done -&gt; {
+
+  <span class="keyword">if</span> (done.succeeded()) {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Partition assigned</span><span class="delimiter">&quot;</span></span>);
+
+    <span class="comment">// requesting the assigned partitions</span>
+    consumer.assignment(done1 -&gt; {
+
+      <span class="keyword">if</span> (done1.succeeded()) {
+
+        <span class="keyword">for</span> (TopicPartition topicPartition : done1.result()) {
+          <span class="predefined-type">System</span>.out.println(topicPartition.getTopic() + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + topicPartition.getPartition());
+        }
+      }
+    });
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As with <code>subscribe()</code>, the handler can be registered before or after the call to <code>assign()</code>;
+messages won&#8217;t be consumed until both methods have been called. This allows you to call
+<code>assign()</code>, then <code>seek()</code> and finally <code>handler()</code> in
+order to only consume messages starting from a particular offset, for example.</p>
+</div>
+<div class="paragraph">
+<p>Calling <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#assignment-io.vertx.core.Handler-">assignment</a></code> provides
+the list of the current assigned partitions.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_topic_partition_information">Getting topic partition information</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can call the <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#partitionsFor-java.lang.String-io.vertx.core.Handler-">partitionsFor</a></code> to get information about
+partitions for a specified topic</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">consumer.partitionsFor(<span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>, ar -&gt; {
+
+  <span class="keyword">if</span> (ar.succeeded()) {
+
+    <span class="keyword">for</span> (PartitionInfo partitionInfo : ar.result()) {
+      <span class="predefined-type">System</span>.out.println(partitionInfo);
+    }
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#listTopics-io.vertx.core.Handler-">listTopics</a></code> provides all available topics
+with related partitions</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">consumer.listTopics(ar -&gt; {
+
+  <span class="keyword">if</span> (ar.succeeded()) {
+
+    <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">List</span>&lt;PartitionInfo&gt;&gt; map = ar.result();
+    map.forEach((topic, partitions) -&gt; {
+      <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">topic = </span><span class="delimiter">&quot;</span></span> + topic);
+      <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">partitions = </span><span class="delimiter">&quot;</span></span> + map.get(topic));
+    });
+  }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_manual_offset_commit">Manual offset commit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In Apache Kafka the consumer is in charge to handle the offset of the last read message.</p>
+</div>
+<div class="paragraph">
+<p>This is executed by the commit operation executed automatically every time a bunch of messages are read
+from a topic partition. The configuration parameter <code>enable.auto.commit</code> must be set to <code>true</code> when the
+consumer is created.</p>
+</div>
+<div class="paragraph">
+<p>Manual offset commit, can be achieved with <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#commit-io.vertx.core.Handler-">commit</a></code>.
+It can be used to achieve <em>at least once</em> delivery to be sure that the read messages are processed before committing
+the offset.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">consumer.commit(ar -&gt; {
+
+  <span class="keyword">if</span> (ar.succeeded()) {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Last read message offset committed</span><span class="delimiter">&quot;</span></span>);
+  }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_seeking_in_a_topic_partition">Seeking in a topic partition</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Apache Kafka can retain messages for a long period of time and the consumer can seek inside a topic partition
+and obtain arbitrary access to the messages.</p>
+</div>
+<div class="paragraph">
+<p>You can use <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#seek-io.vertx.kafka.client.common.TopicPartition-long-">seek</a></code> to change the offset for reading at a specific
+position</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">TopicPartition topicPartition = <span class="keyword">new</span> TopicPartition()
+  .setTopic(<span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>)
+  .setPartition(<span class="integer">0</span>);
+
+<span class="comment">// seek to a specific offset</span>
+consumer.seek(topicPartition, <span class="integer">10</span>, done -&gt; {
+
+  <span class="keyword">if</span> (done.succeeded()) {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Seeking done</span><span class="delimiter">&quot;</span></span>);
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the consumer needs to re-read the stream from the beginning, it can use <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#seekToBeginning-io.vertx.kafka.client.common.TopicPartition-">seekToBeginning</a></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">TopicPartition topicPartition = <span class="keyword">new</span> TopicPartition()
+  .setTopic(<span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>)
+  .setPartition(<span class="integer">0</span>);
+
+<span class="comment">// seek to the beginning of the partition</span>
+consumer.seekToBeginning(<span class="predefined-type">Collections</span>.singleton(topicPartition), done -&gt; {
+
+  <span class="keyword">if</span> (done.succeeded()) {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Seeking done</span><span class="delimiter">&quot;</span></span>);
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#seekToEnd-io.vertx.kafka.client.common.TopicPartition-">seekToEnd</a></code> can be used to come back at the end of the partition</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">TopicPartition topicPartition = <span class="keyword">new</span> TopicPartition()
+  .setTopic(<span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>)
+  .setPartition(<span class="integer">0</span>);
+
+<span class="comment">// seek to the end of the partition</span>
+consumer.seekToEnd(<span class="predefined-type">Collections</span>.singleton(topicPartition), done -&gt; {
+
+  <span class="keyword">if</span> (done.succeeded()) {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Seeking done</span><span class="delimiter">&quot;</span></span>);
+  }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_offset_lookup">Offset lookup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use the beginningOffsets API introduced in Kafka 0.10.1.1 to get the first offset
+for a given partition. In contrast to <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#seekToBeginning-io.vertx.kafka.client.common.TopicPartition-">seekToBeginning</a></code>,
+it does not change the consumer&#8217;s offset.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Set</span>&lt;TopicPartition&gt; topicPartitions = <span class="keyword">new</span> <span class="predefined-type">HashSet</span>&lt;&gt;();
+TopicPartition topicPartition = <span class="keyword">new</span> TopicPartition().setTopic(<span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>).setPartition(<span class="integer">0</span>);
+topicPartitions.add(topicPartition);
+
+consumer.beginningOffsets(topicPartitions, done -&gt; {
+  <span class="keyword">if</span>(done.succeeded()) {
+    <span class="predefined-type">Map</span>&lt;TopicPartition, <span class="predefined-type">Long</span>&gt; results = done.result();
+    results.forEach((topic, beginningOffset) -&gt;
+      <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Beginning offset for topic=</span><span class="delimiter">&quot;</span></span>+topic.getTopic()+<span class="string"><span class="delimiter">&quot;</span><span class="content">, partition=</span><span class="delimiter">&quot;</span></span>+
+        topic.getPartition()+<span class="string"><span class="delimiter">&quot;</span><span class="content">, beginningOffset=</span><span class="delimiter">&quot;</span></span>+beginningOffset));
+  }
+});
+
+<span class="comment">// Convenience method for single-partition lookup</span>
+consumer.beginningOffsets(topicPartition, done -&gt; {
+  <span class="keyword">if</span>(done.succeeded()) {
+    <span class="predefined-type">Long</span> beginningOffset = done.result();
+      <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Beginning offset for topic=</span><span class="delimiter">&quot;</span></span>+topicPartition.getTopic()+<span class="string"><span class="delimiter">&quot;</span><span class="content">, partition=</span><span class="delimiter">&quot;</span></span>+
+        topicPartition.getPartition()+<span class="string"><span class="delimiter">&quot;</span><span class="content">, beginningOffset=</span><span class="delimiter">&quot;</span></span>+beginningOffset);
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can use the endOffsets API introduced in Kafka 0.10.1.1 to get the last offset
+for a given partition. In contrast to <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#seekToEnd-io.vertx.kafka.client.common.TopicPartition-">seekToEnd</a></code>,
+it does not change the consumer&#8217;s offset.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Set</span>&lt;TopicPartition&gt; topicPartitions = <span class="keyword">new</span> <span class="predefined-type">HashSet</span>&lt;&gt;();
+TopicPartition topicPartition = <span class="keyword">new</span> TopicPartition().setTopic(<span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>).setPartition(<span class="integer">0</span>);
+topicPartitions.add(topicPartition);
+
+consumer.endOffsets(topicPartitions, done -&gt; {
+  <span class="keyword">if</span>(done.succeeded()) {
+    <span class="predefined-type">Map</span>&lt;TopicPartition, <span class="predefined-type">Long</span>&gt; results = done.result();
+    results.forEach((topic, endOffset) -&gt;
+      <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">End offset for topic=</span><span class="delimiter">&quot;</span></span>+topic.getTopic()+<span class="string"><span class="delimiter">&quot;</span><span class="content">, partition=</span><span class="delimiter">&quot;</span></span>+
+        topic.getPartition()+<span class="string"><span class="delimiter">&quot;</span><span class="content">, endOffset=</span><span class="delimiter">&quot;</span></span>+endOffset));
+  }
+});
+
+<span class="comment">// Convenience method for single-partition lookup</span>
+consumer.endOffsets(topicPartition, done -&gt; {
+  <span class="keyword">if</span>(done.succeeded()) {
+    <span class="predefined-type">Long</span> endOffset = done.result();
+      <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">End offset for topic=</span><span class="delimiter">&quot;</span></span>+topicPartition.getTopic()+<span class="string"><span class="delimiter">&quot;</span><span class="content">, partition=</span><span class="delimiter">&quot;</span></span>+
+        topicPartition.getPartition()+<span class="string"><span class="delimiter">&quot;</span><span class="content">, endOffset=</span><span class="delimiter">&quot;</span></span>+endOffset);
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can use the offsetsForTimes API introduced in Kafka 0.10.1.1 to look up an offset by
+timestamp, i.e. search parameter is an epoch timestamp and the call returns the lowest offset
+with ingestion timestamp &gt;= given timestamp.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Map</span>&lt;TopicPartition, <span class="predefined-type">Long</span>&gt; topicPartitionsWithTimestamps = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+TopicPartition topicPartition = <span class="keyword">new</span> TopicPartition().setTopic(<span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>).setPartition(<span class="integer">0</span>);
+
+<span class="comment">// We are interested in the offset for data ingested 60 seconds ago</span>
+<span class="type">long</span> timestamp = (<span class="predefined-type">System</span>.currentTimeMillis() - <span class="integer">60000</span>);
+
+topicPartitionsWithTimestamps.put(topicPartition, timestamp);
+consumer.offsetsForTimes(topicPartitionsWithTimestamps, done -&gt; {
+  <span class="keyword">if</span>(done.succeeded()) {
+    <span class="predefined-type">Map</span>&lt;TopicPartition, OffsetAndTimestamp&gt; results = done.result();
+    results.forEach((topic, offset) -&gt;
+      <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Offset for topic=</span><span class="delimiter">&quot;</span></span>+topic.getTopic()+
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">, partition=</span><span class="delimiter">&quot;</span></span>+topic.getPartition()+<span class="string"><span class="delimiter">&quot;</span><span class="char">\n</span><span class="delimiter">&quot;</span></span>+
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">, timestamp=</span><span class="delimiter">&quot;</span></span>+timestamp+<span class="string"><span class="delimiter">&quot;</span><span class="content">, offset=</span><span class="delimiter">&quot;</span></span>+offset.getOffset()+
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">, offsetTimestamp=</span><span class="delimiter">&quot;</span></span>+offset.getTimestamp()));
+
+  }
+});
+
+<span class="comment">// Convenience method for single-partition lookup</span>
+consumer.offsetsForTimes(topicPartition, timestamp, done -&gt; {
+  <span class="keyword">if</span>(done.succeeded()) {
+    OffsetAndTimestamp offsetAndTimestamp = done.result();
+      <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Offset for topic=</span><span class="delimiter">&quot;</span></span>+topicPartition.getTopic()+
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">, partition=</span><span class="delimiter">&quot;</span></span>+topicPartition.getPartition()+<span class="string"><span class="delimiter">&quot;</span><span class="char">\n</span><span class="delimiter">&quot;</span></span>+
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">, timestamp=</span><span class="delimiter">&quot;</span></span>+timestamp+<span class="string"><span class="delimiter">&quot;</span><span class="content">, offset=</span><span class="delimiter">&quot;</span></span>+offsetAndTimestamp.getOffset()+
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">, offsetTimestamp=</span><span class="delimiter">&quot;</span></span>+offsetAndTimestamp.getTimestamp());
+
+  }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_message_flow_control">Message flow control</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A consumer can control the incoming message flow and pause/resume the read operation from a topic, e.g it
+can pause the message flow when it needs more time to process the actual messages and then resume
+to continue message processing.</p>
+</div>
+<div class="paragraph">
+<p>To achieve that you can use <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#pause--">pause</a></code> and
+<code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#resume--">resume</a></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">TopicPartition topicPartition = <span class="keyword">new</span> TopicPartition()
+  .setTopic(<span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>)
+  .setPartition(<span class="integer">0</span>);
+
+<span class="comment">// registering the handler for incoming messages</span>
+consumer.handler(record -&gt; {
+  <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">key=</span><span class="delimiter">&quot;</span></span> + record.key() + <span class="string"><span class="delimiter">&quot;</span><span class="content">,value=</span><span class="delimiter">&quot;</span></span> + record.value() +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">,partition=</span><span class="delimiter">&quot;</span></span> + record.partition() + <span class="string"><span class="delimiter">&quot;</span><span class="content">,offset=</span><span class="delimiter">&quot;</span></span> + record.offset());
+
+  <span class="comment">// i.e. pause/resume on partition 0, after reading message up to offset 5</span>
+  <span class="keyword">if</span> ((record.partition() == <span class="integer">0</span>) &amp;&amp; (record.offset() == <span class="integer">5</span>)) {
+
+    <span class="comment">// pause the read operations</span>
+    consumer.pause(topicPartition, ar -&gt; {
+
+      <span class="keyword">if</span> (ar.succeeded()) {
+
+        <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Paused</span><span class="delimiter">&quot;</span></span>);
+
+        <span class="comment">// resume read operation after a specific time</span>
+        vertx.setTimer(<span class="integer">5000</span>, timeId -&gt; {
+
+          <span class="comment">// resumi read operations</span>
+          consumer.resume(topicPartition);
+        });
+      }
+    });
+  }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_closing_a_consumer">Closing a consumer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Call close to close the consumer. Closing the consumer closes any open connections and releases all consumer resources.</p>
+</div>
+<div class="paragraph">
+<p>The close is actually asynchronous and might not complete until some time after the call has returned. If you want to be notified
+when the actual close has completed then you can pass in a handler.</p>
+</div>
+<div class="paragraph">
+<p>This handler will then be called when the close has fully completed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">consumer.close(res -&gt; {
+  <span class="keyword">if</span> (res.succeeded()) {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Consumer is now closed</span><span class="delimiter">&quot;</span></span>);
+  } <span class="keyword">else</span> {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">close failed</span><span class="delimiter">&quot;</span></span>);
+  }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sending_messages_to_a_topic">Sending messages to a topic</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use  <code><a href="../../apidocs/io/vertx/kafka/client/producer/KafkaProducer.html#write-io.vertx.kafka.client.producer.KafkaProducerRecord-">write</a></code> to send messages (records) to a topic.</p>
+</div>
+<div class="paragraph">
+<p>The simplest way to send a message is to specify only the destination topic and the related value, omitting its key
+or partition, in this case the messages are sent in a round robin fashion across all the partitions of the topic.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="integer">0</span>; i &lt; <span class="integer">5</span>; i++) {
+
+  <span class="comment">// only topic and message value are specified, round robin on destination partitions</span>
+  KafkaProducerRecord&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; record =
+    KafkaProducerRecord.create(<span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">message_</span><span class="delimiter">&quot;</span></span> + i);
+
+  producer.write(record);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can receive message sent metadata like its topic, its destination partition and its assigned offset.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="integer">0</span>; i &lt; <span class="integer">5</span>; i++) {
+
+  <span class="comment">// only topic and message value are specified, round robin on destination partitions</span>
+  KafkaProducerRecord&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; record =
+    KafkaProducerRecord.create(<span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">message_</span><span class="delimiter">&quot;</span></span> + i);
+
+  producer.write(record, done -&gt; {
+
+    <span class="keyword">if</span> (done.succeeded()) {
+
+      RecordMetadata recordMetadata = done.result();
+      <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Message </span><span class="delimiter">&quot;</span></span> + record.value() + <span class="string"><span class="delimiter">&quot;</span><span class="content"> written on topic=</span><span class="delimiter">&quot;</span></span> + recordMetadata.getTopic() +
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">, partition=</span><span class="delimiter">&quot;</span></span> + recordMetadata.getPartition() +
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">, offset=</span><span class="delimiter">&quot;</span></span> + recordMetadata.getOffset());
+    }
+
+  });
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you need to assign a partition to a message, you can specify its partition identifier
+or its key</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="integer">0</span>; i &lt; <span class="integer">10</span>; i++) {
+
+  <span class="comment">// a destination partition is specified</span>
+  KafkaProducerRecord&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; record =
+    KafkaProducerRecord.create(<span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">null</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">message_</span><span class="delimiter">&quot;</span></span> + i, <span class="integer">0</span>);
+
+  producer.write(record);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since the producers identifies the destination using key hashing, you can use that to guarantee that all
+messages with the same key are sent to the same partition and retain the order.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="integer">0</span>; i &lt; <span class="integer">10</span>; i++) {
+
+  <span class="comment">// i.e. defining different keys for odd and even messages</span>
+  <span class="type">int</span> key = i % <span class="integer">2</span>;
+
+  <span class="comment">// a key is specified, all messages with same key will be sent to the same partition</span>
+  KafkaProducerRecord&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; record =
+    KafkaProducerRecord.create(<span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">String</span>.valueOf(key), <span class="string"><span class="delimiter">&quot;</span><span class="content">message_</span><span class="delimiter">&quot;</span></span> + i);
+
+  producer.write(record);
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+the shared producer is created on the first <code>createShared</code> call and its configuration is defined at this moment,
+shared producer usage must use the same configuration.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sharing_a_producer">Sharing a producer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sometimes you want to share the same producer from within several verticles or contexts.</p>
+</div>
+<div class="paragraph">
+<p>Calling <code><a href="../../apidocs/io/vertx/kafka/client/producer/KafkaProducer.html#createShared-io.vertx.core.Vertx-java.lang.String-java.util.Map-">KafkaProducer.createShared</a></code>
+returns a producer that can be shared safely.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">KafkaProducer&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; producer1 = KafkaProducer.createShared(vertx, <span class="string"><span class="delimiter">&quot;</span><span class="content">the-producer</span><span class="delimiter">&quot;</span></span>, config);
+
+<span class="comment">// Sometimes later you can close it</span>
+producer1.close();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The same resources (thread, connection) will be shared between the producer returned by this method.</p>
+</div>
+<div class="paragraph">
+<p>When you are done with the producer, just close it, when all shared producers are closed, the resources will
+be released for you.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_closing_a_producer">Closing a producer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Call close to close the producer. Closing the producer closes any open connections and releases all producer resources.</p>
+</div>
+<div class="paragraph">
+<p>The close is actually asynchronous and might not complete until some time after the call has returned. If you want to be notified
+when the actual close has completed then you can pass in a handler.</p>
+</div>
+<div class="paragraph">
+<p>This handler will then be called when the close has fully completed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">producer.close(res -&gt; {
+  <span class="keyword">if</span> (res.succeeded()) {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Producer is now closed</span><span class="delimiter">&quot;</span></span>);
+  } <span class="keyword">else</span> {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">close failed</span><span class="delimiter">&quot;</span></span>);
+  }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_topic_partition_information_2">Getting topic partition information</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can call the <code><a href="../../apidocs/io/vertx/kafka/client/producer/KafkaProducer.html#partitionsFor-java.lang.String-io.vertx.core.Handler-">partitionsFor</a></code> to get information about
+partitions for a specified topic:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">producer.partitionsFor(<span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>, ar -&gt; {
+
+  <span class="keyword">if</span> (ar.succeeded()) {
+
+    <span class="keyword">for</span> (PartitionInfo partitionInfo : ar.result()) {
+      <span class="predefined-type">System</span>.out.println(partitionInfo);
+    }
+  }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_handling_errors">Handling errors</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Errors handling (e.g timeout) between a Kafka client (consumer or producer) and the Kafka cluster is done using
+<code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#exceptionHandler-io.vertx.core.Handler-">exceptionHandler</a></code> or
+<code><a href="../../apidocs/io/vertx/kafka/client/producer/KafkaProducer.html#exceptionHandler-io.vertx.core.Handler-">exceptionHandler</a></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">consumer.exceptionHandler(e -&gt; {
+  <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Error = </span><span class="delimiter">&quot;</span></span> + e.getMessage());
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_automatic_clean_up_in_verticles">Automatic clean-up in verticles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you’re creating consumers and producer from inside verticles, those consumers and producers will be automatically
+closed when the verticle is undeployed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_vert_x_serializers_deserizaliers">Using Vert.x serializers/deserizaliers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vert.x Kafka client comes out of the box with serializers and deserializers for buffers, json object
+and json array.</p>
+</div>
+<div class="paragraph">
+<p>In a consumer you can use buffers</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; config = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">bootstrap.servers</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost:9092</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">key.deserializer</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.kafka.client.serialization.BufferDeserializer</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">value.deserializer</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.kafka.client.serialization.BufferDeserializer</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">group.id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">my_group</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">auto.offset.reset</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">earliest</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">enable.auto.commit</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>);
+
+<span class="comment">// Creating a consumer able to deserialize to json object</span>
+config = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">bootstrap.servers</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost:9092</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">key.deserializer</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.kafka.client.serialization.JsonObjectDeserializer</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">value.deserializer</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.kafka.client.serialization.JsonObjectDeserializer</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">group.id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">my_group</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">auto.offset.reset</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">earliest</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">enable.auto.commit</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>);
+
+<span class="comment">// Creating a consumer able to deserialize to json array</span>
+config = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">bootstrap.servers</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost:9092</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">key.deserializer</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.kafka.client.serialization.JsonArrayDeserializer</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">value.deserializer</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.kafka.client.serialization.JsonArrayDeserializer</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">group.id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">my_group</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">auto.offset.reset</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">earliest</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">enable.auto.commit</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or in a producer</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; config = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">bootstrap.servers</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost:9092</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">key.serializer</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.kafka.client.serialization.BufferSerializer</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">value.serializer</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.kafka.client.serialization.BufferSerializer</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">acks</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>);
+
+<span class="comment">// Creating a producer able to serialize to json object</span>
+config = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">bootstrap.servers</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost:9092</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">key.serializer</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.kafka.client.serialization.JsonObjectSerializer</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">value.serializer</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.kafka.client.serialization.JsonObjectSerializer</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">acks</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>);
+
+<span class="comment">// Creating a producer able to serialize to json array</span>
+config = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">bootstrap.servers</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost:9092</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">key.serializer</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.kafka.client.serialization.JsonArraySerializer</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">value.serializer</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.kafka.client.serialization.JsonArraySerializer</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">acks</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also specify the serizalizers/deserializers at creation time:</p>
+</div>
+<div class="paragraph">
+<p>In a consumer</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; config = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">bootstrap.servers</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost:9092</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">group.id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">my_group</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">auto.offset.reset</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">earliest</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">enable.auto.commit</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>);
+
+<span class="comment">// Creating a consumer able to deserialize buffers</span>
+KafkaConsumer&lt;<span class="predefined-type">Buffer</span>, <span class="predefined-type">Buffer</span>&gt; bufferConsumer = KafkaConsumer.create(vertx, config, <span class="predefined-type">Buffer</span>.class, <span class="predefined-type">Buffer</span>.class);
+
+<span class="comment">// Creating a consumer able to deserialize json objects</span>
+KafkaConsumer&lt;JsonObject, JsonObject&gt; jsonObjectConsumer = KafkaConsumer.create(vertx, config, JsonObject.class, JsonObject.class);
+
+<span class="comment">// Creating a consumer able to deserialize json arrays</span>
+KafkaConsumer&lt;JsonArray, JsonArray&gt; jsonArrayConsumer = KafkaConsumer.create(vertx, config, JsonArray.class, JsonArray.class);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or in a producer</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">String</span>&gt; config = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">bootstrap.servers</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost:9092</span><span class="delimiter">&quot;</span></span>);
+config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">acks</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>);
+
+<span class="comment">// Creating a producer able to serialize to buffers</span>
+KafkaProducer&lt;<span class="predefined-type">Buffer</span>, <span class="predefined-type">Buffer</span>&gt; bufferProducer = KafkaProducer.create(vertx, config, <span class="predefined-type">Buffer</span>.class, <span class="predefined-type">Buffer</span>.class);
+
+<span class="comment">// Creating a producer able to serialize to json objects</span>
+KafkaProducer&lt;JsonObject, JsonObject&gt; jsonObjectProducer = KafkaProducer.create(vertx, config, JsonObject.class, JsonObject.class);
+
+<span class="comment">// Creating a producer able to serialize to json arrays</span>
+KafkaProducer&lt;JsonArray, JsonArray&gt; jsonArrayProducer = KafkaProducer.create(vertx, config, JsonArray.class, JsonArray.class);</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rxjava_api">RxJava API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Kafka client provides an Rxified version of the original API.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Observable</span>&lt;KafkaConsumerRecord&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Long</span>&gt;&gt; observable = consumer.toObservable();
+
+observable
+  .map(record -&gt; record.value())
+  .buffer(<span class="integer">256</span>)
+  .map(
+  list -&gt; list.stream().mapToDouble(n -&gt; n).average()
+).subscribe(val -&gt; {
+
+  <span class="comment">// Obtained an average</span>
+
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stream_implementation_and_native_kafka_objects">Stream implementation and native Kafka objects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you want to operate on native Kafka records you can use a stream oriented
+implementation which handles native Kafka objects.</p>
+</div>
+<div class="paragraph">
+<p>The <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaReadStream.html">KafkaReadStream</a></code> shall be used for reading topic partitions, it is
+a read stream of <code><a href="../../apidocs/org/apache/kafka/clients/consumer/ConsumerRecord.html">ConsumerRecord</a></code> objects.</p>
+</div>
+<div class="paragraph">
+<p>The <code><a href="../../apidocs/io/vertx/kafka/client/producer/KafkaWriteStream.html">KafkaWriteStream</a></code> shall be used for writing to topics, it is a write
+stream of <code><a href="../../apidocs/org/apache/kafka/clients/producer/ProducerRecord.html">ProducerRecord</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>The API exposed by these interfaces is mostly the same than the polyglot version.</p>
+</div>
+</div>
+</div>
+
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                Last updated 2017-10-17 15:45:48 CEST
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://vertx.io/">Home</a></li>
+          <li><a href="http://vertx.io/download/">Download</a></li>
+          <li><a href="http://vertx.io/docs/3.5.0/">Documentation</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+          <li><a href="http://vertx.io/blog/">Blog</a></li>
+          <li><a href="http://vertx.io/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://vertx.io/community/">Help &amp; Contributors</a></li>
+          <li><a href="http://vertx.io/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual licensed under the <a href="https://www.eclipse.org/org/documents/epl-v10.php">Eclipse Public License 1.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="http://vertx.io/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="http://vertx.io/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="http://vertx.io/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js"></script>
+<script src="http://vertx.io/javascripts/bootstrap.min.js"></script>
+<script src="http://vertx.io/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="http://vertx.io/javascripts/sidebar.js"></script>
+
+
+</body>
+</html>
+

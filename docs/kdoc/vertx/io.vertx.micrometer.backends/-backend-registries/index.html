@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BackendRegistries - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.micrometer.backends</a>&nbsp;/&nbsp;<a href=".">BackendRegistries</a><br/>
+<br/>
+<h1>BackendRegistries</h1>
+<code><span class="keyword">class </span><span class="identifier">BackendRegistries</span></code>
+<p>BackendRegistries is responsible for managing registries related to particular micrometer backends (influxdb, prometheus...) It contains a store of BackendRegistry objects, each of whose encapsulating a micrometer's MeterRegistry</p>
+<p><strong>Author</strong><br/>
+Joel Takvorian</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-default-now.html">getDefaultNow</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getDefaultNow</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MeterRegistry</span></code>
+<p>Get the default micrometer registry. May return <code>null</code> if it hasn't been registered yet or if it has been stopped.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-now.html">getNow</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getNow</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.backends.BackendRegistries$getNow(kotlin.String)/registryName">registryName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MeterRegistry</span></code>
+<p>Get the micrometer registry of the given name. May return <code>null</code> if it hasn't been registered yet or if it has been stopped.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="register-matchers.html">registerMatchers</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">registerMatchers</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.backends.BackendRegistries$registerMatchers(io.micrometer.core.instrument.MeterRegistry, kotlin.collections.MutableList((io.vertx.micrometer.Match)))/registry">registry</span><span class="symbol">:</span>&nbsp;<span class="identifier">MeterRegistry</span><span class="symbol">, </span><span class="identifier" id="io.vertx.micrometer.backends.BackendRegistries$registerMatchers(io.micrometer.core.instrument.MeterRegistry, kotlin.collections.MutableList((io.vertx.micrometer.Match)))/matches">matches</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.micrometer/-match/index.html"><span class="identifier">Match</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="setup-backend.html">setupBackend</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">setupBackend</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.backends.BackendRegistries$setupBackend(io.vertx.core.Vertx, io.vertx.micrometer.MicrometerMetricsOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.micrometer.backends.BackendRegistries$setupBackend(io.vertx.core.Vertx, io.vertx.micrometer.MicrometerMetricsOptions)/options">options</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.micrometer/-micrometer-metrics-options/index.html"><span class="identifier">MicrometerMetricsOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-backend-registry/index.html"><span class="identifier">BackendRegistry</span></a></code>
+<p>Create a new backend registry, containing a micrometer registry, initialized with the provided options. If a registry already exists with the associated name, it is just returned without any effect.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="stop.html">stop</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.backends.BackendRegistries$stop(kotlin.String)/registryName">registryName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Stop (unregister) the backend registry of the given name. Any resource started by this backend registry will be released (like running HTTP server)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

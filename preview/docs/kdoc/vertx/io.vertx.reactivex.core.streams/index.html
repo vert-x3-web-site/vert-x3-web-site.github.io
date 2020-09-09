@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.reactivex.core.streams - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.reactivex.core.streams</a><br/>
+<br/>
+<h2>Package io.vertx.reactivex.core.streams</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-pump/index.html">Pump</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Pump</span></code>
+<p>Pumps data from a io.vertx.reactivex.core.streams.ReadStream to a io.vertx.reactivex.core.streams.WriteStream and performs flow control where necessary to prevent the write stream buffer from getting overfull. 
+<p> Instances of this class read items from a io.vertx.reactivex.core.streams.ReadStream and write them to a io.vertx.reactivex.core.streams.WriteStream. If data can be read faster than it can be written this could result in the write queue of the io.vertx.reactivex.core.streams.WriteStream growing without bound, eventually causing it to exhaust all available RAM. </p>
+<p> To prevent this, after each write, instances of this class check whether the write queue of the io.vertx.reactivex.core.streams.WriteStream is full, and if so, the io.vertx.reactivex.core.streams.ReadStream is paused, and a <code>drainHandler</code> is set on the io.vertx.reactivex.core.streams.WriteStream. </p>
+<p> When the io.vertx.reactivex.core.streams.WriteStream has processed half of its backlog, the <code>drainHandler</code> will be called, which results in the pump resuming the io.vertx.reactivex.core.streams.ReadStream. </p>
+<p> This class can be used to pump from any io.vertx.reactivex.core.streams.ReadStream to any io.vertx.reactivex.core.streams.WriteStream, e.g. from an io.vertx.reactivex.core.http.HttpServerRequest to an io.vertx.reactivex.core.file.AsyncFile, or from io.vertx.reactivex.core.net.NetSocket to a io.vertx.reactivex.core.http.WebSocket. </p>
+<p> Please see the documentation for more information. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.streams.Pump non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-read-stream/index.html">ReadStream</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ReadStream</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-stream-base/index.html"><span class="identifier">StreamBase</span></a></code>
+<p>Represents a stream of items that can be read from. 
+<p> Any class that implements this interface can be used by a io.vertx.reactivex.core.streams.Pump to pump data from it to a io.vertx.reactivex.core.streams.WriteStream. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.streams.ReadStream non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-stream-base/index.html">StreamBase</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">StreamBase</span></code>
+<p>Base interface for a stream.  NOTE: This class has been automatically generated from the io.vertx.core.streams.StreamBase non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-write-stream/index.html">WriteStream</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">WriteStream</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-stream-base/index.html"><span class="identifier">StreamBase</span></a></code>
+<p>Represents a stream of data that can be written to. 
+<p> Any class that implements this interface can be used by a io.vertx.reactivex.core.streams.Pump to pump data from a <code>ReadStream</code> to it. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.streams.WriteStream non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

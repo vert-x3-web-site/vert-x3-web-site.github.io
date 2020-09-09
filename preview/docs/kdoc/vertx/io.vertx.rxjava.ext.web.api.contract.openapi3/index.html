@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.rxjava.ext.web.api.contract.openapi3 - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.rxjava.ext.web.api.contract.openapi3</a><br/>
+<br/>
+<h2>Package io.vertx.rxjava.ext.web.api.contract.openapi3</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-open-a-p-i3-request-validation-handler/index.html">OpenAPI3RequestValidationHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpenAPI3RequestValidationHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../io.vertx.rxjava.ext.web.api.contract/-h-t-t-p-operation-request-validation-handler/index.html"><span class="identifier">HTTPOperationRequestValidationHandler</span></a><span class="symbol">, </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p> NOTE: This class has been automatically generated from the io.vertx.ext.web.api.contract.openapi3.OpenAPI3RequestValidationHandler non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-open-a-p-i3-router-factory/index.html">OpenAPI3RouterFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpenAPI3RouterFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../io.vertx.rxjava.ext.web.api.contract/-router-factory/index.html"><span class="identifier">RouterFactory</span></a><span class="symbol">&lt;</span><span class="identifier">OpenAPI</span><span class="symbol">&gt;</span></code>
+<p>Interface for OpenAPI3RouterFactory.  To add an handler, use <code><a href="#">io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory#addHandlerByOperationId</a></code>, in this class is better than generic  If you want to use remember that <strong>you have to pass path as declared in openapi specification</strong> Usage example: <pre><code><code>OpenAPI3RouterFactory.createRouterFactoryFromFile(vertx, "src/resources/spec.yaml", asyncResult -&gt; { if (!asyncResult.succeeded()) { // IO failure or spec invalid</code> else { OpenAPI3RouterFactory routerFactory = asyncResult.result(); routerFactory.addHandlerByOperationId("operation_id", routingContext -&gt; { // Do something }, routingContext -&gt; { // Do something with failure handler }); Router router = routerFactory.getRouter(); } }); } </code></pre>  NOTE: This class has been automatically generated from the io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,344 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BaseBridgeEvent - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.ext.bridge</a>&nbsp;/&nbsp;<a href=".">BaseBridgeEvent</a><br/>
+<br/>
+<h1>BaseBridgeEvent</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BaseBridgeEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code>
+<p>Represents an event that occurs on the event bus bridge. 
+<p> Please consult the documentation for a full explanation. </p>
+ NOTE: This class has been automatically generated from the io.vertx.ext.bridge.BaseBridgeEvent non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">BaseBridgeEvent</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.bridge.BaseBridgeEvent$<init>(io.vertx.ext.bridge.BaseBridgeEvent)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.bridge/-base-bridge-event/index.html"><span class="identifier">BaseBridgeEvent</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">BaseBridgeEvent</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core/-future/__type-arg_0.html">__typeArg_0</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">__typeArg_0</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="complete.html">complete</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">complete</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.bridge.BaseBridgeEvent$complete(kotlin.Boolean)/arg0">arg0</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="completer.html">completer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">completer</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="compose.html">compose</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">U</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">compose</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.bridge.BaseBridgeEvent$compose(io.vertx.core.Handler((kotlin.Boolean)), io.vertx.reactivex.core.Future((io.vertx.reactivex.ext.bridge.BaseBridgeEvent.compose.U)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.bridge.BaseBridgeEvent$compose(io.vertx.core.Handler((kotlin.Boolean)), io.vertx.reactivex.core.Future((io.vertx.reactivex.ext.bridge.BaseBridgeEvent.compose.U)))/next">next</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">U</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">U</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">U</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">compose</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.bridge.BaseBridgeEvent$compose(java.util.function.Function((kotlin.Boolean, io.vertx.reactivex.core.Future((io.vertx.reactivex.ext.bridge.BaseBridgeEvent.compose.U)))))/mapper">mapper</span><span class="symbol">:</span>&nbsp;<span class="identifier">Function</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">,</span>&nbsp;<a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">U</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">U</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.bridge.BaseBridgeEvent$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.ext.bridge/-base-bridge-event/index.html"><span class="identifier">BaseBridgeEvent</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-raw-message.html">getRawMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRawMessage</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonObject</span></code>
+<p>Get the raw JSON message for the event. This will be null for SOCKET_CREATED or SOCKET_CLOSED events as there is no message involved. If the returned message is modified, <code><a href="set-raw-message.html">io.vertx.reactivex.ext.bridge.BaseBridgeEvent#setRawMessage</a></code> should be called with the new message.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="map.html">map</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">U</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">map</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.bridge.BaseBridgeEvent$map(java.util.function.Function((kotlin.Boolean, io.vertx.reactivex.ext.bridge.BaseBridgeEvent.map.U)))/mapper">mapper</span><span class="symbol">:</span>&nbsp;<span class="identifier">Function</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">U</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">U</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.bridge.BaseBridgeEvent$newInstance(io.vertx.ext.bridge.BaseBridgeEvent)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.bridge/-base-bridge-event/index.html"><span class="identifier">BaseBridgeEvent</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BaseBridgeEvent</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="otherwise.html">otherwise</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">otherwise</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.bridge.BaseBridgeEvent$otherwise(java.util.function.Function((kotlin.Throwable, kotlin.Boolean)))/mapper">mapper</span><span class="symbol">:</span>&nbsp;<span class="identifier">Function</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">otherwise</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.bridge.BaseBridgeEvent$otherwise(kotlin.Boolean)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="otherwise-empty.html">otherwiseEmpty</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">otherwiseEmpty</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="recover.html">recover</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">recover</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.bridge.BaseBridgeEvent$recover(java.util.function.Function((kotlin.Throwable, io.vertx.reactivex.core.Future((kotlin.Boolean)))))/mapper">mapper</span><span class="symbol">:</span>&nbsp;<span class="identifier">Function</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">,</span>&nbsp;<a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="result.html">result</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">result</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-set-handler.html">rxSetHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxSetHandler</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-handler.html">setHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.bridge.BaseBridgeEvent$setHandler(io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Boolean)))))/arg0">arg0</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-raw-message.html">setRawMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRawMessage</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.bridge.BaseBridgeEvent$setRawMessage(io.vertx.core.json.JsonObject)/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BaseBridgeEvent</span></code>
+<p>Get the raw JSON message for the event. This will be null for SOCKET_CREATED or SOCKET_CLOSED events as there is no message involved.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="try-complete.html">tryComplete</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">tryComplete</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.bridge.BaseBridgeEvent$tryComplete(kotlin.Boolean)/arg0">arg0</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="type.html">type</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">type</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.ext.bridge/-bridge-event-type/index.html"><span class="identifier">BridgeEventType</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core/-future/cause.html">cause</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">cause</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a></code>
+<p>A Throwable describing failure. This will be null if the operation succeeded.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core/-future/complete.html">complete</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">complete</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a null result. Any handler will be called, if there is one, and the future will be marked as completed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core/-future/fail.html">fail</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fail</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Future$fail(kotlin.Throwable)/cause">cause</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the failure. Any handler will be called, if there is one, and the future will be marked as completed.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fail</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Future$fail(kotlin.String)/failureMessage">failureMessage</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Try to set the failure. When it happens, any handler will be called, if there is one, and the future will be marked as completed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core/-future/failed.html">failed</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">failed</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Did it fail?</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core/-future/failed-future.html">failedFuture</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">failedFuture</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Future$failedFuture(kotlin.Throwable)/t">t</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Create a failed future with the specified failure cause.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">failedFuture</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Future$failedFuture(kotlin.String)/failureMessage">failureMessage</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Create a failed future with the specified failure message.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core/-future/future.html">future</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">future</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Future$future(io.vertx.core.Handler((io.vertx.reactivex.core.Future((io.vertx.reactivex.core.Future.future.T)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Create a future that hasn't completed yet and that is passed to the <code>handler</code> before it is returned.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">future</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Create a future that hasn't completed yet</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core/-future/is-complete.html">isComplete</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isComplete</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Has the future completed? 
+<p> It's completed if it's either succeeded or failed.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core/-future/map.html">map</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">map</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Future$map(io.vertx.reactivex.core.Future.map.V)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">V</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">V</span><span class="symbol">&gt;</span></code>
+<p>Map the result of a future to a specific <code>value</code>.
+<p> When this future succeeds, this <code>value</code> will complete the future returned by this method call.</p>
+<p> When this future fails, the failure will be propagated to the returned future.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core/-future/map-empty.html">mapEmpty</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">mapEmpty</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">V</span><span class="symbol">&gt;</span></code>
+<p>Map the result of a future to <code>null</code>.
+<p> This is a conveniency for <code>future.map((T) null)</code> or <code>future.map((Void) null)</code>.</p>
+<p> When this future succeeds, <code>null</code> will complete the future returned by this method call.</p>
+<p> When this future fails, the failure will be propagated to the returned future.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core/-future/new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Future$newInstance(io.vertx.core.Future((kotlin.Any)))/arg">arg</span><span class="symbol">:</span>&nbsp;<span class="identifier">Future</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Future$newInstance(io.vertx.core.Future((kotlin.Any)), io.vertx.lang.reactivex.TypeArg((io.vertx.reactivex.core.Future.newInstance.T)))/arg">arg</span><span class="symbol">:</span>&nbsp;<span class="identifier">Future</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.Future$newInstance(io.vertx.core.Future((kotlin.Any)), io.vertx.lang.reactivex.TypeArg((io.vertx.reactivex.core.Future.newInstance.T)))/__typeArg_T">__typeArg_T</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core/-future/succeeded.html">succeeded</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">succeeded</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Did it succeed?</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core/-future/succeeded-future.html">succeededFuture</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">succeededFuture</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Create a succeeded future with a null result</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">succeededFuture</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Future$succeededFuture(io.vertx.reactivex.core.Future.succeededFuture.T)/result">result</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Created a succeeded future with the specified result.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core/-future/try-complete.html">tryComplete</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">tryComplete</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Try to set the result. When it happens, any handler will be called, if there is one, and the future will be marked as completed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core/-future/try-fail.html">tryFail</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">tryFail</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Future$tryFail(kotlin.Throwable)/cause">cause</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">tryFail</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Future$tryFail(kotlin.String)/failureMessage">failureMessage</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Try to set the failure. When it happens, any handler will be called, if there is one, and the future will be marked as completed.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

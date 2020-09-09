@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ObservableHelper.toObservable - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex</a>&nbsp;/&nbsp;<a href="index.html">ObservableHelper</a>&nbsp;/&nbsp;<a href=".">toObservable</a><br/>
+<br/>
+<h1>toObservable</h1>
+<a name="io.vertx.reactivex.ObservableHelper$toObservable(io.vertx.core.streams.ReadStream((io.vertx.reactivex.ObservableHelper.toObservable.T)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">toObservable</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ObservableHelper$toObservable(io.vertx.core.streams.ReadStream((io.vertx.reactivex.ObservableHelper.toObservable.T)))/stream">stream</span><span class="symbol">:</span>&nbsp;<span class="identifier">ReadStream</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Observable.html"><span class="identifier">Observable</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Adapts a Vert.x ReadStream to an RxJava Observable. After the stream is adapted to an observable, the original stream handlers should not be used anymore as they will be used by the observable adapter.</p>
+<h3>Parameters</h3>
+<p><a name="stream"></a>
+<code>stream</code> - the stream to adapt</p>
+<p><strong>Return</strong><br/>
+the adapted observable</p>
+<a name="io.vertx.reactivex.ObservableHelper$toObservable(io.vertx.core.streams.ReadStream((io.vertx.reactivex.ObservableHelper.toObservable.T)), java.util.function.Function((io.vertx.reactivex.ObservableHelper.toObservable.T, io.vertx.reactivex.ObservableHelper.toObservable.U)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">U</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">toObservable</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ObservableHelper$toObservable(io.vertx.core.streams.ReadStream((io.vertx.reactivex.ObservableHelper.toObservable.T)), java.util.function.Function((io.vertx.reactivex.ObservableHelper.toObservable.T, io.vertx.reactivex.ObservableHelper.toObservable.U)))/stream">stream</span><span class="symbol">:</span>&nbsp;<span class="identifier">ReadStream</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ObservableHelper$toObservable(io.vertx.core.streams.ReadStream((io.vertx.reactivex.ObservableHelper.toObservable.T)), java.util.function.Function((io.vertx.reactivex.ObservableHelper.toObservable.T, io.vertx.reactivex.ObservableHelper.toObservable.U)))/mapping">mapping</span><span class="symbol">:</span>&nbsp;<span class="identifier">Function</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">,</span>&nbsp;<span class="identifier">U</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Observable.html"><span class="identifier">Observable</span></a><span class="symbol">&lt;</span><span class="identifier">U</span><span class="symbol">&gt;</span></code>
+<p>Like <code><a href="#">#toObservable(ReadStream)</a></code> but with a <code>mapping</code> function</p>
+</BODY>
+</HTML>

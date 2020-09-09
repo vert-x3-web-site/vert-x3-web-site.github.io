@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DigestAuthHandler - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.ext.web.handler</a>&nbsp;/&nbsp;<a href=".">DigestAuthHandler</a><br/>
+<br/>
+<h1>DigestAuthHandler</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DigestAuthHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-auth-handler/index.html"><span class="identifier">AuthHandler</span></a><span class="symbol">, </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>An auth handler that provides HTTP Basic Authentication support.  NOTE: This class has been automatically generated from the io.vertx.ext.web.handler.DigestAuthHandler non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DigestAuthHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.handler.DigestAuthHandler$<init>(io.vertx.ext.web.handler.DigestAuthHandler)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.web.handler/-digest-auth-handler/index.html"><span class="identifier">DigestAuthHandler</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><span class="identifier">TypeArg</span><span class="symbol">&lt;</span><span class="identifier">DigestAuthHandler</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-authorities.html">addAuthorities</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addAuthorities</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.handler.DigestAuthHandler$addAuthorities(kotlin.collections.MutableSet((kotlin.String)))/authorities">authorities</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-auth-handler/index.html"><span class="identifier">AuthHandler</span></a></code>
+<p>Add a set of required authorities for this auth handler</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-authority.html">addAuthority</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addAuthority</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.handler.DigestAuthHandler$addAuthority(kotlin.String)/authority">authority</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-auth-handler/index.html"><span class="identifier">AuthHandler</span></a></code>
+<p>Add a required authority for this auth handler</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="authorize.html">authorize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">authorize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.handler.DigestAuthHandler$authorize(io.vertx.rxjava.ext.auth.User, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/user">user</span><span class="symbol">:</span>&nbsp;<span class="identifier">User</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.handler.DigestAuthHandler$authorize(io.vertx.rxjava.ext.auth.User, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Authorizes the given user against all added authorities.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.handler.DigestAuthHandler$create(io.vertx.rxjava.ext.auth.htdigest.HtdigestAuth)/authProvider">authProvider</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.rxjava.ext.auth.htdigest/-htdigest-auth/index.html"><span class="identifier">HtdigestAuth</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DigestAuthHandler</span></code>
+<p>Create a digest auth handler</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.handler.DigestAuthHandler$create(io.vertx.rxjava.ext.auth.htdigest.HtdigestAuth, kotlin.Long)/authProvider">authProvider</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.rxjava.ext.auth.htdigest/-htdigest-auth/index.html"><span class="identifier">HtdigestAuth</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.handler.DigestAuthHandler$create(io.vertx.rxjava.ext.auth.htdigest.HtdigestAuth, kotlin.Long)/nonceExpireTimeout">nonceExpireTimeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DigestAuthHandler</span></code>
+<p>Create a digest auth handler, specifying the expire timeout for nonces.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.handler.DigestAuthHandler$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.ext.web.handler/-digest-auth-handler/index.html"><span class="identifier">DigestAuthHandler</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="handle.html">handle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">handle</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.handler.DigestAuthHandler$handle(io.vertx.rxjava.ext.web.RoutingContext)/arg0">arg0</span><span class="symbol">:</span>&nbsp;<span class="identifier">RoutingContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.handler.DigestAuthHandler$newInstance(io.vertx.ext.web.handler.DigestAuthHandler)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.web.handler/-digest-auth-handler/index.html"><span class="identifier">DigestAuthHandler</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DigestAuthHandler</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="parse-credentials.html">parseCredentials</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">parseCredentials</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.handler.DigestAuthHandler$parseCredentials(io.vertx.rxjava.ext.web.RoutingContext, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonObject)))))/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">RoutingContext</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.handler.DigestAuthHandler$parseCredentials(io.vertx.rxjava.ext.web.RoutingContext, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonObject)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Parses the credentials from the request into a JsonObject. The implementation should be able to extract the required info for the auth provider in the format the provider expects.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-authorize.html">rxAuthorize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxAuthorize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.handler.DigestAuthHandler$rxAuthorize(io.vertx.rxjava.ext.auth.User)/user">user</span><span class="symbol">:</span>&nbsp;<span class="identifier">User</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span></code>
+<p>Authorizes the given user against all added authorities.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-parse-credentials.html">rxParseCredentials</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxParseCredentials</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.handler.DigestAuthHandler$rxParseCredentials(io.vertx.rxjava.ext.web.RoutingContext)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">RoutingContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span></code>
+<p>Parses the credentials from the request into a JsonObject. The implementation should be able to extract the required info for the auth provider in the format the provider expects.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

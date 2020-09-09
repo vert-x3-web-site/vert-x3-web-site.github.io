@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ServiceJWTInterceptor - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.serviceproxy</a>&nbsp;/&nbsp;<a href=".">ServiceJWTInterceptor</a><br/>
+<br/>
+<h1>ServiceJWTInterceptor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServiceJWTInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html"><span class="identifier">Function</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.core.eventbus/-message/index.html"><span class="identifier">Message</span></a><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span><span class="symbol">,</span>&nbsp;<span class="identifier">Future</span><span class="symbol">&lt;</span><a href="../../io.vertx.core.eventbus/-message/index.html"><span class="identifier">Message</span></a><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Create an event bus service interceptor using a JWT auth that will verify all requests before the service is invoked  Once a JWT is validated it will be queried for authorities. If authorities are missing a error 403 is returned.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ServiceJWTInterceptor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create an event bus service interceptor using a JWT auth that will verify all requests before the service is invoked  Once a JWT is validated it will be queried for authorities. If authorities are missing a error 403 is returned.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-authority.html">addAuthority</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addAuthority</span><span class="symbol">(</span><span class="identifier" id="io.vertx.serviceproxy.ServiceJWTInterceptor$addAuthority(kotlin.String)/authority">authority</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServiceJWTInterceptor</span></code>
+<p>Add a single authority to the authorities set.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="apply.html">apply</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">apply</span><span class="symbol">(</span><span class="identifier" id="io.vertx.serviceproxy.ServiceJWTInterceptor$apply(io.vertx.core.eventbus.Message((io.vertx.core.json.JsonObject)))/msg">msg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.eventbus/-message/index.html"><span class="identifier">Message</span></a><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Future</span><span class="symbol">&lt;</span><a href="../../io.vertx.core.eventbus/-message/index.html"><span class="identifier">Message</span></a><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="clear-authorities.html">clearAuthorities</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">clearAuthorities</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServiceJWTInterceptor</span></code>
+<p>Clear the current set of authorities.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-authorities.html">setAuthorities</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAuthorities</span><span class="symbol">(</span><span class="identifier" id="io.vertx.serviceproxy.ServiceJWTInterceptor$setAuthorities(kotlin.collections.MutableSet((kotlin.String)))/authorities">authorities</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServiceJWTInterceptor</span></code>
+<p>Set the required authorities for the service, once a JWT is validated it will be queried for these authorities. If authorities are missing a error 403 is returned.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jwt-auth.html">setJwtAuth</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJwtAuth</span><span class="symbol">(</span><span class="identifier" id="io.vertx.serviceproxy.ServiceJWTInterceptor$setJwtAuth(io.vertx.ext.auth.jwt.JWTAuth)/jwtAuth">jwtAuth</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.auth.jwt/-j-w-t-auth/index.html"><span class="identifier">JWTAuth</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServiceJWTInterceptor</span></code>
+<p>Set a JWT auth that will verify all requests before the service is invoked.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

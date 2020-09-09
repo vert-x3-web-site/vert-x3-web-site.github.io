@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Reporter - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.unit.report</a>&nbsp;/&nbsp;<a href=".">Reporter</a><br/>
+<br/>
+<h1>Reporter</h1>
+<code><span class="keyword">interface </span><span class="identifier">Reporter</span><span class="symbol">&lt;</span><span class="identifier">R</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>The reporter defines a set of callback for the life cycle events.</p>
+<h3>Parameters</h3>
+<p><a name="&lt;R&gt;"></a>
+<code><R></code> - the report generic type</p>
+<p><strong>Author</strong><br/>
+<a href="#">Julien Viet</a></p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="factory.html">factory</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">factory</span><span class="symbol">: </span><a href="../-reporter-factory/index.html"><span class="identifier">ReporterFactory</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="report-begin-test-case.html">reportBeginTestCase</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">reportBeginTestCase</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.report.Reporter$reportBeginTestCase(io.vertx.ext.unit.report.Reporter.R, kotlin.String)/report">report</span><span class="symbol">:</span>&nbsp;<span class="identifier">R</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.report.Reporter$reportBeginTestCase(io.vertx.ext.unit.report.Reporter.R, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Signals a test case began.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="report-begin-test-suite.html">reportBeginTestSuite</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">reportBeginTestSuite</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.report.Reporter$reportBeginTestSuite(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">R</span></code>
+<p>Signals the test suite began.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="report-end-test-case.html">reportEndTestCase</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">reportEndTestCase</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.report.Reporter$reportEndTestCase(io.vertx.ext.unit.report.Reporter.R, kotlin.String, io.vertx.ext.unit.report.TestResult)/report">report</span><span class="symbol">:</span>&nbsp;<span class="identifier">R</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.report.Reporter$reportEndTestCase(io.vertx.ext.unit.report.Reporter.R, kotlin.String, io.vertx.ext.unit.report.TestResult)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.report.Reporter$reportEndTestCase(io.vertx.ext.unit.report.Reporter.R, kotlin.String, io.vertx.ext.unit.report.TestResult)/result">result</span><span class="symbol">:</span>&nbsp;<a href="../-test-result/index.html"><span class="identifier">TestResult</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Signals a test case ended.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="report-end-test-suite.html">reportEndTestSuite</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">reportEndTestSuite</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.report.Reporter$reportEndTestSuite(io.vertx.ext.unit.report.Reporter.R)/report">report</span><span class="symbol">:</span>&nbsp;<span class="identifier">R</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Signals a test suite ended.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="report-error.html">reportError</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">reportError</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.report.Reporter$reportError(io.vertx.ext.unit.report.Reporter.R, kotlin.Throwable)/report">report</span><span class="symbol">:</span>&nbsp;<span class="identifier">R</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.report.Reporter$reportError(io.vertx.ext.unit.report.Reporter.R, kotlin.Throwable)/err">err</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Report a global test suite error, it can be called mulitple times between the <code><a href="#">#reportBeginTestSuite</a></code> and the <code><a href="#">#reportEndTestSuite</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="reporter.html">reporter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">reporter</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.report.Reporter$reporter(io.vertx.core.Vertx, io.vertx.ext.unit.report.ReportOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.report.Reporter$reporter(io.vertx.core.Vertx, io.vertx.ext.unit.report.ReportOptions)/options">options</span><span class="symbol">:</span>&nbsp;<a href="../-report-options/index.html"><span class="identifier">ReportOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Reporter</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

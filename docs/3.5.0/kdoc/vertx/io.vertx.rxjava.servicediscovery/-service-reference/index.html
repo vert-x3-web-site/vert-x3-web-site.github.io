@@ -1,0 +1,141 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ServiceReference - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.servicediscovery</a>&nbsp;/&nbsp;<a href=".">ServiceReference</a><br/>
+<br/>
+<h1>ServiceReference</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServiceReference</span></code>
+<p>Once a consumer has chosen a service, it builds a io.vertx.rxjava.servicediscovery.ServiceReference managing the binding with the chosen service provider. 
+<p> The reference lets the consumer: * access the service (via a proxy or a client) with the <code><a href="get.html">io.vertx.rxjava.servicediscovery.ServiceReference#get</a></code> method * release the reference - so the binding between the consumer and the provider is removed </p>
+ NOTE: This class has been automatically generated from the io.vertx.servicediscovery.ServiceReference non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ServiceReference</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.servicediscovery.ServiceReference$<init>(io.vertx.servicediscovery.ServiceReference)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServiceReference</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><span class="identifier">TypeArg</span><span class="symbol">&lt;</span><span class="identifier">ServiceReference</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="cached.html">cached</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">cached</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Gets the service object if already retrieved. It won't try to acquire the service object if not retrieved yet.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="cached-as.html">cachedAs</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">X</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">cachedAs</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.servicediscovery.ServiceReference$cachedAs(java.lang.Class((io.vertx.rxjava.servicediscovery.ServiceReference.cachedAs.X)))/x">x</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html"><span class="identifier">Class</span></a><span class="symbol">&lt;</span><span class="identifier">X</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">X</span></code>
+<p>Gets the service object if already retrieved. It won't try to acquire the service object if not retrieved yet. Unlike <code><a href="cached.html">io.vertx.rxjava.servicediscovery.ServiceReference#cached</a></code>, this method return the warpped object to the desired (given) type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.servicediscovery.ServiceReference$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get.html">get</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">get</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Gets the object to access the service. It can be a proxy, a client or whatever object. The type depends on the service type and the server itself. This method returns the Java version and primary facet of the object, use <code><a href="#">io.vertx.rxjava.servicediscovery.ServiceReference#getAs</a></code> to retrieve the polyglot instance of the object or another facet..</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-as.html">getAs</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">X</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">getAs</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.servicediscovery.ServiceReference$getAs(java.lang.Class((io.vertx.rxjava.servicediscovery.ServiceReference.getAs.X)))/x">x</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html"><span class="identifier">Class</span></a><span class="symbol">&lt;</span><span class="identifier">X</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">X</span></code>
+<p>Gets the object to access the service. It can be a proxy, a client or whatever object. The type depends on the service type and the server itself. This method wraps the service object into the desired type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServiceReference</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-holding.html">isHolding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isHolding</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.servicediscovery.ServiceReference$isHolding(kotlin.Any)/object">object</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Checks whether or not the service reference has the given service object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.servicediscovery.ServiceReference$newInstance(io.vertx.servicediscovery.ServiceReference)/arg">arg</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServiceReference</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServiceReference</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="record.html">record</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">record</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Record</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="release.html">release</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">release</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Releases the reference. Once released, the consumer must not use the reference anymore. This method must be idempotent and defensive, as multiple call may happen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>VertxMetricsFactory - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.core.spi</a>&nbsp;/&nbsp;<a href=".">VertxMetricsFactory</a><br/>
+<br/>
+<h1>VertxMetricsFactory</h1>
+<code><span class="keyword">interface </span><span class="identifier">VertxMetricsFactory</span></code>
+<p>A factory for the plugable metrics SPI.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Nick Scavelli</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="metrics.html">metrics</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">metrics</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.VertxMetricsFactory$metrics(io.vertx.core.Vertx, io.vertx.core.VertxOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.VertxMetricsFactory$metrics(io.vertx.core.Vertx, io.vertx.core.VertxOptions)/options">options</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core/-vertx-options/index.html"><span class="identifier">VertxOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.core.spi.metrics/-vertx-metrics/index.html"><span class="identifier">VertxMetrics</span></a></code>
+<p>Create a new io.vertx.core.spi.metrics.VertxMetrics object. No specific thread and context can be expected when this method is called.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-options.html">newOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">newOptions</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MetricsOptions</span></code>
+<p>Create an empty metrics options. Providers can override this method to provide a custom metrics options subclass that exposes custom configuration. It is used by the io.vertx.core.Starter class when creating new options when building a CLI vert.x</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

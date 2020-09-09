@@ -1,0 +1,212 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HttpConnection - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.core.http</a>&nbsp;/&nbsp;<a href=".">HttpConnection</a><br/>
+<br/>
+<h1>HttpConnection</h1>
+<code><span class="keyword">interface </span><span class="identifier">HttpConnection</span></code>
+<p>Represents an HTTP connection.  HTTP/1.x connection provides an limited implementation, the following methods are implemented: <ul> <li><code><a href="close.html">#close</a></code></li>
+ <li><code><a href="#">#closeHandler</a></code></li>
+ <li><code><a href="#">#exceptionHandler</a></code></li>
+ </ul>
+</p>
+<p><strong>Author</strong><br/>
+<a href="#">Julien Viet</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the connection and all the currently active streams.  An HTTP/2 connection will send a GOAWAY frame before.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="close-handler.html">closeHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">closeHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpConnection$closeHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Set a close handler. The handler will get notified when the connection is closed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="exception-handler.html">exceptionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">exceptionHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpConnection$exceptionHandler(io.vertx.core.Handler((kotlin.Throwable)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Set an handler called when a connection error happens</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-window-size.html">getWindowSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getWindowSize</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="go-away.html">goAway</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">goAway</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpConnection$goAway(kotlin.Long)/errorCode">errorCode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Like <code><a href="#">#goAway(long, int)</a></code> with a last stream id <code>-1</code> which means to disallow any new stream creation.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">goAway</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpConnection$goAway(kotlin.Long, kotlin.Int)/errorCode">errorCode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpConnection$goAway(kotlin.Long, kotlin.Int)/lastStreamId">lastStreamId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Like <code><a href="#">#goAway(long, int, Buffer)</a></code> with no buffer.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">goAway</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpConnection$goAway(kotlin.Long, kotlin.Int, io.vertx.core.buffer.Buffer)/errorCode">errorCode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpConnection$goAway(kotlin.Long, kotlin.Int, io.vertx.core.buffer.Buffer)/lastStreamId">lastStreamId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpConnection$goAway(kotlin.Long, kotlin.Int, io.vertx.core.buffer.Buffer)/debugData">debugData</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Send a go away frame to the remote endpoint of the connection.  <ul> <li>a GOAWAY frame is sent to the to the remote endpoint with the <code>errorCode</code> and <code>debugData</code></li>
+ <li>any stream created after the stream identified by <code>lastStreamId</code> will be closed</li>
+ <li>for an errorCode is different than <code>0</code> when all the remaining streams are closed this connection will be closed automatically</li>
+ </ul>
+  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="go-away-handler.html">goAwayHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">goAwayHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpConnection$goAwayHandler(io.vertx.core.Handler((io.vertx.core.http.GoAway)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">GoAway</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Set an handler called when a GOAWAY frame is received.  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="indicated-server-name.html">indicatedServerName</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">indicatedServerName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Returns the SNI server name presented during the SSL handshake by the client.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-ssl.html">isSsl</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isSsl</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="local-address.html">localAddress</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">localAddress</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SocketAddress</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="peer-certificate-chain.html">peerCertificateChain</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">peerCertificateChain</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">X509Certificate</span><span class="symbol">&gt;</span></code>
+<p>Note: Java SE 5+ recommends to use javax.net.ssl.SSLSession#getPeerCertificates() instead of of javax.net.ssl.SSLSession#getPeerCertificateChain() which this method is based on. Use <code><a href="ssl-session.html">#sslSession()</a></code> to access that method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="ping.html">ping</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">ping</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpConnection$ping(io.vertx.core.buffer.Buffer, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.buffer.Buffer)))))/data">data</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpConnection$ping(io.vertx.core.buffer.Buffer, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.buffer.Buffer)))))/pongHandler">pongHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Buffer</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Send a PING frame to the remote endpoint.  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="ping-handler.html">pingHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">pingHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpConnection$pingHandler(io.vertx.core.Handler((io.vertx.core.buffer.Buffer)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Buffer</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Set an handler notified when a PING frame is received from the remote endpoint.  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remote-address.html">remoteAddress</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">remoteAddress</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SocketAddress</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="remote-settings.html">remoteSettings</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">remoteSettings</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Http2Settings</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="remote-settings-handler.html">remoteSettingsHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">remoteSettingsHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpConnection$remoteSettingsHandler(io.vertx.core.Handler((io.vertx.core.http.Http2Settings)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Http2Settings</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Set an handler that is called when remote endpoint Http2Settings are updated.  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-window-size.html">setWindowSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setWindowSize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpConnection$setWindowSize(kotlin.Int)/windowSize">windowSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Update the current connection wide window size to a new size.  Increasing this value, gives better performance when several data streams are multiplexed  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="settings.html">settings</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">settings</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Http2Settings</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="shutdown.html">shutdown</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">shutdown</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Initiate a connection shutdown, a go away frame is sent and the connection is closed when all current active streams are closed or after a time out of 30 seconds.  This is not implemented for HTTP/1.x.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">shutdown</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpConnection$shutdown(kotlin.Long)/timeoutMs">timeoutMs</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Initiate a connection shutdown, a go away frame is sent and the connection is closed when all current streams will be closed or the <code>timeout</code> is fired.  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="shutdown-handler.html">shutdownHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">shutdownHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpConnection$shutdownHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Set an handler called when a GOAWAY frame has been sent or received and all connections are closed.  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="ssl-session.html">sslSession</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">sslSession</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SSLSession</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="update-settings.html">updateSettings</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">updateSettings</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpConnection$updateSettings(io.vertx.core.http.Http2Settings)/settings">settings</span><span class="symbol">:</span>&nbsp;<span class="identifier">Http2Settings</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Send to the remote endpoint an update of the server settings.  This is not implemented for HTTP/1.x.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">updateSettings</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpConnection$updateSettings(io.vertx.core.http.Http2Settings, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/settings">settings</span><span class="symbol">:</span>&nbsp;<span class="identifier">Http2Settings</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpConnection$updateSettings(io.vertx.core.http.Http2Settings, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Send to the remote endpoint an update of this endpoint settings  The <code>completionHandler</code> will be notified when the remote endpoint has acknowledged the settings.  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

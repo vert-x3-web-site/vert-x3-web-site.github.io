@@ -1,0 +1,148 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TestSuite - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.ext.unit</a>&nbsp;/&nbsp;<a href=".">TestSuite</a><br/>
+<br/>
+<h1>TestSuite</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TestSuite</span></code>
+<p>A named suite of test cases that are executed altogether. The suite suite is created with the <code><a href="#">io.vertx.rxjava.ext.unit.TestSuite#create</a></code> and the returned suite contains initially no tests. The suite can declare a callback before the suite with <code><a href="#">io.vertx.rxjava.ext.unit.TestSuite#before</a></code> or after the suite with <code><a href="#">io.vertx.rxjava.ext.unit.TestSuite#after</a></code>. The suite can declare a callback before each test with <code><a href="#">io.vertx.rxjava.ext.unit.TestSuite#beforeEach</a></code> or after each test with <code><a href="#">io.vertx.rxjava.ext.unit.TestSuite#afterEach</a></code>. Each test case of the suite is declared by calling the <code><a href="#">io.vertx.rxjava.ext.unit.TestSuite#test</a></code> method.  NOTE: This class has been automatically generated from the io.vertx.ext.unit.TestSuite non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">TestSuite</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestSuite$<init>(io.vertx.ext.unit.TestSuite)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.unit/-test-suite/index.html"><span class="identifier">TestSuite</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><span class="identifier">TypeArg</span><span class="symbol">&lt;</span><span class="identifier">TestSuite</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after.html">after</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">after</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestSuite$after(io.vertx.core.Handler((io.vertx.rxjava.ext.unit.TestContext)))/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../-test-context/index.html"><span class="identifier">TestContext</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestSuite</span></code>
+<p>Set a callback executed after the tests.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="after-each.html">afterEach</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterEach</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestSuite$afterEach(io.vertx.core.Handler((io.vertx.rxjava.ext.unit.TestContext)))/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../-test-context/index.html"><span class="identifier">TestContext</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestSuite</span></code>
+<p>Set a callback executed after each test and before the suite <code>after</code> callback.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="before.html">before</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">before</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestSuite$before(io.vertx.core.Handler((io.vertx.rxjava.ext.unit.TestContext)))/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../-test-context/index.html"><span class="identifier">TestContext</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestSuite</span></code>
+<p>Set a callback executed before the tests.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="before-each.html">beforeEach</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beforeEach</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestSuite$beforeEach(io.vertx.core.Handler((io.vertx.rxjava.ext.unit.TestContext)))/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../-test-context/index.html"><span class="identifier">TestContext</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestSuite</span></code>
+<p>Set a callback executed before each test and after the suite <code>before</code> callback.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestSuite$create(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestSuite</span></code>
+<p>Create and return a new test suite.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestSuite$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.ext.unit/-test-suite/index.html"><span class="identifier">TestSuite</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestSuite$newInstance(io.vertx.ext.unit.TestSuite)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.unit/-test-suite/index.html"><span class="identifier">TestSuite</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestSuite</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="run.html">run</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">run</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-test-completion/index.html"><span class="identifier">TestCompletion</span></a></code>
+<p>Run the testsuite with the default options. When the test suite is executed in a Vertx context (i.e `Vertx.currentContext()` returns a context) this context's event loop is used for running the test suite. Otherwise it is executed in the current thread. The returned io.vertx.rxjava.ext.unit.Completion object can be used to get a completion callback.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">run</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestSuite$run(io.vertx.ext.unit.TestOptions)/options">options</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.unit/-test-options/index.html"><span class="identifier">TestOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-test-completion/index.html"><span class="identifier">TestCompletion</span></a></code>
+<p>Run the testsuite with the specified <code>options</code>. When the test suite is executed in a Vertx context (i.e `Vertx.currentContext()` returns a context) this context's event loop is used for running the test suite unless the io.vertx.ext.unit.TestOptions is set to <code>false</code>. In this case it is executed by the current thread. Otherwise, the test suite will be executed in the current thread when io.vertx.ext.unit.TestOptions is set to <code>false</code> or <code>null</code>. If the value is <code>true</code>, this methods throws an <code>IllegalStateException</code>. The returned io.vertx.rxjava.ext.unit.Completion object can be used to get a completion callback.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">run</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestSuite$run(io.vertx.rxjava.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-test-completion/index.html"><span class="identifier">TestCompletion</span></a></code>
+<p>Run the testsuite with the default options and the specified <code>vertx</code> instance. The test suite will be executed on the event loop provided by the <code>vertx</code> argument. The returned io.vertx.rxjava.ext.unit.Completion object can be used to get a completion callback.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">run</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestSuite$run(io.vertx.rxjava.core.Vertx, io.vertx.ext.unit.TestOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestSuite$run(io.vertx.rxjava.core.Vertx, io.vertx.ext.unit.TestOptions)/options">options</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.unit/-test-options/index.html"><span class="identifier">TestOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-test-completion/index.html"><span class="identifier">TestCompletion</span></a></code>
+<p>Run the testsuite with the specified <code>options</code> and the specified <code>vertx</code> instance. The test suite will be executed on the event loop provided by the <code>vertx</code> argument when io.vertx.ext.unit.TestOptions is not set to <code>false</code>. The returned io.vertx.rxjava.ext.unit.Completion object can be used to get a completion callback.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="test.html">test</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">test</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestSuite$test(kotlin.String, io.vertx.core.Handler((io.vertx.rxjava.ext.unit.TestContext)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestSuite$test(kotlin.String, io.vertx.core.Handler((io.vertx.rxjava.ext.unit.TestContext)))/testCase">testCase</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../-test-context/index.html"><span class="identifier">TestContext</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestSuite</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">test</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestSuite$test(kotlin.String, kotlin.Int, io.vertx.core.Handler((io.vertx.rxjava.ext.unit.TestContext)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestSuite$test(kotlin.String, kotlin.Int, io.vertx.core.Handler((io.vertx.rxjava.ext.unit.TestContext)))/repeat">repeat</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.unit.TestSuite$test(kotlin.String, kotlin.Int, io.vertx.core.Handler((io.vertx.rxjava.ext.unit.TestContext)))/testCase">testCase</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../-test-context/index.html"><span class="identifier">TestContext</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestSuite</span></code>
+<p>Add a new test case to the suite.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

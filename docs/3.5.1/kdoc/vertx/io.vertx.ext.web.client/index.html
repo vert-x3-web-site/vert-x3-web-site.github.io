@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.ext.web.client - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.ext.web.client</a><br/>
+<br/>
+<h2>Package io.vertx.ext.web.client</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-http-request/index.html">HttpRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">HttpRequest</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>A client-side HTTP request. 
+<p> Instances are created by an WebClient instance, via one of the methods corresponding to the specific HTTP methods such as <code><a href="#">WebClient#get</a></code>, etc... </p>
+<p> The request shall be configured prior sending, the request is immutable and when a mutator method is called, a new request is returned allowing to expose the request in a public API and apply further customization. </p>
+<p> After the request has been configured, the methods </p>
+<ul> <li><code><a href="#">#send(Handler)</a></code></li>
+ <li><code><a href="#">#sendStream(ReadStream, Handler)</a></code></li>
+ <li><code><a href="#">#sendJson(Object, Handler)</a></code> ()}</li>
+ <li><code><a href="#">#sendForm(MultiMap, Handler)</a></code></li>
+ </ul>
+ can be called. The <code>sendXXX</code> methods perform the actual request, they can be called multiple times to perform the same HTTP request at different points in time. 
+<p> The handler is called back with </p>
+<ul> <li>an HttpResponse instance when the HTTP response has been received</li>
+ <li>a failure when the HTTP request failed (like a connection error) or when the HTTP response could not be obtained (like connection or unmarshalling errors)</li>
+ </ul>
+ 
+<p> Most of the time, this client will buffer the HTTP response fully unless a specific BodyCodec is used such as <code><a href="#">BodyCodec#create(Handler)</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-client-options-converter/index.html">WebClientOptionsConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebClientOptionsConverter</span></code>
+<p>Converter for io.vertx.ext.web.client.WebClientOptions. NOTE: This class has been automatically generated from the io.vertx.ext.web.client.WebClientOptions original class using Vert.x codegen.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

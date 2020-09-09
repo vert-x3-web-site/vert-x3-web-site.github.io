@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Vertx.createSharedWorkerExecutor - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core</a>&nbsp;/&nbsp;<a href="index.html">Vertx</a>&nbsp;/&nbsp;<a href=".">createSharedWorkerExecutor</a><br/>
+<br/>
+<h1>createSharedWorkerExecutor</h1>
+<a name="io.vertx.reactivex.core.Vertx$createSharedWorkerExecutor(kotlin.String)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createSharedWorkerExecutor</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Vertx$createSharedWorkerExecutor(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-worker-executor/index.html"><span class="identifier">WorkerExecutor</span></a></code>
+<p>Like <code><a href="#">io.vertx.reactivex.core.Vertx#createSharedWorkerExecutor</a></code> but with the io.vertx.core.VertxOptions <code>poolSize</code>.</p>
+<h3>Parameters</h3>
+<p><a name="name"></a>
+<code>name</code> - </p>
+<p><strong>Return</strong><br/>
+</p>
+<a name="io.vertx.reactivex.core.Vertx$createSharedWorkerExecutor(kotlin.String, kotlin.Int)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createSharedWorkerExecutor</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Vertx$createSharedWorkerExecutor(kotlin.String, kotlin.Int)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.Vertx$createSharedWorkerExecutor(kotlin.String, kotlin.Int)/poolSize">poolSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-worker-executor/index.html"><span class="identifier">WorkerExecutor</span></a></code>
+<p>Like <code><a href="#">io.vertx.reactivex.core.Vertx#createSharedWorkerExecutor</a></code> but with the io.vertx.core.VertxOptions <code>maxExecuteTime</code>.</p>
+<h3>Parameters</h3>
+<p><a name="name"></a>
+<code>name</code> - </p>
+<p><a name="poolSize"></a>
+<code>poolSize</code> - </p>
+<p><strong>Return</strong><br/>
+</p>
+<a name="io.vertx.reactivex.core.Vertx$createSharedWorkerExecutor(kotlin.String, kotlin.Int, kotlin.Long)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createSharedWorkerExecutor</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Vertx$createSharedWorkerExecutor(kotlin.String, kotlin.Int, kotlin.Long)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.Vertx$createSharedWorkerExecutor(kotlin.String, kotlin.Int, kotlin.Long)/poolSize">poolSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.Vertx$createSharedWorkerExecutor(kotlin.String, kotlin.Int, kotlin.Long)/maxExecuteTime">maxExecuteTime</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-worker-executor/index.html"><span class="identifier">WorkerExecutor</span></a></code>
+<p>Create a named worker executor, the executor should be closed when it's not needed anymore to release resources. This method can be called mutiple times with the same <code>name</code>. Executors with the same name will share the same worker pool. The worker pool size and max execute time are set when the worker pool is created and won't change after.
+<p> The worker pool is released when all the io.vertx.reactivex.core.WorkerExecutor sharing the same name are closed.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="name"></a>
+<code>name</code> - the name of the worker executor</p>
+<p><a name="poolSize"></a>
+<code>poolSize</code> - the size of the pool</p>
+<p><a name="maxExecuteTime"></a>
+<code>maxExecuteTime</code> - the value of max worker execute time, in ns</p>
+<p><strong>Return</strong><br/>
+the named worker executor</p>
+</BODY>
+</HTML>

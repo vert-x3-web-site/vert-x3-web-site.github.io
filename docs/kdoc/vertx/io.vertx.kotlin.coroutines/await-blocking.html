@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>awaitBlocking - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href="index.html">io.vertx.kotlin.coroutines</a>&nbsp;/&nbsp;<a href=".">awaitBlocking</a><br/>
+<br/>
+<h1>awaitBlocking</h1>
+<a name="io.vertx.kotlin.coroutines$awaitBlocking(kotlin.Function0((io.vertx.kotlin.coroutines.awaitBlocking.T)))"></a>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <span class="identifier">awaitBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.coroutines$awaitBlocking(kotlin.Function0((io.vertx.kotlin.coroutines.awaitBlocking.T)))/block">block</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Run an asynchronous <a href="await-blocking.html#io.vertx.kotlin.coroutines$awaitBlocking(kotlin.Function0((io.vertx.kotlin.coroutines.awaitBlocking.T)))/block">block</a> on a worker threads and awaits the result.</p>
+<p>The <a href="await-blocking.html#io.vertx.kotlin.coroutines$awaitBlocking(kotlin.Function0((io.vertx.kotlin.coroutines.awaitBlocking.T)))/block">block</a> is executed and should return an object or throw an exception.</p>
+<ul><li>when an object is returned, it is returned from the <code>awaitBlocking</code> call</li>
+<li>when an exception is thrown, it is thrown from the <code>awaitBlocking</code> call</li>
+</ul>
+<pre><code>val s = awaitBlocking {
+  Thread.sleep(1000)
+  "some-string"
+}
+</code></pre>
+<p>The coroutine will be suspend until the block is executed, this action do not block vertx's eventLoop.</p>
+<h3>Parameters</h3>
+<p><a name="block"></a>
+<code>block</code> - the code to run</p>
+</BODY>
+</HTML>

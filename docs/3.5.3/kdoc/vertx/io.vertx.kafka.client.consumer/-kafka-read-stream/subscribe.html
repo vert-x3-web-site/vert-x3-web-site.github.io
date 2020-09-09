@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>KafkaReadStream.subscribe - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.kafka.client.consumer</a>&nbsp;/&nbsp;<a href="index.html">KafkaReadStream</a>&nbsp;/&nbsp;<a href=".">subscribe</a><br/>
+<br/>
+<h1>subscribe</h1>
+<a name="io.vertx.kafka.client.consumer.KafkaReadStream$subscribe(kotlin.collections.MutableSet((kotlin.String)))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">subscribe</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kafka.client.consumer.KafkaReadStream$subscribe(kotlin.collections.MutableSet((kotlin.String)))/topics">topics</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">KafkaReadStream</span></a><span class="symbol">&lt;</span><span class="identifier">K</span><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span></code>
+<p>Subscribe to the given list of topics to get dynamically assigned partitions.</p>
+<h3>Parameters</h3>
+<p><a name="topics"></a>
+<code>topics</code> - topics to subscribe to</p>
+<p><strong>Return</strong><br/>
+current KafkaReadStream instance</p>
+<a name="io.vertx.kafka.client.consumer.KafkaReadStream$subscribe(kotlin.collections.MutableSet((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">subscribe</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kafka.client.consumer.KafkaReadStream$subscribe(kotlin.collections.MutableSet((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/topics">topics</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.kafka.client.consumer.KafkaReadStream$subscribe(kotlin.collections.MutableSet((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">KafkaReadStream</span></a><span class="symbol">&lt;</span><span class="identifier">K</span><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span></code>
+<p>Subscribe to the given list of topics to get dynamically assigned partitions. 
+<p> Due to internal buffering of messages, when changing the subscribed topics the old set of topics may remain in effect (as observed by the <a href="#">#handler(Handler)</a> record handler}) until some time <em>after</em> the given <code>completionHandler</code> is called. In contrast, the once the given <code>completionHandler</code> is called the <code><a href="#">#batchHandler(Handler)</a></code> will only see messages consistent with the new set of topics.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="topics"></a>
+<code>topics</code> - topics to subscribe to</p>
+<p><a name="completionHandler"></a>
+<code>completionHandler</code> - handler called on operation completed</p>
+<p><strong>Return</strong><br/>
+current KafkaReadStream instance</p>
+</BODY>
+</HTML>

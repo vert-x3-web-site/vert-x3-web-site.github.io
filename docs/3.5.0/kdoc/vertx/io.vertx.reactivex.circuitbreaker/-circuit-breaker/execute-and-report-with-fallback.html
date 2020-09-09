@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CircuitBreaker.executeAndReportWithFallback - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.circuitbreaker</a>&nbsp;/&nbsp;<a href="index.html">CircuitBreaker</a>&nbsp;/&nbsp;<a href=".">executeAndReportWithFallback</a><br/>
+<br/>
+<h1>executeAndReportWithFallback</h1>
+<a name="io.vertx.reactivex.circuitbreaker.CircuitBreaker$executeAndReportWithFallback(io.vertx.reactivex.core.Future((io.vertx.reactivex.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)), io.vertx.core.Handler((io.vertx.reactivex.core.Future((io.vertx.reactivex.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)))), java.util.function.Function((kotlin.Throwable, io.vertx.reactivex.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">executeAndReportWithFallback</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.circuitbreaker.CircuitBreaker$executeAndReportWithFallback(io.vertx.reactivex.core.Future((io.vertx.reactivex.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)), io.vertx.core.Handler((io.vertx.reactivex.core.Future((io.vertx.reactivex.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)))), java.util.function.Function((kotlin.Throwable, io.vertx.reactivex.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)))/resultFuture">resultFuture</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.circuitbreaker.CircuitBreaker$executeAndReportWithFallback(io.vertx.reactivex.core.Future((io.vertx.reactivex.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)), io.vertx.core.Handler((io.vertx.reactivex.core.Future((io.vertx.reactivex.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)))), java.util.function.Function((kotlin.Throwable, io.vertx.reactivex.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)))/command">command</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.circuitbreaker.CircuitBreaker$executeAndReportWithFallback(io.vertx.reactivex.core.Future((io.vertx.reactivex.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)), io.vertx.core.Handler((io.vertx.reactivex.core.Future((io.vertx.reactivex.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)))), java.util.function.Function((kotlin.Throwable, io.vertx.reactivex.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)))/fallback">fallback</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html"><span class="identifier">Function</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">CircuitBreaker</span></a></code>
+<p>Executes the given operation with the circuit breaker control. The operation is generally calling an <em>external</em> system. The operation receives a object as parameter and <strong>must</strong> call when the operation has terminated successfully. The operation must also call in case of failure. 
+<p> The operation is not invoked if the circuit breaker is open, and the given fallback is called immediately. The circuit breaker also monitor the completion of the operation before a configure timeout. The operation is considered as failed if it does not terminate in time. </p>
+<p> Unlike <code><a href="#">io.vertx.reactivex.circuitbreaker.CircuitBreaker#executeWithFallback</a></code>, this method does return a object, but let the caller pass a object on which the result is reported. If the fallback is called, the future is successfully completed with the value returned by the fallback function. If the fallback throws an exception, the future is marked as failed.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="resultFuture"></a>
+<code>resultFuture</code> - the future on which the operation result is reported</p>
+<p><a name="command"></a>
+<code>command</code> - the operation</p>
+<p><a name="fallback"></a>
+<code>fallback</code> - the fallback function. It gets an exception as parameter and returns the <em>fallback</em> result</p>
+<p><strong>Return</strong><br/>
+the current io.vertx.reactivex.circuitbreaker.CircuitBreaker</p>
+</BODY>
+</HTML>

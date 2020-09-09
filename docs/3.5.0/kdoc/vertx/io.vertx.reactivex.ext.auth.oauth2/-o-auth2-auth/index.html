@@ -1,0 +1,194 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>OAuth2Auth - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.ext.auth.oauth2</a>&nbsp;/&nbsp;<a href=".">OAuth2Auth</a><br/>
+<br/>
+<h1>OAuth2Auth</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OAuth2Auth</span></code>
+<p>Factory interface for creating OAuth2 based io.vertx.reactivex.ext.auth.AuthProvider instances.  NOTE: This class has been automatically generated from the io.vertx.ext.auth.oauth2.OAuth2Auth non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">OAuth2Auth</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$<init>(io.vertx.ext.auth.oauth2.OAuth2Auth)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.auth.oauth2/-o-auth2-auth/index.html"><span class="identifier">OAuth2Auth</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">OAuth2Auth</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="authorize-u-r-l.html">authorizeURL</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">authorizeURL</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$authorizeURL(io.vertx.core.json.JsonObject)/params">params</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Generate a redirect URL to the authN/Z backend. It only applies to auth_code flow.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$create(io.vertx.reactivex.core.Vertx, io.vertx.ext.auth.oauth2.OAuth2FlowType, io.vertx.ext.auth.oauth2.OAuth2ClientOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core/-vertx/index.html"><span class="identifier">Vertx</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$create(io.vertx.reactivex.core.Vertx, io.vertx.ext.auth.oauth2.OAuth2FlowType, io.vertx.ext.auth.oauth2.OAuth2ClientOptions)/flow">flow</span><span class="symbol">:</span>&nbsp;<span class="identifier">OAuth2FlowType</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$create(io.vertx.reactivex.core.Vertx, io.vertx.ext.auth.oauth2.OAuth2FlowType, io.vertx.ext.auth.oauth2.OAuth2ClientOptions)/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">OAuth2ClientOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">OAuth2Auth</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$create(io.vertx.reactivex.core.Vertx, io.vertx.ext.auth.oauth2.OAuth2FlowType)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core/-vertx/index.html"><span class="identifier">Vertx</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$create(io.vertx.reactivex.core.Vertx, io.vertx.ext.auth.oauth2.OAuth2FlowType)/flow">flow</span><span class="symbol">:</span>&nbsp;<span class="identifier">OAuth2FlowType</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">OAuth2Auth</span></code>
+<p>Create a OAuth2 auth provider</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-keycloak.html">createKeycloak</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createKeycloak</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$createKeycloak(io.vertx.reactivex.core.Vertx, io.vertx.ext.auth.oauth2.OAuth2FlowType, io.vertx.core.json.JsonObject)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core/-vertx/index.html"><span class="identifier">Vertx</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$createKeycloak(io.vertx.reactivex.core.Vertx, io.vertx.ext.auth.oauth2.OAuth2FlowType, io.vertx.core.json.JsonObject)/flow">flow</span><span class="symbol">:</span>&nbsp;<span class="identifier">OAuth2FlowType</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$createKeycloak(io.vertx.reactivex.core.Vertx, io.vertx.ext.auth.oauth2.OAuth2FlowType, io.vertx.core.json.JsonObject)/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">OAuth2Auth</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="decode-token.html">decodeToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">decodeToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$decodeToken(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.ext.auth.oauth2.AccessToken)))))/token">token</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$decodeToken(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.ext.auth.oauth2.AccessToken)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">AccessToken</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">OAuth2Auth</span></code>
+<p>Decode a token to a io.vertx.reactivex.ext.auth.oauth2.AccessToken object. This is useful to handle bearer JWT tokens.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.ext.auth.oauth2/-o-auth2-auth/index.html"><span class="identifier">OAuth2Auth</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-flow-type.html">getFlowType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getFlowType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">OAuth2FlowType</span></code>
+<p>Returns the configured flow type for the Oauth2 provider.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-scope-separator.html">getScopeSeparator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getScopeSeparator</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Returns the scope separator. The RFC 6749 states that a scope is expressed as a set of case-sensitive and space-delimited strings, however vendors tend not to agree on this and we see the following cases being used: space, plus sign, comma.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-token.html">getToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$getToken(io.vertx.core.json.JsonObject, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.ext.auth.oauth2.AccessToken)))))/params">params</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$getToken(io.vertx.core.json.JsonObject, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.ext.auth.oauth2.AccessToken)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">AccessToken</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Returns the Access Token object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="has-j-w-t-token.html">hasJWTToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hasJWTToken</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Returns true if this provider supports JWT tokens as the access_token. This is typically true if the provider implements the `openid-connect` protocol. This is a plain return from the config option jwtToken, which is false by default. This information is important to validate grants. Since pure OAuth2 should be used for authorization and when a token is requested all grants should be declared, in case of openid-connect this is not true. OpenId will issue a token and all grants will be encoded on the token itself so the requester does not need to list the required grants.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="introspect-token.html">introspectToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">introspectToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$introspectToken(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.ext.auth.oauth2.AccessToken)))))/token">token</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$introspectToken(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.ext.auth.oauth2.AccessToken)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">AccessToken</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">OAuth2Auth</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">introspectToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$introspectToken(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.ext.auth.oauth2.AccessToken)))))/token">token</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$introspectToken(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.ext.auth.oauth2.AccessToken)))))/tokenType">tokenType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$introspectToken(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.ext.auth.oauth2.AccessToken)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">AccessToken</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">OAuth2Auth</span></code>
+<p>Query an OAuth 2.0 authorization server to determine the active state of an OAuth 2.0 token and to determine meta-information about this token.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$newInstance(io.vertx.ext.auth.oauth2.OAuth2Auth)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.auth.oauth2/-o-auth2-auth/index.html"><span class="identifier">OAuth2Auth</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">OAuth2Auth</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-decode-token.html">rxDecodeToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxDecodeToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$rxDecodeToken(kotlin.String)/token">token</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">AccessToken</span><span class="symbol">&gt;</span></code>
+<p>Decode a token to a io.vertx.reactivex.ext.auth.oauth2.AccessToken object. This is useful to handle bearer JWT tokens.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-get-token.html">rxGetToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxGetToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$rxGetToken(io.vertx.core.json.JsonObject)/params">params</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">AccessToken</span><span class="symbol">&gt;</span></code>
+<p>Returns the Access Token object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-introspect-token.html">rxIntrospectToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxIntrospectToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$rxIntrospectToken(kotlin.String)/token">token</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">AccessToken</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxIntrospectToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$rxIntrospectToken(kotlin.String, kotlin.String)/token">token</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth$rxIntrospectToken(kotlin.String, kotlin.String)/tokenType">tokenType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">AccessToken</span><span class="symbol">&gt;</span></code>
+<p>Query an OAuth 2.0 authorization server to determine the active state of an OAuth 2.0 token and to determine meta-information about this token.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="verify-is-using-password.html">verifyIsUsingPassword</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">verifyIsUsingPassword</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

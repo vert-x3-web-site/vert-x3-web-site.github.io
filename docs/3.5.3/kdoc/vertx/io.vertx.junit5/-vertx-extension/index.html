@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>VertxExtension - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.junit5</a>&nbsp;/&nbsp;<a href=".">VertxExtension</a><br/>
+<br/>
+<h1>VertxExtension</h1>
+<code><span class="keyword">class </span><span class="identifier">VertxExtension</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ParameterResolver</span><span class="symbol">, </span><span class="identifier">BeforeTestExecutionCallback</span><span class="symbol">, </span><span class="identifier">AfterTestExecutionCallback</span><span class="symbol">, </span><span class="identifier">BeforeEachCallback</span><span class="symbol">, </span><span class="identifier">AfterEachCallback</span><span class="symbol">, </span><span class="identifier">BeforeAllCallback</span><span class="symbol">, </span><span class="identifier">AfterAllCallback</span></code>
+<p>JUnit 5 Vert.x extension that allows the injection of Vertx and VertxTestContext parameters as well as an automatic lifecycle on the VertxTestContext instance.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Julien Ponge</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">VertxExtension</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>JUnit 5 Vert.x extension that allows the injection of Vertx and VertxTestContext parameters as well as an automatic lifecycle on the VertxTestContext instance.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-all.html">afterAll</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">afterAll</span><span class="symbol">(</span><span class="identifier" id="io.vertx.junit5.VertxExtension$afterAll(org.junit.jupiter.api.extension.ExtensionContext)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExtensionContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="after-each.html">afterEach</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">afterEach</span><span class="symbol">(</span><span class="identifier" id="io.vertx.junit5.VertxExtension$afterEach(org.junit.jupiter.api.extension.ExtensionContext)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExtensionContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="after-test-execution.html">afterTestExecution</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">afterTestExecution</span><span class="symbol">(</span><span class="identifier" id="io.vertx.junit5.VertxExtension$afterTestExecution(org.junit.jupiter.api.extension.ExtensionContext)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExtensionContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="before-all.html">beforeAll</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">beforeAll</span><span class="symbol">(</span><span class="identifier" id="io.vertx.junit5.VertxExtension$beforeAll(org.junit.jupiter.api.extension.ExtensionContext)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExtensionContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="before-each.html">beforeEach</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">beforeEach</span><span class="symbol">(</span><span class="identifier" id="io.vertx.junit5.VertxExtension$beforeEach(org.junit.jupiter.api.extension.ExtensionContext)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExtensionContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="before-test-execution.html">beforeTestExecution</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">beforeTestExecution</span><span class="symbol">(</span><span class="identifier" id="io.vertx.junit5.VertxExtension$beforeTestExecution(org.junit.jupiter.api.extension.ExtensionContext)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExtensionContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-parameter.html">resolveParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">resolveParameter</span><span class="symbol">(</span><span class="identifier" id="io.vertx.junit5.VertxExtension$resolveParameter(org.junit.jupiter.api.extension.ParameterContext, org.junit.jupiter.api.extension.ExtensionContext)/parameterContext">parameterContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ParameterContext</span><span class="symbol">, </span><span class="identifier" id="io.vertx.junit5.VertxExtension$resolveParameter(org.junit.jupiter.api.extension.ParameterContext, org.junit.jupiter.api.extension.ExtensionContext)/extensionContext">extensionContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExtensionContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="supports-parameter.html">supportsParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">supportsParameter</span><span class="symbol">(</span><span class="identifier" id="io.vertx.junit5.VertxExtension$supportsParameter(org.junit.jupiter.api.extension.ParameterContext, org.junit.jupiter.api.extension.ExtensionContext)/parameterContext">parameterContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ParameterContext</span><span class="symbol">, </span><span class="identifier" id="io.vertx.junit5.VertxExtension$supportsParameter(org.junit.jupiter.api.extension.ParameterContext, org.junit.jupiter.api.extension.ExtensionContext)/extensionContext">extensionContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExtensionContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

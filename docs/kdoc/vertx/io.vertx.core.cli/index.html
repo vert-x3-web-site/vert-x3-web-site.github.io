@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.core.cli - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.core.cli</a><br/>
+<br/>
+<h2>Package io.vertx.core.cli</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-argument/index.html">Argument</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Argument</span></code>
+<p>Defines a command line argument. Unlike options, argument don't have names and are identified using an index. The first index is 0 (because we are in the computer world).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-argument-converter/index.html">ArgumentConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ArgumentConverter</span></code>
+<p>Converter for io.vertx.core.cli.Argument. NOTE: This class has been automatically generated from the io.vertx.core.cli.Argument original class using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-command-line/index.html">CommandLine</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">CommandLine</span></code>
+<p>The parser transforms a CLI (a model) into an CommandLine. This CommandLine has stored the argument and option values. Only instance of parser should create objects of this type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-option-converter/index.html">OptionConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OptionConverter</span></code>
+<p>Converter for io.vertx.core.cli.Option. NOTE: This class has been automatically generated from the io.vertx.core.cli.Option original class using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-typed-argument/index.html">TypedArgument</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TypedArgument</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-argument/index.html"><span class="identifier">Argument</span></a></code>
+<p>An implementation of Argument for java specifying the type of object received by the argument. This allows converting the given <em>raw</em> value into the specified type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-typed-option/index.html">TypedOption</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TypedOption</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Option</span></code>
+<p>An implementation of Option for java specifying the type of object received by the option. This allows converting the given <em>raw</em> value into the specified type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-usage-message-formatter/index.html">UsageMessageFormatter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UsageMessageFormatter</span></code>
+<p>Usage message formatter.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-ambiguous-option-exception/index.html">AmbiguousOptionException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AmbiguousOptionException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-c-l-i-exception/index.html"><span class="identifier">CLIException</span></a></code>
+<p>Exception thrown when the command line is ambiguous meaning it cannot determine exactly which option has to be set.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-l-i-exception/index.html">CLIException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CLIException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RuntimeException</span></code>
+<p>High level exception thrown when an issue in the command line processing occurs.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-invalid-value-exception/index.html">InvalidValueException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InvalidValueException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-c-l-i-exception/index.html"><span class="identifier">CLIException</span></a></code>
+<p>Exception thrown when an option or an argument receives an invalid value.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-missing-option-exception/index.html">MissingOptionException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MissingOptionException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-c-l-i-exception/index.html"><span class="identifier">CLIException</span></a></code>
+<p>Exception thrown when an option was expected and was not found on the command line.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-missing-value-exception/index.html">MissingValueException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MissingValueException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-c-l-i-exception/index.html"><span class="identifier">CLIException</span></a></code>
+<p>Exception thrown when an option requiring a value does not receive the value, or when a mandatory argument does not receive a value.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

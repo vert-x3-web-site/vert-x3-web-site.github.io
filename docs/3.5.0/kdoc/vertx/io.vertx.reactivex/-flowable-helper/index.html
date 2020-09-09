@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>FlowableHelper - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex</a>&nbsp;/&nbsp;<a href=".">FlowableHelper</a><br/>
+<br/>
+<h1>FlowableHelper</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FlowableHelper</span></code>
+<p><strong>Author</strong><br/>
+<a href="#">Julien Viet</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">FlowableHelper</span><span class="symbol">(</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="to-flowable.html">toFlowable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">U</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">toFlowable</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.FlowableHelper$toFlowable(io.vertx.core.streams.ReadStream((io.vertx.reactivex.FlowableHelper.toFlowable.T)), java.util.function.Function((io.vertx.reactivex.FlowableHelper.toFlowable.T, io.vertx.reactivex.FlowableHelper.toFlowable.U)))/stream">stream</span><span class="symbol">:</span>&nbsp;<span class="identifier">ReadStream</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.FlowableHelper$toFlowable(io.vertx.core.streams.ReadStream((io.vertx.reactivex.FlowableHelper.toFlowable.T)), java.util.function.Function((io.vertx.reactivex.FlowableHelper.toFlowable.T, io.vertx.reactivex.FlowableHelper.toFlowable.U)))/mapping">mapping</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html"><span class="identifier">Function</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">,</span>&nbsp;<span class="identifier">U</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Flowable.html"><span class="identifier">Flowable</span></a><span class="symbol">&lt;</span><span class="identifier">U</span><span class="symbol">&gt;</span></code>
+<p>Like <code><a href="#">#toFlowable(ReadStream)</a></code> but with a <code>mapping</code> function</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">toFlowable</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.FlowableHelper$toFlowable(io.vertx.core.streams.ReadStream((io.vertx.reactivex.FlowableHelper.toFlowable.T)))/stream">stream</span><span class="symbol">:</span>&nbsp;<span class="identifier">ReadStream</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Flowable.html"><span class="identifier">Flowable</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">toFlowable</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.FlowableHelper$toFlowable(io.vertx.core.streams.ReadStream((io.vertx.reactivex.FlowableHelper.toFlowable.T)), kotlin.Long)/stream">stream</span><span class="symbol">:</span>&nbsp;<span class="identifier">ReadStream</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.FlowableHelper$toFlowable(io.vertx.core.streams.ReadStream((io.vertx.reactivex.FlowableHelper.toFlowable.T)), kotlin.Long)/maxBufferSize">maxBufferSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Flowable.html"><span class="identifier">Flowable</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Adapts a Vert.x &lt; to an RxJava &lt;. After the stream is adapted to a flowable, the original stream handlers should not be used anymore as they will be used by the flowable adapter.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-read-stream.html">toReadStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">toReadStream</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.FlowableHelper$toReadStream(io.reactivex.Flowable((io.vertx.reactivex.FlowableHelper.toReadStream.T)))/observable">observable</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Flowable.html"><span class="identifier">Flowable</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ReadStream</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Adapts an RxJava &lt; to a Vert.x &lt;. The returned readstream will be subscribed to the &lt;.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="unmarshaller.html">unmarshaller</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">unmarshaller</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.FlowableHelper$unmarshaller(java.lang.Class((io.vertx.reactivex.FlowableHelper.unmarshaller.T)))/mappedType">mappedType</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html"><span class="identifier">Class</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/FlowableTransformer.html"><span class="identifier">FlowableTransformer</span></a><span class="symbol">&lt;</span><span class="identifier">Buffer</span><span class="symbol">,</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">unmarshaller</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.FlowableHelper$unmarshaller(com.fasterxml.jackson.core.type.TypeReference((io.vertx.reactivex.FlowableHelper.unmarshaller.T)))/mappedTypeRef">mappedTypeRef</span><span class="symbol">:</span>&nbsp;<a href="http://fasterxml.github.io/jackson-core/javadoc/2.9/com/fasterxml/jackson/core/type/TypeReference.html"><span class="identifier">TypeReference</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/FlowableTransformer.html"><span class="identifier">FlowableTransformer</span></a><span class="symbol">&lt;</span><span class="identifier">Buffer</span><span class="symbol">,</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

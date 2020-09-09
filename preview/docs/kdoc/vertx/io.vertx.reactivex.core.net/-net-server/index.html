@@ -1,0 +1,186 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>NetServer - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.net</a>&nbsp;/&nbsp;<a href=".">NetServer</a><br/>
+<br/>
+<h1>NetServer</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NetServer</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.metrics/-measured/index.html"><span class="identifier">Measured</span></a></code>
+<p>Represents a TCP server  NOTE: This class has been automatically generated from the io.vertx.core.net.NetServer non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">NetServer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$<init>(io.vertx.core.net.NetServer)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.net/-net-server/index.html"><span class="identifier">NetServer</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">NetServer</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="actual-port.html">actualPort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">actualPort</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The actual port the server is listening on. This is useful if you bound the server specifying 0 as port number signifying an ephemeral port</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the server. This will close any currently open connections. The close may not complete until after this method has returned.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$close(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Like <code><a href="close.html">io.vertx.reactivex.core.net.NetServer#close</a></code> but supplying a handler that will be notified when close is complete.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="connect-handler.html">connectHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">connectHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$connectHandler(io.vertx.core.Handler((io.vertx.reactivex.core.net.NetSocket)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../-net-socket/index.html"><span class="identifier">NetSocket</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NetServer</span></code>
+<p>Supply a connect handler for this server. The server can only have at most one connect handler at any one time. As the server accepts TCP or SSL connections it creates an instance of io.vertx.reactivex.core.net.NetSocket and passes it to the connect handler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="connect-stream.html">connectStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">connectStream</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core.streams/-read-stream/index.html"><span class="identifier">ReadStream</span></a><span class="symbol">&lt;</span><a href="../-net-socket/index.html"><span class="identifier">NetSocket</span></a><span class="symbol">&gt;</span></code>
+<p>Return the connect stream for this server. The server can only have at most one handler at any one time. As the server accepts TCP or SSL connections it creates an instance of io.vertx.reactivex.core.net.NetSocket and passes it to the connect stream .</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="exception-handler.html">exceptionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">exceptionHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$exceptionHandler(io.vertx.core.Handler((kotlin.Throwable)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NetServer</span></code>
+<p>Set an exception handler called for socket errors happening before the connection is passed to the <code><a href="#">io.vertx.reactivex.core.net.NetServer#connectHandler</a></code>, e.g during the TLS handshake.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.core.net/-net-server/index.html"><span class="identifier">NetServer</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-metrics-enabled.html">isMetricsEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isMetricsEnabled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether the metrics are enabled for this measured object</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="listen.html">listen</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NetServer</span></code>
+<p>Start listening on the port and host as configured in the io.vertx.core.net.NetServerOptions used when creating the server. 
+<p> The server may not be listening until some time after the call to listen has returned.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$listen(io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.net.NetServer)))))/listenHandler">listenHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">NetServer</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NetServer</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$listen(kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.net.NetServer)))))/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$listen(kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.net.NetServer)))))/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$listen(kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.net.NetServer)))))/listenHandler">listenHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">NetServer</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NetServer</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$listen(kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.net.NetServer)))))/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$listen(kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.net.NetServer)))))/listenHandler">listenHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">NetServer</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NetServer</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$listen(io.vertx.reactivex.core.net.SocketAddress, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.net.NetServer)))))/localAddress">localAddress</span><span class="symbol">:</span>&nbsp;<a href="../-socket-address/index.html"><span class="identifier">SocketAddress</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$listen(io.vertx.reactivex.core.net.SocketAddress, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.net.NetServer)))))/listenHandler">listenHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">NetServer</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NetServer</span></code>
+<p>Like <code><a href="listen.html">io.vertx.reactivex.core.net.NetServer#listen</a></code> but providing a handler that will be notified when the server is listening, or fails.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$listen(kotlin.Int, kotlin.String)/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$listen(kotlin.Int, kotlin.String)/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NetServer</span></code>
+<p>Start listening on the specified port and host, ignoring port and host configured in the io.vertx.core.net.NetServerOptions used when creating the server. 
+<p> Port <code>0</code> can be specified meaning "choose an random port". </p>
+<p> Host <code>0.0.0.0</code> can be specified meaning "listen on all available interfaces". </p>
+<p> The server may not be listening until some time after the call to listen has returned.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$listen(kotlin.Int)/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NetServer</span></code>
+<p>Start listening on the specified port and host "0.0.0.0", ignoring port and host configured in the io.vertx.core.net.NetServerOptions used when creating the server. 
+<p> Port <code>0</code> can be specified meaning "choose an random port". </p>
+<p> The server may not be listening until some time after the call to listen has returned.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$listen(io.vertx.reactivex.core.net.SocketAddress)/localAddress">localAddress</span><span class="symbol">:</span>&nbsp;<a href="../-socket-address/index.html"><span class="identifier">SocketAddress</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NetServer</span></code>
+<p>Start listening on the specified local address, ignoring port and host configured in the io.vertx.core.net.NetServerOptions used when creating the server. 
+<p> The server may not be listening until some time after the call to listen has returned.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$newInstance(io.vertx.core.net.NetServer)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.net/-net-server/index.html"><span class="identifier">NetServer</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NetServer</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-close.html">rxClose</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxClose</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Completable.html"><span class="identifier">Completable</span></a></code>
+<p>Like <code><a href="close.html">io.vertx.reactivex.core.net.NetServer#close</a></code> but supplying a handler that will be notified when close is complete.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-listen.html">rxListen</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxListen</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">NetServer</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxListen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$rxListen(kotlin.Int, kotlin.String)/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$rxListen(kotlin.Int, kotlin.String)/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">NetServer</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxListen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$rxListen(kotlin.Int)/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">NetServer</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxListen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetServer$rxListen(io.vertx.reactivex.core.net.SocketAddress)/localAddress">localAddress</span><span class="symbol">:</span>&nbsp;<a href="../-socket-address/index.html"><span class="identifier">SocketAddress</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">NetServer</span><span class="symbol">&gt;</span></code>
+<p>Like <code><a href="listen.html">io.vertx.reactivex.core.net.NetServer#listen</a></code> but providing a handler that will be notified when the server is listening, or fails.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

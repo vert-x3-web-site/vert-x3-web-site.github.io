@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.kafka.client.consumer - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.kafka.client.consumer</a><br/>
+<br/>
+<h2>Package io.vertx.kafka.client.consumer</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-kafka-consumer/index.html">KafkaConsumer</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">KafkaConsumer</span><span class="symbol">&lt;</span><span class="identifier">K</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ReadStream</span><span class="symbol">&lt;</span><span class="identifier">KafkaConsumerRecord</span><span class="symbol">&lt;</span><span class="identifier">K</span><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Vert.x Kafka consumer. 
+<p> You receive Kafka records by providing a <code><a href="#">KafkaConsumer#handler(Handler)</a></code>. As messages arrive the handler will be called with the records. </p>
+<p> The <code><a href="-kafka-consumer/pause.html">#pause()</a></code> and <code><a href="-kafka-consumer/resume.html">#resume()</a></code> provides global control over reading the records from the consumer. </p>
+<p> The <code><a href="#">#pause(Set)</a></code> and <code><a href="#">#resume(Set)</a></code> provides finer grained control over reading records for specific Topic/Partition, these are Kafka's specific operations.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-kafka-consumer-records/index.html">KafkaConsumerRecords</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">KafkaConsumerRecords</span><span class="symbol">&lt;</span><span class="identifier">K</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Vert.x Kafka consumer records</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-kafka-read-stream/index.html">KafkaReadStream</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">KafkaReadStream</span><span class="symbol">&lt;</span><span class="identifier">K</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ReadStream</span><span class="symbol">&lt;</span><span class="identifier">ConsumerRecord</span><span class="symbol">&lt;</span><span class="identifier">K</span><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>A ReadStream for consuming Kafka ConsumerRecord. 
+<p> The <code><a href="#">#pause()</a></code> and <code><a href="#">#resume()</a></code> provides global control over reading the records from the consumer. </p>
+<p> The <code><a href="#">#pause(Set)</a></code> and <code><a href="#">#resume(Set)</a></code> provides finer grained control over reading records for specific Topic/Partition, these are Kafka's specific operations.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,352 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>VertxInfluxDbOptions - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.micrometer</a>&nbsp;/&nbsp;<a href=".">VertxInfluxDbOptions</a><br/>
+<br/>
+<h1>VertxInfluxDbOptions</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">VertxInfluxDbOptions</span></code>
+<p>Vert.x InfluxDb micrometer configuration.</p>
+<p><strong>Author</strong><br/>
+Dan Kristensen</p>
+<p><strong>Author</strong><br/>
+Joel Takvorian</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">VertxInfluxDbOptions</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create default options for InfluxDB reporting. Note that they are disabled by default.</p>
+<code><span class="identifier">VertxInfluxDbOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxInfluxDbOptions$<init>(io.vertx.micrometer.VertxInfluxDbOptions)/other">other</span><span class="symbol">:</span>&nbsp;<span class="identifier">VertxInfluxDbOptions</span><span class="symbol">)</span></code>
+<p>Creates new options object for InfluxDB reporting, which is a copy of <code>other</code>.</p>
+<code><span class="identifier">VertxInfluxDbOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxInfluxDbOptions$<init>(io.vertx.core.json.JsonObject)/json">json</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span></code>
+<p>Creates new options object for InfluxDB reporting from <code>json</code> input.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-b-a-t-c-h_-s-i-z-e.html">DEFAULT_BATCH_SIZE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_BATCH_SIZE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Default value for the maximum number of metrics in a batch = 10000.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-o-m-p-r-e-s-s-i-o-n_-e-n-a-b-l-e-d.html">DEFAULT_COMPRESSION_ENABLED</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_COMPRESSION_ENABLED</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>The default gzip enabled on InfluxDb = true.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-o-n-n-e-c-t_-t-i-m-e-o-u-t.html">DEFAULT_CONNECT_TIMEOUT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CONNECT_TIMEOUT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The default connection timeout (seconds) = 1.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-d-a-t-a-b-a-s-e.html">DEFAULT_DATABASE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_DATABASE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default InfluxDb database = default.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-e-n-a-b-l-e-d.html">DEFAULT_ENABLED</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_ENABLED</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Default value for enabled = false.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-n-u-m_-t-h-r-e-a-d-s.html">DEFAULT_NUM_THREADS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_NUM_THREADS</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The default number of threads used = 2.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-r-e-a-d_-t-i-m-e-o-u-t.html">DEFAULT_READ_TIMEOUT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_READ_TIMEOUT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The default read timeout (seconds) = 10.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-s-t-e-p.html">DEFAULT_STEP</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_STEP</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Default value for metric collection interval (in seconds) = 10.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-u-r-i.html">DEFAULT_URI</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_URI</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default InfluxDb server URI = http://localhost:8086.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-batch-size.html">getBatchSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBatchSize</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get batch size, which is the maximum number of measurements sent per request to the InfluxDB server.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-connect-timeout.html">getConnectTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConnectTimeout</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get the connection timeout for InfluxDB server connections, in seconds.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-db.html">getDb</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDb</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the InfluxDB database name used to store metrics</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-num-threads.html">getNumThreads</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getNumThreads</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get the number of threads used by the push scheduler</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-password.html">getPassword</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPassword</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the password used for authenticated connections</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-read-timeout.html">getReadTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getReadTimeout</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get the read timeout for InfluxDB server connections, in seconds.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-retention-policy.html">getRetentionPolicy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRetentionPolicy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the InfluxDB retention policy</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-step.html">getStep</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getStep</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get the step of push intervals, in seconds</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-uri.html">getUri</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUri</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the InfluxDB server URI</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-user-name.html">getUserName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUserName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the username used for authenticated connections</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-compressed.html">isCompressed</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isCompressed</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Get the GZIP compression flag for requests</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-enabled.html">isEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isEnabled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Will InfluxDB reporting be enabled?</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-batch-size.html">setBatchSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBatchSize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxInfluxDbOptions$setBatchSize(kotlin.Int)/batchSize">batchSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxInfluxDbOptions</span></code>
+<p>Maximum number of measurements sent per request to the InfluxDB server. When the maximum is reached, several requests are made. Default is 10000.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-compressed.html">setCompressed</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCompressed</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxInfluxDbOptions$setCompressed(kotlin.Boolean)/compressed">compressed</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxInfluxDbOptions</span></code>
+<p>Activate or deactivate GZIP compression. It is activated by default.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-connect-timeout.html">setConnectTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConnectTimeout</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxInfluxDbOptions$setConnectTimeout(kotlin.Int)/connectTimeout">connectTimeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxInfluxDbOptions</span></code>
+<p>Connection timeout for InfluxDB server connections, in seconds. Default is 1 second.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-db.html">setDb</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDb</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxInfluxDbOptions$setDb(kotlin.String)/db">db</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxInfluxDbOptions</span></code>
+<p>Database name used to store metrics. Default is "default".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-enabled.html">setEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEnabled</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxInfluxDbOptions$setEnabled(kotlin.Boolean)/enabled">enabled</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxInfluxDbOptions</span></code>
+<p>Set true to enable InfluxDB reporting</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-num-threads.html">setNumThreads</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setNumThreads</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxInfluxDbOptions$setNumThreads(kotlin.Int)/numThreads">numThreads</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxInfluxDbOptions</span></code>
+<p>Number of threads to use by the push scheduler. Default is 2.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-password.html">setPassword</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPassword</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxInfluxDbOptions$setPassword(kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxInfluxDbOptions</span></code>
+<p>Password used for authenticated connections</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-read-timeout.html">setReadTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setReadTimeout</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxInfluxDbOptions$setReadTimeout(kotlin.Int)/readTimeout">readTimeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxInfluxDbOptions</span></code>
+<p>Read timeout for InfluxDB server connections, in seconds. Default is 10 seconds.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-retention-policy.html">setRetentionPolicy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRetentionPolicy</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxInfluxDbOptions$setRetentionPolicy(kotlin.String)/retentionPolicy">retentionPolicy</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxInfluxDbOptions</span></code>
+<p>InfluxDB retention policy</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-step.html">setStep</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setStep</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxInfluxDbOptions$setStep(kotlin.Int)/step">step</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxInfluxDbOptions</span></code>
+<p>Push interval steps, in seconds. Default is 10 seconds.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-uri.html">setUri</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUri</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxInfluxDbOptions$setUri(kotlin.String)/uri">uri</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxInfluxDbOptions</span></code>
+<p>URI of the InfluxDB server. <em>Example: http://influx:8086</em>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-user-name.html">setUserName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUserName</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.VertxInfluxDbOptions$setUserName(kotlin.String)/userName">userName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxInfluxDbOptions</span></code>
+<p>Username used for authenticated connections</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-micrometer-config.html">toMicrometerConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toMicrometerConfig</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">InfluxConfig</span></code>
+<p>Convert these options to a Micrometer's <code>InfluxConfig</code> object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

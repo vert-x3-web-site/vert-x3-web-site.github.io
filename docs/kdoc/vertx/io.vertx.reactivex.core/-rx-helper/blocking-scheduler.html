@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RxHelper.blockingScheduler - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core</a>&nbsp;/&nbsp;<a href="index.html">RxHelper</a>&nbsp;/&nbsp;<a href=".">blockingScheduler</a><br/>
+<br/>
+<h1>blockingScheduler</h1>
+<a name="io.vertx.reactivex.core.RxHelper$blockingScheduler(io.vertx.reactivex.core.WorkerExecutor)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">blockingScheduler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.RxHelper$blockingScheduler(io.vertx.reactivex.core.WorkerExecutor)/executor">executor</span><span class="symbol">:</span>&nbsp;<a href="../-worker-executor/index.html"><span class="identifier">WorkerExecutor</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Scheduler.html"><span class="identifier">Scheduler</span></a></code>
+<p>Create a scheduler for a WorkerExecutor object, actions are executed on the threads of this executor.</p>
+<h3>Parameters</h3>
+<p><a name="executor"></a>
+<code>executor</code> - the worker executor object</p>
+<p><strong>Return</strong><br/>
+the scheduler</p>
+<a name="io.vertx.reactivex.core.RxHelper$blockingScheduler(io.vertx.reactivex.core.Vertx, kotlin.Boolean)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">blockingScheduler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.RxHelper$blockingScheduler(io.vertx.reactivex.core.Vertx, kotlin.Boolean)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<a href="../-vertx/index.html"><span class="identifier">Vertx</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.RxHelper$blockingScheduler(io.vertx.reactivex.core.Vertx, kotlin.Boolean)/ordered">ordered</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Scheduler.html"><span class="identifier">Scheduler</span></a></code>
+<p>Create a scheduler for a Vertx object, actions can be blocking, they are not executed on Vertx event loop.</p>
+<h3>Parameters</h3>
+<p><a name="vertx"></a>
+<code>vertx</code> - the vertx object</p>
+<p><a name="ordered"></a>
+<code>ordered</code> - if true then if when tasks are scheduled several times on the same context, the executions for that context will be executed serially, not in parallel. if false then they will be no ordering guarantees</p>
+<p><strong>Return</strong><br/>
+the scheduler</p>
+<a name="io.vertx.reactivex.core.RxHelper$blockingScheduler(io.vertx.reactivex.core.Vertx)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">blockingScheduler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.RxHelper$blockingScheduler(io.vertx.reactivex.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<a href="../-vertx/index.html"><span class="identifier">Vertx</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Scheduler.html"><span class="identifier">Scheduler</span></a></code>
+<p>Create a scheduler for a Vertx object, actions can be blocking, they are not executed on Vertx event loop.</p>
+<h3>Parameters</h3>
+<p><a name="vertx"></a>
+<code>vertx</code> - the vertx object</p>
+<p><strong>Return</strong><br/>
+the scheduler</p>
+</BODY>
+</HTML>

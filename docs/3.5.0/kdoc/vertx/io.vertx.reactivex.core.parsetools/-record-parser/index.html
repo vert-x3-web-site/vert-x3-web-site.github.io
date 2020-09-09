@@ -1,0 +1,218 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RecordParser - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.parsetools</a>&nbsp;/&nbsp;<a href=".">RecordParser</a><br/>
+<br/>
+<h1>RecordParser</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RecordParser</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.streams/-read-stream/index.html"><span class="identifier">ReadStream</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span></code>
+<p>A helper class which allows you to easily parse protocols which are delimited by a sequence of bytes, or fixed size records. 
+<p> Instances of this class take as input io.vertx.reactivex.core.buffer.Buffer instances containing raw bytes, and output records. </p>
+<p> For example, if I had a simple ASCII text protocol delimited by '\n' and the input was the following: </p>
+<p> </p>
+<pre><code> buffer1:HELLO\nHOW ARE Y buffer2:OU?\nI AM buffer3: DOING OK buffer4:\n </code></pre> Then the output would be:
+<p> </p>
+<pre><code> buffer1:HELLO buffer2:HOW ARE YOU? buffer3:I AM DOING OK </code></pre> Instances of this class can be changed between delimited mode and fixed size record mode on the fly as individual records are read, this allows you to parse protocols where, for example, the first 5 records might all be fixed size (of potentially different sizes), followed by some delimited records, followed by more fixed size records. 
+<p> Instances of this class can't currently be used for protocols where the text is encoded with something other than a 1-1 byte-char mapping. </p>
+<p> Please see the documentation for more information. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.parsetools.RecordParser non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">RecordParser</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$<init>(io.vertx.core.parsetools.RecordParser)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.parsetools/-record-parser/index.html"><span class="identifier">RecordParser</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">RecordParser</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="delimited-mode.html">delimitedMode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">delimitedMode</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$delimitedMode(kotlin.String)/delim">delim</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Flip the parser into delimited mode, and where the delimiter can be represented by the String <code>delim</code> encoded in latin-1 . Don't use this if your String contains other than latin-1 characters. 
+<p> This method can be called multiple times with different values of delim while data is being parsed.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">delimitedMode</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$delimitedMode(io.vertx.reactivex.core.buffer.Buffer)/delim">delim</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Flip the parser into delimited mode, and where the delimiter can be represented by the delimiter <code>delim</code>. 
+<p> This method can be called multiple times with different values of delim while data is being parsed.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="end-handler.html">endHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">endHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$endHandler(io.vertx.core.Handler((java.lang.Void)))/endHandler">endHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="exception-handler.html">exceptionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">exceptionHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$exceptionHandler(io.vertx.core.Handler((kotlin.Throwable)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="fixed-size-mode.html">fixedSizeMode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fixedSizeMode</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$fixedSizeMode(kotlin.Int)/size">size</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Flip the parser into fixed size mode, where the record size is specified by <code>size</code> in bytes. 
+<p> This method can be called multiple times with different values of size while data is being parsed.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.core.parsetools/-record-parser/index.html"><span class="identifier">RecordParser</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="handle.html">handle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">handle</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$handle(io.vertx.reactivex.core.buffer.Buffer)/buffer">buffer</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This method is called to provide the parser with data.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="handler.html">handler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">handler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$handler(io.vertx.core.Handler((io.vertx.reactivex.core.buffer.Buffer)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-delimited.html">newDelimited</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newDelimited</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(kotlin.String, io.vertx.core.Handler((io.vertx.reactivex.core.buffer.Buffer)))/delim">delim</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(kotlin.String, io.vertx.core.Handler((io.vertx.reactivex.core.buffer.Buffer)))/output">output</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newDelimited</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(io.vertx.reactivex.core.buffer.Buffer, io.vertx.core.Handler((io.vertx.reactivex.core.buffer.Buffer)))/delim">delim</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(io.vertx.reactivex.core.buffer.Buffer, io.vertx.core.Handler((io.vertx.reactivex.core.buffer.Buffer)))/output">output</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code>
+<p>Like <code><a href="#">io.vertx.reactivex.core.parsetools.RecordParser#newDelimited</a></code> but set the <code>output</code> that will receive whole records which have been parsed.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newDelimited</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(kotlin.String, io.vertx.reactivex.core.streams.ReadStream((io.vertx.reactivex.core.buffer.Buffer)))/delim">delim</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(kotlin.String, io.vertx.reactivex.core.streams.ReadStream((io.vertx.reactivex.core.buffer.Buffer)))/stream">stream</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.streams/-read-stream/index.html"><span class="identifier">ReadStream</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newDelimited</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(kotlin.String, io.reactivex.Flowable((io.vertx.reactivex.core.buffer.Buffer)))/delim">delim</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(kotlin.String, io.reactivex.Flowable((io.vertx.reactivex.core.buffer.Buffer)))/stream">stream</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Flowable.html"><span class="identifier">Flowable</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newDelimited</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(kotlin.String, io.reactivex.Observable((io.vertx.reactivex.core.buffer.Buffer)))/delim">delim</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(kotlin.String, io.reactivex.Observable((io.vertx.reactivex.core.buffer.Buffer)))/stream">stream</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Observable.html"><span class="identifier">Observable</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newDelimited</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(io.vertx.reactivex.core.buffer.Buffer, io.vertx.reactivex.core.streams.ReadStream((io.vertx.reactivex.core.buffer.Buffer)))/delim">delim</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(io.vertx.reactivex.core.buffer.Buffer, io.vertx.reactivex.core.streams.ReadStream((io.vertx.reactivex.core.buffer.Buffer)))/stream">stream</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.streams/-read-stream/index.html"><span class="identifier">ReadStream</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newDelimited</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(io.vertx.reactivex.core.buffer.Buffer, io.reactivex.Flowable((io.vertx.reactivex.core.buffer.Buffer)))/delim">delim</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(io.vertx.reactivex.core.buffer.Buffer, io.reactivex.Flowable((io.vertx.reactivex.core.buffer.Buffer)))/stream">stream</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Flowable.html"><span class="identifier">Flowable</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newDelimited</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(io.vertx.reactivex.core.buffer.Buffer, io.reactivex.Observable((io.vertx.reactivex.core.buffer.Buffer)))/delim">delim</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(io.vertx.reactivex.core.buffer.Buffer, io.reactivex.Observable((io.vertx.reactivex.core.buffer.Buffer)))/stream">stream</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Observable.html"><span class="identifier">Observable</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code>
+<p>Like <code><a href="#">io.vertx.reactivex.core.parsetools.RecordParser#newDelimited</a></code> but wraps the <code>stream</code>. The <code>stream</code> handlers will be set/unset when the <code><a href="#">io.vertx.reactivex.core.parsetools.RecordParser#handler</a></code> is set.  The <code>pause()</code>/<code>resume()</code> operations are propagated to the <code>stream</code>.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newDelimited</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(kotlin.String)/delim">delim</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code>
+<p>Create a new <code>RecordParser</code> instance, initially in delimited mode, and where the delimiter can be represented by the String <code></code> delim endcoded in latin-1 . Don't use this if your String contains other than latin-1 characters. 
+<p> <code>output</code> Will receive whole records which have been parsed.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newDelimited</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newDelimited(io.vertx.reactivex.core.buffer.Buffer)/delim">delim</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code>
+<p>Create a new <code>RecordParser</code> instance, initially in delimited mode, and where the delimiter can be represented by the <code>Buffer</code> delim. </p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-fixed.html">newFixed</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newFixed</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newFixed(kotlin.Int)/size">size</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code>
+<p>Create a new <code>RecordParser</code> instance, initially in fixed size mode, and where the record size is specified by the <code>size</code> parameter. 
+<p> <code>output</code> Will receive whole records which have been parsed.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newFixed</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newFixed(kotlin.Int, io.vertx.core.Handler((io.vertx.reactivex.core.buffer.Buffer)))/size">size</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newFixed(kotlin.Int, io.vertx.core.Handler((io.vertx.reactivex.core.buffer.Buffer)))/output">output</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code>
+<p>Like <code><a href="new-fixed.html">io.vertx.reactivex.core.parsetools.RecordParser#newFixed</a></code> but set the <code>output</code> that will receive whole records which have been parsed.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newFixed</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newFixed(kotlin.Int, io.vertx.reactivex.core.streams.ReadStream((io.vertx.reactivex.core.buffer.Buffer)))/size">size</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newFixed(kotlin.Int, io.vertx.reactivex.core.streams.ReadStream((io.vertx.reactivex.core.buffer.Buffer)))/stream">stream</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.streams/-read-stream/index.html"><span class="identifier">ReadStream</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newFixed</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newFixed(kotlin.Int, io.reactivex.Flowable((io.vertx.reactivex.core.buffer.Buffer)))/size">size</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newFixed(kotlin.Int, io.reactivex.Flowable((io.vertx.reactivex.core.buffer.Buffer)))/stream">stream</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Flowable.html"><span class="identifier">Flowable</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newFixed</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newFixed(kotlin.Int, io.reactivex.Observable((io.vertx.reactivex.core.buffer.Buffer)))/size">size</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newFixed(kotlin.Int, io.reactivex.Observable((io.vertx.reactivex.core.buffer.Buffer)))/stream">stream</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Observable.html"><span class="identifier">Observable</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code>
+<p>Like <code><a href="new-fixed.html">io.vertx.reactivex.core.parsetools.RecordParser#newFixed</a></code> but wraps the <code>stream</code>. The <code>stream</code> handlers will be set/unset when the <code><a href="#">io.vertx.reactivex.core.parsetools.RecordParser#handler</a></code> is set.  The <code>pause()</code>/<code>resume()</code> operations are propagated to the <code>stream</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$newInstance(io.vertx.core.parsetools.RecordParser)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.parsetools/-record-parser/index.html"><span class="identifier">RecordParser</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="pause.html">pause</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">pause</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="resume.html">resume</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resume</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RecordParser</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-output.html">setOutput</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setOutput</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.RecordParser$setOutput(io.vertx.core.Handler((io.vertx.reactivex.core.buffer.Buffer)))/output">output</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-flowable.html">toFlowable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toFlowable</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Flowable.html"><span class="identifier">Flowable</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-observable.html">toObservable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toObservable</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Observable.html"><span class="identifier">Observable</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

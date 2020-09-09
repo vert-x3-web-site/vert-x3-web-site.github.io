@@ -1,0 +1,253 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CircuitBreaker - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.circuitbreaker</a>&nbsp;/&nbsp;<a href=".">CircuitBreaker</a><br/>
+<br/>
+<h1>CircuitBreaker</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CircuitBreaker</span></code>
+<p>An implementation of the circuit breaker pattern for Vert.x  NOTE: This class has been automatically generated from the io.vertx.circuitbreaker.CircuitBreaker non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CircuitBreaker</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$<init>(io.vertx.circuitbreaker.CircuitBreaker)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<span class="identifier">CircuitBreaker</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><span class="identifier">TypeArg</span><span class="symbol">&lt;</span><span class="identifier">CircuitBreaker</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CircuitBreaker</span></code>
+<p>Closes the circuit breaker. It stops sending events on its state on the event bus. This method is not related to the <code>close</code> state of the circuit breaker. To set the circuit breaker in the <code>close</code> state, use <code><a href="reset.html">io.vertx.rxjava.circuitbreaker.CircuitBreaker#reset</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="close-handler.html">closeHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">closeHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$closeHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CircuitBreaker</span></code>
+<p>Sets a invoked when the circuit breaker state switches to close.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$create(kotlin.String, io.vertx.rxjava.core.Vertx, io.vertx.circuitbreaker.CircuitBreakerOptions)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$create(kotlin.String, io.vertx.rxjava.core.Vertx, io.vertx.circuitbreaker.CircuitBreakerOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$create(kotlin.String, io.vertx.rxjava.core.Vertx, io.vertx.circuitbreaker.CircuitBreakerOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">CircuitBreakerOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CircuitBreaker</span></code>
+<p>Creates a new instance of io.vertx.rxjava.circuitbreaker.CircuitBreaker.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$create(kotlin.String, io.vertx.rxjava.core.Vertx)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$create(kotlin.String, io.vertx.rxjava.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CircuitBreaker</span></code>
+<p>Creates a new instance of io.vertx.rxjava.circuitbreaker.CircuitBreaker, with default options.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="execute.html">execute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$execute(io.vertx.core.Handler((io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.execute.T)))))/command">command</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.rxjava.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.rxjava.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Same as <code><a href="#">io.vertx.rxjava.circuitbreaker.CircuitBreaker#executeWithFallback</a></code> but using the circuit breaker default fallback.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="execute-and-report.html">executeAndReport</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">executeAndReport</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$executeAndReport(io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeAndReport.T)), io.vertx.core.Handler((io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeAndReport.T)))))/resultFuture">resultFuture</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.rxjava.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$executeAndReport(io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeAndReport.T)), io.vertx.core.Handler((io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeAndReport.T)))))/command">command</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.rxjava.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CircuitBreaker</span></code>
+<p>Same as <code><a href="#">io.vertx.rxjava.circuitbreaker.CircuitBreaker#executeAndReportWithFallback</a></code> but using the circuit breaker default fallback.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="execute-and-report-with-fallback.html">executeAndReportWithFallback</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">executeAndReportWithFallback</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$executeAndReportWithFallback(io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)), io.vertx.core.Handler((io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)))), java.util.function.Function((kotlin.Throwable, io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)))/resultFuture">resultFuture</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.rxjava.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$executeAndReportWithFallback(io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)), io.vertx.core.Handler((io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)))), java.util.function.Function((kotlin.Throwable, io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)))/command">command</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.rxjava.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$executeAndReportWithFallback(io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)), io.vertx.core.Handler((io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)))), java.util.function.Function((kotlin.Throwable, io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeAndReportWithFallback.T)))/fallback">fallback</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html"><span class="identifier">Function</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CircuitBreaker</span></code>
+<p>Executes the given operation with the circuit breaker control. The operation is generally calling an <em>external</em> system. The operation receives a object as parameter and <strong>must</strong> call when the operation has terminated successfully. The operation must also call in case of failure. 
+<p> The operation is not invoked if the circuit breaker is open, and the given fallback is called immediately. The circuit breaker also monitor the completion of the operation before a configure timeout. The operation is considered as failed if it does not terminate in time. </p>
+<p> Unlike <code><a href="#">io.vertx.rxjava.circuitbreaker.CircuitBreaker#executeWithFallback</a></code>, this method does return a object, but let the caller pass a object on which the result is reported. If the fallback is called, the future is successfully completed with the value returned by the fallback function. If the fallback throws an exception, the future is marked as failed.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="execute-command.html">executeCommand</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">executeCommand</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$executeCommand(io.vertx.core.Handler((io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeCommand.T)))), io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeCommand.T)))))/command">command</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.rxjava.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$executeCommand(io.vertx.core.Handler((io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeCommand.T)))), io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeCommand.T)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Same as <code><a href="#">io.vertx.rxjava.circuitbreaker.CircuitBreaker#executeWithFallback</a></code> but using the circuit breaker default fallback.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="execute-command-with-fallback.html">executeCommandWithFallback</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">executeCommandWithFallback</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$executeCommandWithFallback(io.vertx.core.Handler((io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeCommandWithFallback.T)))), java.util.function.Function((kotlin.Throwable, io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeCommandWithFallback.T)), io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeCommandWithFallback.T)))))/command">command</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.rxjava.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$executeCommandWithFallback(io.vertx.core.Handler((io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeCommandWithFallback.T)))), java.util.function.Function((kotlin.Throwable, io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeCommandWithFallback.T)), io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeCommandWithFallback.T)))))/fallback">fallback</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html"><span class="identifier">Function</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$executeCommandWithFallback(io.vertx.core.Handler((io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeCommandWithFallback.T)))), java.util.function.Function((kotlin.Throwable, io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeCommandWithFallback.T)), io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeCommandWithFallback.T)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Same as <code><a href="#">io.vertx.rxjava.circuitbreaker.CircuitBreaker#executeWithFallback</a></code> but using a callback.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="execute-with-fallback.html">executeWithFallback</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">executeWithFallback</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$executeWithFallback(io.vertx.core.Handler((io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeWithFallback.T)))), java.util.function.Function((kotlin.Throwable, io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeWithFallback.T)))/command">command</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.rxjava.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$executeWithFallback(io.vertx.core.Handler((io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeWithFallback.T)))), java.util.function.Function((kotlin.Throwable, io.vertx.rxjava.circuitbreaker.CircuitBreaker.executeWithFallback.T)))/fallback">fallback</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html"><span class="identifier">Function</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.rxjava.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Executes the given operation with the circuit breaker control. The operation is generally calling an <em>external</em> system. The operation receives a object as parameter and <strong>must</strong> call when the operation has terminated successfully. The operation must also call in case of failure. 
+<p> The operation is not invoked if the circuit breaker is open, and the given fallback is called immediately. The circuit breaker also monitor the completion of the operation before a configure timeout. The operation is considered as failed if it does not terminate in time. </p>
+<p> This method returns a object to retrieve the status and result of the operation, with the status being a success or a failure. If the fallback is called, the returned future is successfully completed with the value returned from the fallback. If the fallback throws an exception, the returned future is marked as failed.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="failure-count.html">failureCount</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">failureCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="fallback.html">fallback</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">fallback</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$fallback(java.util.function.Function((kotlin.Throwable, io.vertx.rxjava.circuitbreaker.CircuitBreaker.fallback.T)))/handler">handler</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html"><span class="identifier">Function</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CircuitBreaker</span></code>
+<p>Sets a <em>default</em> invoked when the bridge is open to handle the "request", or on failure if io.vertx.circuitbreaker.CircuitBreakerOptions is enabled. 
+<p> The function gets the exception as parameter and returns the <em>fallback</em> result.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CircuitBreaker</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="half-open-handler.html">halfOpenHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">halfOpenHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$halfOpenHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CircuitBreaker</span></code>
+<p>Sets a invoked when the circuit breaker state switches to half-open.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="name.html">name</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">name</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$newInstance(io.vertx.circuitbreaker.CircuitBreaker)/arg">arg</span><span class="symbol">:</span>&nbsp;<span class="identifier">CircuitBreaker</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CircuitBreaker</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="open.html">open</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">open</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CircuitBreaker</span></code>
+<p>Explicitly opens the circuit.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="open-handler.html">openHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">openHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$openHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CircuitBreaker</span></code>
+<p>Sets a invoked when the circuit breaker state switches to open.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="reset.html">reset</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">reset</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CircuitBreaker</span></code>
+<p>Resets the circuit breaker state (number of failure set to 0 and state set to closed).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-execute-command.html">rxExecuteCommand</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">rxExecuteCommand</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$rxExecuteCommand(io.vertx.core.Handler((io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.rxExecuteCommand.T)))))/command">command</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.rxjava.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Same as <code><a href="#">io.vertx.rxjava.circuitbreaker.CircuitBreaker#executeWithFallback</a></code> but using the circuit breaker default fallback.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-execute-command-with-fallback.html">rxExecuteCommandWithFallback</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">rxExecuteCommandWithFallback</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$rxExecuteCommandWithFallback(io.vertx.core.Handler((io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.rxExecuteCommandWithFallback.T)))), java.util.function.Function((kotlin.Throwable, io.vertx.rxjava.circuitbreaker.CircuitBreaker.rxExecuteCommandWithFallback.T)))/command">command</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.rxjava.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.circuitbreaker.CircuitBreaker$rxExecuteCommandWithFallback(io.vertx.core.Handler((io.vertx.rxjava.core.Future((io.vertx.rxjava.circuitbreaker.CircuitBreaker.rxExecuteCommandWithFallback.T)))), java.util.function.Function((kotlin.Throwable, io.vertx.rxjava.circuitbreaker.CircuitBreaker.rxExecuteCommandWithFallback.T)))/fallback">fallback</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html"><span class="identifier">Function</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Same as <code><a href="#">io.vertx.rxjava.circuitbreaker.CircuitBreaker#executeWithFallback</a></code> but using a callback.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="state.html">state</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">state</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CircuitBreakerState</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

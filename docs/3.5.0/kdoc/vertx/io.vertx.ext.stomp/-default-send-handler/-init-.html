@@ -1,0 +1,17 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DefaultSendHandler.<init> - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.stomp</a>&nbsp;/&nbsp;<a href="index.html">DefaultSendHandler</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="io.vertx.ext.stomp.DefaultSendHandler$&lt;init&gt;()"></a>
+<code><span class="identifier">DefaultSendHandler</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>STOMP compliant actions executed when receiving a <code>SEND</code> sf.frame().  If the <code>SEND</code> frame specifies a transaction, the message delivery is postponed until the transaction commit.  The handler computes the <code>MESSAGE</code> frame from the <code>SEND</code> sf.frame(). It computes a <code>message-id</code> and <code>ack</code> id if needed. If requested the <code>RECEIPT</code> frame is sent once the <code>MESSAGE</code> frame has been sent to all matching subscriptions.  If the <code>SEND</code> frame requires an acknowledgment, the <code>message-id</code> is added to the list of messages waiting for acknowledgment.  This handler is thread safe.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Clement Escoffier</a></p>
+</BODY>
+</HTML>

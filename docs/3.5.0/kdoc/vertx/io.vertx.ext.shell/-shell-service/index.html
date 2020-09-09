@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ShellService - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.shell</a>&nbsp;/&nbsp;<a href=".">ShellService</a><br/>
+<br/>
+<h1>ShellService</h1>
+<code><span class="keyword">interface </span><span class="identifier">ShellService</span></code>
+<p>The shell service, provides a remotely accessible shell available via Telnet or SSH according to the io.vertx.ext.shell.ShellServiceOptions configuration. The shell service will expose commands using io.vertx.ext.shell.command.CommandResolver on the classpath and the shared command registry for the Vert.x instance.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Julien Viet</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.ShellService$create(io.vertx.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ShellService</span></code>
+<p>Like <code><a href="#">#create(Vertx, ShellServiceOptions)</a></code>, with default options.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.ShellService$create(io.vertx.core.Vertx, io.vertx.ext.shell.ShellServiceOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.shell.ShellService$create(io.vertx.core.Vertx, io.vertx.ext.shell.ShellServiceOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">ShellServiceOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ShellService</span></code>
+<p>Create a new shell service.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="server.html">server</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">server</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-shell-server/index.html"><span class="identifier">ShellServer</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="start.html">start</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.ShellService$start(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/startHandler">startHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Start the shell service, this is an asynchronous start.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="stop.html">stop</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Stop the shell service, this is an asynchronous stop.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.ShellService$stop(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/stopHandler">stopHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Stop the shell service, this is an asynchronous start.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

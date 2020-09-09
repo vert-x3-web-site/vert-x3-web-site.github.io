@@ -1,0 +1,218 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MicrometerMetricsOptions - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.micrometer</a>&nbsp;/&nbsp;<a href=".">MicrometerMetricsOptions</a><br/>
+<br/>
+<h1>MicrometerMetricsOptions</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MicrometerMetricsOptions</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MetricsOptions</span></code>
+<p>Vert.x micrometer configuration. It is required to set either <code>influxDbOptions</code>, <code>prometheusOptions</code> or <code>jmxMetricsOptions] in order to actually report metrics. Joel Takvorian</code></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MicrometerMetricsOptions</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Creates default options for Micrometer metrics.</p>
+<code><span class="identifier">MicrometerMetricsOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.MicrometerMetricsOptions$<init>(io.vertx.micrometer.MicrometerMetricsOptions)/other">other</span><span class="symbol">:</span>&nbsp;<span class="identifier">MicrometerMetricsOptions</span><span class="symbol">)</span></code>
+<p>Creates new options object for Micrometer metrics, which is a copy of <code>other</code>.</p>
+<code><span class="identifier">MicrometerMetricsOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.MicrometerMetricsOptions$<init>(io.vertx.core.json.JsonObject)/json">json</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span></code>
+<p>Creates new options object for Micrometer metrics from <code>json</code> input.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-h-t-t-p_-s-e-r-v-e-r_-m-a-t-c-h.html">DEFAULT_HTTP_SERVER_MATCH</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_HTTP_SERVER_MATCH</span><span class="symbol">: </span><a href="../-match/index.html"><span class="identifier">Match</span></a></code>
+<p>Default label match for public http server: exclude remote label</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-l-a-b-e-l_-m-a-t-c-h-e-s.html">DEFAULT_LABEL_MATCHES</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_LABEL_MATCHES</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../-match/index.html"><span class="identifier">Match</span></a><span class="symbol">&gt;</span></code>
+<p>The default label matches: empty by default</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-n-e-t_-s-e-r-v-e-r_-m-a-t-c-h.html">DEFAULT_NET_SERVER_MATCH</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_NET_SERVER_MATCH</span><span class="symbol">: </span><a href="../-match/index.html"><span class="identifier">Match</span></a></code>
+<p>Default label match for public net server: exclude remote label</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-r-e-g-i-s-t-r-y_-n-a-m-e.html">DEFAULT_REGISTRY_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_REGISTRY_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default registry name is 'default'</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-disabled-metrics-category.html">addDisabledMetricsCategory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addDisabledMetricsCategory</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.MicrometerMetricsOptions$addDisabledMetricsCategory(io.vertx.micrometer.MetricsDomain)/metricsDomain">metricsDomain</span><span class="symbol">:</span>&nbsp;<a href="../-metrics-domain/index.html"><span class="identifier">MetricsDomain</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MicrometerMetricsOptions</span></code>
+<p>Set metric that will not be registered. Schedulers will check the set <code>disabledMetricsCategories</code> when registering metrics suppliers</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-label-match.html">addLabelMatch</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addLabelMatch</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.MicrometerMetricsOptions$addLabelMatch(io.vertx.micrometer.Match)/match">match</span><span class="symbol">:</span>&nbsp;<a href="../-match/index.html"><span class="identifier">Match</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MicrometerMetricsOptions</span></code>
+<p>Add a rule for label matching.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-disabled-metrics-categories.html">getDisabledMetricsCategories</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDisabledMetricsCategories</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="../-metrics-domain/index.html"><span class="identifier">MetricsDomain</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-influx-db-options.html">getInfluxDbOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getInfluxDbOptions</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-vertx-influx-db-options/index.html"><span class="identifier">VertxInfluxDbOptions</span></a></code>
+<p>Get the specific options for InfluxDB reporting.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-jmx-metrics-options.html">getJmxMetricsOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getJmxMetricsOptions</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-vertx-jmx-metrics-options/index.html"><span class="identifier">VertxJmxMetricsOptions</span></a></code>
+<p>Get the specific options for JMX reporting.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-label-matchs.html">getLabelMatchs</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLabelMatchs</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../-match/index.html"><span class="identifier">Match</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-prometheus-options.html">getPrometheusOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPrometheusOptions</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-vertx-prometheus-options/index.html"><span class="identifier">VertxPrometheusOptions</span></a></code>
+<p>Get the specific options for Prometheus reporting.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-registry-name.html">getRegistryName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRegistryName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the metrics registry name set in these options</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-metrics-category-disabled.html">isMetricsCategoryDisabled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isMetricsCategoryDisabled</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.MicrometerMetricsOptions$isMetricsCategoryDisabled(io.vertx.micrometer.MetricsDomain)/metricsDomain">metricsDomain</span><span class="symbol">:</span>&nbsp;<a href="../-metrics-domain/index.html"><span class="identifier">MetricsDomain</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Is the given metrics category disabled?</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-disabled-metrics-categories.html">setDisabledMetricsCategories</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDisabledMetricsCategories</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.MicrometerMetricsOptions$setDisabledMetricsCategories(kotlin.collections.MutableSet((io.vertx.micrometer.MetricsDomain)))/disabledMetricsCategories">disabledMetricsCategories</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="../-metrics-domain/index.html"><span class="identifier">MetricsDomain</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MicrometerMetricsOptions</span></code>
+<p>Sets metrics types that are disabled.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-enabled.html">setEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEnabled</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.MicrometerMetricsOptions$setEnabled(kotlin.Boolean)/enable">enable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MicrometerMetricsOptions</span></code>
+<p>Set whether metrics will be enabled on the Vert.x instance. Metrics are not enabled by default.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-influx-db-options.html">setInfluxDbOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setInfluxDbOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.MicrometerMetricsOptions$setInfluxDbOptions(io.vertx.micrometer.VertxInfluxDbOptions)/influxDbOptions">influxDbOptions</span><span class="symbol">:</span>&nbsp;<a href="../-vertx-influx-db-options/index.html"><span class="identifier">VertxInfluxDbOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MicrometerMetricsOptions</span></code>
+<p>Set InfluxDB options. Setting a registry backend option is mandatory in order to effectively report metrics.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jmx-metrics-options.html">setJmxMetricsOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJmxMetricsOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.MicrometerMetricsOptions$setJmxMetricsOptions(io.vertx.micrometer.VertxJmxMetricsOptions)/jmxMetricsOptions">jmxMetricsOptions</span><span class="symbol">:</span>&nbsp;<a href="../-vertx-jmx-metrics-options/index.html"><span class="identifier">VertxJmxMetricsOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MicrometerMetricsOptions</span></code>
+<p>Set JMX metrics options. Setting a registry backend option is mandatory in order to effectively report metrics.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-label-matchs.html">setLabelMatchs</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLabelMatchs</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.MicrometerMetricsOptions$setLabelMatchs(kotlin.collections.MutableList((io.vertx.micrometer.Match)))/matches">matches</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../-match/index.html"><span class="identifier">Match</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MicrometerMetricsOptions</span></code>
+<p>Set a list of rules for label matching.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-prometheus-options.html">setPrometheusOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPrometheusOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.MicrometerMetricsOptions$setPrometheusOptions(io.vertx.micrometer.VertxPrometheusOptions)/prometheusOptions">prometheusOptions</span><span class="symbol">:</span>&nbsp;<a href="../-vertx-prometheus-options/index.html"><span class="identifier">VertxPrometheusOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MicrometerMetricsOptions</span></code>
+<p>Set Prometheus options. Setting a registry backend option is mandatory in order to effectively report metrics.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-registry-name.html">setRegistryName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRegistryName</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.MicrometerMetricsOptions$setRegistryName(kotlin.String)/registryName">registryName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MicrometerMetricsOptions</span></code>
+<p>Set a name for the metrics registry, so that a new registry will be created and associated with this name. If <code>registryName</code> is not provided (or null), a default registry will be used. If the same name is given to several Vert.x instances (within the same JVM), they will share the same registry.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

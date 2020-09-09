@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ScriptVerticle - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.lang.groovy</a>&nbsp;/&nbsp;<a href=".">ScriptVerticle</a><br/>
+<br/>
+<h1>ScriptVerticle</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ScriptVerticle</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractVerticle</span></code>
+<p>A Vert.x native verticle wrapping a Groovy script, the script will be executed when the Verticle starts. When the script defines a no arg accessible <code>vertxStop</code> method, this method will be invoked when the verticle stops. Before the script starts the following objects are bound in the script binding: <ul> <li><code>vertx</code>: the io.vertx.core.Vertx object</li>
+ <li><code>deploymentID</code>: the deploymentID of this Verticle</li>
+ <li><code>config</code>: the Verticle config as a <code>Map&lt;String, Object&gt;</code></li>
+ </ul>
+</p>
+<p><strong>Author</strong><br/>
+<a href="#">Julien Viet</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ScriptVerticle</span><span class="symbol">(</span><span class="identifier" id="io.vertx.lang.groovy.ScriptVerticle$<init>(groovy.lang.Script)/script">script</span><span class="symbol">:</span>&nbsp;<span class="identifier">Script</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="start.html">start</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="identifier" id="io.vertx.lang.groovy.ScriptVerticle$start(io.vertx.core.Future((java.lang.Void)))/startFuture">startFuture</span><span class="symbol">:</span>&nbsp;<span class="identifier">Future</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Start the verticle instance. 
+<p> Vert.x calls this method when deploying the instance. You do not call it yourself. </p>
+<p> A future is passed into the method, and when deployment is complete the verticle should either call <code><a href="#">io.vertx.core.Future#complete</a></code> or <code><a href="#">io.vertx.core.Future#fail</a></code> the future.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="stop.html">stop</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="identifier" id="io.vertx.lang.groovy.ScriptVerticle$stop(io.vertx.core.Future((java.lang.Void)))/stopFuture">stopFuture</span><span class="symbol">:</span>&nbsp;<span class="identifier">Future</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Stop the verticle instance. 
+<p> Vert.x calls this method when un-deploying the instance. You do not call it yourself. </p>
+<p> A future is passed into the method, and when un-deployment is complete the verticle should either call <code><a href="#">io.vertx.core.Future#complete</a></code> or <code><a href="#">io.vertx.core.Future#fail</a></code> the future.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DnsClient.reverseLookup - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.core.dns</a>&nbsp;/&nbsp;<a href="index.html">DnsClient</a>&nbsp;/&nbsp;<a href=".">reverseLookup</a><br/>
+<br/>
+<h1>reverseLookup</h1>
+<a name="io.vertx.core.dns.DnsClient$reverseLookup(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">reverseLookup</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.dns.DnsClient$reverseLookup(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/ipaddress">ipaddress</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.dns.DnsClient$reverseLookup(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">DnsClient</span></a></code>
+<p>Try to do a reverse lookup of an IP address. This is basically the same as doing trying to resolve a PTR record but allows you to just pass in the IP address and not a valid ptr query string.</p>
+<h3>Parameters</h3>
+<p><a name="ipaddress"></a>
+<code>ipaddress</code> - the IP address to resolve the PTR for</p>
+<p><a name="handler"></a>
+<code>handler</code> - the Handler to notify with the AsyncResult. The handler will get notified with the resolved String if a record was found. If none was found it will get notified with <code>null</code>. If an error accours it will get failed.</p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently.</p>
+</BODY>
+</HTML>

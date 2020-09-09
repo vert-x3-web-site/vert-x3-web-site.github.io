@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TestResult - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.unit.report</a>&nbsp;/&nbsp;<a href=".">TestResult</a><br/>
+<br/>
+<h1>TestResult</h1>
+<code><span class="keyword">interface </span><span class="identifier">TestResult</span></code>
+<p>The result of a test.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Julien Viet</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="begin-time.html">beginTime</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">beginTime</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>The time at which the test began in millis.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="duration-time.html">durationTime</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">durationTime</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>How long the test lasted in millis.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="failed.html">failed</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">failed</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Did it fail?</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="failure.html">failure</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">failure</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-failure/index.html"><span class="identifier">Failure</span></a></code>
+<p>An exception describing failure, null if the test succeeded.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="name.html">name</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">name</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The test description, may be null if none was provided.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="succeeded.html">succeeded</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">succeeded</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Did it succeed?</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

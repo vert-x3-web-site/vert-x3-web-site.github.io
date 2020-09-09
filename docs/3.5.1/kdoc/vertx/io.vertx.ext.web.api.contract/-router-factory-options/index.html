@@ -1,0 +1,196 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RouterFactoryOptions - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.web.api.contract</a>&nbsp;/&nbsp;<a href=".">RouterFactoryOptions</a><br/>
+<br/>
+<h1>RouterFactoryOptions</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RouterFactoryOptions</span></code>
+<p><strong>Author</strong><br/>
+Francesco Guardiani @slinkydeveloper</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">RouterFactoryOptions</span><span class="symbol">(</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">RouterFactoryOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.api.contract.RouterFactoryOptions$<init>(io.vertx.core.json.JsonObject)/json">json</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">RouterFactoryOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.api.contract.RouterFactoryOptions$<init>(io.vertx.ext.web.api.contract.RouterFactoryOptions)/other">other</span><span class="symbol">:</span>&nbsp;<span class="identifier">RouterFactoryOptions</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-m-o-u-n-t_-n-o-t_-i-m-p-l-e-m-e-n-t-e-d_-h-a-n-d-l-e-r.html">DEFAULT_MOUNT_NOT_IMPLEMENTED_HANDLER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_MOUNT_NOT_IMPLEMENTED_HANDLER</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>By default, RouterFactory mounts Not Implemented handler</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-m-o-u-n-t_-r-e-s-p-o-n-s-e_-c-o-n-t-e-n-t_-t-y-p-e_-h-a-n-d-l-e-r.html">DEFAULT_MOUNT_RESPONSE_CONTENT_TYPE_HANDLER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_MOUNT_RESPONSE_CONTENT_TYPE_HANDLER</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>By default, RouterFactory will mount ResponseContentTypeHandler when required</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-m-o-u-n-t_-v-a-l-i-d-a-t-i-o-n_-f-a-i-l-u-r-e_-h-a-n-d-l-e-r.html">DEFAULT_MOUNT_VALIDATION_FAILURE_HANDLER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_MOUNT_VALIDATION_FAILURE_HANDLER</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>By default, RouterFactory loads validation failure handler</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-n-o-t_-i-m-p-l-e-m-e-n-t-e-d_-h-a-n-d-l-e-r.html">DEFAULT_NOT_IMPLEMENTED_HANDLER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_NOT_IMPLEMENTED_HANDLER</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>Default not implemented handler. It sends a response with status code 501, status message "Not Implemented" and empty body</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-r-e-q-u-i-r-e_-s-e-c-u-r-i-t-y_-h-a-n-d-l-e-r-s.html">DEFAULT_REQUIRE_SECURITY_HANDLERS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_REQUIRE_SECURITY_HANDLERS</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>By default, RouterFactory requires security handlers to be defined while calling getRouter() or it will throw an Exception</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-v-a-l-i-d-a-t-i-o-n_-h-a-n-d-l-e-r.html">DEFAULT_VALIDATION_HANDLER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_VALIDATION_HANDLER</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>Default validation failure handler. When ValidationException occurs, It sends a response with status code 400, status message "Bad Request" and error message as body</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-not-implemented-failure-handler.html">getNotImplementedFailureHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getNotImplementedFailureHandler</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-validation-failure-handler.html">getValidationFailureHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getValidationFailureHandler</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-mount-not-implemented-handler.html">isMountNotImplementedHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isMountNotImplementedHandler</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-mount-response-content-type-handler.html">isMountResponseContentTypeHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isMountResponseContentTypeHandler</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-mount-validation-failure-handler.html">isMountValidationFailureHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isMountValidationFailureHandler</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-require-security-handlers.html">isRequireSecurityHandlers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isRequireSecurityHandlers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mount-not-implemented-handler.html">setMountNotImplementedHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMountNotImplementedHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.api.contract.RouterFactoryOptions$setMountNotImplementedHandler(kotlin.Boolean)/mountOperationsWithoutHandler">mountOperationsWithoutHandler</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RouterFactoryOptions</span></code>
+<p>Automatic mount handlers that return HTTP 501 status code for operations where you didn't specify an handler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mount-response-content-type-handler.html">setMountResponseContentTypeHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMountResponseContentTypeHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.api.contract.RouterFactoryOptions$setMountResponseContentTypeHandler(kotlin.Boolean)/mountResponseContentTypeHandler">mountResponseContentTypeHandler</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RouterFactoryOptions</span></code>
+<p>If true, when required, the factory will mount a io.vertx.ext.web.handler.ResponseContentTypeHandler</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mount-validation-failure-handler.html">setMountValidationFailureHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMountValidationFailureHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.api.contract.RouterFactoryOptions$setMountValidationFailureHandler(kotlin.Boolean)/mountGlobalValidationFailureHandler">mountGlobalValidationFailureHandler</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RouterFactoryOptions</span></code>
+<p>Enable or disable validation failure handler. If you enable it during router creation a failure handler that manages ValidationException will be mounted. You can change the validation failure handler with with function <code><a href="#">RouterFactoryOptions#setValidationFailureHandler(Handler)</a></code>. If failure is different from ValidationException, next failure handler will be called.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-not-implemented-failure-handler.html">setNotImplementedFailureHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setNotImplementedFailureHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.api.contract.RouterFactoryOptions$setNotImplementedFailureHandler(io.vertx.core.Handler((io.vertx.ext.web.RoutingContext)))/notImplementedFailureHandler">notImplementedFailureHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RouterFactoryOptions</span></code>
+<p>Set not implemented failure handler. It's called when you don't define an handler for a specific operation. You can enable/disable this feature from <code><a href="set-mount-not-implemented-handler.html">RouterFactoryOptions#setMountNotImplementedHandler(boolean)</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-require-security-handlers.html">setRequireSecurityHandlers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRequireSecurityHandlers</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.api.contract.RouterFactoryOptions$setRequireSecurityHandlers(kotlin.Boolean)/requireSecurityHandlers">requireSecurityHandlers</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RouterFactoryOptions</span></code>
+<p>If true, when you call <code><a href="../-router-factory/get-router.html">RouterFactory#getRouter()</a></code> the factory will mount for every path the required security handlers and, if a security handler is not defined, it throws an RouterFactoryException</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-validation-failure-handler.html">setValidationFailureHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValidationFailureHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.api.contract.RouterFactoryOptions$setValidationFailureHandler(io.vertx.core.Handler((io.vertx.ext.web.RoutingContext)))/validationFailureHandler">validationFailureHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RouterFactoryOptions</span></code>
+<p>Set default validation failure handler. You can enable/disable this feature from <code><a href="set-mount-validation-failure-handler.html">RouterFactoryOptions#setMountValidationFailureHandler(boolean)</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-json.html">toJson</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toJson</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonObject</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

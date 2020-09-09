@@ -1,0 +1,18 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JDBCHashStrategy.setNonces - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.auth.jdbc</a>&nbsp;/&nbsp;<a href="index.html">JDBCHashStrategy</a>&nbsp;/&nbsp;<a href=".">setNonces</a><br/>
+<br/>
+<h1>setNonces</h1>
+<a name="io.vertx.ext.auth.jdbc.JDBCHashStrategy$setNonces(kotlin.collections.MutableList((kotlin.String)))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setNonces</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.jdbc.JDBCHashStrategy$setNonces(kotlin.collections.MutableList((kotlin.String)))/nonces">nonces</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets a ordered list of nonces where each position corresponds to a version. The nonces are supposed not to be stored in the underlying jdbc storage but to be provided as a application configuration. The idea is to add one extra variable to the hash function in order to make breaking the passwords using rainbow tables or precomputed hashes harder. Leaving the attacker only with the brute force approach.</p>
+<h3>Parameters</h3>
+<p><a name="nonces"></a>
+<code>nonces</code> - a List of non null Strings.</p>
+</BODY>
+</HTML>

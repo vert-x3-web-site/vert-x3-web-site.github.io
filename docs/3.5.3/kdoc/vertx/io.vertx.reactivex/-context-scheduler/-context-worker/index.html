@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ContextScheduler.ContextWorker - vertx</title>
+<link rel="stylesheet" href="../../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../../index.html">io.vertx.reactivex</a>&nbsp;/&nbsp;<a href="../index.html">ContextScheduler</a>&nbsp;/&nbsp;<a href=".">ContextWorker</a><br/>
+<br/>
+<h1>ContextWorker</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContextWorker</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Scheduler/Worker.html"><span class="identifier">Worker</span></a></code>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ContextWorker</span><span class="symbol">(</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="count-actions.html">countActions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">countActions</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="dispose.html">dispose</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">dispose</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-disposed.html">isDisposed</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isDisposed</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="schedule.html">schedule</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">schedule</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ContextScheduler.ContextWorker$schedule(java.lang.Runnable)/action">action</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/disposables/Disposable.html"><span class="identifier">Disposable</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">schedule</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ContextScheduler.ContextWorker$schedule(java.lang.Runnable, kotlin.Long, java.util.concurrent.TimeUnit)/action">action</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ContextScheduler.ContextWorker$schedule(java.lang.Runnable, kotlin.Long, java.util.concurrent.TimeUnit)/delayTime">delayTime</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ContextScheduler.ContextWorker$schedule(java.lang.Runnable, kotlin.Long, java.util.concurrent.TimeUnit)/unit">unit</span><span class="symbol">:</span>&nbsp;<span class="identifier">TimeUnit</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/disposables/Disposable.html"><span class="identifier">Disposable</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="schedule-periodically.html">schedulePeriodically</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">schedulePeriodically</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ContextScheduler.ContextWorker$schedulePeriodically(java.lang.Runnable, kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit)/action">action</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ContextScheduler.ContextWorker$schedulePeriodically(java.lang.Runnable, kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit)/initialDelay">initialDelay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ContextScheduler.ContextWorker$schedulePeriodically(java.lang.Runnable, kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit)/period">period</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ContextScheduler.ContextWorker$schedulePeriodically(java.lang.Runnable, kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit)/unit">unit</span><span class="symbol">:</span>&nbsp;<span class="identifier">TimeUnit</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/disposables/Disposable.html"><span class="identifier">Disposable</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

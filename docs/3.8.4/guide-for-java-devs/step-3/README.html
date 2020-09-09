@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Refactoring to Vert.x services - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="https://vertx.io/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.io/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.io/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://vertx.io/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="https://vertx.io/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="https://vertx.io/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="https://vertx.io/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://vertx.io/" class="navbar-brand"><img alt="Brand" src="https://vertx.io/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://start.vertx.io/">Starter</a></li>
+        <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
+        <li><a href="https://vertx.io/docs/3.8.4/">Documentation</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+        <li><a href="https://vertx.io/community/">Community</a></li>
+        <li><a href="https://vertx.io/materials/">Materials</a></li>
+        <li><a href="https://vertx.io/blog/">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Refactoring to Vert.x services</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_maven_configuration_changes">Maven configuration changes</a></li>
+<li><a href="#_database_service_interface">Database service interface</a></li>
+<li><a href="#_database_service_implementation">Database service implementation</a></li>
+<li><a href="#_exposing_the_database_service_from_the_database_verticle">Exposing the database service from the database verticle</a></li>
+<li><a href="#_obtaining_a_database_service_proxy">Obtaining a database service proxy</a></li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_maven_configuration_changes">Maven configuration changes</a></li>
+<li><a href="#_database_service_interface">Database service interface</a></li>
+<li><a href="#_database_service_implementation">Database service implementation</a></li>
+<li><a href="#_exposing_the_database_service_from_the_database_verticle">Exposing the database service from the database verticle</a></li>
+<li><a href="#_obtaining_a_database_service_proxy">Obtaining a database service proxy</a></li>
+</ul>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+The corresponding source code is in the <code>step-3</code> folder of the guide repository.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The previous refactoring was a big step forward compared to our initial implementation, as we extracted independent and configurable verticles connected using asynchronous messages on the event bus.
+We also saw that we could deploy several instances of a given verticle to better cope with load and to better leverage CPU cores.</p>
+</div>
+<div class="paragraph">
+<p>In this section we see how to design and use Vert.x services.
+The main advantage of a service is that it defines an interface for doing certain operations that a verticle exposes.
+We also leverage code generation for all the event bus messaging plumbing, instead of crafting it ourselves like we did in the previous section.</p>
+</div>
+<div class="paragraph">
+<p>We are also going to refactor the code into different Java packages:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>step-3/src/main/java/
+└── io
+    └── vertx
+        └── guides
+            └── wiki
+                ├── MainVerticle.java
+                ├── database
+                │   ├── ErrorCodes.java
+                │   ├── SqlQuery.java
+                │   ├── WikiDatabaseService.java
+                │   ├── WikiDatabaseServiceImpl.java
+                │   ├── WikiDatabaseVerticle.java
+                │   └── package-info.java
+                └── http
+                    └── HttpServerVerticle.java</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>io.vertx.guides.wiki</code> will now contain the main verticle, <code>io.vertx.guides.wiki.database</code> the database verticle and service, and <code>io.vertx.guides.wiki.http</code> the HTTP server verticle.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_maven_configuration_changes">Maven configuration changes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First, we need to add the following 2 dependencies to our project.
+Obviously we need the <code>vertx-service-proxy</code> APIs:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>vertx-service-proxy<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We need the Vert.x code generation module as a compilation-time only dependency (hence the <code>provided</code> scope):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>vertx-codegen<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;scope&gt;</span>provided<span class="tag">&lt;/scope&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next we have to tweak the <code>maven-compiler-plugin</code> configuration to use code generation, which is done via a <code>javac</code> annotation processor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>maven-compiler-plugin<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>3.5.1<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;configuration&gt;</span>
+    <span class="tag">&lt;source&gt;</span>1.8<span class="tag">&lt;/source&gt;</span>
+    <span class="tag">&lt;target&gt;</span>1.8<span class="tag">&lt;/target&gt;</span>
+    <span class="tag">&lt;useIncrementalCompilation&gt;</span>false<span class="tag">&lt;/useIncrementalCompilation&gt;</span>
+
+    <span class="tag">&lt;annotationProcessors&gt;</span>
+      <span class="tag">&lt;annotationProcessor&gt;</span>io.vertx.codegen.CodeGenProcessor<span class="tag">&lt;/annotationProcessor&gt;</span>
+    <span class="tag">&lt;/annotationProcessors&gt;</span>
+    <span class="tag">&lt;generatedSourcesDirectory&gt;</span>${project.basedir}/src/main/generated<span class="tag">&lt;/generatedSourcesDirectory&gt;</span>
+    <span class="tag">&lt;compilerArgs&gt;</span>
+      <span class="tag">&lt;arg&gt;</span>-AoutputDirectory=${project.basedir}/src/main<span class="tag">&lt;/arg&gt;</span>
+    <span class="tag">&lt;/compilerArgs&gt;</span>
+
+  <span class="tag">&lt;/configuration&gt;</span>
+<span class="tag">&lt;/plugin&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the generated code is put in <code>src/main/generated</code>, which some integrated development environments like IntelliJ IDEA will automatically pick up on the classpath.</p>
+</div>
+<div class="paragraph">
+<p>It is also a good idea to update the <code>maven-clean-plugin</code> to remove those generated files:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>maven-clean-plugin<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>3.0.0<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;configuration&gt;</span>
+    <span class="tag">&lt;filesets&gt;</span>
+      <span class="tag">&lt;fileset&gt;</span>
+        <span class="tag">&lt;directory&gt;</span>${project.basedir}/src/main/generated<span class="tag">&lt;/directory&gt;</span>
+      <span class="tag">&lt;/fileset&gt;</span>
+    <span class="tag">&lt;/filesets&gt;</span>
+  <span class="tag">&lt;/configuration&gt;</span>
+<span class="tag">&lt;/plugin&gt;</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+The full documentation on Vert.x services is available at <a href="http://vertx.io/docs/vertx-service-proxy/java/" class="bare">http://vertx.io/docs/vertx-service-proxy/java/</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_database_service_interface">Database service interface</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Defining a service interface is as simple as defining a Java interface, except that there are certain rules to respect for code generation to work and also to ensure inter-operability with other code in Vert.x.</p>
+</div>
+<div class="paragraph">
+<p>The beginning of the interface definition is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ProxyGen</span>
+<span class="annotation">@VertxGen</span>
+<span class="directive">public</span> <span class="type">interface</span> <span class="class">WikiDatabaseService</span> {
+
+  <span class="annotation">@Fluent</span>
+  WikiDatabaseService fetchAllPages(<span class="predefined-type">Handler</span>&lt;AsyncResult&lt;JsonArray&gt;&gt; resultHandler);
+
+  <span class="annotation">@Fluent</span>
+  WikiDatabaseService fetchPage(<span class="predefined-type">String</span> name, <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;JsonObject&gt;&gt; resultHandler);
+
+  <span class="annotation">@Fluent</span>
+  WikiDatabaseService createPage(<span class="predefined-type">String</span> title, <span class="predefined-type">String</span> markdown, <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;<span class="predefined-type">Void</span>&gt;&gt; resultHandler);
+
+  <span class="annotation">@Fluent</span>
+  WikiDatabaseService savePage(<span class="type">int</span> id, <span class="predefined-type">String</span> markdown, <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;<span class="predefined-type">Void</span>&gt;&gt; resultHandler);
+
+  <span class="annotation">@Fluent</span>
+  WikiDatabaseService deletePage(<span class="type">int</span> id, <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;<span class="predefined-type">Void</span>&gt;&gt; resultHandler);
+
+  <span class="comment">// (...)</span></code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>ProxyGen</code> annotation is used to trigger the code generation of a proxy for clients of that service.</p>
+</li>
+<li>
+<p>The <code>Fluent</code> annotation is optional, but allows <em>fluent</em> interfaces where operations can be chained by returning the service instance. This is mostly useful for the code generator when the service shall be consumed from other JVM languages.</p>
+</li>
+<li>
+<p>Parameter types need to be strings, Java primitive types, JSON objects or arrays, any enumeration type or a <code>java.util</code> collection (<code>List</code> / <code>Set</code> / <code>Map</code>) of the previous types. The only way to support arbitrary Java classes is to have them as Vert.x data objects, annotated with <code>@DataObject</code>. The last opportunity to pass other types is service reference types.</p>
+</li>
+<li>
+<p>Since services provide asynchronous results, the last argument of a service method needs to be a <code>Handler&lt;AsyncResult&lt;T&gt;&gt;</code> where <code>T</code> is any of the types suitable for code generation as described above.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>It is a good practice that service interfaces provide static methods to create instances of both the actual service implementation and proxy for client code over the event bus.</p>
+</div>
+<div class="paragraph">
+<p>We define <code>create</code> as simply delegating to the implementation class and its constructor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@GenIgnore</span>
+<span class="directive">static</span> WikiDatabaseService create(JDBCClient dbClient, <span class="predefined-type">HashMap</span>&lt;SqlQuery, <span class="predefined-type">String</span>&gt; sqlQueries, <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;WikiDatabaseService&gt;&gt; readyHandler) {
+  <span class="keyword">return</span> <span class="keyword">new</span> WikiDatabaseServiceImpl(dbClient, sqlQueries, readyHandler);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Vert.x code generator creates the proxy class and names it by suffixing with <code>VertxEBProxy</code>.
+Constructors of these proxy classes need a reference to the Vert.x context as well as a destination address on the event bus:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@GenIgnore</span>
+<span class="directive">static</span> WikiDatabaseService createProxy(Vertx vertx, <span class="predefined-type">String</span> address) {
+  <span class="keyword">return</span> <span class="keyword">new</span> WikiDatabaseServiceVertxEBProxy(vertx, address);
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The <code>SqlQuery</code> and <code>ErrorCodes</code> enumeration types that were inner classes in the previous iteration have been extracted to package-protected types, see <code>SqlQuery.java</code> and <code>ErrorCodes.java</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_database_service_implementation">Database service implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The service implementation is a straightforward port of the previous <code>WikiDatabaseVerticle</code> class code.
+The essential difference is the support of the asynchronous result handler in the constructor (to report the initialization outcome) and in the service methods (to report the operation success).</p>
+</div>
+<div class="paragraph">
+<p>The class code is the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">WikiDatabaseServiceImpl</span> <span class="directive">implements</span> WikiDatabaseService {
+
+  <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> LOGGER = LoggerFactory.getLogger(WikiDatabaseServiceImpl.class);
+
+  <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">HashMap</span>&lt;SqlQuery, <span class="predefined-type">String</span>&gt; sqlQueries;
+  <span class="directive">private</span> <span class="directive">final</span> JDBCClient dbClient;
+
+  WikiDatabaseServiceImpl(JDBCClient dbClient, <span class="predefined-type">HashMap</span>&lt;SqlQuery, <span class="predefined-type">String</span>&gt; sqlQueries, <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;WikiDatabaseService&gt;&gt; readyHandler) {
+    <span class="local-variable">this</span>.dbClient = dbClient;
+    <span class="local-variable">this</span>.sqlQueries = sqlQueries;
+
+    dbClient.getConnection(ar -&gt; {
+      <span class="keyword">if</span> (ar.failed()) {
+        LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Could not open a database connection</span><span class="delimiter">&quot;</span></span>, ar.cause());
+        readyHandler.handle(<span class="predefined-type">Future</span>.failedFuture(ar.cause()));
+      } <span class="keyword">else</span> {
+        SQLConnection connection = ar.result();
+        connection.execute(sqlQueries.get(SqlQuery.CREATE_PAGES_TABLE), create -&gt; {
+          connection.close();
+          <span class="keyword">if</span> (create.failed()) {
+            LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Database preparation error</span><span class="delimiter">&quot;</span></span>, create.cause());
+            readyHandler.handle(<span class="predefined-type">Future</span>.failedFuture(create.cause()));
+          } <span class="keyword">else</span> {
+            readyHandler.handle(<span class="predefined-type">Future</span>.succeededFuture(<span class="local-variable">this</span>));
+          }
+        });
+      }
+    });
+  }
+
+  <span class="annotation">@Override</span>
+  <span class="directive">public</span> WikiDatabaseService fetchAllPages(<span class="predefined-type">Handler</span>&lt;AsyncResult&lt;JsonArray&gt;&gt; resultHandler) {
+    dbClient.query(sqlQueries.get(SqlQuery.ALL_PAGES), res -&gt; {
+      <span class="keyword">if</span> (res.succeeded()) {
+        JsonArray pages = <span class="keyword">new</span> JsonArray(res.result()
+          .getResults()
+          .stream()
+          .map(json -&gt; json.getString(<span class="integer">0</span>))
+          .sorted()
+          .collect(Collectors.toList()));
+        resultHandler.handle(<span class="predefined-type">Future</span>.succeededFuture(pages));
+      } <span class="keyword">else</span> {
+        LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Database query error</span><span class="delimiter">&quot;</span></span>, res.cause());
+        resultHandler.handle(<span class="predefined-type">Future</span>.failedFuture(res.cause()));
+      }
+    });
+    <span class="keyword">return</span> <span class="local-variable">this</span>;
+  }
+
+  <span class="annotation">@Override</span>
+  <span class="directive">public</span> WikiDatabaseService fetchPage(<span class="predefined-type">String</span> name, <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;JsonObject&gt;&gt; resultHandler) {
+    dbClient.queryWithParams(sqlQueries.get(SqlQuery.GET_PAGE), <span class="keyword">new</span> JsonArray().add(name), fetch -&gt; {
+      <span class="keyword">if</span> (fetch.succeeded()) {
+        JsonObject response = <span class="keyword">new</span> JsonObject();
+        <span class="predefined-type">ResultSet</span> resultSet = fetch.result();
+        <span class="keyword">if</span> (resultSet.getNumRows() == <span class="integer">0</span>) {
+          response.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">found</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">false</span>);
+        } <span class="keyword">else</span> {
+          response.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">found</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">true</span>);
+          JsonArray row = resultSet.getResults().get(<span class="integer">0</span>);
+          response.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, row.getInteger(<span class="integer">0</span>));
+          response.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">rawContent</span><span class="delimiter">&quot;</span></span>, row.getString(<span class="integer">1</span>));
+        }
+        resultHandler.handle(<span class="predefined-type">Future</span>.succeededFuture(response));
+      } <span class="keyword">else</span> {
+        LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Database query error</span><span class="delimiter">&quot;</span></span>, fetch.cause());
+        resultHandler.handle(<span class="predefined-type">Future</span>.failedFuture(fetch.cause()));
+      }
+    });
+    <span class="keyword">return</span> <span class="local-variable">this</span>;
+  }
+
+  <span class="annotation">@Override</span>
+  <span class="directive">public</span> WikiDatabaseService createPage(<span class="predefined-type">String</span> title, <span class="predefined-type">String</span> markdown, <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;<span class="predefined-type">Void</span>&gt;&gt; resultHandler) {
+    JsonArray data = <span class="keyword">new</span> JsonArray().add(title).add(markdown);
+    dbClient.updateWithParams(sqlQueries.get(SqlQuery.CREATE_PAGE), data, res -&gt; {
+      <span class="keyword">if</span> (res.succeeded()) {
+        resultHandler.handle(<span class="predefined-type">Future</span>.succeededFuture());
+      } <span class="keyword">else</span> {
+        LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Database query error</span><span class="delimiter">&quot;</span></span>, res.cause());
+        resultHandler.handle(<span class="predefined-type">Future</span>.failedFuture(res.cause()));
+      }
+    });
+    <span class="keyword">return</span> <span class="local-variable">this</span>;
+  }
+
+  <span class="annotation">@Override</span>
+  <span class="directive">public</span> WikiDatabaseService savePage(<span class="type">int</span> id, <span class="predefined-type">String</span> markdown, <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;<span class="predefined-type">Void</span>&gt;&gt; resultHandler) {
+    JsonArray data = <span class="keyword">new</span> JsonArray().add(markdown).add(id);
+    dbClient.updateWithParams(sqlQueries.get(SqlQuery.SAVE_PAGE), data, res -&gt; {
+      <span class="keyword">if</span> (res.succeeded()) {
+        resultHandler.handle(<span class="predefined-type">Future</span>.succeededFuture());
+      } <span class="keyword">else</span> {
+        LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Database query error</span><span class="delimiter">&quot;</span></span>, res.cause());
+        resultHandler.handle(<span class="predefined-type">Future</span>.failedFuture(res.cause()));
+      }
+    });
+    <span class="keyword">return</span> <span class="local-variable">this</span>;
+  }
+
+  <span class="annotation">@Override</span>
+  <span class="directive">public</span> WikiDatabaseService deletePage(<span class="type">int</span> id, <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;<span class="predefined-type">Void</span>&gt;&gt; resultHandler) {
+    JsonArray data = <span class="keyword">new</span> JsonArray().add(id);
+    dbClient.updateWithParams(sqlQueries.get(SqlQuery.DELETE_PAGE), data, res -&gt; {
+      <span class="keyword">if</span> (res.succeeded()) {
+        resultHandler.handle(<span class="predefined-type">Future</span>.succeededFuture());
+      } <span class="keyword">else</span> {
+        LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Database query error</span><span class="delimiter">&quot;</span></span>, res.cause());
+        resultHandler.handle(<span class="predefined-type">Future</span>.failedFuture(res.cause()));
+      }
+    });
+    <span class="keyword">return</span> <span class="local-variable">this</span>;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There is one last step required before the proxy code generation works: the service package needs to have a <code>package-info.java</code> annotated to define a Vert.x module:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ModuleGen</span>(groupPackage = <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.guides.wiki.database</span><span class="delimiter">&quot;</span></span>, name = <span class="string"><span class="delimiter">&quot;</span><span class="content">wiki-database</span><span class="delimiter">&quot;</span></span>)
+<span class="keyword">package</span> <span class="namespace">io.vertx.guides.wiki.database</span>;
+
+<span class="keyword">import</span> <span class="include">io.vertx.codegen.annotations.ModuleGen</span>;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_exposing_the_database_service_from_the_database_verticle">Exposing the database service from the database verticle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As most of the database handling code has been moved to <code>WikiDatabaseServiceImpl</code>, the <code>WikiDatabaseVerticle</code> class now consists of 2 methods: the <code>start</code> method to register the service and a utility method to load SQL queries:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">WikiDatabaseVerticle</span> <span class="directive">extends</span> AbstractVerticle {
+
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> CONFIG_WIKIDB_JDBC_URL = <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.jdbc.url</span><span class="delimiter">&quot;</span></span>;
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> CONFIG_WIKIDB_JDBC_DRIVER_CLASS = <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.jdbc.driver_class</span><span class="delimiter">&quot;</span></span>;
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> CONFIG_WIKIDB_JDBC_MAX_POOL_SIZE = <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.jdbc.max_pool_size</span><span class="delimiter">&quot;</span></span>;
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> CONFIG_WIKIDB_SQL_QUERIES_RESOURCE_FILE = <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.sqlqueries.resource.file</span><span class="delimiter">&quot;</span></span>;
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> CONFIG_WIKIDB_QUEUE = <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.queue</span><span class="delimiter">&quot;</span></span>;
+
+  <span class="annotation">@Override</span>
+  <span class="directive">public</span> <span class="type">void</span> start(Promise&lt;<span class="predefined-type">Void</span>&gt; promise) <span class="directive">throws</span> <span class="exception">Exception</span> {
+
+    <span class="predefined-type">HashMap</span>&lt;SqlQuery, <span class="predefined-type">String</span>&gt; sqlQueries = loadSqlQueries();
+
+    JDBCClient dbClient = JDBCClient.createShared(vertx, <span class="keyword">new</span> JsonObject()
+      .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">url</span><span class="delimiter">&quot;</span></span>, config().getString(CONFIG_WIKIDB_JDBC_URL, <span class="string"><span class="delimiter">&quot;</span><span class="content">jdbc:hsqldb:file:db/wiki</span><span class="delimiter">&quot;</span></span>))
+      .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">driver_class</span><span class="delimiter">&quot;</span></span>, config().getString(CONFIG_WIKIDB_JDBC_DRIVER_CLASS, <span class="string"><span class="delimiter">&quot;</span><span class="content">org.hsqldb.jdbcDriver</span><span class="delimiter">&quot;</span></span>))
+      .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">max_pool_size</span><span class="delimiter">&quot;</span></span>, config().getInteger(CONFIG_WIKIDB_JDBC_MAX_POOL_SIZE, <span class="integer">30</span>)));
+
+    WikiDatabaseService.create(dbClient, sqlQueries, ready -&gt; {
+      <span class="keyword">if</span> (ready.succeeded()) {
+        ServiceBinder binder = <span class="keyword">new</span> ServiceBinder(vertx);
+        binder
+          .setAddress(CONFIG_WIKIDB_QUEUE)
+          .register(WikiDatabaseService.class, ready.result()); <b class="conum">(1)</b>
+        promise.complete();
+      } <span class="keyword">else</span> {
+        promise.fail(ready.cause());
+      }
+    });
+  }
+
+  <span class="comment">/*
+   * Note: this uses blocking APIs, but data is small...
+   */</span>
+  <span class="directive">private</span> <span class="predefined-type">HashMap</span>&lt;SqlQuery, <span class="predefined-type">String</span>&gt; loadSqlQueries() <span class="directive">throws</span> <span class="exception">IOException</span> {
+
+    <span class="predefined-type">String</span> queriesFile = config().getString(CONFIG_WIKIDB_SQL_QUERIES_RESOURCE_FILE);
+    <span class="predefined-type">InputStream</span> queriesInputStream;
+    <span class="keyword">if</span> (queriesFile != <span class="predefined-constant">null</span>) {
+      queriesInputStream = <span class="keyword">new</span> <span class="predefined-type">FileInputStream</span>(queriesFile);
+    } <span class="keyword">else</span> {
+      queriesInputStream = getClass().getResourceAsStream(<span class="string"><span class="delimiter">&quot;</span><span class="content">/db-queries.properties</span><span class="delimiter">&quot;</span></span>);
+    }
+
+    <span class="predefined-type">Properties</span> queriesProps = <span class="keyword">new</span> <span class="predefined-type">Properties</span>();
+    queriesProps.load(queriesInputStream);
+    queriesInputStream.close();
+
+    <span class="predefined-type">HashMap</span>&lt;SqlQuery, <span class="predefined-type">String</span>&gt; sqlQueries = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+    sqlQueries.put(SqlQuery.CREATE_PAGES_TABLE, queriesProps.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">create-pages-table</span><span class="delimiter">&quot;</span></span>));
+    sqlQueries.put(SqlQuery.ALL_PAGES, queriesProps.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">all-pages</span><span class="delimiter">&quot;</span></span>));
+    sqlQueries.put(SqlQuery.GET_PAGE, queriesProps.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">get-page</span><span class="delimiter">&quot;</span></span>));
+    sqlQueries.put(SqlQuery.CREATE_PAGE, queriesProps.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">create-page</span><span class="delimiter">&quot;</span></span>));
+    sqlQueries.put(SqlQuery.SAVE_PAGE, queriesProps.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">save-page</span><span class="delimiter">&quot;</span></span>));
+    sqlQueries.put(SqlQuery.DELETE_PAGE, queriesProps.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">delete-page</span><span class="delimiter">&quot;</span></span>));
+    <span class="keyword">return</span> sqlQueries;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>We register the service here.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Registering a service requires an interface class, a Vert.x context, an implementation and an event bus destination.</p>
+</div>
+<div class="paragraph">
+<p>The <code>WikiDatabaseServiceVertxEBProxy</code> generated class handles receiving messages on the event bus and then dispatching them to the <code>WikiDatabaseServiceImpl</code>.
+What it does is actually very close to what we did in the previous section: messages are being sent with a <code>action</code> header to specify which method to invoke, and parameters are encoded in JSON.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_obtaining_a_database_service_proxy">Obtaining a database service proxy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The final steps to refactoring to Vert.x services is to adapt the HTTP server verticle to obtain a proxy to the database service
+and use it in the handlers instead of the event bus.</p>
+</div>
+<div class="paragraph">
+<p>First, we need to create the proxy when the verticle starts:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> WikiDatabaseService dbService;
+
+<span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="type">void</span> start(Promise&lt;<span class="predefined-type">Void</span>&gt; promise) <span class="directive">throws</span> <span class="exception">Exception</span> {
+
+  <span class="predefined-type">String</span> wikiDbQueue = config().getString(CONFIG_WIKIDB_QUEUE, <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.queue</span><span class="delimiter">&quot;</span></span>); <b class="conum">(1)</b>
+  dbService = WikiDatabaseService.createProxy(vertx, wikiDbQueue);
+
+  HttpServer server = vertx.createHttpServer();
+  <span class="comment">// (...)</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>We just need to make sure to use the same event bus destination as the service that was published by  <code>WikiDatabaseVerticle</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Then, we need to replace calls to the event bus with calls to the database service:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> indexHandler(RoutingContext context) {
+  dbService.fetchAllPages(reply -&gt; {
+    <span class="keyword">if</span> (reply.succeeded()) {
+      context.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Wiki home</span><span class="delimiter">&quot;</span></span>);
+      context.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">pages</span><span class="delimiter">&quot;</span></span>, reply.result().getList());
+      templateEngine.render(context.data(), <span class="string"><span class="delimiter">&quot;</span><span class="content">templates/index.ftl</span><span class="delimiter">&quot;</span></span>, ar -&gt; {
+        <span class="keyword">if</span> (ar.succeeded()) {
+          context.response().putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Content-Type</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">text/html</span><span class="delimiter">&quot;</span></span>);
+          context.response().end(ar.result());
+        } <span class="keyword">else</span> {
+          context.fail(ar.cause());
+        }
+      });
+    } <span class="keyword">else</span> {
+      context.fail(reply.cause());
+    }
+  });
+}
+
+<span class="directive">private</span> <span class="type">void</span> pageRenderingHandler(RoutingContext context) {
+  <span class="predefined-type">String</span> requestedPage = context.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">page</span><span class="delimiter">&quot;</span></span>);
+  dbService.fetchPage(requestedPage, reply -&gt; {
+    <span class="keyword">if</span> (reply.succeeded()) {
+
+      JsonObject payLoad = reply.result();
+      <span class="type">boolean</span> found = payLoad.getBoolean(<span class="string"><span class="delimiter">&quot;</span><span class="content">found</span><span class="delimiter">&quot;</span></span>);
+      <span class="predefined-type">String</span> rawContent = payLoad.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">rawContent</span><span class="delimiter">&quot;</span></span>, EMPTY_PAGE_MARKDOWN);
+      context.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>, requestedPage);
+      context.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, payLoad.getInteger(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, -<span class="integer">1</span>));
+      context.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">newPage</span><span class="delimiter">&quot;</span></span>, found ? <span class="string"><span class="delimiter">&quot;</span><span class="content">no</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">yes</span><span class="delimiter">&quot;</span></span>);
+      context.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">rawContent</span><span class="delimiter">&quot;</span></span>, rawContent);
+      context.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">content</span><span class="delimiter">&quot;</span></span>, Processor.process(rawContent));
+      context.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">timestamp</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> <span class="predefined-type">Date</span>().toString());
+
+      templateEngine.render(context.data(), <span class="string"><span class="delimiter">&quot;</span><span class="content">templates/page.ftl</span><span class="delimiter">&quot;</span></span>, ar -&gt; {
+        <span class="keyword">if</span> (ar.succeeded()) {
+          context.response().putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Content-Type</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">text/html</span><span class="delimiter">&quot;</span></span>);
+          context.response().end(ar.result());
+        } <span class="keyword">else</span> {
+          context.fail(ar.cause());
+        }
+      });
+
+    } <span class="keyword">else</span> {
+      context.fail(reply.cause());
+    }
+  });
+}
+
+<span class="directive">private</span> <span class="type">void</span> pageUpdateHandler(RoutingContext context) {
+  <span class="predefined-type">String</span> title = context.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>);
+
+  <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;<span class="predefined-type">Void</span>&gt;&gt; handler = reply -&gt; {
+    <span class="keyword">if</span> (reply.succeeded()) {
+      context.response().setStatusCode(<span class="integer">303</span>);
+      context.response().putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Location</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">/wiki/</span><span class="delimiter">&quot;</span></span> + title);
+      context.response().end();
+    } <span class="keyword">else</span> {
+      context.fail(reply.cause());
+    }
+  };
+
+  <span class="predefined-type">String</span> markdown = context.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span>);
+  <span class="keyword">if</span> (<span class="string"><span class="delimiter">&quot;</span><span class="content">yes</span><span class="delimiter">&quot;</span></span>.equals(context.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">newPage</span><span class="delimiter">&quot;</span></span>))) {
+    dbService.createPage(title, markdown, handler);
+  } <span class="keyword">else</span> {
+    dbService.savePage(<span class="predefined-type">Integer</span>.valueOf(context.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>)), markdown, handler);
+  }
+}
+
+<span class="directive">private</span> <span class="type">void</span> pageCreateHandler(RoutingContext context) {
+  <span class="predefined-type">String</span> pageName = context.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>);
+  <span class="predefined-type">String</span> location = <span class="string"><span class="delimiter">&quot;</span><span class="content">/wiki/</span><span class="delimiter">&quot;</span></span> + pageName;
+  <span class="keyword">if</span> (pageName == <span class="predefined-constant">null</span> || pageName.isEmpty()) {
+    location = <span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span>;
+  }
+  context.response().setStatusCode(<span class="integer">303</span>);
+  context.response().putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Location</span><span class="delimiter">&quot;</span></span>, location);
+  context.response().end();
+}
+
+<span class="directive">private</span> <span class="type">void</span> pageDeletionHandler(RoutingContext context) {
+  dbService.deletePage(<span class="predefined-type">Integer</span>.valueOf(context.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>)), reply -&gt; {
+    <span class="keyword">if</span> (reply.succeeded()) {
+      context.response().setStatusCode(<span class="integer">303</span>);
+      context.response().putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Location</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span>);
+      context.response().end();
+    } <span class="keyword">else</span> {
+      context.fail(reply.cause());
+    }
+  });
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>WikiDatabaseServiceVertxProxyHandler</code> generated class deals with forwarding calls as event bus messages.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+It is still perfectly possible to consume a Vert.x service directly via event bus messages since this is what generated proxys do.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                Last updated 2019-07-25 13:05:56 CEST
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.io/">Home</a></li>
+          <li><a href="https://vertx.io/download/">Download</a></li>
+          <li><a href="https://vertx.io/docs/3.8.4/">Documentation</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+          <li><a href="https://vertx.io/blog/">Blog</a></li>
+          <li><a href="https://vertx.io/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.io/community/">Help &amp; Contributors</a></li>
+          <li><a href="https://vertx.io/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual-licensed under the <a href="http://www.eclipse.org/legal/epl-v20.html">Eclipse Public License 2.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="https://vertx.io/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="https://vertx.io/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="https://vertx.io/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://vertx.io/javascripts/bootstrap.min.js"></script>
+<script src="https://vertx.io/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="https://vertx.io/javascripts/sidebar.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});
+</script>
+</body>
+</html>
+

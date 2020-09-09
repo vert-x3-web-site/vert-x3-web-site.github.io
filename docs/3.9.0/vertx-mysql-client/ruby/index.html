@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Reactive MySQL Client - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="https://vertx.io/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.io/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.io/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://vertx.io/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="https://vertx.io/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="https://vertx.io/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="https://vertx.io/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://vertx.io/" class="navbar-brand"><img alt="Brand" src="https://vertx.io/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://start.vertx.io/">Starter</a></li>
+        <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
+        <li><a href="https://vertx.io/docs/3.9.0/">Documentation</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+        <li><a href="https://vertx.io/community/">Community</a></li>
+        <li><a href="https://vertx.io/materials/">Materials</a></li>
+        <li><a href="https://vertx.io/blog/">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Reactive MySQL Client</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_usage">Usage</a></li>
+<li><a href="#_getting_started">Getting started</a></li>
+<li><a href="#_connecting_to_mysql">Connecting to MySQL</a></li>
+<li><a href="#_configuration">Configuration</a>
+<ul class="sectlevel2">
+<li><a href="#_data_object">Data Object</a></li>
+<li><a href="#_connection_uri">connection URI</a></li>
+</ul>
+</li>
+<li><a href="#_mysql_last_insert_id">MySQL LAST_INSERT_ID</a></li>
+<li><a href="#_mysql_type_mapping">MySQL type mapping</a>
+<ul class="sectlevel2">
+<li><a href="#_implicit_type_conversion">Implicit type conversion</a></li>
+<li><a href="#_handling_boolean">Handling BOOLEAN</a></li>
+<li><a href="#_handling_json">Handling JSON</a></li>
+<li><a href="#_handling_bit">Handling BIT</a></li>
+<li><a href="#_handling_time">Handling TIME</a></li>
+<li><a href="#_handling_numeric">Handling NUMERIC</a></li>
+</ul>
+</li>
+<li><a href="#_collector_queries">Collector queries</a></li>
+<li><a href="#_mysql_stored_procedure">MySQL Stored Procedure</a></li>
+<li><a href="#_mysql_local_infile">MySQL LOCAL INFILE</a></li>
+<li><a href="#_authentication">Authentication</a></li>
+<li><a href="#_using_ssl_tls">Using SSL/TLS</a></li>
+<li><a href="#_mysql_utility_command">MySQL utility command</a>
+<ul class="sectlevel2">
+<li><a href="#_com_ping">COM_PING</a></li>
+<li><a href="#_com_reset_connection">COM_RESET_CONNECTION</a></li>
+<li><a href="#_com_change_user">COM_CHANGE_USER</a></li>
+<li><a href="#_com_init_db">COM_INIT_DB</a></li>
+<li><a href="#_com_statistics">COM_STATISTICS</a></li>
+<li><a href="#_com_debug">COM_DEBUG</a></li>
+<li><a href="#_com_set_option">COM_SET_OPTION</a></li>
+</ul>
+</li>
+<li><a href="#_mysql_and_mariadb_version_support_matrix">MySQL and MariaDB version support matrix</a></li>
+<li><a href="#_pitfalls_good_practices">Pitfalls &amp; Good Practices</a>
+<ul class="sectlevel2">
+<li><a href="#_prepared_statement_count_limit">prepared statement count limit</a></li>
+<li><a href="#_demystifying_prepared_batch">demystifying prepared batch</a></li>
+<li><a href="#_tricky_date_time_data_types">tricky DATE &amp; TIME data types</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_usage">Usage</a></li>
+<li><a href="#_getting_started">Getting started</a></li>
+<li><a href="#_connecting_to_mysql">Connecting to MySQL</a></li>
+<li><a href="#_configuration">Configuration</a>
+<ul class="sectlevel2">
+<li><a href="#_data_object">Data Object</a></li>
+<li><a href="#_connection_uri">connection URI</a></li>
+</ul>
+</li>
+<li><a href="#_mysql_last_insert_id">MySQL LAST_INSERT_ID</a></li>
+<li><a href="#_mysql_type_mapping">MySQL type mapping</a>
+<ul class="sectlevel2">
+<li><a href="#_implicit_type_conversion">Implicit type conversion</a></li>
+<li><a href="#_handling_boolean">Handling BOOLEAN</a></li>
+<li><a href="#_handling_json">Handling JSON</a></li>
+<li><a href="#_handling_bit">Handling BIT</a></li>
+<li><a href="#_handling_time">Handling TIME</a></li>
+<li><a href="#_handling_numeric">Handling NUMERIC</a></li>
+</ul>
+</li>
+<li><a href="#_collector_queries">Collector queries</a></li>
+<li><a href="#_mysql_stored_procedure">MySQL Stored Procedure</a></li>
+<li><a href="#_mysql_local_infile">MySQL LOCAL INFILE</a></li>
+<li><a href="#_authentication">Authentication</a></li>
+<li><a href="#_using_ssl_tls">Using SSL/TLS</a></li>
+<li><a href="#_mysql_utility_command">MySQL utility command</a>
+<ul class="sectlevel2">
+<li><a href="#_com_ping">COM_PING</a></li>
+<li><a href="#_com_reset_connection">COM_RESET_CONNECTION</a></li>
+<li><a href="#_com_change_user">COM_CHANGE_USER</a></li>
+<li><a href="#_com_init_db">COM_INIT_DB</a></li>
+<li><a href="#_com_statistics">COM_STATISTICS</a></li>
+<li><a href="#_com_debug">COM_DEBUG</a></li>
+<li><a href="#_com_set_option">COM_SET_OPTION</a></li>
+</ul>
+</li>
+<li><a href="#_mysql_and_mariadb_version_support_matrix">MySQL and MariaDB version support matrix</a></li>
+<li><a href="#_pitfalls_good_practices">Pitfalls &amp; Good Practices</a>
+<ul class="sectlevel2">
+<li><a href="#_prepared_statement_count_limit">prepared statement count limit</a></li>
+<li><a href="#_demystifying_prepared_batch">demystifying prepared batch</a></li>
+<li><a href="#_tricky_date_time_data_types">tricky DATE &amp; TIME data types</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Reactive MySQL Client is a client for MySQL with a straightforward API focusing on
+scalability and low overhead.</p>
+</div>
+<div class="paragraph">
+<p><strong>Features</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Event driven</p>
+</li>
+<li>
+<p>Lightweight</p>
+</li>
+<li>
+<p>Built-in connection pooling</p>
+</li>
+<li>
+<p>Prepared queries caching</p>
+</li>
+<li>
+<p>Cursor support</p>
+</li>
+<li>
+<p>Row streaming</p>
+</li>
+<li>
+<p>RxJava 1 and RxJava 2</p>
+</li>
+<li>
+<p>Direct memory to object without unnecessary copies</p>
+</li>
+<li>
+<p>Java 8 Date and Time</p>
+</li>
+<li>
+<p>Stored Procedures support</p>
+</li>
+<li>
+<p>TLS/SSL support</p>
+</li>
+<li>
+<p>MySQL utilities commands support</p>
+</li>
+<li>
+<p>Working with MySQL and MariaDB</p>
+</li>
+<li>
+<p>Rich collation and charset support</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_usage">Usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To use the Reactive MySQL Client add the following dependency to the <em>dependencies</em> section of your build descriptor:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven (in your <code>pom.xml</code>):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+ <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
+ <span class="tag">&lt;artifactId&gt;</span>vertx-lang-ruby<span class="tag">&lt;/artifactId&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.0<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Gradle (in your <code>build.gradle</code> file):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
+ compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-lang-ruby:3.9.0</span><span class="delimiter">'</span></span>
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_started">Getting started</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here is the simplest way to connect, query and disconnect</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx-mysql-client/my_sql_pool</span><span class="delimiter">'</span></span>
+
+<span class="comment"># Connect options</span>
+connectOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">port</span><span class="delimiter">'</span></span> =&gt; <span class="integer">3306</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">host</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">the-host</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">database</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">the-db</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">user</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span>
+}
+
+<span class="comment"># Pool options</span>
+poolOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">maxSize</span><span class="delimiter">'</span></span> =&gt; <span class="integer">5</span>
+}
+
+<span class="comment"># Create the client pool</span>
+client = <span class="constant">VertxMysqlClient</span>::<span class="constant">MySQLPool</span>.pool(connectOptions, poolOptions)
+
+<span class="comment"># A simple query</span>
+client.query(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT * FROM users WHERE id='julien'</span><span class="delimiter">&quot;</span></span>).execute() { |ar_err,ar|
+  <span class="keyword">if</span> (ar_err == <span class="predefined-constant">nil</span>)
+    result = ar
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Got </span><span class="inline"><span class="inline-delimiter">#{</span>result.size()<span class="inline-delimiter">}</span></span><span class="content"> rows </span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Failure: </span><span class="inline"><span class="inline-delimiter">#{</span>ar_err.get_message()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+
+  <span class="comment"># Now close the pool</span>
+  client.close()
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_connecting_to_mysql">Connecting to MySQL</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Most of the time you will use a pool to connect to MySQL:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx-mysql-client/my_sql_pool</span><span class="delimiter">'</span></span>
+
+<span class="comment"># Connect options</span>
+connectOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">port</span><span class="delimiter">'</span></span> =&gt; <span class="integer">3306</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">host</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">the-host</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">database</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">the-db</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">user</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span>
+}
+
+<span class="comment"># Pool options</span>
+poolOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">maxSize</span><span class="delimiter">'</span></span> =&gt; <span class="integer">5</span>
+}
+
+<span class="comment"># Create the pooled client</span>
+client = <span class="constant">VertxMysqlClient</span>::<span class="constant">MySQLPool</span>.pool(connectOptions, poolOptions)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The pooled client uses a connection pool and any operation will borrow a connection from the pool
+to execute the operation and release it to the pool.</p>
+</div>
+<div class="paragraph">
+<p>If you are running with Vert.x you can pass it your Vertx instance:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx-mysql-client/my_sql_pool</span><span class="delimiter">'</span></span>
+
+<span class="comment"># Connect options</span>
+connectOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">port</span><span class="delimiter">'</span></span> =&gt; <span class="integer">3306</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">host</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">the-host</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">database</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">the-db</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">user</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span>
+}
+
+<span class="comment"># Pool options</span>
+poolOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">maxSize</span><span class="delimiter">'</span></span> =&gt; <span class="integer">5</span>
+}
+<span class="comment"># Create the pooled client</span>
+client = <span class="constant">VertxMysqlClient</span>::<span class="constant">MySQLPool</span>.pool(vertx, connectOptions, poolOptions)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You need to release the pool when you don&#8217;t need it anymore:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># Close the pool and all the associated resources</span>
+pool.close()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you need to execute several operations on the same connection, you need to use a client
+<code><a href="../../yardoc/VertxMysqlClient/MySQLConnection.html">connection</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>You can easily get one from the pool:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx-mysql-client/my_sql_pool</span><span class="delimiter">'</span></span>
+
+<span class="comment"># Connect options</span>
+connectOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">port</span><span class="delimiter">'</span></span> =&gt; <span class="integer">3306</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">host</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">the-host</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">database</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">the-db</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">user</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span>
+}
+
+<span class="comment"># Pool options</span>
+poolOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">maxSize</span><span class="delimiter">'</span></span> =&gt; <span class="integer">5</span>
+}
+
+<span class="comment"># Create the pooled client</span>
+client = <span class="constant">VertxMysqlClient</span>::<span class="constant">MySQLPool</span>.pool(vertx, connectOptions, poolOptions)
+
+<span class="comment"># Get a connection from the pool</span>
+client.get_connection() { |ar1_err,ar1|
+
+  <span class="keyword">if</span> (ar1_err == <span class="predefined-constant">nil</span>)
+
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Connected</span><span class="delimiter">&quot;</span></span>
+
+    <span class="comment"># Obtain our connection</span>
+    conn = ar1
+
+    <span class="comment"># All operations execute on the same connection</span>
+    conn.query(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT * FROM users WHERE id='julien'</span><span class="delimiter">&quot;</span></span>).execute() { |ar2_err,ar2|
+      <span class="keyword">if</span> (ar2_err == <span class="predefined-constant">nil</span>)
+        conn.query(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT * FROM users WHERE id='emad'</span><span class="delimiter">&quot;</span></span>).execute() { |ar3_err,ar3|
+          <span class="comment"># Release the connection to the pool</span>
+          conn.close()
+        }
+      <span class="keyword">else</span>
+        <span class="comment"># Release the connection to the pool</span>
+        conn.close()
+      <span class="keyword">end</span>
+    }
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Could not connect: </span><span class="inline"><span class="inline-delimiter">#{</span>ar1_err.get_message()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you are done with the connection you must close it to release it to the pool, so it can be reused.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration">Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are several alternatives for you to configure the client.</p>
+</div>
+<div class="sect2">
+<h3 id="_data_object">Data Object</h3>
+<div class="paragraph">
+<p>A simple way to configure the client is to specify a <code>MySQLConnectOptions</code> data object.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx-mysql-client/my_sql_pool</span><span class="delimiter">'</span></span>
+
+<span class="comment"># Data object</span>
+connectOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">port</span><span class="delimiter">'</span></span> =&gt; <span class="integer">3306</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">host</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">the-host</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">database</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">the-db</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">user</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span>
+}
+
+<span class="comment"># Pool Options</span>
+poolOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">maxSize</span><span class="delimiter">'</span></span> =&gt; <span class="integer">5</span>
+}
+
+<span class="comment"># Create the pool from the data object</span>
+pool = <span class="constant">VertxMysqlClient</span>::<span class="constant">MySQLPool</span>.pool(vertx, connectOptions, poolOptions)
+
+pool.get_connection() { |ar_err,ar|
+  <span class="comment"># Handling your connection</span>
+}</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_collations_and_character_sets">collations and character sets</h4>
+<div class="paragraph">
+<p>The Reactive MySQL client supports configuring collations or character sets and map them to a correlative <code>java.nio.charset.Charset</code>.
+For example, you can specify charset for a connection like</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">connectOptions = {
+}
+
+<span class="comment"># set connection character set to utf8 instead of the default charset utf8mb4</span>
+connectOptions[<span class="string"><span class="delimiter">'</span><span class="content">charset</span><span class="delimiter">'</span></span>] = <span class="string"><span class="delimiter">&quot;</span><span class="content">utf8</span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Reactive MySQL Client will take <code>utf8mb4</code> as the default charset. String values like password and error messages are always decoded in <code>UTF-8</code> charset.</p>
+</div>
+<div class="paragraph">
+<p><code>characterEncoding</code> option is used to determine which Java charset will be used to encode String values such as query string and parameter values, the charset is <code>UTF-8</code> by default and if it&#8217;s set to <code>null</code> then the client will use the default Java charset instead.</p>
+</div>
+<div class="paragraph">
+<p>You can also specify collation for a connection like</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">connectOptions = {
+}
+
+<span class="comment"># set connection collation to utf8_general_ci instead of the default collation utf8mb4_general_ci</span>
+<span class="comment"># setting a collation will override the charset option</span>
+connectOptions[<span class="string"><span class="delimiter">'</span><span class="content">charset</span><span class="delimiter">'</span></span>] = <span class="string"><span class="delimiter">&quot;</span><span class="content">gbk</span><span class="delimiter">&quot;</span></span>
+connectOptions[<span class="string"><span class="delimiter">'</span><span class="content">collation</span><span class="delimiter">'</span></span>] = <span class="string"><span class="delimiter">&quot;</span><span class="content">utf8_general_ci</span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note setting a collation on the data object will override the <strong>charset</strong> and <strong>characterEncoding</strong> option.</p>
+</div>
+<div class="paragraph">
+<p>You can execute SQL <code>SHOW COLLATION;</code> or <code>SHOW CHARACTER SET;</code> to get the supported collations and charsets by the server.</p>
+</div>
+<div class="paragraph">
+<p>More information about MySQL charsets and collations can be found in the <a href="https://dev.mysql.com/doc/refman/8.0/en/charset.html">MySQL Reference Manual</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_connection_attributes">connection attributes</h4>
+<div class="paragraph">
+<p>You can also configure the connection attributes with the <code>setProperties</code> or <code>addProperty</code> methods. Note <code>setProperties</code> will override the default client properties.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="constant">Code</span> <span class="keyword">not</span> translatable</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More information about client connection attributes can be found in the <a href="https://dev.mysql.com/doc/refman/8.0/en/performance-schema-connection-attribute-tables.html">MySQL Reference Manual</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_useaffectedrows">useAffectedRows</h4>
+<div class="paragraph">
+<p>You can configure the <code>useAffectedRows</code> option to decide whether to set <code>CLIENT_FOUND_ROWS</code> flag when connecting to the server. If the <code>CLIENT_FOUND_ROWS</code> flag is specified then the affected rows count is the numeric value of rows found rather than affected.</p>
+</div>
+<div class="paragraph">
+<p>More information about this can be found in the <a href="https://dev.mysql.com/doc/refman/8.0/en/mysql-affected-rows.html">MySQL Reference Manual</a></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_connection_uri">connection URI</h3>
+<div class="paragraph">
+<p>Apart from configuring with a <code>MySQLConnectOptions</code> data object, We also provide you an alternative way to connect when you want to configure with a connection URI:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx-mysql-client/my_sql_pool</span><span class="delimiter">'</span></span>
+require <span class="string"><span class="delimiter">'</span><span class="content">vertx-mysql-client/my_sql_connection</span><span class="delimiter">'</span></span>
+
+<span class="comment"># Connection URI</span>
+connectionUri = <span class="string"><span class="delimiter">&quot;</span><span class="content">mysql://dbuser:secretpassword@database.server.com:3211/mydb</span><span class="delimiter">&quot;</span></span>
+
+<span class="comment"># Create the pool from the connection URI</span>
+pool = <span class="constant">VertxMysqlClient</span>::<span class="constant">MySQLPool</span>.pool(connectionUri)
+
+<span class="comment"># Create the connection from the connection URI</span>
+<span class="constant">VertxMysqlClient</span>::<span class="constant">MySQLConnection</span>.connect(vertx, connectionUri) { |res_err,res|
+  <span class="comment"># Handling your connection</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More information about connection string formats can be found in the <a href="https://dev.mysql.com/doc/refman/8.0/en/connecting-using-uri-or-key-value-pairs.html#connecting-using-uri">MySQL Reference Manual</a>.</p>
+</div>
+<div class="paragraph">
+<p>Currently the client supports the following parameter key words in connection uri(keys are case-insensitive)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>host</p>
+</li>
+<li>
+<p>port</p>
+</li>
+<li>
+<p>user</p>
+</li>
+<li>
+<p>password</p>
+</li>
+<li>
+<p>schema</p>
+</li>
+<li>
+<p>socket</p>
+</li>
+<li>
+<p>useAffectedRows</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in index.adoc - include::queries.adoc[]</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mysql_last_insert_id">MySQL LAST_INSERT_ID</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can get the auto incremented value if you insert a record into the table.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx-mysql-client/my_sql_client</span><span class="delimiter">'</span></span>
+client.query(<span class="string"><span class="delimiter">&quot;</span><span class="content">INSERT INTO test(val) VALUES ('v1')</span><span class="delimiter">&quot;</span></span>).execute() { |ar_err,ar|
+  <span class="keyword">if</span> (ar_err == <span class="predefined-constant">nil</span>)
+    rows = ar
+    lastInsertId = rows.property(<span class="constant">VertxMysqlClient</span>::<span class="constant">MySQLClient</span>::<span class="constant">LAST_INSERTED_ID</span>)
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Last inserted id is: </span><span class="inline"><span class="inline-delimiter">#{</span>lastInsertId<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Failure: </span><span class="inline"><span class="inline-delimiter">#{</span>ar_err.get_message()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More information can be found in <a href="https://dev.mysql.com/doc/refman/8.0/en/getting-unique-id.html">How to Get the Unique ID for the Last Inserted Row</a>.</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in index.adoc - include::connections.adoc[]</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in index.adoc - include::transactions.adoc[]</p>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in index.adoc - include::cursor.adoc[]</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mysql_type_mapping">MySQL type mapping</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Currently the client supports the following MySQL types</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>BOOL,BOOLEAN (<code>java.lang.Byte</code>)</p>
+</li>
+<li>
+<p>TINYINT (<code>java.lang.Byte</code>)</p>
+</li>
+<li>
+<p>TINYINT UNSIGNED(<code>java.lang.Short</code>)</p>
+</li>
+<li>
+<p>SMALLINT (<code>java.lang.Short</code>)</p>
+</li>
+<li>
+<p>SMALLINT UNSIGNED(<code>java.lang.Integer</code>)</p>
+</li>
+<li>
+<p>MEDIUMINT (<code>java.lang.Integer</code>)</p>
+</li>
+<li>
+<p>MEDIUMINT UNSIGNED(<code>java.lang.Integer</code>)</p>
+</li>
+<li>
+<p>INT,INTEGER (<code>java.lang.Integer</code>)</p>
+</li>
+<li>
+<p>INTEGER UNSIGNED(<code>java.lang.Long</code>)</p>
+</li>
+<li>
+<p>BIGINT (<code>java.lang.Long</code>)</p>
+</li>
+<li>
+<p>BIGINT UNSIGNED(<code>io.vertx.sqlclient.data.Numeric</code>)</p>
+</li>
+<li>
+<p>FLOAT (<code>java.lang.Float</code>)</p>
+</li>
+<li>
+<p>FLOAT UNSIGNED(<code>java.lang.Float</code>)</p>
+</li>
+<li>
+<p>DOUBLE (<code>java.lang.Double</code>)</p>
+</li>
+<li>
+<p>DOUBLE UNSIGNED(<code>java.lang.Double</code>)</p>
+</li>
+<li>
+<p>BIT (<code>java.lang.Long</code>)</p>
+</li>
+<li>
+<p>NUMERIC (<code>io.vertx.sqlclient.data.Numeric</code>)</p>
+</li>
+<li>
+<p>NUMERIC UNSIGNED(<code>io.vertx.sqlclient.data.Numeric</code>)</p>
+</li>
+<li>
+<p>DATE (<code>java.time.LocalDate</code>)</p>
+</li>
+<li>
+<p>DATETIME (<code>java.time.LocalDateTime</code>)</p>
+</li>
+<li>
+<p>TIME (<code>java.time.Duration</code>)</p>
+</li>
+<li>
+<p>TIMESTAMP (<code>java.time.LocalDateTime</code>)</p>
+</li>
+<li>
+<p>YEAR (<code>java.lang.Short</code>)</p>
+</li>
+<li>
+<p>CHAR (<code>java.lang.String</code>)</p>
+</li>
+<li>
+<p>VARCHAR (<code>java.lang.String</code>)</p>
+</li>
+<li>
+<p>BINARY (<code>io.vertx.core.buffer.Buffer</code>)</p>
+</li>
+<li>
+<p>VARBINARY (<code>io.vertx.core.buffer.Buffer</code>)</p>
+</li>
+<li>
+<p>TINYBLOB (<code>io.vertx.core.buffer.Buffer</code>)</p>
+</li>
+<li>
+<p>TINYTEXT (<code>java.lang.String</code>)</p>
+</li>
+<li>
+<p>BLOB (<code>io.vertx.core.buffer.Buffer</code>)</p>
+</li>
+<li>
+<p>TEXT (<code>java.lang.String</code>)</p>
+</li>
+<li>
+<p>MEDIUMBLOB (<code>io.vertx.core.buffer.Buffer</code>)</p>
+</li>
+<li>
+<p>MEDIUMTEXT (<code>java.lang.String</code>)</p>
+</li>
+<li>
+<p>LONGBLOB (<code>io.vertx.core.buffer.Buffer</code>)</p>
+</li>
+<li>
+<p>LONGTEXT (<code>java.lang.String</code>)</p>
+</li>
+<li>
+<p>ENUM (<code>java.lang.String</code>)</p>
+</li>
+<li>
+<p>SET (<code>java.lang.String</code>)</p>
+</li>
+<li>
+<p>JSON (<code>io.vertx.core.json.JsonObject</code>, <code>io.vertx.core.json.JsonArray</code>, <code>Number</code>, <code>Boolean</code>, <code>String</code>, <code>io.vertx.sqlclient.Tuple#JSON_NULL</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Tuple decoding uses the above types when storing values</p>
+</div>
+<div class="paragraph">
+<p>Note: In Java there is no specific representations for unsigned numeric values, so this client will convert an unsigned value to the correlated Java type.</p>
+</div>
+<div class="sect2">
+<h3 id="_implicit_type_conversion">Implicit type conversion</h3>
+<div class="paragraph">
+<p>The Reactive MySQL Client supports implicit type conversions when executing a prepared statement.
+Suppose you have a <code>TIME</code> column in your table, the two examples below will both work here.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx-sql-client/tuple</span><span class="delimiter">'</span></span>
+client.prepared_query(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT * FROM students WHERE updated_time = ?</span><span class="delimiter">&quot;</span></span>).execute(<span class="constant">VertxSqlClient</span>::<span class="constant">Tuple</span>.of(<span class="constant">Java</span>::<span class="constant">JavaTime</span>::<span class="constant">LocalTime</span>.of(<span class="integer">19</span>, <span class="integer">10</span>, <span class="integer">25</span>))) { |ar_err,ar|
+  <span class="comment"># handle the results</span>
+}
+<span class="comment"># this will also work with implicit type conversion</span>
+client.prepared_query(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT * FROM students WHERE updated_time = ?</span><span class="delimiter">&quot;</span></span>).execute(<span class="constant">VertxSqlClient</span>::<span class="constant">Tuple</span>.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">19:10:25</span><span class="delimiter">&quot;</span></span>)) { |ar_err,ar|
+  <span class="comment"># handle the results</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The MySQL data type for encoding will be inferred from the parameter values and here is the type mapping</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter value type</th>
+<th class="tableblock halign-left valign-top">encoding MySQL type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">null</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MYSQL_TYPE_NULL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.Byte</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MYSQL_TYPE_TINY</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MYSQL_TYPE_TINY</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.Short</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MYSQL_TYPE_SHORT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.Integer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MYSQL_TYPE_LONG</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.Long</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MYSQL_TYPE_LONGLONG</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.Double</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MYSQL_TYPE_DOUBLE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.Float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MYSQL_TYPE_FLOAT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.LocalDate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MYSQL_TYPE_DATE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.Duration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MYSQL_TYPE_TIME</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.LocalTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MYSQL_TYPE_TIME</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">io.vertx.core.buffer.Buffer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MYSQL_TYPE_BLOB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.LocalDateTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MYSQL_TYPE_DATETIME</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MYSQL_TYPE_STRING</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_handling_boolean">Handling BOOLEAN</h3>
+<div class="paragraph">
+<p>In MySQL <code>BOOLEAN</code> and <code>BOOL</code> data types are synonyms for <code>TINYINT(1)</code>. A value of zero is considered false, non-zero values are considered true.
+A <code>BOOLEAN</code> data type value is stored in <code>Row</code> or <code>Tuple</code> as <code>java.lang.Byte</code> type, you can call <code>Row#getValue</code> to retrieve it as a <code>java.lang.Byte</code> value,
+or you can call <code>Row#getBoolean</code> to retrieve it as <code>java.lang.Boolean</code> value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">client.query(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT graduated FROM students WHERE id = 0</span><span class="delimiter">&quot;</span></span>).execute() { |ar_err,ar|
+  <span class="keyword">if</span> (ar_err == <span class="predefined-constant">nil</span>)
+    rowSet = ar
+    rowSet.each <span class="keyword">do</span> |row|
+      pos = row.get_column_index(<span class="string"><span class="delimiter">&quot;</span><span class="content">graduated</span><span class="delimiter">&quot;</span></span>)
+      value = row.get(<span class="constant">Java</span>::<span class="constant">JavaLang</span>::<span class="constant">Byte</span>::class, pos)
+      graduated = row.get_boolean?(<span class="string"><span class="delimiter">&quot;</span><span class="content">graduated</span><span class="delimiter">&quot;</span></span>)
+    <span class="keyword">end</span>
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Failure: </span><span class="inline"><span class="inline-delimiter">#{</span>ar_err.get_message()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you want to execute a prepared statement with a param of a <code>BOOLEAN</code> value, you can simply add the <code>java.lang.Boolean</code> value to the params list.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx-sql-client/tuple</span><span class="delimiter">'</span></span>
+client.prepared_query(<span class="string"><span class="delimiter">&quot;</span><span class="content">UPDATE students SET graduated = ? WHERE id = 0</span><span class="delimiter">&quot;</span></span>).execute(<span class="constant">VertxSqlClient</span>::<span class="constant">Tuple</span>.of(<span class="predefined-constant">true</span>)) { |ar_err,ar|
+  <span class="keyword">if</span> (ar_err == <span class="predefined-constant">nil</span>)
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Updated with the boolean value</span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Failure: </span><span class="inline"><span class="inline-delimiter">#{</span>ar_err.get_message()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_handling_json">Handling JSON</h3>
+<div class="paragraph">
+<p>MySQL <code>JSON</code> data type is represented by the following Java types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>String</code></p>
+</li>
+<li>
+<p><code>Number</code></p>
+</li>
+<li>
+<p><code>Boolean</code></p>
+</li>
+<li>
+<p><code>io.vertx.core.json.JsonObject</code></p>
+</li>
+<li>
+<p><code>io.vertx.core.json.JsonArray</code></p>
+</li>
+<li>
+<p><code>io.vertx.sqlclient.Tuple#JSON_NULL</code> for representing the JSON null literal</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="constant">Code</span> <span class="keyword">not</span> translatable</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_handling_bit">Handling BIT</h3>
+<div class="paragraph">
+<p>The <code>BIT</code> data type is mapped to <code>java.lang.Long</code> type, but Java has no notion of unsigned numeric values, so if you want to insert or update a record with the max value of <code>BIT(64)</code>, you can do some tricks setting the parameter to <code>-1L</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_handling_time">Handling TIME</h3>
+<div class="paragraph">
+<p>MySQL <code>TIME</code> data type can be used to represent either time of a day or a time interval which ranges from <code>-838:59:59</code> to <code>838:59:59</code>. In Reactive MySQL client the <code>TIME</code> data type is mapped to <code>java.time.Duration</code> natively, but you can also retrieve it as a <code>java.time.LocalTime</code> via <code>Row#getLocalTime</code> accessor.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_handling_numeric">Handling NUMERIC</h3>
+<div class="paragraph">
+<p>The <code><a href="unavailable">Numeric</a></code> Java type is used to represent the MySQL <code>NUMERIC</code> type.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">numeric = row.get(<span class="constant">Java</span>::<span class="constant">IoVertxSqlclientData</span>::<span class="constant">Numeric</span>::class, <span class="integer">0</span>)
+<span class="keyword">if</span> (numeric.na_n?())
+  <span class="comment"># Handle NaN</span>
+<span class="keyword">else</span>
+  value = numeric.big_decimal_value()
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_collector_queries">Collector queries</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use Java collectors with the query API:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="constant">Code</span> <span class="keyword">not</span> translatable</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The collector processing must not keep a reference on the <code><a href="../../yardoc/VertxSqlClient/Row.html">Row</a></code> as
+there is a single row used for processing the entire set.</p>
+</div>
+<div class="paragraph">
+<p>The Java <code>Collectors</code> provides many interesting predefined collectors, for example you can
+create easily create a string directly from the row set:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="constant">Code</span> <span class="keyword">not</span> translatable</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mysql_stored_procedure">MySQL Stored Procedure</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can run stored procedures in queries. The result will be retrieved from the server following the <a href="https://dev.mysql.com/doc/dev/mysql-server/8.0.12/page_protocol_command_phase_sp.html">MySQL protocol</a> without any magic here.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">client.query(<span class="string"><span class="delimiter">&quot;</span><span class="content">CREATE PROCEDURE multi() BEGIN</span><span class="char">\n</span><span class="content">  SELECT 1;</span><span class="char">\n</span><span class="content">  SELECT 1;</span><span class="char">\n</span><span class="content">  INSERT INTO ins VALUES (1);</span><span class="char">\n</span><span class="content">  INSERT INTO ins VALUES (2);</span><span class="char">\n</span><span class="content">END;</span><span class="delimiter">&quot;</span></span>).execute() { |ar1_err,ar1|
+  <span class="keyword">if</span> (ar1_err == <span class="predefined-constant">nil</span>)
+    <span class="comment"># create stored procedure success</span>
+    client.query(<span class="string"><span class="delimiter">&quot;</span><span class="content">CALL multi();</span><span class="delimiter">&quot;</span></span>).execute() { |ar2_err,ar2|
+      <span class="keyword">if</span> (ar2_err == <span class="predefined-constant">nil</span>)
+        <span class="comment"># handle the result</span>
+        result1 = ar2
+        row1 = result1.iterator().next()
+        puts <span class="string"><span class="delimiter">&quot;</span><span class="content">First result: </span><span class="inline"><span class="inline-delimiter">#{</span>row1.get_integer(<span class="integer">0</span>)<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+        result2 = result1.next()
+        row2 = result2.iterator().next()
+        puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Second result: </span><span class="inline"><span class="inline-delimiter">#{</span>row2.get_integer(<span class="integer">0</span>)<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+
+        result3 = result2.next()
+        puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Affected rows: </span><span class="inline"><span class="inline-delimiter">#{</span>result3.row_count()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+      <span class="keyword">else</span>
+        puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Failure: </span><span class="inline"><span class="inline-delimiter">#{</span>ar2_err.get_message()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+      <span class="keyword">end</span>
+    }
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Failure: </span><span class="inline"><span class="inline-delimiter">#{</span>ar1_err.get_message()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note: Prepared statements binding OUT parameters is not supported for now.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mysql_local_infile">MySQL LOCAL INFILE</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This client supports for handling the LOCAL INFILE Request, if you want to load data from a local file into the server, you can use query
+<code>LOAD DATA LOCAL INFILE '&lt;filename&gt;' INTO TABLE &lt;table&gt;;</code>. More information can be found in the <a href="https://dev.mysql.com/doc/refman/8.0/en/load-data.html">MySQL Reference Manual</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_authentication">Authentication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MySQL 8.0 introduces a new authentication method named <code>caching_sha2_password</code> and it&#8217;s the default one to authenticate.
+In order to connect to the server using this new authentication method, you need either use a secure connection(i.e. enable TLS/SSL) or exchange the encrypted password using an RSA key pair to avoid leaks of password. The RSA key pair is automatically exchanged during the communication, but the server RSA public key may be hacked during the process since it&#8217;s transferred on a insecure connection.
+So if you&#8217;re on a insecure connection and want to avoid the risk of exposing the server RSA public key, you can set the server RSA public key like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx/buffer</span><span class="delimiter">'</span></span>
+
+options1 = {
+  <span class="string"><span class="delimiter">'</span><span class="content">port</span><span class="delimiter">'</span></span> =&gt; <span class="integer">3306</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">host</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">the-host</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">database</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">the-db</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">user</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">serverRsaPublicKeyPath</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">tls/files/public_key.pem</span><span class="delimiter">&quot;</span></span>
+}
+
+options2 = {
+  <span class="string"><span class="delimiter">'</span><span class="content">port</span><span class="delimiter">'</span></span> =&gt; <span class="integer">3306</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">host</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">the-host</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">database</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">the-db</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">user</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">serverRsaPublicKeyValue</span><span class="delimiter">'</span></span> =&gt; <span class="constant">Vertx</span>::<span class="constant">Buffer</span>.buffer(<span class="string"><span class="delimiter">&quot;</span><span class="content">-----BEGIN PUBLIC KEY-----</span><span class="char">\n</span><span class="content">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3yvG5s0qrV7jxVlp0sMj</span><span class="char">\n</span><span class="content">xP0a6BuLKCMjb0o88hDsJ3xz7PpHNKazuEAfPxiRFVAV3edqfSiXoQw+lJf4haEG</span><span class="char">\n</span><span class="content">HQe12Nfhs+UhcAeTKXRlZP/JNmI+BGoBduQ1rCId9bKYbXn4pvyS/a1ft7SwFkhx</span><span class="char">\n</span><span class="content">aogCur7iIB0WUWvwkQ0fEj/Mlhw93lLVyx7hcGFq4FOAKFYr3A0xrHP1IdgnD8QZ</span><span class="char">\n</span><span class="content">0fUbgGLWWLOossKrbUP5HWko1ghLPIbfmU6o890oj1ZWQewj1Rs9Er92/UDj/JXx</span><span class="char">\n</span><span class="content">7ha1P+ZOgPBlV037KDQMS6cUh9vTablEHsMLhDZanymXzzjBkL+wH/b9cdL16LkQ</span><span class="char">\n</span><span class="content">5QIDAQAB</span><span class="char">\n</span><span class="content">-----END PUBLIC KEY-----</span><span class="char">\n</span><span class="delimiter">&quot;</span></span>)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More information about the <code>caching_sha2_password</code> authentication method can be found in the <a href="https://dev.mysql.com/doc/refman/8.0/en/caching-sha2-pluggable-authentication.html">MySQL Reference Manual</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_ssl_tls">Using SSL/TLS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To configure the client to use SSL connection, you can configure the <code><a href="../dataobjects.html#MySQLConnectOptions">MySQLConnectOptions</a></code>
+like a Vert.x <code>NetClient</code>.
+All <a href="https://dev.mysql.com/doc/refman/8.0/en/connection-options.html#option_general_ssl-mode">SSL modes</a> are supported and you are able to configure <code>sslmode</code>. The client is in <code>DISABLED</code> SSL mode by default.
+<code>ssl</code> parameter is kept as a mere shortcut for setting <code>sslmode</code>. <code>setSsl(true)</code> is equivalent to <code>setSslMode(VERIFY_CA)</code> and <code>setSsl(false)</code> is equivalent to <code>setSslMode(DISABLED)</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx-mysql-client/my_sql_connection</span><span class="delimiter">'</span></span>
+
+options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">port</span><span class="delimiter">'</span></span> =&gt; <span class="integer">3306</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">host</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">the-host</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">database</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">the-db</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">user</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">sslMode</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">VERIFY_CA</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">pemTrustOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">certPaths</span><span class="delimiter">'</span></span> =&gt; [
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/cert.pem</span><span class="delimiter">&quot;</span></span>
+    ]
+  }
+}
+
+<span class="constant">VertxMysqlClient</span>::<span class="constant">MySQLConnection</span>.connect(vertx, options) { |res_err,res|
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">nil</span>)
+    <span class="comment"># Connected with SSL</span>
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Could not connect </span><span class="inline"><span class="inline-delimiter">#{</span>res_err<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More information can be found in the <a href="http://vertx.io/docs/vertx-core/java/#ssl">Vert.x documentation</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mysql_utility_command">MySQL utility command</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sometimes you want to use MySQL utility commands and we provide support for this.
+More information can be found in the <a href="https://dev.mysql.com/doc/dev/mysql-server/8.0.12/page_protocol_command_phase_utility.html">MySQL utility commands</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_com_ping">COM_PING</h3>
+<div class="paragraph">
+<p>You can use <code>COM_PING</code> command to check if the server is alive. The handler will be notified if the server responds to the PING, otherwise the handler will never be called.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">connection.ping() { |ar_err,ar|
+  puts <span class="string"><span class="delimiter">&quot;</span><span class="content">The server has responded to the PING</span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_com_reset_connection">COM_RESET_CONNECTION</h3>
+<div class="paragraph">
+<p>You can reset the session state with <code>COM_RESET_CONNECTION</code> command, this will reset the connection state like:
+- user variables
+- temporary tables
+- prepared statements</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">connection.reset_connection() { |ar_err,ar|
+  <span class="keyword">if</span> (ar_err == <span class="predefined-constant">nil</span>)
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Connection has been reset now</span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Failure: </span><span class="inline"><span class="inline-delimiter">#{</span>ar_err.get_message()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_com_change_user">COM_CHANGE_USER</h3>
+<div class="paragraph">
+<p>You can change the user of the current connection, this will perform a re-authentication and reset the connection state like <code>COM_RESET_CONNECTION</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">authenticationOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">user</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">newuser</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">newpassword</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">database</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">newdatabase</span><span class="delimiter">&quot;</span></span>
+}
+connection.change_user(authenticationOptions) { |ar_err,ar|
+  <span class="keyword">if</span> (ar_err == <span class="predefined-constant">nil</span>)
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">User of current connection has been changed.</span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Failure: </span><span class="inline"><span class="inline-delimiter">#{</span>ar_err.get_message()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_com_init_db">COM_INIT_DB</h3>
+<div class="paragraph">
+<p>You can use <code>COM_INIT_DB</code> command to change the default schema of the connection.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">connection.specify_schema(<span class="string"><span class="delimiter">&quot;</span><span class="content">newschema</span><span class="delimiter">&quot;</span></span>) { |ar_err,ar|
+  <span class="keyword">if</span> (ar_err == <span class="predefined-constant">nil</span>)
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Default schema changed to newschema</span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Failure: </span><span class="inline"><span class="inline-delimiter">#{</span>ar_err.get_message()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_com_statistics">COM_STATISTICS</h3>
+<div class="paragraph">
+<p>You can use <code>COM_STATISTICS</code> command to get a human readable string of some internal status variables in MySQL server.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">connection.get_internal_statistics() { |ar_err,ar|
+  <span class="keyword">if</span> (ar_err == <span class="predefined-constant">nil</span>)
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Statistics: </span><span class="inline"><span class="inline-delimiter">#{</span>ar<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Failure: </span><span class="inline"><span class="inline-delimiter">#{</span>ar_err.get_message()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_com_debug">COM_DEBUG</h3>
+<div class="paragraph">
+<p>You can use <code>COM_DEBUG</code> command to dump debug info to the MySQL server&#8217;s STDOUT.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">connection.debug() { |ar_err,ar|
+  <span class="keyword">if</span> (ar_err == <span class="predefined-constant">nil</span>)
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Debug info dumped to server's STDOUT</span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Failure: </span><span class="inline"><span class="inline-delimiter">#{</span>ar_err.get_message()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_com_set_option">COM_SET_OPTION</h3>
+<div class="paragraph">
+<p>You can use <code>COM_SET_OPTION</code> command to set options for the current connection. Currently only <code>CLIENT_MULTI_STATEMENTS</code> can be set.</p>
+</div>
+<div class="paragraph">
+<p>For example, you can disable <code>CLIENT_MULTI_STATEMENTS</code> with this command.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">connection.set_option(<span class="symbol">:MYSQL_OPTION_MULTI_STATEMENTS_OFF</span>) { |ar_err,ar|
+  <span class="keyword">if</span> (ar_err == <span class="predefined-constant">nil</span>)
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">CLIENT_MULTI_STATEMENTS is off now</span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Failure: </span><span class="inline"><span class="inline-delimiter">#{</span>ar_err.get_message()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mysql_and_mariadb_version_support_matrix">MySQL and MariaDB version support matrix</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2">MySQL</th>
+<th class="tableblock halign-center valign-top" colspan="2">MariaDB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Version</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Supported</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Version</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Supported</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>5.5</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#10004;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>10.1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#10004;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>5.6</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#10004;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>10.2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#10004;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>5.7</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#10004;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>10.3</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#10004;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>8.0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#10004;</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>10.4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">&#10004;</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Known issues:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Reset connection utility command does not work in MySQL 5.5, 5.6 and MariaDB 10.1</p>
+</li>
+<li>
+<p>Change user utility command is not supported with MariaDB 10.2 and 10.3</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pitfalls_good_practices">Pitfalls &amp; Good Practices</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here are some good practices for you to avoid common pitfalls when using the Reactive MySQL Client.</p>
+</div>
+<div class="sect2">
+<h3 id="_prepared_statement_count_limit">prepared statement count limit</h3>
+<div class="paragraph">
+<p>Sometimes you might meet the notorious error <code>Can&#8217;t create more than max_prepared_stmt_count statements (current value: 16382)</code>, this is because the server has reached the limit of total number of prepared statement.</p>
+</div>
+<div class="paragraph">
+<p>You can adjust the server system variable <code>max_prepared_stmt_count</code> but it has an upper bound value so you can&#8217;t get rid of the error in this way.</p>
+</div>
+<div class="paragraph">
+<p>The best way to alleviate this is enabling prepared statement caching, so the prepared statements with the same SQL string could be reused and the client does not have to create a brand new prepared statement for every request.
+The prepared statement will be automatically closed when it&#8217;s evicted from the cache.
+In this way the chances of reaching the limit could be greatly reduced though it could not be totally eliminated.</p>
+</div>
+<div class="paragraph">
+<p>Note using <code>SqlClient#preparedQuery</code> without prepared statement caching enabled will not close the prepared statement after executing!</p>
+</div>
+<div class="paragraph">
+<p>You can also manage the lifecycle of prepared statements manually by creating a <code>PreparedQuery</code> object via <code>SqlConnection#prepare</code> interface, or even use the <a href="https://dev.mysql.com/doc/refman/8.0/en/sql-prepared-statements.html">SQL syntax prepared statement</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_demystifying_prepared_batch">demystifying prepared batch</h3>
+<div class="paragraph">
+<p>There is time when you want to batch insert data into the database, you can use <code>SqlClient#preparedBatch</code> which provides a simple API to handle this.
+Keep in mind that MySQL does not natively support batching protocol so the API is only a sugar by executing the prepared statement one after another, which means more network round trips are required comparing to inserting multiple rows by executing one prepared statement with a list of values.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tricky_date_time_data_types">tricky DATE &amp; TIME data types</h3>
+<div class="paragraph">
+<p>Handling MYSQL DATE and TIME data types especially with time zones is tricky therefore the Reactive MySQL Client does no magic transformation for those values.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>MySQL DATETIME data type does not contain time zone info, so what you get is identical to what you set no matter what time zone is in the current session.</p>
+</li>
+<li>
+<p>MySQL TIMESTAMP data type contains time zone info, so when you set or get the value it&#8217;s always transformed by the server with the timezone set in the current session.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                Last updated 2020-03-30 09:41:16 CEST
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.io/">Home</a></li>
+          <li><a href="https://vertx.io/download/">Download</a></li>
+          <li><a href="https://vertx.io/docs/3.9.0/">Documentation</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+          <li><a href="https://vertx.io/blog/">Blog</a></li>
+          <li><a href="https://vertx.io/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.io/community/">Help &amp; Contributors</a></li>
+          <li><a href="https://vertx.io/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual-licensed under the <a href="http://www.eclipse.org/legal/epl-v20.html">Eclipse Public License 2.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="https://vertx.io/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="https://vertx.io/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="https://vertx.io/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://vertx.io/javascripts/bootstrap.min.js"></script>
+<script src="https://vertx.io/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="https://vertx.io/javascripts/sidebar.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});
+</script>
+</body>
+</html>
+

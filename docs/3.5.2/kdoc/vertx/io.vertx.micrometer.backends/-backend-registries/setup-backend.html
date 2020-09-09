@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BackendRegistries.setupBackend - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.micrometer.backends</a>&nbsp;/&nbsp;<a href="index.html">BackendRegistries</a>&nbsp;/&nbsp;<a href=".">setupBackend</a><br/>
+<br/>
+<h1>setupBackend</h1>
+<a name="io.vertx.micrometer.backends.BackendRegistries$setupBackend(io.vertx.core.Vertx, io.vertx.micrometer.MicrometerMetricsOptions)"></a>
+<code><span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">setupBackend</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.backends.BackendRegistries$setupBackend(io.vertx.core.Vertx, io.vertx.micrometer.MicrometerMetricsOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.micrometer.backends.BackendRegistries$setupBackend(io.vertx.core.Vertx, io.vertx.micrometer.MicrometerMetricsOptions)/options">options</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.micrometer/-micrometer-metrics-options/index.html"><span class="identifier">MicrometerMetricsOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-backend-registry/index.html"><span class="identifier">BackendRegistry</span></a></code>
+<p>Create a new backend registry, containing a micrometer registry, initialized with the provided options. If a registry already exists with the associated name, it is just returned without any effect.</p>
+<h3>Parameters</h3>
+<p><a name="vertx"></a>
+<code>vertx</code> - vertx object that might be necessary for some backend initialization</p>
+<p><a name="options"></a>
+<code>options</code> - micrometer options, including configuration related to the backend. Should be a subclass of MicrometerMetricsOptions (ex: VertxInfluxDbOptions, VertxPrometheusOptions). If the class is not recognized, a NoopBackendRegistry will be returned.</p>
+<p><strong>Return</strong><br/>
+the created (or existing) BackendRegistry</p>
+</BODY>
+</HTML>

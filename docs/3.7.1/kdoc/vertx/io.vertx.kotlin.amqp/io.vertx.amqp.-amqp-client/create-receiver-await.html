@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>createReceiverAwait - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.kotlin.amqp</a>&nbsp;/&nbsp;<a href="index.html">io.vertx.amqp.AmqpClient</a>&nbsp;/&nbsp;<a href="./create-receiver-await.html">createReceiverAwait</a><br/>
+<br/>
+<h1>createReceiverAwait</h1>
+<a name="io.vertx.kotlin.amqp$createReceiverAwait(io.vertx.amqp.AmqpClient, kotlin.String)"></a>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">AmqpClient</span><span class="symbol">.</span><span class="identifier">createReceiverAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.amqp$createReceiverAwait(io.vertx.amqp.AmqpClient, kotlin.String)/address">address</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AmqpReceiver</span></code>
+<p>Suspending version of method <a href="#">io.vertx.amqp.AmqpClient.createReceiver</a></p>
+<h3>Parameters</h3>
+<p><a name="address"></a>
+<code>address</code> - The source address to attach the consumer to, must not be null</p>
+<p><strong>Return</strong><br/>
+<p><a href="#">AmqpReceiver</a></p>
+
+
+<p>NOTE: This function has been automatically generated from <a href="#">io.vertx.amqp.AmqpClient</a> using Vert.x codegen.</p>
+</p>
+<a name="io.vertx.kotlin.amqp$createReceiverAwait(io.vertx.amqp.AmqpClient, kotlin.String, kotlin.Function1((io.vertx.amqp.AmqpMessage, kotlin.Unit)))"></a>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">AmqpClient</span><span class="symbol">.</span><span class="identifier">createReceiverAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.amqp$createReceiverAwait(io.vertx.amqp.AmqpClient, kotlin.String, kotlin.Function1((io.vertx.amqp.AmqpMessage, kotlin.Unit)))/address">address</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.amqp$createReceiverAwait(io.vertx.amqp.AmqpClient, kotlin.String, kotlin.Function1((io.vertx.amqp.AmqpMessage, kotlin.Unit)))/messageHandler">messageHandler</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">AmqpMessage</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AmqpReceiver</span></code>
+<p>Suspending version of method <a href="#">io.vertx.amqp.AmqpClient.createReceiver</a></p>
+<h3>Parameters</h3>
+<p><a name="address"></a>
+<code>address</code> - The source address to attach the consumer to, must not be null</p>
+<p><a name="messageHandler"></a>
+<code>messageHandler</code> - The message handler, must not be null</p>
+<p><strong>Return</strong><br/>
+<p><a href="#">AmqpReceiver</a></p>
+
+
+<p>NOTE: This function has been automatically generated from <a href="#">io.vertx.amqp.AmqpClient</a> using Vert.x codegen.</p>
+</p>
+<a name="io.vertx.kotlin.amqp$createReceiverAwait(io.vertx.amqp.AmqpClient, kotlin.String, io.vertx.amqp.AmqpReceiverOptions, kotlin.Function1((io.vertx.amqp.AmqpMessage, kotlin.Unit)))"></a>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">AmqpClient</span><span class="symbol">.</span><span class="identifier">createReceiverAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.amqp$createReceiverAwait(io.vertx.amqp.AmqpClient, kotlin.String, io.vertx.amqp.AmqpReceiverOptions, kotlin.Function1((io.vertx.amqp.AmqpMessage, kotlin.Unit)))/address">address</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.amqp$createReceiverAwait(io.vertx.amqp.AmqpClient, kotlin.String, io.vertx.amqp.AmqpReceiverOptions, kotlin.Function1((io.vertx.amqp.AmqpMessage, kotlin.Unit)))/receiverOptions">receiverOptions</span><span class="symbol">:</span>&nbsp;<span class="identifier">AmqpReceiverOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.amqp$createReceiverAwait(io.vertx.amqp.AmqpClient, kotlin.String, io.vertx.amqp.AmqpReceiverOptions, kotlin.Function1((io.vertx.amqp.AmqpMessage, kotlin.Unit)))/messageHandler">messageHandler</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">AmqpMessage</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AmqpReceiver</span></code>
+<p>Suspending version of method <a href="#">io.vertx.amqp.AmqpClient.createReceiver</a></p>
+<h3>Parameters</h3>
+<p><a name="address"></a>
+<code>address</code> - The source address to attach the consumer to.</p>
+<p><a name="receiverOptions"></a>
+<code>receiverOptions</code> - The options for this receiver.</p>
+<p><a name="messageHandler"></a>
+<code>messageHandler</code> - The message handler, must not be null</p>
+<p><strong>Return</strong><br/>
+<p><a href="#">AmqpReceiver</a></p>
+
+
+<p>NOTE: This function has been automatically generated from <a href="#">io.vertx.amqp.AmqpClient</a> using Vert.x codegen.</p>
+</p>
+</BODY>
+</HTML>

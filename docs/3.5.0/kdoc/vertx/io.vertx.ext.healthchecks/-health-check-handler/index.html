@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HealthCheckHandler - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.healthchecks</a>&nbsp;/&nbsp;<a href=".">HealthCheckHandler</a><br/>
+<br/>
+<h1>HealthCheckHandler</h1>
+<code><span class="keyword">interface </span><span class="identifier">HealthCheckHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>A Vert.x Web handler on which you register health check procedure. It computes the outcome status (`UP` or `DOWN`) . When the handler process a HTTP request, it computes the global outcome and build a HTTP response as follows: 
+<p> </p>
+<ul> <li>204 - status is `UP` but no procedures installed (no payload)</li>
+ <li>200 - status is `UP`, the payload contains the result of the installed procedures</li>
+ <li>503 - status is `DOWN`, the payload contains the result of the installed procedures</li>
+ <li>500 - status is `DOWN`, the payload contains the result of the installed procedures, one of the procedure has failed</li>
+ </ul>
+</p>
+<p><strong>Author</strong><br/>
+<a href="#">Clement Escoffier</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.healthchecks.HealthCheckHandler$create(io.vertx.core.Vertx, io.vertx.ext.auth.AuthProvider)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.healthchecks.HealthCheckHandler$create(io.vertx.core.Vertx, io.vertx.ext.auth.AuthProvider)/provider">provider</span><span class="symbol">:</span>&nbsp;<span class="identifier">AuthProvider</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HealthCheckHandler</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.healthchecks.HealthCheckHandler$create(io.vertx.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HealthCheckHandler</span></code>
+<p>Creates an instance of the default implementation of the HealthCheckHandler. This function creates a new instance of HealthChecks.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-with-health-checks.html">createWithHealthChecks</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createWithHealthChecks</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.healthchecks.HealthCheckHandler$createWithHealthChecks(io.vertx.ext.healthchecks.HealthChecks, io.vertx.ext.auth.AuthProvider)/hc">hc</span><span class="symbol">:</span>&nbsp;<a href="../-health-checks/index.html"><span class="identifier">HealthChecks</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.healthchecks.HealthCheckHandler$createWithHealthChecks(io.vertx.ext.healthchecks.HealthChecks, io.vertx.ext.auth.AuthProvider)/provider">provider</span><span class="symbol">:</span>&nbsp;<span class="identifier">AuthProvider</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HealthCheckHandler</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createWithHealthChecks</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.healthchecks.HealthCheckHandler$createWithHealthChecks(io.vertx.ext.healthchecks.HealthChecks)/hc">hc</span><span class="symbol">:</span>&nbsp;<a href="../-health-checks/index.html"><span class="identifier">HealthChecks</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HealthCheckHandler</span></code>
+<p>Creates an instance of the default implementation of the HealthCheckHandler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="register.html">register</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">register</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.healthchecks.HealthCheckHandler$register(kotlin.String, io.vertx.core.Handler((io.vertx.core.Future((io.vertx.ext.healthchecks.Status)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.healthchecks.HealthCheckHandler$register(kotlin.String, io.vertx.core.Handler((io.vertx.core.Future((io.vertx.ext.healthchecks.Status)))))/procedure">procedure</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Future</span><span class="symbol">&lt;</span><a href="../-status/index.html"><span class="identifier">Status</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HealthCheckHandler</span></code>
+<p>Registers a health check procedure. 
+<p> The procedure is a Handler taking a Future of Status as parameter. Procedures are asynchronous, and <strong>must</strong> complete or fail the given Future. If the future object is failed, the procedure outcome is considered as `DOWN`. If the future is completed without any object, the procedure outcome is considered as `UP`. If the future is completed with a (not-null) Status, the procedure outcome is the received status. </p>
+<p> This method uses a 1s timeout. To configure the timeout use <code><a href="#">#register(String, long, Handler)</a></code>.</p>
+</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">register</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.healthchecks.HealthCheckHandler$register(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.Future((io.vertx.ext.healthchecks.Status)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.healthchecks.HealthCheckHandler$register(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.Future((io.vertx.ext.healthchecks.Status)))))/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.healthchecks.HealthCheckHandler$register(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.Future((io.vertx.ext.healthchecks.Status)))))/procedure">procedure</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Future</span><span class="symbol">&lt;</span><a href="../-status/index.html"><span class="identifier">Status</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HealthCheckHandler</span></code>
+<p>Registers a health check procedure. 
+<p> The procedure is a Handler taking a Future of Status as parameter. Procedures are asynchronous, and <strong>must</strong> complete or fail the given Future. If the future object is failed, the procedure outcome is considered as `DOWN`. If the future is completed without any object, the procedure outcome is considered as `UP`. If the future is completed with a (not-null) Status, the procedure outcome is the received status.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="unregister.html">unregister</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">unregister</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.healthchecks.HealthCheckHandler$unregister(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HealthCheckHandler</span></code>
+<p>Unregisters a procedure.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

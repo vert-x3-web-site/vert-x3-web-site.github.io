@@ -1,0 +1,162 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SlimVaultClient - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.config.vault.client</a>&nbsp;/&nbsp;<a href=".">SlimVaultClient</a><br/>
+<br/>
+<h1>SlimVaultClient</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SlimVaultClient</span></code>
+<p>A very simple Vault client - does not intend to be complete.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Clement Escoffier</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SlimVaultClient</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$<init>(io.vertx.core.Vertx, io.vertx.core.json.JsonObject)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$<init>(io.vertx.core.Vertx, io.vertx.core.json.JsonObject)/configuration">configuration</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span></code>
+<p>Creates an instance of SlimVaultClient.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-t-o-k-e-n_-h-e-a-d-e-r.html">TOKEN_HEADER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">TOKEN_HEADER</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Closes the client.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-token.html">createToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$createToken(io.vertx.config.vault.client.TokenRequest, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.config.vault.client.Auth)))))/tokenRequest">tokenRequest</span><span class="symbol">:</span>&nbsp;<a href="../-token-request/index.html"><span class="identifier">TokenRequest</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$createToken(io.vertx.config.vault.client.TokenRequest, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.config.vault.client.Auth)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../-auth/index.html"><span class="identifier">Auth</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Creates a new token.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="delete.html">delete</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">delete</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$delete(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$delete(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Deletes a secret from `path`.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-token.html">getToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getToken</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="list.html">list</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">list</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$list(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$list(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Lists secrets from path (children).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="login-with-app-role.html">loginWithAppRole</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loginWithAppRole</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$loginWithAppRole(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.config.vault.client.Auth)))))/roleId">roleId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$loginWithAppRole(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.config.vault.client.Auth)))))/secretId">secretId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$loginWithAppRole(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.config.vault.client.Auth)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../-auth/index.html"><span class="identifier">Auth</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Logs in against the `AppRole` backend.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="login-with-cert.html">loginWithCert</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loginWithCert</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$loginWithCert(io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.config.vault.client.Auth)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../-auth/index.html"><span class="identifier">Auth</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Logs in against the `Cert` backend. Certificates are configured directly on the client instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="login-with-user-credentials.html">loginWithUserCredentials</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loginWithUserCredentials</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$loginWithUserCredentials(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.config.vault.client.Auth)))))/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$loginWithUserCredentials(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.config.vault.client.Auth)))))/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$loginWithUserCredentials(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.config.vault.client.Auth)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../-auth/index.html"><span class="identifier">Auth</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Logs in against the `userpass` backend.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="lookup-self.html">lookupSelf</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">lookupSelf</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$lookupSelf(io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.config.vault.client.Lookup)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../-lookup/index.html"><span class="identifier">Lookup</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Looks up for the current token metadata.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="read.html">read</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">read</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$read(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.config.vault.client.Secret)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$read(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.config.vault.client.Secret)))))/responseHandler">responseHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../-secret/index.html"><span class="identifier">Secret</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Reads a secret from `path`.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="renew-self.html">renewSelf</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">renewSelf</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$renewSelf(kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.config.vault.client.Auth)))))/leaseDurationInSecond">leaseDurationInSecond</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$renewSelf(kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.config.vault.client.Auth)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../-auth/index.html"><span class="identifier">Auth</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Renews the current token.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-token.html">setToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$setToken(kotlin.String)/token">token</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SlimVaultClient</span></code>
+<p>Sets the token.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="write.html">write</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$write(kotlin.String, io.vertx.core.json.JsonObject, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.config.vault.client.Secret)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$write(kotlin.String, io.vertx.core.json.JsonObject, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.config.vault.client.Secret)))))/secrets">secrets</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">, </span><span class="identifier" id="io.vertx.config.vault.client.SlimVaultClient$write(kotlin.String, io.vertx.core.json.JsonObject, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.config.vault.client.Secret)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../-secret/index.html"><span class="identifier">Secret</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Write a secret to `path`.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

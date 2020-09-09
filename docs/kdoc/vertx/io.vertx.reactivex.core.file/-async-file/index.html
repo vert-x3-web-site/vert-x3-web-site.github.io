@@ -1,0 +1,287 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AsyncFile - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.file</a>&nbsp;/&nbsp;<a href=".">AsyncFile</a><br/>
+<br/>
+<h1>AsyncFile</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AsyncFile</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.streams/-read-stream/index.html"><span class="identifier">ReadStream</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><a href="../../io.vertx.reactivex.core.streams/-write-stream/index.html"><span class="identifier">WriteStream</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span></code>
+<p>Represents a file on the file-system which can be read from, or written to asynchronously. 
+<p> This class also implements io.vertx.reactivex.core.streams.ReadStream and io.vertx.reactivex.core.streams.WriteStream. This allows the data to be pumped to and from other streams, e.g. an io.vertx.reactivex.core.http.HttpClientRequest instance, using the io.vertx.reactivex.core.streams.Pump class </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.file.AsyncFile non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AsyncFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$<init>(io.vertx.core.file.AsyncFile)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<span class="identifier">AsyncFile</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">AsyncFile</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the file. The actual close happens asynchronously.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$close(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the file. The actual close happens asynchronously. The handler will be called when the close is complete, or an error occurs.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="drain-handler.html">drainHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">drainHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$drainHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="end.html">end</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">end</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$end(io.vertx.reactivex.core.buffer.Buffer)/t">t</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Same as <code><a href="end.html">io.vertx.reactivex.core.file.AsyncFile#end</a></code> but writes some data to the stream before ending.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">end</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the file, see <code><a href="close.html">io.vertx.reactivex.core.file.AsyncFile#close</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="end-handler.html">endHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">endHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$endHandler(io.vertx.core.Handler((java.lang.Void)))/endHandler">endHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="exception-handler.html">exceptionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">exceptionHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$exceptionHandler(io.vertx.core.Handler((kotlin.Throwable)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="flush.html">flush</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">flush</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code>
+<p>Flush any writes made to this file to underlying persistent storage. 
+<p> If the file was opened with <code>flush</code> set to <code>true</code> then calling this method will have no effect. </p>
+<p> The actual flush will happen asynchronously.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">flush</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$flush(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code>
+<p>Same as <code><a href="flush.html">io.vertx.reactivex.core.file.AsyncFile#flush</a></code> but the handler will be called when the flush is complete or if an error occurs</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="handler.html">handler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">handler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$handler(io.vertx.core.Handler((io.vertx.reactivex.core.buffer.Buffer)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$newInstance(io.vertx.core.file.AsyncFile)/arg">arg</span><span class="symbol">:</span>&nbsp;<span class="identifier">AsyncFile</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="pause.html">pause</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">pause</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="read.html">read</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">read</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$read(io.vertx.reactivex.core.buffer.Buffer, kotlin.Int, kotlin.Long, kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.buffer.Buffer)))))/buffer">buffer</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$read(io.vertx.reactivex.core.buffer.Buffer, kotlin.Int, kotlin.Long, kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.buffer.Buffer)))))/offset">offset</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$read(io.vertx.reactivex.core.buffer.Buffer, kotlin.Int, kotlin.Long, kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.buffer.Buffer)))))/position">position</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$read(io.vertx.reactivex.core.buffer.Buffer, kotlin.Int, kotlin.Long, kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.buffer.Buffer)))))/length">length</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$read(io.vertx.reactivex.core.buffer.Buffer, kotlin.Int, kotlin.Long, kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.buffer.Buffer)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code>
+<p>Reads <code>length</code> bytes of data from the file at position <code>position</code> in the file, asynchronously. 
+<p> The read data will be written into the specified <code>Buffer buffer</code> at position <code>offset</code>. </p>
+<p> If data is read past the end of the file then zero bytes will be read.</p>
+<p> When multiple reads are invoked on the same file there are no guarantees as to order in which those reads actually occur. </p>
+<p> The handler will be called when the close is complete, or if an error occurs.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resume.html">resume</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resume</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-close.html">rxClose</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxClose</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Completable.html"><span class="identifier">Completable</span></a></code>
+<p>Close the file. The actual close happens asynchronously. The handler will be called when the close is complete, or an error occurs.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-flush.html">rxFlush</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxFlush</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Completable.html"><span class="identifier">Completable</span></a></code>
+<p>Same as <code><a href="flush.html">io.vertx.reactivex.core.file.AsyncFile#flush</a></code> but the handler will be called when the flush is complete or if an error occurs</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-read.html">rxRead</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxRead</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$rxRead(io.vertx.reactivex.core.buffer.Buffer, kotlin.Int, kotlin.Long, kotlin.Int)/buffer">buffer</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$rxRead(io.vertx.reactivex.core.buffer.Buffer, kotlin.Int, kotlin.Long, kotlin.Int)/offset">offset</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$rxRead(io.vertx.reactivex.core.buffer.Buffer, kotlin.Int, kotlin.Long, kotlin.Int)/position">position</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$rxRead(io.vertx.reactivex.core.buffer.Buffer, kotlin.Int, kotlin.Long, kotlin.Int)/length">length</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span></code>
+<p>Reads <code>length</code> bytes of data from the file at position <code>position</code> in the file, asynchronously. 
+<p> The read data will be written into the specified <code>Buffer buffer</code> at position <code>offset</code>. </p>
+<p> If data is read past the end of the file then zero bytes will be read.</p>
+<p> When multiple reads are invoked on the same file there are no guarantees as to order in which those reads actually occur. </p>
+<p> The handler will be called when the close is complete, or if an error occurs.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-write.html">rxWrite</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxWrite</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$rxWrite(io.vertx.reactivex.core.buffer.Buffer, kotlin.Long)/buffer">buffer</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$rxWrite(io.vertx.reactivex.core.buffer.Buffer, kotlin.Long)/position">position</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Completable.html"><span class="identifier">Completable</span></a></code>
+<p>Write a io.vertx.reactivex.core.buffer.Buffer to the file at position <code>position</code> in the file, asynchronously. 
+<p> If <code>position</code> lies outside of the current size of the file, the file will be enlarged to encompass it. </p>
+<p> When multiple writes are invoked on the same file there are no guarantees as to order in which those writes actually occur </p>
+<p> The handler will be called when the write is complete, or if an error occurs.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-read-buffer-size.html">setReadBufferSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setReadBufferSize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$setReadBufferSize(kotlin.Int)/readBufferSize">readBufferSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code>
+<p>Sets the buffer size that will be used to read the data from the file. Changing this value will impact how much the data will be read at a time from the file system.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-read-pos.html">setReadPos</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setReadPos</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$setReadPos(kotlin.Long)/readPos">readPos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code>
+<p>Sets the position from which data will be read from when using the file as a io.vertx.reactivex.core.streams.ReadStream.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-write-pos.html">setWritePos</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setWritePos</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$setWritePos(kotlin.Long)/writePos">writePos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code>
+<p>Sets the position from which data will be written when using the file as a io.vertx.reactivex.core.streams.WriteStream.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-write-queue-max-size.html">setWriteQueueMaxSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setWriteQueueMaxSize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$setWriteQueueMaxSize(kotlin.Int)/maxSize">maxSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-flowable.html">toFlowable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toFlowable</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Flowable.html"><span class="identifier">Flowable</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-observable.html">toObservable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toObservable</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Observable.html"><span class="identifier">Observable</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="write.html">write</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$write(io.vertx.reactivex.core.buffer.Buffer)/data">data</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code><code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$write(io.vertx.reactivex.core.buffer.Buffer, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/buffer">buffer</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$write(io.vertx.reactivex.core.buffer.Buffer, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/position">position</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.file.AsyncFile$write(io.vertx.reactivex.core.buffer.Buffer, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncFile</span></code>
+<p>Write a io.vertx.reactivex.core.buffer.Buffer to the file at position <code>position</code> in the file, asynchronously. 
+<p> If <code>position</code> lies outside of the current size of the file, the file will be enlarged to encompass it. </p>
+<p> When multiple writes are invoked on the same file there are no guarantees as to order in which those writes actually occur </p>
+<p> The handler will be called when the write is complete, or if an error occurs.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="write-queue-full.html">writeQueueFull</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">writeQueueFull</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>This will return <code>true</code> if there are more bytes in the write queue than the value set using <code><a href="set-write-queue-max-size.html">io.vertx.reactivex.core.file.AsyncFile#setWriteQueueMaxSize</a></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>The Event Bus - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="http://vertx.io/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="http://vertx.io/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="http://vertx.io/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="http://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="http://vertx.io/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="http://vertx.io/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="http://vertx.io/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="http://vertx.io/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="http://vertx.io/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="http://vertx.io/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="http://vertx.io/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="http://vertx.io/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="http://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="http://vertx.io/" class="navbar-brand"><img alt="Brand" src="http://vertx.io/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://vertx.io/download/">Download</a></li>
+        <li><a href="http://vertx.io/docs/">Documentation</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+        <li><a href="http://vertx.io/community/">Community</a></li>
+        <li><a href="http://vertx.io/materials/">Materials</a></li>
+        <li><a href="http://vertx.io/blog/">Blog</a></li>        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>The Event Bus</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_the_event_bus">The Event Bus</a>
+<ul class="sectlevel2">
+<li><a href="#_the_theory">The Theory</a></li>
+<li><a href="#_the_event_bus_api">The Event Bus API</a></li>
+<li><a href="#_automatic_clean_up_in_verticles">Automatic clean-up in verticles</a></li>
+</ul>
+</li>
+<li><a href="#_configuring_the_event_bus">Configuring the event bus</a></li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_the_event_bus">The Event Bus</a>
+<ul class="sectlevel2">
+<li><a href="#_the_theory">The Theory</a></li>
+<li><a href="#_the_event_bus_api">The Event Bus API</a></li>
+<li><a href="#_automatic_clean_up_in_verticles">Automatic clean-up in verticles</a></li>
+</ul>
+</li>
+<li><a href="#_configuring_the_event_bus">Configuring the event bus</a></li>
+</ul>
+        </div>
+        <div class="sect1">
+<h2 id="_the_event_bus">The Event Bus</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code><a href="../../apidocs/io/vertx/core/eventbus/EventBus.html">event bus</a></code> is the <strong>nervous system</strong> of Vert.x.</p>
+</div>
+<div class="paragraph">
+<p>There is a single event bus instance for every Vert.x instance and it is obtained using the method <code><a href="../../apidocs/io/vertx/core/Vertx.html#eventBus--">eventBus</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>The event bus allows different parts of your application to communicate with each other irrespective of what language they are written in,
+and whether they&#8217;re in the same Vert.x instance, or in a different Vert.x instance.</p>
+</div>
+<div class="paragraph">
+<p>It can even be bridged to allow client side JavaScript running in a browser to communicate on the same event bus.</p>
+</div>
+<div class="paragraph">
+<p>The event bus forms a distributed peer-to-peer messaging system spanning multiple server nodes and multiple browsers.</p>
+</div>
+<div class="paragraph">
+<p>The event bus supports publish/subscribe, point to point, and request-response messaging.</p>
+</div>
+<div class="paragraph">
+<p>The event bus API is very simple. It basically involves registering handlers, unregistering handlers and
+sending and publishing messages.</p>
+</div>
+<div class="paragraph">
+<p>First some theory:</p>
+</div>
+<div class="sect2">
+<h3 id="_the_theory">The Theory</h3>
+<div class="sect3">
+<h4 id="_addressing">Addressing</h4>
+<div class="paragraph">
+<p>Messages are sent on the event bus to an <strong>address</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Vert.x doesn&#8217;t bother with any fancy addressing schemes. In Vert.x an address is simply a string.
+Any string is valid. However it is wise to use some kind of scheme, e.g. using periods to demarcate a namespace.</p>
+</div>
+<div class="paragraph">
+<p>Some examples of valid addresses are europe.news.feed1, acme.games.pacman, sausages, and X.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_handlers">Handlers</h4>
+<div class="paragraph">
+<p>Messages are received in handlers. You register a handler at an address.</p>
+</div>
+<div class="paragraph">
+<p>Many different handlers can be registered at the same address.</p>
+</div>
+<div class="paragraph">
+<p>A single handler can be registered at many different addresses.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_publish_subscribe_messaging">Publish / subscribe messaging</h4>
+<div class="paragraph">
+<p>The event bus supports <strong>publishing</strong> messages.</p>
+</div>
+<div class="paragraph">
+<p>Messages are published to an address. Publishing means delivering the message
+to all handlers that are registered at that address.</p>
+</div>
+<div class="paragraph">
+<p>This is the familiar <strong>publish/subscribe</strong> messaging pattern.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_point_to_point_and_request_response_messaging">Point to point and Request-Response messaging</h4>
+<div class="paragraph">
+<p>The event bus also supports <strong>point to point</strong> messaging.</p>
+</div>
+<div class="paragraph">
+<p>Messages are sent to an address. Vert.x will then route it to just one of the handlers registered at that address.</p>
+</div>
+<div class="paragraph">
+<p>If there is more than one handler registered at the address,
+one will be chosen using a non-strict round-robin algorithm.</p>
+</div>
+<div class="paragraph">
+<p>With point to point messaging, an optional reply handler can be specified when sending the message.</p>
+</div>
+<div class="paragraph">
+<p>When a message is received by a recipient, and has been handled, the recipient can optionally decide to reply to
+the message. If they do so the reply handler will be called.</p>
+</div>
+<div class="paragraph">
+<p>When the reply is received back at the sender, it too can be replied to. This can be repeated ad-infinitum,
+and allows a dialog to be set-up between two different verticles.</p>
+</div>
+<div class="paragraph">
+<p>This is a common messaging pattern called the <strong>request-response</strong> pattern.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_best_effort_delivery">Best-effort delivery</h4>
+<div class="paragraph">
+<p>Vert.x does it&#8217;s best to deliver messages and won&#8217;t consciously throw them away. This is called <strong>best-effort</strong> delivery.</p>
+</div>
+<div class="paragraph">
+<p>However, in case of failure of all or parts of the event bus, there is a possibility messages will be lost.</p>
+</div>
+<div class="paragraph">
+<p>If your application cares about lost messages, you should code your handlers to be idempotent, and your senders
+to retry after recovery.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_types_of_messages">Types of messages</h4>
+<div class="paragraph">
+<p>Out of the box Vert.x allows any primitive/simple type, String, or <code><a href="../../apidocs/io/vertx/core/buffer/Buffer.html">buffers</a></code> to
+be sent as messages.</p>
+</div>
+<div class="paragraph">
+<p>However it&#8217;s a convention and common practice in Vert.x to send messages as <a href="http://json.org/">JSON</a></p>
+</div>
+<div class="paragraph">
+<p>JSON is very easy to create, read and parse in all the languages that Vert.x supports so it has become a kind of
+<em>lingua franca</em> for Vert.x.</p>
+</div>
+<div class="paragraph">
+<p>However you are not forced to use JSON if you don&#8217;t want to.</p>
+</div>
+<div class="paragraph">
+<p>The event bus is very flexible and also supports sending arbitrary objects over the event bus.
+You do this by defining a <code><a href="../../apidocs/io/vertx/core/eventbus/MessageCodec.html">codec</a></code> for the objects you want to send.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_event_bus_api">The Event Bus API</h3>
+<div class="paragraph">
+<p>Let&#8217;s jump into the API</p>
+</div>
+<div class="sect3">
+<h4 id="_getting_the_event_bus">Getting the event bus</h4>
+<div class="paragraph">
+<p>You get a reference to the event bus as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">EventBus eb = vertx.eventBus();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There is a single instance of the event bus per Vert.x instance.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_registering_handlers">Registering Handlers</h4>
+<div class="paragraph">
+<p>This simplest way to register a handler is using <code><a href="../../apidocs/io/vertx/core/eventbus/EventBus.html#consumer-java.lang.String-io.vertx.core.Handler-">consumer</a></code>.
+Here&#8217;s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">EventBus eb = vertx.eventBus();
+
+eb.consumer(<span class="string"><span class="delimiter">&quot;</span><span class="content">news.uk.sport</span><span class="delimiter">&quot;</span></span>, message -&gt; {
+  <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">I have received a message: </span><span class="delimiter">&quot;</span></span> + message.body());
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When a message arrives for your handler, your handler will be called, passing in the <code><a href="../../apidocs/io/vertx/core/eventbus/Message.html">message</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>The object returned from call to consumer() is an instance of <code><a href="../../apidocs/io/vertx/core/eventbus/MessageConsumer.html">MessageConsumer</a></code></p>
+</div>
+<div class="paragraph">
+<p>This object can subsequently be used to unregister the handler, or use the handler as a stream.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively you can use <code><a href="../../apidocs/io/vertx/core/eventbus/EventBus.html#consumer-java.lang.String-io.vertx.core.Handler-">consumer</a></code> to
+to return a MessageConsumer with no handler set, and then set the handler on that. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">EventBus eb = vertx.eventBus();
+
+MessageConsumer&lt;<span class="predefined-type">String</span>&gt; consumer = eb.consumer(<span class="string"><span class="delimiter">&quot;</span><span class="content">news.uk.sport</span><span class="delimiter">&quot;</span></span>);
+consumer.handler(message -&gt; {
+  <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">I have received a message: </span><span class="delimiter">&quot;</span></span> + message.body());
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When registering a handler on a clustered event bus, it can take some time for the registration to reach all
+nodes of the cluster.</p>
+</div>
+<div class="paragraph">
+<p>If you want to be notified when this has completed, you can register a <code><a href="../../apidocs/io/vertx/core/eventbus/MessageConsumer.html#completionHandler-io.vertx.core.Handler-">completion handler</a></code>
+on the MessageConsumer object.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">consumer.completionHandler(res -&gt; {
+  <span class="keyword">if</span> (res.succeeded()) {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">The handler registration has reached all nodes</span><span class="delimiter">&quot;</span></span>);
+  } <span class="keyword">else</span> {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Registration failed!</span><span class="delimiter">&quot;</span></span>);
+  }
+});</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_un_registering_handlers">Un-registering Handlers</h4>
+<div class="paragraph">
+<p>To unregister a handler, call <code><a href="../../apidocs/io/vertx/core/eventbus/MessageConsumer.html#unregister--">unregister</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>If you are on a clustered event bus, un-registering can take some time to propagate across the nodes, if you want to
+be notified when this is complete use <code><a href="../../apidocs/io/vertx/core/eventbus/MessageConsumer.html#unregister-io.vertx.core.Handler-">unregister</a></code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">consumer.unregister(res -&gt; {
+  <span class="keyword">if</span> (res.succeeded()) {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">The handler un-registration has reached all nodes</span><span class="delimiter">&quot;</span></span>);
+  } <span class="keyword">else</span> {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Un-registration failed!</span><span class="delimiter">&quot;</span></span>);
+  }
+});</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_publishing_messages">Publishing messages</h4>
+<div class="paragraph">
+<p>Publishing a message is simple. Just use <code><a href="../../apidocs/io/vertx/core/eventbus/EventBus.html#publish-java.lang.String-java.lang.Object-">publish</a></code> specifying the
+address to publish it to.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">eventBus.publish(<span class="string"><span class="delimiter">&quot;</span><span class="content">news.uk.sport</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Yay! Someone kicked a ball</span><span class="delimiter">&quot;</span></span>);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That message will then be delivered to all handlers registered against the address news.uk.sport.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sending_messages">Sending messages</h4>
+<div class="paragraph">
+<p>Sending a message will result in only one handler registered at the address receiving the message.
+This is the point to point messaging pattern. The handler is chosen in a non-strict round-robin fashion.</p>
+</div>
+<div class="paragraph">
+<p>You can send a message with <code><a href="../../apidocs/io/vertx/core/eventbus/EventBus.html#send-java.lang.String-java.lang.Object-">send</a></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">eventBus.send(<span class="string"><span class="delimiter">&quot;</span><span class="content">news.uk.sport</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Yay! Someone kicked a ball</span><span class="delimiter">&quot;</span></span>);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_setting_headers_on_messages">Setting headers on messages</h4>
+<div class="paragraph">
+<p>Messages sent over the event bus can also contain headers.</p>
+</div>
+<div class="paragraph">
+<p>This can be specified by providing a
+<code><a href="../../apidocs/io/vertx/core/eventbus/DeliveryOptions.html">DeliveryOptions</a></code> when sending or publishing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">DeliveryOptions options = <span class="keyword">new</span> DeliveryOptions();
+options.addHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">some-header</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">some-value</span><span class="delimiter">&quot;</span></span>);
+eventBus.send(<span class="string"><span class="delimiter">&quot;</span><span class="content">news.uk.sport</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Yay! Someone kicked a ball</span><span class="delimiter">&quot;</span></span>, options);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_message_ordering">Message ordering</h4>
+<div class="paragraph">
+<p>Vert.x will deliver messages to any particular handler in the same order they were sent from any particular sender.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_the_message_object">The Message object</h4>
+<div class="paragraph">
+<p>The object you receive in a message handler is a <code><a href="../../apidocs/io/vertx/core/eventbus/Message.html">Message</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code><a href="../../apidocs/io/vertx/core/eventbus/Message.html#body--">body</a></code> of the message corresponds to the object that was sent or published.</p>
+</div>
+<div class="paragraph">
+<p>The headers of the message are available with <code><a href="../../apidocs/io/vertx/core/eventbus/Message.html#headers--">headers</a></code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_acknowledging_messages_sending_replies">Acknowledging messages / sending replies</h4>
+<div class="paragraph">
+<p>When using <code><a href="../../apidocs/io/vertx/core/eventbus/EventBus.html#send-java.lang.String-java.lang.Object-">send</a></code> the event bus attempts to deliver the message to a
+<code><a href="../../apidocs/io/vertx/core/eventbus/MessageConsumer.html">MessageConsumer</a></code> registered with the event bus.</p>
+</div>
+<div class="paragraph">
+<p>In some cases it&#8217;s useful for the sender to know when the consumer has received the message and "processed" it.</p>
+</div>
+<div class="paragraph">
+<p>To acknowledge that the message has been processed the consumer can reply to the message by calling <code><a href="../../apidocs/io/vertx/core/eventbus/Message.html#reply-java.lang.Object-">reply</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>When this happens it causes a reply to be sent back to the sender and the reply handler is invoked with the reply.</p>
+</div>
+<div class="paragraph">
+<p>An example will make this clear:</p>
+</div>
+<div class="paragraph">
+<p>The receiver:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">MessageConsumer&lt;<span class="predefined-type">String</span>&gt; consumer = eventBus.consumer(<span class="string"><span class="delimiter">&quot;</span><span class="content">news.uk.sport</span><span class="delimiter">&quot;</span></span>);
+consumer.handler(message -&gt; {
+  <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">I have received a message: </span><span class="delimiter">&quot;</span></span> + message.body());
+  message.reply(<span class="string"><span class="delimiter">&quot;</span><span class="content">how interesting!</span><span class="delimiter">&quot;</span></span>);
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The sender:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">eventBus.send(<span class="string"><span class="delimiter">&quot;</span><span class="content">news.uk.sport</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Yay! Someone kicked a ball across a patch of grass</span><span class="delimiter">&quot;</span></span>, ar -&gt; {
+  <span class="keyword">if</span> (ar.succeeded()) {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Received reply: </span><span class="delimiter">&quot;</span></span> + ar.result().body());
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The reply can contain a message body which can contain useful information.</p>
+</div>
+<div class="paragraph">
+<p>What the "processing" actually means is application defined and depends entirely on what the message consumer does
+and is not something that the Vert.x event bus itself knows or cares about.</p>
+</div>
+<div class="paragraph">
+<p>Some examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A simple message consumer which implements a service which returns the time of the day would acknowledge with a message
+containing the time of day in the reply body</p>
+</li>
+<li>
+<p>A message consumer which implements a persistent queue, might acknowledge with <code>true</code> if the message was successfully
+persisted in storage, or <code>false</code> if not.</p>
+</li>
+<li>
+<p>A message consumer which processes an order might acknowledge with <code>true</code> when the order has been successfully processed
+so it can be deleted from the database</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sending_with_timeouts">Sending with timeouts</h4>
+<div class="paragraph">
+<p>When sending a message with a reply handler you can specify a timeout in the <code><a href="../../apidocs/io/vertx/core/eventbus/DeliveryOptions.html">DeliveryOptions</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>If a reply is not received within that time, the reply handler will be called with a failure.</p>
+</div>
+<div class="paragraph">
+<p>The default timeout is 30 seconds.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_send_failures">Send Failures</h4>
+<div class="paragraph">
+<p>Message sends can fail for other reasons, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>There are no handlers available to send the message to</p>
+</li>
+<li>
+<p>The recipient has explicitly failed the message using <code><a href="../../apidocs/io/vertx/core/eventbus/Message.html#fail-int-java.lang.String-">fail</a></code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In all cases the reply handler will be called with the specific failure.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_message_codecs">Message Codecs</h4>
+<div class="paragraph">
+<p>You can send any object you like across the event bus if you define and register a <code><a href="../../apidocs/io/vertx/core/eventbus/MessageCodec.html">message codec</a></code> for it.</p>
+</div>
+<div class="paragraph">
+<p>Message codecs have a name and you specify that name in the <code><a href="../../apidocs/io/vertx/core/eventbus/DeliveryOptions.html">DeliveryOptions</a></code>
+when sending or publishing the message:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">eventBus.registerCodec(myCodec);
+
+DeliveryOptions options = <span class="keyword">new</span> DeliveryOptions().setCodecName(myCodec.name());
+
+eventBus.send(<span class="string"><span class="delimiter">&quot;</span><span class="content">orders</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> MyPOJO(), options);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you always want the same codec to be used for a particular type then you can register a default codec for it, then
+you don&#8217;t have to specify the codec on each send in the delivery options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">eventBus.registerDefaultCodec(MyPOJO.class, myCodec);
+
+eventBus.send(<span class="string"><span class="delimiter">&quot;</span><span class="content">orders</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> MyPOJO());</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You unregister a message codec with <code><a href="../../apidocs/io/vertx/core/eventbus/EventBus.html#unregisterCodec-java.lang.String-">unregisterCodec</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>Message codecs don&#8217;t always have to encode and decode as the same type. For example you can write a codec that
+allows a MyPOJO class to be sent, but when that message is sent to a handler it arrives as a MyOtherPOJO class.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_clustered_event_bus">Clustered Event Bus</h4>
+<div class="paragraph">
+<p>The event bus doesn&#8217;t just exist in a single Vert.x instance. By clustering different Vert.x instances together on
+your network they can form a single, distributed, event bus.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_clustering_programmatically">Clustering programmatically</h4>
+<div class="paragraph">
+<p>If you&#8217;re creating your Vert.x instance programmatically you get a clustered event bus by configuring the Vert.x
+instance as clustered;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">VertxOptions options = <span class="keyword">new</span> VertxOptions();
+Vertx.clusteredVertx(options, res -&gt; {
+  <span class="keyword">if</span> (res.succeeded()) {
+    Vertx vertx = res.result();
+    EventBus eventBus = vertx.eventBus();
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">We now have a clustered event bus: </span><span class="delimiter">&quot;</span></span> + eventBus);
+  } <span class="keyword">else</span> {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Failed: </span><span class="delimiter">&quot;</span></span> + res.cause());
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should also make sure you have a <code><a href="../../apidocs/io/vertx/core/spi/cluster/ClusterManager.html">ClusterManager</a></code> implementation on your classpath,
+for example the default <code>HazelcastClusterManager</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_clustering_on_the_command_line">Clustering on the command line</h4>
+<div class="paragraph">
+<p>You can run Vert.x clustered on the command line with</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>vertx run my-verticle.js -cluster</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_automatic_clean_up_in_verticles">Automatic clean-up in verticles</h3>
+<div class="paragraph">
+<p>If you&#8217;re registering event bus handlers from inside verticles, those handlers will be automatically unregistered
+when the verticle is undeployed.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuring_the_event_bus">Configuring the event bus</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The event bus can be configured. It is particularly useful when the event bus is clustered. Under the hood
+the event bus uses TCP connections to send and receive message, so the
+<code><a href="../../apidocs/io/vertx/core/eventbus/EventBusOptions.html">EventBusOptions</a></code> let you configure all aspects of these TCP connections. As
+the event bus acts as a server and client, the configuration is close to
+<code><a href="../../apidocs/io/vertx/core/net/NetClientOptions.html">NetClientOptions</a></code> and <code><a href="../../apidocs/io/vertx/core/net/NetServerOptions.html">NetServerOptions</a></code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">VertxOptions options = <span class="keyword">new</span> VertxOptions()
+    .setEventBusOptions(<span class="keyword">new</span> EventBusOptions()
+        .setSsl(<span class="predefined-constant">true</span>)
+        .setKeyStoreOptions(<span class="keyword">new</span> JksOptions().setPath(<span class="string"><span class="delimiter">&quot;</span><span class="content">keystore.jks</span><span class="delimiter">&quot;</span></span>).setPassword(<span class="string"><span class="delimiter">&quot;</span><span class="content">wibble</span><span class="delimiter">&quot;</span></span>))
+        .setTrustStoreOptions(<span class="keyword">new</span> JksOptions().setPath(<span class="string"><span class="delimiter">&quot;</span><span class="content">keystore.jks</span><span class="delimiter">&quot;</span></span>).setPassword(<span class="string"><span class="delimiter">&quot;</span><span class="content">wibble</span><span class="delimiter">&quot;</span></span>))
+        .setClientAuth(ClientAuth.REQUIRED)
+    );
+
+Vertx.clusteredVertx(options, res -&gt; {
+  <span class="keyword">if</span> (res.succeeded()) {
+    Vertx vertx = res.result();
+    EventBus eventBus = vertx.eventBus();
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">We now have a clustered event bus: </span><span class="delimiter">&quot;</span></span> + eventBus);
+  } <span class="keyword">else</span> {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Failed: </span><span class="delimiter">&quot;</span></span> + res.cause());
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The previous snippet depicts how you can use SSL connections for the event bus, instead of plain TCP
+connections.</p>
+</div>
+<div class="paragraph">
+<p><strong>WARNING</strong>: to enforce the security in clustered mode, you <strong>must</strong> configure the
+cluster manager to use encryption or enforce security. Refer to the documentation of the cluster
+manager for further details.</p>
+</div>
+<div class="paragraph">
+<p>The event bus configuration needs to be consistent in all the cluster nodes.</p>
+</div>
+<div class="paragraph">
+<p>The <code><a href="../../apidocs/io/vertx/core/eventbus/EventBusOptions.html">EventBusOptions</a></code> also lets you specify whether or not the event bus is
+clustered, the port and host, as you would do with <code><a href="../../apidocs/io/vertx/core/VertxOptions.html#setClustered-boolean-">setClustered</a></code>,
+ <code><a href="../../apidocs/io/vertx/core/VertxOptions.html#getClusterHost--">getClusterHost</a></code> and <code><a href="../../apidocs/io/vertx/core/VertxOptions.html#getClusterPort--">getClusterPort</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>When used in containers, you can also configure the public host and port:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">VertxOptions options = <span class="keyword">new</span> VertxOptions()
+    .setEventBusOptions(<span class="keyword">new</span> EventBusOptions()
+        .setClusterPublicHost(<span class="string"><span class="delimiter">&quot;</span><span class="content">whatever</span><span class="delimiter">&quot;</span></span>)
+        .setClusterPublicPort(<span class="integer">1234</span>)
+    );
+
+Vertx.clusteredVertx(options, res -&gt; {
+  <span class="keyword">if</span> (res.succeeded()) {
+    Vertx vertx = res.result();
+    EventBus eventBus = vertx.eventBus();
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">We now have a clustered event bus: </span><span class="delimiter">&quot;</span></span> + eventBus);
+  } <span class="keyword">else</span> {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Failed: </span><span class="delimiter">&quot;</span></span> + res.cause());
+  }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                Last updated 2017-08-07 22:07:16 CEST
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://vertx.io/">Home</a></li>
+          <li><a href="http://vertx.io/download/">Download</a></li>
+          <li><a href="http://vertx.io/docs/">Documentation</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+          <li><a href="http://vertx.io/blog/">Blog</a></li>
+          <li><a href="http://vertx.io/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://vertx.io/community/">Help &amp; Contributors</a></li>
+          <li><a href="http://vertx.io/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual licensed under the <a href="https://www.eclipse.org/org/documents/epl-v10.php">Eclipse Public License 1.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="http://vertx.io/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="http://vertx.io/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="http://vertx.io/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://static.jboss.org/theme/js/libs/jquery/jquery-1.9.1.min.js"></script>
+<script src="http://vertx.io/javascripts/bootstrap.min.js"></script>
+<script src="http://vertx.io/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="http://vertx.io/javascripts/sidebar.js"></script>
+
+
+</body>
+</html>
+

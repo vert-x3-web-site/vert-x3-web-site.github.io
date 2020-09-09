@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>StompServer.listen - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.stomp</a>&nbsp;/&nbsp;<a href="index.html">StompServer</a>&nbsp;/&nbsp;<a href=".">listen</a><br/>
+<br/>
+<h1>listen</h1>
+<a name="io.vertx.ext.stomp.StompServer$listen(kotlin.Int)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.StompServer$listen(kotlin.Int)/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">StompServer</span></a></code>
+<p>Connects the STOMP server to the given port.</p>
+<h3>Parameters</h3>
+<p><a name="port"></a>
+<code>port</code> - the port</p>
+<p><strong>Return</strong><br/>
+the current StompServer</p>
+<a name="io.vertx.ext.stomp.StompServer$listen(kotlin.Int, kotlin.String)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.StompServer$listen(kotlin.Int, kotlin.String)/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.stomp.StompServer$listen(kotlin.Int, kotlin.String)/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">StompServer</span></a></code>
+<p>Connects the STOMP server to the given port / interface.</p>
+<h3>Parameters</h3>
+<p><a name="port"></a>
+<code>port</code> - the port</p>
+<p><a name="host"></a>
+<code>host</code> - the interface</p>
+<p><strong>Return</strong><br/>
+the current StompServer</p>
+<a name="io.vertx.ext.stomp.StompServer$listen()"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">StompServer</span></a></code>
+<p>Connects the STOMP server to the port / host configured in the server options.</p>
+<p><strong>Return</strong><br/>
+the current StompServer</p>
+<a name="io.vertx.ext.stomp.StompServer$listen(io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.stomp.StompServer)))))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.StompServer$listen(io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.stomp.StompServer)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="index.html"><span class="identifier">StompServer</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">StompServer</span></a></code>
+<p>Connects the STOMP server default port (61613) and network interface (<code>0.0.0.0</code>). Once the socket it bounds calls the given handler with the result. The result may be a failure if the socket is already used.</p>
+<h3>Parameters</h3>
+<p><a name="handler"></a>
+<code>handler</code> - the handler to call with the result</p>
+<p><strong>Return</strong><br/>
+the current StompServer</p>
+<a name="io.vertx.ext.stomp.StompServer$listen(kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.stomp.StompServer)))))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.StompServer$listen(kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.stomp.StompServer)))))/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.stomp.StompServer$listen(kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.stomp.StompServer)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="index.html"><span class="identifier">StompServer</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">StompServer</span></a></code>
+<p>Connects the STOMP server to the given port. This method use the default host (<code>0.0.0.0</code>). Once the socket it bounds calls the given handler with the result. The result may be a failure if the socket is already used.</p>
+<h3>Parameters</h3>
+<p><a name="port"></a>
+<code>port</code> - the port</p>
+<p><a name="handler"></a>
+<code>handler</code> - the handler to call with the result</p>
+<p><strong>Return</strong><br/>
+the current StompServer</p>
+<a name="io.vertx.ext.stomp.StompServer$listen(kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.stomp.StompServer)))))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.StompServer$listen(kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.stomp.StompServer)))))/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.stomp.StompServer$listen(kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.stomp.StompServer)))))/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.stomp.StompServer$listen(kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.stomp.StompServer)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="index.html"><span class="identifier">StompServer</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">StompServer</span></a></code>
+<p>Connects the STOMP server to the given port / interface. Once the socket it bounds calls the given handler with the result. The result may be a failure if the socket is already used.</p>
+<h3>Parameters</h3>
+<p><a name="port"></a>
+<code>port</code> - the port</p>
+<p><a name="host"></a>
+<code>host</code> - the host / interface</p>
+<p><a name="handler"></a>
+<code>handler</code> - the handler to call with the result</p>
+<p><strong>Return</strong><br/>
+the current StompServer</p>
+</BODY>
+</HTML>

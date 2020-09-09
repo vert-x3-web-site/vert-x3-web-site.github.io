@@ -1,0 +1,296 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DnsClient - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.core.dns</a>&nbsp;/&nbsp;<a href=".">DnsClient</a><br/>
+<br/>
+<h1>DnsClient</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DnsClient</span></code>
+<p>Provides a way to asynchronously lookup information from DNS servers. 
+<p> Please consult the documentation for more information on DNS clients. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.dns.DnsClient non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DnsClient</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$<init>(io.vertx.core.dns.DnsClient)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.dns/-dns-client/index.html"><span class="identifier">DnsClient</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><span class="identifier">TypeArg</span><span class="symbol">&lt;</span><span class="identifier">DnsClient</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.core.dns/-dns-client/index.html"><span class="identifier">DnsClient</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="lookup.html">lookup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">lookup</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$lookup(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$lookup(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DnsClient</span></code>
+<p>Try to lookup the A (ipv4) or AAAA (ipv6) record for the given name. The first found will be used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="lookup4.html">lookup4</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">lookup4</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$lookup4(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$lookup4(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DnsClient</span></code>
+<p>Try to lookup the A (ipv4) record for the given name. The first found will be used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="lookup6.html">lookup6</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">lookup6</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$lookup6(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$lookup6(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DnsClient</span></code>
+<p>Try to lookup the AAAA (ipv6) record for the given name. The first found will be used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$newInstance(io.vertx.core.dns.DnsClient)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.dns/-dns-client/index.html"><span class="identifier">DnsClient</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DnsClient</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-a.html">resolveA</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveA</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$resolveA(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$resolveA(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DnsClient</span></code>
+<p>Try to resolve all A (ipv4) records for the given name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-a-a-a-a.html">resolveAAAA</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveAAAA</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$resolveAAAA(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$resolveAAAA(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DnsClient</span></code>
+<p>Try to resolve all AAAA (ipv6) records for the given name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-c-n-a-m-e.html">resolveCNAME</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveCNAME</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$resolveCNAME(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$resolveCNAME(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DnsClient</span></code>
+<p>Try to resolve the CNAME record for the given name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-m-x.html">resolveMX</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveMX</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$resolveMX(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((io.vertx.rxjava.core.dns.MxRecord)))))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$resolveMX(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((io.vertx.rxjava.core.dns.MxRecord)))))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../-mx-record/index.html"><span class="identifier">MxRecord</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DnsClient</span></code>
+<p>Try to resolve the MX records for the given name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-n-s.html">resolveNS</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveNS</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$resolveNS(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$resolveNS(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DnsClient</span></code>
+<p>Try to resolve the NS records for the given name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-p-t-r.html">resolvePTR</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolvePTR</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$resolvePTR(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$resolvePTR(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DnsClient</span></code>
+<p>Try to resolve the PTR record for the given name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-s-r-v.html">resolveSRV</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveSRV</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$resolveSRV(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((io.vertx.rxjava.core.dns.SrvRecord)))))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$resolveSRV(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((io.vertx.rxjava.core.dns.SrvRecord)))))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">SrvRecord</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DnsClient</span></code>
+<p>Try to resolve the SRV records for the given name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-t-x-t.html">resolveTXT</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveTXT</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$resolveTXT(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$resolveTXT(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DnsClient</span></code>
+<p>Try to resolve the TXT records for the given name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="reverse-lookup.html">reverseLookup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">reverseLookup</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$reverseLookup(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/ipaddress">ipaddress</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$reverseLookup(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DnsClient</span></code>
+<p>Try to do a reverse lookup of an IP address. This is basically the same as doing trying to resolve a PTR record but allows you to just pass in the IP address and not a valid ptr query string.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-lookup.html">rxLookup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxLookup</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$rxLookup(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Try to lookup the A (ipv4) or AAAA (ipv6) record for the given name. The first found will be used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-lookup4.html">rxLookup4</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxLookup4</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$rxLookup4(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Try to lookup the A (ipv4) record for the given name. The first found will be used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-lookup6.html">rxLookup6</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxLookup6</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$rxLookup6(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Try to lookup the AAAA (ipv6) record for the given name. The first found will be used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-resolve-a.html">rxResolveA</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxResolveA</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$rxResolveA(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Try to resolve all A (ipv4) records for the given name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-resolve-a-a-a-a.html">rxResolveAAAA</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxResolveAAAA</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$rxResolveAAAA(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Try to resolve all AAAA (ipv6) records for the given name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-resolve-c-n-a-m-e.html">rxResolveCNAME</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxResolveCNAME</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$rxResolveCNAME(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Try to resolve the CNAME record for the given name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-resolve-m-x.html">rxResolveMX</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxResolveMX</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$rxResolveMX(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../-mx-record/index.html"><span class="identifier">MxRecord</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Try to resolve the MX records for the given name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-resolve-n-s.html">rxResolveNS</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxResolveNS</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$rxResolveNS(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Try to resolve the NS records for the given name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-resolve-p-t-r.html">rxResolvePTR</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxResolvePTR</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$rxResolvePTR(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Try to resolve the PTR record for the given name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-resolve-s-r-v.html">rxResolveSRV</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxResolveSRV</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$rxResolveSRV(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">SrvRecord</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Try to resolve the SRV records for the given name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-resolve-t-x-t.html">rxResolveTXT</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxResolveTXT</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$rxResolveTXT(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Try to resolve the TXT records for the given name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-reverse-lookup.html">rxReverseLookup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxReverseLookup</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.dns.DnsClient$rxReverseLookup(kotlin.String)/ipaddress">ipaddress</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Try to do a reverse lookup of an IP address. This is basically the same as doing trying to resolve a PTR record but allows you to just pass in the IP address and not a valid ptr query string.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

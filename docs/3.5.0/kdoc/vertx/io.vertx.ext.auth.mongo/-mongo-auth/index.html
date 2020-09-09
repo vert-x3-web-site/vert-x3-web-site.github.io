@@ -1,0 +1,368 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MongoAuth - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.auth.mongo</a>&nbsp;/&nbsp;<a href=".">MongoAuth</a><br/>
+<br/>
+<h1>MongoAuth</h1>
+<code><span class="keyword">interface </span><span class="identifier">MongoAuth</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AuthProvider</span></code>
+<p>An extension of AuthProvider which is using MongoClient as store</p>
+<p><strong>Author</strong><br/>
+mremme</p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-o-l-l-e-c-t-i-o-n_-n-a-m-e.html">DEFAULT_COLLECTION_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_COLLECTION_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default name of the collection to be used</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-r-e-d-e-n-t-i-a-l_-p-a-s-s-w-o-r-d_-f-i-e-l-d.html">DEFAULT_CREDENTIAL_PASSWORD_FIELD</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CREDENTIAL_PASSWORD_FIELD</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default name of the property for the password, like it is transported in credentials by method <code><a href="#">#authenticate(JsonObject, Handler)</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-r-e-d-e-n-t-i-a-l_-u-s-e-r-n-a-m-e_-f-i-e-l-d.html">DEFAULT_CREDENTIAL_USERNAME_FIELD</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CREDENTIAL_USERNAME_FIELD</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default name of the property for the username, like it is transported in credentials by method <code><a href="#">#authenticate(JsonObject, Handler)</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-p-a-s-s-w-o-r-d_-f-i-e-l-d.html">DEFAULT_PASSWORD_FIELD</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_PASSWORD_FIELD</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default name of the property for the password, like it is stored in mongodb</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-p-e-r-m-i-s-s-i-o-n_-f-i-e-l-d.html">DEFAULT_PERMISSION_FIELD</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_PERMISSION_FIELD</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default name of the property for the permissions, like it is stored in mongodb. Permissions are expected to be saved as JsonArray</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-r-o-l-e_-f-i-e-l-d.html">DEFAULT_ROLE_FIELD</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_ROLE_FIELD</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default name of the property for the roles, like it is stored in mongodb. Roles are expected to be saved as JsonArray</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-s-a-l-t_-f-i-e-l-d.html">DEFAULT_SALT_FIELD</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_SALT_FIELD</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default name of the property for the salt field</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-u-s-e-r-n-a-m-e_-f-i-e-l-d.html">DEFAULT_USERNAME_FIELD</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_USERNAME_FIELD</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default name of the property for the username, like it is stored in mongodb</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-p-r-o-p-e-r-t-y_-c-o-l-l-e-c-t-i-o-n_-n-a-m-e.html">PROPERTY_COLLECTION_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PROPERTY_COLLECTION_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The property name to be used to set the name of the collection inside the config</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-p-r-o-p-e-r-t-y_-c-r-e-d-e-n-t-i-a-l_-p-a-s-s-w-o-r-d_-f-i-e-l-d.html">PROPERTY_CREDENTIAL_PASSWORD_FIELD</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PROPERTY_CREDENTIAL_PASSWORD_FIELD</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The property name to be used to set the name of the field, where the password for the credentials is stored inside</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-p-r-o-p-e-r-t-y_-c-r-e-d-e-n-t-i-a-l_-u-s-e-r-n-a-m-e_-f-i-e-l-d.html">PROPERTY_CREDENTIAL_USERNAME_FIELD</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PROPERTY_CREDENTIAL_USERNAME_FIELD</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The property name to be used to set the name of the field, where the username for the credentials is stored inside</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-p-r-o-p-e-r-t-y_-p-a-s-s-w-o-r-d_-f-i-e-l-d.html">PROPERTY_PASSWORD_FIELD</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PROPERTY_PASSWORD_FIELD</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The property name to be used to set the name of the field, where the password is stored inside</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-p-r-o-p-e-r-t-y_-p-e-r-m-i-s-s-i-o-n_-f-i-e-l-d.html">PROPERTY_PERMISSION_FIELD</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PROPERTY_PERMISSION_FIELD</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The property name to be used to set the name of the field, where the permissions are stored inside</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-p-r-o-p-e-r-t-y_-r-o-l-e_-f-i-e-l-d.html">PROPERTY_ROLE_FIELD</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PROPERTY_ROLE_FIELD</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The property name to be used to set the name of the field, where the roles are stored inside</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-p-r-o-p-e-r-t-y_-s-a-l-t_-f-i-e-l-d.html">PROPERTY_SALT_FIELD</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PROPERTY_SALT_FIELD</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The property name to be used to set the name of the field, where the SALT is stored inside</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-p-r-o-p-e-r-t-y_-s-a-l-t_-s-t-y-l-e.html">PROPERTY_SALT_STYLE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PROPERTY_SALT_STYLE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The property name to be used to set the name of the field, where the salt style is stored inside</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-p-r-o-p-e-r-t-y_-u-s-e-r-n-a-m-e_-f-i-e-l-d.html">PROPERTY_USERNAME_FIELD</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PROPERTY_USERNAME_FIELD</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The property name to be used to set the name of the field, where the username is stored inside</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-r-o-l-e_-p-r-e-f-i-x.html">ROLE_PREFIX</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ROLE_PREFIX</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The prefix which is used by the method <code><a href="#">User#isAuthorised(String, Handler)</a></code> when checking for role access</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.mongo.MongoAuth$create(io.vertx.ext.mongo.MongoClient, io.vertx.core.json.JsonObject)/mongoClient">mongoClient</span><span class="symbol">:</span>&nbsp;<span class="identifier">MongoClient</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.auth.mongo.MongoAuth$create(io.vertx.ext.mongo.MongoClient, io.vertx.core.json.JsonObject)/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Creates an instance of MongoAuth by using the given MongoClient and configuration object. An example for a configuration object: <pre><code> JsonObject js = new JsonObject(); js.put(MongoAuth.PROPERTY_COLLECTION_NAME, createCollectionName(MongoAuth.DEFAULT_COLLECTION_NAME)); </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-collection-name.html">getCollectionName</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getCollectionName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The name of the collection used to store User objects inside. Defaults to <code><a href="-d-e-f-a-u-l-t_-c-o-l-l-e-c-t-i-o-n_-n-a-m-e.html">#DEFAULT_COLLECTION_NAME</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-hash-strategy.html">getHashStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getHashStrategy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-hash-strategy/index.html"><span class="identifier">HashStrategy</span></a></code>
+<p>The HashStrategy which is used by the current instance</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-password-credential-field.html">getPasswordCredentialField</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getPasswordCredentialField</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the field to be used as property for the password of credentials in the method <code><a href="#">#authenticate(JsonObject, io.vertx.core.Handler)</a></code>. Defaults to <code><a href="-d-e-f-a-u-l-t_-c-r-e-d-e-n-t-i-a-l_-p-a-s-s-w-o-r-d_-f-i-e-l-d.html">#DEFAULT_CREDENTIAL_PASSWORD_FIELD</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-password-field.html">getPasswordField</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getPasswordField</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the field to be used for the password Defaults to <code><a href="-d-e-f-a-u-l-t_-p-a-s-s-w-o-r-d_-f-i-e-l-d.html">#DEFAULT_PASSWORD_FIELD</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-permission-field.html">getPermissionField</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getPermissionField</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the field to be used for the permissions. Defaults to <code><a href="-d-e-f-a-u-l-t_-p-e-r-m-i-s-s-i-o-n_-f-i-e-l-d.html">#DEFAULT_PERMISSION_FIELD</a></code>. Permissions are expected to be saved as JsonArray</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-role-field.html">getRoleField</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getRoleField</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the field to be used for the roles. Defaults to <code><a href="-d-e-f-a-u-l-t_-r-o-l-e_-f-i-e-l-d.html">#DEFAULT_ROLE_FIELD</a></code>. Roles are expected to be saved as JsonArray</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-salt-field.html">getSaltField</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getSaltField</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the field to be used for the salt. Only used when <code><a href="../-hash-strategy/set-salt-style.html">HashStrategy#setSaltStyle(HashSaltStyle)</a></code> is set to <code><a href="#">HashSaltStyle#COLUMN</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-username-credential-field.html">getUsernameCredentialField</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getUsernameCredentialField</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the field to be used as property for the username in the method <code><a href="#">#authenticate(JsonObject, io.vertx.core.Handler)</a></code>. Defaults to <code><a href="-d-e-f-a-u-l-t_-c-r-e-d-e-n-t-i-a-l_-u-s-e-r-n-a-m-e_-f-i-e-l-d.html">#DEFAULT_CREDENTIAL_USERNAME_FIELD</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-username-field.html">getUsernameField</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getUsernameField</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the field to be used for the username. Defaults to <code><a href="-d-e-f-a-u-l-t_-u-s-e-r-n-a-m-e_-f-i-e-l-d.html">#DEFAULT_USERNAME_FIELD</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="insert-user.html">insertUser</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">insertUser</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.mongo.MongoAuth$insertUser(kotlin.String, kotlin.String, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.auth.mongo.MongoAuth$insertUser(kotlin.String, kotlin.String, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.auth.mongo.MongoAuth$insertUser(kotlin.String, kotlin.String, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/roles">roles</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.auth.mongo.MongoAuth$insertUser(kotlin.String, kotlin.String, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/permissions">permissions</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.auth.mongo.MongoAuth$insertUser(kotlin.String, kotlin.String, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Insert a new user into mongo in the convenient way</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-collection-name.html">setCollectionName</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setCollectionName</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.mongo.MongoAuth$setCollectionName(kotlin.String)/collectionName">collectionName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Set the name of the collection to be used. Defaults to <code><a href="-d-e-f-a-u-l-t_-c-o-l-l-e-c-t-i-o-n_-n-a-m-e.html">#DEFAULT_COLLECTION_NAME</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-hash-strategy.html">setHashStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setHashStrategy</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.mongo.MongoAuth$setHashStrategy(io.vertx.ext.auth.mongo.HashStrategy)/hashStrategy">hashStrategy</span><span class="symbol">:</span>&nbsp;<a href="../-hash-strategy/index.html"><span class="identifier">HashStrategy</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>The HashStrategy which is used by the current instance</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-password-credential-field.html">setPasswordCredentialField</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setPasswordCredentialField</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.mongo.MongoAuth$setPasswordCredentialField(kotlin.String)/fieldName">fieldName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Set the name of the field to be used as property for the password of credentials in the method <code><a href="#">#authenticate(JsonObject, io.vertx.core.Handler)</a></code>. Defaults to <code><a href="-d-e-f-a-u-l-t_-c-r-e-d-e-n-t-i-a-l_-p-a-s-s-w-o-r-d_-f-i-e-l-d.html">#DEFAULT_CREDENTIAL_PASSWORD_FIELD</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-password-field.html">setPasswordField</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setPasswordField</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.mongo.MongoAuth$setPasswordField(kotlin.String)/fieldName">fieldName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Set the name of the field to be used for the password Defaults to <code><a href="-d-e-f-a-u-l-t_-p-a-s-s-w-o-r-d_-f-i-e-l-d.html">#DEFAULT_PASSWORD_FIELD</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-permission-field.html">setPermissionField</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setPermissionField</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.mongo.MongoAuth$setPermissionField(kotlin.String)/fieldName">fieldName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Set the name of the field to be used for the permissions. Defaults to <code><a href="-d-e-f-a-u-l-t_-p-e-r-m-i-s-s-i-o-n_-f-i-e-l-d.html">#DEFAULT_PERMISSION_FIELD</a></code>. Permissions are expected to be saved as JsonArray</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-role-field.html">setRoleField</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setRoleField</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.mongo.MongoAuth$setRoleField(kotlin.String)/fieldName">fieldName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Set the name of the field to be used for the roles. Defaults to <code><a href="-d-e-f-a-u-l-t_-r-o-l-e_-f-i-e-l-d.html">#DEFAULT_ROLE_FIELD</a></code>. Roles are expected to be saved as JsonArray</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-salt-field.html">setSaltField</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setSaltField</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.mongo.MongoAuth$setSaltField(kotlin.String)/fieldName">fieldName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Set the name of the field to be used for the salt. Only used when <code><a href="../-hash-strategy/set-salt-style.html">HashStrategy#setSaltStyle(HashSaltStyle)</a></code> is set to <code><a href="#">HashSaltStyle#COLUMN</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-username-credential-field.html">setUsernameCredentialField</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setUsernameCredentialField</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.mongo.MongoAuth$setUsernameCredentialField(kotlin.String)/fieldName">fieldName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Set the name of the field to be used as property for the username in the method <code><a href="#">#authenticate(JsonObject, io.vertx.core.Handler)</a></code>. Defaults to <code><a href="-d-e-f-a-u-l-t_-c-r-e-d-e-n-t-i-a-l_-u-s-e-r-n-a-m-e_-f-i-e-l-d.html">#DEFAULT_CREDENTIAL_USERNAME_FIELD</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-username-field.html">setUsernameField</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setUsernameField</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.mongo.MongoAuth$setUsernameField(kotlin.String)/fieldName">fieldName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MongoAuth</span></code>
+<p>Set the name of the field to be used for the username. Defaults to <code><a href="-d-e-f-a-u-l-t_-u-s-e-r-n-a-m-e_-f-i-e-l-d.html">#DEFAULT_USERNAME_FIELD</a></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

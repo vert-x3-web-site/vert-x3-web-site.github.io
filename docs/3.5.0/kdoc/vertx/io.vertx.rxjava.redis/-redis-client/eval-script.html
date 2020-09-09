@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RedisClient.evalScript - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.redis</a>&nbsp;/&nbsp;<a href="index.html">RedisClient</a>&nbsp;/&nbsp;<a href=".">evalScript</a><br/>
+<br/>
+<h1>evalScript</h1>
+<a name="io.vertx.rxjava.redis.RedisClient$evalScript(io.vertx.rxjava.redis.Script, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">evalScript</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.redis.RedisClient$evalScript(io.vertx.rxjava.redis.Script, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/script">script</span><span class="symbol">:</span>&nbsp;<span class="identifier">Script</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.redis.RedisClient$evalScript(io.vertx.rxjava.redis.Script, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/keys">keys</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.redis.RedisClient$evalScript(io.vertx.rxjava.redis.Script, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.redis.RedisClient$evalScript(io.vertx.rxjava.redis.Script, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((kotlin.String)), io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">JsonArray</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">RedisClient</span></a></code>
+<p>Execute a Lua script server side. This method is a high level wrapper around EVAL and EVALSHA using the latter if possible, falling back to EVAL if the script is not cached by the server yet. According to Redis documentation, executed scripts are guaranteed to be in the script cache of a given execution of a Redis instance forever, which means typically the overhead incurred by optimistically sending EVALSHA is minimal, while improving performance and saving bandwidth compared to using EVAL every time.</p>
+<h3>Parameters</h3>
+<p><a name="script"></a>
+<code>script</code> - Lua script and its SHA1 digest</p>
+<p><a name="keys"></a>
+<code>keys</code> - List of keys</p>
+<p><a name="args"></a>
+<code>args</code> - List of argument values</p>
+<p><a name="handler"></a>
+<code>handler</code> - Handler for the result of this call. group: scripting</p>
+<p><strong>Return</strong><br/>
+</p>
+</BODY>
+</HTML>

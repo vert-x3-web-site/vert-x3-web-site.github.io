@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>VertxMetrics.createMetrics - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.core.spi.metrics</a>&nbsp;/&nbsp;<a href="index.html">VertxMetrics</a>&nbsp;/&nbsp;<a href=".">createMetrics</a><br/>
+<br/>
+<h1>createMetrics</h1>
+<a name="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.eventbus.EventBus)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">createMetrics</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.eventbus.EventBus)/eventBus">eventBus</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.eventbus/-event-bus/index.html"><span class="identifier">EventBus</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-event-bus-metrics/index.html"><span class="identifier">EventBusMetrics</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Provides the event bus metrics SPI when the event bus is created. 
+<p> No specific thread and context can be expected when this method is called.</p>
+ 
+<p> This method should be called only once.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="eventBus"></a>
+<code>eventBus</code> - the Vert.x event bus</p>
+<p><strong>Return</strong><br/>
+the event bus metrics SPI or <code>null</code> when metrics are disabled</p>
+<a name="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.http.HttpServer, io.vertx.core.net.SocketAddress, io.vertx.core.http.HttpServerOptions)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">createMetrics</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.http.HttpServer, io.vertx.core.net.SocketAddress, io.vertx.core.http.HttpServerOptions)/server">server</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServer</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.http.HttpServer, io.vertx.core.net.SocketAddress, io.vertx.core.http.HttpServerOptions)/localAddress">localAddress</span><span class="symbol">:</span>&nbsp;<span class="identifier">SocketAddress</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.http.HttpServer, io.vertx.core.net.SocketAddress, io.vertx.core.http.HttpServerOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServerOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerMetrics</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Provides the http server metrics SPI when an http server is created. 
+<p> No specific thread and context can be expected when this method is called.</p>
+ 
+<p> Note: this method can be called more than one time for the same <code>localAddress</code> when a server is scaled, it is the responsibility of the metrics implementation to eventually merge metrics. In this case the provided <code>server</code> argument can be used to distinguish the different <code>HttpServerMetrics</code> instances.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="server"></a>
+<code>server</code> - the Vert.x http server</p>
+<p><a name="localAddress"></a>
+<code>localAddress</code> - localAddress the local address the net socket is listening on</p>
+<p><a name="options"></a>
+<code>options</code> - the options used to create the io.vertx.core.http.HttpServer</p>
+<p><strong>Return</strong><br/>
+the http server metrics SPI or <code>null</code> when metrics are disabled</p>
+<a name="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.http.HttpClient, io.vertx.core.http.HttpClientOptions)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">createMetrics</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.http.HttpClient, io.vertx.core.http.HttpClientOptions)/client">client</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpClient</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.http.HttpClient, io.vertx.core.http.HttpClientOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpClientOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientMetrics</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Provides the http client metrics SPI when an http client has been created. 
+<p> No specific thread and context can be expected when this method is called.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="client"></a>
+<code>client</code> - the Vert.x http client</p>
+<p><a name="options"></a>
+<code>options</code> - the options used to create the io.vertx.core.http.HttpClient</p>
+<p><strong>Return</strong><br/>
+the http client metrics SPI or <code>null</code> when metrics are disabled</p>
+<a name="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.net.SocketAddress, io.vertx.core.net.NetServerOptions)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">createMetrics</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.net.SocketAddress, io.vertx.core.net.NetServerOptions)/localAddress">localAddress</span><span class="symbol">:</span>&nbsp;<span class="identifier">SocketAddress</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.net.SocketAddress, io.vertx.core.net.NetServerOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">NetServerOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-t-c-p-metrics/index.html"><span class="identifier">TCPMetrics</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Provides the net server metrics SPI when a net server is created. 
+<p> No specific thread and context can be expected when this method is called.</p>
+ 
+<p> Note: this method can be called more than one time for the same <code>localAddress</code> when a server is scaled, it is the responsibility of the metrics implementation to eventually merge metrics. In this case the provided <code>server</code> argument can be used to distinguish the different <code>TCPMetrics</code> instances.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="localAddress"></a>
+<code>localAddress</code> - localAddress the local address the net socket is listening on</p>
+<p><a name="options"></a>
+<code>options</code> - the options used to create the NetServer</p>
+<p><strong>Return</strong><br/>
+the net server metrics SPI or <code>null</code> when metrics are disabled</p>
+<a name="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.net.NetClientOptions)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">createMetrics</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.net.NetClientOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">NetClientOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-t-c-p-metrics/index.html"><span class="identifier">TCPMetrics</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Provides the net client metrics SPI when a net client is created. 
+<p> No specific thread and context can be expected when this method is called.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="options"></a>
+<code>options</code> - the options used to create the NetClient</p>
+<p><strong>Return</strong><br/>
+the net client metrics SPI or <code>null</code> when metrics are disabled</p>
+<a name="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.datagram.DatagramSocket, io.vertx.core.datagram.DatagramSocketOptions)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">createMetrics</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.datagram.DatagramSocket, io.vertx.core.datagram.DatagramSocketOptions)/socket">socket</span><span class="symbol">:</span>&nbsp;<span class="identifier">DatagramSocket</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.datagram.DatagramSocket, io.vertx.core.datagram.DatagramSocketOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">DatagramSocketOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DatagramSocketMetrics</span></code>
+<p>Provides the datagram/udp metrics SPI when a datagram socket is created. 
+<p> No specific thread and context can be expected when this method is called.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="socket"></a>
+<code>socket</code> - the Vert.x datagram socket</p>
+<p><a name="options"></a>
+<code>options</code> - the options used to create the io.vertx.core.datagram.DatagramSocket</p>
+<p><strong>Return</strong><br/>
+the datagram metrics SPI or <code>null</code> when metrics are disabled</p>
+<a name="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.spi.metrics.VertxMetrics.createMetrics.P, kotlin.String, kotlin.String, kotlin.Int)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">P</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">createMetrics</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.spi.metrics.VertxMetrics.createMetrics.P, kotlin.String, kotlin.String, kotlin.Int)/pool">pool</span><span class="symbol">:</span>&nbsp;<span class="identifier">P</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.spi.metrics.VertxMetrics.createMetrics.P, kotlin.String, kotlin.String, kotlin.Int)/poolType">poolType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.spi.metrics.VertxMetrics.createMetrics.P, kotlin.String, kotlin.String, kotlin.Int)/poolName">poolName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.VertxMetrics$createMetrics(io.vertx.core.spi.metrics.VertxMetrics.createMetrics.P, kotlin.String, kotlin.String, kotlin.Int)/maxPoolSize">maxPoolSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PoolMetrics</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Provides the pool metrics SPI.</p>
+<h3>Parameters</h3>
+<p><a name="pool"></a>
+<code>pool</code> - the pool of resource, it can be used by the metrics implementation to gather extra statistics</p>
+<p><a name="poolType"></a>
+<code>poolType</code> - the type of the pool e.g worker, datasource, etc..</p>
+<p><a name="poolName"></a>
+<code>poolName</code> - the name of the pool</p>
+<p><a name="maxPoolSize"></a>
+<code>maxPoolSize</code> - the pool max size, or -1 if the number cannot be determined</p>
+<p><strong>Return</strong><br/>
+the thread pool metrics SPI or <code>null</code> when metrics are disabled</p>
+</BODY>
+</HTML>

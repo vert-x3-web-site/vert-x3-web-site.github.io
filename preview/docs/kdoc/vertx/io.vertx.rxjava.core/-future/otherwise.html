@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Future.otherwise - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.core</a>&nbsp;/&nbsp;<a href="index.html">Future</a>&nbsp;/&nbsp;<a href=".">otherwise</a><br/>
+<br/>
+<h1>otherwise</h1>
+<a name="io.vertx.rxjava.core.Future$otherwise(java.util.function.Function((kotlin.Throwable, io.vertx.rxjava.core.Future.T)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">otherwise</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.Future$otherwise(java.util.function.Function((kotlin.Throwable, io.vertx.rxjava.core.Future.T)))/mapper">mapper</span><span class="symbol">:</span>&nbsp;<span class="identifier">Function</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Apply a <code>mapper</code> function on this future.
+<p> When this future fails, the <code>mapper</code> will be called with the completed value and this mapper returns a value. This value will complete the future returned by this method call.</p>
+<p> If the <code>mapper</code> throws an exception, the returned future will be failed with this exception.</p>
+<p> When this future succeeds, the result will be propagated to the returned future and the <code>mapper</code> will not be called.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="mapper"></a>
+<code>mapper</code> - the mapper function</p>
+<p><strong>Return</strong><br/>
+the mapped future</p>
+<a name="io.vertx.rxjava.core.Future$otherwise(io.vertx.rxjava.core.Future.T)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">otherwise</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.Future$otherwise(io.vertx.rxjava.core.Future.T)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Map the failure of a future to a specific <code>value</code>.
+<p> When this future fails, this <code>value</code> will complete the future returned by this method call.</p>
+<p> When this future succeeds, the result will be propagated to the returned future.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="value"></a>
+<code>value</code> - the value that eventually completes the mapped future</p>
+<p><strong>Return</strong><br/>
+the mapped future</p>
+</BODY>
+</HTML>

@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.core.spi.launcher - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.core.spi.launcher</a><br/>
+<br/>
+<h2>Package io.vertx.core.spi.launcher</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-command-factory-lookup/index.html">CommandFactoryLookup</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">CommandFactoryLookup</span></code>
+<p>The interface to implement to look for commands.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-command/index.html">DefaultCommand</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">DefaultCommand</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Command</span></code>
+<p>Default implementation of Command using annotation to define itself. It is highly recommended to extend this class when implementing a command.  It defines two hidden Options to create system properties (<code>-Dkey=value</code>) and a way to configure the current working directory.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-command-factory/index.html">DefaultCommandFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultCommandFactory</span><span class="symbol">&lt;</span><span class="identifier">C</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Command</span><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CommandFactory</span><span class="symbol">&lt;</span><span class="identifier">C</span><span class="symbol">&gt;</span></code>
+<p>Default implementation of CommandFactory. This implementation defines the CLI from the given Command implementation (by reading the annotation). Then, Command instance are created by calling an empty constructor on the given Command implementation.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

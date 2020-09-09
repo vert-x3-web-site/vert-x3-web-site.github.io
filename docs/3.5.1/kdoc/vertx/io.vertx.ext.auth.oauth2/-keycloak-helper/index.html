@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>KeycloakHelper - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.auth.oauth2</a>&nbsp;/&nbsp;<a href=".">KeycloakHelper</a><br/>
+<br/>
+<h1>KeycloakHelper</h1>
+<code><span class="keyword">interface </span><span class="identifier">KeycloakHelper</span></code>
+<p>Helper class for processing Keycloak principal.</p>
+<p><strong>Author</strong><br/>
+Eric Zhao</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="access-token.html">accessToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">accessToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.oauth2.KeycloakHelper$accessToken(io.vertx.core.json.JsonObject)/principal">principal</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonObject</span></code>
+<p>Get decoded `access_token` from the principal.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="acr.html">acr</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">acr</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.oauth2.KeycloakHelper$acr(io.vertx.core.json.JsonObject)/principal">principal</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="allowed-origins.html">allowedOrigins</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">allowedOrigins</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.oauth2.KeycloakHelper$allowedOrigins(io.vertx.core.json.JsonObject)/principal">principal</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="auth-time.html">authTime</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">authTime</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.oauth2.KeycloakHelper$authTime(io.vertx.core.json.JsonObject)/principal">principal</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="email.html">email</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">email</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.oauth2.KeycloakHelper$email(io.vertx.core.json.JsonObject)/principal">principal</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="id-token.html">idToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">idToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.oauth2.KeycloakHelper$idToken(io.vertx.core.json.JsonObject)/principal">principal</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonObject</span></code>
+<p>Get decoded `id_token` from the principal.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="name.html">name</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">name</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.oauth2.KeycloakHelper$name(io.vertx.core.json.JsonObject)/principal">principal</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="nick-name.html">nickName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">nickName</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.oauth2.KeycloakHelper$nickName(io.vertx.core.json.JsonObject)/principal">principal</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="parse-token.html">parseToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">parseToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.oauth2.KeycloakHelper$parseToken(kotlin.String)/token">token</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonObject</span></code>
+<p>Parse the token string with base64 decoder. This will only obtain the "payload" part of the token.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="preferred-username.html">preferredUsername</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">preferredUsername</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.oauth2.KeycloakHelper$preferredUsername(io.vertx.core.json.JsonObject)/principal">principal</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="raw-access-token.html">rawAccessToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">rawAccessToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.oauth2.KeycloakHelper$rawAccessToken(io.vertx.core.json.JsonObject)/principal">principal</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get raw `access_token` string from the principal.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="raw-id-token.html">rawIdToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">rawIdToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.oauth2.KeycloakHelper$rawIdToken(io.vertx.core.json.JsonObject)/principal">principal</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get raw `id_token` string from the principal.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="session-state.html">sessionState</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">sessionState</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.oauth2.KeycloakHelper$sessionState(io.vertx.core.json.JsonObject)/principal">principal</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

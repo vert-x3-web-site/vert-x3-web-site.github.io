@@ -1,0 +1,126 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PostgreSQLClient - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.ext.asyncsql</a>&nbsp;/&nbsp;<a href=".">PostgreSQLClient</a><br/>
+<br/>
+<h1>PostgreSQLClient</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PostgreSQLClient</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AsyncSQLClient</span></code>
+<p>Represents an PostgreSQL client  NOTE: This class has been automatically generated from the io.vertx.ext.asyncsql.PostgreSQLClient non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">PostgreSQLClient</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$<init>(io.vertx.ext.asyncsql.PostgreSQLClient)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.asyncsql/-postgre-s-q-l-client/index.html"><span class="identifier">PostgreSQLClient</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">PostgreSQLClient</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create-non-shared.html">createNonShared</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createNonShared</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$createNonShared(io.vertx.reactivex.core.Vertx, io.vertx.core.json.JsonObject)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core/-vertx/index.html"><span class="identifier">Vertx</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$createNonShared(io.vertx.reactivex.core.Vertx, io.vertx.core.json.JsonObject)/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncSQLClient</span></code>
+<p>Create a PostgreSQL client which maintains its own pool.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-shared.html">createShared</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createShared</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$createShared(io.vertx.reactivex.core.Vertx, io.vertx.core.json.JsonObject, kotlin.String)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core/-vertx/index.html"><span class="identifier">Vertx</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$createShared(io.vertx.reactivex.core.Vertx, io.vertx.core.json.JsonObject, kotlin.String)/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$createShared(io.vertx.reactivex.core.Vertx, io.vertx.core.json.JsonObject, kotlin.String)/poolName">poolName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncSQLClient</span></code>
+<p>Create a PostgreSQL client which shares its pool with any other MySQL clients created with the same pool name.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createShared</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$createShared(io.vertx.reactivex.core.Vertx, io.vertx.core.json.JsonObject)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core/-vertx/index.html"><span class="identifier">Vertx</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$createShared(io.vertx.reactivex.core.Vertx, io.vertx.core.json.JsonObject)/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncSQLClient</span></code>
+<p>Like <code><a href="#">io.vertx.reactivex.ext.asyncsql.PostgreSQLClient#createShared</a></code> but with the default pool name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.ext.asyncsql/-postgre-s-q-l-client/index.html"><span class="identifier">PostgreSQLClient</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$newInstance(io.vertx.ext.asyncsql.PostgreSQLClient)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.asyncsql/-postgre-s-q-l-client/index.html"><span class="identifier">PostgreSQLClient</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PostgreSQLClient</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="query-single.html">querySingle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">querySingle</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$querySingle(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$querySingle(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">JsonArray</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SQLOperations</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="query-single-with-params.html">querySingleWithParams</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">querySingleWithParams</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$querySingleWithParams(kotlin.String, io.vertx.core.json.JsonArray, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$querySingleWithParams(kotlin.String, io.vertx.core.json.JsonArray, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/arguments">arguments</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$querySingleWithParams(kotlin.String, io.vertx.core.json.JsonArray, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">JsonArray</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SQLOperations</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-query-single.html">rxQuerySingle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxQuerySingle</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$rxQuerySingle(kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Maybe.html"><span class="identifier">Maybe</span></a><span class="symbol">&lt;</span><span class="identifier">JsonArray</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-query-single-with-params.html">rxQuerySingleWithParams</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxQuerySingleWithParams</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$rxQuerySingleWithParams(kotlin.String, io.vertx.core.json.JsonArray)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.asyncsql.PostgreSQLClient$rxQuerySingleWithParams(kotlin.String, io.vertx.core.json.JsonArray)/arguments">arguments</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Maybe.html"><span class="identifier">Maybe</span></a><span class="symbol">&lt;</span><span class="identifier">JsonArray</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

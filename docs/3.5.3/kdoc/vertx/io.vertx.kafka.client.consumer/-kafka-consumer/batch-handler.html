@@ -1,0 +1,20 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>KafkaConsumer.batchHandler - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.kafka.client.consumer</a>&nbsp;/&nbsp;<a href="index.html">KafkaConsumer</a>&nbsp;/&nbsp;<a href=".">batchHandler</a><br/>
+<br/>
+<h1>batchHandler</h1>
+<a name="io.vertx.kafka.client.consumer.KafkaConsumer$batchHandler(io.vertx.core.Handler((io.vertx.kafka.client.consumer.KafkaConsumerRecords((io.vertx.kafka.client.consumer.KafkaConsumer.K, io.vertx.kafka.client.consumer.KafkaConsumer.V)))))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">batchHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kafka.client.consumer.KafkaConsumer$batchHandler(io.vertx.core.Handler((io.vertx.kafka.client.consumer.KafkaConsumerRecords((io.vertx.kafka.client.consumer.KafkaConsumer.K, io.vertx.kafka.client.consumer.KafkaConsumer.V)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../-kafka-consumer-records/index.html"><span class="identifier">KafkaConsumerRecords</span></a><span class="symbol">&lt;</span><span class="identifier">K</span><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">KafkaConsumer</span></a><span class="symbol">&lt;</span><span class="identifier">K</span><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span></code>
+<p>Set the handler to be used when batches of messages are fetched from the Kafka server. Batch handlers need to take care not to block the event loop when dealing with large batches. It is better to process records individually using the <code><a href="#">record handler</a></code>.</p>
+<h3>Parameters</h3>
+<p><a name="handler"></a>
+<code>handler</code> - handler called when batches of messages are fetched</p>
+<p><strong>Return</strong><br/>
+current KafkaConsumer instance</p>
+</BODY>
+</HTML>

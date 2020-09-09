@@ -1,0 +1,204 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>OpenAPI3RouterFactory - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.ext.web.api.contract.openapi3</a>&nbsp;/&nbsp;<a href=".">OpenAPI3RouterFactory</a><br/>
+<br/>
+<h1>OpenAPI3RouterFactory</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpenAPI3RouterFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../io.vertx.rxjava.ext.web.api.contract/-design-driven-router-factory/index.html"><span class="identifier">DesignDrivenRouterFactory</span></a><span class="symbol">&lt;</span><span class="identifier">OpenAPI</span><span class="symbol">&gt;</span></code>
+<p>Interface for OpenAPI3RouterFactory.  To add an handler, use <code><a href="#">io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory#addHandlerByOperationId</a></code>, in this class is better than generic  If you want to use remember that <strong>you have to pass path as declared in openapi specification</strong> Usage example: <pre><code><code>OpenAPI3RouterFactory.createRouterFactoryFromFile(vertx, "src/resources/spec.yaml", asyncResult -&gt; { if (!asyncResult.succeeded()) { // IO failure or spec invalid</code> else { OpenAPI3RouterFactory routerFactory = asyncResult.result(); routerFactory.addHandlerByOperationId("operation_id", routingContext -&gt; { // Do something }, routingContext -&gt; { // Do something with failure handler }); Router router = routerFactory.getRouter(); } }); } </code></pre>  NOTE: This class has been automatically generated from the io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">OpenAPI3RouterFactory</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$<init>(io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.web.api.contract.openapi3/-open-a-p-i3-router-factory/index.html"><span class="identifier">OpenAPI3RouterFactory</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><span class="identifier">TypeArg</span><span class="symbol">&lt;</span><span class="identifier">OpenAPI3RouterFactory</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-failure-handler.html">addFailureHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addFailureHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$addFailureHandler(io.vertx.core.http.HttpMethod, kotlin.String, io.vertx.core.Handler((io.vertx.rxjava.ext.web.RoutingContext)))/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpMethod</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$addFailureHandler(io.vertx.core.http.HttpMethod, kotlin.String, io.vertx.core.Handler((io.vertx.rxjava.ext.web.RoutingContext)))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$addFailureHandler(io.vertx.core.http.HttpMethod, kotlin.String, io.vertx.core.Handler((io.vertx.rxjava.ext.web.RoutingContext)))/failureHandler">failureHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.rxjava.ext.web.api.contract/-design-driven-router-factory/index.html"><span class="identifier">DesignDrivenRouterFactory</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Add a failure handler to a path with a method. If combination path/method is not available in specification, it will throw a</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-failure-handler-by-operation-id.html">addFailureHandlerByOperationId</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addFailureHandlerByOperationId</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$addFailureHandlerByOperationId(kotlin.String, io.vertx.core.Handler((io.vertx.rxjava.ext.web.RoutingContext)))/operationId">operationId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$addFailureHandlerByOperationId(kotlin.String, io.vertx.core.Handler((io.vertx.rxjava.ext.web.RoutingContext)))/failureHandler">failureHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">OpenAPI3RouterFactory</span></code>
+<p>Add a failure handler by operation_id field in Operation object</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-handler.html">addHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$addHandler(io.vertx.core.http.HttpMethod, kotlin.String, io.vertx.core.Handler((io.vertx.rxjava.ext.web.RoutingContext)))/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpMethod</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$addHandler(io.vertx.core.http.HttpMethod, kotlin.String, io.vertx.core.Handler((io.vertx.rxjava.ext.web.RoutingContext)))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$addHandler(io.vertx.core.http.HttpMethod, kotlin.String, io.vertx.core.Handler((io.vertx.rxjava.ext.web.RoutingContext)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.rxjava.ext.web.api.contract/-design-driven-router-factory/index.html"><span class="identifier">DesignDrivenRouterFactory</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Add an handler to a path with a method. If combination path/method is not available in specification, it will throw a</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-handler-by-operation-id.html">addHandlerByOperationId</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addHandlerByOperationId</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$addHandlerByOperationId(kotlin.String, io.vertx.core.Handler((io.vertx.rxjava.ext.web.RoutingContext)))/operationId">operationId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$addHandlerByOperationId(kotlin.String, io.vertx.core.Handler((io.vertx.rxjava.ext.web.RoutingContext)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">OpenAPI3RouterFactory</span></code>
+<p>Add an handler by operation_id field in Operation object</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-security-handler.html">addSecurityHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addSecurityHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$addSecurityHandler(kotlin.String, io.vertx.core.Handler((io.vertx.rxjava.ext.web.RoutingContext)))/securitySchemaName">securitySchemaName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$addSecurityHandler(kotlin.String, io.vertx.core.Handler((io.vertx.rxjava.ext.web.RoutingContext)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.rxjava.ext.web.api.contract/-design-driven-router-factory/index.html"><span class="identifier">DesignDrivenRouterFactory</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Mount to paths that have to follow a security schema a security handler</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-security-schema-scope-validator.html">addSecuritySchemaScopeValidator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addSecuritySchemaScopeValidator</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$addSecuritySchemaScopeValidator(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.rxjava.ext.web.RoutingContext)))/securitySchemaName">securitySchemaName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$addSecuritySchemaScopeValidator(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.rxjava.ext.web.RoutingContext)))/scopeName">scopeName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$addSecuritySchemaScopeValidator(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.rxjava.ext.web.RoutingContext)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">OpenAPI3RouterFactory</span></code>
+<p>Add a particular scope validator. The main security schema will not be called if a specific scope validator is configured</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-router-factory-from-file.html">createRouterFactoryFromFile</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createRouterFactoryFromFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$createRouterFactoryFromFile(io.vertx.rxjava.core.Vertx, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory)))))/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$createRouterFactoryFromFile(io.vertx.rxjava.core.Vertx, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory)))))/filename">filename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$createRouterFactoryFromFile(io.vertx.rxjava.core.Vertx, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">OpenAPI3RouterFactory</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Create a new OpenAPI3RouterFactory from a filename</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-router-factory-from-u-r-l.html">createRouterFactoryFromURL</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createRouterFactoryFromURL</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$createRouterFactoryFromURL(io.vertx.rxjava.core.Vertx, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory)))))/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$createRouterFactoryFromURL(io.vertx.rxjava.core.Vertx, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory)))))/url">url</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$createRouterFactoryFromURL(io.vertx.rxjava.core.Vertx, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">OpenAPI3RouterFactory</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Create a new OpenAPI3RouterFactory from an url</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="enable-validation-failure-handler.html">enableValidationFailureHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">enableValidationFailureHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$enableValidationFailureHandler(kotlin.Boolean)/enable">enable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.rxjava.ext.web.api.contract/-design-driven-router-factory/index.html"><span class="identifier">DesignDrivenRouterFactory</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Enable or disable validation failure handler. If you enable it, during router creation it will be mounted a built-in (or custom with function ) ValidationException handler as a failure handler. If failure is different from ValidationException, it will be called the next failure handler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.ext.web.api.contract.openapi3/-open-a-p-i3-router-factory/index.html"><span class="identifier">OpenAPI3RouterFactory</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-router.html">getRouter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRouter</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Router</span></code>
+<p>Construct a new router based on spec. It will fail if you are trying to mount a spec with security schemes without assigned handlers <strong>Note:</strong> Router is constructed in this function, so it will be respected the path definition ordering.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="mount-operations-without-handlers.html">mountOperationsWithoutHandlers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">mountOperationsWithoutHandlers</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$mountOperationsWithoutHandlers(kotlin.Boolean)/enable">enable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.rxjava.ext.web.api.contract/-design-driven-router-factory/index.html"><span class="identifier">DesignDrivenRouterFactory</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Automatic mount handlers that return HTTP 501 status code for operations where you didn't specify an handler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$newInstance(io.vertx.ext.web.api.contract.openapi3.OpenAPI3RouterFactory)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.web.api.contract.openapi3/-open-a-p-i3-router-factory/index.html"><span class="identifier">OpenAPI3RouterFactory</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">OpenAPI3RouterFactory</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-create-router-factory-from-file.html">rxCreateRouterFactoryFromFile</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">rxCreateRouterFactoryFromFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$rxCreateRouterFactoryFromFile(io.vertx.rxjava.core.Vertx, kotlin.String)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$rxCreateRouterFactoryFromFile(io.vertx.rxjava.core.Vertx, kotlin.String)/filename">filename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">OpenAPI3RouterFactory</span><span class="symbol">&gt;</span></code>
+<p>Create a new OpenAPI3RouterFactory from a filename</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-create-router-factory-from-u-r-l.html">rxCreateRouterFactoryFromURL</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">rxCreateRouterFactoryFromURL</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$rxCreateRouterFactoryFromURL(io.vertx.rxjava.core.Vertx, kotlin.String)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$rxCreateRouterFactoryFromURL(io.vertx.rxjava.core.Vertx, kotlin.String)/url">url</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">OpenAPI3RouterFactory</span><span class="symbol">&gt;</span></code>
+<p>Create a new OpenAPI3RouterFactory from an url</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-validation-failure-handler.html">setValidationFailureHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValidationFailureHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.web.api.contract.openapi3.OpenAPI3RouterFactory$setValidationFailureHandler(io.vertx.core.Handler((io.vertx.rxjava.ext.web.RoutingContext)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.rxjava.ext.web.api.contract/-design-driven-router-factory/index.html"><span class="identifier">DesignDrivenRouterFactory</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Set default validation failure handler. You can disable this feature from</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

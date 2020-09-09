@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.ext.shell - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.ext.shell</a><br/>
+<br/>
+<h2>Package io.vertx.ext.shell</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-shell/index.html">Shell</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">Shell</span></code>
+<p>An interactive session between a consumer and a shell.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-shell-server/index.html">ShellServer</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ShellServer</span></code>
+<p>The shell server. A shell server is associated with a collection of TermServer: the <code><a href="-shell-server/register-term-server.html">#registerTermServer(TermServer)</a></code> method registers a term server. Term servers life cycle are managed by this server. When a TermServer receives an incoming connection, a JobController instance is created and associated with this connection. The <code><a href="-shell-server/create-shell.html">#createShell()</a></code> method can be used to create JobController instance for testing purposes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-shell-server-options-converter/index.html">ShellServerOptionsConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ShellServerOptionsConverter</span></code>
+<p>Converter for io.vertx.ext.shell.ShellServerOptions. NOTE: This class has been automatically generated from the io.vertx.ext.shell.ShellServerOptions original class using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-shell-service/index.html">ShellService</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ShellService</span></code>
+<p>The shell service, provides a remotely accessible shell available via Telnet or SSH according to the io.vertx.ext.shell.ShellServiceOptions configuration. The shell service will expose commands using io.vertx.ext.shell.command.CommandResolver on the classpath and the shared command registry for the Vert.x instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-shell-service-options-converter/index.html">ShellServiceOptionsConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ShellServiceOptionsConverter</span></code>
+<p>Converter for io.vertx.ext.shell.ShellServiceOptions. NOTE: This class has been automatically generated from the io.vertx.ext.shell.ShellServiceOptions original class using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-shell-verticle/index.html">ShellVerticle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ShellVerticle</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractVerticle</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

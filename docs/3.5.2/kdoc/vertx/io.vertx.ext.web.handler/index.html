@@ -1,0 +1,226 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.ext.web.handler - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.ext.web.handler</a><br/>
+<br/>
+<h2>Package io.vertx.ext.web.handler</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-auth-handler/index.html">AuthHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">AuthHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>Base interface for auth handlers. 
+<p> An auth handler allows your application to provide authentication/authorisation support. </p>
+<p> Auth handler requires a SessionHandler to be on the routing chain before it.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-basic-auth-handler/index.html">BasicAuthHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">BasicAuthHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-auth-handler/index.html"><span class="identifier">AuthHandler</span></a></code>
+<p>An auth handler that provides HTTP Basic Authentication support.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-s-r-f-handler/index.html">CSRFHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">CSRFHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>This handler adds a CSRF token to requests which mutate state. In order change the state a (XSRF-TOKEN) cookie is set with a unique token, that is expected to be sent back in a (X-XSRF-TOKEN) header. The behavior is to check the request body header and cookie for validity. This Handler requires session support, thus should be added somewhere below Session and Body handlers.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-chain-auth-handler/index.html">ChainAuthHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ChainAuthHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-auth-handler/index.html"><span class="identifier">AuthHandler</span></a></code>
+<p>An auth handler that chains to a sequence of handlers.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-cookie-handler/index.html">CookieHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">CookieHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>A handler which decodes cookies from the request, makes them available in the RoutingContext and writes them back in the response.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-cors-handler/index.html">CorsHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">CorsHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>A handler which implements server side http://www.w3.org/TR/cors/[CORS] support for Vert.x-Web.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-digest-auth-handler/index.html">DigestAuthHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">DigestAuthHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-auth-handler/index.html"><span class="identifier">AuthHandler</span></a></code>
+<p>An auth handler that provides HTTP Basic Authentication support.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-error-handler/index.html">ErrorHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ErrorHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>A pretty error handler for rendering error pages.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-favicon-handler/index.html">FaviconHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">FaviconHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>A handler that serves favicons. 
+<p> If no file system path is specified it will attempt to serve a resource called `favicon.ico` from the classpath.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-form-login-handler/index.html">FormLoginHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">FormLoginHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>Handler that handles login from a form on a custom login page. 
+<p> Used in conjunction with the RedirectAuthHandler.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-j-w-t-auth-handler/index.html">JWTAuthHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">JWTAuthHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-auth-handler/index.html"><span class="identifier">AuthHandler</span></a></code>
+<p>An auth handler that provides JWT Authentication support.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-logger-format/index.html">LoggerFormat</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">LoggerFormat</span></code>
+<p>The possible out of the box formats.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-logger-handler/index.html">LoggerHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">LoggerHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>A handler which logs request information to the Vert.x logger.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-o-auth2-auth-handler/index.html">OAuth2AuthHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">OAuth2AuthHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-auth-handler/index.html"><span class="identifier">AuthHandler</span></a></code>
+<p>An auth handler that provides OAuth2 Authentication support. This handler is suitable for AuthCode flows.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-redirect-auth-handler/index.html">RedirectAuthHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">RedirectAuthHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-auth-handler/index.html"><span class="identifier">AuthHandler</span></a></code>
+<p>An auth handler that's used to handle auth by redirecting user to a custom login page.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-response-time-handler/index.html">ResponseTimeHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ResponseTimeHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>Handler which adds a header `x-response-time` in the response of matching requests containing the time taken in ms to process the request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-session-handler/index.html">SessionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SessionHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>A handler that maintains a io.vertx.ext.web.Session for each browser session. 
+<p> It looks up the session for each request based on a session cookie which contains a session ID. It stores the session when the response is ended in the session store. </p>
+<p> The session is available on the routing context with <code><a href="#">RoutingContext#session()</a></code>. </p>
+<p> The session handler requires a CookieHandler to be on the routing chain before it.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-static-handler/index.html">StaticHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">StaticHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>A handler for serving static resources from the file system or classpath.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-template-handler/index.html">TemplateHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">TemplateHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>A handler which renders responses using a template engine and where the template name is selected from the URI path.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-timeout-handler/index.html">TimeoutHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">TimeoutHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>Handler that will timeout requests if the response has not been written after a certain time. Timeout requests will be ended with an HTTP status code `503`.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-user-session-handler/index.html">UserSessionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">UserSessionHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>This handler should be used if you want to store the User object in the Session so it's available between different requests, without you having re-authenticate each time. It requires that the session handler is already present on previous matching routes. It requires an Auth provider so, if the user is deserialized from a clustered session it knows which Auth provider to associate the session with.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-virtual-host-handler/index.html">VirtualHostHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">VirtualHostHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>Handler that will filter requests based on the request Host name.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

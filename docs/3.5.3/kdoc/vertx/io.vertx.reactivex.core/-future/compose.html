@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Future.compose - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core</a>&nbsp;/&nbsp;<a href="index.html">Future</a>&nbsp;/&nbsp;<a href=".">compose</a><br/>
+<br/>
+<h1>compose</h1>
+<a name="io.vertx.reactivex.core.Future$compose(io.vertx.core.Handler((io.vertx.reactivex.core.Future.T)), io.vertx.reactivex.core.Future((io.vertx.reactivex.core.Future.compose.U)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">U</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">compose</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Future$compose(io.vertx.core.Handler((io.vertx.reactivex.core.Future.T)), io.vertx.reactivex.core.Future((io.vertx.reactivex.core.Future.compose.U)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.Future$compose(io.vertx.core.Handler((io.vertx.reactivex.core.Future.T)), io.vertx.reactivex.core.Future((io.vertx.reactivex.core.Future.compose.U)))/next">next</span><span class="symbol">:</span>&nbsp;<a href="index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">U</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">U</span><span class="symbol">&gt;</span></code>
+<p>Compose this future with a provided <code>next</code> future.
+<p> When this (the one on which <code>compose</code> is called) future succeeds, the <code>handler</code> will be called with the completed value, this handler should complete the next future.</p>
+<p> If the <code>handler</code> throws an exception, the returned future will be failed with this exception.</p>
+<p> When this future fails, the failure will be propagated to the <code>next</code> future and the <code>handler</code> will not be called.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="handler"></a>
+<code>handler</code> - the handler</p>
+<p><a name="next"></a>
+<code>next</code> - the next future</p>
+<p><strong>Return</strong><br/>
+the next future, used for chaining</p>
+<a name="io.vertx.reactivex.core.Future$compose(java.util.function.Function((io.vertx.reactivex.core.Future.T, io.vertx.reactivex.core.Future((io.vertx.reactivex.core.Future.compose.U)))))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">U</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">compose</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Future$compose(java.util.function.Function((io.vertx.reactivex.core.Future.T, io.vertx.reactivex.core.Future((io.vertx.reactivex.core.Future.compose.U)))))/mapper">mapper</span><span class="symbol">:</span>&nbsp;<span class="identifier">Function</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">,</span>&nbsp;<a href="index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">U</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">U</span><span class="symbol">&gt;</span></code>
+<p>Compose this future with a <code>mapper</code> function.
+<p> When this future (the one on which <code>compose</code> is called) succeeds, the <code>mapper</code> will be called with the completed value and this mapper returns another future object. This returned future completion will complete the future returned by this method call.</p>
+<p> If the <code>mapper</code> throws an exception, the returned future will be failed with this exception.</p>
+<p> When this future fails, the failure will be propagated to the returned future and the <code>mapper</code> will not be called.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="mapper"></a>
+<code>mapper</code> - the mapper function</p>
+<p><strong>Return</strong><br/>
+the composed future</p>
+</BODY>
+</HTML>

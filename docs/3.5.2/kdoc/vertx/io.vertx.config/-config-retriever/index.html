@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ConfigRetriever - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.config</a>&nbsp;/&nbsp;<a href=".">ConfigRetriever</a><br/>
+<br/>
+<h1>ConfigRetriever</h1>
+<code><span class="keyword">interface </span><span class="identifier">ConfigRetriever</span></code>
+<p>Defines a configuration retriever that read configuration from ConfigStore and tracks changes periodically.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Clement Escoffier</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Closes the retriever.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="config-stream.html">configStream</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">configStream</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ReadStream</span><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.ConfigRetriever$create(io.vertx.core.Vertx, io.vertx.config.ConfigRetrieverOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.config.ConfigRetriever$create(io.vertx.core.Vertx, io.vertx.config.ConfigRetrieverOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConfigRetrieverOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConfigRetriever</span></code>
+<p>Creates an instance of the default implementation of the ConfigRetriever.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.ConfigRetriever$create(io.vertx.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConfigRetriever</span></code>
+<p>Creates an instance of the default implementation of the ConfigRetriever, using the default settings (json file, system properties and environment variables).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-cached-config.html">getCachedConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getCachedConfig</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonObject</span></code>
+<p>Gets the last computed configuration.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-config.html">getConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getConfig</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.ConfigRetriever$getConfig(io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonObject)))))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Reads the configuration from the different ConfigStore and computes the final configuration.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-config-as-future.html">getConfigAsFuture</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getConfigAsFuture</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.ConfigRetriever$getConfigAsFuture(io.vertx.config.ConfigRetriever)/retriever">retriever</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConfigRetriever</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Future</span><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span></code>
+<p>Same as <code><a href="#">ConfigRetriever#getConfig(Handler)</a></code>, but returning a Future object. The result is a JsonObject.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="listen.html">listen</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.ConfigRetriever$listen(io.vertx.core.Handler((io.vertx.config.ConfigChange)))/listener">listener</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">ConfigChange</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Registers a listener receiving configuration changes. This method cannot only be called if the configuration is broadcasted.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

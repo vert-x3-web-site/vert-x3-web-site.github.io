@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.core.eventbus - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.core.eventbus</a><br/>
+<br/>
+<h2>Package io.vertx.core.eventbus</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-event-bus/index.html">EventBus</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">EventBus</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Measured</span></code>
+<p>A Vert.x event-bus is a light-weight distributed messaging system which allows different parts of your application, or different applications and services to communicate with each in a loosely coupled way. 
+<p> An event-bus supports publish-subscribe messaging, point-to-point messaging and request-response messaging. </p>
+<p> Message delivery is best-effort and messages can be lost if failure of all or part of the event bus occurs. </p>
+<p> Please refer to the documentation for more information on the event bus.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-message/index.html">Message</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Represents a message that is received from the event bus in a handler. 
+<p> Messages have a <code><a href="-message/body.html">#body</a></code>, which can be null, and also <code><a href="-message/headers.html">#headers</a></code>, which can be empty. </p>
+<p> If the message was sent specifying a reply handler it will also have a <code><a href="-message/reply-address.html">#replyAddress</a></code>. In that case the message can be replied to using that reply address, or, more simply by just using <code><a href="#">#reply</a></code>. </p>
+<p> If you want to notify the sender that processing failed, then <code><a href="#">#fail</a></code> can be called.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-reply-failure/index.html">ReplyFailure</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ReplyFailure</span></code>
+<p>Represents the type of reply failure</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-reply-exception/index.html">ReplyException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ReplyException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">VertxException</span></code>
+<p>Represents the failure of a message send. 
+<p> If a message was sent specifying a reply handler and the message delivery fails, a failure will be provided to the reply handler and the cause of the failure will be an instance of this.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

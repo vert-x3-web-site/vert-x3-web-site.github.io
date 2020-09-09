@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CSRFHandler - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.web.handler</a>&nbsp;/&nbsp;<a href=".">CSRFHandler</a><br/>
+<br/>
+<h1>CSRFHandler</h1>
+<code><span class="keyword">interface </span><span class="identifier">CSRFHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>This handler adds a CSRF token to requests which mutate state. In order change the state a (XSRF-TOKEN) cookie is set with a unique token, that is expected to be sent back in a (X-XSRF-TOKEN) header. The behavior is to check the request body header and cookie for validity. This Handler requires session support, thus should be added somewhere below Session and Body handlers.</p>
+<p><strong>Author</strong><br/>
+Paulo Lopes</p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-o-o-k-i-e_-n-a-m-e.html">DEFAULT_COOKIE_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_COOKIE_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-o-o-k-i-e_-p-a-t-h.html">DEFAULT_COOKIE_PATH</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_COOKIE_PATH</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-h-e-a-d-e-r_-n-a-m-e.html">DEFAULT_HEADER_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_HEADER_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-r-e-s-p-o-n-s-e_-b-o-d-y.html">DEFAULT_RESPONSE_BODY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_RESPONSE_BODY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.CSRFHandler$create(kotlin.String)/secret">secret</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CSRFHandler</span></code>
+<p>Instantiate a new CSRFHandlerImpl with a secret 
+<p> </p>
+<pre><code> CSRFHandler.create("s3cr37") </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cookie-name.html">setCookieName</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setCookieName</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.CSRFHandler$setCookieName(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CSRFHandler</span></code>
+<p>Set the cookie name. By default XSRF-TOKEN is used as it is the expected name by AngularJS however other frameworks might use other names.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cookie-path.html">setCookiePath</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setCookiePath</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.CSRFHandler$setCookiePath(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CSRFHandler</span></code>
+<p>Set the cookie path. By default / is used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-header-name.html">setHeaderName</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setHeaderName</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.CSRFHandler$setHeaderName(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CSRFHandler</span></code>
+<p>Set the header name. By default X-XSRF-TOKEN is used as it is the expected name by AngularJS however other frameworks might use other names.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-nag-https.html">setNagHttps</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setNagHttps</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.CSRFHandler$setNagHttps(kotlin.Boolean)/nag">nag</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CSRFHandler</span></code>
+<p>Should the handler give warning messages if this handler is used in other than https protocols?</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-response-body.html">setResponseBody</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setResponseBody</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.CSRFHandler$setResponseBody(kotlin.String)/responseBody">responseBody</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CSRFHandler</span></code>
+<p>Set the body returned by the handler when the XSRF token is missing or invalid.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-timeout.html">setTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setTimeout</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.CSRFHandler$setTimeout(kotlin.Long)/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CSRFHandler</span></code>
+<p>Set the timeout for tokens generated by the handler, by default it uses the default from the session handler.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

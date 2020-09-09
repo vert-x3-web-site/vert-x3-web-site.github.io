@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ResponseContentTypeHandler - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.web.handler</a>&nbsp;/&nbsp;<a href=".">ResponseContentTypeHandler</a><br/>
+<br/>
+<h1>ResponseContentTypeHandler</h1>
+<code><span class="keyword">interface </span><span class="identifier">ResponseContentTypeHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>A handler which sets the response content type automatically according to the best <code>Accept</code> header match. The header is set only if: <ul> <li>no object is stored in the routing context under the name <code><a href="-d-e-f-a-u-l-t_-d-i-s-a-b-l-e_-f-l-a-g.html">#DEFAULT_DISABLE_FLAG</a></code></li>
+ <li>a match is found</li>
+ <li>the header is not present already</li>
+ <li>content length header is absent or set to something different than zero</li>
+ </ul>
+</p>
+<p><strong>Author</strong><br/>
+Thomas Segismont</p>
+<p><strong>See Also</strong><br/>
+<a href="#">RoutingContext#getAcceptableContentType()</a></p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-d-i-s-a-b-l-e_-f-l-a-g.html">DEFAULT_DISABLE_FLAG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_DISABLE_FLAG</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResponseContentTypeHandler</span></code>
+<p>Create a response content type handler.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.ResponseContentTypeHandler$create(kotlin.String)/disableFlag">disableFlag</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResponseContentTypeHandler</span></code>
+<p>Create a response content type handler with a custom disable flag.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

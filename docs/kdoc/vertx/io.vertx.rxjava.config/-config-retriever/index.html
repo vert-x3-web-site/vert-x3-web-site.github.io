@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ConfigRetriever - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.config</a>&nbsp;/&nbsp;<a href=".">ConfigRetriever</a><br/>
+<br/>
+<h1>ConfigRetriever</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConfigRetriever</span></code>
+<p>Defines a configuration retriever that read configuration from and tracks changes periodically.  NOTE: This class has been automatically generated from the io.vertx.config.ConfigRetriever non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ConfigRetriever</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.config.ConfigRetriever$<init>(io.vertx.config.ConfigRetriever)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.config/-config-retriever/index.html"><span class="identifier">ConfigRetriever</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><span class="identifier">TypeArg</span><span class="symbol">&lt;</span><span class="identifier">ConfigRetriever</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Closes the retriever.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="config-stream.html">configStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">configStream</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ReadStream</span><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.config.ConfigRetriever$create(io.vertx.rxjava.core.Vertx, io.vertx.config.ConfigRetrieverOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.config.ConfigRetriever$create(io.vertx.rxjava.core.Vertx, io.vertx.config.ConfigRetrieverOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConfigRetrieverOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConfigRetriever</span></code>
+<p>Creates an instance of the default implementation of the io.vertx.rxjava.config.ConfigRetriever.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.config.ConfigRetriever$create(io.vertx.rxjava.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConfigRetriever</span></code>
+<p>Creates an instance of the default implementation of the io.vertx.rxjava.config.ConfigRetriever, using the default settings (json file, system properties and environment variables).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.config.ConfigRetriever$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-cached-config.html">getCachedConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCachedConfig</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonObject</span></code>
+<p>Gets the last computed configuration.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-config.html">getConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConfig</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.config.ConfigRetriever$getConfig(io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonObject)))))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Reads the configuration from the different and computes the final configuration.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-config-as-future.html">getConfigAsFuture</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getConfigAsFuture</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.config.ConfigRetriever$getConfigAsFuture(io.vertx.rxjava.config.ConfigRetriever)/retriever">retriever</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConfigRetriever</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.rxjava.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span></code>
+<p>Same as <code><a href="#">io.vertx.rxjava.config.ConfigRetriever#getConfig</a></code>, but returning a object. The result is a .</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.config/-config-retriever/index.html"><span class="identifier">ConfigRetriever</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="listen.html">listen</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.config.ConfigRetriever$listen(io.vertx.core.Handler((io.vertx.config.ConfigChange)))/listener">listener</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">ConfigChange</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Registers a listener receiving configuration changes. This method cannot only be called if the configuration is broadcasted.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.config.ConfigRetriever$newInstance(io.vertx.config.ConfigRetriever)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.config/-config-retriever/index.html"><span class="identifier">ConfigRetriever</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConfigRetriever</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-get-config.html">rxGetConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxGetConfig</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span></code>
+<p>Reads the configuration from the different and computes the final configuration.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

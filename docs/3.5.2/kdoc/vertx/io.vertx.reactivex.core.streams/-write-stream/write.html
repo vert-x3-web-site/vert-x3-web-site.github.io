@@ -1,0 +1,20 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WriteStream.write - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.streams</a>&nbsp;/&nbsp;<a href="index.html">WriteStream</a>&nbsp;/&nbsp;<a href=".">write</a><br/>
+<br/>
+<h1>write</h1>
+<a name="io.vertx.reactivex.core.streams.WriteStream$write(io.vertx.reactivex.core.streams.WriteStream.T)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.streams.WriteStream$write(io.vertx.reactivex.core.streams.WriteStream.T)/data">data</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">WriteStream</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Write some data to the stream. The data is put on an internal write queue, and the write actually happens asynchronously. To avoid running out of memory by putting too much on the write queue, check the <code><a href="write-queue-full.html">io.vertx.reactivex.core.streams.WriteStream#writeQueueFull</a></code> method before writing. This is done automatically if using a io.vertx.reactivex.core.streams.Pump.</p>
+<h3>Parameters</h3>
+<p><a name="data"></a>
+<code>data</code> - the data to write</p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently</p>
+</BODY>
+</HTML>

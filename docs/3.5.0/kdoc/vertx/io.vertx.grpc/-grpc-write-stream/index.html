@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>GrpcWriteStream - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.grpc</a>&nbsp;/&nbsp;<a href=".">GrpcWriteStream</a><br/>
+<br/>
+<h1>GrpcWriteStream</h1>
+<code><span class="keyword">interface </span><span class="identifier">GrpcWriteStream</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WriteStream</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p><strong>Author</strong><br/>
+<a href="#">Paulo Lopes</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.grpc.GrpcWriteStream$create(io.grpc.stub.StreamObserver((io.vertx.grpc.GrpcWriteStream.create.T)))/observer">observer</span><span class="symbol">:</span>&nbsp;<span class="identifier">StreamObserver</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">GrpcWriteStream</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="drain-handler.html">drainHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">drainHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.grpc.GrpcWriteStream$drainHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">GrpcWriteStream</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Set a drain handler on the stream. If the write queue is full, then the handler will be called when the write queue is ready to accept buffers again. See Pump for an example of this being used.  The stream implementation defines when the drain handler, for example it could be when the queue size has been reduced to <code>maxSize / 2</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="exception-handler.html">exceptionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">exceptionHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.grpc.GrpcWriteStream$exceptionHandler(io.vertx.core.Handler((kotlin.Throwable)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">GrpcWriteStream</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Set an exception handler on the write stream.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="fail.html">fail</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">fail</span><span class="symbol">(</span><span class="identifier" id="io.vertx.grpc.GrpcWriteStream$fail(kotlin.Throwable)/t">t</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">GrpcWriteStream</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Send an error event into the stream.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-write-queue-max-size.html">setWriteQueueMaxSize</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setWriteQueueMaxSize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.grpc.GrpcWriteStream$setWriteQueueMaxSize(kotlin.Int)/maxSize">maxSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">GrpcWriteStream</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Set the maximum size of the write queue to <code>maxSize</code>. You will still be able to write to the stream even if there is more than <code>maxSize</code> items in the write queue. This is used as an indicator by classes such as <code>Pump</code> to provide flow control.  The value is defined by the implementation of the stream, e.g in bytes for a io.vertx.core.net.NetSocket, the number of io.vertx.core.eventbus.Message for a io.vertx.core.eventbus.MessageProducer, etc...</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="write.html">write</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="io.vertx.grpc.GrpcWriteStream$write(io.vertx.grpc.GrpcWriteStream.T)/data">data</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">GrpcWriteStream</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Write some data to the stream. The data is put on an internal write queue, and the write actually happens asynchronously. To avoid running out of memory by putting too much on the write queue, check the <code><a href="#">#writeQueueFull</a></code> method before writing. This is done automatically if using a Pump.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="write-observer.html">writeObserver</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">writeObserver</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StreamObserver</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Should not be used by end user, it is a simple accessor the the underlying gRPC StreamObserver.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-grpc-bidi-exchange/index.html">GrpcBidiExchange</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">GrpcBidiExchange</span><span class="symbol">&lt;</span><span class="identifier">I</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">O</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-grpc-read-stream/index.html"><span class="identifier">GrpcReadStream</span></a><span class="symbol">&lt;</span><span class="identifier">I</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">GrpcWriteStream</span><span class="symbol">&lt;</span><span class="identifier">O</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-grpc-uni-exchange/index.html">GrpcUniExchange</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">GrpcUniExchange</span><span class="symbol">&lt;</span><span class="identifier">O</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">I</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GrpcWriteStream</span><span class="symbol">&lt;</span><span class="identifier">O</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

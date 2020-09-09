@@ -1,0 +1,126 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HttpSecureServiceFactory - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.httpservicefactory</a>&nbsp;/&nbsp;<a href=".">HttpSecureServiceFactory</a><br/>
+<br/>
+<h1>HttpSecureServiceFactory</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpSecureServiceFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-http-service-factory/index.html"><span class="identifier">HttpServiceFactory</span></a></code>
+<p><strong>Author</strong><br/>
+<a href="#">Julien Viet</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HttpSecureServiceFactory</span><span class="symbol">(</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-http-service-factory/-a-u-t-h_-p-a-s-s-w-o-r-d_-p-r-o-p-e-r-t-y.html">AUTH_PASSWORD_PROPERTY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">AUTH_PASSWORD_PROPERTY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-http-service-factory/-a-u-t-h_-u-s-e-r-n-a-m-e_-p-r-o-p-e-r-t-y.html">AUTH_USERNAME_PROPERTY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">AUTH_USERNAME_PROPERTY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-http-service-factory/-c-a-c-h-e_-d-i-r_-p-r-o-p-e-r-t-y.html">CACHE_DIR_PROPERTY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CACHE_DIR_PROPERTY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-http-service-factory/-h-t-t-p-s_-c-l-i-e-n-t_-o-p-t-i-o-n-s_-p-r-o-p-e-r-t-y.html">HTTPS_CLIENT_OPTIONS_PROPERTY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">HTTPS_CLIENT_OPTIONS_PROPERTY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-http-service-factory/-h-t-t-p_-c-l-i-e-n-t_-o-p-t-i-o-n-s_-p-r-o-p-e-r-t-y.html">HTTP_CLIENT_OPTIONS_PROPERTY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">HTTP_CLIENT_OPTIONS_PROPERTY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-http-service-factory/-k-e-y-s-e-r-v-e-r_-u-r-i_-t-e-m-p-l-a-t-e.html">KEYSERVER_URI_TEMPLATE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">KEYSERVER_URI_TEMPLATE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-http-service-factory/-p-r-o-x-y_-h-o-s-t_-p-r-o-p-e-r-t-y.html">PROXY_HOST_PROPERTY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PROXY_HOST_PROPERTY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-http-service-factory/-p-r-o-x-y_-p-o-r-t_-p-r-o-p-e-r-t-y.html">PROXY_PORT_PROPERTY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PROXY_PORT_PROPERTY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-http-service-factory/-v-a-l-i-d-a-t-i-o-n_-p-o-l-i-c-y.html">VALIDATION_POLICY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">VALIDATION_POLICY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="prefix.html">prefix</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">prefix</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-http-service-factory/init.html">init</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">init</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.httpservicefactory.HttpServiceFactory$init(io.vertx.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-http-service-factory/resolve.html">resolve</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolve</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.httpservicefactory.HttpServiceFactory$resolve(kotlin.String, io.vertx.core.DeploymentOptions, java.lang.ClassLoader, io.vertx.core.Future((kotlin.String)))/identifier">identifier</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.httpservicefactory.HttpServiceFactory$resolve(kotlin.String, io.vertx.core.DeploymentOptions, java.lang.ClassLoader, io.vertx.core.Future((kotlin.String)))/deploymentOptions">deploymentOptions</span><span class="symbol">:</span>&nbsp;<span class="identifier">DeploymentOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.httpservicefactory.HttpServiceFactory$resolve(kotlin.String, io.vertx.core.DeploymentOptions, java.lang.ClassLoader, io.vertx.core.Future((kotlin.String)))/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/ClassLoader.html"><span class="identifier">ClassLoader</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.httpservicefactory.HttpServiceFactory$resolve(kotlin.String, io.vertx.core.DeploymentOptions, java.lang.ClassLoader, io.vertx.core.Future((kotlin.String)))/resolution">resolution</span><span class="symbol">:</span>&nbsp;<span class="identifier">Future</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,168 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SharedData - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.shareddata</a>&nbsp;/&nbsp;<a href=".">SharedData</a><br/>
+<br/>
+<h1>SharedData</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SharedData</span></code>
+<p>Shared data allows you to share data safely between different parts of your application in a safe way. 
+<p> Shared data provides: </p>
+<ul> <li>Cluster wide maps which can be accessed from any node of the cluster</li>
+ <li>Cluster wide locks which can be used to give exclusive access to resources across the cluster</li>
+ <li>Cluster wide counters used to maintain counts consistently across the cluster</li>
+ <li>Local maps for sharing data safely in the same Vert.x instance</li>
+ </ul>
+ 
+<p> Please see the documentation for more information. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.shareddata.SharedData non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SharedData</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$<init>(io.vertx.core.shareddata.SharedData)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.shareddata/-shared-data/index.html"><span class="identifier">SharedData</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">SharedData</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-cluster-wide-map.html">getClusterWideMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">K</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">getClusterWideMap</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$getClusterWideMap(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.shareddata.AsyncMap((io.vertx.reactivex.core.shareddata.SharedData.getClusterWideMap.K, io.vertx.reactivex.core.shareddata.SharedData.getClusterWideMap.V)))))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$getClusterWideMap(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.shareddata.AsyncMap((io.vertx.reactivex.core.shareddata.SharedData.getClusterWideMap.K, io.vertx.reactivex.core.shareddata.SharedData.getClusterWideMap.V)))))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../-async-map/index.html"><span class="identifier">AsyncMap</span></a><span class="symbol">&lt;</span><span class="identifier">K</span><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Get the cluster wide map with the specified name. The map is accessible to all nodes in the cluster and data put into the map from any node is visible to to any other node.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-counter.html">getCounter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCounter</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$getCounter(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.shareddata.Counter)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$getCounter(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.shareddata.Counter)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../-counter/index.html"><span class="identifier">Counter</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Get a cluster wide counter. The counter will be passed to the handler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.core.shareddata/-shared-data/index.html"><span class="identifier">SharedData</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-local-map.html">getLocalMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">K</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">getLocalMap</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$getLocalMap(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-local-map/index.html"><span class="identifier">LocalMap</span></a><span class="symbol">&lt;</span><span class="identifier">K</span><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span></code>
+<p>Return a <code>LocalMap</code> with the specific <code>name</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-lock.html">getLock</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLock</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$getLock(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.shareddata.Lock)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$getLock(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.shareddata.Lock)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../-lock/index.html"><span class="identifier">Lock</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Get a cluster wide lock with the specified name. The lock will be passed to the handler when it is available.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-lock-with-timeout.html">getLockWithTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLockWithTimeout</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$getLockWithTimeout(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.shareddata.Lock)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$getLockWithTimeout(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.shareddata.Lock)))))/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$getLockWithTimeout(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.shareddata.Lock)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../-lock/index.html"><span class="identifier">Lock</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Like <code><a href="#">io.vertx.reactivex.core.shareddata.SharedData#getLock</a></code> but specifying a timeout. If the lock is not obtained within the timeout a failure will be sent to the handler</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$newInstance(io.vertx.core.shareddata.SharedData)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.shareddata/-shared-data/index.html"><span class="identifier">SharedData</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SharedData</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-get-cluster-wide-map.html">rxGetClusterWideMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">K</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">rxGetClusterWideMap</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$rxGetClusterWideMap(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="../-async-map/index.html"><span class="identifier">AsyncMap</span></a><span class="symbol">&lt;</span><span class="identifier">K</span><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Get the cluster wide map with the specified name. The map is accessible to all nodes in the cluster and data put into the map from any node is visible to to any other node.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-get-counter.html">rxGetCounter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxGetCounter</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$rxGetCounter(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="../-counter/index.html"><span class="identifier">Counter</span></a><span class="symbol">&gt;</span></code>
+<p>Get a cluster wide counter. The counter will be passed to the handler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-get-lock.html">rxGetLock</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxGetLock</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$rxGetLock(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="../-lock/index.html"><span class="identifier">Lock</span></a><span class="symbol">&gt;</span></code>
+<p>Get a cluster wide lock with the specified name. The lock will be passed to the handler when it is available.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-get-lock-with-timeout.html">rxGetLockWithTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxGetLockWithTimeout</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$rxGetLockWithTimeout(kotlin.String, kotlin.Long)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.shareddata.SharedData$rxGetLockWithTimeout(kotlin.String, kotlin.Long)/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="../-lock/index.html"><span class="identifier">Lock</span></a><span class="symbol">&gt;</span></code>
+<p>Like <code><a href="#">io.vertx.reactivex.core.shareddata.SharedData#getLock</a></code> but specifying a timeout. If the lock is not obtained within the timeout a failure will be sent to the handler</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

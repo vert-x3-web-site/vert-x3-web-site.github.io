@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AmqpBridge - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.amqpbridge</a>&nbsp;/&nbsp;<a href=".">AmqpBridge</a><br/>
+<br/>
+<h1>AmqpBridge</h1>
+<code><span class="keyword">interface </span><span class="identifier">AmqpBridge</span></code>
+<p>Vert.x AMQP Bridge. Facilitates sending and receiving AMQP 1.0 messages.</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="identifier" id="io.vertx.amqpbridge.AmqpBridge$close(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Shuts the bridge down, closing the underlying connection.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.amqpbridge.AmqpBridge$create(io.vertx.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AmqpBridge</span></code>
+<p>Creates a Bridge.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.amqpbridge.AmqpBridge$create(io.vertx.core.Vertx, io.vertx.amqpbridge.AmqpBridgeOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.amqpbridge.AmqpBridge$create(io.vertx.core.Vertx, io.vertx.amqpbridge.AmqpBridgeOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">AmqpBridgeOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AmqpBridge</span></code>
+<p>Creates a Bridge with the given options.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-consumer.html">createConsumer</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">createConsumer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.amqpbridge.AmqpBridge$createConsumer(kotlin.String)/amqpAddress">amqpAddress</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageConsumer</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Creates a consumer on the given AMQP address. This method MUST be called from the bridge Context thread, as used in the result handler callback from the start methods. The bridge MUST be successfully started before the method is called.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-producer.html">createProducer</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">createProducer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.amqpbridge.AmqpBridge$createProducer(kotlin.String)/amqpAddress">amqpAddress</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageProducer</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Creates a producer to the given AMQP address. This method MUST be called from the bridge Context thread, as used in the result handler callback from the start methods. The bridge MUST be successfully started before the method is called.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="end-handler.html">endHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">endHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.amqpbridge.AmqpBridge$endHandler(io.vertx.core.Handler((java.lang.Void)))/endHandler">endHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set an end handler. This will fire if the underlying connection is unexpectedly disconnected or remotely closed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="start.html">start</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="identifier" id="io.vertx.amqpbridge.AmqpBridge$start(kotlin.String, kotlin.Int, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.amqpbridge.AmqpBridge)))))/hostname">hostname</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.amqpbridge.AmqpBridge$start(kotlin.String, kotlin.Int, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.amqpbridge.AmqpBridge)))))/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.amqpbridge.AmqpBridge$start(kotlin.String, kotlin.Int, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.amqpbridge.AmqpBridge)))))/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.amqpbridge.AmqpBridge$start(kotlin.String, kotlin.Int, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.amqpbridge.AmqpBridge)))))/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.amqpbridge.AmqpBridge$start(kotlin.String, kotlin.Int, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.amqpbridge.AmqpBridge)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">AmqpBridge</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="identifier" id="io.vertx.amqpbridge.AmqpBridge$start(kotlin.String, kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.amqpbridge.AmqpBridge)))))/hostname">hostname</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.amqpbridge.AmqpBridge$start(kotlin.String, kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.amqpbridge.AmqpBridge)))))/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.amqpbridge.AmqpBridge$start(kotlin.String, kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.amqpbridge.AmqpBridge)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">AmqpBridge</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Starts the bridge, establishing the underlying connection.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

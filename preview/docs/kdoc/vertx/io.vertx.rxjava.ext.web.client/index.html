@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.rxjava.ext.web.client - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.rxjava.ext.web.client</a><br/>
+<br/>
+<h2>Package io.vertx.rxjava.ext.web.client</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-http-response/index.html">HttpResponse</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpResponse</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>An HTTP response. 
+<p> The usual HTTP response attributes are available: </p>
+<ul> <li><code><a href="-http-response/status-code.html">io.vertx.rxjava.ext.web.client.HttpResponse#statusCode</a></code> the HTTP status code</li>
+ <li><code><a href="-http-response/status-message.html">io.vertx.rxjava.ext.web.client.HttpResponse#statusMessage</a></code> the HTTP status message</li>
+ <li><code><a href="-http-response/headers.html">io.vertx.rxjava.ext.web.client.HttpResponse#headers</a></code> the HTTP headers</li>
+ <li><code><a href="-http-response/version.html">io.vertx.rxjava.ext.web.client.HttpResponse#version</a></code> the HTTP version</li>
+ </ul>
+ 
+<p> The body of the response is returned by <code><a href="-http-response/body.html">io.vertx.rxjava.ext.web.client.HttpResponse#body</a></code> decoded as the format specified by the that built the response. </p>
+<p> Keep in mind that using this <code>HttpResponse</code> impose to fully buffer the response body and should be used for payload that can fit in memory. </p>
+ NOTE: This class has been automatically generated from the io.vertx.ext.web.client.HttpResponse non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-client/index.html">WebClient</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebClient</span></code>
+<p>An asynchronous HTTP / HTTP/2 client called <code>WebClient</code>. 
+<p> The web client makes easy to do HTTP request/response interactions with a web server, and provides advanced features like: </p>
+<ul> <li>Json body encoding / decoding</li>
+ <li>request/response pumping</li>
+ <li>error handling</li>
+ </ul>
+ 
+<p> The web client does not deprecate the , it is actually based on it and therefore inherits its configuration and great features like pooling. The <code>HttpClient</code> should be used when fine grained control over the HTTP requests/response is necessary. </p>
+ NOTE: This class has been automatically generated from the io.vertx.ext.web.client.WebClient non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

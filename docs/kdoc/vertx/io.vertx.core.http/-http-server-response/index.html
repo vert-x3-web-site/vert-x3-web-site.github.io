@@ -1,0 +1,325 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HttpServerResponse - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.core.http</a>&nbsp;/&nbsp;<a href=".">HttpServerResponse</a><br/>
+<br/>
+<h1>HttpServerResponse</h1>
+<code><span class="keyword">interface </span><span class="identifier">HttpServerResponse</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WriteStream</span><span class="symbol">&lt;</span><span class="identifier">Buffer</span><span class="symbol">&gt;</span></code>
+<p>Represents a server-side HTTP response. 
+<p> An instance of this is created and associated to every instance of HttpServerRequest that. </p>
+<p> It allows the developer to control the HTTP response that is sent back to the client for a particular HTTP request. </p>
+<p> It contains methods that allow HTTP headers and trailers to be set, and for a body to be written out to the response. </p>
+<p> It also allows files to be streamed by the kernel directly from disk to the outgoing HTTP connection, bypassing user space altogether (where supported by the underlying operating system). This is a very efficient way of serving files from the server since buffers do not have to be read one by one from the file and written to the outgoing socket. </p>
+<p> It implements io.vertx.core.streams.WriteStream so it can be used with io.vertx.core.streams.Pump to pump data with flow control.</p>
+</p>
+<p><strong>Author</strong><br/>
+<a href="#">Tim Fox</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="body-end-handler.html">bodyEndHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">bodyEndHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$bodyEndHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Provides a handler that will be called after the last part of the body is written to the wire. The handler is called asynchronously of when the response has been received by the client. This provides a hook allowing you to do more operations once the request has been sent over the wire such as resource cleanup.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="bytes-written.html">bytesWritten</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">bytesWritten</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the underlying TCP connection corresponding to the request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="close-handler.html">closeHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">closeHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$closeHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Set a close handler for the response, this is called when the underlying connection is closed and the response was still using the connection. 
+<p> For HTTP/1.x it is called when the connection is closed before <code>end()</code> is called, therefore it is not guaranteed to be called. </p>
+<p> For HTTP/2 it is called when the related stream is closed, and therefore it will be always be called.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="closed.html">closed</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">closed</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="drain-handler.html">drainHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">drainHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$drainHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="end.html">end</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">end</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$end(kotlin.String)/chunk">chunk</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Same as <code><a href="end.html">#end(Buffer)</a></code> but writes a String in UTF-8 encoding before ending the response.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">end</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$end(kotlin.String, kotlin.String)/chunk">chunk</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$end(kotlin.String, kotlin.String)/enc">enc</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Same as <code><a href="end.html">#end(Buffer)</a></code> but writes a String with the specified encoding before ending the response.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">end</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$end(io.vertx.core.buffer.Buffer)/chunk">chunk</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Same as <code><a href="end.html">#end()</a></code> but writes some data to the response body before ending. If the response is not chunked and no other data has been written then the @code{Content-Length} header will be automatically set.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">end</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Ends the response. If no data has been written to the response body, the actual response won't get written until this method gets called. 
+<p> Once the response has ended, it cannot be used any more.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="end-handler.html">endHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">endHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$endHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Set an end handler for the response. This will be called when the response is disposed to allow consistent cleanup of the response.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="ended.html">ended</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">ended</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="exception-handler.html">exceptionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">exceptionHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$exceptionHandler(io.vertx.core.Handler((kotlin.Throwable)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-status-code.html">getStatusCode</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getStatusCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-status-message.html">getStatusMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getStatusMessage</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="head-written.html">headWritten</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">headWritten</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="headers.html">headers</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">headers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MultiMap</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="headers-end-handler.html">headersEndHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">headersEndHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$headersEndHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Provide a handler that will be called just before the headers are written to the wire.
+<p> This provides a hook allowing you to add any more headers or do any more operations before this occurs.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-chunked.html">isChunked</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isChunked</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="push.html">push</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">push</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$push(io.vertx.core.http.HttpMethod, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.http.HttpServerResponse)))))/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpMethod</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$push(io.vertx.core.http.HttpMethod, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.http.HttpServerResponse)))))/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$push(io.vertx.core.http.HttpMethod, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.http.HttpServerResponse)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$push(io.vertx.core.http.HttpMethod, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.http.HttpServerResponse)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">HttpServerResponse</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Like <code><a href="#">#push(HttpMethod, String, String, MultiMap, Handler)</a></code> with no headers.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">push</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$push(io.vertx.core.http.HttpMethod, kotlin.String, io.vertx.core.MultiMap, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.http.HttpServerResponse)))))/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpMethod</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$push(io.vertx.core.http.HttpMethod, kotlin.String, io.vertx.core.MultiMap, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.http.HttpServerResponse)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$push(io.vertx.core.http.HttpMethod, kotlin.String, io.vertx.core.MultiMap, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.http.HttpServerResponse)))))/headers">headers</span><span class="symbol">:</span>&nbsp;<span class="identifier">MultiMap</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$push(io.vertx.core.http.HttpMethod, kotlin.String, io.vertx.core.MultiMap, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.http.HttpServerResponse)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">HttpServerResponse</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">push</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$push(io.vertx.core.http.HttpMethod, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.http.HttpServerResponse)))))/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpMethod</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$push(io.vertx.core.http.HttpMethod, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.http.HttpServerResponse)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$push(io.vertx.core.http.HttpMethod, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.http.HttpServerResponse)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">HttpServerResponse</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Like <code><a href="#">#push(HttpMethod, String, String, MultiMap, Handler)</a></code> with the host copied from the current request.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">push</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$push(io.vertx.core.http.HttpMethod, kotlin.String, kotlin.String, io.vertx.core.MultiMap, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.http.HttpServerResponse)))))/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpMethod</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$push(io.vertx.core.http.HttpMethod, kotlin.String, kotlin.String, io.vertx.core.MultiMap, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.http.HttpServerResponse)))))/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$push(io.vertx.core.http.HttpMethod, kotlin.String, kotlin.String, io.vertx.core.MultiMap, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.http.HttpServerResponse)))))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$push(io.vertx.core.http.HttpMethod, kotlin.String, kotlin.String, io.vertx.core.MultiMap, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.http.HttpServerResponse)))))/headers">headers</span><span class="symbol">:</span>&nbsp;<span class="identifier">MultiMap</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$push(io.vertx.core.http.HttpMethod, kotlin.String, kotlin.String, io.vertx.core.MultiMap, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.http.HttpServerResponse)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">HttpServerResponse</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Push a response to the client. The <code>handler</code> will be notified with a <em>success</em> when the push can be sent and with a <em>failure</em> when the client has disabled push or reset the push before it has been sent. The <code>handler</code> may be queued if the client has reduced the maximum number of streams the server can push concurrently. Push can be sent only for peer initiated streams and if the response is not ended.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="put-header.html">putHeader</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">putHeader</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$putHeader(kotlin.String, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$putHeader(kotlin.String, kotlin.String)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Put an HTTP header</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">putHeader</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$putHeader(kotlin.CharSequence, kotlin.CharSequence)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$putHeader(kotlin.CharSequence, kotlin.CharSequence)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Like <code><a href="#">#putHeader(String, String)</a></code> but using CharSequence</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">putHeader</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$putHeader(kotlin.String, kotlin.collections.MutableIterable((kotlin.String)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$putHeader(kotlin.String, kotlin.collections.MutableIterable((kotlin.String)))/values">values</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-iterable/index.html"><span class="identifier">MutableIterable</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Like <code><a href="#">#putHeader(String, String)</a></code> but providing multiple values via a String Iterable</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">putHeader</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$putHeader(kotlin.CharSequence, kotlin.collections.MutableIterable((kotlin.CharSequence)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$putHeader(kotlin.CharSequence, kotlin.collections.MutableIterable((kotlin.CharSequence)))/values">values</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-iterable/index.html"><span class="identifier">MutableIterable</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Like <code><a href="#">#putHeader(String, Iterable)</a></code> but with CharSequence Iterable</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="put-trailer.html">putTrailer</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">putTrailer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$putTrailer(kotlin.String, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$putTrailer(kotlin.String, kotlin.String)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Put an HTTP trailer</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">putTrailer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$putTrailer(kotlin.CharSequence, kotlin.CharSequence)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$putTrailer(kotlin.CharSequence, kotlin.CharSequence)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Like <code><a href="#">#putTrailer(String, String)</a></code> but using CharSequence</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">putTrailer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$putTrailer(kotlin.String, kotlin.collections.MutableIterable((kotlin.String)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$putTrailer(kotlin.String, kotlin.collections.MutableIterable((kotlin.String)))/values">values</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-iterable/index.html"><span class="identifier">MutableIterable</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Like <code><a href="#">#putTrailer(String, String)</a></code> but providing multiple values via a String Iterable</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">putTrailer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$putTrailer(kotlin.CharSequence, kotlin.collections.MutableIterable((kotlin.CharSequence)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$putTrailer(kotlin.CharSequence, kotlin.collections.MutableIterable((kotlin.CharSequence)))/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-iterable/index.html"><span class="identifier">MutableIterable</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Like <code><a href="#">#putTrailer(String, Iterable)</a></code> but with CharSequence Iterable</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="reset.html">reset</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">reset</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Reset this HTTP/2 stream with the error code <code>0</code>.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">reset</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$reset(kotlin.Long)/code">code</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Reset this HTTP/2 stream with the error <code>code</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="send-file.html">sendFile</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">sendFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$sendFile(kotlin.String)/filename">filename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Same as <code><a href="#">#sendFile(String, long)</a></code> using offset @code{0} which means starting from the beginning of the file.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">sendFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$sendFile(kotlin.String, kotlin.Long)/filename">filename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$sendFile(kotlin.String, kotlin.Long)/offset">offset</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Same as <code><a href="#">#sendFile(String, long, long)</a></code> using length @code{Long.MAX_VALUE} which means until the end of the file.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">sendFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$sendFile(kotlin.String, kotlin.Long, kotlin.Long)/filename">filename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$sendFile(kotlin.String, kotlin.Long, kotlin.Long)/offset">offset</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$sendFile(kotlin.String, kotlin.Long, kotlin.Long)/length">length</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Ask the OS to stream a file as specified by <code>filename</code> directly from disk to the outgoing connection, bypassing userspace altogether (where supported by the underlying operating system. This is a very efficient way to serve files.
+<p> The actual serve is asynchronous and may not complete until some time after this method has returned.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">sendFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$sendFile(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/filename">filename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$sendFile(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Like <code><a href="#">#sendFile(String)</a></code> but providing a handler which will be notified once the file has been completely written to the wire.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">sendFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$sendFile(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/filename">filename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$sendFile(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/offset">offset</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$sendFile(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Like <code><a href="#">#sendFile(String, long)</a></code> but providing a handler which will be notified once the file has been completely written to the wire.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">sendFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$sendFile(kotlin.String, kotlin.Long, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/filename">filename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$sendFile(kotlin.String, kotlin.Long, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/offset">offset</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$sendFile(kotlin.String, kotlin.Long, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/length">length</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$sendFile(kotlin.String, kotlin.Long, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Like <code><a href="#">#sendFile(String, long, long)</a></code> but providing a handler which will be notified once the file has been completely written to the wire.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-chunked.html">setChunked</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setChunked</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$setChunked(kotlin.Boolean)/chunked">chunked</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>If <code>chunked</code> is <code>true</code>, this response will use HTTP chunked encoding, and each call to write to the body will correspond to a new HTTP chunk sent on the wire. 
+<p> If chunked encoding is used the HTTP header <code>Transfer-Encoding</code> with a value of <code>Chunked</code> will be automatically inserted in the response. </p>
+<p> If <code>chunked</code> is <code>false</code>, this response will not use HTTP chunked encoding, and therefore the total size of any data that is written in the respone body must be set in the <code>Content-Length</code> header <strong>before</strong> any data is written out. </p>
+<p> An HTTP chunked response is typically used when you do not know the total size of the request body up front.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-status-code.html">setStatusCode</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setStatusCode</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$setStatusCode(kotlin.Int)/statusCode">statusCode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Set the status code. If the status message hasn't been explicitly set, a default status message corresponding to the code will be looked-up and used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-status-message.html">setStatusMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setStatusMessage</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$setStatusMessage(kotlin.String)/statusMessage">statusMessage</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Set the status message</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-write-queue-max-size.html">setWriteQueueMaxSize</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setWriteQueueMaxSize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$setWriteQueueMaxSize(kotlin.Int)/maxSize">maxSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="stream-id.html">streamId</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">streamId</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="trailers.html">trailers</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">trailers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MultiMap</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="write.html">write</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$write(io.vertx.core.buffer.Buffer)/data">data</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code><code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$write(kotlin.String, kotlin.String)/chunk">chunk</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$write(kotlin.String, kotlin.String)/enc">enc</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Write a String to the response body, encoded using the encoding <code>enc</code>.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$write(kotlin.String)/chunk">chunk</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Write a String to the response body, encoded in UTF-8.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="write-continue.html">writeContinue</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">writeContinue</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Used to write an interim 100 Continue response to signify that the client should send the rest of the request. Must only be used if the request contains an "Expect:100-Continue" header</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="write-custom-frame.html">writeCustomFrame</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">writeCustomFrame</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$writeCustomFrame(kotlin.Int, kotlin.Int, io.vertx.core.buffer.Buffer)/type">type</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$writeCustomFrame(kotlin.Int, kotlin.Int, io.vertx.core.buffer.Buffer)/flags">flags</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$writeCustomFrame(kotlin.Int, kotlin.Int, io.vertx.core.buffer.Buffer)/payload">payload</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Write an HTTP/2 frame to the response, allowing to extend the HTTP/2 protocol.
+<p> The frame is sent immediatly and is not subject to flow control.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">writeCustomFrame</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpServerResponse$writeCustomFrame(io.vertx.core.http.HttpFrame)/frame">frame</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpFrame</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServerResponse</span></code>
+<p>Like <code><a href="#">#writeCustomFrame(int, int, Buffer)</a></code> but with an HttpFrame.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.ext.unit.junit - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.ext.unit.junit</a><br/>
+<br/>
+<h2>Package io.vertx.ext.unit.junit</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-repeat-rule/index.html">RepeatRule</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RepeatRule</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TestRule</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-run-test-on-context/index.html">RunTestOnContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RunTestOnContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TestRule</span></code>
+<p>A JUnit rule that runs tests on a Vert.x context. When used as a org.junit.Rule a new context is created for each tested method, the context will be same for the before and after method, but different for all the tested methods. When used as a org.junit.ClassRule, a single context is created for all the tested method, the <em>beforeClass</em> and <em>afterClass</em> method will also executed in this context.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-timeout/index.html">Timeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Timeout</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TestRule</span></code>
+<p>A rule for configuring the tests timeout.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-vertx-unit-runner/index.html">VertxUnitRunner</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">VertxUnitRunner</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BlockJUnit4ClassRunner</span></code>
+<p>A JUnit runner for writing asynchronous tests. Note : a runner is needed because when a rule statement is evaluated, it will run the before/test/after method and then test method is executed even if there are pending Async objects in the before method. The runner gives this necessary fine grained control.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-vertx-unit-runner-with-parameters/index.html">VertxUnitRunnerWithParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">VertxUnitRunnerWithParameters</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-vertx-unit-runner/index.html"><span class="identifier">VertxUnitRunner</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-vertx-unit-runner-with-parameters-factory/index.html">VertxUnitRunnerWithParametersFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">VertxUnitRunnerWithParametersFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ParametersRunnerFactory</span></code>
+<p>A org.junit.runners.parameterized.ParametersRunnerFactory for a io.vertx.ext.unit.junit.VertxUnitRunner for enabling Vert.x Unit parameterized tests.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-repeat/index.html">Repeat</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Repeat</span></code>
+<p>Annotates a test method to repeat this test several times. This can be useful when a test fails randomly and not often.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

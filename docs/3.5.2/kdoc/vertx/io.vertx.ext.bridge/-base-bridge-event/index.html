@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BaseBridgeEvent - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.bridge</a>&nbsp;/&nbsp;<a href=".">BaseBridgeEvent</a><br/>
+<br/>
+<h1>BaseBridgeEvent</h1>
+<code><span class="keyword">interface </span><span class="identifier">BaseBridgeEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Future</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code>
+<p>Represents an event that occurs on the event bus bridge. 
+<p> Please consult the documentation for a full explanation.</p>
+</p>
+<p><strong>Author</strong><br/>
+<a href="#">Tim Fox</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-raw-message.html">getRawMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getRawMessage</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonObject</span></code>
+<p>Get the raw JSON message for the event. This will be null for SOCKET_CREATED or SOCKET_CLOSED events as there is no message involved. If the returned message is modified, <code><a href="set-raw-message.html">#setRawMessage</a></code> should be called with the new message.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-raw-message.html">setRawMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setRawMessage</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.bridge.BaseBridgeEvent$setRawMessage(io.vertx.core.json.JsonObject)/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BaseBridgeEvent</span></code>
+<p>Get the raw JSON message for the event. This will be null for SOCKET_CREATED or SOCKET_CLOSED events as there is no message involved.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="type.html">type</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">type</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-bridge-event-type/index.html"><span class="identifier">BridgeEventType</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

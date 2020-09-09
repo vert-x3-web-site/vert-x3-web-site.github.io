@@ -1,0 +1,162 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Measured - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.metrics</a>&nbsp;/&nbsp;<a href=".">Measured</a><br/>
+<br/>
+<h1>Measured</h1>
+<code><span class="keyword">interface </span><span class="identifier">Measured</span></code>
+<p> NOTE: This class has been automatically generated from the io.vertx.core.metrics.Measured non RX-ified interface using Vert.x codegen.</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Measured</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-metrics-enabled.html">isMetricsEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isMetricsEnabled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether the metrics are enabled for this measured object</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.metrics.Measured$newInstance(io.vertx.core.metrics.Measured)/arg">arg</span><span class="symbol">:</span>&nbsp;<span class="identifier">Measured</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Measured</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core.datagram/-datagram-socket/index.html">DatagramSocket</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DatagramSocket</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.streams/-read-stream/index.html"><span class="identifier">ReadStream</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.datagram/-datagram-packet/index.html"><span class="identifier">DatagramPacket</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">Measured</span></code>
+<p>A datagram socket can be used to send io.vertx.reactivex.core.datagram.DatagramPacket's to remote datagram servers and receive io.vertx.reactivex.core.datagram.DatagramPackets . 
+<p> Usually you use a datagram socket to send UDP over the wire. UDP is connection-less which means you are not connected to the remote peer in a persistent way. Because of this you have to supply the address and port of the remote peer when sending data. </p>
+<p> You can send data to ipv4 or ipv6 addresses, which also include multicast addresses. </p>
+<p> Please consult the documentation for more information on datagram sockets. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.datagram.DatagramSocket non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core.eventbus/-event-bus/index.html">EventBus</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EventBus</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Measured</span></code>
+<p>A Vert.x event-bus is a light-weight distributed messaging system which allows different parts of your application, or different applications and services to communicate with each in a loosely coupled way. 
+<p> An event-bus supports publish-subscribe messaging, point-to-point messaging and request-response messaging. </p>
+<p> Message delivery is best-effort and messages can be lost if failure of all or part of the event bus occurs. </p>
+<p> Please refer to the documentation for more information on the event bus. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.eventbus.EventBus non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core.http/-http-client/index.html">HttpClient</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpClient</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Measured</span></code>
+<p>An asynchronous HTTP client. 
+<p> It allows you to make requests to HTTP servers, and a single client can make requests to any server. </p>
+<p> It also allows you to open WebSockets to servers. </p>
+<p> The client can also pool HTTP connections. </p>
+<p> For pooling to occur, keep-alive must be true on the io.vertx.core.http.HttpClientOptions (default is true). In this case connections will be pooled and re-used if there are pending HTTP requests waiting to get a connection, otherwise they will be closed. </p>
+<p> This gives the benefits of keep alive when the client is loaded but means we don't keep connections hanging around unnecessarily when there would be no benefits anyway. </p>
+<p> The client also supports pipe-lining of requests. Pipe-lining means another request is sent on the same connection before the response from the preceding one has returned. Pipe-lining is not appropriate for all requests. </p>
+<p> To enable pipe-lining, it must be enabled on the io.vertx.core.http.HttpClientOptions (default is false). </p>
+<p> When pipe-lining is enabled the connection will be automatically closed when all in-flight responses have returned and there are no outstanding pending requests to write. </p>
+<p> The client is designed to be reused between requests. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.http.HttpClient non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core.http/-http-server/index.html">HttpServer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpServer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Measured</span></code>
+<p>An HTTP and WebSockets server. 
+<p> You receive HTTP requests by providing a <code><a href="#">io.vertx.reactivex.core.http.HttpServer#requestHandler</a></code>. As requests arrive on the server the handler will be called with the requests. </p>
+<p> You receive WebSockets by providing a <code><a href="#">io.vertx.reactivex.core.http.HttpServer#websocketHandler</a></code>. As WebSocket connections arrive on the server, the WebSocket is passed to the handler. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.http.HttpServer non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core.net/-net-client/index.html">NetClient</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NetClient</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Measured</span></code>
+<p>A TCP client. 
+<p> Multiple connections to different servers can be made using the same instance. </p>
+<p> This client supports a configurable number of connection attempts and a configurable delay between attempts. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.net.NetClient non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core.net/-net-server/index.html">NetServer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NetServer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Measured</span></code>
+<p>Represents a TCP server  NOTE: This class has been automatically generated from the io.vertx.core.net.NetServer non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core/-vertx/index.html">Vertx</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Vertx</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Measured</span></code>
+<p>The entry point into the Vert.x Core API. 
+<p> You use an instance of this class for functionality including: </p>
+<ul> <li>Creating TCP clients and servers</li>
+ <li>Creating HTTP clients and servers</li>
+ <li>Creating DNS clients</li>
+ <li>Creating Datagram sockets</li>
+ <li>Setting and cancelling periodic and one-shot timers</li>
+ <li>Getting a reference to the event bus API</li>
+ <li>Getting a reference to the file system API</li>
+ <li>Getting a reference to the shared data API</li>
+ <li>Deploying and undeploying verticles</li>
+ </ul>
+ 
+<p> Most functionality in Vert.x core is fairly low level. </p>
+<p> To create an instance of this class you can use the static factory methods: <code><a href="../../io.vertx.reactivex.core/-vertx/vertx.html">io.vertx.reactivex.core.Vertx#vertx</a></code>, <code><a href="../../io.vertx.reactivex.core/-vertx/vertx.html">io.vertx.reactivex.core.Vertx#vertx</a></code> and <code><a href="#">io.vertx.reactivex.core.Vertx#clusteredVertx</a></code>. </p>
+<p> Please see the user manual for more detailed usage information. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.Vertx non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.core/-worker-executor/index.html">WorkerExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WorkerExecutor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Measured</span></code>
+<p>An executor for executing blocking code in Vert.x .
+<p> It provides the same <code>executeBlocking</code> operation than io.vertx.reactivex.core.Context and io.vertx.reactivex.core.Vertx but on a separate worker pool.</p>
+<p> </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.WorkerExecutor non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

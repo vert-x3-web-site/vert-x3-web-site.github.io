@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.core.spi.metrics - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.core.spi.metrics</a><br/>
+<br/>
+<h2>Package io.vertx.core.spi.metrics</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-event-bus-metrics/index.html">EventBusMetrics</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">EventBusMetrics</span><span class="symbol">&lt;</span><span class="identifier">H</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Metrics</span></code>
+<p>The event bus metrics SPI which Vert.x will use to call when each event occurs.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-metrics-provider/index.html">MetricsProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">MetricsProvider</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Measured</span></code>
+<p>Metrics provider is the base SPI used by metrics implementations to retrieve a io.vertx.core.spi.metrics.Metrics object. It is meant to be implemented by io.vertx.core.metrics.Measured implementations but not exposed directly.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-t-c-p-metrics/index.html">TCPMetrics</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">TCPMetrics</span><span class="symbol">&lt;</span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NetworkMetrics</span><span class="symbol">&lt;</span><span class="identifier">S</span><span class="symbol">&gt;</span></code>
+<p>An SPI used internally by Vert.x to gather metrics on a net socket which serves as a base class for things like HttpServer and HttpClient, all of which serve TCP connections. The thread model for the tcp metrics depends on the actual context thats created the client/server. Event loop context Unless specified otherwise, all the methods on this object including the methods inherited from the super interfaces are invoked with the thread of the client/server and therefore are the same than the io.vertx.core.spi.metrics.VertxMetrics <code>createMetrics</code> method that created and returned this metrics object. Worker context Unless specified otherwise, all the methods on this object including the methods inherited from the super interfaces are invoked with a worker thread.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-vertx-metrics/index.html">VertxMetrics</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">VertxMetrics</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Metrics</span><span class="symbol">, </span><span class="identifier">Measured</span></code>
+<p>The main Vert.x metrics SPI which Vert.x will use internally. This interface serves two purposes, one to be called by Vert.x itself for events like verticles deployed, timers created, etc. The other to provide Vert.x with other metrics SPI's which will be used for specific components i.e. io.vertx.core.http.HttpServer, io.vertx.core.spi.metrics.EventBusMetrics, etc.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

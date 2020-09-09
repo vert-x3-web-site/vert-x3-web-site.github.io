@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Context.rxExecuteBlocking - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core</a>&nbsp;/&nbsp;<a href="index.html">Context</a>&nbsp;/&nbsp;<a href=".">rxExecuteBlocking</a><br/>
+<br/>
+<h1>rxExecuteBlocking</h1>
+<a name="io.vertx.reactivex.core.Context$rxExecuteBlocking(io.vertx.core.Handler((io.vertx.reactivex.core.Future((io.vertx.reactivex.core.Context.rxExecuteBlocking.T)))), kotlin.Boolean)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">rxExecuteBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Context$rxExecuteBlocking(io.vertx.core.Handler((io.vertx.reactivex.core.Future((io.vertx.reactivex.core.Context.rxExecuteBlocking.T)))), kotlin.Boolean)/blockingCodeHandler">blockingCodeHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.Context$rxExecuteBlocking(io.vertx.core.Handler((io.vertx.reactivex.core.Future((io.vertx.reactivex.core.Context.rxExecuteBlocking.T)))), kotlin.Boolean)/ordered">ordered</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Safely execute some blocking code. 
+<p> Executes the blocking code in the handler <code>blockingCodeHandler</code> using a thread from the worker pool. </p>
+<p> When the code is complete the handler <code>resultHandler</code> will be called with the result on the original context (e.g. on the original event loop of the caller). </p>
+<p> A <code>Future</code> instance is passed into <code>blockingCodeHandler</code>. When the blocking code successfully completes, the handler should call the <code><a href="#">io.vertx.reactivex.core.Future#complete</a></code> or <code><a href="#">io.vertx.reactivex.core.Future#complete</a></code> method, or the <code><a href="#">io.vertx.reactivex.core.Future#fail</a></code> method if it failed.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="blockingCodeHandler"></a>
+<code>blockingCodeHandler</code> - handler representing the blocking code to run</p>
+<p><a name="ordered"></a>
+<code>ordered</code> - if true then if executeBlocking is called several times on the same context, the executions for that context will be executed serially, not in parallel. if false then they will be no ordering guarantees</p>
+<p><strong>Return</strong><br/>
+</p>
+<a name="io.vertx.reactivex.core.Context$rxExecuteBlocking(io.vertx.core.Handler((io.vertx.reactivex.core.Future((io.vertx.reactivex.core.Context.rxExecuteBlocking.T)))))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">rxExecuteBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.Context$rxExecuteBlocking(io.vertx.core.Handler((io.vertx.reactivex.core.Future((io.vertx.reactivex.core.Context.rxExecuteBlocking.T)))))/blockingCodeHandler">blockingCodeHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Invoke <code><a href="#">io.vertx.reactivex.core.Context#executeBlocking</a></code> with order = true.</p>
+<h3>Parameters</h3>
+<p><a name="blockingCodeHandler"></a>
+<code>blockingCodeHandler</code> - handler representing the blocking code to run</p>
+<p><strong>Return</strong><br/>
+</p>
+</BODY>
+</HTML>

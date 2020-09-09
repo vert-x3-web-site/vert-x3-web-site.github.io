@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractUser - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.auth</a>&nbsp;/&nbsp;<a href=".">AbstractUser</a><br/>
+<br/>
+<h1>AbstractUser</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractUser</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">User</span><span class="symbol">, </span><span class="identifier">ClusterSerializable</span></code>
+<p>Useful base class for implementing a User object. 
+<p> This class handles the caching logic so you can concentrate on the actual authorisation logic. </p>
+<p> Just implement the abstract methods in your concrete sub-class.</p>
+</p>
+<p><strong>Author</strong><br/>
+<a href="#">Tim Fox</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AbstractUser</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Useful base class for implementing a User object. 
+<p> This class handles the caching logic so you can concentrate on the actual authorisation logic. </p>
+<p> Just implement the abstract methods in your concrete sub-class.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="clear-cache.html">clearCache</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">clearCache</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">User</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-authorized.html">isAuthorized</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isAuthorized</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.AbstractUser$isAuthorized(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Boolean)))))/authority">authority</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.auth.AbstractUser$isAuthorized(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Boolean)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">User</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="read-from-buffer.html">readFromBuffer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">readFromBuffer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.AbstractUser$readFromBuffer(kotlin.Int, io.vertx.core.buffer.Buffer)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.auth.AbstractUser$readFromBuffer(kotlin.Int, io.vertx.core.buffer.Buffer)/buffer">buffer</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="write-to-buffer.html">writeToBuffer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">writeToBuffer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.AbstractUser$writeToBuffer(io.vertx.core.buffer.Buffer)/buff">buff</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

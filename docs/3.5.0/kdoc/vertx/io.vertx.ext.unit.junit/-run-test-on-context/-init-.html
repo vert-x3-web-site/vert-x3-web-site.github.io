@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RunTestOnContext.<init> - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.unit.junit</a>&nbsp;/&nbsp;<a href="index.html">RunTestOnContext</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="io.vertx.ext.unit.junit.RunTestOnContext$&lt;init&gt;()"></a>
+<code><span class="identifier">RunTestOnContext</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new rule managing a Vertx instance created with default options. The Vert.x instance is created and closed for each test.</p>
+<a name="io.vertx.ext.unit.junit.RunTestOnContext$&lt;init&gt;(io.vertx.core.VertxOptions)"></a>
+<code><span class="identifier">RunTestOnContext</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.junit.RunTestOnContext$<init>(io.vertx.core.VertxOptions)/options">options</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core/-vertx-options/index.html"><span class="identifier">VertxOptions</span></a><span class="symbol">)</span></code>
+<p>Create a new rule managing a Vertx instance created with specified options. The Vert.x instance is created and closed for each test.</p>
+<h3>Parameters</h3>
+<p><a name="options"></a>
+<code>options</code> - the vertx options</p>
+<a name="io.vertx.ext.unit.junit.RunTestOnContext$&lt;init&gt;(java.util.function.Supplier((io.vertx.core.Vertx)), java.util.function.BiConsumer((io.vertx.core.Vertx, java.util.function.Consumer((java.lang.Void)))))"></a>
+<code><span class="identifier">RunTestOnContext</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.junit.RunTestOnContext$<init>(java.util.function.Supplier((io.vertx.core.Vertx)), java.util.function.BiConsumer((io.vertx.core.Vertx, java.util.function.Consumer((java.lang.Void)))))/createVertx">createVertx</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html"><span class="identifier">Supplier</span></a><span class="symbol">&lt;</span><span class="identifier">Vertx</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.junit.RunTestOnContext$<init>(java.util.function.Supplier((io.vertx.core.Vertx)), java.util.function.BiConsumer((io.vertx.core.Vertx, java.util.function.Consumer((java.lang.Void)))))/closeVertx">closeVertx</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/BiConsumer.html"><span class="identifier">BiConsumer</span></a><span class="symbol">&lt;</span><span class="identifier">Vertx</span><span class="symbol">,</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Consumer.html"><span class="identifier">Consumer</span></a><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new rule with supplier/consumer for creating/closing a Vert.x instance. The lambda are invoked for each test. The <code>closeVertx</code> lambda should invoke the consumer with null when the <code>vertx</code> instance is closed.</p>
+<h3>Parameters</h3>
+<p><a name="createVertx"></a>
+<code>createVertx</code> - the create Vert.x supplier</p>
+<p><a name="closeVertx"></a>
+<code>closeVertx</code> - the close Vert.x consumer</p>
+<a name="io.vertx.ext.unit.junit.RunTestOnContext$&lt;init&gt;(java.util.function.Supplier((io.vertx.core.Vertx)))"></a>
+<code><span class="identifier">RunTestOnContext</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.junit.RunTestOnContext$<init>(java.util.function.Supplier((io.vertx.core.Vertx)))/createVertx">createVertx</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html"><span class="identifier">Supplier</span></a><span class="symbol">&lt;</span><span class="identifier">Vertx</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new rule with supplier for creating a Vert.x instance. The lambda are invoked for each test.</p>
+<h3>Parameters</h3>
+<p><a name="createVertx"></a>
+<code>createVertx</code> - the create Vert.x supplier</p>
+</BODY>
+</HTML>

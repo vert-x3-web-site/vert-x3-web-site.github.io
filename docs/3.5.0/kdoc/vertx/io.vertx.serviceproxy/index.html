@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.serviceproxy - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.serviceproxy</a><br/>
+<br/>
+<h2>Package io.vertx.serviceproxy</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-service-binder/index.html">ServiceBinder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServiceBinder</span></code>
+<p>A binder for Service Proxies which state can be reused during the binder lifecycle.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-service-exception-message-codec/index.html">ServiceExceptionMessageCodec</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServiceExceptionMessageCodec</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MessageCodec</span><span class="symbol">&lt;</span><a href="-service-exception/index.html"><span class="identifier">ServiceException</span></a><span class="symbol">,</span>&nbsp;<a href="-service-exception/index.html"><span class="identifier">ServiceException</span></a><span class="symbol">&gt;</span></code>
+<p>A MessageCodec for ServiceException</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-service-j-w-t-interceptor/index.html">ServiceJWTInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServiceJWTInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html"><span class="identifier">Function</span></a><span class="symbol">&lt;</span><a href="../io.vertx.core.eventbus/-message/index.html"><span class="identifier">Message</span></a><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span><span class="symbol">,</span>&nbsp;<span class="identifier">Future</span><span class="symbol">&lt;</span><a href="../io.vertx.core.eventbus/-message/index.html"><span class="identifier">Message</span></a><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Create an event bus service interceptor using a JWT auth that will verify all requests before the service is invoked  Once a JWT is validated it will be queried for authorities. If authorities are missing a error 403 is returned.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-service-proxy-builder/index.html">ServiceProxyBuilder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServiceProxyBuilder</span></code>
+<p>A builder for Service Proxies which state can be reused during the builder lifecycle.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-service-proxy-processor/index.html">ServiceProxyProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServiceProxyProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CodeGenProcessor</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-service-exception/index.html">ServiceException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServiceException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../io.vertx.core.eventbus/-reply-exception/index.html"><span class="identifier">ReplyException</span></a></code>
+<p>An Exception to be returned from Service implementations.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

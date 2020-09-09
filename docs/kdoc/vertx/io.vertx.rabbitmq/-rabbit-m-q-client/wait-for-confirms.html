@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RabbitMQClient.waitForConfirms - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rabbitmq</a>&nbsp;/&nbsp;<a href="index.html">RabbitMQClient</a>&nbsp;/&nbsp;<a href=".">waitForConfirms</a><br/>
+<br/>
+<h1>waitForConfirms</h1>
+<a name="io.vertx.rabbitmq.RabbitMQClient$waitForConfirms(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">waitForConfirms</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rabbitmq.RabbitMQClient$waitForConfirms(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Wait until all messages published since the last call have been either ack'd or nack'd by the broker. This will incur slight performance loss at the expense of higher write consistency. If desired, multiple calls to basicPublish() can be batched before confirming.</p>
+<h3>Exceptions</h3>
+<p><a name="java.io.IOException"></a>
+<code>java.io.IOException</code> - Throws an IOException if the message was not written to the queue.</p>
+<p><strong>See Also</strong><br/>
+<a href="#">Channel#waitForConfirms()</a>http</p>
+<a name="io.vertx.rabbitmq.RabbitMQClient$waitForConfirms(kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">waitForConfirms</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rabbitmq.RabbitMQClient$waitForConfirms(kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rabbitmq.RabbitMQClient$waitForConfirms(kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Wait until all messages published since the last call have been either ack'd or nack'd by the broker; or until timeout elapses. If the timeout expires a TimeoutException is thrown.</p>
+<h3>Parameters</h3>
+<p><a name="timeout"></a>
+<code>timeout</code> - </p>
+<h3>Exceptions</h3>
+<p><a name="java.io.IOException"></a>
+<code>java.io.IOException</code> - Throws an IOException if the message was not written to the queue.</p>
+<p><strong>See Also</strong><br/>
+<a href="#">io.vertx.rabbitmq.impl.RabbitMQClientImpl#waitForConfirms(Handler)</a>http</p>
+</BODY>
+</HTML>

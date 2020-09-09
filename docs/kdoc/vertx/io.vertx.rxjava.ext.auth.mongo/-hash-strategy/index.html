@@ -1,0 +1,141 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HashStrategy - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.ext.auth.mongo</a>&nbsp;/&nbsp;<a href=".">HashStrategy</a><br/>
+<br/>
+<h1>HashStrategy</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HashStrategy</span></code>
+<p>Determines how the hashing is computed in the implementation You can implement this to provide a different hashing strategy to the default.  NOTE: This class has been automatically generated from the io.vertx.ext.auth.mongo.HashStrategy non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HashStrategy</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.HashStrategy$<init>(io.vertx.ext.auth.mongo.HashStrategy)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.auth.mongo/-hash-strategy/index.html"><span class="identifier">HashStrategy</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><span class="identifier">TypeArg</span><span class="symbol">&lt;</span><span class="identifier">HashStrategy</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="compute-hash.html">computeHash</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">computeHash</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.HashStrategy$computeHash(kotlin.String, io.vertx.rxjava.ext.auth.User)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.HashStrategy$computeHash(kotlin.String, io.vertx.rxjava.ext.auth.User)/user">user</span><span class="symbol">:</span>&nbsp;<span class="identifier">User</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Compute the hashed password given the unhashed password and the user</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.HashStrategy$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.ext.auth.mongo/-hash-strategy/index.html"><span class="identifier">HashStrategy</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-salt.html">getSalt</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSalt</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.HashStrategy$getSalt(io.vertx.rxjava.ext.auth.User)/user">user</span><span class="symbol">:</span>&nbsp;<span class="identifier">User</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Retrieve the salt. The source of the salt can be the external salt or the propriate column of the given user, depending on the defined io.vertx.rxjava.ext.auth.mongo.HashSaltStyle</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-salt-style.html">getSaltStyle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSaltStyle</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HashSaltStyle</span></code>
+<p>Get the defined io.vertx.rxjava.ext.auth.mongo.HashSaltStyle of the current instance</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-stored-pwd.html">getStoredPwd</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getStoredPwd</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.HashStrategy$getStoredPwd(io.vertx.rxjava.ext.auth.User)/user">user</span><span class="symbol">:</span>&nbsp;<span class="identifier">User</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Retrieve the password from the user, or as clear text or as hashed version, depending on the definition</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.HashStrategy$newInstance(io.vertx.ext.auth.mongo.HashStrategy)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.auth.mongo/-hash-strategy/index.html"><span class="identifier">HashStrategy</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HashStrategy</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-algorithm.html">setAlgorithm</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAlgorithm</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.HashStrategy$setAlgorithm(io.vertx.ext.auth.mongo.HashAlgorithm)/algorithm">algorithm</span><span class="symbol">:</span>&nbsp;<span class="identifier">HashAlgorithm</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Allows the selection of the hashing algorithm.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-external-salt.html">setExternalSalt</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExternalSalt</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.HashStrategy$setExternalSalt(kotlin.String)/salt">salt</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set an external salt. This method should be used in case of</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-salt-style.html">setSaltStyle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSaltStyle</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.auth.mongo.HashStrategy$setSaltStyle(io.vertx.ext.auth.mongo.HashSaltStyle)/saltStyle">saltStyle</span><span class="symbol">:</span>&nbsp;<span class="identifier">HashSaltStyle</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the saltstyle as defined by io.vertx.rxjava.ext.auth.mongo.HashSaltStyle.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

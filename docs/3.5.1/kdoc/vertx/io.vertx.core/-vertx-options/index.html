@@ -1,0 +1,653 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>VertxOptions - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.core</a>&nbsp;/&nbsp;<a href=".">VertxOptions</a><br/>
+<br/>
+<h1>VertxOptions</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">VertxOptions</span></code>
+<p>Instances of this class are used to configure io.vertx.core.Vertx instances.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Tim Fox</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">VertxOptions</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Default constructor</p>
+<code><span class="identifier">VertxOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$<init>(io.vertx.core.VertxOptions)/other">other</span><span class="symbol">:</span>&nbsp;<span class="identifier">VertxOptions</span><span class="symbol">)</span></code>
+<p>Copy constructor</p>
+<code><span class="identifier">VertxOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$<init>(io.vertx.core.json.JsonObject)/json">json</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span></code>
+<p>Create an instance from a io.vertx.core.json.JsonObject</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-b-l-o-c-k-e-d_-t-h-r-e-a-d_-c-h-e-c-k_-i-n-t-e-r-v-a-l.html">DEFAULT_BLOCKED_THREAD_CHECK_INTERVAL</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_BLOCKED_THREAD_CHECK_INTERVAL</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>The default value of blocked thread check interval = 1000 ms.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-l-u-s-t-e-r-e-d.html">DEFAULT_CLUSTERED</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CLUSTERED</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>The default value of whether Vert.x is clustered = false.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-l-u-s-t-e-r_-h-o-s-t.html">DEFAULT_CLUSTER_HOST</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CLUSTER_HOST</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default hostname to use when clustering = "localhost"</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-l-u-s-t-e-r_-p-i-n-g_-i-n-t-e-r-v-a-l.html">DEFAULT_CLUSTER_PING_INTERVAL</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CLUSTER_PING_INTERVAL</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>The default value of cluster ping interval = 20000 ms.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-l-u-s-t-e-r_-p-i-n-g_-r-e-p-l-y_-i-n-t-e-r-v-a-l.html">DEFAULT_CLUSTER_PING_REPLY_INTERVAL</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CLUSTER_PING_REPLY_INTERVAL</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>The default value of cluster ping reply interval = 20000 ms.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-l-u-s-t-e-r_-p-o-r-t.html">DEFAULT_CLUSTER_PORT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CLUSTER_PORT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The default port to use when clustering = 0 (meaning assign a random port)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-l-u-s-t-e-r_-p-u-b-l-i-c_-h-o-s-t.html">DEFAULT_CLUSTER_PUBLIC_HOST</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CLUSTER_PUBLIC_HOST</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default cluster public host to use = null which means use the same as the cluster host</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-l-u-s-t-e-r_-p-u-b-l-i-c_-p-o-r-t.html">DEFAULT_CLUSTER_PUBLIC_PORT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CLUSTER_PUBLIC_PORT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The default cluster public port to use = -1 which means use the same as the cluster port</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-e-v-e-n-t_-l-o-o-p_-p-o-o-l_-s-i-z-e.html">DEFAULT_EVENT_LOOP_POOL_SIZE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_EVENT_LOOP_POOL_SIZE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The default number of event loop threads to be used = 2 * number of cores on the machine</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-f-i-l-e_-c-a-c-h-i-n-g_-e-n-a-b-l-e-d.html">DEFAULT_FILE_CACHING_ENABLED</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_FILE_CACHING_ENABLED</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>The default value for file resolver caching enabled = the value of the system property "vertx.disableFileCaching" or true</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-h-a_-e-n-a-b-l-e-d.html">DEFAULT_HA_ENABLED</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_HA_ENABLED</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>The default value of HA enabled = false</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-h-a_-g-r-o-u-p.html">DEFAULT_HA_GROUP</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_HA_GROUP</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default value of Ha group is "__DEFAULT__"</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-i-n-t-e-r-n-a-l_-b-l-o-c-k-i-n-g_-p-o-o-l_-s-i-z-e.html">DEFAULT_INTERNAL_BLOCKING_POOL_SIZE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_INTERNAL_BLOCKING_POOL_SIZE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The default number of threads in the internal blocking pool (used by some internal operations) = 20</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-m-a-x_-e-v-e-n-t_-l-o-o-p_-e-x-e-c-u-t-e_-t-i-m-e.html">DEFAULT_MAX_EVENT_LOOP_EXECUTE_TIME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_MAX_EVENT_LOOP_EXECUTE_TIME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>The default value of max event loop execute time = 2000000000 ns (2 seconds)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-m-a-x_-w-o-r-k-e-r_-e-x-e-c-u-t-e_-t-i-m-e.html">DEFAULT_MAX_WORKER_EXECUTE_TIME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_MAX_WORKER_EXECUTE_TIME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>The default value of max worker execute time = 60000000000 ns (60 seconds)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-p-r-e-f-e-r_-n-a-t-i-v-e_-t-r-a-n-s-p-o-r-t.html">DEFAULT_PREFER_NATIVE_TRANSPORT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_PREFER_NATIVE_TRANSPORT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>The default value for preferring native transport = false</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-q-u-o-r-u-m_-s-i-z-e.html">DEFAULT_QUORUM_SIZE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_QUORUM_SIZE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The default value of quorum size = 1</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-w-o-r-k-e-r_-p-o-o-l_-s-i-z-e.html">DEFAULT_WORKER_POOL_SIZE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_WORKER_POOL_SIZE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The default number of threads in the worker pool = 20</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-address-resolver-options.html">getAddressResolverOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAddressResolverOptions</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AddressResolverOptions</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-blocked-thread-check-interval.html">getBlockedThreadCheckInterval</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBlockedThreadCheckInterval</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Get the value of blocked thread check period, in ms. 
+<p> This setting determines how often Vert.x will check whether event loop threads are executing for too long.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-cluster-host.html">getClusterHost</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getClusterHost</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the host name to be used for clustering.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-cluster-manager.html">getClusterManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getClusterManager</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ClusterManager</span></code>
+<p>Get the cluster manager to be used when clustering. 
+<p> If the cluster manager has been programmatically set here, then that will be used when clustering. </p>
+<p> Otherwise Vert.x attempts to locate a cluster manager on the classpath.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-cluster-ping-interval.html">getClusterPingInterval</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getClusterPingInterval</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Get the value of cluster ping interval, in ms. 
+<p> Nodes in the cluster ping each other at this interval to determine whether they are still running.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-cluster-ping-reply-interval.html">getClusterPingReplyInterval</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getClusterPingReplyInterval</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Get the value of cluster ping reply interval, in ms. 
+<p> After sending a ping, if a pong is not received in this time, the node will be considered dead.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-cluster-port.html">getClusterPort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getClusterPort</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get the port to be used for clustering</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-cluster-public-host.html">getClusterPublicHost</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getClusterPublicHost</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the public facing hostname to be used when clustering.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-cluster-public-port.html">getClusterPublicPort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getClusterPublicPort</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get the public facing port to be used when clustering.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-event-bus-options.html">getEventBusOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getEventBusOptions</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EventBusOptions</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-event-loop-pool-size.html">getEventLoopPoolSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getEventLoopPoolSize</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get the number of event loop threads to be used by the Vert.x instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-h-a-group.html">getHAGroup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getHAGroup</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the HA group to be used when HA is enabled.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-internal-blocking-pool-size.html">getInternalBlockingPoolSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getInternalBlockingPoolSize</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get the value of internal blocking pool size. 
+<p> Vert.x maintains a pool for internal blocking operations</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-max-event-loop-execute-time.html">getMaxEventLoopExecuteTime</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMaxEventLoopExecuteTime</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Get the value of max event loop execute time, in ns. 
+<p> Vert.x will automatically log a warning if it detects that event loop threads haven't returned within this time. </p>
+<p> This can be used to detect where the user is blocking an event loop thread, contrary to the Golden Rule of the holy Event Loop.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-max-worker-execute-time.html">getMaxWorkerExecuteTime</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMaxWorkerExecuteTime</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Get the value of max worker execute time, in ns. 
+<p> Vert.x will automatically log a warning if it detects that worker threads haven't returned within this time. </p>
+<p> This can be used to detect where the user is blocking a worker thread for too long. Although worker threads can be blocked longer than event loop threads, they shouldn't be blocked for long periods of time.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-metrics-options.html">getMetricsOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMetricsOptions</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MetricsOptions</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-prefer-native-transport.html">getPreferNativeTransport</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPreferNativeTransport</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-quorum-size.html">getQuorumSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getQuorumSize</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get the quorum size to be used when HA is enabled.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-warning-exception-time.html">getWarningExceptionTime</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getWarningExceptionTime</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Get the threshold value above this, the blocked warning contains a stack trace.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-worker-pool-size.html">getWorkerPoolSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getWorkerPoolSize</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get the maximum number of worker threads to be used by the Vert.x instance. 
+<p> Worker threads are used for running blocking code and worker verticles.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-clustered.html">isClustered</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isClustered</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Is the Vert.x instance clustered?</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-file-resolver-caching-enabled.html">isFileResolverCachingEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isFileResolverCachingEnabled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-h-a-enabled.html">isHAEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isHAEnabled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Will HA be enabled on the Vert.x instance?</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-address-resolver-options.html">setAddressResolverOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAddressResolverOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setAddressResolverOptions(io.vertx.core.dns.AddressResolverOptions)/addressResolverOptions">addressResolverOptions</span><span class="symbol">:</span>&nbsp;<span class="identifier">AddressResolverOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Sets the address resolver configuration to configure resolving DNS servers, cache TTL, etc...</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-blocked-thread-check-interval.html">setBlockedThreadCheckInterval</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBlockedThreadCheckInterval</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setBlockedThreadCheckInterval(kotlin.Long)/blockedThreadCheckInterval">blockedThreadCheckInterval</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Sets the value of blocked thread check period, in ms.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cluster-host.html">setClusterHost</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setClusterHost</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setClusterHost(kotlin.String)/clusterHost">clusterHost</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Set the hostname to be used for clustering.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cluster-manager.html">setClusterManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setClusterManager</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setClusterManager(io.vertx.core.spi.cluster.ClusterManager)/clusterManager">clusterManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClusterManager</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Programmatically set the cluster manager to be used when clustering. 
+<p> Only valid if clustered = true. </p>
+<p> Normally Vert.x will look on the classpath for a cluster manager, but if you want to set one programmatically you can use this method.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cluster-ping-interval.html">setClusterPingInterval</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setClusterPingInterval</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setClusterPingInterval(kotlin.Long)/clusterPingInterval">clusterPingInterval</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Set the value of cluster ping interval, in ms.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cluster-ping-reply-interval.html">setClusterPingReplyInterval</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setClusterPingReplyInterval</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setClusterPingReplyInterval(kotlin.Long)/clusterPingReplyInterval">clusterPingReplyInterval</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Set the value of cluster ping reply interval, in ms.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cluster-port.html">setClusterPort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setClusterPort</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setClusterPort(kotlin.Int)/clusterPort">clusterPort</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Set the port to be used for clustering.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cluster-public-host.html">setClusterPublicHost</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setClusterPublicHost</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setClusterPublicHost(kotlin.String)/clusterPublicHost">clusterPublicHost</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Set the public facing hostname to be used for clustering. Sometimes, e.g. when running on certain clouds, the local address the server listens on for clustering is not the same address that other nodes connect to it at, as the OS / cloud infrastructure does some kind of proxying. If this is the case you can specify a public hostname which is different from the hostname the server listens at. The default value is null which means use the same as the cluster hostname.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cluster-public-port.html">setClusterPublicPort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setClusterPublicPort</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setClusterPublicPort(kotlin.Int)/clusterPublicPort">clusterPublicPort</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>See <code><a href="#">#setClusterPublicHost(String)</a></code> for an explanation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-clustered.html">setClustered</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setClustered</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setClustered(kotlin.Boolean)/clustered">clustered</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Set whether or not the Vert.x instance will be clustered.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-event-bus-options.html">setEventBusOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEventBusOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setEventBusOptions(io.vertx.core.eventbus.EventBusOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">EventBusOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Sets the event bus configuration to configure the host, port, ssl...</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-event-loop-pool-size.html">setEventLoopPoolSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEventLoopPoolSize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setEventLoopPoolSize(kotlin.Int)/eventLoopPoolSize">eventLoopPoolSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Set the number of event loop threads to be used by the Vert.x instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-file-resolver-caching-enabled.html">setFileResolverCachingEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFileResolverCachingEnabled</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setFileResolverCachingEnabled(kotlin.Boolean)/fileResolverCachingEnabled">fileResolverCachingEnabled</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Set wether the Vert.x file resolver uses caching for classpath resources.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-h-a-enabled.html">setHAEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHAEnabled</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setHAEnabled(kotlin.Boolean)/haEnabled">haEnabled</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Set whether HA will be enabled on the Vert.x instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-h-a-group.html">setHAGroup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHAGroup</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setHAGroup(kotlin.String)/haGroup">haGroup</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Set the HA group to be used when HA is enabled.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-internal-blocking-pool-size.html">setInternalBlockingPoolSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setInternalBlockingPoolSize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setInternalBlockingPoolSize(kotlin.Int)/internalBlockingPoolSize">internalBlockingPoolSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Set the value of internal blocking pool size</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-max-event-loop-execute-time.html">setMaxEventLoopExecuteTime</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMaxEventLoopExecuteTime</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setMaxEventLoopExecuteTime(kotlin.Long)/maxEventLoopExecuteTime">maxEventLoopExecuteTime</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Sets the value of max event loop execute time, in ns.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-max-worker-execute-time.html">setMaxWorkerExecuteTime</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMaxWorkerExecuteTime</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setMaxWorkerExecuteTime(kotlin.Long)/maxWorkerExecuteTime">maxWorkerExecuteTime</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Sets the value of max worker execute time, in ns.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-metrics-options.html">setMetricsOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMetricsOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setMetricsOptions(io.vertx.core.metrics.MetricsOptions)/metrics">metrics</span><span class="symbol">:</span>&nbsp;<span class="identifier">MetricsOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Set the metrics options</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-prefer-native-transport.html">setPreferNativeTransport</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPreferNativeTransport</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setPreferNativeTransport(kotlin.Boolean)/preferNativeTransport">preferNativeTransport</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Set wether to prefer the native transport to the JDK transport.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-quorum-size.html">setQuorumSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setQuorumSize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setQuorumSize(kotlin.Int)/quorumSize">quorumSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Set the quorum size to be used when HA is enabled.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-warning-exception-time.html">setWarningExceptionTime</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setWarningExceptionTime</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setWarningExceptionTime(kotlin.Long)/warningExceptionTime">warningExceptionTime</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Set the threshold value above this, the blocked warning contains a stack trace.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-worker-pool-size.html">setWorkerPoolSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setWorkerPoolSize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.VertxOptions$setWorkerPoolSize(kotlin.Int)/workerPoolSize">workerPoolSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxOptions</span></code>
+<p>Set the maximum number of worker threads to be used by the Vert.x instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

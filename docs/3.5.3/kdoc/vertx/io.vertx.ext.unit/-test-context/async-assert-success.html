@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TestContext.asyncAssertSuccess - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.unit</a>&nbsp;/&nbsp;<a href="index.html">TestContext</a>&nbsp;/&nbsp;<a href=".">asyncAssertSuccess</a><br/>
+<br/>
+<h1>asyncAssertSuccess</h1>
+<a name="io.vertx.ext.unit.TestContext$asyncAssertSuccess()"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">asyncAssertSuccess</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Creates and returns a new async handler, the returned handler controls the completion of the test. When the returned handler is called back with a succeeded result it completes the async operation. When the returned handler is called back with a failed result it fails the test with the cause of the failure.</p>
+<p><strong>Return</strong><br/>
+the async result handler</p>
+<a name="io.vertx.ext.unit.TestContext$asyncAssertSuccess(io.vertx.core.Handler((io.vertx.ext.unit.TestContext.asyncAssertSuccess.T)))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">asyncAssertSuccess</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$asyncAssertSuccess(io.vertx.core.Handler((io.vertx.ext.unit.TestContext.asyncAssertSuccess.T)))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Creates and returns a new async handler, the returned handler controls the completion of the test. When the returned handler is called back with a succeeded result it invokes the <code>resultHandler</code> argument with the async result. The test completes after the result handler is invoked and does not fails. When the returned handler is called back with a failed result it fails the test with the cause of the failure. Note that the result handler can create other async objects during its invocation that would postpone the completion of the test case until those objects are resolved.</p>
+<h3>Parameters</h3>
+<p><a name="resultHandler"></a>
+<code>resultHandler</code> - the result handler</p>
+<p><strong>Return</strong><br/>
+the async result handler</p>
+</BODY>
+</HTML>

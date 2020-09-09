@@ -1,0 +1,138 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AuthHandler - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.ext.web.handler</a>&nbsp;/&nbsp;<a href=".">AuthHandler</a><br/>
+<br/>
+<h1>AuthHandler</h1>
+<code><span class="keyword">interface </span><span class="identifier">AuthHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>Base interface for auth handlers. 
+<p> An auth handler allows your application to provide authentication/authorisation support. </p>
+<p> Auth handler requires a io.vertx.reactivex.ext.web.handler.SessionHandler to be on the routing chain before it. </p>
+ NOTE: This class has been automatically generated from the io.vertx.ext.web.handler.AuthHandler non RX-ified interface using Vert.x codegen.</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-authorities.html">addAuthorities</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">addAuthorities</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.AuthHandler$addAuthorities(kotlin.collections.MutableSet((kotlin.String)))/authorities">authorities</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AuthHandler</span></code>
+<p>Add a set of required authorities for this auth handler</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-authority.html">addAuthority</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">addAuthority</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.AuthHandler$addAuthority(kotlin.String)/authority">authority</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AuthHandler</span></code>
+<p>Add a required authority for this auth handler</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="authorize.html">authorize</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">authorize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.AuthHandler$authorize(io.vertx.reactivex.ext.auth.User, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/user">user</span><span class="symbol">:</span>&nbsp;<span class="identifier">User</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.AuthHandler$authorize(io.vertx.reactivex.ext.auth.User, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Authorizes the given user against all added authorities.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.ext.web.handler/-auth-handler/index.html"><span class="identifier">AuthHandler</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="handle.html">handle</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">handle</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.AuthHandler$handle(io.vertx.reactivex.ext.web.RoutingContext)/arg0">arg0</span><span class="symbol">:</span>&nbsp;<span class="identifier">RoutingContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.AuthHandler$newInstance(io.vertx.ext.web.handler.AuthHandler)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.web.handler/-auth-handler/index.html"><span class="identifier">AuthHandler</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AuthHandler</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="parse-credentials.html">parseCredentials</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">parseCredentials</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.AuthHandler$parseCredentials(io.vertx.reactivex.ext.web.RoutingContext, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonObject)))))/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">RoutingContext</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.AuthHandler$parseCredentials(io.vertx.reactivex.ext.web.RoutingContext, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonObject)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Parses the credentials from the request into a JsonObject. The implementation should be able to extract the required info for the auth provider in the format the provider expects.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-basic-auth-handler/index.html">BasicAuthHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BasicAuthHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AuthHandler</span><span class="symbol">, </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>An auth handler that provides HTTP Basic Authentication support.  NOTE: This class has been automatically generated from the io.vertx.ext.web.handler.BasicAuthHandler non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-chain-auth-handler/index.html">ChainAuthHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ChainAuthHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AuthHandler</span><span class="symbol">, </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>An auth handler that chains to a sequence of handlers.  NOTE: This class has been automatically generated from the io.vertx.ext.web.handler.ChainAuthHandler non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-digest-auth-handler/index.html">DigestAuthHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DigestAuthHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AuthHandler</span><span class="symbol">, </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>An auth handler that provides HTTP Basic Authentication support.  NOTE: This class has been automatically generated from the io.vertx.ext.web.handler.DigestAuthHandler non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-j-w-t-auth-handler/index.html">JWTAuthHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JWTAuthHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AuthHandler</span><span class="symbol">, </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>An auth handler that provides JWT Authentication support.  NOTE: This class has been automatically generated from the io.vertx.ext.web.handler.JWTAuthHandler non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-o-auth2-auth-handler/index.html">OAuth2AuthHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OAuth2AuthHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AuthHandler</span><span class="symbol">, </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>An auth handler that provides OAuth2 Authentication support. This handler is suitable for AuthCode flows.  NOTE: This class has been automatically generated from the io.vertx.ext.web.handler.OAuth2AuthHandler non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-redirect-auth-handler/index.html">RedirectAuthHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RedirectAuthHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AuthHandler</span><span class="symbol">, </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>An auth handler that's used to handle auth by redirecting user to a custom login page.  NOTE: This class has been automatically generated from the io.vertx.ext.web.handler.RedirectAuthHandler non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

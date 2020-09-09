@@ -1,0 +1,183 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AdminUtils - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.kafka.admin</a>&nbsp;/&nbsp;<a href=".">AdminUtils</a><br/>
+<br/>
+<h1>AdminUtils</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AdminUtils</span></code>
+<p>Provides a wrapper around important methods in Kafka's AdminUtils, namely  NOTE: This class has been automatically generated from the io.vertx.kafka.admin.AdminUtils non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AdminUtils</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$<init>(io.vertx.kafka.admin.AdminUtils)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.kafka.admin/-admin-utils/index.html"><span class="identifier">AdminUtils</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><span class="identifier">TypeArg</span><span class="symbol">&lt;</span><span class="identifier">AdminUtils</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="change-topic-config.html">changeTopicConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">changeTopicConfig</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$changeTopicConfig(kotlin.String, kotlin.collections.MutableMap((kotlin.String, )), io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/topicName">topicName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$changeTopicConfig(kotlin.String, kotlin.collections.MutableMap((kotlin.String, )), io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/topicConfig">topicConfig</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$changeTopicConfig(kotlin.String, kotlin.collections.MutableMap((kotlin.String, )), io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Updates the configuration of the topic given by topicName. Configuration parameters are passed in as a Map (Key -&gt; Value) of Strings.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$close(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Closes the underlying connection to Zookeeper. It is required to call the method for cleanup purposes if AdminUtils was not created with autoClose set to true.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$create(io.vertx.rxjava.core.Vertx, kotlin.String)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$create(io.vertx.rxjava.core.Vertx, kotlin.String)/zookeeperHosts">zookeeperHosts</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AdminUtils</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$create(io.vertx.rxjava.core.Vertx, kotlin.String, kotlin.Boolean)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$create(io.vertx.rxjava.core.Vertx, kotlin.String, kotlin.Boolean)/zookeeperHosts">zookeeperHosts</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$create(io.vertx.rxjava.core.Vertx, kotlin.String, kotlin.Boolean)/autoClose">autoClose</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AdminUtils</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$create(io.vertx.rxjava.core.Vertx, kotlin.String, kotlin.Int, kotlin.Boolean, kotlin.Boolean)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$create(io.vertx.rxjava.core.Vertx, kotlin.String, kotlin.Int, kotlin.Boolean, kotlin.Boolean)/zookeeperHosts">zookeeperHosts</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$create(io.vertx.rxjava.core.Vertx, kotlin.String, kotlin.Int, kotlin.Boolean, kotlin.Boolean)/connectionTimeoutMs">connectionTimeoutMs</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$create(io.vertx.rxjava.core.Vertx, kotlin.String, kotlin.Int, kotlin.Boolean, kotlin.Boolean)/isSecure">isSecure</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$create(io.vertx.rxjava.core.Vertx, kotlin.String, kotlin.Int, kotlin.Boolean, kotlin.Boolean)/autoClose">autoClose</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AdminUtils</span></code>
+<p>Create a new AdminUtils instance</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-topic.html">createTopic</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createTopic</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$createTopic(kotlin.String, kotlin.Int, kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/topicName">topicName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$createTopic(kotlin.String, kotlin.Int, kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/partitionCount">partitionCount</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$createTopic(kotlin.String, kotlin.Int, kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/replicationFactor">replicationFactor</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$createTopic(kotlin.String, kotlin.Int, kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Creates a new Kafka topic on all Brokers managed by the given Zookeeper instance(s)</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createTopic</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$createTopic(kotlin.String, kotlin.Int, kotlin.Int, kotlin.collections.MutableMap((kotlin.String, )), io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/topicName">topicName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$createTopic(kotlin.String, kotlin.Int, kotlin.Int, kotlin.collections.MutableMap((kotlin.String, )), io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/partitionCount">partitionCount</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$createTopic(kotlin.String, kotlin.Int, kotlin.Int, kotlin.collections.MutableMap((kotlin.String, )), io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/replicationFactor">replicationFactor</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$createTopic(kotlin.String, kotlin.Int, kotlin.Int, kotlin.collections.MutableMap((kotlin.String, )), io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/topicConfig">topicConfig</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$createTopic(kotlin.String, kotlin.Int, kotlin.Int, kotlin.collections.MutableMap((kotlin.String, )), io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Creates a new Kafka topic on all Brokers managed by the given Zookeeper instance(s). In contrast to @see <code><a href="#">io.vertx.rxjava.kafka.admin.AdminUtils#createTopic</a></code>, one can pass in additional configuration parameters as a map (String -&gt; String).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="delete-topic.html">deleteTopic</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">deleteTopic</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$deleteTopic(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/topicName">topicName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$deleteTopic(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Delete the Kafka topic given by the topicName.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.kafka.admin/-admin-utils/index.html"><span class="identifier">AdminUtils</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$newInstance(io.vertx.kafka.admin.AdminUtils)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.kafka.admin/-admin-utils/index.html"><span class="identifier">AdminUtils</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AdminUtils</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-change-topic-config.html">rxChangeTopicConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxChangeTopicConfig</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$rxChangeTopicConfig(kotlin.String, kotlin.collections.MutableMap((kotlin.String, )))/topicName">topicName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$rxChangeTopicConfig(kotlin.String, kotlin.collections.MutableMap((kotlin.String, )))/topicConfig">topicConfig</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span></code>
+<p>Updates the configuration of the topic given by topicName. Configuration parameters are passed in as a Map (Key -&gt; Value) of Strings.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-close.html">rxClose</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxClose</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span></code>
+<p>Closes the underlying connection to Zookeeper. It is required to call the method for cleanup purposes if AdminUtils was not created with autoClose set to true.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-create-topic.html">rxCreateTopic</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCreateTopic</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$rxCreateTopic(kotlin.String, kotlin.Int, kotlin.Int)/topicName">topicName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$rxCreateTopic(kotlin.String, kotlin.Int, kotlin.Int)/partitionCount">partitionCount</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$rxCreateTopic(kotlin.String, kotlin.Int, kotlin.Int)/replicationFactor">replicationFactor</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span></code>
+<p>Creates a new Kafka topic on all Brokers managed by the given Zookeeper instance(s)</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCreateTopic</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$rxCreateTopic(kotlin.String, kotlin.Int, kotlin.Int, kotlin.collections.MutableMap((kotlin.String, )))/topicName">topicName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$rxCreateTopic(kotlin.String, kotlin.Int, kotlin.Int, kotlin.collections.MutableMap((kotlin.String, )))/partitionCount">partitionCount</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$rxCreateTopic(kotlin.String, kotlin.Int, kotlin.Int, kotlin.collections.MutableMap((kotlin.String, )))/replicationFactor">replicationFactor</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$rxCreateTopic(kotlin.String, kotlin.Int, kotlin.Int, kotlin.collections.MutableMap((kotlin.String, )))/topicConfig">topicConfig</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span></code>
+<p>Creates a new Kafka topic on all Brokers managed by the given Zookeeper instance(s). In contrast to @see <code><a href="#">io.vertx.rxjava.kafka.admin.AdminUtils#createTopic</a></code>, one can pass in additional configuration parameters as a map (String -&gt; String).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-delete-topic.html">rxDeleteTopic</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxDeleteTopic</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$rxDeleteTopic(kotlin.String)/topicName">topicName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span></code>
+<p>Delete the Kafka topic given by the topicName.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-topic-exists.html">rxTopicExists</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxTopicExists</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$rxTopicExists(kotlin.String)/topicName">topicName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code>
+<p>Checks if the Kafka topic given by topicName does exist.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="topic-exists.html">topicExists</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">topicExists</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$topicExists(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Boolean)))))/topicName">topicName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.kafka.admin.AdminUtils$topicExists(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Boolean)))))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Checks if the Kafka topic given by topicName does exist.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

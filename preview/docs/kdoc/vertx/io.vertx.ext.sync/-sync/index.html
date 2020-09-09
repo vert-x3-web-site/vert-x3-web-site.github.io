@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Sync - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.sync</a>&nbsp;/&nbsp;<a href=".">Sync</a><br/>
+<br/>
+<h1>Sync</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Sync</span></code>
+<p>This class contains various static methods to allowing events and asynchronous results to be accessed in a synchronous way.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Tim Fox</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">Sync</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>This class contains various static methods to allowing events and asynchronous results to be accessed in a synchronous way.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="await-event.html">awaitEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">awaitEvent</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.sync.Sync$awaitEvent(java.util.function.Consumer((io.vertx.core.Handler((io.vertx.ext.sync.Sync.awaitEvent.T)))))/consumer">consumer</span><span class="symbol">:</span>&nbsp;<span class="identifier">Consumer</span><span class="symbol">&lt;</span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">awaitEvent</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.sync.Sync$awaitEvent(java.util.function.Consumer((io.vertx.core.Handler((io.vertx.ext.sync.Sync.awaitEvent.T)))), kotlin.Long)/consumer">consumer</span><span class="symbol">:</span>&nbsp;<span class="identifier">Consumer</span><span class="symbol">&lt;</span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.sync.Sync$awaitEvent(java.util.function.Consumer((io.vertx.core.Handler((io.vertx.ext.sync.Sync.awaitEvent.T)))), kotlin.Long)/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Receive a single event from a handler synchronously. The fiber will be blocked until the event occurs. No kernel thread is blocked.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="await-result.html">awaitResult</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">awaitResult</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.sync.Sync$awaitResult(java.util.function.Consumer((io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.sync.Sync.awaitResult.T)))))))/consumer">consumer</span><span class="symbol">:</span>&nbsp;<span class="identifier">Consumer</span><span class="symbol">&lt;</span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">awaitResult</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.sync.Sync$awaitResult(java.util.function.Consumer((io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.sync.Sync.awaitResult.T)))))), kotlin.Long)/consumer">consumer</span><span class="symbol">:</span>&nbsp;<span class="identifier">Consumer</span><span class="symbol">&lt;</span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.sync.Sync$awaitResult(java.util.function.Consumer((io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.sync.Sync.awaitResult.T)))))), kotlin.Long)/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Invoke an asynchronous operation and obtain the result synchronous. The fiber will be blocked until the result is available. No kernel thread is blocked.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="fiber-handler.html">fiberHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">fiberHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.sync.Sync$fiberHandler(io.vertx.core.Handler((io.vertx.ext.sync.Sync.fiberHandler.T)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Convert a standard handler to a handler which runs on a fiber. This is necessary if you want to do fiber blocking synchronous operations in your handler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-context-scheduler.html">getContextScheduler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getContextScheduler</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FiberScheduler</span></code>
+<p>Get the `FiberScheduler` for the current context. There should be only one instance per context.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-context-scheduler.html">removeContextScheduler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">removeContextScheduler</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Remove the scheduler for the current context</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="stream-adaptor.html">streamAdaptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">streamAdaptor</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-handler-receiver-adaptor.html"><span class="identifier">HandlerReceiverAdaptor</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Create an adaptor that converts a stream of events from a handler into a receiver which allows the events to be received synchronously.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">streamAdaptor</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.sync.Sync$streamAdaptor(co.paralleluniverse.strands.channels.Channel((io.vertx.ext.sync.Sync.streamAdaptor.T)))/channel">channel</span><span class="symbol">:</span>&nbsp;<span class="identifier">Channel</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-handler-receiver-adaptor.html"><span class="identifier">HandlerReceiverAdaptor</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Like <code><a href="stream-adaptor.html">#streamAdaptor()</a></code> but using the specified Quasar `Channel` instance. This is useful if you want to fine-tune the behaviour of the adaptor.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

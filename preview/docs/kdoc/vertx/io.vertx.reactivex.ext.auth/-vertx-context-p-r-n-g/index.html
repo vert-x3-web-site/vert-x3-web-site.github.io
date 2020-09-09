@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>VertxContextPRNG - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.ext.auth</a>&nbsp;/&nbsp;<a href=".">VertxContextPRNG</a><br/>
+<br/>
+<h1>VertxContextPRNG</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">VertxContextPRNG</span></code>
+<p>A secure non blocking random number generator isolated to the current context. The PRNG is bound to the vert.x context and setup to close when the context shuts down. 
+<p> When applicable, use of VertxContextPRNG rather than create new PRNG objects is helpful to keep the system entropy usage to the minimum avoiding potential blocking across the application. </p>
+<p> The use of VertxContextPRNG is particularly appropriate when multiple handlers use random numbers. </p>
+ NOTE: This class has been automatically generated from the io.vertx.ext.auth.VertxContextPRNG non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">VertxContextPRNG</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.VertxContextPRNG$<init>(io.vertx.ext.auth.VertxContextPRNG)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.auth/-vertx-context-p-r-n-g/index.html"><span class="identifier">VertxContextPRNG</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">VertxContextPRNG</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="current.html">current</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">current</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxContextPRNG</span></code>
+<p>Get or create a secure non blocking random number generator using the current vert.x context. If there is no current context (i.e.: not running on the eventloop) then a java.lang.IllegalStateException is thrown.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">current</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.VertxContextPRNG$current(io.vertx.reactivex.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core/-vertx/index.html"><span class="identifier">Vertx</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxContextPRNG</span></code>
+<p>Get or create a secure non blocking random number generator using the current vert.x instance. Since the context might be different this method will attempt to use the current context first if available and then fall back to create a new instance of the PRNG.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.VertxContextPRNG$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.ext.auth/-vertx-context-p-r-n-g/index.html"><span class="identifier">VertxContextPRNG</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.VertxContextPRNG$newInstance(io.vertx.ext.auth.VertxContextPRNG)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.auth/-vertx-context-p-r-n-g/index.html"><span class="identifier">VertxContextPRNG</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxContextPRNG</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="next-int.html">nextInt</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">nextInt</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Returns a secure random int</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="next-string.html">nextString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">nextString</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.auth.VertxContextPRNG$nextString(kotlin.Int)/length">length</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Returns a Base64 mime encoded String of random data with the given length. The length parameter refers to the length of the String before the encoding step.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

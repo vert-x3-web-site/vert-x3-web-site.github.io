@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>OAuth2AuthHandler.create - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.ext.web.handler</a>&nbsp;/&nbsp;<a href="index.html">OAuth2AuthHandler</a>&nbsp;/&nbsp;<a href=".">create</a><br/>
+<br/>
+<h1>create</h1>
+<a name="io.vertx.reactivex.ext.web.handler.OAuth2AuthHandler$create(io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth, kotlin.String)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.OAuth2AuthHandler$create(io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth, kotlin.String)/authProvider">authProvider</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.ext.auth.oauth2/-o-auth2-auth/index.html"><span class="identifier">OAuth2Auth</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.OAuth2AuthHandler$create(io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth, kotlin.String)/callbackURL">callbackURL</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">OAuth2AuthHandler</span></a></code>
+<p>Create a OAuth2 auth handler with host pinning</p>
+<h3>Parameters</h3>
+<p><a name="authProvider"></a>
+<code>authProvider</code> - the auth provider to use</p>
+<p><a name="callbackURL"></a>
+<code>callbackURL</code> - the callback URL you entered in your provider admin console, usually it should be something like: `https://myserver:8888/callback`</p>
+<p><strong>Return</strong><br/>
+the auth handler</p>
+<a name="io.vertx.reactivex.ext.web.handler.OAuth2AuthHandler$create(io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.handler.OAuth2AuthHandler$create(io.vertx.reactivex.ext.auth.oauth2.OAuth2Auth)/authProvider">authProvider</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.ext.auth.oauth2/-o-auth2-auth/index.html"><span class="identifier">OAuth2Auth</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">OAuth2AuthHandler</span></a></code>
+<p>Create a OAuth2 auth handler without host pinning. Most providers will not look to the redirect url but always redirect to the preconfigured callback. So this factory does not provide a callback url.</p>
+<h3>Parameters</h3>
+<p><a name="authProvider"></a>
+<code>authProvider</code> - the auth provider to use</p>
+<p><strong>Return</strong><br/>
+the auth handler</p>
+</BODY>
+</HTML>

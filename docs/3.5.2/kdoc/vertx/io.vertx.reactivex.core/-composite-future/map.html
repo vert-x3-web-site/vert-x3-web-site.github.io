@@ -1,0 +1,24 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CompositeFuture.map - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core</a>&nbsp;/&nbsp;<a href="index.html">CompositeFuture</a>&nbsp;/&nbsp;<a href=".">map</a><br/>
+<br/>
+<h1>map</h1>
+<a name="io.vertx.reactivex.core.CompositeFuture$map(java.util.function.Function((io.vertx.reactivex.core.CompositeFuture, io.vertx.reactivex.core.CompositeFuture.map.U)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">U</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">map</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.CompositeFuture$map(java.util.function.Function((io.vertx.reactivex.core.CompositeFuture, io.vertx.reactivex.core.CompositeFuture.map.U)))/mapper">mapper</span><span class="symbol">:</span>&nbsp;<span class="identifier">Function</span><span class="symbol">&lt;</span><a href="index.html"><span class="identifier">CompositeFuture</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">U</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><span class="identifier">U</span><span class="symbol">&gt;</span></code>
+<p>Apply a <code>mapper</code> function on this future.
+<p> When this future succeeds, the <code>mapper</code> will be called with the completed value and this mapper returns a value. This value will complete the future returned by this method call.</p>
+<p> If the <code>mapper</code> throws an exception, the returned future will be failed with this exception.</p>
+<p> When this future fails, the failure will be propagated to the returned future and the <code>mapper</code> will not be called.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="mapper"></a>
+<code>mapper</code> - the mapper function</p>
+<p><strong>Return</strong><br/>
+the mapped future</p>
+</BODY>
+</HTML>

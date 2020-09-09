@@ -1,0 +1,172 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TestContext - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.unit</a>&nbsp;/&nbsp;<a href=".">TestContext</a><br/>
+<br/>
+<h1>TestContext</h1>
+<code><span class="keyword">interface </span><span class="identifier">TestContext</span></code>
+<p>The test context is used for performing test assertions and manage the completion of the test. This context is provided by <em>vertx-unit</em> as argument of the test case.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Julien Viet</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="assert-equals.html">assertEquals</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">assertEquals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertEquals(kotlin.Any, kotlin.Any)/expected">expected</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertEquals(kotlin.Any, kotlin.Any)/actual">actual</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestContext</span></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">assertEquals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertEquals(kotlin.Any, kotlin.Any, kotlin.String)/expected">expected</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertEquals(kotlin.Any, kotlin.Any, kotlin.String)/actual">actual</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertEquals(kotlin.Any, kotlin.Any, kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestContext</span></code>
+<p>Assert the <code>expected</code> argument is equals to the <code>actual</code> argument. If the arguments are not equals an assertion error is thrown otherwise the execution continue.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="assert-false.html">assertFalse</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">assertFalse</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertFalse(kotlin.Boolean)/condition">condition</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestContext</span></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">assertFalse</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertFalse(kotlin.Boolean, kotlin.String)/condition">condition</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertFalse(kotlin.Boolean, kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestContext</span></code>
+<p>Assert the specified <code>condition</code> is <code>false</code>. If the condition is <code>true</code>, an assertion error is thrown otherwise the execution continue.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="assert-in-range.html">assertInRange</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">assertInRange</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertInRange(kotlin.Double, kotlin.Double, kotlin.Double)/expected">expected</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertInRange(kotlin.Double, kotlin.Double, kotlin.Double)/actual">actual</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertInRange(kotlin.Double, kotlin.Double, kotlin.Double)/delta">delta</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestContext</span></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">assertInRange</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertInRange(kotlin.Double, kotlin.Double, kotlin.Double, kotlin.String)/expected">expected</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertInRange(kotlin.Double, kotlin.Double, kotlin.Double, kotlin.String)/actual">actual</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertInRange(kotlin.Double, kotlin.Double, kotlin.Double, kotlin.String)/delta">delta</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertInRange(kotlin.Double, kotlin.Double, kotlin.Double, kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestContext</span></code>
+<p>Asserts that the <code>expected</code> double argument is equals to the <code>actual</code> double argument within a positive delta. If the arguments do not satisfy this, an assertion error is thrown otherwise the execution continue.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="assert-not-equals.html">assertNotEquals</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">assertNotEquals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertNotEquals(kotlin.Any, kotlin.Any)/first">first</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertNotEquals(kotlin.Any, kotlin.Any)/second">second</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestContext</span></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">assertNotEquals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertNotEquals(kotlin.Any, kotlin.Any, kotlin.String)/first">first</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertNotEquals(kotlin.Any, kotlin.Any, kotlin.String)/second">second</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertNotEquals(kotlin.Any, kotlin.Any, kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestContext</span></code>
+<p>Assert the <code>first</code> argument is not equals to the <code>second</code> argument. If the arguments are equals an assertion error is thrown otherwise the execution continue.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="assert-not-null.html">assertNotNull</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">assertNotNull</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertNotNull(kotlin.Any)/expected">expected</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestContext</span></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">assertNotNull</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertNotNull(kotlin.Any, kotlin.String)/expected">expected</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertNotNull(kotlin.Any, kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestContext</span></code>
+<p>Assert the <code>expected</code> argument is not <code>null</code>. If the argument is <code>null</code>, an assertion error is thrown otherwise the execution continue.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="assert-null.html">assertNull</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">assertNull</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertNull(kotlin.Any)/expected">expected</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestContext</span></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">assertNull</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertNull(kotlin.Any, kotlin.String)/expected">expected</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertNull(kotlin.Any, kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestContext</span></code>
+<p>Assert the <code>expected</code> argument is <code>null</code>. If the argument is not, an assertion error is thrown otherwise the execution continue.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="assert-true.html">assertTrue</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">assertTrue</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertTrue(kotlin.Boolean)/condition">condition</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestContext</span></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">assertTrue</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertTrue(kotlin.Boolean, kotlin.String)/condition">condition</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.TestContext$assertTrue(kotlin.Boolean, kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TestContext</span></code>
+<p>Assert the specified <code>condition</code> is <code>true</code>. If the condition is <code>false</code>, an assertion error is thrown otherwise the execution continue.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="async.html">async</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">async</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-async/index.html"><span class="identifier">Async</span></a></code>
+<p>Create and returns a new async object, the returned async controls the completion of the test. Calling the <code><a href="../-async/complete.html">Async#complete()</a></code> completes the async operation. The test case will complete when all the async objects have their <code><a href="../-async/complete.html">io.vertx.ext.unit.Async#complete()</a></code> method called at least once. This method shall be used for creating asynchronous exit points for the executed test.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">async</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$async(kotlin.Int)/count">count</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-async/index.html"><span class="identifier">Async</span></a></code>
+<p>Create and returns a new async object, the returned async controls the completion of the test. This async operation completes when the <code><a href="../-async/complete.html">Async#complete()</a></code> is called <code>count</code> times. The test case will complete when all the async objects have their <code><a href="../-async/complete.html">io.vertx.ext.unit.Async#complete()</a></code> method called at least once. This method shall be used for creating asynchronous exit points for the executed test.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="async-assert-failure.html">asyncAssertFailure</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">asyncAssertFailure</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">asyncAssertFailure</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$asyncAssertFailure(io.vertx.core.Handler((kotlin.Throwable)))/causeHandler">causeHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Creates and returns a new async handler, the returned handler controls the completion of the test. When the returned handler is called back with a failed result it completes the async operation. When the returned handler is called back with a succeeded result it fails the test.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="async-assert-success.html">asyncAssertSuccess</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">asyncAssertSuccess</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Creates and returns a new async handler, the returned handler controls the completion of the test. When the returned handler is called back with a succeeded result it completes the async operation. When the returned handler is called back with a failed result it fails the test with the cause of the failure.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">asyncAssertSuccess</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$asyncAssertSuccess(io.vertx.core.Handler((io.vertx.ext.unit.TestContext.asyncAssertSuccess.T)))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Creates and returns a new async handler, the returned handler controls the completion of the test. When the returned handler is called back with a succeeded result it invokes the <code>resultHandler</code> argument with the async result. The test completes after the result handler is invoked and does not fails. When the returned handler is called back with a failed result it fails the test with the cause of the failure. Note that the result handler can create other async objects during its invocation that would postpone the completion of the test case until those objects are resolved.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="exception-handler.html">exceptionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">exceptionHandler</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="fail.html">fail</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">fail</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Throw a failure.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">fail</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$fail(kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Throw a failure with the specified failure <code>message</code>.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">fail</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$fail(kotlin.Throwable)/cause">cause</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Throw a failure with the specified failure <code>cause</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get.html">get</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">get</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$get(kotlin.String)/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Get some data from the context.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="put.html">put</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">put</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$put(kotlin.String, kotlin.Any)/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.unit.TestContext$put(kotlin.String, kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Put some data in the context. 
+<p> This can be used to share data between different tests and before/after phases.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove.html">remove</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">remove</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.unit.TestContext$remove(kotlin.String)/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Remove some data from the context.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

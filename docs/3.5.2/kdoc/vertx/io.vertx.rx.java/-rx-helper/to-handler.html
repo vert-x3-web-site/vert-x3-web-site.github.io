@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RxHelper.toHandler - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rx.java</a>&nbsp;/&nbsp;<a href="index.html">RxHelper</a>&nbsp;/&nbsp;<a href=".">toHandler</a><br/>
+<br/>
+<h1>toHandler</h1>
+<a name="io.vertx.rx.java.RxHelper$toHandler(rx.Observer((io.vertx.rx.java.RxHelper.toHandler.T)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">toHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rx.java.RxHelper$toHandler(rx.Observer((io.vertx.rx.java.RxHelper.toHandler.T)))/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Observer.html"><span class="identifier">Observer</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Adapt a Subscriber as a <code>Handler&lt;T&gt;;</code>. When the event handler completes, the observer will complete immediatly after the event is received, as a single event is expected.</p>
+<h3>Parameters</h3>
+<p><a name="observer"></a>
+<code>observer</code> - the subscriber to adapt</p>
+<p><strong>Return</strong><br/>
+a <code>Handler&lt;T&gt;</code></p>
+<a name="io.vertx.rx.java.RxHelper$toHandler(rx.Observer((io.vertx.rx.java.RxHelper.toHandler.T)), kotlin.Boolean)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">toHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rx.java.RxHelper$toHandler(rx.Observer((io.vertx.rx.java.RxHelper.toHandler.T)), kotlin.Boolean)/observer">observer</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Observer.html"><span class="identifier">Observer</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rx.java.RxHelper$toHandler(rx.Observer((io.vertx.rx.java.RxHelper.toHandler.T)), kotlin.Boolean)/multi">multi</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Adapt a Subscriber as a <code>Handler&lt;T&gt;;</code>. When parameter is false and the event handler completes, the observer will complete immediatly after the event is received, as a single event is expected.</p>
+<h3>Parameters</h3>
+<p><a name="observer"></a>
+<code>observer</code> - the subscriber to adapt</p>
+<p><a name="multi"></a>
+<code>multi</code> - true if the handler can emit multiple events</p>
+<p><strong>Return</strong><br/>
+a <code>Handler&lt;T&gt;</code></p>
+<a name="io.vertx.rx.java.RxHelper$toHandler(rx.functions.Action1((io.vertx.rx.java.RxHelper.toHandler.T)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">toHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rx.java.RxHelper$toHandler(rx.functions.Action1((io.vertx.rx.java.RxHelper.toHandler.T)))/onNext">onNext</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/1.x/javadoc/rx/functions/Action1.html"><span class="identifier">Action1</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Adapt an item callback as a <code>Handler&lt;T&gt;</code>.</p>
+<h3>Parameters</h3>
+<p><a name="onNext"></a>
+<code>onNext</code> - the <code>Action1&lt;T&gt;</code> you have designed to accept the resolution from the <code>Handler&lt;T&gt;</code></p>
+<p><strong>Return</strong><br/>
+a <code>Handler&lt;T&gt;</code></p>
+</BODY>
+</HTML>

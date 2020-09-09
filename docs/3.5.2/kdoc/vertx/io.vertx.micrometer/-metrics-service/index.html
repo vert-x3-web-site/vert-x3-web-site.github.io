@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MetricsService - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.micrometer</a>&nbsp;/&nbsp;<a href=".">MetricsService</a><br/>
+<br/>
+<h1>MetricsService</h1>
+<code><span class="keyword">interface </span><span class="identifier">MetricsService</span></code>
+<p>The metrics service mainly allows to return a snapshot of measured objects. This service is derived and adapted from <code>MetricsService</code> in the <em>vertx-dropwizard-metrics</em> module.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Nick Scavelli</a></p>
+<p><strong>Author</strong><br/>
+Joel Takvorian</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.MetricsService$create(io.vertx.core.metrics.Measured)/measured">measured</span><span class="symbol">:</span>&nbsp;<span class="identifier">Measured</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MetricsService</span></code>
+<p>Creates a metric service for a given Measured object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-base-name.html">getBaseName</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getBaseName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-metrics-snapshot.html">getMetricsSnapshot</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getMetricsSnapshot</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonObject</span></code>
+<p>Will return the metrics that correspond with the <code>measured</code> object, null if no metrics is available.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getMetricsSnapshot</span><span class="symbol">(</span><span class="identifier" id="io.vertx.micrometer.MetricsService$getMetricsSnapshot(kotlin.String)/baseName">baseName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonObject</span></code>
+<p>Will return the metrics that begins with the <code>baseName</code>, null if no metrics is available.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="metrics-names.html">metricsNames</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">metricsNames</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

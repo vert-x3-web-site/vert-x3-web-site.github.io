@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EventBusMetrics - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.core.spi.metrics</a>&nbsp;/&nbsp;<a href=".">EventBusMetrics</a><br/>
+<br/>
+<h1>EventBusMetrics</h1>
+<code><span class="keyword">interface </span><span class="identifier">EventBusMetrics</span><span class="symbol">&lt;</span><span class="identifier">H</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Metrics</span></code>
+<p>The event bus metrics SPI which Vert.x will use to call when each event occurs.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Nick Scavelli</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="begin-handle-message.html">beginHandleMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">beginHandleMessage</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$beginHandleMessage(io.vertx.core.spi.metrics.EventBusMetrics.H, kotlin.Boolean)/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">H</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$beginHandleMessage(io.vertx.core.spi.metrics.EventBusMetrics.H, kotlin.Boolean)/local">local</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Called when an handler begin to process a message. The thread model depends on the actual context thats registered the handler. Event loop context This method is invoked with the handler event loop thread. Worker context This method is invoked with a worker thread.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="end-handle-message.html">endHandleMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">endHandleMessage</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$endHandleMessage(io.vertx.core.spi.metrics.EventBusMetrics.H, kotlin.Throwable)/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">H</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$endHandleMessage(io.vertx.core.spi.metrics.EventBusMetrics.H, kotlin.Throwable)/failure">failure</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Called when an handler finish to process a message. The thread model depends on the actual context thats registered the handler. Event loop context This method is invoked with the handler event loop thread. Worker context This method is invoked with a worker thread.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="handler-registered.html">handlerRegistered</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">handlerRegistered</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$handlerRegistered(kotlin.String, kotlin.String)/address">address</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$handlerRegistered(kotlin.String, kotlin.String)/repliedAddress">repliedAddress</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">H</span></code>
+<p>Called when a handler is registered on the event bus. No specific thread and context can be expected when this method is called.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="handler-unregistered.html">handlerUnregistered</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">handlerUnregistered</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$handlerUnregistered(io.vertx.core.spi.metrics.EventBusMetrics.H)/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">H</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Called when a handler has been unregistered from the event bus. No specific thread and context can be expected when this method is called.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="message-read.html">messageRead</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">messageRead</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$messageRead(kotlin.String, kotlin.Int)/address">address</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$messageRead(kotlin.String, kotlin.Int)/numberOfBytes">numberOfBytes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>A message has been received from the network. No specific thread and context can be expected when this method is called.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="message-received.html">messageReceived</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">messageReceived</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$messageReceived(kotlin.String, kotlin.Boolean, kotlin.Boolean, kotlin.Int)/address">address</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$messageReceived(kotlin.String, kotlin.Boolean, kotlin.Boolean, kotlin.Int)/publish">publish</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$messageReceived(kotlin.String, kotlin.Boolean, kotlin.Boolean, kotlin.Int)/local">local</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$messageReceived(kotlin.String, kotlin.Boolean, kotlin.Boolean, kotlin.Int)/handlers">handlers</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Called when a message is received. No specific thread and context can be expected when this method is called.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="message-sent.html">messageSent</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">messageSent</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$messageSent(kotlin.String, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/address">address</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$messageSent(kotlin.String, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/publish">publish</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$messageSent(kotlin.String, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/local">local</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$messageSent(kotlin.String, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/remote">remote</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Called when a message has been sent or published. No specific thread and context can be expected when this method is called.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="message-written.html">messageWritten</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">messageWritten</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$messageWritten(kotlin.String, kotlin.Int)/address">address</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$messageWritten(kotlin.String, kotlin.Int)/numberOfBytes">numberOfBytes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>A message has been sent over the network. No specific thread and context can be expected when this method is called.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="reply-failure.html">replyFailure</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">replyFailure</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$replyFailure(kotlin.String, io.vertx.core.eventbus.ReplyFailure)/address">address</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$replyFailure(kotlin.String, io.vertx.core.eventbus.ReplyFailure)/failure">failure</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.eventbus/-reply-failure/index.html"><span class="identifier">ReplyFailure</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Called whenever the event bus delivers a reply failure to the sender/publisher, the io.vertx.core.eventbus.ReplyFailure indicates the nature of the failure. No specific thread and context can be expected when this method is called.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="schedule-message.html">scheduleMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">scheduleMessage</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$scheduleMessage(io.vertx.core.spi.metrics.EventBusMetrics.H, kotlin.Boolean)/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">H</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.metrics.EventBusMetrics$scheduleMessage(io.vertx.core.spi.metrics.EventBusMetrics.H, kotlin.Boolean)/local">local</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Schedule a message for processing. No specific thread and context can be expected when this method is called.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

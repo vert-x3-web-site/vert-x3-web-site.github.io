@@ -1,0 +1,202 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JsonParser - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.parsetools</a>&nbsp;/&nbsp;<a href=".">JsonParser</a><br/>
+<br/>
+<h1>JsonParser</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JsonParser</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.streams/-read-stream/index.html"><span class="identifier">ReadStream</span></a><span class="symbol">&lt;</span><a href="../-json-event/index.html"><span class="identifier">JsonEvent</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span></code>
+<p>A parser class which allows to incrementally parse json elements and emit json parse events instead of parsing a json element fully. This parser is convenient for parsing large json structures.  The parser also parses concatenated json streams or line delimited json streams.  The parser can also parse entire object or array when it is convenient, for instance a very large array of small objects can be parsed efficiently by handling array <em>start</em>/<em>end</em> and <em>object</em> events.  Whenever the parser fails to parse or process the stream, the <code><a href="#">io.vertx.reactivex.core.parsetools.JsonParser#exceptionHandler</a></code> is called with the cause of the failure and the current handling stops. After such event, the parser should not handle data anymore.  NOTE: This class has been automatically generated from the io.vertx.core.parsetools.JsonParser non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JsonParser</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.JsonParser$<init>(io.vertx.core.parsetools.JsonParser)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.parsetools/-json-parser/index.html"><span class="identifier">JsonParser</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">JsonParser</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="array-event-mode.html">arrayEventMode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">arrayEventMode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonParser</span></code>
+<p>Flip the parser to emit a stream of events for each new json array.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="array-value-mode.html">arrayValueMode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">arrayValueMode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonParser</span></code>
+<p>Flip the parser to emit a single value event for each new json array.  Json array currently streamed won't be affected.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="end.html">end</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">end</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>End the stream, this must be called after all the json stream has been processed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="end-handler.html">endHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">endHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.JsonParser$endHandler(io.vertx.core.Handler((java.lang.Void)))/endHandler">endHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonParser</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.JsonParser$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="exception-handler.html">exceptionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">exceptionHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.JsonParser$exceptionHandler(io.vertx.core.Handler((kotlin.Throwable)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonParser</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.core.parsetools/-json-parser/index.html"><span class="identifier">JsonParser</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="handle.html">handle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">handle</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.JsonParser$handle(io.vertx.reactivex.core.buffer.Buffer)/event">event</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Something has happened, so handle it.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="handler.html">handler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">handler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.JsonParser$handler(io.vertx.core.Handler((io.vertx.reactivex.core.parsetools.JsonEvent)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../-json-event/index.html"><span class="identifier">JsonEvent</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonParser</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.JsonParser$newInstance(io.vertx.core.parsetools.JsonParser)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.parsetools/-json-parser/index.html"><span class="identifier">JsonParser</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonParser</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-parser.html">newParser</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newParser</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonParser</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newParser</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.JsonParser$newParser(io.vertx.reactivex.core.streams.ReadStream((io.vertx.reactivex.core.buffer.Buffer)))/stream">stream</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.streams/-read-stream/index.html"><span class="identifier">ReadStream</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonParser</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newParser</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.JsonParser$newParser(io.reactivex.Flowable((io.vertx.reactivex.core.buffer.Buffer)))/stream">stream</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Flowable.html"><span class="identifier">Flowable</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonParser</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newParser</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.JsonParser$newParser(io.reactivex.Observable((io.vertx.reactivex.core.buffer.Buffer)))/stream">stream</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Observable.html"><span class="identifier">Observable</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonParser</span></code>
+<p>Create a new <code>JsonParser</code> instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="object-event-mode.html">objectEventMode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">objectEventMode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonParser</span></code>
+<p>Flip the parser to emit a stream of events for each new json object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="object-value-mode.html">objectValueMode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">objectValueMode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonParser</span></code>
+<p>Flip the parser to emit a single value event for each new json object.  Json object currently streamed won't be affected.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="pause.html">pause</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">pause</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonParser</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="resume.html">resume</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resume</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonParser</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-flowable.html">toFlowable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toFlowable</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Flowable.html"><span class="identifier">Flowable</span></a><span class="symbol">&lt;</span><a href="../-json-event/index.html"><span class="identifier">JsonEvent</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-observable.html">toObservable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toObservable</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Observable.html"><span class="identifier">Observable</span></a><span class="symbol">&lt;</span><a href="../-json-event/index.html"><span class="identifier">JsonEvent</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="write.html">write</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.parsetools.JsonParser$write(io.vertx.reactivex.core.buffer.Buffer)/buffer">buffer</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonParser</span></code>
+<p>Handle a <code>Buffer</code>, pretty much like calling io.vertx.reactivex.core.Handler#handle.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

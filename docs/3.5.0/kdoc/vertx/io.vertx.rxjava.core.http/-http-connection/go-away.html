@@ -1,0 +1,46 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HttpConnection.goAway - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.core.http</a>&nbsp;/&nbsp;<a href="index.html">HttpConnection</a>&nbsp;/&nbsp;<a href=".">goAway</a><br/>
+<br/>
+<h1>goAway</h1>
+<a name="io.vertx.rxjava.core.http.HttpConnection$goAway(kotlin.Long)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">goAway</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.http.HttpConnection$goAway(kotlin.Long)/errorCode">errorCode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">HttpConnection</span></a></code>
+<p>Like <code>io.vertx.rxjava.core.http.HttpConnection#goAway</code> with a last stream id <code>2^31-1</code>.</p>
+<h3>Parameters</h3>
+<p><a name="errorCode"></a>
+<code>errorCode</code> - </p>
+<p><strong>Return</strong><br/>
+</p>
+<a name="io.vertx.rxjava.core.http.HttpConnection$goAway(kotlin.Long, kotlin.Int)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">goAway</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.http.HttpConnection$goAway(kotlin.Long, kotlin.Int)/errorCode">errorCode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.http.HttpConnection$goAway(kotlin.Long, kotlin.Int)/lastStreamId">lastStreamId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">HttpConnection</span></a></code>
+<p>Like <code>io.vertx.rxjava.core.http.HttpConnection#goAway</code> with no buffer.</p>
+<h3>Parameters</h3>
+<p><a name="errorCode"></a>
+<code>errorCode</code> - </p>
+<p><a name="lastStreamId"></a>
+<code>lastStreamId</code> - </p>
+<p><strong>Return</strong><br/>
+</p>
+<a name="io.vertx.rxjava.core.http.HttpConnection$goAway(kotlin.Long, kotlin.Int, io.vertx.rxjava.core.buffer.Buffer)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">goAway</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.http.HttpConnection$goAway(kotlin.Long, kotlin.Int, io.vertx.rxjava.core.buffer.Buffer)/errorCode">errorCode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.http.HttpConnection$goAway(kotlin.Long, kotlin.Int, io.vertx.rxjava.core.buffer.Buffer)/lastStreamId">lastStreamId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.http.HttpConnection$goAway(kotlin.Long, kotlin.Int, io.vertx.rxjava.core.buffer.Buffer)/debugData">debugData</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">HttpConnection</span></a></code>
+<p>Send a go away frame to the remote endpoint of the connection.  <ul> <li>a frame is sent to the to the remote endpoint with the <code>errorCode</code> and <code>debugData</code></li>
+ <li>any stream created after the stream identified by <code>lastStreamId</code> will be closed</li>
+ <li>for an is different than <code>0</code> when all the remaining streams are closed this connection will be closed automatically</li>
+ </ul>
+  This is not implemented for HTTP/1.x.</p>
+<h3>Parameters</h3>
+<p><a name="errorCode"></a>
+<code>errorCode</code> - the error code</p>
+<p><a name="lastStreamId"></a>
+<code>lastStreamId</code> - the last stream id</p>
+<p><a name="debugData"></a>
+<code>debugData</code> - additional debug data sent to the remote endpoint</p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently</p>
+</BODY>
+</HTML>

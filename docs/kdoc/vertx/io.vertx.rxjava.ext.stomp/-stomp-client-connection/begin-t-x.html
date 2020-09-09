@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>StompClientConnection.beginTX - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.ext.stomp</a>&nbsp;/&nbsp;<a href="index.html">StompClientConnection</a>&nbsp;/&nbsp;<a href=".">beginTX</a><br/>
+<br/>
+<h1>beginTX</h1>
+<a name="io.vertx.rxjava.ext.stomp.StompClientConnection$beginTX(kotlin.String, io.vertx.core.Handler((io.vertx.ext.stomp.Frame)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beginTX</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.stomp.StompClientConnection$beginTX(kotlin.String, io.vertx.core.Handler((io.vertx.ext.stomp.Frame)))/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.stomp.StompClientConnection$beginTX(kotlin.String, io.vertx.core.Handler((io.vertx.ext.stomp.Frame)))/receiptHandler">receiptHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Frame</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">StompClientConnection</span></a></code>
+<p>Begins a transaction.</p>
+<h3>Parameters</h3>
+<p><a name="id"></a>
+<code>id</code> - the transaction id, must not be <code>null</code></p>
+<p><a name="receiptHandler"></a>
+<code>receiptHandler</code> - the handler invoked when the <code>RECEIPT</code> frame associated with the transaction begin has been processed by the server. The handler receives the sent frame (<code>BEGIN</code>).</p>
+<p><strong>Return</strong><br/>
+the current io.vertx.rxjava.ext.stomp.StompClientConnection</p>
+<a name="io.vertx.rxjava.ext.stomp.StompClientConnection$beginTX(kotlin.String)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beginTX</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.stomp.StompClientConnection$beginTX(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">StompClientConnection</span></a></code>
+<p>Begins a transaction.</p>
+<h3>Parameters</h3>
+<p><a name="id"></a>
+<code>id</code> - the transaction id, must not be <code>null</code></p>
+<p><strong>Return</strong><br/>
+the current io.vertx.rxjava.ext.stomp.StompClientConnection</p>
+<a name="io.vertx.rxjava.ext.stomp.StompClientConnection$beginTX(kotlin.String, kotlin.collections.MutableMap((kotlin.String, )))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beginTX</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.stomp.StompClientConnection$beginTX(kotlin.String, kotlin.collections.MutableMap((kotlin.String, )))/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.stomp.StompClientConnection$beginTX(kotlin.String, kotlin.collections.MutableMap((kotlin.String, )))/headers">headers</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">StompClientConnection</span></a></code>
+<p>Begins a transaction.</p>
+<h3>Parameters</h3>
+<p><a name="id"></a>
+<code>id</code> - the transaction id, must not be <code>null</code></p>
+<p><a name="headers"></a>
+<code>headers</code> - additional headers to send to the server. The <code>transaction</code> header is replaced by the value passed in the @{code id} parameter</p>
+<p><strong>Return</strong><br/>
+the current io.vertx.rxjava.ext.stomp.StompClientConnection</p>
+<a name="io.vertx.rxjava.ext.stomp.StompClientConnection$beginTX(kotlin.String, kotlin.collections.MutableMap((kotlin.String, )), io.vertx.core.Handler((io.vertx.ext.stomp.Frame)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beginTX</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.stomp.StompClientConnection$beginTX(kotlin.String, kotlin.collections.MutableMap((kotlin.String, )), io.vertx.core.Handler((io.vertx.ext.stomp.Frame)))/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.stomp.StompClientConnection$beginTX(kotlin.String, kotlin.collections.MutableMap((kotlin.String, )), io.vertx.core.Handler((io.vertx.ext.stomp.Frame)))/headers">headers</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.stomp.StompClientConnection$beginTX(kotlin.String, kotlin.collections.MutableMap((kotlin.String, )), io.vertx.core.Handler((io.vertx.ext.stomp.Frame)))/receiptHandler">receiptHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Frame</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">StompClientConnection</span></a></code>
+<p>Begins a transaction.</p>
+<h3>Parameters</h3>
+<p><a name="id"></a>
+<code>id</code> - the transaction id, must not be <code>null</code></p>
+<p><a name="headers"></a>
+<code>headers</code> - additional headers to send to the server. The <code>transaction</code> header is replaced by the value passed in the @{code id} parameter</p>
+<p><a name="receiptHandler"></a>
+<code>receiptHandler</code> - the handler invoked when the <code>RECEIPT</code> frame associated with the transaction begin has been processed by the server. The handler receives the sent frame (<code>BEGIN</code>).</p>
+<p><strong>Return</strong><br/>
+the current io.vertx.rxjava.ext.stomp.StompClientConnection</p>
+</BODY>
+</HTML>

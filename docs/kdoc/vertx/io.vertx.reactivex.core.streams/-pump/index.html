@@ -1,0 +1,135 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Pump - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.streams</a>&nbsp;/&nbsp;<a href=".">Pump</a><br/>
+<br/>
+<h1>Pump</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Pump</span></code>
+<p>Pumps data from a io.vertx.reactivex.core.streams.ReadStream to a io.vertx.reactivex.core.streams.WriteStream and performs flow control where necessary to prevent the write stream buffer from getting overfull. 
+<p> Instances of this class read items from a io.vertx.reactivex.core.streams.ReadStream and write them to a io.vertx.reactivex.core.streams.WriteStream. If data can be read faster than it can be written this could result in the write queue of the io.vertx.reactivex.core.streams.WriteStream growing without bound, eventually causing it to exhaust all available RAM. </p>
+<p> To prevent this, after each write, instances of this class check whether the write queue of the io.vertx.reactivex.core.streams.WriteStream is full, and if so, the io.vertx.reactivex.core.streams.ReadStream is paused, and a <code>drainHandler</code> is set on the io.vertx.reactivex.core.streams.WriteStream. </p>
+<p> When the io.vertx.reactivex.core.streams.WriteStream has processed half of its backlog, the <code>drainHandler</code> will be called, which results in the pump resuming the io.vertx.reactivex.core.streams.ReadStream. </p>
+<p> This class can be used to pump from any io.vertx.reactivex.core.streams.ReadStream to any io.vertx.reactivex.core.streams.WriteStream, e.g. from an io.vertx.reactivex.core.http.HttpServerRequest to an io.vertx.reactivex.core.file.AsyncFile, or from io.vertx.reactivex.core.net.NetSocket to a io.vertx.reactivex.core.http.WebSocket. </p>
+<p> Please see the documentation for more information. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.streams.Pump non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">Pump</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$<init>(io.vertx.core.streams.Pump)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.streams/-pump/index.html"><span class="identifier">Pump</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">Pump</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.core.streams/-pump/index.html"><span class="identifier">Pump</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$newInstance(io.vertx.core.streams.Pump)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.streams/-pump/index.html"><span class="identifier">Pump</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Pump</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="number-pumped.html">numberPumped</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">numberPumped</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the total number of items pumped by this pump.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="pump.html">pump</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">pump</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$pump(io.vertx.reactivex.core.streams.ReadStream((io.vertx.reactivex.core.streams.Pump.pump.T)), io.vertx.reactivex.core.streams.WriteStream((io.vertx.reactivex.core.streams.Pump.pump.T)))/rs">rs</span><span class="symbol">:</span>&nbsp;<a href="../-read-stream/index.html"><span class="identifier">ReadStream</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$pump(io.vertx.reactivex.core.streams.ReadStream((io.vertx.reactivex.core.streams.Pump.pump.T)), io.vertx.reactivex.core.streams.WriteStream((io.vertx.reactivex.core.streams.Pump.pump.T)))/ws">ws</span><span class="symbol">:</span>&nbsp;<a href="../-write-stream/index.html"><span class="identifier">WriteStream</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Pump</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">pump</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$pump(io.reactivex.Flowable((io.vertx.reactivex.core.streams.Pump.pump.T)), io.vertx.reactivex.core.streams.WriteStream((io.vertx.reactivex.core.streams.Pump.pump.T)))/rs">rs</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Flowable.html"><span class="identifier">Flowable</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$pump(io.reactivex.Flowable((io.vertx.reactivex.core.streams.Pump.pump.T)), io.vertx.reactivex.core.streams.WriteStream((io.vertx.reactivex.core.streams.Pump.pump.T)))/ws">ws</span><span class="symbol">:</span>&nbsp;<a href="../-write-stream/index.html"><span class="identifier">WriteStream</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Pump</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">pump</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$pump(io.reactivex.Observable((io.vertx.reactivex.core.streams.Pump.pump.T)), io.vertx.reactivex.core.streams.WriteStream((io.vertx.reactivex.core.streams.Pump.pump.T)))/rs">rs</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Observable.html"><span class="identifier">Observable</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$pump(io.reactivex.Observable((io.vertx.reactivex.core.streams.Pump.pump.T)), io.vertx.reactivex.core.streams.WriteStream((io.vertx.reactivex.core.streams.Pump.pump.T)))/ws">ws</span><span class="symbol">:</span>&nbsp;<a href="../-write-stream/index.html"><span class="identifier">WriteStream</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Pump</span></code>
+<p>Create a new <code>Pump</code> with the given <code>ReadStream</code> and <code>WriteStream</code></p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">pump</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$pump(io.vertx.reactivex.core.streams.ReadStream((io.vertx.reactivex.core.streams.Pump.pump.T)), io.vertx.reactivex.core.streams.WriteStream((io.vertx.reactivex.core.streams.Pump.pump.T)), kotlin.Int)/rs">rs</span><span class="symbol">:</span>&nbsp;<a href="../-read-stream/index.html"><span class="identifier">ReadStream</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$pump(io.vertx.reactivex.core.streams.ReadStream((io.vertx.reactivex.core.streams.Pump.pump.T)), io.vertx.reactivex.core.streams.WriteStream((io.vertx.reactivex.core.streams.Pump.pump.T)), kotlin.Int)/ws">ws</span><span class="symbol">:</span>&nbsp;<a href="../-write-stream/index.html"><span class="identifier">WriteStream</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$pump(io.vertx.reactivex.core.streams.ReadStream((io.vertx.reactivex.core.streams.Pump.pump.T)), io.vertx.reactivex.core.streams.WriteStream((io.vertx.reactivex.core.streams.Pump.pump.T)), kotlin.Int)/writeQueueMaxSize">writeQueueMaxSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Pump</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">pump</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$pump(io.reactivex.Flowable((io.vertx.reactivex.core.streams.Pump.pump.T)), io.vertx.reactivex.core.streams.WriteStream((io.vertx.reactivex.core.streams.Pump.pump.T)), kotlin.Int)/rs">rs</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Flowable.html"><span class="identifier">Flowable</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$pump(io.reactivex.Flowable((io.vertx.reactivex.core.streams.Pump.pump.T)), io.vertx.reactivex.core.streams.WriteStream((io.vertx.reactivex.core.streams.Pump.pump.T)), kotlin.Int)/ws">ws</span><span class="symbol">:</span>&nbsp;<a href="../-write-stream/index.html"><span class="identifier">WriteStream</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$pump(io.reactivex.Flowable((io.vertx.reactivex.core.streams.Pump.pump.T)), io.vertx.reactivex.core.streams.WriteStream((io.vertx.reactivex.core.streams.Pump.pump.T)), kotlin.Int)/writeQueueMaxSize">writeQueueMaxSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Pump</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">pump</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$pump(io.reactivex.Observable((io.vertx.reactivex.core.streams.Pump.pump.T)), io.vertx.reactivex.core.streams.WriteStream((io.vertx.reactivex.core.streams.Pump.pump.T)), kotlin.Int)/rs">rs</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Observable.html"><span class="identifier">Observable</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$pump(io.reactivex.Observable((io.vertx.reactivex.core.streams.Pump.pump.T)), io.vertx.reactivex.core.streams.WriteStream((io.vertx.reactivex.core.streams.Pump.pump.T)), kotlin.Int)/ws">ws</span><span class="symbol">:</span>&nbsp;<a href="../-write-stream/index.html"><span class="identifier">WriteStream</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$pump(io.reactivex.Observable((io.vertx.reactivex.core.streams.Pump.pump.T)), io.vertx.reactivex.core.streams.WriteStream((io.vertx.reactivex.core.streams.Pump.pump.T)), kotlin.Int)/writeQueueMaxSize">writeQueueMaxSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Pump</span></code>
+<p>Create a new <code>Pump</code> with the given <code>ReadStream</code> and <code>WriteStream</code> and <code>writeQueueMaxSize</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-write-queue-max-size.html">setWriteQueueMaxSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setWriteQueueMaxSize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.streams.Pump$setWriteQueueMaxSize(kotlin.Int)/maxSize">maxSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Pump</span></code>
+<p>Set the write queue max size to <code>maxSize</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="start.html">start</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Pump</span></code>
+<p>Start the Pump. The Pump can be started and stopped multiple times.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="stop.html">stop</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Pump</span></code>
+<p>Stop the Pump. The Pump can be started and stopped multiple times.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

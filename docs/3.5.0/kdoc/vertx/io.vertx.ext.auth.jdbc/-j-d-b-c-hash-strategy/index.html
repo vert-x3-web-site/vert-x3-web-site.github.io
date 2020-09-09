@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JDBCHashStrategy - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.auth.jdbc</a>&nbsp;/&nbsp;<a href=".">JDBCHashStrategy</a><br/>
+<br/>
+<h1>JDBCHashStrategy</h1>
+<code><span class="keyword">interface </span><span class="identifier">JDBCHashStrategy</span></code>
+<p>Determines how the hashing is computed in the implementation You can implement this to provide a different hashing strategy to the default.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Tim Fox</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="compute-hash.html">computeHash</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">computeHash</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.jdbc.JDBCHashStrategy$computeHash(kotlin.String, kotlin.String, kotlin.Int)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.auth.jdbc.JDBCHashStrategy$computeHash(kotlin.String, kotlin.String, kotlin.Int)/salt">salt</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.auth.jdbc.JDBCHashStrategy$computeHash(kotlin.String, kotlin.String, kotlin.Int)/version">version</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Compute the hashed password given the unhashed password and the salt</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="generate-salt.html">generateSalt</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">generateSalt</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Compute a random salt.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-hashed-stored-pwd.html">getHashedStoredPwd</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getHashedStoredPwd</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.jdbc.JDBCHashStrategy$getHashedStoredPwd(io.vertx.core.json.JsonArray)/row">row</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Retrieve the hashed password from the result of the authentication query</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-salt.html">getSalt</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getSalt</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.jdbc.JDBCHashStrategy$getSalt(io.vertx.core.json.JsonArray)/row">row</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Retrieve the salt from the result of the authentication query</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-nonces.html">setNonces</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setNonces</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.jdbc.JDBCHashStrategy$setNonces(kotlin.collections.MutableList((kotlin.String)))/nonces">nonces</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets a ordered list of nonces where each position corresponds to a version. The nonces are supposed not to be stored in the underlying jdbc storage but to be provided as a application configuration. The idea is to add one extra variable to the hash function in order to make breaking the passwords using rainbow tables or precomputed hashes harder. Leaving the attacker only with the brute force approach.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

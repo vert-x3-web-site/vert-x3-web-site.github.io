@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>FromBasedConverter - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.core.cli.converters</a>&nbsp;/&nbsp;<a href=".">FromBasedConverter</a><br/>
+<br/>
+<h1>FromBasedConverter</h1>
+<code><span class="keyword">class </span><span class="identifier">FromBasedConverter</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Converter</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>This 'default' converter tries to create objects using a static 'from' method taking a single String argument. This converter is particularly convenient for builders.</p>
+<h3>Parameters</h3>
+<p><a name="&lt;T&gt;"></a>
+<code><T></code> - the built type.</p>
+<p><strong>Author</strong><br/>
+Clement Escoffier </p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-f-r-o-m.html">FROM</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">FROM</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="from-string.html">fromString</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">fromString</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.cli.converters.FromBasedConverter$fromString(kotlin.String)/input">input</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Converts the given input to an object by using the 'from' method. Notice that the method may receive a null value.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-if-eligible.html">getIfEligible</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">getIfEligible</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.cli.converters.FromBasedConverter$getIfEligible(java.lang.Class((io.vertx.core.cli.converters.FromBasedConverter.getIfEligible.T)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html"><span class="identifier">Class</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FromBasedConverter</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Checks whether the given class can be used by the FromBasedConverter (i.e. has a static 'from' method taking a single String as argument). If so, creates a new instance of converter for this type.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

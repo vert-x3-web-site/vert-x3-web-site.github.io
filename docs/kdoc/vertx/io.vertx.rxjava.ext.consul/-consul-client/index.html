@@ -1,0 +1,1422 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ConsulClient - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.ext.consul</a>&nbsp;/&nbsp;<a href=".">ConsulClient</a><br/>
+<br/>
+<h1>ConsulClient</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConsulClient</span></code>
+<p>A Vert.x service used to interact with Consul.  NOTE: This class has been automatically generated from the io.vertx.ext.consul.ConsulClient non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ConsulClient</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$<init>(io.vertx.ext.consul.ConsulClient)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConsulClient</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><span class="identifier">TypeArg</span><span class="symbol">&lt;</span><span class="identifier">ConsulClient</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="agent-info.html">agentInfo</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">agentInfo</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$agentInfo(io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonObject)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the configuration and member information of the local agent</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="catalog-datacenters.html">catalogDatacenters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">catalogDatacenters</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$catalogDatacenters(io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Return all the datacenters that are known by the Consul server</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="catalog-node-services.html">catalogNodeServices</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">catalogNodeServices</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$catalogNodeServices(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceList)))))/node">node</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$catalogNodeServices(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">ServiceList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the node's registered services</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="catalog-node-services-with-options.html">catalogNodeServicesWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">catalogNodeServicesWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$catalogNodeServicesWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceList)))))/node">node</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$catalogNodeServicesWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceList)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$catalogNodeServicesWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">ServiceList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the node's registered services This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#catalogNodeServices</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="catalog-nodes.html">catalogNodes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">catalogNodes</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$catalogNodes(io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.NodeList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">NodeList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the nodes registered in a datacenter</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="catalog-nodes-with-options.html">catalogNodesWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">catalogNodesWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$catalogNodesWithOptions(io.vertx.ext.consul.NodeQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.NodeList)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">NodeQueryOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$catalogNodesWithOptions(io.vertx.ext.consul.NodeQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.NodeList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">NodeList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the nodes registered in a datacenter</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="catalog-service-nodes.html">catalogServiceNodes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">catalogServiceNodes</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$catalogServiceNodes(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceList)))))/service">service</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$catalogServiceNodes(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">ServiceList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the nodes providing a service</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="catalog-service-nodes-with-options.html">catalogServiceNodesWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">catalogServiceNodesWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$catalogServiceNodesWithOptions(kotlin.String, io.vertx.ext.consul.ServiceQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceList)))))/service">service</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$catalogServiceNodesWithOptions(kotlin.String, io.vertx.ext.consul.ServiceQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceList)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServiceQueryOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$catalogServiceNodesWithOptions(kotlin.String, io.vertx.ext.consul.ServiceQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">ServiceList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the nodes providing a service</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="catalog-services.html">catalogServices</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">catalogServices</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$catalogServices(io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">ServiceList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the services registered in a datacenter</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="catalog-services-with-options.html">catalogServicesWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">catalogServicesWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$catalogServicesWithOptions(io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceList)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$catalogServicesWithOptions(io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">ServiceList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the services registered in a datacenter This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#catalogServices</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="clone-acl-token.html">cloneAclToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">cloneAclToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$cloneAclToken(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$cloneAclToken(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/idHandler">idHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Clone Acl token</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the client and release its resources</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="coordinate-datacenters.html">coordinateDatacenters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">coordinateDatacenters</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$coordinateDatacenters(io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((io.vertx.ext.consul.DcCoordinates)))))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">DcCoordinates</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the WAN network coordinates for all Consul servers, organized by DCs</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="coordinate-nodes.html">coordinateNodes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">coordinateNodes</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$coordinateNodes(io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.CoordinateList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">CoordinateList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the LAN network coordinates for all nodes in a given DC</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="coordinate-nodes-with-options.html">coordinateNodesWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">coordinateNodesWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$coordinateNodesWithOptions(io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.CoordinateList)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$coordinateNodesWithOptions(io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.CoordinateList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">CoordinateList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the LAN network coordinates for all nodes in a given DC This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#coordinateNodes</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$create(io.vertx.rxjava.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Create a Consul client with default options.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$create(io.vertx.rxjava.core.Vertx, io.vertx.ext.consul.ConsulClientOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$create(io.vertx.rxjava.core.Vertx, io.vertx.ext.consul.ConsulClientOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConsulClientOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Create a Consul client.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-acl-token.html">createAclToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createAclToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$createAclToken(io.vertx.ext.consul.AclToken, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/token">token</span><span class="symbol">:</span>&nbsp;<span class="identifier">AclToken</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$createAclToken(io.vertx.ext.consul.AclToken, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/idHandler">idHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Create new Acl token</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-prepared-query.html">createPreparedQuery</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createPreparedQuery</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$createPreparedQuery(io.vertx.ext.consul.PreparedQueryDefinition, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/definition">definition</span><span class="symbol">:</span>&nbsp;<span class="identifier">PreparedQueryDefinition</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$createPreparedQuery(io.vertx.ext.consul.PreparedQueryDefinition, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create-session.html">createSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createSession</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$createSession(io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/idHandler">idHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Initialize a new session</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-session-with-options.html">createSessionWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createSessionWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$createSessionWithOptions(io.vertx.ext.consul.SessionOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">SessionOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$createSessionWithOptions(io.vertx.ext.consul.SessionOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/idHandler">idHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Initialize a new session</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="delete-prepared-query.html">deletePreparedQuery</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">deletePreparedQuery</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$deletePreparedQuery(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$deletePreparedQuery(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Deletes an existing prepared query</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="delete-value.html">deleteValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">deleteValue</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$deleteValue(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$deleteValue(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Remove the key/value pair that corresponding to the specified key</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="delete-values.html">deleteValues</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">deleteValues</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$deleteValues(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/keyPrefix">keyPrefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$deleteValues(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Removes all the key/value pair that corresponding to the specified key prefix</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="deregister-check.html">deregisterCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">deregisterCheck</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$deregisterCheck(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$deregisterCheck(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Remove a check from the local agent. The agent will take care of deregistering the check from the Catalog.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="deregister-service.html">deregisterService</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">deregisterService</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$deregisterService(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$deregisterService(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Remove a service from the local agent. The agent will take care of deregistering the service with the Catalog. If there is an associated check, that is also deregistered.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy-acl-token.html">destroyAclToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroyAclToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$destroyAclToken(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$destroyAclToken(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Destroy Acl token</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy-session.html">destroySession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroySession</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$destroySession(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$destroySession(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Destroys the given session</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="execute-prepared-query.html">executePreparedQuery</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">executePreparedQuery</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$executePreparedQuery(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.PreparedQueryExecuteResponse)))))/query">query</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$executePreparedQuery(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.PreparedQueryExecuteResponse)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">PreparedQueryExecuteResponse</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Executes an existing prepared query.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="execute-prepared-query-with-options.html">executePreparedQueryWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">executePreparedQueryWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$executePreparedQueryWithOptions(kotlin.String, io.vertx.ext.consul.PreparedQueryExecuteOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.PreparedQueryExecuteResponse)))))/query">query</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$executePreparedQueryWithOptions(kotlin.String, io.vertx.ext.consul.PreparedQueryExecuteOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.PreparedQueryExecuteResponse)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">PreparedQueryExecuteOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$executePreparedQueryWithOptions(kotlin.String, io.vertx.ext.consul.PreparedQueryExecuteOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.PreparedQueryExecuteResponse)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">PreparedQueryExecuteResponse</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Executes an existing prepared query.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="fail-check.html">failCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">failCheck</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$failCheck(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$failCheck(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Set status of the check to "critical". Used with a check that is of the TTL type. The TTL clock will be reset.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="fail-check-with-note.html">failCheckWithNote</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">failCheckWithNote</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$failCheckWithNote(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$failCheckWithNote(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/note">note</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$failCheckWithNote(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Set status of the check to "critical". Used with a check that is of the TTL type. The TTL clock will be reset.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="fire-event.html">fireEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fireEvent</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$fireEvent(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.Event)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$fireEvent(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.Event)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Event</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Fires a new user event</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="fire-event-with-options.html">fireEventWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fireEventWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$fireEventWithOptions(kotlin.String, io.vertx.ext.consul.EventOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.Event)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$fireEventWithOptions(kotlin.String, io.vertx.ext.consul.EventOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.Event)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">EventOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$fireEventWithOptions(kotlin.String, io.vertx.ext.consul.EventOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.Event)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Event</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Fires a new user event</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-all-prepared-queries.html">getAllPreparedQueries</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAllPreparedQueries</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getAllPreparedQueries(io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((io.vertx.ext.consul.PreparedQueryDefinition)))))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">PreparedQueryDefinition</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns a list of all prepared queries.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-keys.html">getKeys</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getKeys</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getKeys(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/keyPrefix">keyPrefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getKeys(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the list of keys that corresponding to the specified key prefix.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-keys-with-options.html">getKeysWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getKeysWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getKeysWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/keyPrefix">keyPrefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getKeysWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getKeysWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the list of keys that corresponding to the specified key prefix.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-prepared-query.html">getPreparedQuery</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPreparedQuery</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getPreparedQuery(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.PreparedQueryDefinition)))))/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getPreparedQuery(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.PreparedQueryDefinition)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">PreparedQueryDefinition</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns an existing prepared query</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-value.html">getValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getValue</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getValue(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.KeyValue)))))/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getValue(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.KeyValue)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">KeyValue</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns key/value pair that corresponding to the specified key. An empty io.vertx.ext.consul.KeyValue object will be returned if no such key is found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-value-with-options.html">getValueWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getValueWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getValueWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.KeyValue)))))/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getValueWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.KeyValue)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getValueWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.KeyValue)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">KeyValue</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns key/value pair that corresponding to the specified key. An empty io.vertx.ext.consul.KeyValue object will be returned if no such key is found. This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#getValue</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-values.html">getValues</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getValues</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getValues(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.KeyValueList)))))/keyPrefix">keyPrefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getValues(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.KeyValueList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">KeyValueList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the list of key/value pairs that corresponding to the specified key prefix. An empty io.vertx.ext.consul.KeyValueList object will be returned if no such key prefix is found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-values-with-options.html">getValuesWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getValuesWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getValuesWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.KeyValueList)))))/keyPrefix">keyPrefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getValuesWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.KeyValueList)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$getValuesWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.KeyValueList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">KeyValueList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the list of key/value pairs that corresponding to the specified key prefix. An empty io.vertx.ext.consul.KeyValueList object will be returned if no such key prefix is found. This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#getValues</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="health-checks.html">healthChecks</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">healthChecks</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$healthChecks(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.CheckList)))))/service">service</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$healthChecks(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.CheckList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">CheckList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the checks associated with the service</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="health-checks-with-options.html">healthChecksWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">healthChecksWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$healthChecksWithOptions(kotlin.String, io.vertx.ext.consul.CheckQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.CheckList)))))/service">service</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$healthChecksWithOptions(kotlin.String, io.vertx.ext.consul.CheckQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.CheckList)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">CheckQueryOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$healthChecksWithOptions(kotlin.String, io.vertx.ext.consul.CheckQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.CheckList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">CheckList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the checks associated with the service</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="health-service-nodes.html">healthServiceNodes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">healthServiceNodes</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$healthServiceNodes(kotlin.String, kotlin.Boolean, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceEntryList)))))/service">service</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$healthServiceNodes(kotlin.String, kotlin.Boolean, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceEntryList)))))/passing">passing</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$healthServiceNodes(kotlin.String, kotlin.Boolean, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceEntryList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">ServiceEntryList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the nodes providing the service. This endpoint is very similar to the <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#catalogServiceNodes</a></code> endpoint; however, this endpoint automatically returns the status of the associated health check as well as any system level health checks.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="health-service-nodes-with-options.html">healthServiceNodesWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">healthServiceNodesWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$healthServiceNodesWithOptions(kotlin.String, kotlin.Boolean, io.vertx.ext.consul.ServiceQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceEntryList)))))/service">service</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$healthServiceNodesWithOptions(kotlin.String, kotlin.Boolean, io.vertx.ext.consul.ServiceQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceEntryList)))))/passing">passing</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$healthServiceNodesWithOptions(kotlin.String, kotlin.Boolean, io.vertx.ext.consul.ServiceQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceEntryList)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServiceQueryOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$healthServiceNodesWithOptions(kotlin.String, kotlin.Boolean, io.vertx.ext.consul.ServiceQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.ServiceEntryList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">ServiceEntryList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the nodes providing the service. This endpoint is very similar to the <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#catalogServiceNodesWithOptions</a></code> endpoint; however, this endpoint automatically returns the status of the associated health check as well as any system level health checks.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="health-state.html">healthState</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">healthState</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$healthState(io.vertx.ext.consul.CheckStatus, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.CheckList)))))/checkStatus">checkStatus</span><span class="symbol">:</span>&nbsp;<span class="identifier">CheckStatus</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$healthState(io.vertx.ext.consul.CheckStatus, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.CheckList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">CheckList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the checks in the specified status</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="health-state-with-options.html">healthStateWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">healthStateWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$healthStateWithOptions(io.vertx.ext.consul.CheckStatus, io.vertx.ext.consul.CheckQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.CheckList)))))/checkStatus">checkStatus</span><span class="symbol">:</span>&nbsp;<span class="identifier">CheckStatus</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$healthStateWithOptions(io.vertx.ext.consul.CheckStatus, io.vertx.ext.consul.CheckQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.CheckList)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">CheckQueryOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$healthStateWithOptions(io.vertx.ext.consul.CheckStatus, io.vertx.ext.consul.CheckQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.CheckList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">CheckList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the checks in the specified status</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="info-acl-token.html">infoAclToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">infoAclToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$infoAclToken(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.AclToken)))))/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$infoAclToken(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.AclToken)))))/tokenHandler">tokenHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">AclToken</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Get info of Acl token</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="info-session.html">infoSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">infoSession</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$infoSession(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.Session)))))/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$infoSession(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.Session)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Session</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the requested session information</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="info-session-with-options.html">infoSessionWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">infoSessionWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$infoSessionWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.Session)))))/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$infoSessionWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.Session)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$infoSessionWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.Session)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Session</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the requested session information This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#infoSession</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="leader-status.html">leaderStatus</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">leaderStatus</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$leaderStatus(io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Get the Raft leader for the datacenter in which the agent is running. It returns an address in format "<code>10.1.10.12:8300</code>"</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="list-acl-tokens.html">listAclTokens</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listAclTokens</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$listAclTokens(io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((io.vertx.ext.consul.AclToken)))))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">AclToken</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Get list of Acl token</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="list-events.html">listEvents</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listEvents</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$listEvents(io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.EventList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">EventList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the most recent events known by the agent</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="list-events-with-options.html">listEventsWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listEventsWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$listEventsWithOptions(io.vertx.ext.consul.EventListOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.EventList)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">EventListOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$listEventsWithOptions(io.vertx.ext.consul.EventListOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.EventList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">EventList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the most recent events known by the agent. This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#listEvents</a></code>. However, the semantics of this endpoint are slightly different. Most blocking queries provide a monotonic index and block until a newer index is available. This can be supported as a consequence of the total ordering of the consensus protocol. With gossip, there is no ordering, and instead <code>X-Consul-Index</code> maps to the newest event that matches the query. 
+<p> In practice, this means the index is only useful when used against a single agent and has no meaning globally. Because Consul defines the index as being opaque, clients should not be expecting a natural ordering either.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="list-node-sessions.html">listNodeSessions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listNodeSessions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$listNodeSessions(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.SessionList)))))/nodeId">nodeId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$listNodeSessions(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.SessionList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">SessionList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the active sessions for a given node</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="list-node-sessions-with-options.html">listNodeSessionsWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listNodeSessionsWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$listNodeSessionsWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.SessionList)))))/nodeId">nodeId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$listNodeSessionsWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.SessionList)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$listNodeSessionsWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.SessionList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">SessionList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the active sessions for a given node This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#listNodeSessions</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="list-sessions.html">listSessions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listSessions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$listSessions(io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.SessionList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">SessionList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the active sessions</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="list-sessions-with-options.html">listSessionsWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listSessionsWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$listSessionsWithOptions(io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.SessionList)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$listSessionsWithOptions(io.vertx.ext.consul.BlockingQueryOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.SessionList)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">SessionList</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns the active sessions This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#listSessions</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="local-checks.html">localChecks</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">localChecks</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$localChecks(io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((io.vertx.ext.consul.Check)))))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Check</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Return all the checks that are registered with the local agent.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="local-services.html">localServices</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">localServices</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$localServices(io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((io.vertx.ext.consul.Service)))))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Service</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Returns list of services registered with the local agent.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="maintenance-service.html">maintenanceService</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">maintenanceService</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$maintenanceService(io.vertx.ext.consul.MaintenanceOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/maintenanceOptions">maintenanceOptions</span><span class="symbol">:</span>&nbsp;<span class="identifier">MaintenanceOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$maintenanceService(io.vertx.ext.consul.MaintenanceOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Places a given service into "maintenance mode"</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$newInstance(io.vertx.ext.consul.ConsulClient)/arg">arg</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConsulClient</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="pass-check.html">passCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">passCheck</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$passCheck(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$passCheck(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Set status of the check to "passing". Used with a check that is of the TTL type. The TTL clock will be reset.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="pass-check-with-note.html">passCheckWithNote</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">passCheckWithNote</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$passCheckWithNote(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$passCheckWithNote(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/note">note</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$passCheckWithNote(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Set status of the check to "passing". Used with a check that is of the TTL type. The TTL clock will be reset.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="peers-status.html">peersStatus</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">peersStatus</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$peersStatus(io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.collections.MutableList((kotlin.String)))))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Retrieves the Raft peers for the datacenter in which the the agent is running. It returns a list of addresses "<code>10.1.10.12:8300</code>", "<code>10.1.10.13:8300</code>"</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="put-value.html">putValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">putValue</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$putValue(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Boolean)))))/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$putValue(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Boolean)))))/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$putValue(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Boolean)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Adds specified key/value pair</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="put-value-with-options.html">putValueWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">putValueWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$putValueWithOptions(kotlin.String, kotlin.String, io.vertx.ext.consul.KeyValueOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Boolean)))))/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$putValueWithOptions(kotlin.String, kotlin.String, io.vertx.ext.consul.KeyValueOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Boolean)))))/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$putValueWithOptions(kotlin.String, kotlin.String, io.vertx.ext.consul.KeyValueOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Boolean)))))/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">KeyValueOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$putValueWithOptions(kotlin.String, kotlin.String, io.vertx.ext.consul.KeyValueOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Boolean)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="register-check.html">registerCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerCheck</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$registerCheck(io.vertx.ext.consul.CheckOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/checkOptions">checkOptions</span><span class="symbol">:</span>&nbsp;<span class="identifier">CheckOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$registerCheck(io.vertx.ext.consul.CheckOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Add a new check to the local agent. The agent is responsible for managing the status of the check and keeping the Catalog in sync.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="register-service.html">registerService</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerService</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$registerService(io.vertx.ext.consul.ServiceOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/serviceOptions">serviceOptions</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServiceOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$registerService(io.vertx.ext.consul.ServiceOptions, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Adds a new service, with an optional health check, to the local agent.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="renew-session.html">renewSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">renewSession</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$renewSession(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.Session)))))/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$renewSession(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.Session)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Session</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Renews the given session. This is used with sessions that have a TTL, and it extends the expiration by the TTL</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-agent-info.html">rxAgentInfo</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxAgentInfo</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span></code>
+<p>Returns the configuration and member information of the local agent</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-catalog-datacenters.html">rxCatalogDatacenters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCatalogDatacenters</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Return all the datacenters that are known by the Consul server</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-catalog-node-services.html">rxCatalogNodeServices</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCatalogNodeServices</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxCatalogNodeServices(kotlin.String)/node">node</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">ServiceList</span><span class="symbol">&gt;</span></code>
+<p>Returns the node's registered services</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-catalog-node-services-with-options.html">rxCatalogNodeServicesWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCatalogNodeServicesWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxCatalogNodeServicesWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions)/node">node</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxCatalogNodeServicesWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">ServiceList</span><span class="symbol">&gt;</span></code>
+<p>Returns the node's registered services This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#catalogNodeServices</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-catalog-nodes.html">rxCatalogNodes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCatalogNodes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">NodeList</span><span class="symbol">&gt;</span></code>
+<p>Returns the nodes registered in a datacenter</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-catalog-nodes-with-options.html">rxCatalogNodesWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCatalogNodesWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxCatalogNodesWithOptions(io.vertx.ext.consul.NodeQueryOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">NodeQueryOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">NodeList</span><span class="symbol">&gt;</span></code>
+<p>Returns the nodes registered in a datacenter</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-catalog-service-nodes.html">rxCatalogServiceNodes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCatalogServiceNodes</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxCatalogServiceNodes(kotlin.String)/service">service</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">ServiceList</span><span class="symbol">&gt;</span></code>
+<p>Returns the nodes providing a service</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-catalog-service-nodes-with-options.html">rxCatalogServiceNodesWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCatalogServiceNodesWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxCatalogServiceNodesWithOptions(kotlin.String, io.vertx.ext.consul.ServiceQueryOptions)/service">service</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxCatalogServiceNodesWithOptions(kotlin.String, io.vertx.ext.consul.ServiceQueryOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServiceQueryOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">ServiceList</span><span class="symbol">&gt;</span></code>
+<p>Returns the nodes providing a service</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-catalog-services.html">rxCatalogServices</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCatalogServices</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">ServiceList</span><span class="symbol">&gt;</span></code>
+<p>Returns the services registered in a datacenter</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-catalog-services-with-options.html">rxCatalogServicesWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCatalogServicesWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxCatalogServicesWithOptions(io.vertx.ext.consul.BlockingQueryOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">ServiceList</span><span class="symbol">&gt;</span></code>
+<p>Returns the services registered in a datacenter This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#catalogServices</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-clone-acl-token.html">rxCloneAclToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCloneAclToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxCloneAclToken(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Clone Acl token</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-coordinate-datacenters.html">rxCoordinateDatacenters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCoordinateDatacenters</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">DcCoordinates</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Returns the WAN network coordinates for all Consul servers, organized by DCs</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-coordinate-nodes.html">rxCoordinateNodes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCoordinateNodes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">CoordinateList</span><span class="symbol">&gt;</span></code>
+<p>Returns the LAN network coordinates for all nodes in a given DC</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-coordinate-nodes-with-options.html">rxCoordinateNodesWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCoordinateNodesWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxCoordinateNodesWithOptions(io.vertx.ext.consul.BlockingQueryOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">CoordinateList</span><span class="symbol">&gt;</span></code>
+<p>Returns the LAN network coordinates for all nodes in a given DC This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#coordinateNodes</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-create-acl-token.html">rxCreateAclToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCreateAclToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxCreateAclToken(io.vertx.ext.consul.AclToken)/token">token</span><span class="symbol">:</span>&nbsp;<span class="identifier">AclToken</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Create new Acl token</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-create-prepared-query.html">rxCreatePreparedQuery</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCreatePreparedQuery</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxCreatePreparedQuery(io.vertx.ext.consul.PreparedQueryDefinition)/definition">definition</span><span class="symbol">:</span>&nbsp;<span class="identifier">PreparedQueryDefinition</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-create-session.html">rxCreateSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCreateSession</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Initialize a new session</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-create-session-with-options.html">rxCreateSessionWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxCreateSessionWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxCreateSessionWithOptions(io.vertx.ext.consul.SessionOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">SessionOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Initialize a new session</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-delete-prepared-query.html">rxDeletePreparedQuery</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxDeletePreparedQuery</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxDeletePreparedQuery(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Deletes an existing prepared query</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-delete-value.html">rxDeleteValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxDeleteValue</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxDeleteValue(kotlin.String)/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Remove the key/value pair that corresponding to the specified key</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-delete-values.html">rxDeleteValues</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxDeleteValues</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxDeleteValues(kotlin.String)/keyPrefix">keyPrefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Removes all the key/value pair that corresponding to the specified key prefix</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-deregister-check.html">rxDeregisterCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxDeregisterCheck</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxDeregisterCheck(kotlin.String)/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Remove a check from the local agent. The agent will take care of deregistering the check from the Catalog.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-deregister-service.html">rxDeregisterService</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxDeregisterService</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxDeregisterService(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Remove a service from the local agent. The agent will take care of deregistering the service with the Catalog. If there is an associated check, that is also deregistered.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-destroy-acl-token.html">rxDestroyAclToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxDestroyAclToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxDestroyAclToken(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Destroy Acl token</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-destroy-session.html">rxDestroySession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxDestroySession</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxDestroySession(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Destroys the given session</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-execute-prepared-query.html">rxExecutePreparedQuery</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxExecutePreparedQuery</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxExecutePreparedQuery(kotlin.String)/query">query</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">PreparedQueryExecuteResponse</span><span class="symbol">&gt;</span></code>
+<p>Executes an existing prepared query.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-execute-prepared-query-with-options.html">rxExecutePreparedQueryWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxExecutePreparedQueryWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxExecutePreparedQueryWithOptions(kotlin.String, io.vertx.ext.consul.PreparedQueryExecuteOptions)/query">query</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxExecutePreparedQueryWithOptions(kotlin.String, io.vertx.ext.consul.PreparedQueryExecuteOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">PreparedQueryExecuteOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">PreparedQueryExecuteResponse</span><span class="symbol">&gt;</span></code>
+<p>Executes an existing prepared query.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-fail-check.html">rxFailCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxFailCheck</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxFailCheck(kotlin.String)/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Set status of the check to "critical". Used with a check that is of the TTL type. The TTL clock will be reset.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-fail-check-with-note.html">rxFailCheckWithNote</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxFailCheckWithNote</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxFailCheckWithNote(kotlin.String, kotlin.String)/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxFailCheckWithNote(kotlin.String, kotlin.String)/note">note</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Set status of the check to "critical". Used with a check that is of the TTL type. The TTL clock will be reset.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-fire-event.html">rxFireEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxFireEvent</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxFireEvent(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Event</span><span class="symbol">&gt;</span></code>
+<p>Fires a new user event</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-fire-event-with-options.html">rxFireEventWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxFireEventWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxFireEventWithOptions(kotlin.String, io.vertx.ext.consul.EventOptions)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxFireEventWithOptions(kotlin.String, io.vertx.ext.consul.EventOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">EventOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Event</span><span class="symbol">&gt;</span></code>
+<p>Fires a new user event</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-get-all-prepared-queries.html">rxGetAllPreparedQueries</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxGetAllPreparedQueries</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">PreparedQueryDefinition</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Returns a list of all prepared queries.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-get-keys.html">rxGetKeys</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxGetKeys</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxGetKeys(kotlin.String)/keyPrefix">keyPrefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Returns the list of keys that corresponding to the specified key prefix.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-get-keys-with-options.html">rxGetKeysWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxGetKeysWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxGetKeysWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions)/keyPrefix">keyPrefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxGetKeysWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Returns the list of keys that corresponding to the specified key prefix.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-get-prepared-query.html">rxGetPreparedQuery</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxGetPreparedQuery</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxGetPreparedQuery(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">PreparedQueryDefinition</span><span class="symbol">&gt;</span></code>
+<p>Returns an existing prepared query</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-get-value.html">rxGetValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxGetValue</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxGetValue(kotlin.String)/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">KeyValue</span><span class="symbol">&gt;</span></code>
+<p>Returns key/value pair that corresponding to the specified key. An empty io.vertx.ext.consul.KeyValue object will be returned if no such key is found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-get-value-with-options.html">rxGetValueWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxGetValueWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxGetValueWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions)/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxGetValueWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">KeyValue</span><span class="symbol">&gt;</span></code>
+<p>Returns key/value pair that corresponding to the specified key. An empty io.vertx.ext.consul.KeyValue object will be returned if no such key is found. This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#getValue</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-get-values.html">rxGetValues</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxGetValues</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxGetValues(kotlin.String)/keyPrefix">keyPrefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">KeyValueList</span><span class="symbol">&gt;</span></code>
+<p>Returns the list of key/value pairs that corresponding to the specified key prefix. An empty io.vertx.ext.consul.KeyValueList object will be returned if no such key prefix is found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-get-values-with-options.html">rxGetValuesWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxGetValuesWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxGetValuesWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions)/keyPrefix">keyPrefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxGetValuesWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">KeyValueList</span><span class="symbol">&gt;</span></code>
+<p>Returns the list of key/value pairs that corresponding to the specified key prefix. An empty io.vertx.ext.consul.KeyValueList object will be returned if no such key prefix is found. This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#getValues</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-health-checks.html">rxHealthChecks</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxHealthChecks</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxHealthChecks(kotlin.String)/service">service</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">CheckList</span><span class="symbol">&gt;</span></code>
+<p>Returns the checks associated with the service</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-health-checks-with-options.html">rxHealthChecksWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxHealthChecksWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxHealthChecksWithOptions(kotlin.String, io.vertx.ext.consul.CheckQueryOptions)/service">service</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxHealthChecksWithOptions(kotlin.String, io.vertx.ext.consul.CheckQueryOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">CheckQueryOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">CheckList</span><span class="symbol">&gt;</span></code>
+<p>Returns the checks associated with the service</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-health-service-nodes.html">rxHealthServiceNodes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxHealthServiceNodes</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxHealthServiceNodes(kotlin.String, kotlin.Boolean)/service">service</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxHealthServiceNodes(kotlin.String, kotlin.Boolean)/passing">passing</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">ServiceEntryList</span><span class="symbol">&gt;</span></code>
+<p>Returns the nodes providing the service. This endpoint is very similar to the <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#catalogServiceNodes</a></code> endpoint; however, this endpoint automatically returns the status of the associated health check as well as any system level health checks.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-health-service-nodes-with-options.html">rxHealthServiceNodesWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxHealthServiceNodesWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxHealthServiceNodesWithOptions(kotlin.String, kotlin.Boolean, io.vertx.ext.consul.ServiceQueryOptions)/service">service</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxHealthServiceNodesWithOptions(kotlin.String, kotlin.Boolean, io.vertx.ext.consul.ServiceQueryOptions)/passing">passing</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxHealthServiceNodesWithOptions(kotlin.String, kotlin.Boolean, io.vertx.ext.consul.ServiceQueryOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServiceQueryOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">ServiceEntryList</span><span class="symbol">&gt;</span></code>
+<p>Returns the nodes providing the service. This endpoint is very similar to the <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#catalogServiceNodesWithOptions</a></code> endpoint; however, this endpoint automatically returns the status of the associated health check as well as any system level health checks.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-health-state.html">rxHealthState</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxHealthState</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxHealthState(io.vertx.ext.consul.CheckStatus)/checkStatus">checkStatus</span><span class="symbol">:</span>&nbsp;<span class="identifier">CheckStatus</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">CheckList</span><span class="symbol">&gt;</span></code>
+<p>Returns the checks in the specified status</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-health-state-with-options.html">rxHealthStateWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxHealthStateWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxHealthStateWithOptions(io.vertx.ext.consul.CheckStatus, io.vertx.ext.consul.CheckQueryOptions)/checkStatus">checkStatus</span><span class="symbol">:</span>&nbsp;<span class="identifier">CheckStatus</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxHealthStateWithOptions(io.vertx.ext.consul.CheckStatus, io.vertx.ext.consul.CheckQueryOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">CheckQueryOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">CheckList</span><span class="symbol">&gt;</span></code>
+<p>Returns the checks in the specified status</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-info-acl-token.html">rxInfoAclToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxInfoAclToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxInfoAclToken(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">AclToken</span><span class="symbol">&gt;</span></code>
+<p>Get info of Acl token</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-info-session.html">rxInfoSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxInfoSession</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxInfoSession(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Session</span><span class="symbol">&gt;</span></code>
+<p>Returns the requested session information</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-info-session-with-options.html">rxInfoSessionWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxInfoSessionWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxInfoSessionWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxInfoSessionWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Session</span><span class="symbol">&gt;</span></code>
+<p>Returns the requested session information This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#infoSession</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-leader-status.html">rxLeaderStatus</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxLeaderStatus</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Get the Raft leader for the datacenter in which the agent is running. It returns an address in format "<code>10.1.10.12:8300</code>"</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-list-acl-tokens.html">rxListAclTokens</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxListAclTokens</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">AclToken</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Get list of Acl token</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-list-events.html">rxListEvents</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxListEvents</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">EventList</span><span class="symbol">&gt;</span></code>
+<p>Returns the most recent events known by the agent</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-list-events-with-options.html">rxListEventsWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxListEventsWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxListEventsWithOptions(io.vertx.ext.consul.EventListOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">EventListOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">EventList</span><span class="symbol">&gt;</span></code>
+<p>Returns the most recent events known by the agent. This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#listEvents</a></code>. However, the semantics of this endpoint are slightly different. Most blocking queries provide a monotonic index and block until a newer index is available. This can be supported as a consequence of the total ordering of the consensus protocol. With gossip, there is no ordering, and instead <code>X-Consul-Index</code> maps to the newest event that matches the query. 
+<p> In practice, this means the index is only useful when used against a single agent and has no meaning globally. Because Consul defines the index as being opaque, clients should not be expecting a natural ordering either.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-list-node-sessions.html">rxListNodeSessions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxListNodeSessions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxListNodeSessions(kotlin.String)/nodeId">nodeId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">SessionList</span><span class="symbol">&gt;</span></code>
+<p>Returns the active sessions for a given node</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-list-node-sessions-with-options.html">rxListNodeSessionsWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxListNodeSessionsWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxListNodeSessionsWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions)/nodeId">nodeId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxListNodeSessionsWithOptions(kotlin.String, io.vertx.ext.consul.BlockingQueryOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">SessionList</span><span class="symbol">&gt;</span></code>
+<p>Returns the active sessions for a given node This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#listNodeSessions</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-list-sessions.html">rxListSessions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxListSessions</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">SessionList</span><span class="symbol">&gt;</span></code>
+<p>Returns the active sessions</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-list-sessions-with-options.html">rxListSessionsWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxListSessionsWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxListSessionsWithOptions(io.vertx.ext.consul.BlockingQueryOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">BlockingQueryOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">SessionList</span><span class="symbol">&gt;</span></code>
+<p>Returns the active sessions This is blocking query unlike <code><a href="#">io.vertx.rxjava.ext.consul.ConsulClient#listSessions</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-local-checks.html">rxLocalChecks</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxLocalChecks</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Check</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Return all the checks that are registered with the local agent.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-local-services.html">rxLocalServices</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxLocalServices</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Service</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Returns list of services registered with the local agent.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-maintenance-service.html">rxMaintenanceService</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxMaintenanceService</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxMaintenanceService(io.vertx.ext.consul.MaintenanceOptions)/maintenanceOptions">maintenanceOptions</span><span class="symbol">:</span>&nbsp;<span class="identifier">MaintenanceOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Places a given service into "maintenance mode"</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-pass-check.html">rxPassCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxPassCheck</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxPassCheck(kotlin.String)/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Set status of the check to "passing". Used with a check that is of the TTL type. The TTL clock will be reset.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-pass-check-with-note.html">rxPassCheckWithNote</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxPassCheckWithNote</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxPassCheckWithNote(kotlin.String, kotlin.String)/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxPassCheckWithNote(kotlin.String, kotlin.String)/note">note</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Set status of the check to "passing". Used with a check that is of the TTL type. The TTL clock will be reset.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-peers-status.html">rxPeersStatus</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxPeersStatus</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Retrieves the Raft peers for the datacenter in which the the agent is running. It returns a list of addresses "<code>10.1.10.12:8300</code>", "<code>10.1.10.13:8300</code>"</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-put-value.html">rxPutValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxPutValue</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxPutValue(kotlin.String, kotlin.String)/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxPutValue(kotlin.String, kotlin.String)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code>
+<p>Adds specified key/value pair</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-put-value-with-options.html">rxPutValueWithOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxPutValueWithOptions</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxPutValueWithOptions(kotlin.String, kotlin.String, io.vertx.ext.consul.KeyValueOptions)/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxPutValueWithOptions(kotlin.String, kotlin.String, io.vertx.ext.consul.KeyValueOptions)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxPutValueWithOptions(kotlin.String, kotlin.String, io.vertx.ext.consul.KeyValueOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">KeyValueOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-register-check.html">rxRegisterCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxRegisterCheck</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxRegisterCheck(io.vertx.ext.consul.CheckOptions)/checkOptions">checkOptions</span><span class="symbol">:</span>&nbsp;<span class="identifier">CheckOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Add a new check to the local agent. The agent is responsible for managing the status of the check and keeping the Catalog in sync.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-register-service.html">rxRegisterService</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxRegisterService</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxRegisterService(io.vertx.ext.consul.ServiceOptions)/serviceOptions">serviceOptions</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServiceOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Adds a new service, with an optional health check, to the local agent.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-renew-session.html">rxRenewSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxRenewSession</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxRenewSession(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Session</span><span class="symbol">&gt;</span></code>
+<p>Renews the given session. This is used with sessions that have a TTL, and it extends the expiration by the TTL</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-transaction.html">rxTransaction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxTransaction</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxTransaction(io.vertx.ext.consul.TxnRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">TxnRequest</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">TxnResponse</span><span class="symbol">&gt;</span></code>
+<p>Manages multiple operations inside a single, atomic transaction.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-update-acl-token.html">rxUpdateAclToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxUpdateAclToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxUpdateAclToken(io.vertx.ext.consul.AclToken)/token">token</span><span class="symbol">:</span>&nbsp;<span class="identifier">AclToken</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Update Acl token</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-update-check.html">rxUpdateCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxUpdateCheck</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxUpdateCheck(kotlin.String, io.vertx.ext.consul.CheckStatus)/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxUpdateCheck(kotlin.String, io.vertx.ext.consul.CheckStatus)/status">status</span><span class="symbol">:</span>&nbsp;<span class="identifier">CheckStatus</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Set status of the check to given status. Used with a check that is of the TTL type. The TTL clock will be reset.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-update-check-with-note.html">rxUpdateCheckWithNote</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxUpdateCheckWithNote</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxUpdateCheckWithNote(kotlin.String, io.vertx.ext.consul.CheckStatus, kotlin.String)/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxUpdateCheckWithNote(kotlin.String, io.vertx.ext.consul.CheckStatus, kotlin.String)/status">status</span><span class="symbol">:</span>&nbsp;<span class="identifier">CheckStatus</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxUpdateCheckWithNote(kotlin.String, io.vertx.ext.consul.CheckStatus, kotlin.String)/note">note</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Set status of the check to given status. Used with a check that is of the TTL type. The TTL clock will be reset.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-update-prepared-query.html">rxUpdatePreparedQuery</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxUpdatePreparedQuery</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxUpdatePreparedQuery(io.vertx.ext.consul.PreparedQueryDefinition)/definition">definition</span><span class="symbol">:</span>&nbsp;<span class="identifier">PreparedQueryDefinition</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-warn-check.html">rxWarnCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxWarnCheck</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxWarnCheck(kotlin.String)/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Set status of the check to "warning". Used with a check that is of the TTL type. The TTL clock will be reset.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-warn-check-with-note.html">rxWarnCheckWithNote</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxWarnCheckWithNote</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxWarnCheckWithNote(kotlin.String, kotlin.String)/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$rxWarnCheckWithNote(kotlin.String, kotlin.String)/note">note</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Set status of the check to "warning". Used with a check that is of the TTL type. The TTL clock will be reset.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="transaction.html">transaction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">transaction</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$transaction(io.vertx.ext.consul.TxnRequest, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.TxnResponse)))))/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">TxnRequest</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$transaction(io.vertx.ext.consul.TxnRequest, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.consul.TxnResponse)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">TxnResponse</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Manages multiple operations inside a single, atomic transaction.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="update-acl-token.html">updateAclToken</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">updateAclToken</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$updateAclToken(io.vertx.ext.consul.AclToken, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/token">token</span><span class="symbol">:</span>&nbsp;<span class="identifier">AclToken</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$updateAclToken(io.vertx.ext.consul.AclToken, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/idHandler">idHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Update Acl token</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="update-check.html">updateCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">updateCheck</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$updateCheck(kotlin.String, io.vertx.ext.consul.CheckStatus, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$updateCheck(kotlin.String, io.vertx.ext.consul.CheckStatus, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/status">status</span><span class="symbol">:</span>&nbsp;<span class="identifier">CheckStatus</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$updateCheck(kotlin.String, io.vertx.ext.consul.CheckStatus, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Set status of the check to given status. Used with a check that is of the TTL type. The TTL clock will be reset.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="update-check-with-note.html">updateCheckWithNote</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">updateCheckWithNote</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$updateCheckWithNote(kotlin.String, io.vertx.ext.consul.CheckStatus, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$updateCheckWithNote(kotlin.String, io.vertx.ext.consul.CheckStatus, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/status">status</span><span class="symbol">:</span>&nbsp;<span class="identifier">CheckStatus</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$updateCheckWithNote(kotlin.String, io.vertx.ext.consul.CheckStatus, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/note">note</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$updateCheckWithNote(kotlin.String, io.vertx.ext.consul.CheckStatus, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Set status of the check to given status. Used with a check that is of the TTL type. The TTL clock will be reset.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="update-prepared-query.html">updatePreparedQuery</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">updatePreparedQuery</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$updatePreparedQuery(io.vertx.ext.consul.PreparedQueryDefinition, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/definition">definition</span><span class="symbol">:</span>&nbsp;<span class="identifier">PreparedQueryDefinition</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$updatePreparedQuery(io.vertx.ext.consul.PreparedQueryDefinition, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="warn-check.html">warnCheck</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">warnCheck</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$warnCheck(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$warnCheck(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Set status of the check to "warning". Used with a check that is of the TTL type. The TTL clock will be reset.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="warn-check-with-note.html">warnCheckWithNote</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">warnCheckWithNote</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$warnCheckWithNote(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/checkId">checkId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$warnCheckWithNote(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/note">note</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.ext.consul.ConsulClient$warnCheckWithNote(kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConsulClient</span></code>
+<p>Set status of the check to "warning". Used with a check that is of the TTL type. The TTL clock will be reset.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

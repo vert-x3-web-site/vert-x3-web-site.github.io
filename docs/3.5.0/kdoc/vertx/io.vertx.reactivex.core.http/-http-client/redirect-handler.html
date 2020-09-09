@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HttpClient.redirectHandler - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.http</a>&nbsp;/&nbsp;<a href="index.html">HttpClient</a>&nbsp;/&nbsp;<a href=".">redirectHandler</a><br/>
+<br/>
+<h1>redirectHandler</h1>
+<a name="io.vertx.reactivex.core.http.HttpClient$redirectHandler(java.util.function.Function((io.vertx.reactivex.core.http.HttpClientResponse, io.vertx.reactivex.core.Future((io.vertx.reactivex.core.http.HttpClientRequest)))))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">redirectHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClient$redirectHandler(java.util.function.Function((io.vertx.reactivex.core.http.HttpClientResponse, io.vertx.reactivex.core.Future((io.vertx.reactivex.core.http.HttpClientRequest)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html"><span class="identifier">Function</span></a><span class="symbol">&lt;</span><a href="../-http-client-response/index.html"><span class="identifier">HttpClientResponse</span></a><span class="symbol">,</span>&nbsp;<a href="../../io.vertx.reactivex.core/-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><a href="../-http-client-request/index.html"><span class="identifier">HttpClientRequest</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">HttpClient</span></a></code>
+<p>Set a redirect handler for the http client. 
+<p> The redirect handler is called when a <code>3xx</code> response is received and the request is configured to follow redirects with <code><a href="../-http-client-request/set-follow-redirects.html">io.vertx.reactivex.core.http.HttpClientRequest#setFollowRedirects</a></code>. </p>
+<p> The redirect handler is passed the io.vertx.reactivex.core.http.HttpClientResponse, it can return an io.vertx.reactivex.core.http.HttpClientRequest or <code>null</code>. </p>
+<ul> <li>when null is returned, the original response is processed by the original request response handler</li>
+ <li>when a new <code>Future</code> is returned, the client will send this new request</li>
+ </ul>
+ The handler must return a <code>Future</code> unsent so the client can further configure it and send it.</p>
+<h3>Parameters</h3>
+<p><a name="handler"></a>
+<code>handler</code> - the new redirect handler</p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently</p>
+</BODY>
+</HTML>

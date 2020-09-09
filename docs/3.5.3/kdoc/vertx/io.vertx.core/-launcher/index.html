@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Launcher - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.core</a>&nbsp;/&nbsp;<a href=".">Launcher</a><br/>
+<br/>
+<h1>Launcher</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Launcher</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">VertxCommandLauncher</span><span class="symbol">, </span><span class="identifier">VertxLifecycleHooks</span></code>
+<p>A <code>main()</code> class that can be used to create Vert.x instance and deploy a verticle, or run a bare Vert.x instance.  This class is used by the <code>vertx</code> command line utility to deploy verticles from the command line. It is extensible as "commands" can be added using the io.vertx.core.spi.launcher.CommandFactory SPI.  E.g.  <code>vertx run myverticle.js</code> <code>vertx my-command ...</code>  It can also be used as the main class of an executable jar so you can run verticles directly with:  <code>java -jar myapp.jar</code></p>
+<p><strong>Author</strong><br/>
+Clement Escoffier </p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">Launcher</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>A <code>main()</code> class that can be used to create Vert.x instance and deploy a verticle, or run a bare Vert.x instance.  This class is used by the <code>vertx</code> command line utility to deploy verticles from the command line. It is extensible as "commands" can be added using the io.vertx.core.spi.launcher.CommandFactory SPI.  E.g.  <code>vertx run myverticle.js</code> <code>vertx my-command ...</code>  It can also be used as the main class of an executable jar so you can run verticles directly with:  <code>java -jar myapp.jar</code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-config-parsed.html">afterConfigParsed</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterConfigParsed</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.Launcher$afterConfigParsed(io.vertx.core.json.JsonObject)/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Hook for sub-classes of Launcher after the config has been parsed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="after-starting-vertx.html">afterStartingVertx</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterStartingVertx</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.Launcher$afterStartingVertx(io.vertx.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Hook for sub-classes of Launcher after the vertx instance is started.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="after-stopping-vertx.html">afterStoppingVertx</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterStoppingVertx</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="before-deploying-verticle.html">beforeDeployingVerticle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beforeDeployingVerticle</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.Launcher$beforeDeployingVerticle(io.vertx.core.DeploymentOptions)/deploymentOptions">deploymentOptions</span><span class="symbol">:</span>&nbsp;<span class="identifier">DeploymentOptions</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Hook for sub-classes of Launcher before the verticle is deployed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="before-starting-vertx.html">beforeStartingVertx</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beforeStartingVertx</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.Launcher$beforeStartingVertx(io.vertx.core.VertxOptions)/options">options</span><span class="symbol">:</span>&nbsp;<a href="../-vertx-options/index.html"><span class="identifier">VertxOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Hook for sub-classes of Launcher before the vertx instance is started.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="before-stopping-vertx.html">beforeStoppingVertx</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beforeStoppingVertx</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.Launcher$beforeStoppingVertx(io.vertx.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="execute-command.html">executeCommand</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">executeCommand</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.Launcher$executeCommand(kotlin.String, kotlin.Array((kotlin.String)))/cmd">cmd</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="io.vertx.core.Launcher$executeCommand(kotlin.String, kotlin.Array((kotlin.String)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Utility method to execute a specific command.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="handle-deploy-failed.html">handleDeployFailed</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">handleDeployFailed</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.Launcher$handleDeployFailed(io.vertx.core.Vertx, kotlin.String, io.vertx.core.DeploymentOptions, kotlin.Throwable)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.Launcher$handleDeployFailed(io.vertx.core.Vertx, kotlin.String, io.vertx.core.DeploymentOptions, kotlin.Throwable)/mainVerticle">mainVerticle</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.Launcher$handleDeployFailed(io.vertx.core.Vertx, kotlin.String, io.vertx.core.DeploymentOptions, kotlin.Throwable)/deploymentOptions">deploymentOptions</span><span class="symbol">:</span>&nbsp;<span class="identifier">DeploymentOptions</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.Launcher$handleDeployFailed(io.vertx.core.Vertx, kotlin.String, io.vertx.core.DeploymentOptions, kotlin.Throwable)/cause">cause</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>A deployment failure has been encountered. You can override this method to customize the behavior. By default it closes the `vertx` instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="main.html">main</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">main</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.Launcher$main(kotlin.Array((kotlin.String)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Main entry point.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

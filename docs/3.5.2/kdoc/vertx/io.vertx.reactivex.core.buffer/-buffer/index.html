@@ -1,0 +1,758 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Buffer - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.buffer</a>&nbsp;/&nbsp;<a href=".">Buffer</a><br/>
+<br/>
+<h1>Buffer</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Buffer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ClusterSerializable</span></code>
+<p>Most data is shuffled around inside Vert.x using buffers. 
+<p> A buffer is a sequence of zero or more bytes that can read from or written to and which expands automatically as necessary to accommodate any bytes written to it. You can perhaps think of a buffer as smart byte array. </p>
+<p> Please consult the documentation for more information on buffers. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.buffer.Buffer non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">Buffer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$<init>(io.vertx.core.buffer.Buffer)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">Buffer</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="append-buffer.html">appendBuffer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendBuffer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendBuffer(io.vertx.reactivex.core.buffer.Buffer)/buff">buff</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified <code>Buffer</code> to the end of this Buffer. The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendBuffer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendBuffer(io.vertx.reactivex.core.buffer.Buffer, kotlin.Int, kotlin.Int)/buff">buff</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendBuffer(io.vertx.reactivex.core.buffer.Buffer, kotlin.Int, kotlin.Int)/offset">offset</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendBuffer(io.vertx.reactivex.core.buffer.Buffer, kotlin.Int, kotlin.Int)/len">len</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified <code>Buffer</code> starting at the <code>offset</code> using <code>len</code> to the end of this Buffer. The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="append-byte.html">appendByte</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendByte</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendByte(kotlin.Byte)/b">b</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte/index.html"><span class="identifier">Byte</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified <code>byte</code> to the end of the Buffer. The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="append-double.html">appendDouble</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendDouble</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendDouble(kotlin.Double)/d">d</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified <code>double</code> to the end of the Buffer. The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="append-float.html">appendFloat</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendFloat</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendFloat(kotlin.Float)/f">f</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified <code>float</code> to the end of the Buffer. The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="append-int.html">appendInt</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendInt</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendInt(kotlin.Int)/i">i</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified <code>int</code> to the end of the Buffer. The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="append-int-l-e.html">appendIntLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendIntLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendIntLE(kotlin.Int)/i">i</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified <code>int</code> to the end of the Buffer in the Little Endian Byte Order. The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="append-long.html">appendLong</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendLong</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendLong(kotlin.Long)/l">l</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified <code>long</code> to the end of the Buffer. The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="append-long-l-e.html">appendLongLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendLongLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendLongLE(kotlin.Long)/l">l</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified <code>long</code> to the end of the Buffer in the Little Endian Byte Order. The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="append-medium.html">appendMedium</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendMedium</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendMedium(kotlin.Int)/i">i</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified 24bit <code>int</code> to the end of the Buffer. The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="append-medium-l-e.html">appendMediumLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendMediumLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendMediumLE(kotlin.Int)/i">i</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified 24bit <code>int</code> to the end of the Buffer in the Little Endian Byte Order. The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="append-short.html">appendShort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendShort</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendShort(kotlin.Short)/s">s</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-short/index.html"><span class="identifier">Short</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified <code>short</code> to the end of the Buffer.The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="append-short-l-e.html">appendShortLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendShortLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendShortLE(kotlin.Short)/s">s</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-short/index.html"><span class="identifier">Short</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified <code>short</code> to the end of the Buffer in the Little Endian Byte Order.The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="append-string.html">appendString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendString</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendString(kotlin.String, kotlin.String)/str">str</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendString(kotlin.String, kotlin.String)/enc">enc</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified <code>String</code> to the end of the Buffer with the encoding as specified by <code>enc</code>.
+<p> The buffer will expand as necessary to accommodate any bytes written.</p>
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendString</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendString(kotlin.String)/str">str</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified <code>String str</code> to the end of the Buffer with UTF-8 encoding.
+<p> The buffer will expand as necessary to accommodate any bytes written.</p>
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="append-unsigned-byte.html">appendUnsignedByte</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendUnsignedByte</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendUnsignedByte(kotlin.Short)/b">b</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-short/index.html"><span class="identifier">Short</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified unsigned <code>byte</code> to the end of the Buffer. The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="append-unsigned-int.html">appendUnsignedInt</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendUnsignedInt</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendUnsignedInt(kotlin.Long)/i">i</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified unsigned <code>int</code> to the end of the Buffer. The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="append-unsigned-int-l-e.html">appendUnsignedIntLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendUnsignedIntLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendUnsignedIntLE(kotlin.Long)/i">i</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified unsigned <code>int</code> to the end of the Buffer in the Little Endian Byte Order. The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="append-unsigned-short.html">appendUnsignedShort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendUnsignedShort</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendUnsignedShort(kotlin.Int)/s">s</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified unsigned <code>short</code> to the end of the Buffer.The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="append-unsigned-short-l-e.html">appendUnsignedShortLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">appendUnsignedShortLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$appendUnsignedShortLE(kotlin.Int)/s">s</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Appends the specified unsigned <code>short</code> to the end of the Buffer in the Little Endian Byte Order.The buffer will expand as necessary to accommodate any bytes written.
+<p> Returns a reference to <code>this</code> so multiple operations can be appended together.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="buffer.html">buffer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">buffer</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Create a new, empty buffer.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">buffer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$buffer(kotlin.Int)/initialSizeHint">initialSizeHint</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Create a new buffer given the initial size hint. 
+<p> If you know the buffer will require a certain size, providing the hint can prevent unnecessary re-allocations as the buffer is written to and resized.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">buffer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$buffer(kotlin.String)/string">string</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Create a new buffer from a string. The string will be UTF-8 encoded into the buffer.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">buffer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$buffer(kotlin.String, kotlin.String)/string">string</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$buffer(kotlin.String, kotlin.String)/enc">enc</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Create a new buffer from a string and using the specified encoding. The string will be encoded into the buffer using the specified encoding.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="copy.html">copy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">copy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Returns a copy of the entire Buffer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-buffer.html">getBuffer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBuffer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getBuffer(kotlin.Int, kotlin.Int)/start">start</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getBuffer(kotlin.Int, kotlin.Int)/end">end</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Returns a copy of a sub-sequence the Buffer as a io.vertx.reactivex.core.buffer.Buffer starting at position <code>start</code> and ending at position <code>end - 1</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-byte.html">getByte</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getByte</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getByte(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte/index.html"><span class="identifier">Byte</span></a></code>
+<p>Returns the <code>byte</code> at position <code>pos</code> in the Buffer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-double.html">getDouble</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDouble</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getDouble(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a></code>
+<p>Returns the <code>double</code> at position <code>pos</code> in the Buffer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-float.html">getFloat</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getFloat</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getFloat(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code>
+<p>Returns the <code>float</code> at position <code>pos</code> in the Buffer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-int.html">getInt</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getInt</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getInt(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Returns the <code>int</code> at position <code>pos</code> in the Buffer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-int-l-e.html">getIntLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getIntLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getIntLE(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Gets a 32-bit integer at the specified absolute <code>index</code> in this buffer with Little Endian Byte Order.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-long.html">getLong</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLong</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getLong(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Returns the <code>long</code> at position <code>pos</code> in the Buffer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-long-l-e.html">getLongLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLongLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getLongLE(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Gets a 64-bit long integer at the specified absolute <code>index</code> in this buffer in Little Endian Byte Order.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-medium.html">getMedium</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMedium</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getMedium(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Gets a 24-bit medium integer at the specified absolute <code>index</code> in this buffer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-medium-l-e.html">getMediumLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMediumLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getMediumLE(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Gets a 24-bit medium integer at the specified absolute <code>index</code> in this buffer in the Little Endian Byte Order.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-short.html">getShort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getShort</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getShort(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-short/index.html"><span class="identifier">Short</span></a></code>
+<p>Returns the <code>short</code> at position <code>pos</code> in the Buffer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-short-l-e.html">getShortLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getShortLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getShortLE(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-short/index.html"><span class="identifier">Short</span></a></code>
+<p>Gets a 16-bit short integer at the specified absolute <code>index</code> in this buffer in Little Endian Byte Order.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-string.html">getString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getString</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getString(kotlin.Int, kotlin.Int, kotlin.String)/start">start</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getString(kotlin.Int, kotlin.Int, kotlin.String)/end">end</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getString(kotlin.Int, kotlin.Int, kotlin.String)/enc">enc</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Returns a copy of a sub-sequence the Buffer as a <code>String</code> starting at position <code>start</code> and ending at position <code>end - 1</code> interpreted as a String in the specified encoding</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getString</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getString(kotlin.Int, kotlin.Int)/start">start</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getString(kotlin.Int, kotlin.Int)/end">end</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Returns a copy of a sub-sequence the Buffer as a <code>String</code> starting at position <code>start</code> and ending at position <code>end - 1</code> interpreted as a String in UTF-8 encoding</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-unsigned-byte.html">getUnsignedByte</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUnsignedByte</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getUnsignedByte(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-short/index.html"><span class="identifier">Short</span></a></code>
+<p>Returns the unsigned <code>byte</code> at position <code>pos</code> in the Buffer, as a <code>short</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-unsigned-int.html">getUnsignedInt</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUnsignedInt</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getUnsignedInt(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Returns the unsigned <code>int</code> at position <code>pos</code> in the Buffer, as a <code>long</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-unsigned-int-l-e.html">getUnsignedIntLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUnsignedIntLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getUnsignedIntLE(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Returns the unsigned <code>int</code> at position <code>pos</code> in the Buffer, as a <code>long</code> in Little Endian Byte Order.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-unsigned-medium.html">getUnsignedMedium</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUnsignedMedium</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getUnsignedMedium(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Gets an unsigned 24-bit medium integer at the specified absolute <code>index</code> in this buffer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-unsigned-medium-l-e.html">getUnsignedMediumLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUnsignedMediumLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getUnsignedMediumLE(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Gets an unsigned 24-bit medium integer at the specified absolute <code>index</code> in this buffer in Little Endian Byte Order.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-unsigned-short.html">getUnsignedShort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUnsignedShort</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getUnsignedShort(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Returns the unsigned <code>short</code> at position <code>pos</code> in the Buffer, as an <code>int</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-unsigned-short-l-e.html">getUnsignedShortLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUnsignedShortLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$getUnsignedShortLE(kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Gets an unsigned 16-bit short integer at the specified absolute <code>index</code> in this buffer in Little Endian Byte Order.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="length.html">length</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">length</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Returns the length of the buffer, measured in bytes. All positions are indexed from zero.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$newInstance(io.vertx.core.buffer.Buffer)/arg">arg</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="read-from-buffer.html">readFromBuffer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">readFromBuffer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$readFromBuffer(kotlin.Int, io.vertx.core.buffer.Buffer)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$readFromBuffer(kotlin.Int, io.vertx.core.buffer.Buffer)/buffer">buffer</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-buffer.html">setBuffer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBuffer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setBuffer(kotlin.Int, io.vertx.reactivex.core.buffer.Buffer)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setBuffer(kotlin.Int, io.vertx.reactivex.core.buffer.Buffer)/b">b</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the bytes at position <code>pos</code> in the Buffer to the bytes represented by the <code>Buffer b</code>.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBuffer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setBuffer(kotlin.Int, io.vertx.reactivex.core.buffer.Buffer, kotlin.Int, kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setBuffer(kotlin.Int, io.vertx.reactivex.core.buffer.Buffer, kotlin.Int, kotlin.Int)/b">b</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setBuffer(kotlin.Int, io.vertx.reactivex.core.buffer.Buffer, kotlin.Int, kotlin.Int)/offset">offset</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setBuffer(kotlin.Int, io.vertx.reactivex.core.buffer.Buffer, kotlin.Int, kotlin.Int)/len">len</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the bytes at position <code>pos</code> in the Buffer to the bytes represented by the <code>Buffer b</code> on the given <code>offset</code> and <code>len</code>.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-byte.html">setByte</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setByte</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setByte(kotlin.Int, kotlin.Byte)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setByte(kotlin.Int, kotlin.Byte)/b">b</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte/index.html"><span class="identifier">Byte</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the <code>byte</code> at position <code>pos</code> in the Buffer to the value <code>b</code>.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-double.html">setDouble</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDouble</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setDouble(kotlin.Int, kotlin.Double)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setDouble(kotlin.Int, kotlin.Double)/d">d</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the <code>double</code> at position <code>pos</code> in the Buffer to the value <code>d</code>.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-float.html">setFloat</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFloat</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setFloat(kotlin.Int, kotlin.Float)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setFloat(kotlin.Int, kotlin.Float)/f">f</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the <code>float</code> at position <code>pos</code> in the Buffer to the value <code>f</code>.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-int.html">setInt</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setInt</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setInt(kotlin.Int, kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setInt(kotlin.Int, kotlin.Int)/i">i</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the <code>int</code> at position <code>pos</code> in the Buffer to the value <code>i</code>.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-int-l-e.html">setIntLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setIntLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setIntLE(kotlin.Int, kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setIntLE(kotlin.Int, kotlin.Int)/i">i</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the <code>int</code> at position <code>pos</code> in the Buffer to the value <code>i</code> in the Little Endian Byte Order.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-long.html">setLong</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLong</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setLong(kotlin.Int, kotlin.Long)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setLong(kotlin.Int, kotlin.Long)/l">l</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the <code>long</code> at position <code>pos</code> in the Buffer to the value <code>l</code>.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-long-l-e.html">setLongLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLongLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setLongLE(kotlin.Int, kotlin.Long)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setLongLE(kotlin.Int, kotlin.Long)/l">l</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the <code>long</code> at position <code>pos</code> in the Buffer to the value <code>l</code> in the Little Endian Byte Order.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-medium.html">setMedium</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMedium</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setMedium(kotlin.Int, kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setMedium(kotlin.Int, kotlin.Int)/i">i</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the 24bit <code>int</code> at position <code>pos</code> in the Buffer to the value <code>i</code>.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-medium-l-e.html">setMediumLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMediumLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setMediumLE(kotlin.Int, kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setMediumLE(kotlin.Int, kotlin.Int)/i">i</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the 24bit <code>int</code> at position <code>pos</code> in the Buffer to the value <code>i</code>. in the Little Endian Byte Order
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-short.html">setShort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setShort</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setShort(kotlin.Int, kotlin.Short)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setShort(kotlin.Int, kotlin.Short)/s">s</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-short/index.html"><span class="identifier">Short</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the <code>short</code> at position <code>pos</code> in the Buffer to the value <code>s</code>.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-short-l-e.html">setShortLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setShortLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setShortLE(kotlin.Int, kotlin.Short)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setShortLE(kotlin.Int, kotlin.Short)/s">s</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-short/index.html"><span class="identifier">Short</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the <code>short</code> at position <code>pos</code> in the Buffer to the value <code>s</code> in the Little Endian Byte Order.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-string.html">setString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setString</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setString(kotlin.Int, kotlin.String)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setString(kotlin.Int, kotlin.String)/str">str</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the bytes at position <code>pos</code> in the Buffer to the value of <code>str</code> encoded in UTF-8.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setString</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setString(kotlin.Int, kotlin.String, kotlin.String)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setString(kotlin.Int, kotlin.String, kotlin.String)/str">str</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setString(kotlin.Int, kotlin.String, kotlin.String)/enc">enc</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the bytes at position <code>pos</code> in the Buffer to the value of <code>str</code> encoded in encoding <code>enc</code>.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-unsigned-byte.html">setUnsignedByte</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUnsignedByte</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setUnsignedByte(kotlin.Int, kotlin.Short)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setUnsignedByte(kotlin.Int, kotlin.Short)/b">b</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-short/index.html"><span class="identifier">Short</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the unsigned <code>byte</code> at position <code>pos</code> in the Buffer to the value <code>b</code>.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-unsigned-int.html">setUnsignedInt</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUnsignedInt</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setUnsignedInt(kotlin.Int, kotlin.Long)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setUnsignedInt(kotlin.Int, kotlin.Long)/i">i</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the unsigned <code>int</code> at position <code>pos</code> in the Buffer to the value <code>i</code>.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-unsigned-int-l-e.html">setUnsignedIntLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUnsignedIntLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setUnsignedIntLE(kotlin.Int, kotlin.Long)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setUnsignedIntLE(kotlin.Int, kotlin.Long)/i">i</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the unsigned <code>int</code> at position <code>pos</code> in the Buffer to the value <code>i</code> in the Little Endian Byte Order.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-unsigned-short.html">setUnsignedShort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUnsignedShort</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setUnsignedShort(kotlin.Int, kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setUnsignedShort(kotlin.Int, kotlin.Int)/s">s</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the unsigned <code>short</code> at position <code>pos</code> in the Buffer to the value <code>s</code>.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-unsigned-short-l-e.html">setUnsignedShortLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUnsignedShortLE</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setUnsignedShortLE(kotlin.Int, kotlin.Int)/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$setUnsignedShortLE(kotlin.Int, kotlin.Int)/s">s</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Sets the unsigned <code>short</code> at position <code>pos</code> in the Buffer to the value <code>s</code> in the Little Endian Byte Order.
+<p> The buffer will expand as necessary to accommodate any value written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="slice.html">slice</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">slice</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">slice</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$slice(kotlin.Int, kotlin.Int)/start">start</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$slice(kotlin.Int, kotlin.Int)/end">end</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code>
+<p>Returns a slice of this buffer. Modifying the content of the returned buffer or this buffer affects each other's content while they maintain separate indexes and marks.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-json-array.html">toJsonArray</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toJsonArray</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonArray</span></code>
+<p>Returns a Json array representation of the Buffer</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-json-object.html">toJsonObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toJsonObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonObject</span></code>
+<p>Returns a Json object representation of the Buffer</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Returns a <code>String</code> representation of the Buffer with the <code>UTF-8</code>encoding</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$toString(kotlin.String)/enc">enc</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Returns a <code>String</code> representation of the Buffer with the encoding specified by <code>enc</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="write-to-buffer.html">writeToBuffer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">writeToBuffer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.buffer.Buffer$writeToBuffer(io.vertx.core.buffer.Buffer)/buffer">buffer</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

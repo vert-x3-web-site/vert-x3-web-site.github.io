@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>VertxContextPRNG - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.auth</a>&nbsp;/&nbsp;<a href=".">VertxContextPRNG</a><br/>
+<br/>
+<h1>VertxContextPRNG</h1>
+<code><span class="keyword">interface </span><span class="identifier">VertxContextPRNG</span></code>
+<p>A secure non blocking random number generator isolated to the current context. The PRNG is bound to the vert.x context and setup to close when the context shuts down. 
+<p> When applicable, use of VertxContextPRNG rather than create new PRNG objects is helpful to keep the system entropy usage to the minimum avoiding potential blocking across the application. </p>
+<p> The use of VertxContextPRNG is particularly appropriate when multiple handlers use random numbers.</p>
+</p>
+<p><strong>Author</strong><br/>
+<a href="#">Paulo Lopes</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="current.html">current</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">current</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxContextPRNG</span></code>
+<p>Get or create a secure non blocking random number generator using the current vert.x context. If there is no current context (i.e.: not running on the eventloop) then a java.lang.IllegalStateException is thrown.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">current</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.VertxContextPRNG$current(io.vertx.core.Context)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">Context</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxContextPRNG</span></code>
+<p>Get or create a secure non blocking random number generator using the provided vert.x context. This method will not throw an exception.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">current</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.VertxContextPRNG$current(io.vertx.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VertxContextPRNG</span></code>
+<p>Get or create a secure non blocking random number generator using the current vert.x instance. Since the context might be different this method will attempt to use the current context first if available and then fall back to create a new instance of the PRNG.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="next-bytes.html">nextBytes</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">nextBytes</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.VertxContextPRNG$nextBytes(kotlin.ByteArray)/bytes">bytes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Fills the given byte array with random bytes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="next-int.html">nextInt</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">nextInt</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Returns a secure random int</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="next-string.html">nextString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">nextString</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.auth.VertxContextPRNG$nextString(kotlin.Int)/length">length</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Returns a Base64 mime encoded String of random data with the given length. The length parameter refers to the length of the String before the encoding step.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-p-r-n-g/index.html">PRNG</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PRNG</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">VertxContextPRNG</span></code>
+<p>Wrapper around secure random that periodically seeds the PRNG with new entropy. To avoid entropy exhaustion the entropy is only refreshed if the PRNG is used. This introduces a new variable which reduces the probability of cracking the random number generator.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

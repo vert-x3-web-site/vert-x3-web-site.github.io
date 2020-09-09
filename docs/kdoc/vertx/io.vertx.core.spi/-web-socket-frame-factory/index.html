@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WebSocketFrameFactory - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.core.spi</a>&nbsp;/&nbsp;<a href=".">WebSocketFrameFactory</a><br/>
+<br/>
+<h1>WebSocketFrameFactory</h1>
+<code><span class="keyword">interface </span><span class="identifier">WebSocketFrameFactory</span></code>
+<p><strong>Author</strong><br/>
+<a href="#">Tim Fox</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="binary-frame.html">binaryFrame</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">binaryFrame</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.WebSocketFrameFactory$binaryFrame(io.vertx.core.buffer.Buffer, kotlin.Boolean)/data">data</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.WebSocketFrameFactory$binaryFrame(io.vertx.core.buffer.Buffer, kotlin.Boolean)/isFinal">isFinal</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebSocketFrame</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="continuation-frame.html">continuationFrame</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">continuationFrame</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.WebSocketFrameFactory$continuationFrame(io.vertx.core.buffer.Buffer, kotlin.Boolean)/data">data</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.WebSocketFrameFactory$continuationFrame(io.vertx.core.buffer.Buffer, kotlin.Boolean)/isFinal">isFinal</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebSocketFrame</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="ping-frame.html">pingFrame</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">pingFrame</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.WebSocketFrameFactory$pingFrame(io.vertx.core.buffer.Buffer)/data">data</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebSocketFrame</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="pong-frame.html">pongFrame</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">pongFrame</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.WebSocketFrameFactory$pongFrame(io.vertx.core.buffer.Buffer)/data">data</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebSocketFrame</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="text-frame.html">textFrame</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">textFrame</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.WebSocketFrameFactory$textFrame(kotlin.String, kotlin.Boolean)/str">str</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.core.spi.WebSocketFrameFactory$textFrame(kotlin.String, kotlin.Boolean)/isFinal">isFinal</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebSocketFrame</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

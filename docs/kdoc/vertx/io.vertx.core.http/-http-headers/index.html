@@ -1,0 +1,577 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HttpHeaders - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.core.http</a>&nbsp;/&nbsp;<a href=".">HttpHeaders</a><br/>
+<br/>
+<h1>HttpHeaders</h1>
+<code><span class="keyword">class </span><span class="identifier">HttpHeaders</span></code>
+<p>Contains often used Header names. 
+<p> It also contains a utility method to create optimized CharSequence which can be used as header name and value.</p>
+</p>
+<p><strong>Author</strong><br/>
+<a href="#">Norman Maurer</a></p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-a-c-c-e-p-t.html">ACCEPT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ACCEPT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Accept header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-a-c-c-e-p-t_-c-h-a-r-s-e-t.html">ACCEPT_CHARSET</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ACCEPT_CHARSET</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Accept-Charset header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-a-c-c-e-p-t_-e-n-c-o-d-i-n-g.html">ACCEPT_ENCODING</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ACCEPT_ENCODING</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Accept-Encoding header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-a-c-c-e-p-t_-l-a-n-g-u-a-g-e.html">ACCEPT_LANGUAGE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ACCEPT_LANGUAGE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Accept-Language header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-a-c-c-e-p-t_-p-a-t-c-h.html">ACCEPT_PATCH</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ACCEPT_PATCH</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Accept-Patch header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-a-c-c-e-p-t_-r-a-n-g-e-s.html">ACCEPT_RANGES</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ACCEPT_RANGES</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Accept-Ranges header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-a-c-c-e-s-s_-c-o-n-t-r-o-l_-a-l-l-o-w_-c-r-e-d-e-n-t-i-a-l-s.html">ACCESS_CONTROL_ALLOW_CREDENTIALS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ACCESS_CONTROL_ALLOW_CREDENTIALS</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Access-Control-Allow-Credentials header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-a-c-c-e-s-s_-c-o-n-t-r-o-l_-a-l-l-o-w_-h-e-a-d-e-r-s.html">ACCESS_CONTROL_ALLOW_HEADERS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ACCESS_CONTROL_ALLOW_HEADERS</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Access-Control-Allow-Headers header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-a-c-c-e-s-s_-c-o-n-t-r-o-l_-a-l-l-o-w_-m-e-t-h-o-d-s.html">ACCESS_CONTROL_ALLOW_METHODS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ACCESS_CONTROL_ALLOW_METHODS</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Access-Control-Allow-Methods header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-a-c-c-e-s-s_-c-o-n-t-r-o-l_-a-l-l-o-w_-o-r-i-g-i-n.html">ACCESS_CONTROL_ALLOW_ORIGIN</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ACCESS_CONTROL_ALLOW_ORIGIN</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Access-Control-Allow-Origin header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-a-c-c-e-s-s_-c-o-n-t-r-o-l_-e-x-p-o-s-e_-h-e-a-d-e-r-s.html">ACCESS_CONTROL_EXPOSE_HEADERS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ACCESS_CONTROL_EXPOSE_HEADERS</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Access-Control-Expose-Headers header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-a-c-c-e-s-s_-c-o-n-t-r-o-l_-m-a-x_-a-g-e.html">ACCESS_CONTROL_MAX_AGE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ACCESS_CONTROL_MAX_AGE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Access-Control-Max-Age header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-a-c-c-e-s-s_-c-o-n-t-r-o-l_-r-e-q-u-e-s-t_-h-e-a-d-e-r-s.html">ACCESS_CONTROL_REQUEST_HEADERS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ACCESS_CONTROL_REQUEST_HEADERS</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Access-Control-Request-Headers header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-a-c-c-e-s-s_-c-o-n-t-r-o-l_-r-e-q-u-e-s-t_-m-e-t-h-o-d.html">ACCESS_CONTROL_REQUEST_METHOD</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ACCESS_CONTROL_REQUEST_METHOD</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Access-Control-Request-Method header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-a-g-e.html">AGE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">AGE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Age header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-a-l-l-o-w.html">ALLOW</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ALLOW</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Allow header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-a-p-p-l-i-c-a-t-i-o-n_-x_-w-w-w_-f-o-r-m_-u-r-l-e-n-c-o-d-e-d.html">APPLICATION_X_WWW_FORM_URLENCODED</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">APPLICATION_X_WWW_FORM_URLENCODED</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>application/x-www-form-urlencoded header value</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-a-u-t-h-o-r-i-z-a-t-i-o-n.html">AUTHORIZATION</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">AUTHORIZATION</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Authorization header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-a-c-h-e_-c-o-n-t-r-o-l.html">CACHE_CONTROL</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CACHE_CONTROL</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Cache-Control header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-h-u-n-k-e-d.html">CHUNKED</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CHUNKED</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>chunked header value</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-l-o-s-e.html">CLOSE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CLOSE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>close header value</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-o-n-n-e-c-t-i-o-n.html">CONNECTION</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CONNECTION</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Connection header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-o-n-t-e-n-t_-b-a-s-e.html">CONTENT_BASE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CONTENT_BASE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Content-Base header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-o-n-t-e-n-t_-e-n-c-o-d-i-n-g.html">CONTENT_ENCODING</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CONTENT_ENCODING</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Content-Encoding header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-o-n-t-e-n-t_-l-a-n-g-u-a-g-e.html">CONTENT_LANGUAGE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CONTENT_LANGUAGE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Content-Language header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-o-n-t-e-n-t_-l-e-n-g-t-h.html">CONTENT_LENGTH</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CONTENT_LENGTH</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Content-Length header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-o-n-t-e-n-t_-l-o-c-a-t-i-o-n.html">CONTENT_LOCATION</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CONTENT_LOCATION</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Content-Location header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-o-n-t-e-n-t_-m-d5.html">CONTENT_MD5</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CONTENT_MD5</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Content-MD5 header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-o-n-t-e-n-t_-r-a-n-g-e.html">CONTENT_RANGE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CONTENT_RANGE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Content-Rage header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-o-n-t-e-n-t_-t-r-a-n-s-f-e-r_-e-n-c-o-d-i-n-g.html">CONTENT_TRANSFER_ENCODING</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CONTENT_TRANSFER_ENCODING</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Content-Transfer-Encoding header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-o-n-t-e-n-t_-t-y-p-e.html">CONTENT_TYPE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CONTENT_TYPE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Content-Type header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-o-n-t-i-n-u-e.html">CONTINUE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CONTINUE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>100-continue header value</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-o-o-k-i-e.html">COOKIE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">COOKIE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Content-Cookie header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-a-t-e.html">DATE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DATE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Date header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-l-a-t-e_-g-z-i-p.html">DEFLATE_GZIP</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFLATE_GZIP</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>deflate,gzip header value</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-e-t-a-g.html">ETAG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ETAG</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Etag header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-e-x-p-e-c-t.html">EXPECT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">EXPECT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Expect header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-e-x-p-i-r-e-s.html">EXPIRES</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">EXPIRES</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Expires header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-f-r-o-m.html">FROM</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">FROM</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>From header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-g-e-t.html">GET</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">GET</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>GET header value</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-h-o-s-t.html">HOST</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">HOST</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Host header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-i-d-e-n-t-i-t-y.html">IDENTITY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">IDENTITY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>identity header value</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-i-f_-m-a-t-c-h.html">IF_MATCH</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">IF_MATCH</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>If-Match header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-i-f_-m-o-d-i-f-i-e-d_-s-i-n-c-e.html">IF_MODIFIED_SINCE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">IF_MODIFIED_SINCE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>If-Modified-Since header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-i-f_-n-o-n-e_-m-a-t-c-h.html">IF_NONE_MATCH</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">IF_NONE_MATCH</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>If-None-Match header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-k-e-e-p_-a-l-i-v-e.html">KEEP_ALIVE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">KEEP_ALIVE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>keep-alive header value</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-l-a-s-t_-m-o-d-i-f-i-e-d.html">LAST_MODIFIED</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">LAST_MODIFIED</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Last-Modified header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-l-o-c-a-t-i-o-n.html">LOCATION</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">LOCATION</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Location header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-o-r-i-g-i-n.html">ORIGIN</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ORIGIN</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Origin header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-p-r-o-x-y_-a-u-t-h-e-n-t-i-c-a-t-e.html">PROXY_AUTHENTICATE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PROXY_AUTHENTICATE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Proxy-Authenticate header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-p-r-o-x-y_-a-u-t-h-o-r-i-z-a-t-i-o-n.html">PROXY_AUTHORIZATION</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PROXY_AUTHORIZATION</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Proxy-Authorization header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-r-e-f-e-r-e-r.html">REFERER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">REFERER</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Referer header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-r-e-t-r-y_-a-f-t-e-r.html">RETRY_AFTER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">RETRY_AFTER</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Retry-After header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-s-e-r-v-e-r.html">SERVER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">SERVER</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Server header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-s-e-t_-c-o-o-k-i-e.html">SET_COOKIE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">SET_COOKIE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Set-Cookie header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-t-e-x-t_-h-t-m-l.html">TEXT_HTML</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">TEXT_HTML</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>text/html header value</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-t-r-a-n-s-f-e-r_-e-n-c-o-d-i-n-g.html">TRANSFER_ENCODING</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">TRANSFER_ENCODING</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Transfer-Encoding header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-u-p-g-r-a-d-e.html">UPGRADE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">UPGRADE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Upgrade header value</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-u-s-e-r_-a-g-e-n-t.html">USER_AGENT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">USER_AGENT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>User-Agent header name</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-w-e-b-s-o-c-k-e-t.html">WEBSOCKET</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">WEBSOCKET</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>WebSocket header value</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create-optimized.html">createOptimized</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createOptimized</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.HttpHeaders$createOptimized(kotlin.String)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char-sequence/index.html"><span class="identifier">CharSequence</span></a></code>
+<p>Create an optimized CharSequence which can be used as header name or value. This should be used if you expect to use it multiple times liked for example adding the same header name or value for multiple responses or requests.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

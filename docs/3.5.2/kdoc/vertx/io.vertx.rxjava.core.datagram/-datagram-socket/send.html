@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DatagramSocket.send - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.core.datagram</a>&nbsp;/&nbsp;<a href="index.html">DatagramSocket</a>&nbsp;/&nbsp;<a href=".">send</a><br/>
+<br/>
+<h1>send</h1>
+<a name="io.vertx.rxjava.core.datagram.DatagramSocket$send(io.vertx.rxjava.core.buffer.Buffer, kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.datagram.DatagramSocket)))))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">send</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.datagram.DatagramSocket$send(io.vertx.rxjava.core.buffer.Buffer, kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.datagram.DatagramSocket)))))/packet">packet</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.datagram.DatagramSocket$send(io.vertx.rxjava.core.buffer.Buffer, kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.datagram.DatagramSocket)))))/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.datagram.DatagramSocket$send(io.vertx.rxjava.core.buffer.Buffer, kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.datagram.DatagramSocket)))))/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.datagram.DatagramSocket$send(io.vertx.rxjava.core.buffer.Buffer, kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.datagram.DatagramSocket)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="index.html"><span class="identifier">DatagramSocket</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">DatagramSocket</span></a></code>
+<p>Write the given io.vertx.rxjava.core.buffer.Buffer to the io.vertx.rxjava.core.net.SocketAddress. The io.vertx.rxjava.core.Handler will be notified once the write completes.</p>
+<h3>Parameters</h3>
+<p><a name="packet"></a>
+<code>packet</code> - the io.vertx.rxjava.core.buffer.Buffer to write</p>
+<p><a name="port"></a>
+<code>port</code> - the host port of the remote peer</p>
+<p><a name="host"></a>
+<code>host</code> - the host address of the remote peer</p>
+<p><a name="handler"></a>
+<code>handler</code> - the io.vertx.rxjava.core.Handler to notify once the write completes.</p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently</p>
+<a name="io.vertx.rxjava.core.datagram.DatagramSocket$send(kotlin.String, kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.datagram.DatagramSocket)))))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">send</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.datagram.DatagramSocket$send(kotlin.String, kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.datagram.DatagramSocket)))))/str">str</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.datagram.DatagramSocket$send(kotlin.String, kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.datagram.DatagramSocket)))))/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.datagram.DatagramSocket$send(kotlin.String, kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.datagram.DatagramSocket)))))/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.datagram.DatagramSocket$send(kotlin.String, kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.datagram.DatagramSocket)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="index.html"><span class="identifier">DatagramSocket</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">DatagramSocket</span></a></code>
+<p>Write the given java.lang.String to the io.vertx.rxjava.core.net.SocketAddress using UTF8 encoding. The will be notified once the write completes.</p>
+<h3>Parameters</h3>
+<p><a name="str"></a>
+<code>str</code> - the java.lang.String to write</p>
+<p><a name="port"></a>
+<code>port</code> - the host port of the remote peer</p>
+<p><a name="host"></a>
+<code>host</code> - the host address of the remote peer</p>
+<p><a name="handler"></a>
+<code>handler</code> - the io.vertx.rxjava.core.Handler to notify once the write completes.</p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently</p>
+<a name="io.vertx.rxjava.core.datagram.DatagramSocket$send(kotlin.String, kotlin.String, kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.datagram.DatagramSocket)))))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">send</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.core.datagram.DatagramSocket$send(kotlin.String, kotlin.String, kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.datagram.DatagramSocket)))))/str">str</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.datagram.DatagramSocket$send(kotlin.String, kotlin.String, kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.datagram.DatagramSocket)))))/enc">enc</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.datagram.DatagramSocket$send(kotlin.String, kotlin.String, kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.datagram.DatagramSocket)))))/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.datagram.DatagramSocket$send(kotlin.String, kotlin.String, kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.datagram.DatagramSocket)))))/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.core.datagram.DatagramSocket$send(kotlin.String, kotlin.String, kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.core.datagram.DatagramSocket)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="index.html"><span class="identifier">DatagramSocket</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">DatagramSocket</span></a></code>
+<p>Write the given java.lang.String to the io.vertx.rxjava.core.net.SocketAddress using the given encoding. The will be notified once the write completes.</p>
+<h3>Parameters</h3>
+<p><a name="str"></a>
+<code>str</code> - the java.lang.String to write</p>
+<p><a name="enc"></a>
+<code>enc</code> - the charset used for encoding</p>
+<p><a name="port"></a>
+<code>port</code> - the host port of the remote peer</p>
+<p><a name="host"></a>
+<code>host</code> - the host address of the remote peer</p>
+<p><a name="handler"></a>
+<code>handler</code> - the io.vertx.rxjava.core.Handler to notify once the write completes.</p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently</p>
+</BODY>
+</HTML>

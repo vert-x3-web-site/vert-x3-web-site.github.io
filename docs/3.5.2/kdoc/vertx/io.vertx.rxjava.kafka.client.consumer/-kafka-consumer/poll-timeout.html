@@ -1,0 +1,20 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>KafkaConsumer.pollTimeout - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.kafka.client.consumer</a>&nbsp;/&nbsp;<a href="index.html">KafkaConsumer</a>&nbsp;/&nbsp;<a href=".">pollTimeout</a><br/>
+<br/>
+<h1>pollTimeout</h1>
+<a name="io.vertx.rxjava.kafka.client.consumer.KafkaConsumer$pollTimeout(kotlin.Long)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">pollTimeout</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.kafka.client.consumer.KafkaConsumer$pollTimeout(kotlin.Long)/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">KafkaConsumer</span></a><span class="symbol">&lt;</span><span class="identifier">K</span><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span></code>
+<p>Sets the poll timeout (in ms) for the underlying native Kafka Consumer. Defaults to 1000. Setting timeout to a lower value results in a more 'responsive' client, because it will block for a shorter period if no data is available in the assigned partition and therefore allows subsequent actions to be executed with a shorter delay. At the same time, the client will poll more frequently and thus will potentially create a higher load on the Kafka Broker.</p>
+<h3>Parameters</h3>
+<p><a name="timeout"></a>
+<code>timeout</code> - The time, in milliseconds, spent waiting in poll if data is not available in the buffer. If 0, returns immediately with any records that are available currently in the native Kafka consumer's buffer, else returns empty. Must not be negative.</p>
+<p><strong>Return</strong><br/>
+</p>
+</BODY>
+</HTML>

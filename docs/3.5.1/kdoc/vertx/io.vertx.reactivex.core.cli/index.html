@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.reactivex.core.cli - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.reactivex.core.cli</a><br/>
+<br/>
+<h2>Package io.vertx.reactivex.core.cli</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-c-l-i/index.html">CLI</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CLI</span></code>
+<p>Interface defining a command-line interface (in other words a command such as 'run', 'ls'...). This interface is polyglot to ease reuse such as in Vert.x Shell.  A command line interface has a name, and defines a set of options and arguments. Options are key-value pair such as <code>-foo=bar</code> or <code>-flag</code>. The supported formats depend on the used parser. Arguments are unlike options raw values. Options are defined using io.vertx.core.cli.Option, while argument are defined using io.vertx.core.cli.Argument.  Command line interfaces also define a summary and a description. These attributes are used in the usage generation . To disable the help generation, set the <code>hidden</code> attribute to <code>true</code>.  Command Line Interface object does not contains "value", it's a model. It must be evaluated by a parser that returns a io.vertx.reactivex.core.cli.CommandLine object containing the argument and option values.  NOTE: This class has been automatically generated from the io.vertx.core.cli.CLI non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-command-line/index.html">CommandLine</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CommandLine</span></code>
+<p>The parser transforms a CLI (a model) into an io.vertx.reactivex.core.cli.CommandLine. This io.vertx.reactivex.core.cli.CommandLine has stored the argument and option values. Only instance of parser should create objects of this type.  NOTE: This class has been automatically generated from the io.vertx.core.cli.CommandLine non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

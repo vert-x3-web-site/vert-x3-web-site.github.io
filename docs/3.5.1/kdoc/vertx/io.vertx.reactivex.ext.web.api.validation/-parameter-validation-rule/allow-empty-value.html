@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ParameterValidationRule.allowEmptyValue - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.ext.web.api.validation</a>&nbsp;/&nbsp;<a href="index.html">ParameterValidationRule</a>&nbsp;/&nbsp;<a href=".">allowEmptyValue</a><br/>
+<br/>
+<h1>allowEmptyValue</h1>
+<a name="io.vertx.reactivex.ext.web.api.validation.ParameterValidationRule$allowEmptyValue()"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">allowEmptyValue</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>allowEmptyValue is used in query, header, cookie and form parameters. This is its behaviour: <ol> <li>During validation, the ValidationHandler check if there's a parameter with combination of location and name as defined in this rule </li>
+ <li>If it not exists, It will check allowEmptyValue and if there's a default value set inside ParameterTypeValidator:</li>
+ <ul> <li>If this condition it's true, It marks as validated the parameter and returns the default value (inside RequestParameter)</li>
+ <li>If this condition it's false, It throws ValidationException</li>
+ </ul>
+ <li>If the parameter exists, It checks if parameter is null or empty string:</li>
+ <ul> <li>If allowEmptyValue it's true, It marks as validated the parameter and returns the default value if it exists (inside RequestParameter)</li>
+ <li>If allowEmptyValue it's false, It throws ValidationException</li>
+ </ul>
+ </ol>
+</p>
+<p><strong>Return</strong><br/>
+value of allowEmptyValue</p>
+</BODY>
+</HTML>

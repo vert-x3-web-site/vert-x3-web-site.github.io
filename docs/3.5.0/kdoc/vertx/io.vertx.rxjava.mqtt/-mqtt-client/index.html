@@ -1,0 +1,271 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MqttClient - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rxjava.mqtt</a>&nbsp;/&nbsp;<a href=".">MqttClient</a><br/>
+<br/>
+<h1>MqttClient</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MqttClient</span></code>
+<p>An MQTT client  NOTE: This class has been automatically generated from the io.vertx.mqtt.MqttClient non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MqttClient</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$<init>(io.vertx.mqtt.MqttClient)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<span class="identifier">MqttClient</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><span class="identifier">TypeArg</span><span class="symbol">&lt;</span><span class="identifier">MqttClient</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="client-id.html">clientId</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">clientId</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="close-handler.html">closeHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">closeHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$closeHandler(io.vertx.core.Handler((java.lang.Void)))/closeHandler">closeHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>Set a handler that will be called when the connection with server is closed</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="connect.html">connect</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">connect</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$connect(kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.mqtt.messages.MqttConnAckMessage)))))/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$connect(kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.mqtt.messages.MqttConnAckMessage)))))/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$connect(kotlin.Int, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.mqtt.messages.MqttConnAckMessage)))))/connectHandler">connectHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../../io.vertx.rxjava.mqtt.messages/-mqtt-conn-ack-message/index.html"><span class="identifier">MqttConnAckMessage</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">connect</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$connect(kotlin.Int, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.mqtt.messages.MqttConnAckMessage)))))/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$connect(kotlin.Int, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.mqtt.messages.MqttConnAckMessage)))))/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$connect(kotlin.Int, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.mqtt.messages.MqttConnAckMessage)))))/serverName">serverName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$connect(kotlin.Int, kotlin.String, kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.rxjava.mqtt.messages.MqttConnAckMessage)))))/connectHandler">connectHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../../io.vertx.rxjava.mqtt.messages/-mqtt-conn-ack-message/index.html"><span class="identifier">MqttConnAckMessage</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>Connects to an MQTT server calling connectHandler after connection</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$create(io.vertx.rxjava.core.Vertx, io.vertx.mqtt.MqttClientOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$create(io.vertx.rxjava.core.Vertx, io.vertx.mqtt.MqttClientOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">MqttClientOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>Return an MQTT client instance</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$create(io.vertx.rxjava.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>Return an MQTT client instance using the default options</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="disconnect.html">disconnect</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">disconnect</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>Disconnects from the MQTT server</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">disconnect</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$disconnect(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/disconnectHandler">disconnectHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>Disconnects from the MQTT server calling disconnectHandler after disconnection</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="exception-handler.html">exceptionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">exceptionHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$exceptionHandler(io.vertx.core.Handler((kotlin.Throwable)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>Set an exception handler for the client, that will be called when an error happens in internal netty structures. <code>io.netty.handler.codec.DecoderException</code> can be one of the cause</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$newInstance(io.vertx.mqtt.MqttClient)/arg">arg</span><span class="symbol">:</span>&nbsp;<span class="identifier">MqttClient</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="ping.html">ping</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">ping</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>This method is needed by the client in order to avoid server closes the connection due to the keep alive timeout if client has no messages to send</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="ping-response-handler.html">pingResponseHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">pingResponseHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$pingResponseHandler(io.vertx.core.Handler((java.lang.Void)))/pingResponseHandler">pingResponseHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>Sets handler which will be called after PINGRESP packet receiving</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="publish.html">publish</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">publish</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$publish(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.netty.handler.codec.mqtt.MqttQoS, kotlin.Boolean, kotlin.Boolean)/topic">topic</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$publish(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.netty.handler.codec.mqtt.MqttQoS, kotlin.Boolean, kotlin.Boolean)/payload">payload</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$publish(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.netty.handler.codec.mqtt.MqttQoS, kotlin.Boolean, kotlin.Boolean)/qosLevel">qosLevel</span><span class="symbol">:</span>&nbsp;<a href="http://netty.io/4.1/api/io/netty/handler/codec/mqtt/MqttQoS.html"><span class="identifier">MqttQoS</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$publish(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.netty.handler.codec.mqtt.MqttQoS, kotlin.Boolean, kotlin.Boolean)/isDup">isDup</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$publish(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.netty.handler.codec.mqtt.MqttQoS, kotlin.Boolean, kotlin.Boolean)/isRetain">isRetain</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">publish</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$publish(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.netty.handler.codec.mqtt.MqttQoS, kotlin.Boolean, kotlin.Boolean, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Int)))))/topic">topic</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$publish(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.netty.handler.codec.mqtt.MqttQoS, kotlin.Boolean, kotlin.Boolean, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Int)))))/payload">payload</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$publish(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.netty.handler.codec.mqtt.MqttQoS, kotlin.Boolean, kotlin.Boolean, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Int)))))/qosLevel">qosLevel</span><span class="symbol">:</span>&nbsp;<a href="http://netty.io/4.1/api/io/netty/handler/codec/mqtt/MqttQoS.html"><span class="identifier">MqttQoS</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$publish(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.netty.handler.codec.mqtt.MqttQoS, kotlin.Boolean, kotlin.Boolean, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Int)))))/isDup">isDup</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$publish(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.netty.handler.codec.mqtt.MqttQoS, kotlin.Boolean, kotlin.Boolean, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Int)))))/isRetain">isRetain</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$publish(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.netty.handler.codec.mqtt.MqttQoS, kotlin.Boolean, kotlin.Boolean, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Int)))))/publishSentHandler">publishSentHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>Sends the PUBLISH message to the remote MQTT server</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="publish-completion-handler.html">publishCompletionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">publishCompletionHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$publishCompletionHandler(io.vertx.core.Handler((kotlin.Int)))/publishCompletionHandler">publishCompletionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>Sets handler which will be called each time publish is completed</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="publish-handler.html">publishHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">publishHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$publishHandler(io.vertx.core.Handler((io.vertx.rxjava.mqtt.messages.MqttPublishMessage)))/publishHandler">publishHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.rxjava.mqtt.messages/-mqtt-publish-message/index.html"><span class="identifier">MqttPublishMessage</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>Sets handler which will be called each time server publish something to client</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-connect.html">rxConnect</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxConnect</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$rxConnect(kotlin.Int, kotlin.String)/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$rxConnect(kotlin.Int, kotlin.String)/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.rxjava.mqtt.messages/-mqtt-conn-ack-message/index.html"><span class="identifier">MqttConnAckMessage</span></a><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxConnect</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$rxConnect(kotlin.Int, kotlin.String, kotlin.String)/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$rxConnect(kotlin.Int, kotlin.String, kotlin.String)/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$rxConnect(kotlin.Int, kotlin.String, kotlin.String)/serverName">serverName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.rxjava.mqtt.messages/-mqtt-conn-ack-message/index.html"><span class="identifier">MqttConnAckMessage</span></a><span class="symbol">&gt;</span></code>
+<p>Connects to an MQTT server calling connectHandler after connection</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-disconnect.html">rxDisconnect</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxDisconnect</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span></code>
+<p>Disconnects from the MQTT server calling disconnectHandler after disconnection</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-publish.html">rxPublish</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxPublish</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$rxPublish(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.netty.handler.codec.mqtt.MqttQoS, kotlin.Boolean, kotlin.Boolean)/topic">topic</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$rxPublish(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.netty.handler.codec.mqtt.MqttQoS, kotlin.Boolean, kotlin.Boolean)/payload">payload</span><span class="symbol">:</span>&nbsp;<span class="identifier">Buffer</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$rxPublish(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.netty.handler.codec.mqtt.MqttQoS, kotlin.Boolean, kotlin.Boolean)/qosLevel">qosLevel</span><span class="symbol">:</span>&nbsp;<a href="http://netty.io/4.1/api/io/netty/handler/codec/mqtt/MqttQoS.html"><span class="identifier">MqttQoS</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$rxPublish(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.netty.handler.codec.mqtt.MqttQoS, kotlin.Boolean, kotlin.Boolean)/isDup">isDup</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$rxPublish(kotlin.String, io.vertx.rxjava.core.buffer.Buffer, io.netty.handler.codec.mqtt.MqttQoS, kotlin.Boolean, kotlin.Boolean)/isRetain">isRetain</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span></code>
+<p>Sends the PUBLISH message to the remote MQTT server</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-subscribe.html">rxSubscribe</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxSubscribe</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$rxSubscribe(kotlin.String, kotlin.Int)/topic">topic</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$rxSubscribe(kotlin.String, kotlin.Int)/qos">qos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span></code>
+<p>Subscribes to the topic with a specified QoS level</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxSubscribe</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$rxSubscribe(kotlin.collections.MutableMap((kotlin.String, kotlin.Int)))/topics">topics</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span></code>
+<p>Subscribes to the topic and adds a handler which will be called after the request is sent</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-unsubscribe.html">rxUnsubscribe</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxUnsubscribe</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$rxUnsubscribe(kotlin.String)/topic">topic</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span></code>
+<p>Unsubscribe from receiving messages on given topic</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="subscribe.html">subscribe</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">subscribe</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$subscribe(kotlin.String, kotlin.Int)/topic">topic</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$subscribe(kotlin.String, kotlin.Int)/qos">qos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">subscribe</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$subscribe(kotlin.String, kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Int)))))/topic">topic</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$subscribe(kotlin.String, kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Int)))))/qos">qos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$subscribe(kotlin.String, kotlin.Int, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Int)))))/subscribeSentHandler">subscribeSentHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>Subscribes to the topic with a specified QoS level</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">subscribe</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$subscribe(kotlin.collections.MutableMap((kotlin.String, kotlin.Int)))/topics">topics</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>Subscribes to the topics with related QoS levels</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">subscribe</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$subscribe(kotlin.collections.MutableMap((kotlin.String, kotlin.Int)), io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Int)))))/topics">topics</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$subscribe(kotlin.collections.MutableMap((kotlin.String, kotlin.Int)), io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Int)))))/subscribeSentHandler">subscribeSentHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>Subscribes to the topic and adds a handler which will be called after the request is sent</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="subscribe-completion-handler.html">subscribeCompletionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">subscribeCompletionHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$subscribeCompletionHandler(io.vertx.core.Handler((io.vertx.rxjava.mqtt.messages.MqttSubAckMessage)))/subscribeCompletionHandler">subscribeCompletionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.rxjava.mqtt.messages/-mqtt-sub-ack-message/index.html"><span class="identifier">MqttSubAckMessage</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>Sets handler which will be called after SUBACK packet receiving</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="unsubscribe.html">unsubscribe</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">unsubscribe</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$unsubscribe(kotlin.String)/topic">topic</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">unsubscribe</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$unsubscribe(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Int)))))/topic">topic</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$unsubscribe(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.Int)))))/unsubscribeSentHandler">unsubscribeSentHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>Unsubscribe from receiving messages on given topic</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="unsubscribe-completion-handler.html">unsubscribeCompletionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">unsubscribeCompletionHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rxjava.mqtt.MqttClient$unsubscribeCompletionHandler(io.vertx.core.Handler((kotlin.Int)))/unsubscribeCompletionHandler">unsubscribeCompletionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MqttClient</span></code>
+<p>Sets handler which will be called after UNSUBACK packet receiving</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

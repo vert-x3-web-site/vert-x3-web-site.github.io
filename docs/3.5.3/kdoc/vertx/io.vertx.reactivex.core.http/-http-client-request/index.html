@@ -1,0 +1,396 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HttpClientRequest - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.http</a>&nbsp;/&nbsp;<a href=".">HttpClientRequest</a><br/>
+<br/>
+<h1>HttpClientRequest</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpClientRequest</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.streams/-write-stream/index.html"><span class="identifier">WriteStream</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><a href="../../io.vertx.reactivex.core.streams/-read-stream/index.html"><span class="identifier">ReadStream</span></a><span class="symbol">&lt;</span><a href="../-http-client-response/index.html"><span class="identifier">HttpClientResponse</span></a><span class="symbol">&gt;</span></code>
+<p>Represents a client-side HTTP request. 
+<p> Instances are created by an io.vertx.reactivex.core.http.HttpClient instance, via one of the methods corresponding to the specific HTTP methods, or the generic request methods. On creation the request will not have been written to the wire. </p>
+<p> Once a request has been obtained, headers can be set on it, and data can be written to its body if required. Once you are ready to send the request, one of the <code><a href="#">io.vertx.reactivex.core.http.HttpClientRequest#end</a></code> methods should be called. </p>
+<p> Nothing is actually sent until the request has been internally assigned an HTTP connection. </p>
+<p> The io.vertx.reactivex.core.http.HttpClient instance will return an instance of this class immediately, even if there are no HTTP connections available in the pool. Any requests sent before a connection is assigned will be queued internally and actually sent when an HTTP connection becomes available from the pool. </p>
+<p> The headers of the request are queued for writing either when the <code><a href="#">io.vertx.reactivex.core.http.HttpClientRequest#end</a></code> method is called, or, when the first part of the body is written, whichever occurs first. </p>
+<p> This class supports both chunked and non-chunked HTTP. </p>
+<p> It implements io.vertx.reactivex.core.streams.WriteStream so it can be used with io.vertx.reactivex.core.streams.Pump to pump data with flow control. </p>
+<p> An example of using this class is as follows: </p>
+<p> </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.http.HttpClientRequest non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HttpClientRequest</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$<init>(io.vertx.core.http.HttpClientRequest)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpClientRequest</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">HttpClientRequest</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="absolute-u-r-i.html">absoluteURI</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">absoluteURI</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="connection.html">connection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">connection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-http-connection/index.html"><span class="identifier">HttpConnection</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="connection-handler.html">connectionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">connectionHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$connectionHandler(io.vertx.core.Handler((io.vertx.reactivex.core.http.HttpConnection)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../-http-connection/index.html"><span class="identifier">HttpConnection</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code>
+<p>Set a connection handler called when an HTTP connection has been established.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="continue-handler.html">continueHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">continueHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$continueHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code>
+<p>If you send an HTTP request with the header <code>Expect</code> set to the value <code>100-continue</code> and the server responds with an interim HTTP response with a status code of <code>100</code> and a continue handler has been set using this method, then the <code>handler</code> will be called. 
+<p> You can then continue to write data to the request body and later end it. This is normally used in conjunction with the <code><a href="send-head.html">io.vertx.reactivex.core.http.HttpClientRequest#sendHead</a></code> method to force the request header to be written before the request has ended.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="drain-handler.html">drainHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">drainHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$drainHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="end.html">end</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">end</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$end(kotlin.String)/chunk">chunk</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Same as <code><a href="#">io.vertx.reactivex.core.http.HttpClientRequest#end</a></code> but writes a String in UTF-8 encoding</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">end</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$end(kotlin.String, kotlin.String)/chunk">chunk</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$end(kotlin.String, kotlin.String)/enc">enc</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Same as <code><a href="#">io.vertx.reactivex.core.http.HttpClientRequest#end</a></code> but writes a String with the specified encoding</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">end</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$end(io.vertx.reactivex.core.buffer.Buffer)/chunk">chunk</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Same as <code><a href="#">io.vertx.reactivex.core.http.HttpClientRequest#end</a></code> but writes some data to the request body before ending. If the request is not chunked and no other data has been written then the <code>Content-Length</code> header will be automatically set</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">end</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Ends the request. If no data has been written to the request body, and <code><a href="send-head.html">io.vertx.reactivex.core.http.HttpClientRequest#sendHead</a></code> has not been called then the actual request won't get written until this method gets called. 
+<p> Once the request has ended, it cannot be used any more,</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="end-handler.html">endHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">endHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$endHandler(io.vertx.core.Handler((java.lang.Void)))/endHandler">endHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="exception-handler.html">exceptionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">exceptionHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$exceptionHandler(io.vertx.core.Handler((kotlin.Throwable)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-host.html">getHost</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getHost</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-raw-method.html">getRawMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRawMethod</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="handler.html">handler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">handler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$handler(io.vertx.core.Handler((io.vertx.reactivex.core.http.HttpClientResponse)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../-http-client-response/index.html"><span class="identifier">HttpClientResponse</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="headers.html">headers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">headers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core/-multi-map/index.html"><span class="identifier">MultiMap</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-chunked.html">isChunked</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isChunked</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="method.html">method</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">method</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpMethod</span></code>
+<p>The HTTP method for the request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$newInstance(io.vertx.core.http.HttpClientRequest)/arg">arg</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpClientRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="path.html">path</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">path</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="pause.html">pause</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">pause</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="push-handler.html">pushHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">pushHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$pushHandler(io.vertx.core.Handler((io.vertx.reactivex.core.http.HttpClientRequest)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">HttpClientRequest</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code>
+<p>Set a push handler for this request. The handler is called when the client receives a <em>push promise</em> from the server. The handler can be called multiple times, for each push promise. The handler is called with a <em>read-only</em> io.vertx.reactivex.core.http.HttpClientRequest, the following methods can be called: <ul> <li><code><a href="method.html">io.vertx.reactivex.core.http.HttpClientRequest#method</a></code></li>
+ <li><code><a href="uri.html">io.vertx.reactivex.core.http.HttpClientRequest#uri</a></code></li>
+ <li><code><a href="headers.html">io.vertx.reactivex.core.http.HttpClientRequest#headers</a></code></li>
+ <li><code><a href="get-host.html">io.vertx.reactivex.core.http.HttpClientRequest#getHost</a></code></li>
+ </ul>
+ In addition the handler should call the <code><a href="#">io.vertx.reactivex.core.http.HttpClientRequest#handler</a></code> method to set an handler to process the response.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="put-header.html">putHeader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">putHeader</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$putHeader(kotlin.String, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$putHeader(kotlin.String, kotlin.String)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code>
+<p>Put an HTTP header</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="query.html">query</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">query</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="reset.html">reset</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">reset</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Reset this stream with the error code <code>0</code>.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">reset</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$reset(kotlin.Long)/code">code</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Reset this request:  <ul> <li>for HTTP/2, this performs send an HTTP/2 reset frame with the specified error <code>code</code></li>
+ <li>for HTTP/1.x, this closes the connection when the current request is inflight</li>
+ </ul>
+  When the request has not yet been sent, the request will be aborted and false is returned as indicator. </p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resume.html">resume</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resume</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="send-head.html">sendHead</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">sendHead</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code>
+<p>Forces the head of the request to be written before <code><a href="#">io.vertx.reactivex.core.http.HttpClientRequest#end</a></code> is called on the request or any data is written to it. 
+<p> This is normally used to implement HTTP 100-continue handling, see for more information.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">sendHead</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$sendHead(io.vertx.core.Handler((io.vertx.core.http.HttpVersion)))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">HttpVersion</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code>
+<p>Like <code><a href="send-head.html">io.vertx.reactivex.core.http.HttpClientRequest#sendHead</a></code> but with an handler after headers have been sent. The handler will be called with the io.vertx.reactivex.core.http.HttpVersion if it can be determined or null otherwise.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-chunked.html">setChunked</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setChunked</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$setChunked(kotlin.Boolean)/chunked">chunked</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code>
+<p>If chunked is true then the request will be set into HTTP chunked mode</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-follow-redirects.html">setFollowRedirects</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFollowRedirects</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$setFollowRedirects(kotlin.Boolean)/followRedirects">followRedirects</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-host.html">setHost</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHost</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$setHost(kotlin.String)/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code>
+<p>Set the request host. For HTTP/2 it sets the pseudo header otherwise it sets the header</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-raw-method.html">setRawMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRawMethod</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$setRawMethod(kotlin.String)/method">method</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code>
+<p>Set the value the method to send when the method is used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-timeout.html">setTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTimeout</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$setTimeout(kotlin.Long)/timeoutMs">timeoutMs</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code>
+<p>Set's the amount of time after which if the request does not return any data within the timeout period an java.util.concurrent.TimeoutException will be passed to the exception handler (if provided) and the request will be closed. 
+<p> Calling this method more than once has the effect of canceling any existing timeout and starting the timeout from scratch.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-write-queue-max-size.html">setWriteQueueMaxSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setWriteQueueMaxSize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$setWriteQueueMaxSize(kotlin.Int)/maxSize">maxSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="stream-id.html">streamId</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">streamId</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-flowable.html">toFlowable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toFlowable</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Flowable.html"><span class="identifier">Flowable</span></a><span class="symbol">&lt;</span><a href="../-http-client-response/index.html"><span class="identifier">HttpClientResponse</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-observable.html">toObservable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toObservable</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Observable.html"><span class="identifier">Observable</span></a><span class="symbol">&lt;</span><a href="../-http-client-response/index.html"><span class="identifier">HttpClientResponse</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="uri.html">uri</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">uri</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="write.html">write</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$write(io.vertx.reactivex.core.buffer.Buffer)/data">data</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code><code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$write(kotlin.String)/chunk">chunk</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code>
+<p>Write a java.lang.String to the request body, encoded as UTF-8.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$write(kotlin.String, kotlin.String)/chunk">chunk</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$write(kotlin.String, kotlin.String)/enc">enc</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code>
+<p>Write a java.lang.String to the request body, encoded using the encoding <code>enc</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="write-custom-frame.html">writeCustomFrame</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">writeCustomFrame</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$writeCustomFrame(kotlin.Int, kotlin.Int, io.vertx.reactivex.core.buffer.Buffer)/type">type</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$writeCustomFrame(kotlin.Int, kotlin.Int, io.vertx.reactivex.core.buffer.Buffer)/flags">flags</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$writeCustomFrame(kotlin.Int, kotlin.Int, io.vertx.reactivex.core.buffer.Buffer)/payload">payload</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code>
+<p>Write an HTTP/2 frame to the request, allowing to extend the HTTP/2 protocol.
+<p> The frame is sent immediatly and is not subject to flow control.</p>
+<p> This method must be called after the request headers have been sent and only for the protocol HTTP/2. The <code><a href="send-head.html">io.vertx.reactivex.core.http.HttpClientRequest#sendHead</a></code> should be used for this purpose.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">writeCustomFrame</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$writeCustomFrame(io.vertx.reactivex.core.http.HttpFrame)/frame">frame</span><span class="symbol">:</span>&nbsp;<a href="../-http-frame/index.html"><span class="identifier">HttpFrame</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpClientRequest</span></code>
+<p>Like <code><a href="#">io.vertx.reactivex.core.http.HttpClientRequest#writeCustomFrame</a></code> but with an io.vertx.reactivex.core.http.HttpFrame.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="write-queue-full.html">writeQueueFull</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">writeQueueFull</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>This will return <code>true</code> if there are more bytes in the write queue than the value set using <code><a href="set-write-queue-max-size.html">io.vertx.reactivex.core.http.HttpClientRequest#setWriteQueueMaxSize</a></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

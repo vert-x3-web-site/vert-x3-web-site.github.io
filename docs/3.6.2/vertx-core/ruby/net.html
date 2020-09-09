@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Writing TCP servers and clients - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="https://vertx.io/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.io/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.io/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://vertx.io/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="https://vertx.io/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="https://vertx.io/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="https://vertx.io/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://vertx.io/" class="navbar-brand"><img alt="Brand" src="https://vertx.io/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://vertx.io/docs/3.6.2/">Documentation</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+        <li><a href="https://vertx.io/community/">Community</a></li>
+        <li><a href="https://vertx.io/materials/">Materials</a></li>
+        <li><a href="https://vertx.io/blog/">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Writing TCP servers and clients</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_writing_tcp_servers_and_clients">Writing TCP servers and clients</a>
+<ul class="sectlevel2">
+<li><a href="#_creating_a_tcp_server">Creating a TCP server</a></li>
+<li><a href="#_configuring_a_tcp_server">Configuring a TCP server</a></li>
+<li><a href="#_start_the_server_listening">Start the Server Listening</a></li>
+<li><a href="#_listening_on_a_random_port">Listening on a random port</a></li>
+<li><a href="#_getting_notified_of_incoming_connections">Getting notified of incoming connections</a></li>
+<li><a href="#_reading_data_from_the_socket">Reading data from the socket</a></li>
+<li><a href="#_writing_data_to_a_socket">Writing data to a socket</a></li>
+<li><a href="#_closed_handler">Closed handler</a></li>
+<li><a href="#_handling_exceptions">Handling exceptions</a></li>
+<li><a href="#_event_bus_write_handler">Event bus write handler</a></li>
+<li><a href="#_local_and_remote_addresses">Local and remote addresses</a></li>
+<li><a href="#_sending_files_or_resources_from_the_classpath">Sending files or resources from the classpath</a></li>
+<li><a href="#_streaming_sockets">Streaming sockets</a></li>
+<li><a href="#_upgrading_connections_to_ssl_tls">Upgrading connections to SSL/TLS</a></li>
+<li><a href="#_closing_a_tcp_server">Closing a TCP Server</a></li>
+<li><a href="#_automatic_clean_up_in_verticles">Automatic clean-up in verticles</a></li>
+<li><a href="#_scaling_sharing_tcp_servers">Scaling - sharing TCP servers</a></li>
+<li><a href="#_creating_a_tcp_client">Creating a TCP client</a></li>
+<li><a href="#_configuring_a_tcp_client">Configuring a TCP client</a></li>
+<li><a href="#_making_connections">Making connections</a></li>
+<li><a href="#_configuring_connection_attempts">Configuring connection attempts</a></li>
+<li><a href="#logging_network_activity">Logging network activity</a></li>
+<li><a href="#ssl">Configuring servers and clients to work with SSL/TLS</a></li>
+<li><a href="#_using_a_proxy_for_client_connections">Using a proxy for client connections</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_writing_tcp_servers_and_clients">Writing TCP servers and clients</a>
+<ul class="sectlevel2">
+<li><a href="#_creating_a_tcp_server">Creating a TCP server</a></li>
+<li><a href="#_configuring_a_tcp_server">Configuring a TCP server</a></li>
+<li><a href="#_start_the_server_listening">Start the Server Listening</a></li>
+<li><a href="#_listening_on_a_random_port">Listening on a random port</a></li>
+<li><a href="#_getting_notified_of_incoming_connections">Getting notified of incoming connections</a></li>
+<li><a href="#_reading_data_from_the_socket">Reading data from the socket</a></li>
+<li><a href="#_writing_data_to_a_socket">Writing data to a socket</a></li>
+<li><a href="#_closed_handler">Closed handler</a></li>
+<li><a href="#_handling_exceptions">Handling exceptions</a></li>
+<li><a href="#_event_bus_write_handler">Event bus write handler</a></li>
+<li><a href="#_local_and_remote_addresses">Local and remote addresses</a></li>
+<li><a href="#_sending_files_or_resources_from_the_classpath">Sending files or resources from the classpath</a></li>
+<li><a href="#_streaming_sockets">Streaming sockets</a></li>
+<li><a href="#_upgrading_connections_to_ssl_tls">Upgrading connections to SSL/TLS</a></li>
+<li><a href="#_closing_a_tcp_server">Closing a TCP Server</a></li>
+<li><a href="#_automatic_clean_up_in_verticles">Automatic clean-up in verticles</a></li>
+<li><a href="#_scaling_sharing_tcp_servers">Scaling - sharing TCP servers</a></li>
+<li><a href="#_creating_a_tcp_client">Creating a TCP client</a></li>
+<li><a href="#_configuring_a_tcp_client">Configuring a TCP client</a></li>
+<li><a href="#_making_connections">Making connections</a></li>
+<li><a href="#_configuring_connection_attempts">Configuring connection attempts</a></li>
+<li><a href="#logging_network_activity">Logging network activity</a></li>
+<li><a href="#ssl">Configuring servers and clients to work with SSL/TLS</a></li>
+<li><a href="#_using_a_proxy_for_client_connections">Using a proxy for client connections</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+        <div class="sect1">
+<h2 id="_writing_tcp_servers_and_clients">Writing TCP servers and clients</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vert.x allows you to easily write non blocking TCP clients and servers.</p>
+</div>
+<div class="sect2">
+<h3 id="_creating_a_tcp_server">Creating a TCP server</h3>
+<div class="paragraph">
+<p>The simplest way to create a TCP server, using all default options is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">server = vertx.create_net_server()</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuring_a_tcp_server">Configuring a TCP server</h3>
+<div class="paragraph">
+<p>If you don&#8217;t want the default, a server can be configured by passing in a <code><a href="../dataobjects.html#NetServerOptions">NetServerOptions</a></code>
+instance when creating it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">port</span><span class="delimiter">'</span></span> =&gt; <span class="integer">4321</span>
+}
+server = vertx.create_net_server(options)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_start_the_server_listening">Start the Server Listening</h3>
+<div class="paragraph">
+<p>To tell the server to listen for incoming requests you use one of the <code><a href="../../yardoc/Vertx/NetServer.html#listen-instance_method">listen</a></code>
+alternatives.</p>
+</div>
+<div class="paragraph">
+<p>To tell the server to listen at the host and port as specified in the options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">server = vertx.create_net_server()
+server.listen()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or to specify the host and port in the call to listen, ignoring what is configured in the options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">server = vertx.create_net_server()
+server.listen(<span class="integer">1234</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default host is <code>0.0.0.0</code> which means 'listen on all available addresses' and the default port is <code>0</code>, which is a
+special value that instructs the server to find a random unused local port and use that.</p>
+</div>
+<div class="paragraph">
+<p>The actual bind is asynchronous so the server might not actually be listening until some time <strong>after</strong> the call to
+listen has returned.</p>
+</div>
+<div class="paragraph">
+<p>If you want to be notified when the server is actually listening you can provide a handler to the <code>listen</code> call.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">server = vertx.create_net_server()
+server.listen(<span class="integer">1234</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>) { |res_err,res|
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">nil</span>)
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Server is now listening!</span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Failed to bind!</span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_listening_on_a_random_port">Listening on a random port</h3>
+<div class="paragraph">
+<p>If <code>0</code> is used as the listening port, the server will find an unused random port to listen on.</p>
+</div>
+<div class="paragraph">
+<p>To find out the real port the server is listening on you can call <code><a href="../../yardoc/Vertx/NetServer.html#actual_port-instance_method">actualPort</a></code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">server = vertx.create_net_server()
+server.listen(<span class="integer">0</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>) { |res_err,res|
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">nil</span>)
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Server is now listening on actual port: </span><span class="inline"><span class="inline-delimiter">#{</span>server.actual_port()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Failed to bind!</span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_getting_notified_of_incoming_connections">Getting notified of incoming connections</h3>
+<div class="paragraph">
+<p>To be notified when a connection is made you need to set a <code><a href="../../yardoc/Vertx/NetServer.html#connect_handler-instance_method">connectHandler</a></code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">server = vertx.create_net_server()
+server.connect_handler() { |socket|
+  <span class="comment"># Handle the connection in here</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When a connection is made the handler will be called with an instance of <code><a href="../../yardoc/Vertx/NetSocket.html">NetSocket</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>This is a socket-like interface to the actual connection, and allows you to read and write data as well as do various
+other things like close the socket.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reading_data_from_the_socket">Reading data from the socket</h3>
+<div class="paragraph">
+<p>To read data from the socket you set the <code><a href="../../yardoc/Vertx/NetSocket.html#handler-instance_method">handler</a></code> on the
+socket.</p>
+</div>
+<div class="paragraph">
+<p>This handler will be called with an instance of <code><a href="../../yardoc/Vertx/Buffer.html">Buffer</a></code> every time data is received on
+the socket.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">server = vertx.create_net_server()
+server.connect_handler() { |socket|
+  socket.handler() { |buffer|
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">I received some bytes: </span><span class="inline"><span class="inline-delimiter">#{</span>buffer.length()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_writing_data_to_a_socket">Writing data to a socket</h3>
+<div class="paragraph">
+<p>You write to a socket using one of <code><a href="../../yardoc/Vertx/NetSocket.html#write-instance_method">write</a></code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx/buffer</span><span class="delimiter">'</span></span>
+
+<span class="comment"># Write a buffer</span>
+buffer = <span class="constant">Vertx</span>::<span class="constant">Buffer</span>.buffer().append_float(<span class="float">12.34</span>).append_int(<span class="integer">123</span>)
+socket.write(buffer)
+
+<span class="comment"># Write a string in UTF-8 encoding</span>
+socket.write(<span class="string"><span class="delimiter">&quot;</span><span class="content">some data</span><span class="delimiter">&quot;</span></span>)
+
+<span class="comment"># Write a string using the specified encoding</span>
+socket.write(<span class="string"><span class="delimiter">&quot;</span><span class="content">some data</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-16</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Write operations are asynchronous and may not occur until some time after the call to write has returned.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_closed_handler">Closed handler</h3>
+<div class="paragraph">
+<p>If you want to be notified when a socket is closed, you can set a <code><a href="../../yardoc/Vertx/NetSocket.html#close_handler-instance_method">closeHandler</a></code>
+on it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">socket.close_handler() { |v|
+  puts <span class="string"><span class="delimiter">&quot;</span><span class="content">The socket has been closed</span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_handling_exceptions">Handling exceptions</h3>
+<div class="paragraph">
+<p>You can set an <code><a href="../../yardoc/Vertx/NetSocket.html#exception_handler-instance_method">exceptionHandler</a></code> to receive any
+exceptions that happen on the socket.</p>
+</div>
+<div class="paragraph">
+<p>You can set an <code><a href="../../yardoc/Vertx/NetServer.html#exception_handler-instance_method">exceptionHandler</a></code> to receive any
+exceptions that happens before the connection is passed to the <code><a href="../../yardoc/Vertx/NetServer.html#connect_handler-instance_method">connectHandler</a></code>
+, e.g during the TLS handshake.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_event_bus_write_handler">Event bus write handler</h3>
+<div class="paragraph">
+<p>Every socket automatically registers a handler on the event bus, and when any buffers are received in this handler,
+it writes them to itself.</p>
+</div>
+<div class="paragraph">
+<p>This enables you to write data to a socket which is potentially in a completely different verticle or even in a
+different Vert.x instance by sending the buffer to the address of that handler.</p>
+</div>
+<div class="paragraph">
+<p>The address of the handler is given by <code><a href="../../yardoc/Vertx/NetSocket.html#write_handler_id-instance_method">writeHandlerID</a></code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_local_and_remote_addresses">Local and remote addresses</h3>
+<div class="paragraph">
+<p>The local address of a <code><a href="../../yardoc/Vertx/NetSocket.html">NetSocket</a></code> can be retrieved using <code><a href="../../yardoc/Vertx/NetSocket.html#local_address-instance_method">localAddress</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>The remote address, (i.e. the address of the other end of the connection) of a <code><a href="../../yardoc/Vertx/NetSocket.html">NetSocket</a></code>
+can be retrieved using <code><a href="../../yardoc/Vertx/NetSocket.html#remote_address-instance_method">remoteAddress</a></code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sending_files_or_resources_from_the_classpath">Sending files or resources from the classpath</h3>
+<div class="paragraph">
+<p>Files and classpath resources can be written to the socket directly using <code><a href="../../yardoc/Vertx/NetSocket.html#send_file-instance_method">sendFile</a></code>. This can be a very
+efficient way to send files, as it can be handled by the OS kernel directly where supported by the operating system.</p>
+</div>
+<div class="paragraph">
+<p>Please see the chapter about <a href="#classpath">serving files from the classpath</a> for restrictions of the
+classpath resolution or disabling it.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">socket.send_file(<span class="string"><span class="delimiter">&quot;</span><span class="content">myfile.dat</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_streaming_sockets">Streaming sockets</h3>
+<div class="paragraph">
+<p>Instances of <code><a href="../../yardoc/Vertx/NetSocket.html">NetSocket</a></code> are also <code><a href="../../yardoc/Vertx/ReadStream.html">ReadStream</a></code> and
+<code><a href="../../yardoc/Vertx/WriteStream.html">WriteStream</a></code> instances so they can be used to pump data to or from other
+read and write streams.</p>
+</div>
+<div class="paragraph">
+<p>See the chapter on <a href="#streams">streams and pumps</a> for more information.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_upgrading_connections_to_ssl_tls">Upgrading connections to SSL/TLS</h3>
+<div class="paragraph">
+<p>A non SSL/TLS connection can be upgraded to SSL/TLS using <code><a href="../../yardoc/Vertx/NetSocket.html#upgrade_to_ssl-instance_method">upgradeToSsl</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>The server or client must be configured for SSL/TLS for this to work correctly. Please see the <a href="#ssl">chapter on SSL/TLS</a>
+for more information.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_closing_a_tcp_server">Closing a TCP Server</h3>
+<div class="paragraph">
+<p>Call <code><a href="../../yardoc/Vertx/NetServer.html#close-instance_method">close</a></code> to close the server. Closing the server closes any open connections
+and releases all server resources.</p>
+</div>
+<div class="paragraph">
+<p>The close is actually asynchronous and might not complete until some time after the call has returned.
+If you want to be notified when the actual close has completed then you can pass in a handler.</p>
+</div>
+<div class="paragraph">
+<p>This handler will then be called when the close has fully completed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">server.close() { |res_err,res|
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">nil</span>)
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Server is now closed</span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">close failed</span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_automatic_clean_up_in_verticles">Automatic clean-up in verticles</h3>
+<div class="paragraph">
+<p>If you&#8217;re creating TCP servers and clients from inside verticles, those servers and clients will be automatically closed
+when the verticle is undeployed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_scaling_sharing_tcp_servers">Scaling - sharing TCP servers</h3>
+<div class="paragraph">
+<p>The handlers of any TCP server are always executed on the same event loop thread.</p>
+</div>
+<div class="paragraph">
+<p>This means that if you are running on a server with a lot of cores, and you only have this one instance
+deployed then you will have at most one core utilised on your server.</p>
+</div>
+<div class="paragraph">
+<p>In order to utilise more cores of your server you will need to deploy more instances of the server.</p>
+</div>
+<div class="paragraph">
+<p>You can instantiate more instances programmatically in your code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># Create a few instances so we can utilise cores</span>
+
+(<span class="integer">0</span>...<span class="integer">10</span>).each <span class="keyword">do</span> |i|
+  server = vertx.create_net_server()
+  server.connect_handler() { |socket|
+    socket.handler() { |buffer|
+      <span class="comment"># Just echo back the data</span>
+      socket.write(buffer)
+    }
+  }
+  server.listen(<span class="integer">1234</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>)
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or, if you are using verticles you can simply deploy more instances of your server verticle by using the <code>-instances</code> option
+on the command line:</p>
+</div>
+<div class="paragraph">
+<p>vertx run com.mycompany.MyVerticle -instances 10</p>
+</div>
+<div class="paragraph">
+<p>or when programmatically deploying your verticle</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">instances</span><span class="delimiter">'</span></span> =&gt; <span class="integer">10</span>
+}
+vertx.deploy_verticle(<span class="string"><span class="delimiter">&quot;</span><span class="content">com.mycompany.MyVerticle</span><span class="delimiter">&quot;</span></span>, options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you do this you will find the echo server works functionally identically to before, but all your cores on your
+server can be utilised and more work can be handled.</p>
+</div>
+<div class="paragraph">
+<p>At this point you might be asking yourself <strong>'How can you have more than one server listening on the
+same host and port? Surely you will get port conflicts as soon as you try and deploy more than one instance?'</strong></p>
+</div>
+<div class="paragraph">
+<p><em>Vert.x does a little magic here.*</em></p>
+</div>
+<div class="paragraph">
+<p>When you deploy another server on the same host and port as an existing server it doesn&#8217;t actually try and create a
+new server listening on the same host/port.</p>
+</div>
+<div class="paragraph">
+<p>Instead it internally maintains just a single server, and, as incoming connections arrive it distributes
+them in a round-robin fashion to any of the connect handlers.</p>
+</div>
+<div class="paragraph">
+<p>Consequently Vert.x TCP servers can scale over available cores while each instance remains single threaded.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_a_tcp_client">Creating a TCP client</h3>
+<div class="paragraph">
+<p>The simplest way to create a TCP client, using all default options is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">client = vertx.create_net_client()</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuring_a_tcp_client">Configuring a TCP client</h3>
+<div class="paragraph">
+<p>If you don&#8217;t want the default, a client can be configured by passing in a <code><a href="../dataobjects.html#NetClientOptions">NetClientOptions</a></code>
+instance when creating it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">connectTimeout</span><span class="delimiter">'</span></span> =&gt; <span class="integer">10000</span>
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_making_connections">Making connections</h3>
+<div class="paragraph">
+<p>To make a connection to a server you use <code><a href="../../yardoc/Vertx/NetClient.html#connect-instance_method">connect</a></code>,
+specifying the port and host of the server and a handler that will be called with a result containing the
+<code><a href="../../yardoc/Vertx/NetSocket.html">NetSocket</a></code> when connection is successful or with a failure if connection failed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">connectTimeout</span><span class="delimiter">'</span></span> =&gt; <span class="integer">10000</span>
+}
+client = vertx.create_net_client(options)
+client.connect(<span class="integer">4321</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>) { |res_err,res|
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">nil</span>)
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Connected!</span><span class="delimiter">&quot;</span></span>
+    socket = res
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Failed to connect: </span><span class="inline"><span class="inline-delimiter">#{</span>res_err.get_message()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuring_connection_attempts">Configuring connection attempts</h3>
+<div class="paragraph">
+<p>A client can be configured to automatically retry connecting to the server in the event that it cannot connect.
+This is configured with <code><a href="../dataobjects.html#NetClientOptions#set_reconnect_interval-instance_method">reconnectInterval</a></code> and
+<code><a href="../dataobjects.html#NetClientOptions#set_reconnect_attempts-instance_method">reconnectAttempts</a></code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Currently Vert.x will not attempt to reconnect if a connection fails, reconnect attempts and interval
+only apply to creating initial connections.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">reconnectAttempts</span><span class="delimiter">'</span></span> =&gt; <span class="integer">10</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">reconnectInterval</span><span class="delimiter">'</span></span> =&gt; <span class="integer">500</span>
+}
+
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By default, multiple connection attempts are disabled.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging_network_activity">Logging network activity</h3>
+<div class="paragraph">
+<p>For debugging purposes, network activity can be logged:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">logActivity</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>
+}
+
+server = vertx.create_net_server(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>for the client</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">logActivity</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>
+}
+
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Network activity is logged by Netty with the <code>DEBUG</code> level and with the <code>io.netty.handler.logging.LoggingHandler</code>
+name. When using network activity logging there are a few things to keep in mind:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>logging is not performed by Vert.x logging but by Netty</p>
+</li>
+<li>
+<p>this is <strong>not</strong> a production feature</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You should read the <a href="#netty-logging">[netty-logging]</a> section.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ssl">Configuring servers and clients to work with SSL/TLS</h3>
+<div class="paragraph">
+<p>TCP clients and servers can be configured to use <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">Transport Layer Security</a>
+- earlier versions of TLS were known as SSL.</p>
+</div>
+<div class="paragraph">
+<p>The APIs of the servers and clients are identical whether or not SSL/TLS is used, and it&#8217;s enabled by configuring
+the <code><a href="../dataobjects.html#NetClientOptions">NetClientOptions</a></code> or <code><a href="../dataobjects.html#NetServerOptions">NetServerOptions</a></code> instances used
+to create the servers or clients.</p>
+</div>
+<div class="sect3">
+<h4 id="_enabling_ssl_tls_on_the_server">Enabling SSL/TLS on the server</h4>
+<div class="paragraph">
+<p>SSL/TLS is enabled with  <code><a href="../dataobjects.html#NetServerOptions#set_ssl-instance_method">ssl</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>By default it is disabled.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specifying_key_certificate_for_the_server">Specifying key/certificate for the server</h4>
+<div class="paragraph">
+<p>SSL/TLS servers usually provide certificates to clients in order verify their identity to clients.</p>
+</div>
+<div class="paragraph">
+<p>Certificates/keys can be configured for servers in several ways:</p>
+</div>
+<div class="paragraph">
+<p>The first method is by specifying the location of a Java key-store which contains the certificate and private key.</p>
+</div>
+<div class="paragraph">
+<p>Java key stores can be managed with the <a href="http://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html">keytool</a>
+utility which ships with the JDK.</p>
+</div>
+<div class="paragraph">
+<p>The password for the key store should also be provided:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">keyStoreOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">path</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/server-keystore.jks</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">password-of-your-keystore</span><span class="delimiter">&quot;</span></span>
+  }
+}
+server = vertx.create_net_server(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively you can read the key store yourself as a buffer and provide that directly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">myKeyStoreAsABuffer = vertx.file_system().read_file_blocking(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/server-keystore.jks</span><span class="delimiter">&quot;</span></span>)
+jksOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">value</span><span class="delimiter">'</span></span> =&gt; myKeyStoreAsABuffer,
+  <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">password-of-your-keystore</span><span class="delimiter">&quot;</span></span>
+}
+options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">keyStoreOptions</span><span class="delimiter">'</span></span> =&gt; jksOptions
+}
+server = vertx.create_net_server(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Key/certificate in PKCS#12 format (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>), usually with the <code>.pfx</code>  or the <code>.p12</code>
+extension can also be loaded in a similar fashion than JKS key stores:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">pfxKeyCertOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">path</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/server-keystore.pfx</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">password-of-your-keystore</span><span class="delimiter">&quot;</span></span>
+  }
+}
+server = vertx.create_net_server(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Buffer configuration is also supported:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">myKeyStoreAsABuffer = vertx.file_system().read_file_blocking(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/server-keystore.pfx</span><span class="delimiter">&quot;</span></span>)
+pfxOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">value</span><span class="delimiter">'</span></span> =&gt; myKeyStoreAsABuffer,
+  <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">password-of-your-keystore</span><span class="delimiter">&quot;</span></span>
+}
+options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">pfxKeyCertOptions</span><span class="delimiter">'</span></span> =&gt; pfxOptions
+}
+server = vertx.create_net_server(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another way of providing server private key and certificate separately using <code>.pem</code> files.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">pemKeyCertOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">keyPath</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/server-key.pem</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">certPath</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/server-cert.pem</span><span class="delimiter">&quot;</span></span>
+  }
+}
+server = vertx.create_net_server(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Buffer configuration is also supported:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">myKeyAsABuffer = vertx.file_system().read_file_blocking(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/server-key.pem</span><span class="delimiter">&quot;</span></span>)
+myCertAsABuffer = vertx.file_system().read_file_blocking(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/server-cert.pem</span><span class="delimiter">&quot;</span></span>)
+pemOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">keyValue</span><span class="delimiter">'</span></span> =&gt; myKeyAsABuffer,
+  <span class="string"><span class="delimiter">'</span><span class="content">certValue</span><span class="delimiter">'</span></span> =&gt; myCertAsABuffer
+}
+options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">pemKeyCertOptions</span><span class="delimiter">'</span></span> =&gt; pemOptions
+}
+server = vertx.create_net_server(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>PKCS8, PKCS1 and X.509 certificates wrapped in a PEM block formats are supported.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+keep in mind that pem configuration, the private key is not crypted.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specifying_trust_for_the_server">Specifying trust for the server</h4>
+<div class="paragraph">
+<p>SSL/TLS servers can use a certificate authority in order to verify the identity of the clients.</p>
+</div>
+<div class="paragraph">
+<p>Certificate authorities can be configured for servers in several ways:</p>
+</div>
+<div class="paragraph">
+<p>Java trust stores can be managed with the <a href="http://docs.oracle.com/javase/6/docs/technotes/tools/solaris/keytool.html">keytool</a>
+utility which ships with the JDK.</p>
+</div>
+<div class="paragraph">
+<p>The password for the trust store should also be provided:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">clientAuth</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">REQUIRED</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">trustStoreOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">path</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/truststore.jks</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">password-of-your-truststore</span><span class="delimiter">&quot;</span></span>
+  }
+}
+server = vertx.create_net_server(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively you can read the trust store yourself as a buffer and provide that directly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">myTrustStoreAsABuffer = vertx.file_system().read_file_blocking(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/truststore.jks</span><span class="delimiter">&quot;</span></span>)
+options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">clientAuth</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">REQUIRED</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">trustStoreOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">value</span><span class="delimiter">'</span></span> =&gt; myTrustStoreAsABuffer,
+    <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">password-of-your-truststore</span><span class="delimiter">&quot;</span></span>
+  }
+}
+server = vertx.create_net_server(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Certificate authority in PKCS#12 format (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>), usually with the <code>.pfx</code>  or the <code>.p12</code>
+extension can also be loaded in a similar fashion than JKS trust stores:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">clientAuth</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">REQUIRED</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">pfxTrustOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">path</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/truststore.pfx</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">password-of-your-truststore</span><span class="delimiter">&quot;</span></span>
+  }
+}
+server = vertx.create_net_server(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Buffer configuration is also supported:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">myTrustStoreAsABuffer = vertx.file_system().read_file_blocking(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/truststore.pfx</span><span class="delimiter">&quot;</span></span>)
+options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">clientAuth</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">REQUIRED</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">pfxTrustOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">value</span><span class="delimiter">'</span></span> =&gt; myTrustStoreAsABuffer,
+    <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">password-of-your-truststore</span><span class="delimiter">&quot;</span></span>
+  }
+}
+server = vertx.create_net_server(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another way of providing server certificate authority using a list <code>.pem</code> files.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">clientAuth</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">REQUIRED</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">pemTrustOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">certPaths</span><span class="delimiter">'</span></span> =&gt; [
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/server-ca.pem</span><span class="delimiter">&quot;</span></span>
+    ]
+  }
+}
+server = vertx.create_net_server(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Buffer configuration is also supported:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">myCaAsABuffer = vertx.file_system().read_file_blocking(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/server-ca.pfx</span><span class="delimiter">&quot;</span></span>)
+options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">clientAuth</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">REQUIRED</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">pemTrustOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">certValues</span><span class="delimiter">'</span></span> =&gt; [
+      myCaAsABuffer
+    ]
+  }
+}
+server = vertx.create_net_server(options)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_enabling_ssl_tls_on_the_client">Enabling SSL/TLS on the client</h4>
+<div class="paragraph">
+<p>Net Clients can also be easily configured to use SSL. They have the exact same API when using SSL as when using standard sockets.</p>
+</div>
+<div class="paragraph">
+<p>To enable SSL on a NetClient the function setSSL(true) is called.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_client_trust_configuration">Client trust configuration</h4>
+<div class="paragraph">
+<p>If the <code><a href="../dataobjects.html#ClientOptionsBase#set_trust_all-instance_method">trustALl</a></code> is set to true on the client, then the client will
+trust all server certificates. The connection will still be encrypted but this mode is vulnerable to 'man in the middle' attacks. I.e. you can&#8217;t
+be sure who you are connecting to. Use this with caution. Default value is false.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">trustAll</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If <code><a href="../dataobjects.html#ClientOptionsBase#set_trust_all-instance_method">trustAll</a></code> is not set then a client trust store must be
+configured and should contain the certificates of the servers that the client trusts.</p>
+</div>
+<div class="paragraph">
+<p>By default, host verification is disabled on the client.
+To enable host verification, set the algorithm to use on your client (only HTTPS and LDAPS is currently supported):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">hostnameVerificationAlgorithm</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">HTTPS</span><span class="delimiter">&quot;</span></span>
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Likewise server configuration, the client trust can be configured in several ways:</p>
+</div>
+<div class="paragraph">
+<p>The first method is by specifying the location of a Java trust-store which contains the certificate authority.</p>
+</div>
+<div class="paragraph">
+<p>It is just a standard Java key store, the same as the key stores on the server side. The client
+trust store location is set by using the function <code><a href="../dataobjects.html#JksOptions#set_path-instance_method">path</a></code> on the
+<code><a href="../dataobjects.html#JksOptions">jks options</a></code>. If a server presents a certificate during connection which is not
+in the client trust store, the connection attempt will not succeed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">trustStoreOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">path</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/truststore.jks</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">password-of-your-truststore</span><span class="delimiter">&quot;</span></span>
+  }
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Buffer configuration is also supported:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">myTrustStoreAsABuffer = vertx.file_system().read_file_blocking(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/truststore.jks</span><span class="delimiter">&quot;</span></span>)
+options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">trustStoreOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">value</span><span class="delimiter">'</span></span> =&gt; myTrustStoreAsABuffer,
+    <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">password-of-your-truststore</span><span class="delimiter">&quot;</span></span>
+  }
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Certificate authority in PKCS#12 format (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>), usually with the <code>.pfx</code>  or the <code>.p12</code>
+extension can also be loaded in a similar fashion than JKS trust stores:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">pfxTrustOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">path</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/truststore.pfx</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">password-of-your-truststore</span><span class="delimiter">&quot;</span></span>
+  }
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Buffer configuration is also supported:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">myTrustStoreAsABuffer = vertx.file_system().read_file_blocking(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/truststore.pfx</span><span class="delimiter">&quot;</span></span>)
+options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">pfxTrustOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">value</span><span class="delimiter">'</span></span> =&gt; myTrustStoreAsABuffer,
+    <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">password-of-your-truststore</span><span class="delimiter">&quot;</span></span>
+  }
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another way of providing server certificate authority using a list <code>.pem</code> files.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">pemTrustOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">certPaths</span><span class="delimiter">'</span></span> =&gt; [
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/ca-cert.pem</span><span class="delimiter">&quot;</span></span>
+    ]
+  }
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Buffer configuration is also supported:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">myTrustStoreAsABuffer = vertx.file_system().read_file_blocking(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/ca-cert.pem</span><span class="delimiter">&quot;</span></span>)
+options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">pemTrustOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">certValues</span><span class="delimiter">'</span></span> =&gt; [
+      myTrustStoreAsABuffer
+    ]
+  }
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_specifying_key_certificate_for_the_client">Specifying key/certificate for the client</h4>
+<div class="paragraph">
+<p>If the server requires client authentication then the client must present its own certificate to the server when
+connecting. The client can be configured in several ways:</p>
+</div>
+<div class="paragraph">
+<p>The first method is by specifying the location of a Java key-store which contains the key and certificate.
+Again it&#8217;s just a regular Java key store. The client keystore location is set by using the function
+<code><a href="../dataobjects.html#JksOptions#set_path-instance_method">path</a></code> on the
+<code><a href="../dataobjects.html#JksOptions">jks options</a></code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">keyStoreOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">path</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/client-keystore.jks</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">password-of-your-keystore</span><span class="delimiter">&quot;</span></span>
+  }
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Buffer configuration is also supported:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">myKeyStoreAsABuffer = vertx.file_system().read_file_blocking(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/client-keystore.jks</span><span class="delimiter">&quot;</span></span>)
+jksOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">value</span><span class="delimiter">'</span></span> =&gt; myKeyStoreAsABuffer,
+  <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">password-of-your-keystore</span><span class="delimiter">&quot;</span></span>
+}
+options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">keyStoreOptions</span><span class="delimiter">'</span></span> =&gt; jksOptions
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Key/certificate in PKCS#12 format (<a href="http://en.wikipedia.org/wiki/PKCS_12" class="bare">http://en.wikipedia.org/wiki/PKCS_12</a>), usually with the <code>.pfx</code>  or the <code>.p12</code>
+extension can also be loaded in a similar fashion than JKS key stores:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">pfxKeyCertOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">path</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/client-keystore.pfx</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">password-of-your-keystore</span><span class="delimiter">&quot;</span></span>
+  }
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Buffer configuration is also supported:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">myKeyStoreAsABuffer = vertx.file_system().read_file_blocking(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/client-keystore.pfx</span><span class="delimiter">&quot;</span></span>)
+pfxOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">value</span><span class="delimiter">'</span></span> =&gt; myKeyStoreAsABuffer,
+  <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">password-of-your-keystore</span><span class="delimiter">&quot;</span></span>
+}
+options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">pfxKeyCertOptions</span><span class="delimiter">'</span></span> =&gt; pfxOptions
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another way of providing server private key and certificate separately using <code>.pem</code> files.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">pemKeyCertOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">keyPath</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/client-key.pem</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">certPath</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/client-cert.pem</span><span class="delimiter">&quot;</span></span>
+  }
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Buffer configuration is also supported:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">myKeyAsABuffer = vertx.file_system().read_file_blocking(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/client-key.pem</span><span class="delimiter">&quot;</span></span>)
+myCertAsABuffer = vertx.file_system().read_file_blocking(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/client-cert.pem</span><span class="delimiter">&quot;</span></span>)
+pemOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">keyValue</span><span class="delimiter">'</span></span> =&gt; myKeyAsABuffer,
+  <span class="string"><span class="delimiter">'</span><span class="content">certValue</span><span class="delimiter">'</span></span> =&gt; myCertAsABuffer
+}
+options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">pemKeyCertOptions</span><span class="delimiter">'</span></span> =&gt; pemOptions
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Keep in mind that pem configuration, the private key is not crypted.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_self_signed_certificates_for_testing_and_development_purposes">Self-signed certificates for testing and development purposes</h4>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Caution</div>
+</td>
+<td class="content">
+Do not use this in production settings, and note that the generated keys are very insecure.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>It is very often the case that self-signed certificates are required, be it for unit / integration tests or for
+running a development version of an application.</p>
+</div>
+<div class="paragraph">
+<p><code><a href="../../yardoc/Vertx/SelfSignedCertificate.html">SelfSignedCertificate</a></code> can be used to provide self-signed PEM certificate helpers and
+give <code><a href="unavailable">KeyCertOptions</a></code> and <code><a href="unavailable">TrustOptions</a></code> configurations:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx/self_signed_certificate</span><span class="delimiter">'</span></span>
+certificate = <span class="constant">Vertx</span>::<span class="constant">SelfSignedCertificate</span>.create()
+
+serverOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">keyCertOptions</span><span class="delimiter">'</span></span> =&gt; certificate.key_cert_options(),
+  <span class="string"><span class="delimiter">'</span><span class="content">trustOptions</span><span class="delimiter">'</span></span> =&gt; certificate.trust_options()
+}
+
+server = vertx.create_net_server(serverOptions).connect_handler() { |socket|
+  socket.write(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello!</span><span class="delimiter">&quot;</span></span>).end()
+}.listen(<span class="integer">1234</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>)
+
+clientOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">keyCertOptions</span><span class="delimiter">'</span></span> =&gt; certificate.key_cert_options(),
+  <span class="string"><span class="delimiter">'</span><span class="content">trustOptions</span><span class="delimiter">'</span></span> =&gt; certificate.trust_options()
+}
+
+client = vertx.create_net_client(clientOptions)
+client.connect(<span class="integer">1234</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>) { |ar_err,ar|
+  <span class="keyword">if</span> (ar_err == <span class="predefined-constant">nil</span>)
+    ar.handler() { |buffer|
+      puts buffer
+    }
+  <span class="keyword">else</span>
+    <span class="predefined-constant">STDERR</span>.puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Woops: </span><span class="inline"><span class="inline-delimiter">#{</span>ar_err.get_message()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The client can also be configured to trust all certificates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">clientOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">trustAll</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that self-signed certificates also work for other TCP protocols like HTTPS:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx/self_signed_certificate</span><span class="delimiter">'</span></span>
+certificate = <span class="constant">Vertx</span>::<span class="constant">SelfSignedCertificate</span>.create()
+
+vertx.create_http_server({
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">keyCertOptions</span><span class="delimiter">'</span></span> =&gt; certificate.key_cert_options(),
+  <span class="string"><span class="delimiter">'</span><span class="content">trustOptions</span><span class="delimiter">'</span></span> =&gt; certificate.trust_options()
+}).request_handler() { |req|
+  req.response().end(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello!</span><span class="delimiter">&quot;</span></span>)
+}.listen(<span class="integer">8080</span>)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_revoking_certificate_authorities">Revoking certificate authorities</h4>
+<div class="paragraph">
+<p>Trust can be configured to use a certificate revocation list (CRL) for revoked certificates that should no
+longer be trusted. The <code><a href="../dataobjects.html#NetClientOptions#add_crl_path-instance_method">crlPath</a></code> configures
+the crl list to use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">trustStoreOptions</span><span class="delimiter">'</span></span> =&gt; trustOptions,
+  <span class="string"><span class="delimiter">'</span><span class="content">crlPaths</span><span class="delimiter">'</span></span> =&gt; [
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/crl.pem</span><span class="delimiter">&quot;</span></span>
+  ]
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Buffer configuration is also supported:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">myCrlAsABuffer = vertx.file_system().read_file_blocking(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/your/crl.pem</span><span class="delimiter">&quot;</span></span>)
+options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">trustStoreOptions</span><span class="delimiter">'</span></span> =&gt; trustOptions,
+  <span class="string"><span class="delimiter">'</span><span class="content">crlValues</span><span class="delimiter">'</span></span> =&gt; [
+    myCrlAsABuffer
+  ]
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_configuring_the_cipher_suite">Configuring the Cipher suite</h4>
+<div class="paragraph">
+<p>By default, the TLS configuration will use the Cipher suite of the JVM running Vert.x. This Cipher suite can be
+configured with a suite of enabled ciphers:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">keyStoreOptions</span><span class="delimiter">'</span></span> =&gt; keyStoreOptions,
+  <span class="string"><span class="delimiter">'</span><span class="content">enabledCipherSuites</span><span class="delimiter">'</span></span> =&gt; [
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">ECDHE-RSA-AES128-GCM-SHA256</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">ECDHE-ECDSA-AES128-GCM-SHA256</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">ECDHE-RSA-AES256-GCM-SHA384</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">CDHE-ECDSA-AES256-GCM-SHA384</span><span class="delimiter">&quot;</span></span>
+  ]
+}
+server = vertx.create_net_server(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Cipher suite can be specified on the <code><a href="../dataobjects.html#NetServerOptions">NetServerOptions</a></code> or <code><a href="../dataobjects.html#NetClientOptions">NetClientOptions</a></code> configuration.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_configuring_tls_protocol_versions">Configuring TLS protocol versions</h4>
+<div class="paragraph">
+<p>By default, the TLS configuration will use the following protocol versions: SSLv2Hello, TLSv1, TLSv1.1 and TLSv1.2. Protocol versions can be
+configured by explicitly adding enabled protocols:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="constant">Code</span> <span class="keyword">not</span> translatable</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Protocol versions can be specified on the <code><a href="../dataobjects.html#NetServerOptions">NetServerOptions</a></code> or <code><a href="../dataobjects.html#NetClientOptions">NetClientOptions</a></code> configuration.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ssl_engine">SSL engine</h4>
+<div class="paragraph">
+<p>The engine implementation can be configured to use <a href="https://www.openssl.org">OpenSSL</a> instead of the JDK implementation.
+OpenSSL provides better performances and CPU usage than the JDK engine, as well as JDK version independence.</p>
+</div>
+<div class="paragraph">
+<p>The engine options to use is</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the <code><a href="../dataobjects.html#TCPSSLOptions#get_ssl_engine_options-instance_method">getSslEngineOptions</a></code> options when it is set</p>
+</li>
+<li>
+<p>otherwise <code><a href="../dataobjects.html#JdkSSLEngineOptions">JdkSSLEngineOptions</a></code></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby"><span class="comment"># Use JDK SSL engine</span>
+options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">keyStoreOptions</span><span class="delimiter">'</span></span> =&gt; keyStoreOptions
+}
+
+<span class="comment"># Use JDK SSL engine explicitly</span>
+options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">keyStoreOptions</span><span class="delimiter">'</span></span> =&gt; keyStoreOptions,
+  <span class="string"><span class="delimiter">'</span><span class="content">jdkSslEngineOptions</span><span class="delimiter">'</span></span> =&gt; {
+  }
+}
+
+<span class="comment"># Use OpenSSL engine</span>
+options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">keyStoreOptions</span><span class="delimiter">'</span></span> =&gt; keyStoreOptions,
+  <span class="string"><span class="delimiter">'</span><span class="content">openSslEngineOptions</span><span class="delimiter">'</span></span> =&gt; {
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_server_name_indication_sni">Server Name Indication (SNI)</h4>
+<div class="paragraph">
+<p>Server Name Indication (SNI) is a TLS extension by which a client specifies a hostname attempting to connect: during
+the TLS handshake the client gives a server name and the server can use it to respond with a specific certificate
+for this server name instead of the default deployed certificate.
+If the server requires client authentication the server can use a specific trusted CA certificate depending on the
+indicated server name.</p>
+</div>
+<div class="paragraph">
+<p>When SNI is active the server uses</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the certificate CN or SAN DNS (Subject Alternative Name with DNS) to do an exact match, e.g <code>www.example.com</code></p>
+</li>
+<li>
+<p>the certificate CN or SAN DNS certificate to match a wildcard name, e.g <code>*.example.com</code></p>
+</li>
+<li>
+<p>otherwise the first certificate when the client does not present a server name or the presented server name cannot be matched</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When the server additionally requires client authentication:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>if <code><a href="../dataobjects.html#JksOptions">JksOptions</a></code> were used to set the trust options
+(<code><a href="../dataobjects.html#NetServerOptions#set_trust_options-instance_method">options</a></code>) then an exact match with the trust store
+alias is done</p>
+</li>
+<li>
+<p>otherwise the available CA certificates are used in the same way as if no SNI is in place</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can enable SNI on the server by setting <code><a href="../dataobjects.html#NetServerOptions#set_sni-instance_method">sni</a></code> to <code>true</code> and
+configured the server with multiple key/certificate pairs.</p>
+</div>
+<div class="paragraph">
+<p>Java KeyStore files or PKCS12 files can store multiple key/cert pairs out of the box.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">keyCertOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">path</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">keystore.jks</span><span class="delimiter">&quot;</span></span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">wibble</span><span class="delimiter">&quot;</span></span>
+}
+
+netServer = vertx.create_net_server({
+  <span class="string"><span class="delimiter">'</span><span class="content">keyStoreOptions</span><span class="delimiter">'</span></span> =&gt; keyCertOptions,
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">sni</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code><a href="../dataobjects.html#PemKeyCertOptions">PemKeyCertOptions</a></code> can be configured to hold multiple entries:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">keyCertOptions = {
+  <span class="string"><span class="delimiter">'</span><span class="content">keyPaths</span><span class="delimiter">'</span></span> =&gt; [<span class="string"><span class="delimiter">&quot;</span><span class="content">default-key.pem</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">host1-key.pem</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">etc...</span><span class="delimiter">&quot;</span></span>],
+  <span class="string"><span class="delimiter">'</span><span class="content">certPaths</span><span class="delimiter">'</span></span> =&gt; [<span class="string"><span class="delimiter">&quot;</span><span class="content">default-cert.pem</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">host2-key.pem</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">etc...</span><span class="delimiter">&quot;</span></span>]
+}
+
+netServer = vertx.create_net_server({
+  <span class="string"><span class="delimiter">'</span><span class="content">pemKeyCertOptions</span><span class="delimiter">'</span></span> =&gt; keyCertOptions,
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>,
+  <span class="string"><span class="delimiter">'</span><span class="content">sni</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The client implicitly sends the connecting host as an SNI server name for Fully Qualified Domain Name (FQDN).</p>
+</div>
+<div class="paragraph">
+<p>You can provide an explicit server name when connecting a socket</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">client = vertx.create_net_client({
+  <span class="string"><span class="delimiter">'</span><span class="content">trustStoreOptions</span><span class="delimiter">'</span></span> =&gt; trustOptions,
+  <span class="string"><span class="delimiter">'</span><span class="content">ssl</span><span class="delimiter">'</span></span> =&gt; <span class="predefined-constant">true</span>
+})
+
+<span class="comment"># Connect to 'localhost' and present 'server.name' server name</span>
+client.connect(<span class="integer">1234</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">server.name</span><span class="delimiter">&quot;</span></span>) { |res_err,res|
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">nil</span>)
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Connected!</span><span class="delimiter">&quot;</span></span>
+    socket = res
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Failed to connect: </span><span class="inline"><span class="inline-delimiter">#{</span>res_err.get_message()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It can be used for different purposes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>present a server name different than the server host</p>
+</li>
+<li>
+<p>present a server name while connecting to an IP</p>
+</li>
+<li>
+<p>force to present a server name when using shortname</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_application_layer_protocol_negotiation_alpn">Application-Layer Protocol Negotiation (ALPN)</h4>
+<div class="paragraph">
+<p>Application-Layer Protocol Negotiation (ALPN) is a TLS extension for application layer protocol negotiation. It is used by
+HTTP/2: during the TLS handshake the client gives the list of application protocols it accepts and the server responds
+with a protocol it supports.</p>
+</div>
+<div class="paragraph">
+<p>If you are using Java 9, you are fine and you can use HTTP/2 out of the box without extra steps.</p>
+</div>
+<div class="paragraph">
+<p>Java 8 does not supports ALPN out of the box, so ALPN should be enabled by other means:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>OpenSSL</em> support</p>
+</li>
+<li>
+<p><em>Jetty-ALPN</em> support</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The engine options to use is</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the <code><a href="../dataobjects.html#TCPSSLOptions#get_ssl_engine_options-instance_method">getSslEngineOptions</a></code> options when it is set</p>
+</li>
+<li>
+<p><code><a href="../dataobjects.html#JdkSSLEngineOptions">JdkSSLEngineOptions</a></code> when ALPN is available for JDK</p>
+</li>
+<li>
+<p><code><a href="../dataobjects.html#OpenSSLEngineOptions">OpenSSLEngineOptions</a></code> when ALPN is available for OpenSSL</p>
+</li>
+<li>
+<p>otherwise it fails</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_openssl_alpn_support">OpenSSL ALPN support</h5>
+<div class="paragraph">
+<p>OpenSSL provides native ALPN support.</p>
+</div>
+<div class="paragraph">
+<p>OpenSSL requires to configure <code><a href="../dataobjects.html#TCPSSLOptions#set_open_ssl_engine_options-instance_method">openSslEngineOptions</a></code>
+and use <a href="http://netty.io/wiki/forked-tomcat-native.html">netty-tcnative</a> jar on the classpath. Using tcnative may require
+OpenSSL to be installed on your OS depending on the tcnative implementation.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_jetty_alpn_support">Jetty-ALPN support</h5>
+<div class="paragraph">
+<p>Jetty-ALPN is a small jar that overrides a few classes of Java 8 distribution to support ALPN.</p>
+</div>
+<div class="paragraph">
+<p>The JVM must be started with the <em>alpn-boot-${version}.jar</em> in its <code>bootclasspath</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>-Xbootclasspath/p:/path/to/alpn-boot${version}.jar</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where ${version} depends on the JVM version, e.g. <em>8.1.7.v20160121</em> for <em>OpenJDK 1.8.0u74</em> . The complete
+list is available on the <a href="http://www.eclipse.org/jetty/documentation/current/alpn-chapter.html">Jetty-ALPN page</a>.</p>
+</div>
+<div class="paragraph">
+<p>The main drawback is that the version depends on the JVM.</p>
+</div>
+<div class="paragraph">
+<p>To solve this problem the <em><a href="https://github.com/jetty-project/jetty-alpn-agent">Jetty ALPN agent</a></em> can be use instead. The agent is a JVM agent that will chose the correct
+ALPN version for the JVM running it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>-javaagent:/path/to/alpn/agent</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_a_proxy_for_client_connections">Using a proxy for client connections</h3>
+<div class="paragraph">
+<p>The <code><a href="../../yardoc/Vertx/NetClient.html">NetClient</a></code> supports either a HTTP/1.x <em>CONNECT</em>, <em>SOCKS4a</em> or <em>SOCKS5</em> proxy.</p>
+</div>
+<div class="paragraph">
+<p>The proxy can be configured in the <code><a href="../dataobjects.html#NetClientOptions">NetClientOptions</a></code> by setting a
+<code><a href="../dataobjects.html#ProxyOptions">ProxyOptions</a></code> object containing proxy type, hostname, port and optionally username and password.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">options = {
+  <span class="string"><span class="delimiter">'</span><span class="content">proxyOptions</span><span class="delimiter">'</span></span> =&gt; {
+    <span class="string"><span class="delimiter">'</span><span class="content">type</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">SOCKS5</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">host</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">port</span><span class="delimiter">'</span></span> =&gt; <span class="integer">1080</span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">username</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">username</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">password</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">secret</span><span class="delimiter">&quot;</span></span>
+  }
+}
+client = vertx.create_net_client(options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The DNS resolution is always done on the proxy server, to achieve the functionality of a SOCKS4 client, it is necessary
+to resolve the DNS address locally.</p>
+</div>
+</div>
+</div>
+</div>
+
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                Last updated 2018-12-17 09:09:48 CET
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.io/">Home</a></li>
+          <li><a href="https://vertx.io/download/">Download</a></li>
+          <li><a href="https://vertx.io/docs/3.6.2/">Documentation</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+          <li><a href="https://vertx.io/blog/">Blog</a></li>
+          <li><a href="https://vertx.io/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.io/community/">Help &amp; Contributors</a></li>
+          <li><a href="https://vertx.io/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual-licensed under the <a href="http://www.eclipse.org/legal/epl-v20.html">Eclipse Public License 2.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="https://vertx.io/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="https://vertx.io/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="https://vertx.io/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://vertx.io/javascripts/bootstrap.min.js"></script>
+<script src="https://vertx.io/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="https://vertx.io/javascripts/sidebar.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});
+</script>
+</body>
+</html>
+

@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Client-side web application using AngularJS - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="https://vertx.io/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.io/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.io/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://vertx.io/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="https://vertx.io/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="https://vertx.io/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="https://vertx.io/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://vertx.io/" class="navbar-brand"><img alt="Brand" src="https://vertx.io/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://vertx.io/docs/3.8.0/">Documentation</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+        <li><a href="https://vertx.io/community/">Community</a></li>
+        <li><a href="https://vertx.io/materials/">Materials</a></li>
+        <li><a href="https://vertx.io/blog/">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Client-side web application using AngularJS</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_single_page_application">Single page application</a></li>
+<li><a href="#_vert_x_backend">Vert.x Backend</a>
+<ul class="sectlevel2">
+<li><a href="#_simplifying_the_http_verticle_code">Simplifying the HTTP verticle code</a></li>
+<li><a href="#_exposed_routes">Exposed routes</a></li>
+</ul>
+</li>
+<li><a href="#_angularjs_frontend">AngularJS frontend</a>
+<ul class="sectlevel2">
+<li><a href="#_application_view">Application view</a></li>
+<li><a href="#_application_controller">Application controller</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_single_page_application">Single page application</a></li>
+<li><a href="#_vert_x_backend">Vert.x Backend</a>
+<ul class="sectlevel2">
+<li><a href="#_simplifying_the_http_verticle_code">Simplifying the HTTP verticle code</a></li>
+<li><a href="#_exposed_routes">Exposed routes</a></li>
+</ul>
+</li>
+<li><a href="#_angularjs_frontend">AngularJS frontend</a>
+<ul class="sectlevel2">
+<li><a href="#_application_view">Application view</a></li>
+<li><a href="#_application_controller">Application controller</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+The corresponding source code is in the <code>step-9</code> folder of the guide repository.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>So far our web interface was using traditional server-side rendering of HTML content.
+Some types of applications can take advantage of client-side rendering to improve user experience by avoiding full page reloads, and approaching the experience of native applications.</p>
+</div>
+<div class="paragraph">
+<p>Many popular frameworks exist for that purpose.
+We chose the popular <a href="http://angularjs.org/">AngularJS framework</a> for this guide, but one could equally choose <a href="https://facebook.github.io/react/">React</a>, <a href="https://vuejs.org/">Vue.js</a>, <a href="http://riotjs.com/">Riot</a> or another framework/library without any loss of generality.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_single_page_application">Single page application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The wiki editing application that we are building allows to select a page, and edit it with the first half of the screen being a HTML preview, and the other half being the Markdown editor:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/images/edit-page.png" alt="edit page">
+</div>
+</div>
+<div class="paragraph">
+<p>The HTML preview is being rendered by calling a new endpoint in our backend.
+Rendering is triggered when the Markdown editor text changes.
+To avoid overloading the backend with unnecessary requests when the user is busy typing Markdown, a delay is being introduced so as to only trigger the rendering when no change has been made during that delay.</p>
+</div>
+<div class="paragraph">
+<p>The application interface is also dynamic, as new pages make the deletion button disappear:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/images/new-page.png" alt="new page">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_vert_x_backend">Vert.x Backend</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_simplifying_the_http_verticle_code">Simplifying the HTTP verticle code</h3>
+<div class="paragraph">
+<p>A client-side application needs a backend that exposes:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>the static HTML, CSS and JavaScript content to bootstrap applications in web browsers, and</p>
+</li>
+<li>
+<p>a web API, typically a HTTP/JSON service.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>We simplified the HTTP verticle implementation to <em>just</em> cover what is needed.
+Starting from the RxJava version from <em>step #8</em>, we removed all server-side rendering code as well as the authentication and JWT token issuing code to expose a plain open HTTP/JSON interface.</p>
+</div>
+<div class="paragraph">
+<p>Of course building a version that leverages JWT tokens and authentication makes sense for a real-world deployments, but now that we have covered these features we would rather focus on the essential bits in this part of the guide.</p>
+</div>
+<div class="paragraph">
+<p>As an example, the <code>apiUpdatePage</code> method implementation code is now:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> apiUpdatePage(RoutingContext context) {
+  <span class="type">int</span> id = <span class="predefined-type">Integer</span>.valueOf(context.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>));
+  JsonObject page = context.getBodyAsJson();
+  <span class="keyword">if</span> (!validateJsonPageDocument(context, page, <span class="string"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span>)) {
+    <span class="keyword">return</span>;
+  }
+  dbService.rxSavePage(id, page.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span>)).subscribe(
+    () -&gt; apiResponse(context, <span class="integer">200</span>, <span class="predefined-constant">null</span>, <span class="predefined-constant">null</span>),
+    t -&gt; apiFailure(context, t));
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exposed_routes">Exposed routes</h3>
+<div class="paragraph">
+<p>The HTTP/JSON API is exposed through the sames routes as in the previous steps:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">router.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages</span><span class="delimiter">&quot;</span></span>).handler(<span class="local-variable">this</span>::apiRoot);
+router.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages/:id</span><span class="delimiter">&quot;</span></span>).handler(<span class="local-variable">this</span>::apiGetPage);
+router.post().handler(BodyHandler.create());
+router.post(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages</span><span class="delimiter">&quot;</span></span>).handler(<span class="local-variable">this</span>::apiCreatePage);
+router.put().handler(BodyHandler.create());
+router.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages/:id</span><span class="delimiter">&quot;</span></span>).handler(<span class="local-variable">this</span>::apiUpdatePage);
+router.delete(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages/:id</span><span class="delimiter">&quot;</span></span>).handler(<span class="local-variable">this</span>::apiDeletePage);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The front application static assets are being served from <code>/app</code>, and we redirect requests to <code>/</code> to the <code>/app/index.html</code> static file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">router.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">/app/*</span><span class="delimiter">&quot;</span></span>).handler(StaticHandler.create().setCachingEnabled(<span class="predefined-constant">false</span>));  <b class="conum">(1)</b> <b class="conum">(2)</b>
+router.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span>).handler(context -&gt; context.reroute(<span class="string"><span class="delimiter">&quot;</span><span class="content">/app/index.html</span><span class="delimiter">&quot;</span></span>));</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Disabling caching is useful in development.</p>
+</li>
+<li>
+<p>By default the files are expected to be in the <code>webroot</code> package on the <em>classpath</em>, so the files shall be placed under <code>src/main/resources/webroot</code> in a Maven or Gradle project.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Last but not least, we anticipate that the application will need the backend to render Markdown to HTML, so we offer a HTTP POST endpoint for this purpose:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">router.post(<span class="string"><span class="delimiter">&quot;</span><span class="content">/app/markdown</span><span class="delimiter">&quot;</span></span>).handler(context -&gt; {
+  <span class="predefined-type">String</span> html = Processor.process(context.getBodyAsString());
+  context.response()
+    .putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Content-Type</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">text/html</span><span class="delimiter">&quot;</span></span>)
+    .setStatusCode(<span class="integer">200</span>)
+    .end(html);
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_angularjs_frontend">AngularJS frontend</h2>
+<div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+This guide is not a proper introduction to AngularJS (<a href="https://docs.angularjs.org/tutorial">see the official tutorial instead</a>), we assume some familiarity with the framework from the reader.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_application_view">Application view</h3>
+<div class="paragraph">
+<p>The interface fits in a single HTML file located at <code>src/main/resources/webroot/index.html</code>.
+The <code>head</code> section is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">ng-app</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">wikiApp</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <b class="conum">(1)</b>
+<span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1, shrink-to-fit=no</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;title&gt;</span>Wiki Angular App<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">stylesheet</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css</span><span class="delimiter">&quot;</span></span>
+        <span class="attribute-name">integrity</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">crossorigin</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">anonymous</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">stylesheet</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/app/wiki.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>  <b class="conum">(2)</b>
+  <span class="tag">&lt;style&gt;</span>
+<span class="inline">    <span class="tag">body</span> {
+      <span class="key">padding-top</span>: <span class="float">2</span><span class="value">rem</span>;
+      <span class="key">padding-bottom</span>: <span class="float">2</span><span class="value">rem</span>;
+    }</span>
+  <span class="tag">&lt;/style&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The AngularJS module is named <code>wikiApp</code>.</p>
+</li>
+<li>
+<p><code>wiki.js</code> holds the code for our AngularJS module and controller.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>As you can see beyond AngularJS we are using the following dependencies from external CDNs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://getbootstrap.com/">Boostrap</a> to style our interface,</p>
+</li>
+<li>
+<p><a href="http://fontawesome.io/">Font Awesome</a> to provide icons,</p>
+</li>
+<li>
+<p><a href="https://lodash.com/">Lodash</a> to help with some functional idioms in our JavaScript code.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Bootstrap requires some further scripts that can be loaded at the end of the document for performance reasons:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://code.jquery.com/jquery-3.3.1.slim.min.js</span><span class="delimiter">&quot;</span></span>
+        <span class="attribute-name">integrity</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo</span><span class="delimiter">&quot;</span></span>
+        <span class="attribute-name">crossorigin</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">anonymous</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js</span><span class="delimiter">&quot;</span></span>
+        <span class="attribute-name">integrity</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49</span><span class="delimiter">&quot;</span></span>
+        <span class="attribute-name">crossorigin</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">anonymous</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js</span><span class="delimiter">&quot;</span></span>
+        <span class="attribute-name">integrity</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy</span><span class="delimiter">&quot;</span></span>
+        <span class="attribute-name">crossorigin</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">anonymous</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Our AngularJS controller is called <code>WikiController</code> and it is bound to a <code>div</code> which is also a Bootstrap container:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">container</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">ng-controller</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">WikiController</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="comment">&lt;!-- (...) --&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The buttons on top of the interface consist of the following elements:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">row</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">col-md-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dropdown</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">btn btn-secondary dropdown-toggle</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">pageDropdownButton</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-toggle</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dropdown</span><span class="delimiter">&quot;</span></span>
+              <span class="attribute-name">aria-haspopup</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">aria-expanded</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;i</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">fa fa-file-text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">aria-hidden</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/i&gt;</span> Pages
+      <span class="tag">&lt;/button&gt;</span>
+      <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dropdown-menu</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">aria-labelledby</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">pageDropdownButton</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;a</span> <span class="attribute-name">ng-repeat</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">page in pages track by page.id</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dropdown-item</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">ng-click</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">load(page.id)</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>{{page.name}}<span class="tag">&lt;/a&gt;</span>
+        <b class="conum">(1)</b>
+      <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;span&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">btn btn-secondary</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">ng-click</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">reload()</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;i</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">fa fa-refresh</span><span class="delimiter">&quot;</span></span>
+                                                                             <span class="attribute-name">aria-hidden</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/i&gt;</span> Reload<span class="tag">&lt;/button&gt;</span>
+      <b class="conum">(2)</b>
+    <span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;span&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">btn btn-secondary</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">ng-click</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">newPage()</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;i</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">fa fa-plus-square</span><span class="delimiter">&quot;</span></span>
+                                                                              <span class="attribute-name">aria-hidden</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/i&gt;</span> New page<span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;/span&gt;</span>
+    <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">float-right</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">btn btn-secondary</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">ng-click</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">delete()</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">ng-show</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">pageExists()</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;i</span>
+        <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">fa fa-trash</span><span class="delimiter">&quot;</span></span>
+        <span class="attribute-name">aria-hidden</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/i&gt;</span> Delete page<span class="tag">&lt;/button&gt;</span> <b class="conum">(3)</b>
+    <span class="tag">&lt;/span&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">col-md-12</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <b class="conum">(4)</b>
+    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">invisible alert</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">role</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">alert</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">alertMessage</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      {{alertMessage}}
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>For each wiki page name we generate an element using <code>ng-repeat</code> and <code>ng-click</code> to define the controller action (<code>load</code>) when it is being clicked.</p>
+</li>
+<li>
+<p>The refresh button is bound to the <code>reload</code> controller action. All other buttons work the same way.</p>
+</li>
+<li>
+<p>The <code>ng-show</code> directive allows us to show or hide the element depending on the controller <code>pageExists</code> method value.</p>
+</li>
+<li>
+<p>This <code>div</code> is used to display notifications of success or failures.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The Markdown preview and editor elements are the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">row</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">col-md-6</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">rendering</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+
+  <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">col-md-6</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;form&gt;</span>
+      <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">form-group</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;label</span> <span class="attribute-name">for</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Markdown<span class="tag">&lt;/label&gt;</span>
+        <span class="tag">&lt;textarea</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">form-control</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">rows</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">25</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">ng-model</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">pageMarkdown</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/textarea&gt;</span> <b class="conum">(1)</b>
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">form-group</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;label</span> <span class="attribute-name">for</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">pageName</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Name<span class="tag">&lt;/label&gt;</span>
+        <span class="tag">&lt;input</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">form-control</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">pageName</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">ng-model</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">pageName</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">ng-disabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">pageExists()</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">btn btn-secondary</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">ng-click</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">save()</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;i</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">fa fa-pencil</span><span class="delimiter">&quot;</span></span>
+                                                                           <span class="attribute-name">aria-hidden</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/i&gt;</span> Save
+      <span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;/form&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><code>ng-model</code> binds the <code>textarea</code> content to the <code>pageMarkdown</code> property of the controller.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_application_controller">Application controller</h3>
+<div class="paragraph">
+<p>The <code>wiki.js</code> JavaScript starts with an AngularJS module declaration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="string"><span class="delimiter">'</span><span class="content">use strict</span><span class="delimiter">'</span></span>;
+
+angular.module(<span class="string"><span class="delimiter">&quot;</span><span class="content">wikiApp</span><span class="delimiter">&quot;</span></span>, [])
+  .controller(<span class="string"><span class="delimiter">&quot;</span><span class="content">WikiController</span><span class="delimiter">&quot;</span></span>, [<span class="string"><span class="delimiter">&quot;</span><span class="content">$scope</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">$http</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">$timeout</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (<span class="predefined">$scope</span>, <span class="predefined">$http</span>, <span class="predefined">$timeout</span>) {
+
+    <span class="keyword">var</span> DEFAULT_PAGENAME = <span class="string"><span class="delimiter">&quot;</span><span class="content">Example page</span><span class="delimiter">&quot;</span></span>;
+    <span class="keyword">var</span> DEFAULT_MARKDOWN = <span class="string"><span class="delimiter">&quot;</span><span class="content"># Example page</span><span class="char">\n</span><span class="char">\n</span><span class="content">Some text _here_.</span><span class="char">\n</span><span class="delimiter">&quot;</span></span>;
+
+    <span class="comment">// (...)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>wikiApp</code> module has no plugin dependency, and declares a single <code>WikiController</code> controller.
+The controller requires dependency injection of the following objects:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>$scope</code> to provide DOM scoping to the controller, and</p>
+</li>
+<li>
+<p><code>$http</code> to perform asynchronous HTTP requests to the backend, and</p>
+</li>
+<li>
+<p><code>$timeout</code> to trigger actions after a given delay while staying tied to the AngularJS life-cycle (e.g., to ensure that any state modification triggers view changes, which is not the case when using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout">classic setTimeout function</a>).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Controller methods are being tied to the <code>$scope</code> object.
+Let us start with 3 simple methods:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="predefined">$scope</span>.<span class="function">newPage</span> = <span class="keyword">function</span>() {
+  <span class="predefined">$scope</span>.pageId = <span class="predefined-constant">undefined</span>;
+  <span class="predefined">$scope</span>.pageName = DEFAULT_PAGENAME;
+  <span class="predefined">$scope</span>.pageMarkdown = DEFAULT_MARKDOWN;
+};
+
+<span class="predefined">$scope</span>.<span class="function">reload</span> = <span class="keyword">function</span> () {
+  <span class="predefined">$http</span>.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages</span><span class="delimiter">&quot;</span></span>).then(<span class="keyword">function</span> (response) {
+    <span class="predefined">$scope</span>.pages = response.data.pages;
+  });
+};
+
+<span class="predefined">$scope</span>.<span class="function">pageExists</span> = <span class="keyword">function</span>() {
+  <span class="keyword">return</span> <span class="predefined">$scope</span>.pageId !== <span class="predefined-constant">undefined</span>;
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Creating a new page consists in initializing controller properties that are attached to the <code>$scope</code> object.
+Reloading the pages objects from the backend is a matter of performing a HTTP GET request (note that the <code>$http</code> request methods return promises).
+The <code>pageExists</code> method is being used to show / hide elements in the interface.</p>
+</div>
+<div class="paragraph">
+<p>Loading the content of the page is also a matter of performing a HTTP GET request, and updating the preview a DOM manipulation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="predefined">$scope</span>.<span class="function">load</span> = <span class="keyword">function</span> (id) {
+  <span class="predefined">$http</span>.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages/</span><span class="delimiter">&quot;</span></span> + id).then(<span class="keyword">function</span>(response) {
+    <span class="keyword">var</span> page = response.data.page;
+    <span class="predefined">$scope</span>.pageId = page.id;
+    <span class="predefined">$scope</span>.pageName = page.name;
+    <span class="predefined">$scope</span>.pageMarkdown = page.markdown;
+    <span class="predefined">$scope</span>.updateRendering(page.html);
+  });
+};
+
+<span class="predefined">$scope</span>.<span class="function">updateRendering</span> = <span class="keyword">function</span>(html) {
+  document.getElementById(<span class="string"><span class="delimiter">&quot;</span><span class="content">rendering</span><span class="delimiter">&quot;</span></span>).innerHTML = html;
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The next methods support saving / updating and deleting pages.
+For these operations we used the full <code>then</code> promise method with the first argument being called on success, and the second one being called on error.
+We also introduce the <code>success</code> and <code>error</code> helper methods to display notifications (3 seconds on success, 5 seconds on error):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="predefined">$scope</span>.<span class="function">save</span> = <span class="keyword">function</span>() {
+  <span class="keyword">var</span> payload;
+  <span class="keyword">if</span> (<span class="predefined">$scope</span>.pageId === <span class="predefined-constant">undefined</span>) {
+    payload = {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="predefined">$scope</span>.pageName,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span>: <span class="predefined">$scope</span>.pageMarkdown
+    };
+    <span class="predefined">$http</span>.post(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages</span><span class="delimiter">&quot;</span></span>, payload).then(<span class="keyword">function</span>(ok) {
+      <span class="predefined">$scope</span>.reload();
+      <span class="predefined">$scope</span>.success(<span class="string"><span class="delimiter">&quot;</span><span class="content">Page created</span><span class="delimiter">&quot;</span></span>);
+      <span class="keyword">var</span> guessMaxId = _.maxBy(<span class="predefined">$scope</span>.pages, <span class="keyword">function</span>(page) { <span class="keyword">return</span> page.id; });
+      <span class="predefined">$scope</span>.load(guessMaxId.id || <span class="integer">0</span>);
+    }, <span class="keyword">function</span>(err) {
+      <span class="predefined">$scope</span>.error(err.data.error);
+    });
+  } <span class="keyword">else</span> {
+    <span class="keyword">var</span> payload = {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span>: <span class="predefined">$scope</span>.pageMarkdown
+    };
+    <span class="predefined">$http</span>.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages/</span><span class="delimiter">&quot;</span></span> + <span class="predefined">$scope</span>.pageId, payload).then(<span class="keyword">function</span>(ok) {
+      <span class="predefined">$scope</span>.success(<span class="string"><span class="delimiter">&quot;</span><span class="content">Page saved</span><span class="delimiter">&quot;</span></span>);
+    }, <span class="keyword">function</span>(err) {
+      <span class="predefined">$scope</span>.error(err.data.error);
+    });
+  }
+};
+
+<span class="predefined">$scope</span>.<span class="keyword">delete</span> = <span class="keyword">function</span>() {
+  <span class="predefined">$http</span>.<span class="keyword">delete</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages/</span><span class="delimiter">&quot;</span></span> + <span class="predefined">$scope</span>.pageId).then(<span class="keyword">function</span>(ok) {
+    <span class="predefined">$scope</span>.reload();
+    <span class="predefined">$scope</span>.newPage();
+    <span class="predefined">$scope</span>.success(<span class="string"><span class="delimiter">&quot;</span><span class="content">Page deleted</span><span class="delimiter">&quot;</span></span>);
+  }, <span class="keyword">function</span>(err) {
+    <span class="predefined">$scope</span>.error(err.data.error);
+  });
+};
+
+<span class="predefined">$scope</span>.<span class="function">success</span> = <span class="keyword">function</span>(message) {
+  <span class="predefined">$scope</span>.alertMessage = message;
+  <span class="keyword">var</span> alert = document.getElementById(<span class="string"><span class="delimiter">&quot;</span><span class="content">alertMessage</span><span class="delimiter">&quot;</span></span>);
+  alert.classList.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">alert-success</span><span class="delimiter">&quot;</span></span>);
+  alert.classList.remove(<span class="string"><span class="delimiter">&quot;</span><span class="content">invisible</span><span class="delimiter">&quot;</span></span>);
+  <span class="predefined">$timeout</span>(<span class="keyword">function</span>() {
+    alert.classList.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">invisible</span><span class="delimiter">&quot;</span></span>);
+    alert.classList.remove(<span class="string"><span class="delimiter">&quot;</span><span class="content">alert-success</span><span class="delimiter">&quot;</span></span>);
+  }, <span class="integer">3000</span>);
+};
+
+<span class="predefined">$scope</span>.<span class="function">error</span> = <span class="keyword">function</span>(message) {
+  <span class="predefined">$scope</span>.alertMessage = message;
+  <span class="keyword">var</span> alert = document.getElementById(<span class="string"><span class="delimiter">&quot;</span><span class="content">alertMessage</span><span class="delimiter">&quot;</span></span>);
+  alert.classList.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">alert-danger</span><span class="delimiter">&quot;</span></span>);
+  alert.classList.remove(<span class="string"><span class="delimiter">&quot;</span><span class="content">invisible</span><span class="delimiter">&quot;</span></span>);
+  <span class="predefined">$timeout</span>(<span class="keyword">function</span>() {
+    alert.classList.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">invisible</span><span class="delimiter">&quot;</span></span>);
+    alert.classList.remove(<span class="string"><span class="delimiter">&quot;</span><span class="content">alert-danger</span><span class="delimiter">&quot;</span></span>);
+  }, <span class="integer">5000</span>);
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>initializing the application state and views is done by fetching the pages list, and starting with a blank new page editor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="predefined">$scope</span>.reload();
+<span class="predefined">$scope</span>.newPage();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally here is how we perform live rendering of Markdown text:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> markdownRenderingPromise = <span class="predefined-constant">null</span>;
+<span class="predefined">$scope</span>.<span class="predefined">$watch</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">pageMarkdown</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span>(text) {  <b class="conum">(1)</b>
+  <span class="keyword">if</span> (markdownRenderingPromise !== <span class="predefined-constant">null</span>) {
+    <span class="predefined">$timeout</span>.cancel(markdownRenderingPromise);  <b class="conum">(3)</b>
+  }
+  markdownRenderingPromise = <span class="predefined">$timeout</span>(<span class="keyword">function</span>() {
+    markdownRenderingPromise = <span class="predefined-constant">null</span>;
+    <span class="predefined">$http</span>.post(<span class="string"><span class="delimiter">&quot;</span><span class="content">/app/markdown</span><span class="delimiter">&quot;</span></span>, text).then(<span class="keyword">function</span>(response) { <b class="conum">(4)</b>
+      <span class="predefined">$scope</span>.updateRendering(response.data);
+    });
+  }, <span class="integer">300</span>); <b class="conum">(2)</b>
+});</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><code>$scope.$watch</code> allows being notified of state changes. Here we monitor changes on the <code>pageMarkdown</code> property that is bound to the editor <code>textarea</code>.</p>
+</li>
+<li>
+<p>300 milliseconds is a <em>fine</em> delay to trigger rendering if nothing has changed in the editor.</p>
+</li>
+<li>
+<p>Timeouts are promise, so if the state has changed we cancel the previous one and create a new one. This is how we delay rendering instead of doing it on every keystroke.</p>
+</li>
+<li>
+<p>We ask the backend to render the editor text into some HTML, then refresh the preview.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                Last updated 2018-11-29 10:01:34 CET
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.io/">Home</a></li>
+          <li><a href="https://vertx.io/download/">Download</a></li>
+          <li><a href="https://vertx.io/docs/3.8.0/">Documentation</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+          <li><a href="https://vertx.io/blog/">Blog</a></li>
+          <li><a href="https://vertx.io/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.io/community/">Help &amp; Contributors</a></li>
+          <li><a href="https://vertx.io/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual-licensed under the <a href="http://www.eclipse.org/legal/epl-v20.html">Eclipse Public License 2.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="https://vertx.io/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="https://vertx.io/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="https://vertx.io/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://vertx.io/javascripts/bootstrap.min.js"></script>
+<script src="https://vertx.io/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="https://vertx.io/javascripts/sidebar.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});
+</script>
+</body>
+</html>
+

@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RxHelper.observableHandler - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rx.java</a>&nbsp;/&nbsp;<a href="index.html">RxHelper</a>&nbsp;/&nbsp;<a href=".">observableHandler</a><br/>
+<br/>
+<h1>observableHandler</h1>
+<a name="io.vertx.rx.java.RxHelper$observableHandler()"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">observableHandler</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ObservableHandler</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Create a new <code>ObservableHandler&lt;T&gt;</code> object: an rx.Observable implementation implementing <code>Handler&lt;T&gt;</code>. When the event handler completes, the observable will produce the event and complete immediatly after.</p>
+<p><strong>Return</strong><br/>
+the observable future.</p>
+<a name="io.vertx.rx.java.RxHelper$observableHandler(kotlin.Boolean)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">observableHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rx.java.RxHelper$observableHandler(kotlin.Boolean)/multi">multi</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ObservableHandler</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Create a new <code>ObservableHandler&lt;T&gt;</code> object: an rx.Observable implementation implementing <code>Handler&lt;T&gt;</code>. When parameter is false and the event handler completes, the observable will produce the event and complete immediatly after, as a single event is expected.</p>
+<h3>Parameters</h3>
+<p><a name="multi"></a>
+<code>multi</code> - true if the handler can emit multiple events</p>
+<p><strong>Return</strong><br/>
+the observable future.</p>
+</BODY>
+</HTML>

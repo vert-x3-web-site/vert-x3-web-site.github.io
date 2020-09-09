@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>FileSet - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.config.spi.utils</a>&nbsp;/&nbsp;<a href=".">FileSet</a><br/>
+<br/>
+<h1>FileSet</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FileSet</span></code>
+<p>Utility class to manage file set selected using a pattern.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Clement Escoffier</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">FileSet</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.spi.utils.FileSet$<init>(io.vertx.core.Vertx, java.io.File, io.vertx.core.json.JsonObject)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.config.spi.utils.FileSet$<init>(io.vertx.core.Vertx, java.io.File, io.vertx.core.json.JsonObject)/root">root</span><span class="symbol">:</span>&nbsp;<span class="identifier">File</span><span class="symbol">, </span><span class="identifier" id="io.vertx.config.spi.utils.FileSet$<init>(io.vertx.core.Vertx, java.io.File, io.vertx.core.json.JsonObject)/set">set</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span></code>
+<p>Creates a new FileSet from a json object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="build-configuration.html">buildConfiguration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">buildConfiguration</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.spi.utils.FileSet$buildConfiguration(kotlin.collections.MutableList((java.io.File)), io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonObject)))))/files">files</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">File</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.config.spi.utils.FileSet$buildConfiguration(kotlin.collections.MutableList((java.io.File)), io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonObject)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Iterates over the given set of files, and for each matching file, computes the resulting configuration. The given handler is called with the merged configuration (containing the configuration obtained by merging the configuration from all matching files).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="traverse.html">traverse</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">traverse</span><span class="symbol">(</span><span class="identifier" id="io.vertx.config.spi.utils.FileSet$traverse(java.io.File)/root">root</span><span class="symbol">:</span>&nbsp;<span class="identifier">File</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">File</span><span class="symbol">&gt;</span></code>
+<p>List all the files from a directory (recursive)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

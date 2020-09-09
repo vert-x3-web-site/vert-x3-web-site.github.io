@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Refactoring into independent and reusable verticles - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="https://vertx.io/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.io/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.io/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://vertx.io/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="https://vertx.io/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="https://vertx.io/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="https://vertx.io/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://vertx.io/" class="navbar-brand"><img alt="Brand" src="https://vertx.io/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://vertx.io/docs/3.8.0/">Documentation</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+        <li><a href="https://vertx.io/community/">Community</a></li>
+        <li><a href="https://vertx.io/materials/">Materials</a></li>
+        <li><a href="https://vertx.io/blog/">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Refactoring into independent and reusable verticles</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_architecture_and_technical_choices">Architecture and technical choices</a></li>
+<li><a href="#_the_http_server_verticle">The HTTP server verticle</a></li>
+<li><a href="#_the_database_verticle">The database verticle</a>
+<ul class="sectlevel2">
+<li><a href="#_configurable_sql_queries">Configurable SQL queries</a></li>
+<li><a href="#_dispatching_requests">Dispatching requests</a></li>
+<li><a href="#_reducing_the_jdbc_client_boilerplate">Reducing the JDBC client boilerplate</a></li>
+</ul>
+</li>
+<li><a href="#_deploying_the_verticles_from_a_main_verticle">Deploying the verticles from a main verticle</a></li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_architecture_and_technical_choices">Architecture and technical choices</a></li>
+<li><a href="#_the_http_server_verticle">The HTTP server verticle</a></li>
+<li><a href="#_the_database_verticle">The database verticle</a>
+<ul class="sectlevel2">
+<li><a href="#_configurable_sql_queries">Configurable SQL queries</a></li>
+<li><a href="#_dispatching_requests">Dispatching requests</a></li>
+<li><a href="#_reducing_the_jdbc_client_boilerplate">Reducing the JDBC client boilerplate</a></li>
+</ul>
+</li>
+<li><a href="#_deploying_the_verticles_from_a_main_verticle">Deploying the verticles from a main verticle</a></li>
+</ul>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+The corresponding source code is in the <code>step-2</code> folder of the guide repository.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The first iteration got us a working wiki application.
+Still, its implementation suffers from the following issues:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>HTTP requests processing and database access code are interleaved within the same methods, and</p>
+</li>
+<li>
+<p>lots of configuration data (e.g., port numbers, JDBC driver, etc) are hard-coded strings in the code.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_architecture_and_technical_choices">Architecture and technical choices</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This second iteration is about refactoring the code into independent and reusable verticles:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/images/verticles-refactoring.png" alt="Verticles refactoring">
+</div>
+</div>
+<div class="paragraph">
+<p>We will deploy 2 verticles to deal with HTTP requests, and 1 verticle for encapsulating persistence through the database.
+The resulting verticles will not have direct references to each other as they will only agree on destination names in the event bus as well as message formats.
+This provides a simple yet effective decoupling.</p>
+</div>
+<div class="paragraph">
+<p>The messages sent on the event bus will be encoded in JSON.
+While Vert.x supports flexible serialization schemes on the event bus for demanding or highly-specific contexts, it is generally a wise choice to go with JSON data.
+Another advantage of using JSON is that it is a language-agnostic text format.
+As Vert.x is <em>polyglot</em>, JSON is ideal should verticles written in different languages need to communicate via message passing.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_http_server_verticle">The HTTP server verticle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The verticle class preamble and <code>start</code> method look as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">HttpServerVerticle</span> <span class="directive">extends</span> AbstractVerticle {
+
+  <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> LOGGER = LoggerFactory.getLogger(HttpServerVerticle.class);
+
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> CONFIG_HTTP_SERVER_PORT = <span class="string"><span class="delimiter">&quot;</span><span class="content">http.server.port</span><span class="delimiter">&quot;</span></span>;  <b class="conum">(1)</b>
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> CONFIG_WIKIDB_QUEUE = <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.queue</span><span class="delimiter">&quot;</span></span>;
+
+  <span class="directive">private</span> <span class="predefined-type">String</span> wikiDbQueue = <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.queue</span><span class="delimiter">&quot;</span></span>;
+
+  <span class="directive">private</span> FreeMarkerTemplateEngine templateEngine;
+
+  <span class="annotation">@Override</span>
+  <span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
+
+    wikiDbQueue = config().getString(CONFIG_WIKIDB_QUEUE, <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.queue</span><span class="delimiter">&quot;</span></span>);  <b class="conum">(2)</b>
+
+    HttpServer server = vertx.createHttpServer();
+
+    Router router = Router.router(vertx);
+    router.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span>).handler(<span class="local-variable">this</span>::indexHandler);
+    router.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">/wiki/:page</span><span class="delimiter">&quot;</span></span>).handler(<span class="local-variable">this</span>::pageRenderingHandler);
+    router.post().handler(BodyHandler.create());
+    router.post(<span class="string"><span class="delimiter">&quot;</span><span class="content">/save</span><span class="delimiter">&quot;</span></span>).handler(<span class="local-variable">this</span>::pageUpdateHandler);
+    router.post(<span class="string"><span class="delimiter">&quot;</span><span class="content">/create</span><span class="delimiter">&quot;</span></span>).handler(<span class="local-variable">this</span>::pageCreateHandler);
+    router.post(<span class="string"><span class="delimiter">&quot;</span><span class="content">/delete</span><span class="delimiter">&quot;</span></span>).handler(<span class="local-variable">this</span>::pageDeletionHandler);
+
+    templateEngine = FreeMarkerTemplateEngine.create(vertx);
+
+    <span class="type">int</span> portNumber = config().getInteger(CONFIG_HTTP_SERVER_PORT, <span class="integer">8080</span>);  <b class="conum">(3)</b>
+    server
+      .requestHandler(router)
+      .listen(portNumber, ar -&gt; {
+        <span class="keyword">if</span> (ar.succeeded()) {
+          LOGGER.info(<span class="string"><span class="delimiter">&quot;</span><span class="content">HTTP server running on port </span><span class="delimiter">&quot;</span></span> + portNumber);
+          startFuture.complete();
+        } <span class="keyword">else</span> {
+          LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Could not start a HTTP server</span><span class="delimiter">&quot;</span></span>, ar.cause());
+          startFuture.fail(ar.cause());
+        }
+      });
+  }
+
+  <span class="comment">// (...)</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>We expose public constants for the verticle configuration parameters: the HTTP port number and the name of the event bus destination to post messages to the database verticle.</p>
+</li>
+<li>
+<p>The <code>AbstractVerticle#config()</code> method allows accessing the verticle configuration that has been provided. The second parameter is a default value in case no specific value was given.</p>
+</li>
+<li>
+<p>Configuration values can not just be <code>String</code> objects but also integers, boolean values, complex JSON data, etc.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The rest of the class is mostly an extract of the HTTP-only code, with what was previously database code being replaced with event bus messages.
+Here is the <code>indexHandler</code> method code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> indexHandler(RoutingContext context) {
+
+  DeliveryOptions options = <span class="keyword">new</span> DeliveryOptions().addHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">action</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">all-pages</span><span class="delimiter">&quot;</span></span>); <b class="conum">(2)</b>
+
+  vertx.eventBus().send(wikiDbQueue, <span class="keyword">new</span> JsonObject(), options, reply -&gt; {  <b class="conum">(1)</b>
+    <span class="keyword">if</span> (reply.succeeded()) {
+      JsonObject body = (JsonObject) reply.result().body();   <b class="conum">(3)</b>
+      context.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Wiki home</span><span class="delimiter">&quot;</span></span>);
+      context.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">pages</span><span class="delimiter">&quot;</span></span>, body.getJsonArray(<span class="string"><span class="delimiter">&quot;</span><span class="content">pages</span><span class="delimiter">&quot;</span></span>).getList());
+      templateEngine.render(context.data(), <span class="string"><span class="delimiter">&quot;</span><span class="content">templates/index.ftl</span><span class="delimiter">&quot;</span></span>, ar -&gt; {
+        <span class="keyword">if</span> (ar.succeeded()) {
+          context.response().putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Content-Type</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">text/html</span><span class="delimiter">&quot;</span></span>);
+          context.response().end(ar.result());
+        } <span class="keyword">else</span> {
+          context.fail(ar.cause());
+        }
+      });
+    } <span class="keyword">else</span> {
+      context.fail(reply.cause());
+    }
+  });
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>vertx</code> object gives access to the event bus, and we send a message to the queue for the database verticle.</p>
+</li>
+<li>
+<p>Delivery options allow us to specify headers, payload codecs and timeouts.</p>
+</li>
+<li>
+<p>Upon success a reply contains a payload.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>As we can see, an event bus message consists of a body, options, and it can optionally expect a reply.
+In the event that no response is expected there is a variant of the <code>send</code> method that does not have a handler.</p>
+</div>
+<div class="paragraph">
+<p>We encode payloads as JSON objects, and we specify which action the database verticle should do through a message header called <code>action</code>.</p>
+</div>
+<div class="paragraph">
+<p>The rest of the verticle code consists in the router handlers that also use the event-bus to fetch and store data:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> EMPTY_PAGE_MARKDOWN =
+  <span class="string"><span class="delimiter">&quot;</span><span class="content"># A new page</span><span class="char">\n</span><span class="delimiter">&quot;</span></span> +
+    <span class="string"><span class="delimiter">&quot;</span><span class="char">\n</span><span class="delimiter">&quot;</span></span> +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">Feel-free to write in Markdown!</span><span class="char">\n</span><span class="delimiter">&quot;</span></span>;
+
+<span class="directive">private</span> <span class="type">void</span> pageRenderingHandler(RoutingContext context) {
+
+  <span class="predefined-type">String</span> requestedPage = context.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">page</span><span class="delimiter">&quot;</span></span>);
+  JsonObject request = <span class="keyword">new</span> JsonObject().put(<span class="string"><span class="delimiter">&quot;</span><span class="content">page</span><span class="delimiter">&quot;</span></span>, requestedPage);
+
+  DeliveryOptions options = <span class="keyword">new</span> DeliveryOptions().addHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">action</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">get-page</span><span class="delimiter">&quot;</span></span>);
+  vertx.eventBus().send(wikiDbQueue, request, options, reply -&gt; {
+
+    <span class="keyword">if</span> (reply.succeeded()) {
+      JsonObject body = (JsonObject) reply.result().body();
+
+      <span class="type">boolean</span> found = body.getBoolean(<span class="string"><span class="delimiter">&quot;</span><span class="content">found</span><span class="delimiter">&quot;</span></span>);
+      <span class="predefined-type">String</span> rawContent = body.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">rawContent</span><span class="delimiter">&quot;</span></span>, EMPTY_PAGE_MARKDOWN);
+      context.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>, requestedPage);
+      context.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, body.getInteger(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, -<span class="integer">1</span>));
+      context.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">newPage</span><span class="delimiter">&quot;</span></span>, found ? <span class="string"><span class="delimiter">&quot;</span><span class="content">no</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">yes</span><span class="delimiter">&quot;</span></span>);
+      context.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">rawContent</span><span class="delimiter">&quot;</span></span>, rawContent);
+      context.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">content</span><span class="delimiter">&quot;</span></span>, Processor.process(rawContent));
+      context.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">timestamp</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> <span class="predefined-type">Date</span>().toString());
+
+      templateEngine.render(context.data(), <span class="string"><span class="delimiter">&quot;</span><span class="content">templates/page.ftl</span><span class="delimiter">&quot;</span></span>, ar -&gt; {
+        <span class="keyword">if</span> (ar.succeeded()) {
+          context.response().putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Content-Type</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">text/html</span><span class="delimiter">&quot;</span></span>);
+          context.response().end(ar.result());
+        } <span class="keyword">else</span> {
+          context.fail(ar.cause());
+        }
+      });
+
+    } <span class="keyword">else</span> {
+      context.fail(reply.cause());
+    }
+  });
+}
+
+<span class="directive">private</span> <span class="type">void</span> pageUpdateHandler(RoutingContext context) {
+
+  <span class="predefined-type">String</span> title = context.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>);
+  JsonObject request = <span class="keyword">new</span> JsonObject()
+    .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, context.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>))
+    .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>, title)
+    .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span>, context.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span>));
+
+  DeliveryOptions options = <span class="keyword">new</span> DeliveryOptions();
+  <span class="keyword">if</span> (<span class="string"><span class="delimiter">&quot;</span><span class="content">yes</span><span class="delimiter">&quot;</span></span>.equals(context.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">newPage</span><span class="delimiter">&quot;</span></span>))) {
+    options.addHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">action</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">create-page</span><span class="delimiter">&quot;</span></span>);
+  } <span class="keyword">else</span> {
+    options.addHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">action</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">save-page</span><span class="delimiter">&quot;</span></span>);
+  }
+
+  vertx.eventBus().send(wikiDbQueue, request, options, reply -&gt; {
+    <span class="keyword">if</span> (reply.succeeded()) {
+      context.response().setStatusCode(<span class="integer">303</span>);
+      context.response().putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Location</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">/wiki/</span><span class="delimiter">&quot;</span></span> + title);
+      context.response().end();
+    } <span class="keyword">else</span> {
+      context.fail(reply.cause());
+    }
+  });
+}
+
+<span class="directive">private</span> <span class="type">void</span> pageCreateHandler(RoutingContext context) {
+  <span class="predefined-type">String</span> pageName = context.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>);
+  <span class="predefined-type">String</span> location = <span class="string"><span class="delimiter">&quot;</span><span class="content">/wiki/</span><span class="delimiter">&quot;</span></span> + pageName;
+  <span class="keyword">if</span> (pageName == <span class="predefined-constant">null</span> || pageName.isEmpty()) {
+    location = <span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span>;
+  }
+  context.response().setStatusCode(<span class="integer">303</span>);
+  context.response().putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Location</span><span class="delimiter">&quot;</span></span>, location);
+  context.response().end();
+}
+
+<span class="directive">private</span> <span class="type">void</span> pageDeletionHandler(RoutingContext context) {
+  <span class="predefined-type">String</span> id = context.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>);
+  JsonObject request = <span class="keyword">new</span> JsonObject().put(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, id);
+  DeliveryOptions options = <span class="keyword">new</span> DeliveryOptions().addHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">action</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">delete-page</span><span class="delimiter">&quot;</span></span>);
+  vertx.eventBus().send(wikiDbQueue, request, options, reply -&gt; {
+    <span class="keyword">if</span> (reply.succeeded()) {
+      context.response().setStatusCode(<span class="integer">303</span>);
+      context.response().putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Location</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span>);
+      context.response().end();
+    } <span class="keyword">else</span> {
+      context.fail(reply.cause());
+    }
+  });
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_database_verticle">The database verticle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Connecting to a database using JDBC requires of course a driver and configuration, which we had hard-coded in the first iteration.</p>
+</div>
+<div class="sect2">
+<h3 id="_configurable_sql_queries">Configurable SQL queries</h3>
+<div class="paragraph">
+<p>While the verticle will turn the previously hard-coded values to configuration parameters, we will also go a step further by loading the SQL queries from a properties file.</p>
+</div>
+<div class="paragraph">
+<p>The queries will be loaded from a file passed as a configuration parameter or from a default resource if none is being provided.
+The advantage of this approach is that the verticle can adapt both to different JDBC drivers <em>and</em> SQL dialects.</p>
+</div>
+<div class="paragraph">
+<p>The verticle class preamble consists mainly of configuration key definitions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">WikiDatabaseVerticle</span> <span class="directive">extends</span> AbstractVerticle {
+
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> CONFIG_WIKIDB_JDBC_URL = <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.jdbc.url</span><span class="delimiter">&quot;</span></span>;
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> CONFIG_WIKIDB_JDBC_DRIVER_CLASS = <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.jdbc.driver_class</span><span class="delimiter">&quot;</span></span>;
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> CONFIG_WIKIDB_JDBC_MAX_POOL_SIZE = <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.jdbc.max_pool_size</span><span class="delimiter">&quot;</span></span>;
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> CONFIG_WIKIDB_SQL_QUERIES_RESOURCE_FILE = <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.sqlqueries.resource.file</span><span class="delimiter">&quot;</span></span>;
+
+  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> CONFIG_WIKIDB_QUEUE = <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.queue</span><span class="delimiter">&quot;</span></span>;
+
+  <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> LOGGER = LoggerFactory.getLogger(WikiDatabaseVerticle.class);
+
+  <span class="comment">// (...)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>SQL queries are being stored in a properties file, with the default ones for HSQLDB being located in <code>src/main/resources/db-queries.properties</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>create-pages-table=create table if not exists Pages (Id integer identity primary key, Name varchar(255) unique, Content clob)
+get-page=select Id, Content from Pages where Name = ?
+create-page=insert into Pages values (NULL, ?, ?)
+save-page=update Pages set Content = ? where Id = ?
+all-pages=select Name from Pages
+delete-page=delete from Pages where Id = ?</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following code from the <code>WikiDatabaseVerticle</code> class loads the SQL queries from a file, and make them available from a map:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">enum</span> SqlQuery {
+  CREATE_PAGES_TABLE,
+  ALL_PAGES,
+  GET_PAGE,
+  CREATE_PAGE,
+  SAVE_PAGE,
+  DELETE_PAGE
+}
+
+<span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">HashMap</span>&lt;SqlQuery, <span class="predefined-type">String</span>&gt; sqlQueries = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+
+<span class="directive">private</span> <span class="type">void</span> loadSqlQueries() <span class="directive">throws</span> <span class="exception">IOException</span> {
+
+  <span class="predefined-type">String</span> queriesFile = config().getString(CONFIG_WIKIDB_SQL_QUERIES_RESOURCE_FILE);
+  <span class="predefined-type">InputStream</span> queriesInputStream;
+  <span class="keyword">if</span> (queriesFile != <span class="predefined-constant">null</span>) {
+    queriesInputStream = <span class="keyword">new</span> <span class="predefined-type">FileInputStream</span>(queriesFile);
+  } <span class="keyword">else</span> {
+    queriesInputStream = getClass().getResourceAsStream(<span class="string"><span class="delimiter">&quot;</span><span class="content">/db-queries.properties</span><span class="delimiter">&quot;</span></span>);
+  }
+
+  <span class="predefined-type">Properties</span> queriesProps = <span class="keyword">new</span> <span class="predefined-type">Properties</span>();
+  queriesProps.load(queriesInputStream);
+  queriesInputStream.close();
+
+  sqlQueries.put(SqlQuery.CREATE_PAGES_TABLE, queriesProps.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">create-pages-table</span><span class="delimiter">&quot;</span></span>));
+  sqlQueries.put(SqlQuery.ALL_PAGES, queriesProps.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">all-pages</span><span class="delimiter">&quot;</span></span>));
+  sqlQueries.put(SqlQuery.GET_PAGE, queriesProps.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">get-page</span><span class="delimiter">&quot;</span></span>));
+  sqlQueries.put(SqlQuery.CREATE_PAGE, queriesProps.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">create-page</span><span class="delimiter">&quot;</span></span>));
+  sqlQueries.put(SqlQuery.SAVE_PAGE, queriesProps.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">save-page</span><span class="delimiter">&quot;</span></span>));
+  sqlQueries.put(SqlQuery.DELETE_PAGE, queriesProps.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">delete-page</span><span class="delimiter">&quot;</span></span>));
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We use the <code>SqlQuery</code> enumeration type to avoid string constants later in the code.
+The code of the verticle <code>start</code> method is the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> JDBCClient dbClient;
+
+<span class="annotation">@Override</span>
+<span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
+
+  <span class="comment">/*
+   * Note: this uses blocking APIs, but data is small...
+   */</span>
+  loadSqlQueries();  <b class="conum">(1)</b>
+
+  dbClient = JDBCClient.createShared(vertx, <span class="keyword">new</span> JsonObject()
+    .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">url</span><span class="delimiter">&quot;</span></span>, config().getString(CONFIG_WIKIDB_JDBC_URL, <span class="string"><span class="delimiter">&quot;</span><span class="content">jdbc:hsqldb:file:db/wiki</span><span class="delimiter">&quot;</span></span>))
+    .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">driver_class</span><span class="delimiter">&quot;</span></span>, config().getString(CONFIG_WIKIDB_JDBC_DRIVER_CLASS, <span class="string"><span class="delimiter">&quot;</span><span class="content">org.hsqldb.jdbcDriver</span><span class="delimiter">&quot;</span></span>))
+    .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">max_pool_size</span><span class="delimiter">&quot;</span></span>, config().getInteger(CONFIG_WIKIDB_JDBC_MAX_POOL_SIZE, <span class="integer">30</span>)));
+
+  dbClient.getConnection(ar -&gt; {
+    <span class="keyword">if</span> (ar.failed()) {
+      LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Could not open a database connection</span><span class="delimiter">&quot;</span></span>, ar.cause());
+      startFuture.fail(ar.cause());
+    } <span class="keyword">else</span> {
+      SQLConnection connection = ar.result();
+      connection.execute(sqlQueries.get(SqlQuery.CREATE_PAGES_TABLE), create -&gt; {   <b class="conum">(2)</b>
+        connection.close();
+        <span class="keyword">if</span> (create.failed()) {
+          LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Database preparation error</span><span class="delimiter">&quot;</span></span>, create.cause());
+          startFuture.fail(create.cause());
+        } <span class="keyword">else</span> {
+          vertx.eventBus().consumer(config().getString(CONFIG_WIKIDB_QUEUE, <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.queue</span><span class="delimiter">&quot;</span></span>), <span class="local-variable">this</span>::onMessage);  <b class="conum">(3)</b>
+          startFuture.complete();
+        }
+      });
+    }
+  });
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Interestingly we break an important principle in Vert.x which is to avoid blocking APIs, but since there are no asynchronous APIs for accessing resources on the classpath our options are limited. We could use the Vert.x <code>executeBlocking</code> method to offload the blocking I/O operations from the event loop to a worker thread, but since the data is very small there is no obvious benefit in doing so.</p>
+</li>
+<li>
+<p>Here is an example of using SQL queries.</p>
+</li>
+<li>
+<p>The <code>consumer</code> method registers an event bus destination handler.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dispatching_requests">Dispatching requests</h3>
+<div class="paragraph">
+<p>The event bus message handler is the <code>onMessage</code> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">enum</span> ErrorCodes {
+  NO_ACTION_SPECIFIED,
+  BAD_ACTION,
+  DB_ERROR
+}
+
+<span class="directive">public</span> <span class="type">void</span> onMessage(Message&lt;JsonObject&gt; message) {
+
+  <span class="keyword">if</span> (!message.headers().contains(<span class="string"><span class="delimiter">&quot;</span><span class="content">action</span><span class="delimiter">&quot;</span></span>)) {
+    LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">No action header specified for message with headers {} and body {}</span><span class="delimiter">&quot;</span></span>,
+      message.headers(), message.body().encodePrettily());
+    message.fail(ErrorCodes.NO_ACTION_SPECIFIED.ordinal(), <span class="string"><span class="delimiter">&quot;</span><span class="content">No action header specified</span><span class="delimiter">&quot;</span></span>);
+    <span class="keyword">return</span>;
+  }
+  <span class="predefined-type">String</span> action = message.headers().get(<span class="string"><span class="delimiter">&quot;</span><span class="content">action</span><span class="delimiter">&quot;</span></span>);
+
+  <span class="keyword">switch</span> (action) {
+    <span class="keyword">case</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">all-pages</span><span class="delimiter">&quot;</span></span>:
+      fetchAllPages(message);
+      <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">get-page</span><span class="delimiter">&quot;</span></span>:
+      fetchPage(message);
+      <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">create-page</span><span class="delimiter">&quot;</span></span>:
+      createPage(message);
+      <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">save-page</span><span class="delimiter">&quot;</span></span>:
+      savePage(message);
+      <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">delete-page</span><span class="delimiter">&quot;</span></span>:
+      deletePage(message);
+      <span class="keyword">break</span>;
+    <span class="keyword">default</span>:
+      message.fail(ErrorCodes.BAD_ACTION.ordinal(), <span class="string"><span class="delimiter">&quot;</span><span class="content">Bad action: </span><span class="delimiter">&quot;</span></span> + action);
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We defined a <code>ErrorCodes</code> enumeration for errors, which we use to report back to the message sender.
+To do so, the <code>fail</code> method of the <code>Message</code> class provides a convenient shortcut to reply with an error, and the original message sender gets a failed <code>AsyncResult</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reducing_the_jdbc_client_boilerplate">Reducing the JDBC client boilerplate</h3>
+<div class="paragraph">
+<p>So far we have seen the <em>complete</em> interaction to perform a SQL query:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>retrieve a connection,</p>
+</li>
+<li>
+<p>perform requests,</p>
+</li>
+<li>
+<p>release the connection.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This leads to code where lots of error processing needs to happen for each asynchronous operation, as in:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">dbClient.getConnection(car -&gt; {
+  <span class="keyword">if</span> (car.succeeded()) {
+    SQLConnection connection = car.result();
+    connection.query(sqlQueries.get(SqlQuery.ALL_PAGES), res -&gt; {
+      connection.close();
+      <span class="keyword">if</span> (res.succeeded()) {
+        <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; pages = res.result()
+          .getResults()
+          .stream()
+          .map(json -&gt; json.getString(<span class="integer">0</span>))
+          .sorted()
+          .collect(Collectors.toList());
+        message.reply(<span class="keyword">new</span> JsonObject().put(<span class="string"><span class="delimiter">&quot;</span><span class="content">pages</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> JsonArray(pages)));
+      } <span class="keyword">else</span> {
+        reportQueryError(message, res.cause());
+      }
+    });
+  } <span class="keyword">else</span> {
+    reportQueryError(message, car.cause());
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Starting from Vert.x 3.5.0, the JDBC client now supports <em>one-shot</em> operations where a connection is being acquired to do a SQL operation, then released internally.
+The same code as above now reduces to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">dbClient.query(sqlQueries.get(SqlQuery.ALL_PAGES), res -&gt; {
+  <span class="keyword">if</span> (res.succeeded()) {
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; pages = res.result()
+      .getResults()
+      .stream()
+      .map(json -&gt; json.getString(<span class="integer">0</span>))
+      .sorted()
+      .collect(Collectors.toList());
+    message.reply(<span class="keyword">new</span> JsonObject().put(<span class="string"><span class="delimiter">&quot;</span><span class="content">pages</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> JsonArray(pages)));
+  } <span class="keyword">else</span> {
+    reportQueryError(message, res.cause());
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is very useful for cases where the connection is being acquired for a single operation.
+Performance-wise it is important to note that re-using a connection for chained SQL operations is better.</p>
+</div>
+<div class="paragraph">
+<p>The rest of the class consists of private methods called when <code>onMessage</code> dispatches incoming messages:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> fetchAllPages(Message&lt;JsonObject&gt; message) {
+  dbClient.query(sqlQueries.get(SqlQuery.ALL_PAGES), res -&gt; {
+    <span class="keyword">if</span> (res.succeeded()) {
+      <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; pages = res.result()
+        .getResults()
+        .stream()
+        .map(json -&gt; json.getString(<span class="integer">0</span>))
+        .sorted()
+        .collect(Collectors.toList());
+      message.reply(<span class="keyword">new</span> JsonObject().put(<span class="string"><span class="delimiter">&quot;</span><span class="content">pages</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> JsonArray(pages)));
+    } <span class="keyword">else</span> {
+      reportQueryError(message, res.cause());
+    }
+  });
+}
+
+<span class="directive">private</span> <span class="type">void</span> fetchPage(Message&lt;JsonObject&gt; message) {
+  <span class="predefined-type">String</span> requestedPage = message.body().getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">page</span><span class="delimiter">&quot;</span></span>);
+  JsonArray params = <span class="keyword">new</span> JsonArray().add(requestedPage);
+
+  dbClient.queryWithParams(sqlQueries.get(SqlQuery.GET_PAGE), params, fetch -&gt; {
+    <span class="keyword">if</span> (fetch.succeeded()) {
+      JsonObject response = <span class="keyword">new</span> JsonObject();
+      <span class="predefined-type">ResultSet</span> resultSet = fetch.result();
+      <span class="keyword">if</span> (resultSet.getNumRows() == <span class="integer">0</span>) {
+        response.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">found</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">false</span>);
+      } <span class="keyword">else</span> {
+        response.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">found</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">true</span>);
+        JsonArray row = resultSet.getResults().get(<span class="integer">0</span>);
+        response.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, row.getInteger(<span class="integer">0</span>));
+        response.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">rawContent</span><span class="delimiter">&quot;</span></span>, row.getString(<span class="integer">1</span>));
+      }
+      message.reply(response);
+    } <span class="keyword">else</span> {
+      reportQueryError(message, fetch.cause());
+    }
+  });
+}
+
+<span class="directive">private</span> <span class="type">void</span> createPage(Message&lt;JsonObject&gt; message) {
+  JsonObject request = message.body();
+  JsonArray data = <span class="keyword">new</span> JsonArray()
+    .add(request.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>))
+    .add(request.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span>));
+
+  dbClient.updateWithParams(sqlQueries.get(SqlQuery.CREATE_PAGE), data, res -&gt; {
+    <span class="keyword">if</span> (res.succeeded()) {
+      message.reply(<span class="string"><span class="delimiter">&quot;</span><span class="content">ok</span><span class="delimiter">&quot;</span></span>);
+    } <span class="keyword">else</span> {
+      reportQueryError(message, res.cause());
+    }
+  });
+}
+
+<span class="directive">private</span> <span class="type">void</span> savePage(Message&lt;JsonObject&gt; message) {
+  JsonObject request = message.body();
+  JsonArray data = <span class="keyword">new</span> JsonArray()
+    .add(request.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span>))
+    .add(request.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>));
+
+  dbClient.updateWithParams(sqlQueries.get(SqlQuery.SAVE_PAGE), data, res -&gt; {
+    <span class="keyword">if</span> (res.succeeded()) {
+      message.reply(<span class="string"><span class="delimiter">&quot;</span><span class="content">ok</span><span class="delimiter">&quot;</span></span>);
+    } <span class="keyword">else</span> {
+      reportQueryError(message, res.cause());
+    }
+  });
+}
+
+<span class="directive">private</span> <span class="type">void</span> deletePage(Message&lt;JsonObject&gt; message) {
+  JsonArray data = <span class="keyword">new</span> JsonArray().add(message.body().getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>));
+
+  dbClient.updateWithParams(sqlQueries.get(SqlQuery.DELETE_PAGE), data, res -&gt; {
+    <span class="keyword">if</span> (res.succeeded()) {
+      message.reply(<span class="string"><span class="delimiter">&quot;</span><span class="content">ok</span><span class="delimiter">&quot;</span></span>);
+    } <span class="keyword">else</span> {
+      reportQueryError(message, res.cause());
+    }
+  });
+}
+
+<span class="directive">private</span> <span class="type">void</span> reportQueryError(Message&lt;JsonObject&gt; message, <span class="predefined-type">Throwable</span> cause) {
+  LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Database query error</span><span class="delimiter">&quot;</span></span>, cause);
+  message.fail(ErrorCodes.DB_ERROR.ordinal(), cause.getMessage());
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_deploying_the_verticles_from_a_main_verticle">Deploying the verticles from a main verticle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We still have a <code>MainVerticle</code> class, but instead of containing all the business logic like in the initial iteration, its sole purpose is to bootstrap the application and deploy other verticles.</p>
+</div>
+<div class="paragraph">
+<p>The code consists in deploying 1 instance of <code>WikiDatabaseVerticle</code> and 2 instances of <code>HttpServerVerticle</code> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MainVerticle</span> <span class="directive">extends</span> AbstractVerticle {
+
+  <span class="annotation">@Override</span>
+  <span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
+
+    <span class="predefined-type">Future</span>&lt;<span class="predefined-type">String</span>&gt; dbVerticleDeployment = <span class="predefined-type">Future</span>.future();  <b class="conum">(1)</b>
+    vertx.deployVerticle(<span class="keyword">new</span> WikiDatabaseVerticle(), dbVerticleDeployment.completer());  <b class="conum">(2)</b>
+
+    dbVerticleDeployment.compose(id -&gt; {  <b class="conum">(3)</b>
+
+      <span class="predefined-type">Future</span>&lt;<span class="predefined-type">String</span>&gt; httpVerticleDeployment = <span class="predefined-type">Future</span>.future();
+      vertx.deployVerticle(
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.guides.wiki.HttpServerVerticle</span><span class="delimiter">&quot;</span></span>,  <b class="conum">(4)</b>
+        <span class="keyword">new</span> DeploymentOptions().setInstances(<span class="integer">2</span>),    <b class="conum">(5)</b>
+        httpVerticleDeployment.completer());
+
+      <span class="keyword">return</span> httpVerticleDeployment;  <b class="conum">(6)</b>
+
+    }).setHandler(ar -&gt; {   <b class="conum">(7)</b>
+      <span class="keyword">if</span> (ar.succeeded()) {
+        startFuture.complete();
+      } <span class="keyword">else</span> {
+        startFuture.fail(ar.cause());
+      }
+    });
+  }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>Deploying a verticle is an asynchronous operation, so we need a <code>Future</code> for that. The <code>String</code> parametric type is because a verticle gets an identifier when successfully deployed.</p>
+</li>
+<li>
+<p>One option is to create a verticle instance with <code>new</code>, and pass the object reference to the <code>deploy</code> method. The <code>completer</code> return value is a handler that simply completes its future.</p>
+</li>
+<li>
+<p>Sequential composition with <code>compose</code> allows to run one asynchronous operation after the other. When the initial future completes successfully, the composition function is invoked.</p>
+</li>
+<li>
+<p>A class name as a string is also an option to specify a verticle to deploy. For other JVM languages string-based conventions allow a module / script to be specified.</p>
+</li>
+<li>
+<p>The <code>DeploymentOption</code> class allows to specify a number of parameters and especially the number of instances to deploy.</p>
+</li>
+<li>
+<p>The composition function returns the next future. Its completion will trigger the completion of the composite operation.</p>
+</li>
+<li>
+<p>We define a handler that eventually completes the <code>MainVerticle</code> start future.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The astute reader will probably wonder how we can deploy the code for a HTTP server on the same TCP port twice and not expect any error for either of the instances, since the TCP port will already be in use.
+With many web frameworks we would need to choose different TCP ports, and have a frontal HTTP proxy to perform load balancing between the ports.</p>
+</div>
+<div class="paragraph">
+<p>There is no need to do that with Vert.x as multiple verticles can share the same TCP ports.
+Incoming connections are simply distributed in a round-robin fashion from accepting threads.</p>
+</div>
+</div>
+</div>
+
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                Last updated 2018-11-29 10:01:34 CET
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.io/">Home</a></li>
+          <li><a href="https://vertx.io/download/">Download</a></li>
+          <li><a href="https://vertx.io/docs/3.8.0/">Documentation</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+          <li><a href="https://vertx.io/blog/">Blog</a></li>
+          <li><a href="https://vertx.io/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.io/community/">Help &amp; Contributors</a></li>
+          <li><a href="https://vertx.io/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual-licensed under the <a href="http://www.eclipse.org/legal/epl-v20.html">Eclipse Public License 2.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="https://vertx.io/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="https://vertx.io/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="https://vertx.io/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://vertx.io/javascripts/bootstrap.min.js"></script>
+<script src="https://vertx.io/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="https://vertx.io/javascripts/sidebar.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});
+</script>
+</body>
+</html>
+

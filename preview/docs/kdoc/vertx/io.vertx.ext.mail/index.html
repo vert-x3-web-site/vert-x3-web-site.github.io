@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.ext.mail - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.ext.mail</a><br/>
+<br/>
+<h2>Package io.vertx.ext.mail</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-mail-service/index.html">MailService</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">MailService</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MailClient</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-mail-service-verticle/index.html">MailServiceVerticle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MailServiceVerticle</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractVerticle</span></code>
+<p>event bus verticle that supports sending mails via a MailService instance running on another machine via the event bus 
+<p> when the standard config can be used (send mails via localhost:25 without login) it is possible to deploy the verticle with the id </p>
+<pre><code><code>vertx run client:io.vertx.mail-client</code></code></pre> and send mails from other machines via the event bus with the client address vertx.mail (on the other hand, if you can send mails via localhost:25, you do not really need the event bus)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mail-service-vertx-e-b-proxy/index.html">MailServiceVertxEBProxy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MailServiceVertxEBProxy</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-mail-service/index.html"><span class="identifier">MailService</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-mail-service-vertx-proxy-handler/index.html">MailServiceVertxProxyHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MailServiceVertxProxyHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ProxyHandler</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

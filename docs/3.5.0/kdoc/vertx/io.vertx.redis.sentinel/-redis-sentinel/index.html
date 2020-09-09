@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RedisSentinel - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.redis.sentinel</a>&nbsp;/&nbsp;<a href=".">RedisSentinel</a><br/>
+<br/>
+<h1>RedisSentinel</h1>
+<code><span class="keyword">interface </span><span class="identifier">RedisSentinel</span></code>
+<p>Interface for sentinel commands</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="ckquorum.html">ckquorum</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">ckquorum</span><span class="symbol">(</span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$ckquorum(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$ckquorum(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RedisSentinel</span></code>
+<p>Check if the current Sentinel configuration is able to reach the quorum needed to failover a master, and the majority needed to authorize the failover. This command should be used in monitoring systems to check if a Sentinel deployment is ok.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$close(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the client - when it is fully closed the handler will be called.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$create(io.vertx.core.Vertx, io.vertx.redis.RedisOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$create(io.vertx.core.Vertx, io.vertx.redis.RedisOptions)/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">RedisOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RedisSentinel</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="failover.html">failover</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">failover</span><span class="symbol">(</span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$failover(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$failover(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((kotlin.String)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RedisSentinel</span></code>
+<p>Force a failover as if the master was not reachable, and without asking for agreement to other Sentinels (however a new version of the configuration will be published so that the other Sentinels will update their configurations)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="flush-config.html">flushConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">flushConfig</span><span class="symbol">(</span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$flushConfig(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RedisSentinel</span></code>
+<p>Force Sentinel to rewrite its configuration on disk, including the current Sentinel state. Normally Sentinel rewrites the configuration every time something changes in its state (in the context of the subset of the state which is persisted on disk across restart). However sometimes it is possible that the configuration file is lost because of operation errors, disk failures, package upgrade scripts or configuration managers. In those cases a way to to force Sentinel to rewrite the configuration file is handy. This command works even if the previous configuration file is completely missing.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-master-addr-by-name.html">getMasterAddrByName</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getMasterAddrByName</span><span class="symbol">(</span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$getMasterAddrByName(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$getMasterAddrByName(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">JsonArray</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RedisSentinel</span></code>
+<p>Return the ip and port number of the master with that name. If a failover is in progress or terminated successfully for this master it returns the address and port of the promoted slave</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="master.html">master</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">master</span><span class="symbol">(</span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$master(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$master(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">JsonArray</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RedisSentinel</span></code>
+<p>Show the state and info of the specified master</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="masters.html">masters</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">masters</span><span class="symbol">(</span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$masters(io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">JsonArray</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RedisSentinel</span></code>
+<p>Show a list of monitored masters and their state</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="reset.html">reset</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">reset</span><span class="symbol">(</span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$reset(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/pattern">pattern</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$reset(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RedisSentinel</span></code>
+<p>Reset all the masters with matching name. The pattern argument is a glob-style pattern. The reset process clears any previous state in a master (including a failover in pro</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="sentinels.html">sentinels</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">sentinels</span><span class="symbol">(</span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$sentinels(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$sentinels(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">JsonArray</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RedisSentinel</span></code>
+<p>Show a list of sentinel instances for this master, and their state</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="slaves.html">slaves</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">slaves</span><span class="symbol">(</span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$slaves(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.redis.sentinel.RedisSentinel$slaves(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonArray)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">JsonArray</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RedisSentinel</span></code>
+<p>Show a list of slaves for this master, and their state</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

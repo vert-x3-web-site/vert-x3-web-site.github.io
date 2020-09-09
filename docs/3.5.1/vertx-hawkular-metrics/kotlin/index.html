@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hawkular Metrics - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="https://vertx.io/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.io/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.io/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://vertx.io/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="https://vertx.io/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="https://vertx.io/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="https://vertx.io/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://vertx.io/" class="navbar-brand"><img alt="Brand" src="https://vertx.io/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://vertx.io/docs/3.5.1/">Documentation</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+        <li><a href="https://vertx.io/community/">Community</a></li>
+        <li><a href="https://vertx.io/materials/">Materials</a></li>
+        <li><a href="https://vertx.io/blog/">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Hawkular Metrics</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_features">Features</a></li>
+<li><a href="#_prerequisites">Prerequisites</a></li>
+<li><a href="#_getting_started">Getting started</a></li>
+<li><a href="#_configuration">Configuration</a>
+<ul class="sectlevel2">
+<li><a href="#_remote_hawkular_server">Remote Hawkular server</a></li>
+<li><a href="#_tenant_selection">Tenant selection</a></li>
+<li><a href="#_connecting_to_a_hawkular_server">Connecting to a Hawkular server</a></li>
+<li><a href="#_openshift_metrics_token_authentication">Openshift Metrics token authentication</a></li>
+<li><a href="#_https_and_other_http_related_options">HTTPS and other HTTP related options</a></li>
+<li><a href="#_metric_tags">Metric tags</a></li>
+</ul>
+</li>
+<li><a href="#_vert_x_core_tools_metrics">Vert.x core tools metrics</a>
+<ul class="sectlevel2">
+<li><a href="#_net_client">Net Client</a></li>
+<li><a href="#_http_client">HTTP Client</a></li>
+<li><a href="#_datagram_socket">Datagram socket</a></li>
+<li><a href="#_net_server">Net Server</a></li>
+<li><a href="#_http_server">HTTP Server</a></li>
+<li><a href="#_event_bus">Event Bus</a></li>
+</ul>
+</li>
+<li><a href="#_vert_x_pool_metrics">Vert.x pool metrics</a></li>
+<li><a href="#_verticle_metrics">Verticle metrics</a></li>
+<li><a href="#_user_defined_metrics">User defined metrics</a></li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_features">Features</a></li>
+<li><a href="#_prerequisites">Prerequisites</a></li>
+<li><a href="#_getting_started">Getting started</a></li>
+<li><a href="#_configuration">Configuration</a>
+<ul class="sectlevel2">
+<li><a href="#_remote_hawkular_server">Remote Hawkular server</a></li>
+<li><a href="#_tenant_selection">Tenant selection</a></li>
+<li><a href="#_connecting_to_a_hawkular_server">Connecting to a Hawkular server</a></li>
+<li><a href="#_openshift_metrics_token_authentication">Openshift Metrics token authentication</a></li>
+<li><a href="#_https_and_other_http_related_options">HTTPS and other HTTP related options</a></li>
+<li><a href="#_metric_tags">Metric tags</a></li>
+</ul>
+</li>
+<li><a href="#_vert_x_core_tools_metrics">Vert.x core tools metrics</a>
+<ul class="sectlevel2">
+<li><a href="#_net_client">Net Client</a></li>
+<li><a href="#_http_client">HTTP Client</a></li>
+<li><a href="#_datagram_socket">Datagram socket</a></li>
+<li><a href="#_net_server">Net Server</a></li>
+<li><a href="#_http_server">HTTP Server</a></li>
+<li><a href="#_event_bus">Event Bus</a></li>
+</ul>
+</li>
+<li><a href="#_vert_x_pool_metrics">Vert.x pool metrics</a></li>
+<li><a href="#_verticle_metrics">Verticle metrics</a></li>
+<li><a href="#_user_defined_metrics">User defined metrics</a></li>
+</ul>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This project is an implementation of the Vert.x Metrics Service Provider Interface (SPI): metrics built from Vert.x
+events will be sent to Hawkular, an <a href="http://www.hawkular.org">open source monitoring and management solution</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_features">Features</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Vert.x core tools monitoring: TCP/HTTP client and servers, <code><a href="../../apidocs/io/vertx/core/datagram/DatagramSocket.html">DatagramSocket</a></code>,
+<code><a href="../../apidocs/io/vertx/core/eventbus/EventBus.html">EventBus</a></code> and handlers</p>
+</li>
+<li>
+<p>User defined metrics via an <code><a href="../../apidocs/io/vertx/core/eventbus/EventBus.html">EventBus</a></code> bridge.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites">Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Follow the <a href="http://www.hawkular.org/hawkular-services/docs/quickstart-guide/">instructions to get Hawkular up and running</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+You can use a standalone <a href="https://github.com/hawkular/hawkular-metrics">Hawkular Metrics</a> server as well.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_started">Getting started</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <em>vertx-hawkular-metrics</em> module must be present in the classpath.</p>
+</div>
+<div class="paragraph">
+<p>Maven users should add this to their project POM file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>vertx-hawkular-metrics<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>3.5.1<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And Gradle users, to their build file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-hawkular-metrics:3.5.1</span><span class="delimiter">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vert.x does not enable SPI implementations by default. You must enable metric collection in the Vert.x options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">var vertx = Vertx.vertx(VertxOptions(
+  metricsOptions = VertxHawkularOptions(
+    enabled = true)))</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration">Configuration</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_remote_hawkular_server">Remote Hawkular server</h3>
+<div class="paragraph">
+<p>By default, <em>vertx-hawkular-metrics</em> sends metrics to a Hawkular server listening on <code>localhost</code> port <code>8080</code>.
+But in production, the Hawkular server will likely run on a separate machine:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">var vertx = Vertx.vertx(VertxOptions(
+  metricsOptions = VertxHawkularOptions(
+    enabled = true,
+    host = &quot;hawkular.example.com&quot;,
+    port = 8080)))</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tenant_selection">Tenant selection</h3>
+<div class="paragraph">
+<p>Hawkular Metrics is a multi-tenant solution, and <em>vertx-hawkular-metrics</em> can send metrics for a tenant other than <code>default</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">var vertx = Vertx.vertx(VertxOptions(
+  metricsOptions = VertxHawkularOptions(
+    enabled = true,
+    tenant = &quot;sales-department&quot;)))</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_connecting_to_a_hawkular_server">Connecting to a Hawkular server</h3>
+<div class="paragraph">
+<p>Requests sent to a Hawkular server must be authenticated and tenant must be set to <code>hawkular</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">var vertx = Vertx.vertx(VertxOptions(
+  metricsOptions = VertxHawkularOptions(
+    enabled = true,
+    tenant = &quot;hawkular&quot;,
+    authenticationOptions = AuthenticationOptions(
+      enabled = true,
+      id = &quot;username&quot;,
+      secret = &quot;password&quot;))))</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_openshift_metrics_token_authentication">Openshift Metrics token authentication</h3>
+<div class="paragraph">
+<p>When working with Openshift&#8217;s internal Metrics server, you can configure token authentication with a custom HTTP header:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">var vertx = Vertx.vertx(VertxOptions(
+  metricsOptions = VertxHawkularOptions(
+    enabled = true,
+    tenant = &quot;my-namespace&quot;,
+    httpHeaders = json {
+      obj(&quot;Authorization&quot; to &quot;Bearer xkjdksf9890-shjkjhkjlkjlk&quot;)
+    })))</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_https_and_other_http_related_options">HTTPS and other HTTP related options</h3>
+<div class="paragraph">
+<p><em>vertx-hawkular-metrics</em> communicates with the Hawkular server over HTTP. In order to communicate over HTTPS, set the
+<code>ssl</code> flag to true:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">var vertx = Vertx.vertx(VertxOptions(
+  metricsOptions = VertxHawkularOptions(
+    enabled = true,
+    host = &quot;hawkular.example.com&quot;,
+    port = 443,
+    httpOptions = HttpClientOptions(
+      ssl = true))))</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The usual <code><a href="../../apidocs/io/vertx/core/http/HttpClientOptions.html">HttpClientOptions</a></code> properties can be used for SSL setup or client
+tuning.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_metric_tags">Metric tags</h3>
+<div class="paragraph">
+<p><a href="http://www.hawkular.org/hawkular-metrics/docs/user-guide/#_tagging">Tags</a> can be applied to metrics:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">var vertx = Vertx.vertx(VertxOptions(
+  metricsOptions = VertxHawkularOptions(
+    enabled = true,
+    tags = json {
+      obj(
+        &quot;dc&quot; to &quot;mars01&quot;,
+        &quot;rack&quot; to &quot;web-paca&quot;,
+        &quot;host&quot; to &quot;host13&quot;
+      )
+    })))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>vertx-hawkular-metrics</em> maintains a LRU cache of tagged metrics to avoid repeating tagging requests.
+The cache size can be configured and defaults to <code>4096</code> metric names.</p>
+</div>
+<div class="paragraph">
+<p>It is also possible to apply tags to a specific set of metrics defined via exact match or regex match:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">var vertx = Vertx.vertx(VertxOptions(
+  metricsOptions = VertxHawkularOptions(
+    enabled = true,
+    metricTagsMatches = listOf(MetricTagsMatch(
+      value = &quot;myapp.foo.my-metric&quot;,
+      tags = json {
+        obj(&quot;myapp&quot; to &quot;foo&quot;)
+      }), MetricTagsMatch(
+      type = MatchType.REGEX,
+      value = &quot;.*\\.foo\\.*&quot;,
+      tags = json {
+        obj(&quot;myapp&quot; to &quot;foo&quot;)
+      })))))</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+If you use regex match, a wrong regex can potentially match a lot of metrics.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+When evaluating tags to apply, metric specific tags have higher priority than global tags.
+In other words, a metric specific tag may overwrite a global tag.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Please refer to <code><a href="../../apidocs/io/vertx/ext/hawkular/VertxHawkularOptions.html">VertxHawkularOptions</a></code> for an exhaustive list of options.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_vert_x_core_tools_metrics">Vert.x core tools metrics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section lists all the metrics generated by monitoring the Vert.x core tools.</p>
+</div>
+<div class="sect2">
+<h3 id="_net_client">Net Client</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 50%;">
+<col style="width: 35%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Metric type</th>
+<th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.net.client.&lt;host&gt;:&lt;port&gt;.connections</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of connections to the remote host currently opened.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.net.client.&lt;host&gt;:&lt;port&gt;.bytesReceived</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes received from the remote host.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.net.client.&lt;host&gt;:&lt;port&gt;.bytesSent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes sent to the remote host.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.net.client.&lt;host&gt;:&lt;port&gt;.errorCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of errors.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_http_client">HTTP Client</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 50%;">
+<col style="width: 35%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Metric type</th>
+<th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.http.client.&lt;host&gt;:&lt;port&gt;.connections</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of connections to the remote host currently opened.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.http.client.&lt;host&gt;:&lt;port&gt;.bytesReceived</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes received from the remote host.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.http.client.&lt;host&gt;:&lt;port&gt;.bytesSent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes sent to the remote host.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.http.client.&lt;host&gt;:&lt;port&gt;.errorCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of errors.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.http.client.&lt;host&gt;:&lt;port&gt;.requests</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of requests waiting for a response.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.http.client.&lt;host&gt;:&lt;port&gt;.requestCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of requests sent.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.http.client.&lt;host&gt;:&lt;port&gt;.responseTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cumulated response time.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.http.client.&lt;host&gt;:&lt;port&gt;.wsConnections</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of websockets currently opened.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_datagram_socket">Datagram socket</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 50%;">
+<col style="width: 35%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Metric type</th>
+<th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.datagram.&lt;host&gt;:&lt;port&gt;.bytesReceived</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes received on the <code>&lt;host&gt;:&lt;port&gt;</code> listening address.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.datagram.&lt;host&gt;:&lt;port&gt;.bytesSent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes sent to the remote host.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.datagram.errorCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of errors.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_net_server">Net Server</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 50%;">
+<col style="width: 35%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Metric type</th>
+<th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.net.server.&lt;host&gt;:&lt;port&gt;.connections</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of opened connections to the Net Server listening on the <code>&lt;host&gt;:&lt;port&gt;</code> address.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.net.server.&lt;host&gt;:&lt;port&gt;.bytesReceived</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes received by the Net Server listening on the <code>&lt;host&gt;:&lt;port&gt;</code> address.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.net.server.&lt;host&gt;:&lt;port&gt;.bytesSent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes sent to the Net Server listening on the <code>&lt;host&gt;:&lt;port&gt;</code> address.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.net.server.&lt;host&gt;:&lt;port&gt;.errorCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of errors.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_http_server">HTTP Server</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 50%;">
+<col style="width: 35%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Metric type</th>
+<th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.http.server.&lt;host&gt;:&lt;port&gt;.connections</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of opened connections to the HTTP Server listening on the <code>&lt;host&gt;:&lt;port&gt;</code> address.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.http.server.&lt;host&gt;:&lt;port&gt;.bytesReceived</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes received by the HTTP Server listening on the <code>&lt;host&gt;:&lt;port&gt;</code> address.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.http.server.&lt;host&gt;:&lt;port&gt;.bytesSent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes sent to the HTTP Server listening on the <code>&lt;host&gt;:&lt;port&gt;</code> address.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.http.server.&lt;host&gt;:&lt;port&gt;.errorCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of errors.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.http.client.&lt;host&gt;:&lt;port&gt;.requests</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of requests being processed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.http.client.&lt;host&gt;:&lt;port&gt;.requestCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of requests processed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.http.client.&lt;host&gt;:&lt;port&gt;.processingTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cumulated request processing time.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.http.client.&lt;host&gt;:&lt;port&gt;.wsConnections</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of websockets currently opened.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_event_bus">Event Bus</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 50%;">
+<col style="width: 35%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Metric type</th>
+<th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.handlers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of event bus handlers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.errorCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of errors.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.bytesWritten</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes sent while sending messages to event bus cluster peers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.bytesRead</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes received while reading messages from event bus cluster peers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.pending</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of messages not processed yet. One message published will count for <code>N</code> pending if <code>N</code> handlers
+are registered to the corresponding address.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.pendingLocal</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Like <code>vertx.eventbus.pending</code>, for local messages only.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.pendingRemote</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Like <code>vertx.eventbus.pending</code>, for remote messages only.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.publishedMessages</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of messages published (publish / subscribe).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.publishedLocalMessages</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Like <code>vertx.eventbus.publishedMessages</code>, for local messages only.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.publishedRemoteMessages</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Like <code>vertx.eventbus.publishedMessages</code>, for remote messages only.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.sentMessages</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of messages sent (point-to-point).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.sentLocalMessages</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Like <code>vertx.eventbus.sentMessages</code>, for local messages only.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.sentRemoteMessages</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Like <code>vertx.eventbus.sentMessages</code>, for remote messages only.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.receivedMessages</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of messages received.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.receivedLocalMessages</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Like <code>vertx.eventbus.receivedMessages</code>, for remote messages only.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.receivedRemoteMessages</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Like <code>vertx.eventbus.receivedMessages</code>, for remote messages only.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.deliveredMessages</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of messages delivered to handlers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.deliveredLocalMessages</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Like <code>vertx.eventbus.deliveredMessages</code>, for remote messages only.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.deliveredRemoteMessages</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Like <code>vertx.eventbus.deliveredMessages</code>, for remote messages only.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.replyFailures</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of message reply failures.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.eventbus.&lt;address&gt;.processingTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cumulated processing time for handlers listening to the <code>address</code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_vert_x_pool_metrics">Vert.x pool metrics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section lists all the metrics generated by monitoring Vert.x pools.</p>
+</div>
+<div class="paragraph">
+<p>There are two types currently supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>worker</em> (see <code><a href="../../apidocs/io/vertx/core/WorkerExecutor.html">WorkerExecutor</a></code>)</p>
+</li>
+<li>
+<p><em>datasource</em> (created with Vert.x JDBC client)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Vert.x creates two worker pools upfront, <em>vert.x-worker-thread</em> and <em>vert.x-internal-blocking</em>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>All metrics are prefixed with <code>&lt;type&gt;.&lt;name&gt;.</code>. For example, <code>worker.vert.x-internal-blocking.</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 50%;">
+<col style="width: 35%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Metric type</th>
+<th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.pool.&lt;type&gt;.&lt;name&gt;.delay</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cumulated time waiting for a resource (queue time).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.pool.&lt;type&gt;.&lt;name&gt;.queued</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Current number of elements waiting for a resource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.pool.&lt;type&gt;.&lt;name&gt;.queueCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of elements queued.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.pool.&lt;type&gt;.&lt;name&gt;.usage</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cumulated time using a resource (i.e. processing time for worker pools).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.pool.&lt;type&gt;.&lt;name&gt;.inUse</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Current number of resources used.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.pool.&lt;type&gt;.&lt;name&gt;.completed</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of elements done with the resource (i.e. total number of tasks executed for worker pools).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.pool.&lt;type&gt;.&lt;name&gt;.maxPoolSize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum pool size, only present if it could be determined.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.pool.&lt;type&gt;.&lt;name&gt;.inUse</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pool usage ratio, only present if maximum pool size could be determined.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_verticle_metrics">Verticle metrics</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 50%;">
+<col style="width: 35%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Metric type</th>
+<th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx.verticle.&lt;name&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of verticle instances deployed.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_user_defined_metrics">User defined metrics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Users can send their own metrics to the Hawkular server. In order to do so, the event bus metrics bridge must be
+enabled:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">var vertx = Vertx.vertx(VertxOptions(
+  metricsOptions = VertxHawkularOptions(
+    enabled = true,
+    metricsBridgeEnabled = true)))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By default, the metrics bus handler is listening to the <code>hawkular.metrics</code> address. But the bridge address
+can be configured:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">var vertx = Vertx.vertx(VertxOptions(
+  metricsOptions = VertxHawkularOptions(
+    enabled = true,
+    metricsBridgeEnabled = true,
+    metricsBridgeAddress = &quot;__hawkular_metrics&quot;)))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The metrics bridge handler expects messages in the JSON format. The JSON object must at least provide a metric
+<code>id</code> and a numerical <code>value</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">var message = json {
+  obj(
+    &quot;id&quot; to &quot;myapp.files.opened&quot;,
+    &quot;value&quot; to 7
+  )
+}
+vertx.eventBus().publish(&quot;hawkular.metrics&quot;, message)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The handler will assume the metric is a gauge and will assign a timestamp corresponding to the time when the message was processed.
+If the metric is a counter or availability, or if you prefer explicit configuration, set the <code>type</code> and/or <code>timestamp</code> attributes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">var counterMetric = json {
+  obj(
+    &quot;id&quot; to &quot;myapp.files.opened&quot;,
+    &quot;type&quot; to &quot;counter&quot;,
+    &quot;timestamp&quot; to 189898098098908L,
+    &quot;value&quot; to 7
+  )
+}
+vertx.eventBus().publish(&quot;hawkular.metrics&quot;, counterMetric)
+
+var availabilityMetric = json {
+  obj(
+    &quot;id&quot; to &quot;myapp.mysubsystem.status&quot;,
+    &quot;type&quot; to &quot;availability&quot;,
+    &quot;value&quot; to &quot;up&quot;
+  )
+}
+vertx.eventBus().publish(&quot;hawkular.metrics&quot;, availabilityMetric)</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Hawkular understands all timestamps as milliseconds since January 1, 1970, 00:00:00 UTC.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                Last updated 2018-02-09 09:48:08 CET
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.io/">Home</a></li>
+          <li><a href="https://vertx.io/download/">Download</a></li>
+          <li><a href="https://vertx.io/docs/3.5.1/">Documentation</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+          <li><a href="https://vertx.io/blog/">Blog</a></li>
+          <li><a href="https://vertx.io/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.io/community/">Help &amp; Contributors</a></li>
+          <li><a href="https://vertx.io/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual-licensed under the <a href="http://www.eclipse.org/legal/epl-v20.html">Eclipse Public License 2.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="https://vertx.io/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="https://vertx.io/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="https://vertx.io/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://vertx.io/javascripts/bootstrap.min.js"></script>
+<script src="https://vertx.io/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="https://vertx.io/javascripts/sidebar.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});
+</script>
+</body>
+</html>
+

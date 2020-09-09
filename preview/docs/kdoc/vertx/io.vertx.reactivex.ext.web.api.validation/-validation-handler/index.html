@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ValidationHandler - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.ext.web.api.validation</a>&nbsp;/&nbsp;<a href=".">ValidationHandler</a><br/>
+<br/>
+<h1>ValidationHandler</h1>
+<code><span class="keyword">interface </span><span class="identifier">ValidationHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>Base interface for validation. For basic HTTP Request Validator, use io.vertx.reactivex.ext.web.api.validation.HTTPRequestValidationHandler  NOTE: This class has been automatically generated from the io.vertx.ext.web.api.validation.ValidationHandler non RX-ified interface using Vert.x codegen.</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.ext.web.api.validation/-validation-handler.html"><span class="identifier">ValidationHandler</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="handle.html">handle</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">handle</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.api.validation.ValidationHandler$handle(io.vertx.reactivex.ext.web.RoutingContext)/arg0">arg0</span><span class="symbol">:</span>&nbsp;<span class="identifier">RoutingContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.ext.web.api.validation.ValidationHandler$newInstance(io.vertx.ext.web.api.validation.ValidationHandler)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.web.api.validation/-validation-handler.html"><span class="identifier">ValidationHandler</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ValidationHandler</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../io.vertx.reactivex.ext.web.api.contract/-h-t-t-p-operation-request-validation-handler/index.html">HTTPOperationRequestValidationHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">HTTPOperationRequestValidationHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ValidationHandler</span><span class="symbol">, </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>Base interface for HTTP request validation with API specification  NOTE: This class has been automatically generated from the io.vertx.ext.web.api.contract.HTTPOperationRequestValidationHandler non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-h-t-t-p-request-validation-handler/index.html">HTTPRequestValidationHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HTTPRequestValidationHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ValidationHandler</span><span class="symbol">, </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>An interface for add HTTP Request validation. This class can validate parameters inside query, path, headers an body (watch below)  You can assign multiple body type at the same time(for example a JSON schema together with a XML schema). This interface support: <ul> <li>application/x-www-form-urlencoded</li>
+ <li>multipart/form-data</li>
+ <li>application/xml</li>
+ <li>application/json</li>
+ </ul>
+ Also you can add a form parameter for validation without care about content type of your request. For form parameters this interface support both "multipart/form-data" and "application/x-www-form-urlencoded"  This interface allow extra parameters in the request, so it doesn't care if in a request there's a parameter without a specified validation rule  If a parameter is flagged as an array, it will be validated also if the size of array is 1 element  NOTE: This class has been automatically generated from the io.vertx.ext.web.api.validation.HTTPRequestValidationHandler non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

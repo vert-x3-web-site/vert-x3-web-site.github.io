@@ -1,0 +1,175 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>InboundMapping - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.camel</a>&nbsp;/&nbsp;<a href=".">InboundMapping</a><br/>
+<br/>
+<h1>InboundMapping</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InboundMapping</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-camel-mapping/index.html"><span class="identifier">CamelMapping</span></a></code>
+<p>Represents a mapping between a Camel endpoint address and a Vert.x address on the event bus.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Clement Escoffier</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">InboundMapping</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Represents a mapping between a Camel endpoint address and a Vert.x address on the event bus.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-p-u-b-l-i-s-h.html">DEFAULT_PUBLISH</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_PUBLISH</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>The default value of the "publish" property. By default, the bridge uses <code>send</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-camel-mapping/-d-e-f-a-u-l-t_-h-e-a-d-e-r-s_-c-o-p-y.html">DEFAULT_HEADERS_COPY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_HEADERS_COPY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="from-camel.html">fromCamel</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">fromCamel</span><span class="symbol">(</span><span class="identifier" id="io.vertx.camel.InboundMapping$fromCamel(kotlin.String)/uri">uri</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">InboundMapping</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">fromCamel</span><span class="symbol">(</span><span class="identifier" id="io.vertx.camel.InboundMapping$fromCamel(org.apache.camel.Endpoint)/endpoint">endpoint</span><span class="symbol">:</span>&nbsp;<span class="identifier">Endpoint</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">InboundMapping</span></code>
+<p>Creates an InboundMapping from the given Camel endpoint.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-body-type.html">getBodyType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBodyType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html"><span class="identifier">Class</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-publish.html">isPublish</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isPublish</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-address.html">setAddress</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAddress</span><span class="symbol">(</span><span class="identifier" id="io.vertx.camel.InboundMapping$setAddress(kotlin.String)/address">address</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">InboundMapping</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-endpoint.html">setEndpoint</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEndpoint</span><span class="symbol">(</span><span class="identifier" id="io.vertx.camel.InboundMapping$setEndpoint(org.apache.camel.Endpoint)/endpoint">endpoint</span><span class="symbol">:</span>&nbsp;<span class="identifier">Endpoint</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">InboundMapping</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-headers-copy.html">setHeadersCopy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHeadersCopy</span><span class="symbol">(</span><span class="identifier" id="io.vertx.camel.InboundMapping$setHeadersCopy(kotlin.Boolean)/headersCopy">headersCopy</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">InboundMapping</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-uri.html">setUri</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUri</span><span class="symbol">(</span><span class="identifier" id="io.vertx.camel.InboundMapping$setUri(kotlin.String)/uri">uri</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">InboundMapping</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-vertx.html">toVertx</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toVertx</span><span class="symbol">(</span><span class="identifier" id="io.vertx.camel.InboundMapping$toVertx(kotlin.String)/address">address</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">InboundMapping</span></code>
+<p>Fluent version of <code><a href="#">#setAddress(String)</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="use-publish.html">usePublish</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">usePublish</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">InboundMapping</span></code>
+<p>Sets whether or not <code>publish</code> is used instead of <code>send</code>, when a message is sent on the event bus. <code>send</code> is used by default, so calling this method instructs the bridge to use <code>publish</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-body-type.html">withBodyType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">withBodyType</span><span class="symbol">(</span><span class="identifier" id="io.vertx.camel.InboundMapping$withBodyType(java.lang.Class((kotlin.Any)))/bodyType">bodyType</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Class.html"><span class="identifier">Class</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">InboundMapping</span></code>
+<p>Sets the type of the body of the event bus message. A Camel converter from the Camel message payload to the given type is used for conversion. If not set, no conversions are applied.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="without-headers-copy.html">withoutHeadersCopy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">withoutHeadersCopy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">InboundMapping</span></code>
+<p>Fluent version of <code><a href="set-headers-copy.html">#setHeadersCopy(boolean)</a></code> to disable the headers copy (so the parameter is <code>false</code>).</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-camel-mapping/get-address.html">getAddress</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAddress</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-camel-mapping/get-uri.html">getUri</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUri</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-camel-mapping/is-headers-copy.html">isHeadersCopy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isHeadersCopy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

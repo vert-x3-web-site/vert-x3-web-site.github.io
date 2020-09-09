@@ -1,0 +1,143 @@
+<!DOCTYPE html><html lang=en><head><title>Eclipse Vert.x 3.7.0 released!</title><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta content="width=device-width,initial-scale=1" name=viewport><meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name=description><link href=https://vertx.io/stylesheets/main.css media=screen rel=stylesheet><link href=https://vertx.io/stylesheets/font-awesome.min.css media=screen rel=stylesheet><link href=https://vertx.io/javascripts/styles/rainbow.min.css media=screen rel=stylesheet><!--[if lt IE 9]><script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script><![endif]--><link rel=apple-touch-icon sizes=57x57 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png><link rel=apple-touch-icon sizes=60x60 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png><link rel=apple-touch-icon sizes=72x72 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png><link rel=apple-touch-icon sizes=76x76 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png><link rel=apple-touch-icon sizes=114x114 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png><link rel=apple-touch-icon sizes=120x120 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png><link rel=apple-touch-icon sizes=144x144 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png><link rel=apple-touch-icon sizes=152x152 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png><link rel=apple-touch-icon sizes=180x180 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png><link rel=icon type=image/png href=https://vertx.io/assets/favicons/vertx-favicon-7/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://vertx.io/assets/favicons/vertx-favicon-7/android-chrome-192x192.png sizes=192x192><link rel=icon type=image/png href=https://vertx.io/assets/favicons/vertx-favicon-7/favicon-96x96.png sizes=96x96><link rel=icon type=image/png href=https://vertx.io/assets/favicons/vertx-favicon-7/favicon-16x16.png sizes=16x16><link rel=manifest href=https://vertx.io/assets/favicons/vertx-favicon-7/manifest.json><link rel=mask-icon href=https://vertx.io/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content=#7d3194><meta name=msapplication-TileImage content=https://vertx.io/assets/favicons/vertx-favicon-7/mstile-144x144.png><meta name=theme-color content=#ffffff><link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel=stylesheet type=text/css><link rel=alternate type=application/rss+xml title=RSS href=https://vertx.io/feed.xml><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');</script></head><body><a href="http://www.reactivemanifesto.org/" id=reactive-manifesto-banner><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.io/" class=navbar-brand><img alt=Brand src=https://vertx.io/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href="https://start.vertx.io/">Starter</a></li><li><a href="https://vertx.io/download/">Download</a></li><li><a href="https://how-to.vertx.io/">How-to</a></li><li><a href="https://vertx.io/docs/">Documentation</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>Wiki</a></li><li><a href="https://vertx.io/community/">Community</a></li><li><a href="https://vertx.io/materials/">Materials</a></li><li><a href="https://vertx.io/blog/">Blog</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>Eclipse Vert.x 3.7.0 released!</h2><p class=blog-post-meta>2nd April 2019 by <a href=http://github.com/vietj>vietj</a></p><article><p>We are extremely pleased to announce that the Eclipse Vert.x version 3.7.0 has been released.</p><p>It is an exciting milestone for a couple of reasons:</p><ol><li>it comes with great new features like the <a href=#vertx-web-graphql>GraphQL extension for Vert.x Web</a>.</li><li>this is the last minor version before Vert.x 4!</li></ol><p>Before we go throught the most notable new features, we would like to thank all the contributors. Your participation has been essential to this achievement.</p><h4 id=-a-id-vertx-web-graphql-vert-x-web-graphql-a-><a id=vertx-web-graphql>Vert.x Web GraphQL</a></h4><p>Vert.x Web GraphQL extends Vert.x Web with the <a href=https://www.graphql-java.com>GraphQL-Java</a> library so that you can build a GraphQL server.</p><p>To use this new module, add the following to the <em>dependencies</em> section of your Maven POM file:</p><pre><code class="hljs xml"><span class=hljs-tag>&lt;<span class=hljs-title>dependency</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-title>groupId</span>&gt;</span>io.vertx<span class=hljs-tag>&lt;/<span class=hljs-title>groupId</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-title>artifactId</span>&gt;</span>vertx-web-graphql<span class=hljs-tag>&lt;/<span class=hljs-title>artifactId</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-title>version</span>&gt;</span>3.7.0<span class=hljs-tag>&lt;/<span class=hljs-title>version</span>&gt;</span>
+<span class=hljs-tag>&lt;/<span class=hljs-title>dependency</span>&gt;</span></code></pre><p>Or, if you use Gradle:</p><pre><code class=hljs><span class=hljs-keyword>compile</span> <span class=hljs-string>'io.vertx:vertx-web-graphql:3.7.0'</span></code></pre><p>Then create a Vert.x Web <code>Route</code> and a <code>GraphQLHandler</code> for it:</p><pre><code class="hljs java"><span class=hljs-comment>// Setup the GraphQL-Java object</span>
+GraphQL graphQL = setupGraphQLJava();
+<span class=hljs-comment>// Use it to handle requests on a Vert.x Web route </span>
+router.route(<span class=hljs-string>"/graphql"</span>).handler(GraphQLHandler.create(graphQL));</code></pre><p>The GraphQL handler supports out of the box:</p><ul><li>query context customization</li><li>GraphQL-Java data loaders</li><li>batching on <code>POST</code> requests (compatible with the <a href=https://www.apollographql.com/docs/link/links/batch-http.html><code>apollo-link-batch-http</code></a> transport)</li></ul><p>For detailed usage instructions, please refer to the <a href="/docs/vertx-web-graphql/java/">Vert.x Web GraphQL documentation</a>.</p><h4 id=vert-x-cassandra-client>Vert.x Cassandra Client</h4><h5 id=object-mapper-support>Object mapper support</h5><p>Vert.x Cassandra Client now supports the <a href=https://github.com/datastax/java-driver/tree/3.x/manual/object_mapper>cassandra-driver-mapping</a> module.</p><p>To enable this feature, you need to update your classpath by adding:</p><pre><code class="hljs xml"><span class=hljs-tag>&lt;<span class=hljs-title>dependency</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-title>groupId</span>&gt;</span>com.datastax.cassandra<span class=hljs-tag>&lt;/<span class=hljs-title>groupId</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-title>artifactId</span>&gt;</span>cassandra-driver-mapping<span class=hljs-tag>&lt;/<span class=hljs-title>artifactId</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-title>version</span>&gt;</span>3.7.1<span class=hljs-tag>&lt;/<span class=hljs-title>version</span>&gt;</span>
+<span class=hljs-tag>&lt;/<span class=hljs-title>dependency</span>&gt;</span></code></pre><p>Then for a given entity:</p><pre><code class="hljs java"><span class=hljs-annotation>@Table</span>(keyspace = <span class=hljs-string>"test"</span>, name = <span class=hljs-string>"users"</span>)
+<span class=hljs-class><span class=hljs-keyword>class</span> <span class=hljs-title>User</span> </span>{
+  <span class=hljs-annotation>@PartitionKey</span> String name;
+  <span class=hljs-comment>// ... other fields and methods </span>
+}</code></pre><p>You can retrieve a mapper and execute CRUD operations:</p><pre><code class="hljs java">VertxMappingManager manager = VertxMappingManager.create(cassandraClient);
+VertxMapper&lt;User&gt; mapper = manager.mapper(User.class, vertx);
+mapper.save(<span class=hljs-keyword>new</span> User(<span class=hljs-string>"john"</span>, hander -&gt; {}));</code></pre><h5 id=collector-api>Collector API</h5><p>The feature allows to use Java <a href=https://docs.oracle.com/javase/8/docs/api/java/util/stream/Collector.html>collectors</a> for query results:</p><pre><code class="hljs java"><span class=hljs-comment>// Create a collector projecting a row set to a string in the form (last_name_1,last_name_2,...)</span>
+Collector&lt;Row, ?, String&gt; collector = Collectors.mapping(
+    row -&gt; row.getString(<span class=hljs-string>"last_name"</span>),
+    Collectors.joining(<span class=hljs-string>","</span>, <span class=hljs-string>"("</span>, <span class=hljs-string>")"</span>)
+);
+
+<span class=hljs-comment>// Run the query with the collector</span>
+client.execute(<span class=hljs-string>"SELECT * FROM users"</span>, collector, ar -&gt; {
+  <span class=hljs-keyword>if</span> (ar.succeeded()) {
+    <span class=hljs-comment>// Result in the form (last_name_1,last_name_2,...)</span>
+    String result = ar.result();
+  } <span class=hljs-keyword>else</span> {
+    System.out.println(<span class=hljs-string>"Failure: "</span> + ar.cause().getMessage());
+  }
+});</code></pre><h5 id=cursor-api>Cursor API</h5><p>The <code>ResultSet</code> object has been enhanced with <code>ResultSet#several</code> method, allowing you to obtain several rows at once:</p><pre><code class="hljs java">resultSet.several(<span class=hljs-number>30</span>, ar -&gt; {
+  <span class=hljs-keyword>if</span> (ar.succeeded()) {
+    List&lt;Row&gt; result = ar.result();
+  } <span class=hljs-keyword>else</span> {
+    System.out.println(<span class=hljs-string>"Failure: "</span> + ar.cause().getMessage());
+  }
+});</code></pre><p>A very useful feature for result batch iterations without resorting to streaming or fetching all rows in memory.</p><h5 id=client-lifecyle>Client lifecyle</h5><p>The client lifecyle has been revisited in 3.7.</p><p>Previously users expected to <code>connect</code> manually before sending requests. It was also possible to <code>disconnect</code> a shared client thus failing requests sent from another verticle or part of the application.</p><p>Now it is no longer required to manually connect a client (in fact, the method has been removed).</p><p>As soon as you retrieve an instance you can start using it, the lifecyle is automatically managed:</p><pre><code class="hljs java">CassandraClientOptions options = <span class=hljs-keyword>new</span> CassandraClientOptions()
+  .addContactPoint(<span class=hljs-string>"node1.address"</span>)
+  .addContactPoint(<span class=hljs-string>"node2.address"</span>)
+  .addContactPoint(<span class=hljs-string>"node3.address"</span>)
+  .setKeyspace(<span class=hljs-string>"my_keyspace"</span>);
+CassandraClient sharedClient = CassandraClient.createShared(vertx, <span class=hljs-string>"sharedClientName"</span>, options);
+<span class=hljs-comment>// Start sending requests to Cassandra with the client instance</span></code></pre><p>Similarly, when the new <code>close</code> method is invoked on a shared client, only the last active instance will actually disconnect from Cassandra:</p><pre><code class="hljs java"><span class=hljs-comment>// Disconnects only if this is the last running instance of the shared client</span>
+sharedClient.close();</code></pre><h4 id=vert-x-redis-client>Vert.x Redis Client</h4><p>The Vert.x Redis client has been reworked internally and provides now a new (more evolution friendly) API.</p><p>The current API had the limitation of being manually crafted after the redis API and involved many non controlable features such as auto reconnect, unlimited buffering of requests, etc… The new API offers a more <em>vert.x-y</em> experience.</p><p>It just exposes the base client:</p><pre><code class="hljs java">Redis
+  .createClient(vertx, inetSocketAddress(<span class=hljs-number>7006</span>, <span class=hljs-string>"127.0.0.1"</span>))
+  .connect(create -&gt; {
+    <span class=hljs-keyword>final</span> Redis redis = create.result();
+
+    redis.send(Request.cmd(Command.PING), send -&gt; {
+      <span class=hljs-comment>// ... should reply with PONG</span>
+    });
+  });</code></pre><p>This has the benefits that you can now connect to Redis in any of it’s operation modes:</p><ul><li>Single server</li><li>HA mode</li><li>Cluster mode</li></ul><p>The API is decoupled from the handcrafted commands, which means that you can use new features such as:</p><ul><li><a href=https://redis.io/commands#stream>streams</a></li><li><a href=https://redis.io/commands#hyperloglog>hyperloglog</a></li><li><a href=https://github.com/RedisLabsModules>any extension module</a></li></ul><p>A generated helper <code>RedisAPI</code> is available that can wrap the client to provide a similar experience to the old API.</p><p>The main difference is that this new wrapper is generated from the <a href=https://redis.io/commands/command>COMMAND</a> command, so the correct API it always exposed:</p><pre><code class="hljs java">RedisAPI redis = RedisAPI.api(client);
+
+redis.set(Arrays.asList(<span class=hljs-string>"key1"</span>, <span class=hljs-string>"value1"</span>), set -&gt; {
+  <span class=hljs-comment>// ...</span>
+});</code></pre><h4 id=vert-x-amqp-client>Vert.x AMQP Client</h4><p>The Vert.x AMQP client allows receiving and sending AMQP messages. It supersedes the current AMQP bridge and provide an API more flexible and very much user-friendly.</p><p>The Vert.x AMQP client allows:</p><ul><li>Connecting to an AMQP broker or router - SASL and TLS connections are supported</li><li>Consuming message from a queue or a topic</li><li>Sending messages to a queue or a topic</li><li>Checking acknowledgement for sent messages</li></ul><p>The AMQP 1.0 protocol support durable subscriptions, persistence, security, conversations, sophisticated routing… More details on the protocol can be found on the <a href="https://www.amqp.org/">AMQP homepage</a>.</p><p>The Vert.x AMQP client is based on Vert.x Proton. If you need fine-grain control, we recommend using <a href=https://github.com/vert-x3/vertx-proton>Vert.x Proton</a> directly.</p><p>To use this new module, add the following to the <em>dependencies</em> section of your Maven POM file:</p><pre><code class="hljs xml"><span class=hljs-tag>&lt;<span class=hljs-title>dependency</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-title>groupId</span>&gt;</span>io.vertx<span class=hljs-tag>&lt;/<span class=hljs-title>groupId</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-title>artifactId</span>&gt;</span>vertx-amqp-client<span class=hljs-tag>&lt;/<span class=hljs-title>artifactId</span>&gt;</span>
+  <span class=hljs-tag>&lt;<span class=hljs-title>version</span>&gt;</span>3.7.0<span class=hljs-tag>&lt;/<span class=hljs-title>version</span>&gt;</span>
+<span class=hljs-tag>&lt;/<span class=hljs-title>dependency</span>&gt;</span></code></pre><p>Or, if you use Gradle:</p><pre><code class=hljs><span class=hljs-keyword>compile</span> <span class=hljs-string>'io.vertx:vertx-amqp-client:3.7.0'</span></code></pre><p>Then, you can connect to an AMQP broker:</p><pre><code class="hljs java">AmqpClientOptions options = <span class=hljs-keyword>new</span> AmqpClientOptions()
+      .setHost(<span class=hljs-string>"localhost"</span>)
+      .setPort(<span class=hljs-number>5672</span>)
+      .setUsername(<span class=hljs-string>"user"</span>)
+      .setPassword(<span class=hljs-string>"secret"</span>);
+
+AmqpClient client = AmqpClient.create(vertx, options);
+
+client.connect(ar -&gt; {
+  <span class=hljs-keyword>if</span> (ar.failed()) {
+    System.out.println(<span class=hljs-string>"Unable to connect to the broker"</span>);
+  } <span class=hljs-keyword>else</span> {
+    System.out.println(<span class=hljs-string>"Connection succeeded"</span>);
+    AmqpConnection connection = ar.result();
+
+    <span class=hljs-comment>// You can create receivers and senders</span>
+    connection.createReceiver(<span class=hljs-string>"my-queue"</span>,
+      msg -&gt; {
+        <span class=hljs-comment>// called on every received messages</span>
+        System.out.println(<span class=hljs-string>"Received "</span> + msg.bodyAsString());
+      },
+      done -&gt; {
+        <span class=hljs-keyword>if</span> (done.failed()) {
+          System.out.println(<span class=hljs-string>"Unable to create receiver"</span>);
+        } <span class=hljs-keyword>else</span> {
+          AmqpReceiver receiver = done.result();
+        }
+      }
+    );
+
+    connection.createSender(<span class=hljs-string>"my-queue"</span>, done -&gt; {
+      <span class=hljs-keyword>if</span> (done.failed()) {
+        System.out.println(<span class=hljs-string>"Unable to create a sender"</span>);
+      } <span class=hljs-keyword>else</span> {
+        AmqpSender sender = done.result();
+        sender.send(AmqpMessage.create().withBody(<span class=hljs-string>"hello"</span>).build());
+      }
+    });
+
+  }
+});</code></pre><h4 id=stream-pipes>Stream pipes</h4><p>When it comes to streaming, back-pressure is something you need to care about.</p><p>You have very much likely heard or used the Vert.x <code>Pump</code> API to transfer data from a read stream to a write stream while respecting the write stream back-pressure.</p><p>The <code>Pipe</code> a new API superseding the <code>Pump</code> to achieve the same effect and even more, it acts like a pump and handles for you</p><ul><li>read stream pause/resume</li><li>write stream termination</li><li>stream failures handling</li><li>asynchronous result upon streaming completion</li></ul><p>You can transfer a read stream to a write stream simply, the write stream will be ended upon completion of the stream</p><pre><code class="hljs java">readStream.pipeTo(writeStream);</code></pre><p>You can also be notified when the pipe completes:</p><pre><code class="hljs java">readStream.pipeTo(writeStream, ar -&gt; {
+  <span class=hljs-keyword>if</span> (ar.succeeded()) {
+    System.out.println(<span class=hljs-string>"done"</span>);
+  } <span class=hljs-keyword>else</span> {
+    System.out.println(<span class=hljs-string>"failed "</span> + ar.cause());
+  }
+});</code></pre><p>Creating and using an asynchronous pipe is easy</p><pre><code class="hljs java"><span class=hljs-comment>// The read stream will be paused until the pipe is used</span>
+Pipe&lt;Buffer&gt; pipe = readStream.pipe();
+getAsyncPipe(ar -&gt; {
+  <span class=hljs-keyword>if</span> (ar.succeeded()) {
+    pipe.to(writeStream);
+  } <span class=hljs-keyword>else</span> {
+    pipe.close();
+  }
+});</code></pre><h4 id=kafka-admin-client>Kafka admin client</h4><p>The new version brings a Vert.x based first implementation of the native <a href=https://kafka.apache.org/documentation/#adminapi>Kafka Admin Client API</a> which are in Java, instead of Scala used in the previous version.</p><p>The <code>AdminUtils</code> is now deprecated and the new <code>KafkaAdminClient</code> is available instead. It allows to remove the last Scala artifact dependency.</p><p>While the <code>AdminUtils</code> implementation needs to connect to Zookeeper for administration purposes, the <code>KafkaAdminClient</code> only uses the Kafka bootstrap brokers connection.</p><pre><code class="hljs java">Properties config = <span class=hljs-keyword>new</span> Properties();
+config.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, <span class=hljs-string>"my-kafka-broker:9092"</span>);
+
+KafkaAdminClient adminClient = KafkaAdminClient.create(vertx, config);</code></pre><p>The features currently supported are:</p><ul><li>create and delete topics</li><li>list all the topics</li><li>describe topics for getting information about leader partition, follower replicas and ISR (in-sync replicas) list</li><li>alter topics configuration</li><li>list all consumer groups</li><li>describe consumer groups for getting information like the state, the coordinator host, consumers per topics and so on</li></ul><p>If you are using the <code>AdminUtils</code> today, consider migrate to the new <code>KafkaAdminClient</code> because the former will be removed in Vert.x 4.0.</p><h4 id=and-more->And more…</h4><p>Here are some other important improvements you can find in this release:</p><ul><li>Shared data structures available in local-only mode even when Vert.x is clustered</li><li>JSON decoding without prior knowledge of the structure (object, array, string, …etc)</li><li>Infinispan Cluster Manager upgraded to <a href=https://infinispan.org>Infinispan</a> 9.4.10.Final</li><li>And obviously we have the usual bug fixes!</li></ul><h4 id=finally>Finally</h4><p>The <a href=https://github.com/vert-x3/wiki/wiki/3.7.0-Release-Notes>3.7.0 release notes</a> can be found on the wiki, as well as the list of <a href=https://github.com/vert-x3/wiki/wiki/3.7.0-Deprecations-and-breaking-changes>deprecations and breaking changes</a></p><p>Docker images are available on <a href="https://hub.docker.com/u/vertx/">Docker Hub</a>.</p><p>The Vert.x distribution can be downloaded on the website but is also available from <a href=http://sdkman.io/index.html>SDKMan</a> and <a href="http://brew.sh/">HomeBrew</a>.</p><p>The event bus client using the SockJS bridge is available from:</p><ul><li><a href=https://www.npmjs.com/package/vertx3-eventbus-client>NPM</a></li><li><a href=https://github.com/vert-x3/vertx-bus-bower>Bower</a></li><li><a href="http://www.webjars.org/">WebJars</a></li></ul><p>The release artifacts have been deployed to <a href=http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.vertx%22%20AND%20v%3A%223.7.0%22>Maven Central</a> and you can get the distribution on <a href=https://bintray.com/vertx/downloads/distribution/3.7.0/view>Bintray</a>.</p><p>That’s it! Happy coding and see you soon on our user or dev <a href=https://vertx.io/community>channels</a>.</p></article></article></div></div><footer><div class=container><div class=row><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"><h2>Eclipse Vert.x</h2><ul class=list-unstyled><li><a href="https://vertx.io/">Home</a></li><li><a href="https://vertx.io/download/">Download</a></li><li><a href="https://vertx.io/docs/">Documentation</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>Wiki</a></li><li><a href="https://vertx.io/blog/">Blog</a></li><li><a href="https://vertx.io/vertx2/" class=vertx-2-link>Vert.x 2</a></li></ul></div><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"><h2>Community</h2><ul class=list-unstyled><li><a href="https://vertx.io/community/">Help &amp; Contributors</a></li><li><a href="https://vertx.io/materials/">Learning materials</a></li><li><a href=https://groups.google.com/forum/?fromgroups#!forum/vertx>User Group</a></li><li><a href=https://groups.google.com/forum/?fromgroups#!forum/vertx-dev>Developer Group</a></li></ul></div><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"><h2>Eclipse</h2><ul class=list-unstyled><li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li><li><a href=https://eclipse.org/legal/privacy.php>Privacy Policy</a></li><li><a href=https://eclipse.org/legal/termsofuse.php>Terms of Use</a></li><li><a href=https://eclipse.org/legal/copyright.php>Copyright Agent</a></li><li><a href=http://www.eclipse.org/legal>Legal Resources</a></li></ul></div><div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright"><p>Eclipse Vert.x is open source and dual-licensed under the <a href=http://www.eclipse.org/legal/epl-v20.html>Eclipse Public License 2.0</a> and <a href=https://www.apache.org/licenses/LICENSE-2.0.html>Apache License 2.0</a>.</p><p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>Design by <a href=https://www.michel-kraemer.com>Michel Kr&auml;mer</a>.</p><div class=row><div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2"><a href=http://eclipse.org><img class="logo eclipse-logo" src=https://vertx.io/assets/eclipse_logo_grey_small.png width=204 height=48></a></div><div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0"><a href=http://cloudbees.com><img class="logo cloudbees-logo" src=https://vertx.io/assets/Button-Built-on-CB-1-grey.png width=180 height=48></a></div><div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler"><a href=http://www.ej-technologies.com/products/jprofiler/overview.html style=text-decoration:none><img class="logo jprofiler-logo" src=https://vertx.io/assets/jprofiler-logo.png width=48 height=48><span class=jprofiler-logo>&nbsp; JPROFILER</span></a></div></div></div></div></div></footer><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js></script><script src=https://vertx.io/javascripts/bootstrap.min.js></script><script src=https://vertx.io/javascripts/highlight.pack.js></script><script>hljs.initHighlightingOnLoad();</script><link rel=stylesheet type=text/css href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"><script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js></script><script>window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});</script></body></html>

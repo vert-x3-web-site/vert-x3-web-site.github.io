@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ValidationException - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.web.api.validation</a>&nbsp;/&nbsp;<a href=".">ValidationException</a><br/>
+<br/>
+<h1>ValidationException</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ValidationException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">VertxException</span></code>
+<p>This is the main class for every Validation flow related errors</p>
+<p><strong>Author</strong><br/>
+Francesco Guardiani @slinkydeveloper</p>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-error-type/index.html">ErrorType</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ErrorType</span></code>
+<p>All errors type. You can get this values using <code><a href="type.html">ValidationException#type()</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-validation-exception-factory/index.html">ValidationExceptionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ValidationExceptionFactory</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ValidationException</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.api.validation.ValidationException$<init>(kotlin.String, io.vertx.ext.web.api.validation.ValidationException.ErrorType)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.web.api.validation.ValidationException$<init>(kotlin.String, io.vertx.ext.web.api.validation.ValidationException.ErrorType)/error">error</span><span class="symbol">:</span>&nbsp;<a href="-error-type/index.html"><span class="identifier">ErrorType</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">ValidationException</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.api.validation.ValidationException$<init>(io.vertx.ext.web.api.validation.ValidationException.ErrorType)/error">error</span><span class="symbol">:</span>&nbsp;<a href="-error-type/index.html"><span class="identifier">ErrorType</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">ValidationException</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.api.validation.ValidationException$<init>(kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="parameter-name.html">parameterName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">parameterName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-parameter-name.html">setParameterName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setParameterName</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.api.validation.ValidationException$setParameterName(kotlin.String)/parameterName">parameterName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-validation-rule.html">setValidationRule</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValidationRule</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.api.validation.ValidationException$setValidationRule(io.vertx.ext.web.api.validation.ParameterValidationRule)/validationRule">validationRule</span><span class="symbol">:</span>&nbsp;<a href="../-parameter-validation-rule/index.html"><span class="identifier">ParameterValidationRule</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-value.html">setValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValue</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.api.validation.ValidationException$setValue(kotlin.String)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="type.html">type</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">type</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="-error-type/index.html"><span class="identifier">ErrorType</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="validation-rule.html">validationRule</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">validationRule</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-parameter-validation-rule/index.html"><span class="identifier">ParameterValidationRule</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="value.html">value</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">value</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

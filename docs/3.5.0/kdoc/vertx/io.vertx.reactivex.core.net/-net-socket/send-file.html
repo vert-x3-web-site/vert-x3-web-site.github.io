@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>NetSocket.sendFile - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.net</a>&nbsp;/&nbsp;<a href="index.html">NetSocket</a>&nbsp;/&nbsp;<a href=".">sendFile</a><br/>
+<br/>
+<h1>sendFile</h1>
+<a name="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">sendFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String)/filename">filename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">NetSocket</span></a></code>
+<p>Tell the operating system to stream a file as specified by <code>filename</code> directly from disk to the outgoing connection, bypassing userspace altogether (where supported by the underlying operating system. This is a very efficient way to stream files.</p>
+<h3>Parameters</h3>
+<p><a name="filename"></a>
+<code>filename</code> - file name of the file to send</p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently</p>
+<a name="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, kotlin.Long)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">sendFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, kotlin.Long)/filename">filename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, kotlin.Long)/offset">offset</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">NetSocket</span></a></code>
+<p>Tell the operating system to stream a file as specified by <code>filename</code> directly from disk to the outgoing connection, bypassing userspace altogether (where supported by the underlying operating system. This is a very efficient way to stream files.</p>
+<h3>Parameters</h3>
+<p><a name="filename"></a>
+<code>filename</code> - file name of the file to send</p>
+<p><a name="offset"></a>
+<code>offset</code> - offset</p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently</p>
+<a name="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, kotlin.Long, kotlin.Long)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">sendFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, kotlin.Long, kotlin.Long)/filename">filename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, kotlin.Long, kotlin.Long)/offset">offset</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, kotlin.Long, kotlin.Long)/length">length</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">NetSocket</span></a></code>
+<p>Tell the operating system to stream a file as specified by <code>filename</code> directly from disk to the outgoing connection, bypassing userspace altogether (where supported by the underlying operating system. This is a very efficient way to stream files.</p>
+<h3>Parameters</h3>
+<p><a name="filename"></a>
+<code>filename</code> - file name of the file to send</p>
+<p><a name="offset"></a>
+<code>offset</code> - offset</p>
+<p><a name="length"></a>
+<code>length</code> - length</p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently</p>
+<a name="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">sendFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/filename">filename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">NetSocket</span></a></code>
+<p>Same as <code><a href="#">io.vertx.reactivex.core.net.NetSocket#sendFile</a></code> but also takes a handler that will be called when the send has completed or a failure has occurred</p>
+<h3>Parameters</h3>
+<p><a name="filename"></a>
+<code>filename</code> - file name of the file to send</p>
+<p><a name="resultHandler"></a>
+<code>resultHandler</code> - handler</p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently</p>
+<a name="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">sendFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/filename">filename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/offset">offset</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">NetSocket</span></a></code>
+<p>Same as <code><a href="#">io.vertx.reactivex.core.net.NetSocket#sendFile</a></code> but also takes a handler that will be called when the send has completed or a failure has occurred</p>
+<h3>Parameters</h3>
+<p><a name="filename"></a>
+<code>filename</code> - file name of the file to send</p>
+<p><a name="offset"></a>
+<code>offset</code> - offset</p>
+<p><a name="resultHandler"></a>
+<code>resultHandler</code> - handler</p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently</p>
+<a name="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, kotlin.Long, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">sendFile</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, kotlin.Long, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/filename">filename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, kotlin.Long, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/offset">offset</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, kotlin.Long, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/length">length</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.net.NetSocket$sendFile(kotlin.String, kotlin.Long, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">NetSocket</span></a></code>
+<p>Same as <code><a href="#">io.vertx.reactivex.core.net.NetSocket#sendFile</a></code> but also takes a handler that will be called when the send has completed or a failure has occurred</p>
+<h3>Parameters</h3>
+<p><a name="filename"></a>
+<code>filename</code> - file name of the file to send</p>
+<p><a name="offset"></a>
+<code>offset</code> - offset</p>
+<p><a name="length"></a>
+<code>length</code> - length</p>
+<p><a name="resultHandler"></a>
+<code>resultHandler</code> - handler</p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently</p>
+</BODY>
+</HTML>

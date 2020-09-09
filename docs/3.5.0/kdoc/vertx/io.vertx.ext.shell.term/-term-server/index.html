@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TermServer - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.shell.term</a>&nbsp;/&nbsp;<a href=".">TermServer</a><br/>
+<br/>
+<h1>TermServer</h1>
+<code><span class="keyword">interface </span><span class="identifier">TermServer</span></code>
+<p>A server for terminal based applications.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Julien Viet</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="actual-port.html">actualPort</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">actualPort</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The actual port the server is listening on. This is useful if you bound the server specifying 0 as port number signifying an ephemeral port</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="auth-provider.html">authProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">authProvider</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$authProvider(io.vertx.ext.auth.AuthProvider)/provider">provider</span><span class="symbol">:</span>&nbsp;<span class="identifier">AuthProvider</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TermServer</span></code>
+<p>Set an auth provider to use, any provider configured in options will override this provider. This should be used when a custom auth provider should be used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the server. This will close any currently open connections. The close may not complete until after this method has returned.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$close(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Like <code><a href="close.html">#close</a></code> but supplying a handler that will be notified when close is complete.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-http-term-server.html">createHttpTermServer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createHttpTermServer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$createHttpTermServer(io.vertx.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TermServer</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createHttpTermServer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$createHttpTermServer(io.vertx.core.Vertx, io.vertx.ext.shell.term.HttpTermOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$createHttpTermServer(io.vertx.core.Vertx, io.vertx.ext.shell.term.HttpTermOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpTermOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TermServer</span></code>
+<p>Create a term server for the HTTP protocol.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createHttpTermServer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$createHttpTermServer(io.vertx.core.Vertx, io.vertx.ext.web.Router)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$createHttpTermServer(io.vertx.core.Vertx, io.vertx.ext.web.Router)/router">router</span><span class="symbol">:</span>&nbsp;<span class="identifier">Router</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TermServer</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createHttpTermServer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$createHttpTermServer(io.vertx.core.Vertx, io.vertx.ext.web.Router, io.vertx.ext.shell.term.HttpTermOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$createHttpTermServer(io.vertx.core.Vertx, io.vertx.ext.web.Router, io.vertx.ext.shell.term.HttpTermOptions)/router">router</span><span class="symbol">:</span>&nbsp;<span class="identifier">Router</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$createHttpTermServer(io.vertx.core.Vertx, io.vertx.ext.web.Router, io.vertx.ext.shell.term.HttpTermOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpTermOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TermServer</span></code>
+<p>Create a term server for the HTTP protocol, using an existing router.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-s-s-h-term-server.html">createSSHTermServer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createSSHTermServer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$createSSHTermServer(io.vertx.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TermServer</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createSSHTermServer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$createSSHTermServer(io.vertx.core.Vertx, io.vertx.ext.shell.term.SSHTermOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$createSSHTermServer(io.vertx.core.Vertx, io.vertx.ext.shell.term.SSHTermOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">SSHTermOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TermServer</span></code>
+<p>Create a term server for the SSH protocol.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-telnet-term-server.html">createTelnetTermServer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createTelnetTermServer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$createTelnetTermServer(io.vertx.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TermServer</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createTelnetTermServer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$createTelnetTermServer(io.vertx.core.Vertx, io.vertx.ext.shell.term.TelnetTermOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$createTelnetTermServer(io.vertx.core.Vertx, io.vertx.ext.shell.term.TelnetTermOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">TelnetTermOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TermServer</span></code>
+<p>Create a term server for the Telnet protocol.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="listen.html">listen</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TermServer</span></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$listen(io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.ext.shell.term.TermServer)))))/listenHandler">listenHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">TermServer</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TermServer</span></code>
+<p>Bind the term server, the <code><a href="#">#termHandler(Handler)</a></code> must be set before.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="term-handler.html">termHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">termHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.term.TermServer$termHandler(io.vertx.core.Handler((io.vertx.ext.shell.term.Term)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Term</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TermServer</span></code>
+<p>Set the term handler that will receive incoming client connections. When a remote terminal connects the <code>handler</code> will be called with the Term which can be used to interact with the remote terminal.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

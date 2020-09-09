@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.rxjava.core - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.rxjava.core</a><br/>
+<br/>
+<h2>Package io.vertx.rxjava.core</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-verticle/index.html">AbstractVerticle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AbstractVerticle</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractVerticle</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-composite-future/index.html">CompositeFuture</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CompositeFuture</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-future/index.html"><span class="identifier">Future</span></a><span class="symbol">&lt;</span><a href="-composite-future/index.html"><span class="identifier">CompositeFuture</span></a><span class="symbol">&gt;</span></code>
+<p>The composite future wraps a list of io.vertx.rxjava.core.Future, it is useful when several futures needs to be coordinated. The handlers set for the coordinated futures are overridden by the handler of the composite future.  NOTE: This class has been automatically generated from the io.vertx.core.CompositeFuture non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-future/index.html">Future</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Future</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Represents the result of an action that may, or may not, have occurred yet. 
+<p> </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.Future non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-rx-helper/index.html">RxHelper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RxHelper</span></code>
+<p>A set of helpers for RxJava and Vert.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-timeout-stream/index.html">TimeoutStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TimeoutStream</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ReadStream</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">&gt;</span></code>
+<p>A timeout stream is triggered by a timer, the io.vertx.rxjava.core.Handler will be call when the timer is fired, it can be once or several times depending on the nature of the timer related to this stream. The will be called after the timer handler has been called. 
+<p> Pausing the timer inhibits the timer shots until the stream is resumed. Setting a null handler callback cancels the timer. </p>
+ NOTE: This class has been automatically generated from the io.vertx.core.TimeoutStream non RX-ified interface using Vert.x codegen.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

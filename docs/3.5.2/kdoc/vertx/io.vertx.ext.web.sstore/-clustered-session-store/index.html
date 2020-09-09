@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ClusteredSessionStore - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.web.sstore</a>&nbsp;/&nbsp;<a href=".">ClusteredSessionStore</a><br/>
+<br/>
+<h1>ClusteredSessionStore</h1>
+<code><span class="keyword">interface </span><span class="identifier">ClusteredSessionStore</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SessionStore</span></code>
+<p>A session store which stores sessions in a distributed map so they are available across the cluster.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Tim Fox</a></p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-r-e-t-r-y_-t-i-m-e-o-u-t.html">DEFAULT_RETRY_TIMEOUT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_RETRY_TIMEOUT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Default retry time out, in ms, for a session not found in this store.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-s-e-s-s-i-o-n_-m-a-p_-n-a-m-e.html">DEFAULT_SESSION_MAP_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_SESSION_MAP_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default name used for the session map</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.sstore.ClusteredSessionStore$create(io.vertx.core.Vertx, kotlin.String)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.web.sstore.ClusteredSessionStore$create(io.vertx.core.Vertx, kotlin.String)/sessionMapName">sessionMapName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ClusteredSessionStore</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.sstore.ClusteredSessionStore$create(io.vertx.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ClusteredSessionStore</span></code>
+<p>Create a session store</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.sstore.ClusteredSessionStore$create(io.vertx.core.Vertx, kotlin.String, kotlin.Long)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.web.sstore.ClusteredSessionStore$create(io.vertx.core.Vertx, kotlin.String, kotlin.Long)/sessionMapName">sessionMapName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.web.sstore.ClusteredSessionStore$create(io.vertx.core.Vertx, kotlin.String, kotlin.Long)/retryTimeout">retryTimeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ClusteredSessionStore</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.sstore.ClusteredSessionStore$create(io.vertx.core.Vertx, kotlin.Long)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.web.sstore.ClusteredSessionStore$create(io.vertx.core.Vertx, kotlin.Long)/retryTimeout">retryTimeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ClusteredSessionStore</span></code>
+<p>Create a session store. The retry timeout value, configures how long the session handler will retry to get a session from the store when it is not found.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>StompClientConnection.disconnect - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.stomp</a>&nbsp;/&nbsp;<a href="index.html">StompClientConnection</a>&nbsp;/&nbsp;<a href=".">disconnect</a><br/>
+<br/>
+<h1>disconnect</h1>
+<a name="io.vertx.ext.stomp.StompClientConnection$disconnect()"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">disconnect</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">StompClientConnection</span></a></code>
+<p>Disconnects the client. Unlike the <code><a href="close.html">#close()</a></code> method, this method send the <code>DISCONNECT</code> frame to the server.</p>
+<p><strong>Return</strong><br/>
+the current StompClientConnection</p>
+<a name="io.vertx.ext.stomp.StompClientConnection$disconnect(io.vertx.core.Handler((io.vertx.ext.stomp.Frame)))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">disconnect</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.StompClientConnection$disconnect(io.vertx.core.Handler((io.vertx.ext.stomp.Frame)))/receiptHandler">receiptHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Frame</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">StompClientConnection</span></a></code>
+<p>Disconnects the client. Unlike the <code><a href="close.html">#close()</a></code> method, this method send the <code>DISCONNECT</code> frame to the server.</p>
+<h3>Parameters</h3>
+<p><a name="receiptHandler"></a>
+<code>receiptHandler</code> - the handler invoked when the <code>RECEIPT</code> frame associated with the disconnection has been processed by the server. The handler receives the sent frame (<code>DISCONNECT</code>).</p>
+<p><strong>Return</strong><br/>
+the current StompClientConnection</p>
+<a name="io.vertx.ext.stomp.StompClientConnection$disconnect(io.vertx.ext.stomp.Frame)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">disconnect</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.StompClientConnection$disconnect(io.vertx.ext.stomp.Frame)/frame">frame</span><span class="symbol">:</span>&nbsp;<span class="identifier">Frame</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">StompClientConnection</span></a></code>
+<p>Disconnects the client. Unlike the <code><a href="close.html">#close()</a></code> method, this method send the <code>DISCONNECT</code> frame to the server. This method lets you customize the <code>DISCONNECT</code> frame.</p>
+<h3>Parameters</h3>
+<p><a name="frame"></a>
+<code>frame</code> - the <code>DISCONNECT</code> frame.</p>
+<p><strong>Return</strong><br/>
+the current StompClientConnection</p>
+<a name="io.vertx.ext.stomp.StompClientConnection$disconnect(io.vertx.ext.stomp.Frame, io.vertx.core.Handler((io.vertx.ext.stomp.Frame)))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">disconnect</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.stomp.StompClientConnection$disconnect(io.vertx.ext.stomp.Frame, io.vertx.core.Handler((io.vertx.ext.stomp.Frame)))/frame">frame</span><span class="symbol">:</span>&nbsp;<span class="identifier">Frame</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.stomp.StompClientConnection$disconnect(io.vertx.ext.stomp.Frame, io.vertx.core.Handler((io.vertx.ext.stomp.Frame)))/receiptHandler">receiptHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Frame</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">StompClientConnection</span></a></code>
+<p>Disconnects the client. Unlike the <code><a href="close.html">#close()</a></code> method, this method send the <code>DISCONNECT</code> frame to the server. This method lets you customize the <code>DISCONNECT</code> frame.</p>
+<h3>Parameters</h3>
+<p><a name="frame"></a>
+<code>frame</code> - the <code>DISCONNECT</code> frame.</p>
+<p><a name="receiptHandler"></a>
+<code>receiptHandler</code> - the handler invoked when the <code>RECEIPT</code> frame associated with the disconnection has been processed by the server. The handler receives the sent frame (<code>DISCONNECT</code>).</p>
+<p><strong>Return</strong><br/>
+the current StompClientConnection</p>
+</BODY>
+</HTML>

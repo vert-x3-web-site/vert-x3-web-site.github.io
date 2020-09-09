@@ -1,0 +1,336 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>StaticHandler - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.web.handler</a>&nbsp;/&nbsp;<a href=".">StaticHandler</a><br/>
+<br/>
+<h1>StaticHandler</h1>
+<code><span class="keyword">interface </span><span class="identifier">StaticHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">RoutingContext</span><span class="symbol">&gt;</span></code>
+<p>A handler for serving static resources from the file system or classpath.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Tim Fox</a></p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-a-l-w-a-y-s_-a-s-y-n-c_-f-s.html">DEFAULT_ALWAYS_ASYNC_FS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_ALWAYS_ASYNC_FS</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Default of whether async filesystem access should always be used</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-a-c-h-e_-e-n-t-r-y_-t-i-m-e-o-u-t.html">DEFAULT_CACHE_ENTRY_TIMEOUT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CACHE_ENTRY_TIMEOUT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Default cache entry timeout, when caching</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-a-c-h-i-n-g_-e-n-a-b-l-e-d.html">DEFAULT_CACHING_ENABLED</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CACHING_ENABLED</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Default of whether cache header handling is enabled</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-d-i-r-e-c-t-o-r-y_-l-i-s-t-i-n-g.html">DEFAULT_DIRECTORY_LISTING</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_DIRECTORY_LISTING</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Default of whether directory listing is enabled</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-d-i-r-e-c-t-o-r-y_-t-e-m-p-l-a-t-e.html">DEFAULT_DIRECTORY_TEMPLATE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_DIRECTORY_TEMPLATE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default template file to use for directory listing</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-e-n-a-b-l-e_-f-s_-t-u-n-i-n-g.html">DEFAULT_ENABLE_FS_TUNING</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_ENABLE_FS_TUNING</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Default of whether fs async/sync tuning should be used</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-f-i-l-e-s_-r-e-a-d_-o-n-l-y.html">DEFAULT_FILES_READ_ONLY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_FILES_READ_ONLY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Default value of whether files are read -only and never will be updated</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-i-n-c-l-u-d-e_-h-i-d-d-e-n.html">DEFAULT_INCLUDE_HIDDEN</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_INCLUDE_HIDDEN</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Default of whether hidden files can be served</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-i-n-d-e-x_-p-a-g-e.html">DEFAULT_INDEX_PAGE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_INDEX_PAGE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default index page</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-m-a-x_-a-g-e_-s-e-c-o-n-d-s.html">DEFAULT_MAX_AGE_SECONDS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_MAX_AGE_SECONDS</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Default max age for cache headers</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-m-a-x_-a-v-g_-s-e-r-v-e_-t-i-m-e_-n-s.html">DEFAULT_MAX_AVG_SERVE_TIME_NS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_MAX_AVG_SERVE_TIME_NS</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Default max avg serve time, in ns, over which serving will be considered slow</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-m-a-x_-c-a-c-h-e_-s-i-z-e.html">DEFAULT_MAX_CACHE_SIZE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_MAX_CACHE_SIZE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The default max cache size</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-r-a-n-g-e_-s-u-p-p-o-r-t.html">DEFAULT_RANGE_SUPPORT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_RANGE_SUPPORT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Default of whether Range request handling support should be used</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-r-o-o-t_-f-i-l-e-s-y-s-t-e-m_-a-c-c-e-s-s.html">DEFAULT_ROOT_FILESYSTEM_ACCESS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_ROOT_FILESYSTEM_ACCESS</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Default of whether access to the root of the file system should be allowed or just allow from the current working directory.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-s-e-n-d_-v-a-r-y_-h-e-a-d-e-r.html">DEFAULT_SEND_VARY_HEADER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_SEND_VARY_HEADER</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Default of whether vary header should be sent.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-w-e-b_-r-o-o-t.html">DEFAULT_WEB_ROOT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_WEB_ROOT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default value of the web-root, where files are served from</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Create a handler using defaults</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$create(kotlin.String)/root">root</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Create a handler, specifying web-root</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$create(kotlin.String, java.lang.ClassLoader)/root">root</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$create(kotlin.String, java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/ClassLoader.html"><span class="identifier">ClassLoader</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Create a handler, specifying web-root and a classloader used to load the resources.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-allow-root-file-system-access.html">setAllowRootFileSystemAccess</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setAllowRootFileSystemAccess</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$setAllowRootFileSystemAccess(kotlin.Boolean)/allowRootFileSystemAccess">allowRootFileSystemAccess</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Enable/Disable access to the root of the filesystem</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-always-async-f-s.html">setAlwaysAsyncFS</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setAlwaysAsyncFS</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$setAlwaysAsyncFS(kotlin.Boolean)/alwaysAsyncFS">alwaysAsyncFS</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Set whether async filesystem access should always be used</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cache-entry-timeout.html">setCacheEntryTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setCacheEntryTimeout</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$setCacheEntryTimeout(kotlin.Long)/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Set the server cache entry timeout when caching is enabled</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-caching-enabled.html">setCachingEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setCachingEnabled</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$setCachingEnabled(kotlin.Boolean)/enabled">enabled</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Set whether cache header handling is enabled</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-content-encoding.html">setDefaultContentEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setDefaultContentEncoding</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$setDefaultContentEncoding(kotlin.String)/contentEncoding">contentEncoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Set the default content encoding for text related files. This allows overriding the system settings default value.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-directory-listing.html">setDirectoryListing</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setDirectoryListing</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$setDirectoryListing(kotlin.Boolean)/directoryListing">directoryListing</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Set whether directory listing is enabled</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-directory-template.html">setDirectoryTemplate</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setDirectoryTemplate</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$setDirectoryTemplate(kotlin.String)/directoryTemplate">directoryTemplate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Set the directory template to be used when directory listing</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-enable-f-s-tuning.html">setEnableFSTuning</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setEnableFSTuning</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$setEnableFSTuning(kotlin.Boolean)/enableFSTuning">enableFSTuning</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Set whether async/sync filesystem tuning should enabled</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-enable-range-support.html">setEnableRangeSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setEnableRangeSupport</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$setEnableRangeSupport(kotlin.Boolean)/enableRangeSupport">enableRangeSupport</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Set whether range requests (resumable downloads; media streaming) should be enabled.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-files-read-only.html">setFilesReadOnly</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setFilesReadOnly</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$setFilesReadOnly(kotlin.Boolean)/readOnly">readOnly</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Set whether files are read-only and will never change</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-include-hidden.html">setIncludeHidden</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setIncludeHidden</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$setIncludeHidden(kotlin.Boolean)/includeHidden">includeHidden</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Set whether hidden files should be served</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-index-page.html">setIndexPage</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setIndexPage</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$setIndexPage(kotlin.String)/indexPage">indexPage</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Set the index page</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-max-age-seconds.html">setMaxAgeSeconds</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setMaxAgeSeconds</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$setMaxAgeSeconds(kotlin.Long)/maxAgeSeconds">maxAgeSeconds</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Set value for max age in caching headers</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-max-avg-serve-time-ns.html">setMaxAvgServeTimeNs</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setMaxAvgServeTimeNs</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$setMaxAvgServeTimeNs(kotlin.Long)/maxAvgServeTimeNanoSeconds">maxAvgServeTimeNanoSeconds</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Set the max serve time in ns, above which serves are considered slow</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-max-cache-size.html">setMaxCacheSize</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setMaxCacheSize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$setMaxCacheSize(kotlin.Int)/maxCacheSize">maxCacheSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Set the max cache size, when caching is enabled</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-send-vary-header.html">setSendVaryHeader</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setSendVaryHeader</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$setSendVaryHeader(kotlin.Boolean)/varyHeader">varyHeader</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Set whether vary header should be sent with response.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-web-root.html">setWebRoot</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setWebRoot</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.StaticHandler$setWebRoot(kotlin.String)/webRoot">webRoot</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticHandler</span></code>
+<p>Set the web root</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

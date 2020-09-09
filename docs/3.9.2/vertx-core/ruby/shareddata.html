@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Using the SharedData API - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="https://vertx.io/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.io/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.io/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://vertx.io/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="https://vertx.io/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="https://vertx.io/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="https://vertx.io/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://vertx.io/" class="navbar-brand"><img alt="Brand" src="https://vertx.io/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://start.vertx.io/">Starter</a></li>
+        <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
+        <li><a href="https://vertx.io/docs/3.9.2/">Documentation</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+        <li><a href="https://vertx.io/community/">Community</a></li>
+        <li><a href="https://vertx.io/materials/">Materials</a></li>
+        <li><a href="https://vertx.io/blog/">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Using the SharedData API</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_using_the_shareddata_api">Using the SharedData API</a>
+<ul class="sectlevel2">
+<li><a href="#_local_maps">Local maps</a></li>
+<li><a href="#_asynchronous_shared_maps">Asynchronous shared maps</a></li>
+<li><a href="#_asynchronous_locks">Asynchronous locks</a></li>
+<li><a href="#_asynchronous_counters">Asynchronous counters</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_using_the_shareddata_api">Using the SharedData API</a>
+<ul class="sectlevel2">
+<li><a href="#_local_maps">Local maps</a></li>
+<li><a href="#_asynchronous_shared_maps">Asynchronous shared maps</a></li>
+<li><a href="#_asynchronous_locks">Asynchronous locks</a></li>
+<li><a href="#_asynchronous_counters">Asynchronous counters</a></li>
+</ul>
+</li>
+</ul>
+        </div>
+        <div class="sect1">
+<h2 id="_using_the_shareddata_api">Using the SharedData API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As its name suggests, the <code><a href="../../yardoc/Vertx/SharedData.html">SharedData</a></code> API allows you to safely share data between:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>different parts of your application, or</p>
+</li>
+<li>
+<p>different applications in the same Vert.x instance, or</p>
+</li>
+<li>
+<p>different applications across a cluster of Vert.x instances.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In practice, it provides:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>synchronous maps (local-only)</p>
+</li>
+<li>
+<p>asynchronous maps</p>
+</li>
+<li>
+<p>asynchronous locks</p>
+</li>
+<li>
+<p>asynchronous counters</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+The behavior of the distributed data structure depends on the cluster manager you use.
+Backup (replication) and behavior when a network partition is faced are defined by the cluster manager and its configuration.
+Please refer to the cluster manager documentation as well as to the underlying framework manual.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_local_maps">Local maps</h3>
+<div class="paragraph">
+<p><code><a href="../../yardoc/Vertx/LocalMap.html">Local maps</a></code> allow you to share data safely between different event loops (e.g. different verticles) in the same Vert.x instance.</p>
+</div>
+<div class="paragraph">
+<p>They only allow certain data types to be used as keys and values:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>immutable types (e.g. strings, booleans, &#8230;&#8203; etc), or</p>
+</li>
+<li>
+<p>types implementing the <code><a href="unavailable">Shareable</a></code> interface (buffers, JSON arrays, JSON objects, or your own shareable objects).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the latter case the key/value will be copied before putting it into the map.</p>
+</div>
+<div class="paragraph">
+<p>This way we can ensure there is no <em>shared access to mutable state</em> between different threads in your Vert.x application.
+And you won&#8217;t have to worry about protecting that state by synchronising access to it.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example of using a shared local map:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx/buffer</span><span class="delimiter">'</span></span>
+sharedData = vertx.shared_data()
+
+map1 = sharedData.get_local_map(<span class="string"><span class="delimiter">&quot;</span><span class="content">mymap1</span><span class="delimiter">&quot;</span></span>)
+
+map1.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">bar</span><span class="delimiter">&quot;</span></span>)
+
+map2 = sharedData.get_local_map(<span class="string"><span class="delimiter">&quot;</span><span class="content">mymap2</span><span class="delimiter">&quot;</span></span>)
+
+map2.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">eek</span><span class="delimiter">&quot;</span></span>, <span class="constant">Vertx</span>::<span class="constant">Buffer</span>.buffer().append_int(<span class="integer">123</span>))
+
+<span class="comment"># Then... in another part of your application:</span>
+
+map1 = sharedData.get_local_map(<span class="string"><span class="delimiter">&quot;</span><span class="content">mymap1</span><span class="delimiter">&quot;</span></span>)
+
+val = map1.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>)
+
+map2 = sharedData.get_local_map(<span class="string"><span class="delimiter">&quot;</span><span class="content">mymap2</span><span class="delimiter">&quot;</span></span>)
+
+buff = map2.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">eek</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_asynchronous_shared_maps">Asynchronous shared maps</h3>
+<div class="paragraph">
+<p><code><a href="../../yardoc/Vertx/AsyncMap.html">Asynchronous shared maps</a></code> allow data to be put in the map and retrieved locally or from any other node.</p>
+</div>
+<div class="paragraph">
+<p>This makes them really useful for things like storing session state in a farm of servers hosting a Vert.x Web application.</p>
+</div>
+<div class="paragraph">
+<p>Getting the map is asynchronous and the result is returned to you in the handler that you specify. Here&#8217;s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">sharedData = vertx.shared_data()
+
+sharedData.get_async_map(<span class="string"><span class="delimiter">&quot;</span><span class="content">mymap</span><span class="delimiter">&quot;</span></span>) { |res_err,res|
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">nil</span>)
+    map = res
+  <span class="keyword">else</span>
+    <span class="comment"># Something went wrong!</span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When Vert.x is clustered, data that you put into the map is accessible locally as well as on any of the other cluster members.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+In clustered mode, asynchronous shared maps rely on distributed data structures provided by the cluster manager.
+Beware that the latency relative to asynchronous shared map operations can be much higher in clustered than in local mode.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If your application doesn&#8217;t need data to be shared with every other node, you can retrieve a local-only map:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">sharedData = vertx.shared_data()
+
+sharedData.get_local_async_map(<span class="string"><span class="delimiter">&quot;</span><span class="content">mymap</span><span class="delimiter">&quot;</span></span>) { |res_err,res|
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">nil</span>)
+    <span class="comment"># Local-only async map</span>
+    map = res
+  <span class="keyword">else</span>
+    <span class="comment"># Something went wrong!</span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_putting_data_in_a_map">Putting data in a map</h4>
+<div class="paragraph">
+<p>You put data in a map with <code><a href="../../yardoc/Vertx/AsyncMap.html#put-instance_method">put</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>The actual put is asynchronous and the handler is notified once it is complete:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">map.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">bar</span><span class="delimiter">&quot;</span></span>) { |resPut_err,resPut|
+  <span class="keyword">if</span> (resPut_err == <span class="predefined-constant">nil</span>)
+    <span class="comment"># Successfully put the value</span>
+  <span class="keyword">else</span>
+    <span class="comment"># Something went wrong!</span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_getting_data_from_a_map">Getting data from a map</h4>
+<div class="paragraph">
+<p>You get data from a map with <code><a href="../../yardoc/Vertx/AsyncMap.html#get-instance_method">get</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>The actual get is asynchronous and the handler is notified with the result some time later:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">map.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>) { |resGet_err,resGet|
+  <span class="keyword">if</span> (resGet_err == <span class="predefined-constant">nil</span>)
+    <span class="comment"># Successfully got the value</span>
+    val = resGet
+  <span class="keyword">else</span>
+    <span class="comment"># Something went wrong!</span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_other_map_operations">Other map operations</h5>
+<div class="paragraph">
+<p>You can also remove entries from an asynchronous map, clear them and get the size.</p>
+</div>
+<div class="paragraph">
+<p>See the <code><a href="../../yardoc/Vertx/AsyncMap.html">API docs</a></code> for a detailed list of map operations.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_asynchronous_locks">Asynchronous locks</h3>
+<div class="paragraph">
+<p><code><a href="../../yardoc/Vertx/Lock.html">Asynchronous locks</a></code> allow you to obtain exclusive locks locally or across the cluster.
+This is useful when you want to do something or access a resource on only one node of a cluster at any one time.</p>
+</div>
+<div class="paragraph">
+<p>Asynchronous locks have an asynchronous API unlike most lock APIs which block the calling thread until the lock is obtained.</p>
+</div>
+<div class="paragraph">
+<p>To obtain a lock use <code><a href="../../yardoc/Vertx/SharedData.html#get_lock-instance_method">getLock</a></code>.
+This won&#8217;t block, but when the lock is available, the handler will be called with an instance of <code><a href="../../yardoc/Vertx/Lock.html">Lock</a></code>, signalling that you now own the lock.</p>
+</div>
+<div class="paragraph">
+<p>While you own the lock, no other caller, locally or on the cluster, will be able to obtain the lock.</p>
+</div>
+<div class="paragraph">
+<p>When you&#8217;ve finished with the lock, you call <code><a href="../../yardoc/Vertx/Lock.html#release-instance_method">release</a></code> to release it, so another caller can obtain it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">sharedData = vertx.shared_data()
+
+sharedData.get_lock(<span class="string"><span class="delimiter">&quot;</span><span class="content">mylock</span><span class="delimiter">&quot;</span></span>) { |res_err,res|
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">nil</span>)
+    <span class="comment"># Got the lock!</span>
+    lock = res
+
+    <span class="comment"># 5 seconds later we release the lock so someone else can get it</span>
+
+    vertx.set_timer(<span class="integer">5000</span>) { |tid|
+      lock.release()
+    }
+
+  <span class="keyword">else</span>
+    <span class="comment"># Something went wrong</span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also get a lock with a timeout. If it fails to obtain the lock within the timeout the handler will be called with a failure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">sharedData = vertx.shared_data()
+
+sharedData.get_lock_with_timeout(<span class="string"><span class="delimiter">&quot;</span><span class="content">mylock</span><span class="delimiter">&quot;</span></span>, <span class="integer">10000</span>) { |res_err,res|
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">nil</span>)
+    <span class="comment"># Got the lock!</span>
+    lock = res
+
+  <span class="keyword">else</span>
+    <span class="comment"># Failed to get lock</span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See the <code><a href="../../yardoc/Vertx/Lock.html">API docs</a></code> for a detailed list of lock operations.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+In clustered mode, asynchronous locks rely on distributed data structures provided by the cluster manager.
+Beware that the latency relative to asynchronous shared lock operations can be much higher in clustered than in local mode.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If your application doesn&#8217;t need the lock to be shared with every other node, you can retrieve a local-only lock:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">sharedData = vertx.shared_data()
+
+sharedData.get_local_lock(<span class="string"><span class="delimiter">&quot;</span><span class="content">mylock</span><span class="delimiter">&quot;</span></span>) { |res_err,res|
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">nil</span>)
+    <span class="comment"># Local-only lock</span>
+    lock = res
+
+    <span class="comment"># 5 seconds later we release the lock so someone else can get it</span>
+
+    vertx.set_timer(<span class="integer">5000</span>) { |tid|
+      lock.release()
+    }
+
+  <span class="keyword">else</span>
+    <span class="comment"># Something went wrong</span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_asynchronous_counters">Asynchronous counters</h3>
+<div class="paragraph">
+<p>It&#8217;s often useful to maintain an atomic counter locally or across the different nodes of your application.</p>
+</div>
+<div class="paragraph">
+<p>You can do this with <code><a href="../../yardoc/Vertx/Counter.html">Counter</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>You obtain an instance with <code><a href="../../yardoc/Vertx/SharedData.html#get_counter-instance_method">getCounter</a></code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">sharedData = vertx.shared_data()
+
+sharedData.get_counter(<span class="string"><span class="delimiter">&quot;</span><span class="content">mycounter</span><span class="delimiter">&quot;</span></span>) { |res_err,res|
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">nil</span>)
+    counter = res
+  <span class="keyword">else</span>
+    <span class="comment"># Something went wrong!</span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you have an instance you can retrieve the current count, atomically increment it, decrement and add a value to
+it using the various methods.</p>
+</div>
+<div class="paragraph">
+<p>See the <code><a href="../../yardoc/Vertx/Counter.html">API docs</a></code> for a detailed list of counter operations.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+In clustered mode, asynchronous counters rely on distributed data structures provided by the cluster manager.
+Beware that the latency relative to asynchronous shared counter operations can be much higher in clustered than in local mode.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If your application doesn&#8217;t need the counter to be shared with every other node, you can retrieve a local-only counter:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">sharedData = vertx.shared_data()
+
+sharedData.get_local_counter(<span class="string"><span class="delimiter">&quot;</span><span class="content">mycounter</span><span class="delimiter">&quot;</span></span>) { |res_err,res|
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">nil</span>)
+    <span class="comment"># Local-only counter</span>
+    counter = res
+  <span class="keyword">else</span>
+    <span class="comment"># Something went wrong!</span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                Last updated 2020-07-16 01:06:42 CEST
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.io/">Home</a></li>
+          <li><a href="https://vertx.io/download/">Download</a></li>
+          <li><a href="https://vertx.io/docs/3.9.2/">Documentation</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+          <li><a href="https://vertx.io/blog/">Blog</a></li>
+          <li><a href="https://vertx.io/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.io/community/">Help &amp; Contributors</a></li>
+          <li><a href="https://vertx.io/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual-licensed under the <a href="http://www.eclipse.org/legal/epl-v20.html">Eclipse Public License 2.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="https://vertx.io/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="https://vertx.io/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="https://vertx.io/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://vertx.io/javascripts/bootstrap.min.js"></script>
+<script src="https://vertx.io/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="https://vertx.io/javascripts/sidebar.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});
+</script>
+</body>
+</html>
+

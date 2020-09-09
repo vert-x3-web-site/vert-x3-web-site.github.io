@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Acknowledgement - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.stomp</a>&nbsp;/&nbsp;<a href=".">Acknowledgement</a><br/>
+<br/>
+<h1>Acknowledgement</h1>
+<code><span class="keyword">interface </span><span class="identifier">Acknowledgement</span></code>
+<p>Structure passed to acknowledgement handler called when a <code>ACK</code> or <code>NACK</code> frame is received. The handler receives an instance of Acknowledgement with the subscription Frame and the impacted messages. The list of messages depends on the type of acknowledgment used by the subscription.  Subscriptions using the <code>client</code> mode receives all messages that were waiting for acknowledgment that were sent before the acknowledged messages. The list also contains the acknowledged message. This is a cumulative acknowledgement. Subscriptions using the <code>client-individual</code> mode receives a singleton list containing only the acknowledged message.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Clement Escoffier</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="frames.html">frames</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">frames</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Frame</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="subscription.html">subscription</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">subscription</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Frame</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

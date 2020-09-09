@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vert.x AMQP Client - Vert.x</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name="description">
+  <link href="https://vertx.io/stylesheets/docs.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.io/stylesheets/font-awesome.min.css" media="screen" rel="stylesheet">
+  <link href="https://vertx.io/javascripts/styles/rainbow.min.css" media="screen" rel="stylesheet">
+  <!-- IE 6-8 support of HTML 5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script>
+  <![endif]-->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="https://vertx.io/assets/favicons/vertx-favicon-7/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="https://vertx.io/assets/favicons/vertx-favicon-7/manifest.json">
+  <link rel="mask-icon" href="https://vertx.io/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#7d3194">
+  <meta name="msapplication-TileImage" content="https://vertx.io/assets/favicons/vertx-favicon-7/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel="stylesheet" type="text/css">
+  <link rel="alternate" type="application/rss+xml" title="RSS"
+     href="https://vertx.io/feed.xml">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');
+  </script>
+</head>
+<body>
+
+<a href="http://www.reactivemanifesto.org/" id="reactive-manifesto-banner">
+  <img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000"
+    src="https://d379ifj7s9wntv.cloudfront.net/reactivemanifesto/images/ribbons/we-are-reactive-black-right.png">
+</a>
+
+<a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+<header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#vertx-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://vertx.io/" class="navbar-brand"><img alt="Brand" src="https://vertx.io/assets/logo-sm.png"></a>
+    </div>
+    <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://vertx.io/docs/3.7.1/">Documentation</a></li>
+        <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+        <li><a href="https://vertx.io/community/">Community</a></li>
+        <li><a href="https://vertx.io/materials/">Materials</a></li>
+        <li><a href="https://vertx.io/blog/">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+  <div class="page-header" id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Vert.x AMQP Client</h1>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<div id="content">
+  <div class="container docs-content">
+    <div class="row">
+      <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
+        <div id="sidebar" data-spy="affix">
+          <ul class="sectlevel1">
+<li><a href="#_using_vert_x_amqp_client">Using Vert.x AMQP Client</a></li>
+<li><a href="#_creating_an_amqp_client">Creating an AMQP client</a></li>
+<li><a href="#_establishing_a_connection">Establishing a connection</a></li>
+<li><a href="#_creating_a_receiver">Creating a receiver</a></li>
+<li><a href="#_creating_a_sender">Creating a sender</a></li>
+<li><a href="#_implementing_request_reply">Implementing request-reply</a></li>
+<li><a href="#_closing_the_client">Closing the client</a></li>
+</ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-pull-3 col-md-9">
+        <div class="toc hidden-md hidden-lg">
+          <h2>Table of Contents</h2>
+          <ul class="sectlevel1">
+<li><a href="#_using_vert_x_amqp_client">Using Vert.x AMQP Client</a></li>
+<li><a href="#_creating_an_amqp_client">Creating an AMQP client</a></li>
+<li><a href="#_establishing_a_connection">Establishing a connection</a></li>
+<li><a href="#_creating_a_receiver">Creating a receiver</a></li>
+<li><a href="#_creating_a_sender">Creating a sender</a></li>
+<li><a href="#_implementing_request_reply">Implementing request-reply</a></li>
+<li><a href="#_closing_the_client">Closing the client</a></li>
+</ul>
+        </div>
+        <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Vert.x AMQP Client allows interacting with <a href="https://en.wikipedia.org/wiki/Advanced_Message_Queuing_Protocol">AMQP 1.0</a>
+brokers and routers. It allows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Connecting to an AMQP broker or router - SASL and TLS connections are supported</p>
+</li>
+<li>
+<p>Consuming message from a queue or a topic</p>
+</li>
+<li>
+<p>Sending messages to a queue or a topic</p>
+</li>
+<li>
+<p>Checking acknowledgement for sent messages</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The AMQP 1.0 protocol support durable subscriptions, persistence, security, conversations, sophisticated routing&#8230;&#8203; More
+details on the protocol can be found on the <a href="https://www.amqp.org/">AMQP homepage</a>.</p>
+</div>
+<div class="paragraph">
+<p>The Vert.x AMQP client is based on Vert.x Proton. If you need fine-grain control, we recommend using
+<a href="https://github.com/vert-x3/vertx-proton">Vert.x Proton</a> directly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_vert_x_amqp_client">Using Vert.x AMQP Client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To use the Vert.x AMQP Client, add the following dependency to the <em>dependencies</em> section of your build
+descriptor:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Maven (in your <code>pom.xml</code>):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+ <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
+ <span class="tag">&lt;artifactId&gt;</span>vertx-amqp-client<span class="tag">&lt;/artifactId&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.7.1<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Gradle (in your <code>build.gradle</code> file):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-amqp-client:3.7.1</span><span class="delimiter">'</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_an_amqp_client">Creating an AMQP client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once you have added the client to your <em>CLASSPATH</em>, you can instantiate an <code><a href="../../apidocs/io/vertx/amqp/AmqpClient.html">AmqpClient</a></code> as
+follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">var options = AmqpClientOptions(
+  host = &quot;localhost&quot;,
+  port = 5672,
+  username = &quot;user&quot;,
+  password = &quot;secret&quot;)
+// Create a client using its own internal Vert.x instance.
+var client1 = AmqpClient.create(options)
+
+// USe an explicit Vert.x instance.
+var client2 = AmqpClient.create(vertx, options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are two methods to instantiate an <code><a href="../../apidocs/io/vertx/amqp/AmqpClient.html">AmqpClient</a></code>. You can pass an explicit Vert.x instance.
+Use this approach if you are in a Vert.x application, or a Vert.x verticle. Otherwise you can omit passing the Vert.x
+instance, an internal instance is created and closed when the client is closed.</p>
+</div>
+<div class="paragraph">
+<p>To instantiate an <code><a href="../../apidocs/io/vertx/amqp/AmqpClient.html">AmqpClient</a></code>, you need to pass <code><a href="../../apidocs/io/vertx/amqp/AmqpClientOptions.html">AmqpClientOptions</a></code>.
+These options contains the location of the broker or router, credentials&#8230;&#8203; Many aspect of the AMQP client can be
+configured using these options. Note that you can also use these options to configure the underlying Proton client.</p>
+</div>
+<div class="paragraph">
+<p>Host, port, username and password can also be configured from system properties or environment variables:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Host: system property: <code>amqp-client-host</code>, environment variable: AMQP_CLIENT_HOST` (mandatory)</p>
+</li>
+<li>
+<p>Port: system property: <code>amqp-client-port</code>, environment variable: AMQP_CLIENT_PORT` (defaults to 5672)</p>
+</li>
+<li>
+<p>Username: system property: <code>amqp-client-username</code>, environment variable: AMQP_CLIENT_USERNAME`</p>
+</li>
+<li>
+<p>Password: system property: <code>amqp-client-password</code>, environment variable: AMQP_CLIENT_PASSWORD`</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_establishing_a_connection">Establishing a connection</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once you have created a client, you need to explicitly connect to the remote server. This is done using the <code>connect</code>
+method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">client.connect({ ar -&gt;
+  if (ar.failed()) {
+    println(&quot;Unable to connect to the broker&quot;)
+  } else {
+    println(&quot;Connection succeeded&quot;)
+    var connection = ar.result()
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once established or failed, the handler is called. Note that the connection is used to create receivers and senders.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_a_receiver">Creating a receiver</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A receiver is used to receive messages. The AMQP receiver can be retrieved using one of the two following methods:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">connection.createReceiver(&quot;my-queue&quot;, { msg -&gt;
+  // called on every received messages
+  println(&quot;Received ${msg.bodyAsString()}&quot;)
+}, { done -&gt;
+  if (done.failed()) {
+    println(&quot;Unable to create receiver&quot;)
+  } else {
+    var receiver = done.result()
+  }
+})
+
+
+connection.createReceiver(&quot;my-queue&quot;, { done -&gt;
+  if (done.failed()) {
+    println(&quot;Unable to create receiver&quot;)
+  } else {
+    var receiver = done.result()
+    receiver.exceptionHandler({ t -&gt;
+      // Error thrown.
+    }).handler({ msg -&gt;
+      // Attach the message handler
+    })
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The main difference between these 2 approaches is <em>when</em> the message handler is attached to the receiver. In the first
+approach, the handler is immediately passed and will start receiving messages immediately. In the second approach, the
+handler is attached manually after the completion. This give you more control and let you attach other handlers.</p>
+</div>
+<div class="paragraph">
+<p>The receiver passed in the completion handler can be used as a stream. So, you can pause and resume the reception of
+messages. The back-pressure protocol is implemented using
+<a href="http://docs.oasis-open.org/amqp/core/v1.0/csprd02/amqp-core-transport-v1.0-csprd02.html#doc-flow-control">AMQP credits</a>.</p>
+</div>
+<div class="paragraph">
+<p>The received messages are instances of <code><a href="../../apidocs/io/vertx/amqp/AmqpMessage.html">AmqpMessage</a></code>. Instances are immutable, and provide
+access to most of the metadata supported by AMQP. See the list of
+<a href="http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-messaging-v1.0.html#type-properties">properties</a> as references. Note
+that retrieving a JSON object or a JSON array from the body required the value to be passed as AMQP <em>Data</em>.</p>
+</div>
+<div class="paragraph">
+<p>You can also create a receiver directly from the client:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">client.createReceiver(&quot;my-queue&quot;, { msg -&gt;
+  // called on every received messages
+  println(&quot;Received ${msg.bodyAsString()}&quot;)
+}, { done -&gt;
+  if (done.failed()) {
+    println(&quot;Unable to create receiver&quot;)
+  } else {
+    var receiver = done.result()
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, a connection is established automatically. You can retrieve it using
+<code><a href="../../apidocs/io/vertx/amqp/AmqpReceiver.html#connection--">connection</a></code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_a_sender">Creating a sender</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Senders allows publishing messages to queues and topics. You retrieve a sender as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">connection.createSender(&quot;my-queue&quot;, { done -&gt;
+  if (done.failed()) {
+    println(&quot;Unable to create a sender&quot;)
+  } else {
+    var result = done.result()
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you have retrieved an AMQP sender, you can create messages. Because <code><a href="../../apidocs/io/vertx/amqp/AmqpMessage.html">AmqpMessage</a></code> are
+immutable, the creation uses the <code><a href="../../apidocs/io/vertx/amqp/AmqpMessageBuilder.html">AmqpMessageBuilder</a></code> builder class. The following snippet
+provides a few examples:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">// Retrieve a builder
+var builder = AmqpMessage.create()
+
+// Very simple message
+var m1 = builder.withBody(&quot;hello&quot;).build()
+
+// Message overriding the destination
+var m2 = builder.withBody(&quot;hello&quot;).address(&quot;another-queue&quot;).build()
+
+// Message with a JSON object as body, metadata and TTL
+var m3 = builder.withJsonObjectAsBody(json {
+  obj(&quot;message&quot; to &quot;hello&quot;)
+}).subject(&quot;subject&quot;).ttl(10000).applicationProperties(json {
+  obj(&quot;prop1&quot; to &quot;value1&quot;)
+}).build()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you have the sender and created the message, you can send it using:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><a href="../../apidocs/io/vertx/amqp/AmqpSender.html#send-io.vertx.amqp.AmqpMessage-">send</a></code> - send the message</p>
+</li>
+<li>
+<p><code><a href="../../apidocs/io/vertx/amqp/AmqpSender.html#sendWithAck-io.vertx.amqp.AmqpMessage-io.vertx.core.Handler-">sendWithAck</a></code> - send the message and monitor its acknowledgment</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The simplest way to send a message is the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">sender.send(AmqpMessage.create().withBody(&quot;hello&quot;).build())</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When sending a message, you can monitor the acknowledgment:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">sender.sendWithAck(AmqpMessage.create().withBody(&quot;hello&quot;).build(), { acked -&gt;
+  if (acked.succeeded()) {
+    println(&quot;Message accepted&quot;)
+  } else {
+    println(&quot;Message not accepted&quot;)
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that message is considered as acknowledged if the delivery is set fo <code>ACCEPTED</code>. Other delivery values are considered
+as non-acknowledged (details can be found in the passed cause).</p>
+</div>
+<div class="paragraph">
+<p>The <code><a href="../../apidocs/io/vertx/amqp/AmqpSender.html">AmqpSender</a></code> can be used as a write stream. The flow control is implemented using AMQP credits.</p>
+</div>
+<div class="paragraph">
+<p>You can also create a sender directly from the client:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">client.createSender(&quot;my-queue&quot;, { maybeSender -&gt;
+  //...
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, a connection is established automatically. You can retrieve it using
+<code><a href="../../apidocs/io/vertx/amqp/AmqpSender.html#connection--">connection</a></code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_implementing_request_reply">Implementing request-reply</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To implement a request-reply behavior, you could use a dynamic receiver and an anonymous sender. A dynamic receiver is not
+associated with an address by the user, but the address it provided by the broker. Anonymous senders are also not associated to
+a specific address, requiring all messages to contain an address.</p>
+</div>
+<div class="paragraph">
+<p>The following snippet shows how request-reply can be implemented:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">// On the receiver side (receiving the initial request and replying)
+connection.createAnonymousSender({ responseSender -&gt;
+  // You got an anonymous sender, used to send the reply
+  // Now register the main receiver:
+  connection.createReceiver(&quot;my-queue&quot;, { msg -&gt;
+    // You got the message, let's reply.
+    responseSender.result().send(AmqpMessage.create().address(msg.replyTo()).correlationId(msg.id()).withBody(&quot;my response to your request&quot;).build())
+  }, { done -&gt;
+    // We are done, for the receiver side
+  })
+})
+
+// On the sender side (sending the initial request and expecting a reply)
+connection.createDynamicReceiver({ replyReceiver -&gt;
+  // We got a receiver, the address is provided by the broker
+  var replyToAddress = replyReceiver.result().address()
+
+  // Attach the handler receiving the reply
+  replyReceiver.result().handler({ msg -&gt;
+    println(&quot;Got the reply! ${msg.bodyAsString()}&quot;)
+  })
+
+  // Create a sender and send the message:
+  connection.createSender(&quot;my-queue&quot;, { sender -&gt;
+    sender.result().send(AmqpMessage.create().replyTo(replyToAddress).id(&quot;my-message-id&quot;).withBody(&quot;This is my request&quot;).build())
+  })
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To reply to a message, send it to the address specified into the <code>reply-to</code>. Also, it&#8217;s a good practice to indicate the
+<code>correlation id</code> using the <code>message id</code>, so the reply receiver can associate the response to the request.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_closing_the_client">Closing the client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once you are done with a connection receiver or sender, you should close them using the <code>close</code> method. Closing a
+connection, closes all created receivers and senders.</p>
+</div>
+<div class="paragraph">
+<p>Once the client is not used anymore, you must also close it. It would close all opened connections, and as a consequences
+receivers and senders.</p>
+</div>
+</div>
+</div>
+
+        
+
+        
+          <div id="footer">
+            <div id="footer-text">
+              
+                Last updated 2019-05-22 15:25:22 CEST
+              
+              
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse Vert.x</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.io/">Home</a></li>
+          <li><a href="https://vertx.io/download/">Download</a></li>
+          <li><a href="https://vertx.io/docs/3.7.1/">Documentation</a></li>
+          <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
+          <li><a href="https://vertx.io/blog/">Blog</a></li>
+          <li><a href="https://vertx.io/vertx2/" class="vertx-2-link">Vert.x 2</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Community</h2>
+        <ul class="list-unstyled">
+          <li><a href="https://vertx.io/community/">Help &amp; Contributors</a></li>
+          <li><a href="https://vertx.io/materials/">Learning materials</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx">User Group</a></li>
+          <li><a href="https://groups.google.com/forum/?fromgroups#!forum/vertx-dev">Developer Group</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <h2>Eclipse</h2>
+        <ul class="list-unstyled">
+          <li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li>
+          <li><a href="https://eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+          <li><a href="https://eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+          <li><a href="https://eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+          <li><a href="http://www.eclipse.org/legal">Legal Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright">
+        <p>Eclipse Vert.x is open source and dual-licensed under the <a href="http://www.eclipse.org/legal/epl-v20.html">Eclipse Public License 2.0</a> and <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a>.</p>
+        <p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>
+        Design by <a href="https://www.michel-kraemer.com">Michel Kr&auml;mer</a>.</p>
+        <div class="row">
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2">
+            <a href="http://eclipse.org">
+            <img class="logo eclipse-logo" src="https://vertx.io/assets/eclipse_logo_grey_small.png" width="204" height="48">
+            </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0">
+            <a href="http://cloudbees.com">
+            <img class="logo cloudbees-logo" src="https://vertx.io/assets/Button-Built-on-CB-1-grey.png" width="180" height="48">
+           </a>
+          </div>
+          <div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler">
+            <a href="http://www.ej-technologies.com/products/jprofiler/overview.html"
+            style="text-decoration:none">
+            <img class="logo jprofiler-logo" src="https://vertx.io/assets/jprofiler-logo.png" width="48" height="48"><span class="jprofiler-logo">&nbsp; JPROFILER</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://vertx.io/javascripts/bootstrap.min.js"></script>
+<script src="https://vertx.io/javascripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+<script src="https://vertx.io/javascripts/sidebar.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});
+</script>
+</body>
+</html>
+

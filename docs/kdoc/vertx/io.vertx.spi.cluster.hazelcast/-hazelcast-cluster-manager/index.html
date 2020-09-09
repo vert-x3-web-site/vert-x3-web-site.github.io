@@ -1,0 +1,193 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HazelcastClusterManager - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.spi.cluster.hazelcast</a>&nbsp;/&nbsp;<a href=".">HazelcastClusterManager</a><br/>
+<br/>
+<h1>HazelcastClusterManager</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HazelcastClusterManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ClusterManager</span><span class="symbol">, </span><span class="identifier">MembershipListener</span><span class="symbol">, </span><span class="identifier">LifecycleListener</span></code>
+<p>A cluster manager that uses Hazelcast</p>
+<p><strong>Author</strong><br/>
+<a href="#">Tim Fox</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HazelcastClusterManager</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Constructor - gets config from classpath</p>
+<code><span class="identifier">HazelcastClusterManager</span><span class="symbol">(</span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$<init>(com.hazelcast.config.Config)/conf">conf</span><span class="symbol">:</span>&nbsp;<span class="identifier">Config</span><span class="symbol">)</span></code>
+<p>Constructor - config supplied</p>
+<code><span class="identifier">HazelcastClusterManager</span><span class="symbol">(</span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$<init>(com.hazelcast.core.HazelcastInstance)/instance">instance</span><span class="symbol">:</span>&nbsp;<span class="identifier">HazelcastInstance</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-async-map.html">getAsyncMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">K</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">getAsyncMap</span><span class="symbol">(</span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$getAsyncMap(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.shareddata.AsyncMap((io.vertx.spi.cluster.hazelcast.HazelcastClusterManager.getAsyncMap.K, io.vertx.spi.cluster.hazelcast.HazelcastClusterManager.getAsyncMap.V)))))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$getAsyncMap(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.shareddata.AsyncMap((io.vertx.spi.cluster.hazelcast.HazelcastClusterManager.getAsyncMap.K, io.vertx.spi.cluster.hazelcast.HazelcastClusterManager.getAsyncMap.V)))))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">AsyncMap</span><span class="symbol">&lt;</span><span class="identifier">K</span><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-async-multi-map.html">getAsyncMultiMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">K</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">getAsyncMultiMap</span><span class="symbol">(</span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$getAsyncMultiMap(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.spi.cluster.AsyncMultiMap((io.vertx.spi.cluster.hazelcast.HazelcastClusterManager.getAsyncMultiMap.K, io.vertx.spi.cluster.hazelcast.HazelcastClusterManager.getAsyncMultiMap.V)))))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$getAsyncMultiMap(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.spi.cluster.AsyncMultiMap((io.vertx.spi.cluster.hazelcast.HazelcastClusterManager.getAsyncMultiMap.K, io.vertx.spi.cluster.hazelcast.HazelcastClusterManager.getAsyncMultiMap.V)))))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../../io.vertx.core.spi.cluster/-async-multi-map/index.html"><span class="identifier">AsyncMultiMap</span></a><span class="symbol">&lt;</span><span class="identifier">K</span><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Every eventbus handler has an ID. SubsMap (subscriber map) is a MultiMap which maps handler-IDs with server-IDs and thus allows the eventbus to determine where to send messages.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-config.html">getConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConfig</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Config</span></code>
+<p>Get the Hazelcast config.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-counter.html">getCounter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCounter</span><span class="symbol">(</span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$getCounter(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.shareddata.Counter)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$getCounter(kotlin.String, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.shareddata.Counter)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Counter</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-hazelcast-instance.html">getHazelcastInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getHazelcastInstance</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HazelcastInstance</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-lock-with-timeout.html">getLockWithTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLockWithTimeout</span><span class="symbol">(</span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$getLockWithTimeout(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.shareddata.Lock)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$getLockWithTimeout(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.shareddata.Lock)))))/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$getLockWithTimeout(kotlin.String, kotlin.Long, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.shareddata.Lock)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Lock</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-node-i-d.html">getNodeID</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getNodeID</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-nodes.html">getNodes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getNodes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-sync-map.html">getSyncMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">K</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">getSyncMap</span><span class="symbol">(</span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$getSyncMap(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">K</span><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-active.html">isActive</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isActive</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="join.html">join</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">join</span><span class="symbol">(</span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$join(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="leave.html">leave</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">leave</span><span class="symbol">(</span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$leave(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/resultHandler">resultHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="load-config.html">loadConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadConfig</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Config</span></code>
+<p>Load Hazelcast config XML and transform it into a Config object. The content is read from: <ol> <li>the location denoted by the <code>vertx.hazelcast.config</code> sysprop, if present, or</li>
+ <li>the <code>cluster.xml</code> file on the classpath, if present, or</li>
+ <li>the default config file</li>
+ </ol>
+ 
+<p> The cluster manager uses this method to load the config when the node joins the cluster, if no config was provided upon creation. </p>
+ 
+<p> You may use this method to get a base config and customize it before the node joins the cluster. In this case, don't forget to invoke <code><a href="set-config.html">#setConfig(Config)</a></code> after you applied your changes. </p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="member-added.html">memberAdded</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">memberAdded</span><span class="symbol">(</span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$memberAdded(com.hazelcast.core.MembershipEvent)/membershipEvent">membershipEvent</span><span class="symbol">:</span>&nbsp;<span class="identifier">MembershipEvent</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="member-attribute-changed.html">memberAttributeChanged</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">memberAttributeChanged</span><span class="symbol">(</span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$memberAttributeChanged(com.hazelcast.core.MemberAttributeEvent)/memberAttributeEvent">memberAttributeEvent</span><span class="symbol">:</span>&nbsp;<span class="identifier">MemberAttributeEvent</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="member-removed.html">memberRemoved</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">memberRemoved</span><span class="symbol">(</span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$memberRemoved(com.hazelcast.core.MembershipEvent)/membershipEvent">membershipEvent</span><span class="symbol">:</span>&nbsp;<span class="identifier">MembershipEvent</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="node-listener.html">nodeListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">nodeListener</span><span class="symbol">(</span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$nodeListener(io.vertx.core.spi.cluster.NodeListener)/listener">listener</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.spi.cluster/-node-listener/index.html"><span class="identifier">NodeListener</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-config.html">setConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConfig</span><span class="symbol">(</span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$setConfig(com.hazelcast.config.Config)/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">Config</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Hazelcast config.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-vertx.html">setVertx</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setVertx</span><span class="symbol">(</span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$setVertx(io.vertx.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="state-changed.html">stateChanged</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">stateChanged</span><span class="symbol">(</span><span class="identifier" id="io.vertx.spi.cluster.hazelcast.HazelcastClusterManager$stateChanged(com.hazelcast.core.LifecycleEvent)/lifecycleEvent">lifecycleEvent</span><span class="symbol">:</span>&nbsp;<span class="identifier">LifecycleEvent</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

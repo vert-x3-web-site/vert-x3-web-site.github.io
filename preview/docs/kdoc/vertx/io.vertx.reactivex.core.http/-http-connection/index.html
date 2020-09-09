@@ -1,0 +1,271 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HttpConnection - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.http</a>&nbsp;/&nbsp;<a href=".">HttpConnection</a><br/>
+<br/>
+<h1>HttpConnection</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpConnection</span></code>
+<p>Represents an HTTP connection.  HTTP/1.x connection provides an limited implementation, the following methods are implemented: <ul> <li><code><a href="close.html">io.vertx.reactivex.core.http.HttpConnection#close</a></code></li>
+ <li><code><a href="#">io.vertx.reactivex.core.http.HttpConnection#closeHandler</a></code></li>
+ <li><code><a href="#">io.vertx.reactivex.core.http.HttpConnection#exceptionHandler</a></code></li>
+ </ul>
+  NOTE: This class has been automatically generated from the io.vertx.core.http.HttpConnection non RX-ified interface using Vert.x codegen.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HttpConnection</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$<init>(io.vertx.core.http.HttpConnection)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.http/-http-connection/index.html"><span class="identifier">HttpConnection</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="__-t-y-p-e_-a-r-g.html">__TYPE_ARG</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">__TYPE_ARG</span><span class="symbol">: </span><a href="../../io.vertx.lang.reactivex/-type-arg/index.html"><span class="identifier">TypeArg</span></a><span class="symbol">&lt;</span><span class="identifier">HttpConnection</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the connection and all the currently active streams.  An HTTP/2 connection will send a frame before.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="close-handler.html">closeHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">closeHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$closeHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Set a close handler. The handler will get notified when the connection is closed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="exception-handler.html">exceptionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">exceptionHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$exceptionHandler(io.vertx.core.Handler((kotlin.Throwable)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Set an handler called when a connection error happens</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.core.http/-http-connection/index.html"><span class="identifier">HttpConnection</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-window-size.html">getWindowSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getWindowSize</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="go-away.html">goAway</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">goAway</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$goAway(kotlin.Long)/errorCode">errorCode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Like <code><a href="go-away.html">io.vertx.reactivex.core.http.HttpConnection#goAway</a></code> with a last stream id <code>-1</code> which means to disallow any new stream creation.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">goAway</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$goAway(kotlin.Long, kotlin.Int)/errorCode">errorCode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$goAway(kotlin.Long, kotlin.Int)/lastStreamId">lastStreamId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Like <code><a href="go-away.html">io.vertx.reactivex.core.http.HttpConnection#goAway</a></code> with no buffer.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">goAway</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$goAway(kotlin.Long, kotlin.Int, io.vertx.reactivex.core.buffer.Buffer)/errorCode">errorCode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$goAway(kotlin.Long, kotlin.Int, io.vertx.reactivex.core.buffer.Buffer)/lastStreamId">lastStreamId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$goAway(kotlin.Long, kotlin.Int, io.vertx.reactivex.core.buffer.Buffer)/debugData">debugData</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Send a go away frame to the remote endpoint of the connection.  <ul> <li>a frame is sent to the to the remote endpoint with the <code>errorCode</code> and <code>debugData</code></li>
+ <li>any stream created after the stream identified by <code>lastStreamId</code> will be closed</li>
+ <li>for an is different than <code>0</code> when all the remaining streams are closed this connection will be closed automatically</li>
+ </ul>
+  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="go-away-handler.html">goAwayHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">goAwayHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$goAwayHandler(io.vertx.core.Handler((io.vertx.core.http.GoAway)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">GoAway</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Set an handler called when a frame is received.  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="indicated-server-name.html">indicatedServerName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">indicatedServerName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Returns the SNI server name presented during the SSL handshake by the client.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-ssl.html">isSsl</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSsl</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="local-address.html">localAddress</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">localAddress</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core.net/-socket-address/index.html"><span class="identifier">SocketAddress</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$newInstance(io.vertx.core.http.HttpConnection)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.core.http/-http-connection/index.html"><span class="identifier">HttpConnection</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="ping.html">ping</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">ping</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$ping(io.vertx.reactivex.core.buffer.Buffer, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.buffer.Buffer)))))/data">data</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$ping(io.vertx.reactivex.core.buffer.Buffer, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.reactivex.core.buffer.Buffer)))))/pongHandler">pongHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Send a frame to the remote endpoint.  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="ping-handler.html">pingHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">pingHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$pingHandler(io.vertx.core.Handler((io.vertx.reactivex.core.buffer.Buffer)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Set an handler notified when a frame is received from the remote endpoint.  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remote-address.html">remoteAddress</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">remoteAddress</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.reactivex.core.net/-socket-address/index.html"><span class="identifier">SocketAddress</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="remote-settings.html">remoteSettings</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">remoteSettings</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Http2Settings</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="remote-settings-handler.html">remoteSettingsHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">remoteSettingsHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$remoteSettingsHandler(io.vertx.core.Handler((io.vertx.core.http.Http2Settings)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Http2Settings</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Set an handler that is called when remote endpoint io.vertx.core.http.Http2Settings are updated.  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-ping.html">rxPing</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxPing</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$rxPing(io.vertx.reactivex.core.buffer.Buffer)/data">data</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html"><span class="identifier">Single</span></a><span class="symbol">&lt;</span><a href="../../io.vertx.reactivex.core.buffer/-buffer/index.html"><span class="identifier">Buffer</span></a><span class="symbol">&gt;</span></code>
+<p>Send a frame to the remote endpoint.  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rx-update-settings.html">rxUpdateSettings</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rxUpdateSettings</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$rxUpdateSettings(io.vertx.core.http.Http2Settings)/settings">settings</span><span class="symbol">:</span>&nbsp;<span class="identifier">Http2Settings</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/javadoc/io/reactivex/Completable.html"><span class="identifier">Completable</span></a></code>
+<p>Send to the remote endpoint an update of this endpoint settings  The <code>completionHandler</code> will be notified when the remote endpoint has acknowledged the settings.  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-window-size.html">setWindowSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setWindowSize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$setWindowSize(kotlin.Int)/windowSize">windowSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Update the current connection wide window size to a new size.  Increasing this value, gives better performance when several data streams are multiplexed  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="settings.html">settings</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">settings</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Http2Settings</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="shutdown.html">shutdown</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">shutdown</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Initiate a connection shutdown, a go away frame is sent and the connection is closed when all current active streams are closed or after a time out of 30 seconds.  This is not implemented for HTTP/1.x.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">shutdown</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$shutdown(kotlin.Long)/timeoutMs">timeoutMs</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Initiate a connection shutdown, a go away frame is sent and the connection is closed when all current streams will be closed or the <code>timeout</code> is fired.  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="shutdown-handler.html">shutdownHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">shutdownHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$shutdownHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Set an handler called when a frame has been sent or received and all connections are closed.  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="update-settings.html">updateSettings</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">updateSettings</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$updateSettings(io.vertx.core.http.Http2Settings)/settings">settings</span><span class="symbol">:</span>&nbsp;<span class="identifier">Http2Settings</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Send to the remote endpoint an update of the server settings.  This is not implemented for HTTP/1.x.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">updateSettings</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$updateSettings(io.vertx.core.http.Http2Settings, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/settings">settings</span><span class="symbol">:</span>&nbsp;<span class="identifier">Http2Settings</span><span class="symbol">, </span><span class="identifier" id="io.vertx.reactivex.core.http.HttpConnection$updateSettings(io.vertx.core.http.Http2Settings, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpConnection</span></code>
+<p>Send to the remote endpoint an update of this endpoint settings  The <code>completionHandler</code> will be notified when the remote endpoint has acknowledged the settings.  This is not implemented for HTTP/1.x.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

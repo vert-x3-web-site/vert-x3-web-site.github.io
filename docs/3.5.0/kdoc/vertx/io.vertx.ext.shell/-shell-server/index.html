@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ShellServer - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.shell</a>&nbsp;/&nbsp;<a href=".">ShellServer</a><br/>
+<br/>
+<h1>ShellServer</h1>
+<code><span class="keyword">interface </span><span class="identifier">ShellServer</span></code>
+<p>The shell server. A shell server is associated with a collection of TermServer: the <code><a href="register-term-server.html">#registerTermServer(TermServer)</a></code> method registers a term server. Term servers life cycle are managed by this server. When a TermServer receives an incoming connection, a JobController instance is created and associated with this connection. The <code><a href="create-shell.html">#createShell()</a></code> method can be used to create JobController instance for testing purposes.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Julien Viet</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.ShellServer$close(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/completionHandler">completionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the shell server, this is an asynchronous close.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.ShellServer$create(io.vertx.core.Vertx, io.vertx.ext.shell.ShellServerOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.shell.ShellServer$create(io.vertx.core.Vertx, io.vertx.ext.shell.ShellServerOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">ShellServerOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ShellServer</span></code>
+<p>Create a new shell server with default options.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.ShellServer$create(io.vertx.core.Vertx)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ShellServer</span></code>
+<p>Create a new shell server with specific options.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-shell.html">createShell</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">createShell</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.ShellServer$createShell(io.vertx.ext.shell.term.Term)/term">term</span><span class="symbol">:</span>&nbsp;<span class="identifier">Term</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-shell/index.html"><span class="identifier">Shell</span></a></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">createShell</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-shell/index.html"><span class="identifier">Shell</span></a></code>
+<p>Create a new shell, the returned shell should be closed explicitely.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="listen.html">listen</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ShellServer</span></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">listen</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.ShellServer$listen(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/listenHandler">listenHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ShellServer</span></code>
+<p>Start the shell service, this is an asynchronous start.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="register-command-resolver.html">registerCommandResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">registerCommandResolver</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.ShellServer$registerCommandResolver(io.vertx.ext.shell.command.CommandResolver)/resolver">resolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">CommandResolver</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ShellServer</span></code>
+<p>Register a command resolver for this server.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="register-term-server.html">registerTermServer</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">registerTermServer</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.ShellServer$registerTermServer(io.vertx.ext.shell.term.TermServer)/termServer">termServer</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.shell.term/-term-server/index.html"><span class="identifier">TermServer</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ShellServer</span></code>
+<p>Register a term server to this shell server, the term server lifecycle methods are managed by this shell server.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

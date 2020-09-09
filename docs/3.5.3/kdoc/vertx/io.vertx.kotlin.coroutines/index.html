@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.kotlin.coroutines - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.kotlin.coroutines</a><br/>
+<br/>
+<h2>Package io.vertx.kotlin.coroutines</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-coroutine-verticle/index.html">CoroutineVerticle</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">CoroutineVerticle</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Verticle</span></code>
+<p>A Verticle which run its start and stop methods in coroutine.
+You should subclass this class instead of AbstractVerticle to create any verticles that use vertx-kotlin-coroutine.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-receive-channel-handler/index.html">ReceiveChannelHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ReceiveChannelHandler</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ReceiveChannel</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>An adapter that converts a stream of events from the <a href="#">Handler</a> into a <a href="#">ReceiveChannel</a> which allows the events
+to be received synchronously.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Extensions for External Classes</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="io.vertx.core.-context/index.html">io.vertx.core.Context</a></p>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="io.vertx.core.-future/index.html">io.vertx.core.Future</a></p>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="io.vertx.core.-vertx/index.html">io.vertx.core.Vertx</a></p>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="io.vertx.core.streams.-read-stream/index.html">io.vertx.core.streams.ReadStream</a></p>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="io.vertx.core.streams.-write-stream/index.html">io.vertx.core.streams.WriteStream</a></p>
+</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="await-blocking.html">awaitBlocking</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <span class="identifier">awaitBlocking</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.coroutines$awaitBlocking(kotlin.Function0((io.vertx.kotlin.coroutines.awaitBlocking.T)))/block">block</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Run an asynchronous <a href="await-blocking.html#io.vertx.kotlin.coroutines$awaitBlocking(kotlin.Function0((io.vertx.kotlin.coroutines.awaitBlocking.T)))/block">block</a> on a worker threads and awaits the result.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="await-event.html">awaitEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <span class="identifier">awaitEvent</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.coroutines$awaitEvent(kotlin.Function1((io.vertx.core.Handler((io.vertx.kotlin.coroutines.awaitEvent.T)), kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">h</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Run an asynchronous <a href="await-event.html#io.vertx.kotlin.coroutines$awaitEvent(kotlin.Function1((io.vertx.core.Handler((io.vertx.kotlin.coroutines.awaitEvent.T)), kotlin.Unit)))/block">block</a> and awaits the completion.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="await-result.html">awaitResult</a></p>
+</td>
+<td>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <span class="identifier">awaitResult</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.coroutines$awaitResult(kotlin.Function1((io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.kotlin.coroutines.awaitResult.T)))), kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">h</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Run an asynchronous <a href="await-result.html#io.vertx.kotlin.coroutines$awaitResult(kotlin.Function1((io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.kotlin.coroutines.awaitResult.T)))), kotlin.Unit)))/block">block</a> and awaits the result.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

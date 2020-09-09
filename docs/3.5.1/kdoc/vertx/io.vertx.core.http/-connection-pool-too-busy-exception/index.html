@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ConnectionPoolTooBusyException - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.core.http</a>&nbsp;/&nbsp;<a href=".">ConnectionPoolTooBusyException</a><br/>
+<br/>
+<h1>ConnectionPoolTooBusyException</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConnectionPoolTooBusyException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">VertxException</span></code>
+<p>Represents a failure to add a HttpClientRequest to the wait queue on an ConnectionManager. 
+<p> If an HttpClient receives a request but is already handling maxPoolSize requests it will attempt to put the new request on it's wait queue. If the maxWaitQueueSize is set and the new request would cause the wait queue to exceed that size then the request will receive this exception.</p>
+</p>
+<p><strong>Author</strong><br/>
+<a href="#">Gil Markham</a></p>
+<p><strong>Author</strong><br/>
+<a href="#">Junbo Wang</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ConnectionPoolTooBusyException</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.http.ConnectionPoolTooBusyException$<init>(kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a ConnectionPoolTooBusyException</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

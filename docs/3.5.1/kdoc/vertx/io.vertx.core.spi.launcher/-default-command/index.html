@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DefaultCommand - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.core.spi.launcher</a>&nbsp;/&nbsp;<a href=".">DefaultCommand</a><br/>
+<br/>
+<h1>DefaultCommand</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">DefaultCommand</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Command</span></code>
+<p>Default implementation of Command using annotation to define itself. It is highly recommended to extend this class when implementing a command.  It defines two hidden Options to create system properties (<code>-Dkey=value</code>) and a way to configure the current working directory.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DefaultCommand</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Default implementation of Command using annotation to define itself. It is highly recommended to extend this class when implementing a command.  It defines two hidden Options to create system properties (<code>-Dkey=value</code>) and a way to configure the current working directory.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-cwd.html">getCwd</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCwd</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">File</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="out.html">out</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">out</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PrintStream</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cwd.html">setCwd</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCwd</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.launcher.DefaultCommand$setCwd(java.io.File)/cwd">cwd</span><span class="symbol">:</span>&nbsp;<span class="identifier">File</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets the current working directory. This method is called when the user configure the "cwd" option as follows: <code>--cwd=the-directory</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-system-props.html">setSystemProps</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSystemProps</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.launcher.DefaultCommand$setSystemProps(kotlin.collections.MutableList((kotlin.String)))/props">props</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Gets system properties passed in the user command line. The user can configure system properties using <code>-Dkey=value</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-up.html">setUp</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUp</span><span class="symbol">(</span><span class="identifier" id="io.vertx.core.spi.launcher.DefaultCommand$setUp(io.vertx.core.spi.launcher.ExecutionContext)/ec">ec</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExecutionContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="tear-down.html">tearDown</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">tearDown</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

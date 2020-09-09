@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HttpClientRequest.continueHandler - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.reactivex.core.http</a>&nbsp;/&nbsp;<a href="index.html">HttpClientRequest</a>&nbsp;/&nbsp;<a href=".">continueHandler</a><br/>
+<br/>
+<h1>continueHandler</h1>
+<a name="io.vertx.reactivex.core.http.HttpClientRequest$continueHandler(io.vertx.core.Handler((java.lang.Void)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">continueHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.reactivex.core.http.HttpClientRequest$continueHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">HttpClientRequest</span></a></code>
+<p>If you send an HTTP request with the header <code>Expect</code> set to the value <code>100-continue</code> and the server responds with an interim HTTP response with a status code of <code>100</code> and a continue handler has been set using this method, then the <code>handler</code> will be called. 
+<p> You can then continue to write data to the request body and later end it. This is normally used in conjunction with the <code><a href="send-head.html">io.vertx.reactivex.core.http.HttpClientRequest#sendHead</a></code> method to force the request header to be written before the request has ended.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="handler"></a>
+<code>handler</code> - </p>
+<p><strong>Return</strong><br/>
+a reference to this, so the API can be used fluently</p>
+</BODY>
+</HTML>

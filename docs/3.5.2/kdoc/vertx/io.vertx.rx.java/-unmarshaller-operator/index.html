@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>UnmarshallerOperator - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.rx.java</a>&nbsp;/&nbsp;<a href=".">UnmarshallerOperator</a><br/>
+<br/>
+<h1>UnmarshallerOperator</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">UnmarshallerOperator</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">B</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Observable/Operator.html"><span class="identifier">Operator</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">,</span>&nbsp;<span class="identifier">B</span><span class="symbol">&gt;</span></code>
+<p>An operator</p>
+<p><strong>Author</strong><br/>
+<a href="#">Julien Viet</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">UnmarshallerOperator</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rx.java.UnmarshallerOperator$<init>(java.lang.Class((io.vertx.rx.java.UnmarshallerOperator.T)))/mappedType">mappedType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">UnmarshallerOperator</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rx.java.UnmarshallerOperator$<init>(java.lang.Class((io.vertx.rx.java.UnmarshallerOperator.T)), com.fasterxml.jackson.databind.ObjectMapper)/mappedType">mappedType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rx.java.UnmarshallerOperator$<init>(java.lang.Class((io.vertx.rx.java.UnmarshallerOperator.T)), com.fasterxml.jackson.databind.ObjectMapper)/mapper">mapper</span><span class="symbol">:</span>&nbsp;<a href="http://fasterxml.github.io/jackson-databind/javadoc/2.9/com/fasterxml/jackson/databind/ObjectMapper.html"><span class="identifier">ObjectMapper</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">UnmarshallerOperator</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rx.java.UnmarshallerOperator$<init>(com.fasterxml.jackson.core.type.TypeReference((io.vertx.rx.java.UnmarshallerOperator.T)))/mappedTypeRef">mappedTypeRef</span><span class="symbol">:</span>&nbsp;<a href="http://fasterxml.github.io/jackson-core/javadoc/2.9/com/fasterxml/jackson/core/type/TypeReference.html"><span class="identifier">TypeReference</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">UnmarshallerOperator</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rx.java.UnmarshallerOperator$<init>(com.fasterxml.jackson.core.type.TypeReference((io.vertx.rx.java.UnmarshallerOperator.T)), com.fasterxml.jackson.databind.ObjectMapper)/mappedTypeRef">mappedTypeRef</span><span class="symbol">:</span>&nbsp;<a href="http://fasterxml.github.io/jackson-core/javadoc/2.9/com/fasterxml/jackson/core/type/TypeReference.html"><span class="identifier">TypeReference</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="io.vertx.rx.java.UnmarshallerOperator$<init>(com.fasterxml.jackson.core.type.TypeReference((io.vertx.rx.java.UnmarshallerOperator.T)), com.fasterxml.jackson.databind.ObjectMapper)/mapper">mapper</span><span class="symbol">:</span>&nbsp;<a href="http://fasterxml.github.io/jackson-databind/javadoc/2.9/com/fasterxml/jackson/databind/ObjectMapper.html"><span class="identifier">ObjectMapper</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="call.html">call</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">call</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rx.java.UnmarshallerOperator$call(rx.Subscriber((io.vertx.rx.java.UnmarshallerOperator.T)))/subscriber">subscriber</span><span class="symbol">:</span>&nbsp;<a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Subscriber.html"><span class="identifier">Subscriber</span></a><span class="symbol">&lt;</span><span class="keyword">in</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://reactivex.io/RxJava/1.x/javadoc/rx/Subscriber.html"><span class="identifier">Subscriber</span></a><span class="symbol">&lt;</span><span class="keyword">in</span>&nbsp;<span class="identifier">B</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="unwrap.html">unwrap</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">unwrap</span><span class="symbol">(</span><span class="identifier" id="io.vertx.rx.java.UnmarshallerOperator$unwrap(io.vertx.rx.java.UnmarshallerOperator.B)/buffer">buffer</span><span class="symbol">:</span>&nbsp;<span class="identifier">B</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Buffer</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

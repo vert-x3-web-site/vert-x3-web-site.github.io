@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CamelBridge - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.camel</a>&nbsp;/&nbsp;<a href=".">CamelBridge</a><br/>
+<br/>
+<h1>CamelBridge</h1>
+<code><span class="keyword">interface </span><span class="identifier">CamelBridge</span></code>
+<p>Camel Bridge facade.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Clement Escoffier</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.camel.CamelBridge$create(io.vertx.core.Vertx, io.vertx.camel.CamelBridgeOptions)/vertx">vertx</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vertx</span><span class="symbol">, </span><span class="identifier" id="io.vertx.camel.CamelBridge$create(io.vertx.core.Vertx, io.vertx.camel.CamelBridgeOptions)/bridgeOptions">bridgeOptions</span><span class="symbol">:</span>&nbsp;<a href="../-camel-bridge-options/index.html"><span class="identifier">CamelBridgeOptions</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CamelBridge</span></code>
+<p>Creates a bridge between Camel endpoints and Vert.x</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="start.html">start</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CamelBridge</span></code>
+<p>Starts the bridge. The bridge is started asynchronously.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="identifier" id="io.vertx.camel.CamelBridge$start(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/completed">completed</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CamelBridge</span></code>
+<p>Starts the bridge.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="stop.html">stop</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CamelBridge</span></code>
+<p>Stops the bridge. The bridges is stopped asynchronously.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="identifier" id="io.vertx.camel.CamelBridge$stop(io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/completed">completed</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CamelBridge</span></code>
+<p>Stops the bridge.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,151 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CommandProcess - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.shell.command</a>&nbsp;/&nbsp;<a href=".">CommandProcess</a><br/>
+<br/>
+<h1>CommandProcess</h1>
+<code><span class="keyword">interface </span><span class="identifier">CommandProcess</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Tty</span></code>
+<p>The command process provides interaction with the process of the command provided by Vert.x Shell.</p>
+<p><strong>Author</strong><br/>
+<a href="#">Julien Viet</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="args.html">args</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">args</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="args-tokens.html">argsTokens</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">argsTokens</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">CliToken</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="background-handler.html">backgroundHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">backgroundHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.command.CommandProcess$backgroundHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CommandProcess</span></code>
+<p>Set a background handler, this handler is called when the command is running and put to background.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="command-line.html">commandLine</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">commandLine</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../io.vertx.core.cli/-command-line/index.html"><span class="identifier">CommandLine</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="end.html">end</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">end</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>End the process with the exit status 0</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">end</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.command.CommandProcess$end(kotlin.Int)/status">status</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>End the process.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="end-handler.html">endHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">endHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.command.CommandProcess$endHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CommandProcess</span></code>
+<p>Set an end handler, this handler is called when the command is ended, for instance the command is running and the shell closes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="foreground-handler.html">foregroundHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">foregroundHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.command.CommandProcess$foregroundHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CommandProcess</span></code>
+<p>Set a foreground handler, this handler is called when the command is running and put to foreground.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="interrupt-handler.html">interruptHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">interruptHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.command.CommandProcess$interruptHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CommandProcess</span></code>
+<p>Set an interrupt handler, this handler is called when the command is interrupted, for instance user press <code>Ctrl-C</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-foreground.html">isForeground</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isForeground</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="resizehandler.html">resizehandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">resizehandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.command.CommandProcess$resizehandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CommandProcess</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="resume-handler.html">resumeHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">resumeHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.command.CommandProcess$resumeHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CommandProcess</span></code>
+<p>Set a resume handler, this handler is called when the command is resumed, for instance user types <code>bg</code> or <code>fg</code> to resume the command.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="session.html">session</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">session</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Session</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="stdin-handler.html">stdinHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">stdinHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.command.CommandProcess$stdinHandler(io.vertx.core.Handler((kotlin.String)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CommandProcess</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="suspend-handler.html">suspendHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">suspendHandler</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.command.CommandProcess$suspendHandler(io.vertx.core.Handler((java.lang.Void)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CommandProcess</span></code>
+<p>Set a suspend handler, this handler is called when the command is suspended, for instance user press <code>Ctrl-Z</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="vertx.html">vertx</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">vertx</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Vertx</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="write.html">write</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.shell.command.CommandProcess$write(kotlin.String)/data">data</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CommandProcess</span></code>
+<p>Write some text to the standard output.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

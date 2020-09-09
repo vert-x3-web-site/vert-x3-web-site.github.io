@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.core - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.core</a><br/>
+<br/>
+<h2>Package io.vertx.core</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-closeable/index.html">Closeable</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">Closeable</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-launcher/index.html">Launcher</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Launcher</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">VertxCommandLauncher</span><span class="symbol">, </span><span class="identifier">VertxLifecycleHooks</span></code>
+<p>A <code>main()</code> class that can be used to create Vert.x instance and deploy a verticle, or run a bare Vert.x instance.  This class is used by the <code>vertx</code> command line utility to deploy verticles from the command line. It is extensible as "commands" can be added using the io.vertx.core.spi.launcher.CommandFactory SPI.  E.g.  <code>vertx run myverticle.js</code> <code>vertx my-command ...</code>  It can also be used as the main class of an executable jar so you can run verticles directly with:  <code>java -jar myapp.jar</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-service-helper/index.html">ServiceHelper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServiceHelper</span></code>
+<p>A helper class for loading factories from the classpath and from the vert.x OSGi bundle.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-timeout-stream/index.html">TimeoutStream</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">TimeoutStream</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ReadStream</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">&gt;</span></code>
+<p>A timeout stream is triggered by a timer, the io.vertx.core.Handler will be call when the timer is fired, it can be once or several times depending on the nature of the timer related to this stream. The <code><a href="#">ReadStream#endHandler(Handler)</a></code> will be called after the timer handler has been called. 
+<p> Pausing the timer inhibits the timer shots until the stream is resumed. Setting a null handler callback cancels the timer.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-vertx-options/index.html">VertxOptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">VertxOptions</span></code>
+<p>Instances of this class are used to configure io.vertx.core.Vertx instances.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-worker-executor/index.html">WorkerExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">WorkerExecutor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Measured</span></code>
+<p>An executor for executing blocking code in Vert.x .
+<p> It provides the same <code>executeBlocking</code> operation than io.vertx.core.Context and io.vertx.core.Vertx but on a separate worker pool.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

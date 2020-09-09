@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>io.vertx.core.file - vertx</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">vertx</a>&nbsp;/&nbsp;<a href=".">io.vertx.core.file</a><br/>
+<br/>
+<h2>Package io.vertx.core.file</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-file-props/index.html">FileProps</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">FileProps</span></code>
+<p>Represents properties of a file on the file system. </p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-file-system/index.html">FileSystem</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">FileSystem</span></code>
+<p>Contains a broad set of operations for manipulating files on the file system. 
+<p> A (potential) blocking and non blocking version of each operation is provided. </p>
+<p> The non blocking versions take a handler which is called when the operation completes or an error occurs. </p>
+<p> The blocking versions are named <code>xxxBlocking</code> and return the results, or throw exceptions directly. In many cases, depending on the operating system and file system some of the potentially blocking operations can return quickly, which is why we provide them, but it's highly recommended that you test how long they take to return in your particular application before using them on an event loop. </p>
+<p> Please consult the documentation for more information on file system support.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-file-system-exception/index.html">FileSystemException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FileSystemException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">VertxException</span></code>
+<p>Exception thrown by the FileSystem class</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

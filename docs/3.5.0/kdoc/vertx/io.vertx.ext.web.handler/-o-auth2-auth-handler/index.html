@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>OAuth2AuthHandler - vertx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">vertx</a>&nbsp;/&nbsp;<a href="../index.html">io.vertx.ext.web.handler</a>&nbsp;/&nbsp;<a href=".">OAuth2AuthHandler</a><br/>
+<br/>
+<h1>OAuth2AuthHandler</h1>
+<code><span class="keyword">interface </span><span class="identifier">OAuth2AuthHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-auth-handler/index.html"><span class="identifier">AuthHandler</span></a></code>
+<p>An auth handler that provides OAuth2 Authentication support. This handler is suitable for AuthCode flows.</p>
+<p><strong>Author</strong><br/>
+Paulo Lopes</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.OAuth2AuthHandler$create(io.vertx.ext.auth.oauth2.OAuth2Auth, kotlin.String)/authProvider">authProvider</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.auth.oauth2/-o-auth2-auth/index.html"><span class="identifier">OAuth2Auth</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.web.handler.OAuth2AuthHandler$create(io.vertx.ext.auth.oauth2.OAuth2Auth, kotlin.String)/callbackURL">callbackURL</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">OAuth2AuthHandler</span></code>
+<p>Create a OAuth2 auth handler with host pinning</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.OAuth2AuthHandler$create(io.vertx.ext.auth.oauth2.OAuth2Auth)/authProvider">authProvider</span><span class="symbol">:</span>&nbsp;<a href="../../io.vertx.ext.auth.oauth2/-o-auth2-auth/index.html"><span class="identifier">OAuth2Auth</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">OAuth2AuthHandler</span></code>
+<p>Create a OAuth2 auth handler without host pinning. Most providers will not look to the redirect url but always redirect to the preconfigured callback. So this factory does not provide a callback url.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="extra-params.html">extraParams</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">extraParams</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.OAuth2AuthHandler$extraParams(io.vertx.core.json.JsonObject)/extraParams">extraParams</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonObject</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">OAuth2AuthHandler</span></code>
+<p>Extra parameters needed to be passed while requesting a token.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="setup-callback.html">setupCallback</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setupCallback</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.OAuth2AuthHandler$setupCallback(io.vertx.ext.web.Route)/route">route</span><span class="symbol">:</span>&nbsp;<span class="identifier">Route</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">OAuth2AuthHandler</span></code>
+<p>add the callback handler to a given route.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-auth-handler/add-authorities.html">addAuthorities</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">addAuthorities</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.AuthHandler$addAuthorities(kotlin.collections.MutableSet((kotlin.String)))/authorities">authorities</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-auth-handler/index.html"><span class="identifier">AuthHandler</span></a></code>
+<p>Add a set of required authorities for this auth handler</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-auth-handler/add-authority.html">addAuthority</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">addAuthority</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.AuthHandler$addAuthority(kotlin.String)/authority">authority</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-auth-handler/index.html"><span class="identifier">AuthHandler</span></a></code>
+<p>Add a required authority for this auth handler</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-auth-handler/authorize.html">authorize</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">authorize</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.AuthHandler$authorize(io.vertx.ext.auth.User, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/user">user</span><span class="symbol">:</span>&nbsp;<span class="identifier">User</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.web.handler.AuthHandler$authorize(io.vertx.ext.auth.User, io.vertx.core.Handler((io.vertx.core.AsyncResult((java.lang.Void)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html"><span class="identifier">Void</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Authorizes the given user against all added authorities.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-auth-handler/parse-credentials.html">parseCredentials</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">parseCredentials</span><span class="symbol">(</span><span class="identifier" id="io.vertx.ext.web.handler.AuthHandler$parseCredentials(io.vertx.ext.web.RoutingContext, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonObject)))))/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">RoutingContext</span><span class="symbol">, </span><span class="identifier" id="io.vertx.ext.web.handler.AuthHandler$parseCredentials(io.vertx.ext.web.RoutingContext, io.vertx.core.Handler((io.vertx.core.AsyncResult((io.vertx.core.json.JsonObject)))))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Handler</span><span class="symbol">&lt;</span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">JsonObject</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Parses the credentials from the request into a JsonObject. The implementation should be able to extract the required info for the auth provider in the format the provider expects.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
