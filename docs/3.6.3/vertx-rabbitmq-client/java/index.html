@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -173,7 +174,7 @@
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-rabbitmq-client<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -186,7 +187,7 @@
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
- compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-rabbitmq-client:3.6.3</span><span class="delimiter">'</span></span>
+ compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-rabbitmq-client:3.9.3</span><span class="delimiter">'</span></span>
 }</code></pre>
 </div>
 </div>
@@ -474,18 +475,19 @@ client.basicConsumer(<span class="string"><span class="delimiter">&quot;</span><
 <h3 id="_consume_messages_without_auto_ack">Consume messages without auto-ack</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">vertx.eventBus().consumer(<span class="string"><span class="delimiter">&quot;</span><span class="content">my.address</span><span class="delimiter">&quot;</span></span>, msg -&gt; {
-  JsonObject json = (JsonObject) msg.body();
-  <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Got message: </span><span class="delimiter">&quot;</span></span> + json.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">body</span><span class="delimiter">&quot;</span></span>));
-  <span class="comment">// ack</span>
-  client.basicAck(json.getLong(<span class="string"><span class="delimiter">&quot;</span><span class="content">deliveryTag</span><span class="delimiter">&quot;</span></span>), <span class="predefined-constant">false</span>, asyncResult -&gt; {
-  });
-});
-
-<span class="comment">// Setup the link between rabbitmq consumer and event bus address</span>
-client.basicConsume(<span class="string"><span class="delimiter">&quot;</span><span class="content">my.queue</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">my.address</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">false</span>, consumeResult -&gt; {
+<pre class="CodeRay highlight"><code data-lang="java">client.basicConsumer(<span class="string"><span class="delimiter">&quot;</span><span class="content">my.queue</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> QueueOptions().setAutoAck(<span class="predefined-constant">false</span>), consumeResult -&gt; {
   <span class="keyword">if</span> (consumeResult.succeeded()) {
     <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">RabbitMQ consumer created !</span><span class="delimiter">&quot;</span></span>);
+    RabbitMQConsumer consumer = consumeResult.result();
+
+    <span class="comment">// Set the handler which messages will be sent to</span>
+    consumer.handler(msg -&gt; {
+      JsonObject json = (JsonObject) msg.body();
+      <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Got message: </span><span class="delimiter">&quot;</span></span> + json.getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">body</span><span class="delimiter">&quot;</span></span>));
+      <span class="comment">// ack</span>
+      client.basicAck(json.getLong(<span class="string"><span class="delimiter">&quot;</span><span class="content">deliveryTag</span><span class="delimiter">&quot;</span></span>), <span class="predefined-constant">false</span>, asyncResult -&gt; {
+      });
+    });
   } <span class="keyword">else</span> {
     consumeResult.cause().printStackTrace();
   }
@@ -510,7 +512,7 @@ client.basicConsume(<span class="string"><span class="delimiter">&quot;</span><s
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:28 CEST
               
               
             </div>

@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -106,7 +107,7 @@
 <li><a href="#_bootstrapping_a_maven_project">Bootstrapping a Maven project</a></li>
 <li><a href="#_adding_the_required_dependencies">Adding the required dependencies</a></li>
 <li><a href="#_anatomy_of_a_verticle">Anatomy of a verticle</a></li>
-<li><a href="#_a_word_on_vert_x_future_objects_and_callbacks">A word on Vert.x future objects and callbacks</a></li>
+<li><a href="#_a_word_on_vert_x_promise_future_objects_and_callbacks">A word on Vert.x promise / future objects and callbacks</a></li>
 <li><a href="#_wiki_verticle_initialization_phases">Wiki verticle initialization phases</a>
 <ul class="sectlevel2">
 <li><a href="#_database_initialization">Database initialization</a></li>
@@ -134,7 +135,7 @@
 <li><a href="#_bootstrapping_a_maven_project">Bootstrapping a Maven project</a></li>
 <li><a href="#_adding_the_required_dependencies">Adding the required dependencies</a></li>
 <li><a href="#_anatomy_of_a_verticle">Anatomy of a verticle</a></li>
-<li><a href="#_a_word_on_vert_x_future_objects_and_callbacks">A word on Vert.x future objects and callbacks</a></li>
+<li><a href="#_a_word_on_vert_x_promise_future_objects_and_callbacks">A word on Vert.x promise / future objects and callbacks</a></li>
 <li><a href="#_wiki_verticle_initialization_phases">Wiki verticle initialization phases</a>
 <ul class="sectlevel2">
 <li><a href="#_database_initialization">Database initialization</a></li>
@@ -257,7 +258,7 @@ It has goals to initialize, build, package and run a Vert.x project.</p>
 <div class="content">
 <pre>mkdir vertx-wiki
 cd vertx-wiki
-mvn io.fabric8:vertx-maven-plugin:1.0.13:setup -DvertxVersion=3.6.0
+mvn io.fabric8:vertx-maven-plugin:1.0.13:setup -DvertxVersion=3.8.0
 git init</pre>
 </div>
 </div>
@@ -390,22 +391,34 @@ This class extends <code>io.vertx.core.AbstractVerticle</code>, the base class f
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MainVerticle</span> <span class="directive">extends</span> AbstractVerticle {
 
   <span class="annotation">@Override</span>
-  <span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
-    startFuture.complete();
+  <span class="directive">public</span> <span class="type">void</span> start(Promise&lt;<span class="predefined-type">Void</span>&gt; promise) {
+    promise.complete();
   }
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>There are 2 forms of <code>start</code> (and <code>stop</code>) methods: 1 with no argument and 1 with a <em>future</em> object reference.
+<p>There are 2 forms of <code>start</code> (and <code>stop</code>) methods: 1 with no argument and 1 with a <em>promise</em> object reference.
 The no-argument variants imply that the verticle initialization or house-keeping phases always succeed unless an exception is being thrown.
-The variants with a <em>future</em> object provide a more fine-grained approach to <em>eventually</em> signal that operations succeeded or not.
-Indeed, some initialization or cleanup code may require asynchronous operations, so reporting via a <em>future</em> object naturally fits with asynchronous idioms.</p>
+The variants with a <em>promise</em> object provide a more fine-grained approach to <em>eventually</em> signal that operations succeeded or not.
+Indeed, some initialization or cleanup code may require asynchronous operations, so reporting via a <em>promise</em> object naturally fits with asynchronous idioms.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+A promise has a <code>future()</code> method which eventually holds the result of an asynchronous operation.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_a_word_on_vert_x_future_objects_and_callbacks">A word on Vert.x future objects and callbacks</h2>
+<h2 id="_a_word_on_vert_x_promise_future_objects_and_callbacks">A word on Vert.x promise / future objects and callbacks</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Vert.x futures are not JDK futures: they can be composed and queried in a non-blocking fashion.
@@ -433,7 +446,7 @@ The seasoned developer will naturally think that this opens the door to the so-c
 </div>
 </div>
 <div class="paragraph">
-<p>While the core APIs could have been designed to favor promises and futures, the choice of callbacks is actually interesting since it allows different programming abstractions to be used.
+<p>While the core APIs could have been designed to favor promises and futures, the choice of callbacks as the cardinal model is actually interesting since it allows different programming abstractions to be used.
 Vert.x is a largely un-opinionated project, and callbacks allow the implementation of different models that better cope with asynchronous programming: reactive extensions (via RxJava), promises and futures, fibers (using bytecode instrumentation), etc.</p>
 </div>
 <div class="paragraph">
@@ -463,20 +476,20 @@ Once it becomes evident in the sample code that callbacks do not always lead to 
 <p>Each phase can fail (e.g., the HTTP server TCP port is already being used), and they should not run in parallel as the web application code first needs the database access to work.</p>
 </div>
 <div class="paragraph">
-<p>To make our code <em>cleaner</em> we will define 1 method per phase, and adopt a pattern of returning a <em>future / promise</em> object to notify when each of the phases completes, and whether it did so successfully or not:</p>
+<p>To make our code <em>cleaner</em> we will define 1 method per phase, and adopt a pattern of returning a <em>future</em> object to notify when each of the phases completes, and whether it did so successfully or not:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; prepareDatabase() {
-  <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; future = <span class="predefined-type">Future</span>.future();
+  Promise&lt;<span class="type">void</span>&gt; promise = Promise.promise();
   <span class="comment">// (...)</span>
-  <span class="keyword">return</span> future;
+  <span class="keyword">return</span> promise.future();
 }
 
 <span class="directive">private</span> <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startHttpServer() {
-  <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; future = <span class="predefined-type">Future</span>.future();
+  Promise&lt;<span class="type">void</span>&gt; promise = Promise.promise();
   <span class="comment">// (...)</span>
-  <span class="keyword">return</span> future;
+  <span class="keyword">return</span> promise.future();
 }</code></pre>
 </div>
 </div>
@@ -486,9 +499,9 @@ Once it becomes evident in the sample code that callbacks do not always lead to 
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
-<span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
+<span class="directive">public</span> <span class="type">void</span> start(Promise&lt;<span class="predefined-type">Void</span>&gt; promise) <span class="directive">throws</span> <span class="exception">Exception</span> {
   <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; steps = prepareDatabase().compose(v -&gt; startHttpServer());
-  steps.setHandler(startFuture.completer());
+  steps.setHandler(promise);
 }</code></pre>
 </div>
 </div>
@@ -506,9 +519,9 @@ This is equivalent to:</p>
 <pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; steps = prepareDatabase().compose(v -&gt; startHttpServer());
 steps.setHandler(ar -&gt; {  <b class="conum">(1)</b>
   <span class="keyword">if</span> (ar.succeeded()) {
-    startFuture.complete();
+    promise.complete();
   } <span class="keyword">else</span> {
-    startFuture.fail(ar.cause());
+    promise.fail(ar.cause());
   }
 });</code></pre>
 </div>
@@ -597,7 +610,7 @@ It attempts to obtain a JDBC client connection, then performs a SQL query to cre
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; prepareDatabase() {
-  <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; future = <span class="predefined-type">Future</span>.future();
+  Promise&lt;<span class="predefined-type">Void</span>&gt; promise = Promise.promise();
 
   dbClient = JDBCClient.createShared(vertx, <span class="keyword">new</span> JsonObject()  <b class="conum">(1)</b>
     .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">url</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">jdbc:hsqldb:file:db/wiki</span><span class="delimiter">&quot;</span></span>)   <b class="conum">(2)</b>
@@ -607,22 +620,22 @@ It attempts to obtain a JDBC client connection, then performs a SQL query to cre
   dbClient.getConnection(ar -&gt; {    <b class="conum">(5)</b>
     <span class="keyword">if</span> (ar.failed()) {
       LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Could not open a database connection</span><span class="delimiter">&quot;</span></span>, ar.cause());
-      future.fail(ar.cause());    <b class="conum">(6)</b>
+      promise.fail(ar.cause());    <b class="conum">(6)</b>
     } <span class="keyword">else</span> {
       SQLConnection connection = ar.result();   <b class="conum">(7)</b>
       connection.execute(SQL_CREATE_PAGES_TABLE, create -&gt; {
         connection.close();   <b class="conum">(8)</b>
         <span class="keyword">if</span> (create.failed()) {
           LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Database preparation error</span><span class="delimiter">&quot;</span></span>, create.cause());
-          future.fail(create.cause());
+          promise.fail(create.cause());
         } <span class="keyword">else</span> {
-          future.complete();  <b class="conum">(9)</b>
+          promise.complete();  <b class="conum">(9)</b>
         }
       });
     }
   });
 
-  <span class="keyword">return</span> future;
+  <span class="keyword">return</span> promise.future();
 }</code></pre>
 </div>
 </div>
@@ -737,7 +750,7 @@ This is the role of a <em>router</em> as it dispatches requests to different pro
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> FreeMarkerTemplateEngine templateEngine;
 
 <span class="directive">private</span> <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startHttpServer() {
-  <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; future = <span class="predefined-type">Future</span>.future();
+  Promise&lt;<span class="predefined-type">Void</span>&gt; promise = Promise.promise();
   HttpServer server = vertx.createHttpServer();   <b class="conum">(1)</b>
 
   Router router = Router.router(vertx);   <b class="conum">(2)</b>
@@ -755,14 +768,14 @@ This is the role of a <em>router</em> as it dispatches requests to different pro
     .listen(<span class="integer">8080</span>, ar -&gt; {   <b class="conum">(6)</b>
       <span class="keyword">if</span> (ar.succeeded()) {
         LOGGER.info(<span class="string"><span class="delimiter">&quot;</span><span class="content">HTTP server running on port 8080</span><span class="delimiter">&quot;</span></span>);
-        future.complete();
+        promise.complete();
       } <span class="keyword">else</span> {
         LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Could not start a HTTP server</span><span class="delimiter">&quot;</span></span>, ar.cause());
-        future.fail(ar.cause());
+        promise.fail(ar.cause());
       }
     });
 
-  <span class="keyword">return</span> future;
+  <span class="keyword">return</span> promise.future();
 }</code></pre>
 </div>
 </div>
@@ -1249,7 +1262,7 @@ This happens both when updating an existing page (issuing a SQL <code>update</co
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2018-11-29 10:01:34 CET
+                Last updated 2019-07-25 13:05:56 CEST
               
               
             </div>

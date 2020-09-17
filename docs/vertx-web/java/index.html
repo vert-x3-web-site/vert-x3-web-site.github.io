@@ -515,7 +515,7 @@ over time.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-web<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.9.2<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -529,7 +529,7 @@ over time.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
- compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-web:3.9.2</span><span class="delimiter">'</span></span>
+ compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-web:3.9.3</span><span class="delimiter">'</span></span>
 }</code></pre>
 </div>
 </div>
@@ -1534,18 +1534,23 @@ should use the <code>RoutingContext</code> object. For example you want to rerou
   <span class="comment">// continue from here...</span>
 });
 
-<span class="comment">// THE WRONG WAY! (Will reroute to /final-target excluding the query string)</span>
+<span class="comment">// (Will reroute to /final-target including the query string)</span>
 router.get().handler(ctx -&gt; ctx.reroute(<span class="string"><span class="delimiter">&quot;</span><span class="content">/final-target?variable=value</span><span class="delimiter">&quot;</span></span>));
 
-<span class="comment">// THE CORRECT WAY!</span>
+<span class="comment">// A safer way would be to add the variable to the context</span>
 router.get().handler(ctx -&gt; ctx
   .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">variable</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>)
   .reroute(<span class="string"><span class="delimiter">&quot;</span><span class="content">/final-target</span><span class="delimiter">&quot;</span></span>));</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Even though the wrong reroute path will warn you that the query string is ignored, the reroute will happen since the
-implementation will strip any query string or html fragment from the path.</p>
+<p>Reroute will re-parse the query params too. Be aware that previously query params will be discarded. The method
+will also silently discard and ignore any html fragment from the path. This is to keep the semantics of reroute
+consistent between a regular request and a re route.</p>
+</div>
+<div class="paragraph">
+<p>If more information is required to be passed to the new request, it should use the context that is preserved all the
+lifetime of the HTTP transaction.</p>
 </div>
 </div>
 </div>
@@ -2380,7 +2385,7 @@ router.route(<span class="string"><span class="delimiter">&quot;</span><span cla
 <h3 id="_jwt_authorisation">JWT authorisation</h3>
 <div class="paragraph">
 <p>With JWT authorisation resources can be protected by means of permissions and users without enough rights are denied
-access. You need to add the <code>io.vertx:vertx-auth-jwt:3.9.2</code> dependency to use <code>JWTAuthProvider</code></p>
+access. You need to add the <code>io.vertx:vertx-auth-jwt:3.9.3</code> dependency to use <code>JWTAuthProvider</code></p>
 </div>
 <div class="paragraph">
 <p>To use this handler there are 2 steps involved:</p>
@@ -2870,7 +2875,7 @@ router.getWithRegex(<span class="string"><span class="delimiter">&quot;</span><s
 <h3 id="_mvel_template_engine">MVEL template engine</h3>
 <div class="paragraph">
 <p>To use MVEL, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-mvel:3.9.2</code>. Create an instance of the MVEL template engine using:
+<code>io.vertx:vertx-web-templ-mvel:3.9.3</code>. Create an instance of the MVEL template engine using:
 <code>io.vertx.ext.web.templ.MVELTemplateEngine#create()</code></p>
 </div>
 <div class="paragraph">
@@ -2903,7 +2908,7 @@ MVEL templates.</p>
 <h3 id="_jade_template_engine">Jade template engine</h3>
 <div class="paragraph">
 <p>To use the Jade template engine, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-jade:3.9.2</code>. Create an instance of the Jade template engine using:
+<code>io.vertx:vertx-web-templ-jade:3.9.3</code>. Create an instance of the Jade template engine using:
 <code>io.vertx.ext.web.templ.JadeTemplateEngine#create()</code>.</p>
 </div>
 <div class="paragraph">
@@ -2936,7 +2941,7 @@ Jade templates.</p>
 <h3 id="_handlebars_template_engine">Handlebars template engine</h3>
 <div class="paragraph">
 <p>To use Handlebars, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-handlebars:3.9.2</code>. Create an instance of the Handlebars template engine
+<code>io.vertx:vertx-web-templ-handlebars:3.9.3</code>. Create an instance of the Handlebars template engine
 using: <code>io.vertx.ext.web.templ.HandlebarsTemplateEngine#create()</code>.</p>
 </div>
 <div class="paragraph">
@@ -2978,7 +2983,7 @@ handlebars templates.</p>
 <h3 id="_thymeleaf_template_engine">Thymeleaf template engine</h3>
 <div class="paragraph">
 <p>To use Thymeleaf, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-thymeleaf:3.9.2</code>. Create an instance of the Thymeleaf template engine
+<code>io.vertx:vertx-web-templ-thymeleaf:3.9.3</code>. Create an instance of the Thymeleaf template engine
 using: <code>io.vertx.ext.web.templ.ThymeleafTemplateEngine#create()</code>.</p>
 </div>
 <div class="paragraph">
@@ -3013,7 +3018,7 @@ Thymeleaf templates.</p>
 <h3 id="_apache_freemarker_template_engine">Apache FreeMarker template engine</h3>
 <div class="paragraph">
 <p>To use Apache FreeMarker, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-freemarker:3.9.2</code>. Create an instance of the Apache FreeMarker template engine
+<code>io.vertx:vertx-web-templ-freemarker:3.9.3</code>. Create an instance of the Apache FreeMarker template engine
 using: <code>io.vertx.ext.web.templ.Engine#create()</code>.</p>
 </div>
 <div class="paragraph">
@@ -3048,7 +3053,7 @@ Apache FreeMarker templates.</p>
 <h3 id="_pebble_template_engine">Pebble template engine</h3>
 <div class="paragraph">
 <p>To use Pebble, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-pebble:3.9.2</code>. Create an instance of the Pebble template engine
+<code>io.vertx:vertx-web-templ-pebble:3.9.3</code>. Create an instance of the Pebble template engine
 using: <code>io.vertx.ext.web.templ.PebbleTemplateEngine#create(vertx)</code>.</p>
 </div>
 <div class="paragraph">
@@ -3082,7 +3087,7 @@ Pebble templates.</p>
 <div class="sect2">
 <h3 id="_rocker_template_engine">Rocker template engine</h3>
 <div class="paragraph">
-<p>To use Rocker, then add <code>io.vertx:vertx-web-templ-rocker:3.9.2</code> as a dependency to your project.
+<p>To use Rocker, then add <code>io.vertx:vertx-web-templ-rocker:3.9.3</code> as a dependency to your project.
 You can then create a Rocker template engine instance with <code>io.vertx.ext.web.templ.rocker#create()</code>.</p>
 </div>
 <div class="paragraph">
@@ -3541,7 +3546,7 @@ eb2.enableReconnect(<span class="predefined-constant">true</span>);
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-web<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.9.2<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
  <span class="tag">&lt;classifier&gt;</span>client<span class="tag">&lt;/classifier&gt;</span>
  <span class="tag">&lt;type&gt;</span>js<span class="tag">&lt;/type&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
@@ -3556,7 +3561,7 @@ eb2.enableReconnect(<span class="predefined-constant">true</span>);
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-web:3.9.2:client</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-web:3.9.3:client</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4303,7 +4308,7 @@ value <code>Bearer BASE64_ACCESS_TOKEN</code>.</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2020-07-16 01:06:40 CEST
+                Last updated 2020-09-16 10:26:28 CEST
               
               
             </div>

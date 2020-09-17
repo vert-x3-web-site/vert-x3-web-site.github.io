@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -115,7 +116,7 @@
 <li><a href="#_bootstrapping_a_maven_project">Bootstrapping a Maven project</a></li>
 <li><a href="#_adding_the_required_dependencies">Adding the required dependencies</a></li>
 <li><a href="#_anatomy_of_a_verticle">Anatomy of a verticle</a></li>
-<li><a href="#_a_word_on_vert_x_future_objects_and_callbacks">A word on Vert.x future objects and callbacks</a></li>
+<li><a href="#_a_word_on_vert_x_promise_future_objects_and_callbacks">A word on Vert.x promise / future objects and callbacks</a></li>
 <li><a href="#_wiki_verticle_initialization_phases">Wiki verticle initialization phases</a></li>
 <li><a href="#_http_router_handlers">HTTP router handlers</a></li>
 <li><a href="#_running_the_application">Running the application</a></li>
@@ -217,7 +218,7 @@
 <li><a href="#_bootstrapping_a_maven_project">Bootstrapping a Maven project</a></li>
 <li><a href="#_adding_the_required_dependencies">Adding the required dependencies</a></li>
 <li><a href="#_anatomy_of_a_verticle">Anatomy of a verticle</a></li>
-<li><a href="#_a_word_on_vert_x_future_objects_and_callbacks">A word on Vert.x future objects and callbacks</a></li>
+<li><a href="#_a_word_on_vert_x_promise_future_objects_and_callbacks">A word on Vert.x promise / future objects and callbacks</a></li>
 <li><a href="#_wiki_verticle_initialization_phases">Wiki verticle initialization phases</a></li>
 <li><a href="#_http_router_handlers">HTTP router handlers</a></li>
 <li><a href="#_running_the_application">Running the application</a></li>
@@ -311,7 +312,7 @@
 <div class="title">Note</div>
 </td>
 <td class="content">
-You can read the latest published version of the guide at <a href="http://vertx.io/docs/guide-for-java-devs/" class="bare">http://vertx.io/docs/guide-for-java-devs/</a>
+You can read the latest published version of the guide at <a href="https://vertx.io/docs/3.6.3/guide-for-java-devs/" class="bare">https://vertx.io/docs/3.6.3/guide-for-java-devs/</a>
 </td>
 </tr>
 </table>
@@ -650,7 +651,7 @@ It has goals to initialize, build, package and run a Vert.x project.</p>
 <div class="content">
 <pre>mkdir vertx-wiki
 cd vertx-wiki
-mvn io.fabric8:vertx-maven-plugin:1.0.13:setup -DvertxVersion=3.6.0
+mvn io.fabric8:vertx-maven-plugin:1.0.13:setup -DvertxVersion=3.8.0
 git init</pre>
 </div>
 </div>
@@ -779,21 +780,33 @@ This class extends <code>io.vertx.core.AbstractVerticle</code>, the base class f
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MainVerticle</span> <span class="directive">extends</span> AbstractVerticle {
 
   <span class="annotation">@Override</span>
-  <span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
-    startFuture.complete();
+  <span class="directive">public</span> <span class="type">void</span> start(Promise&lt;<span class="predefined-type">Void</span>&gt; promise) {
+    promise.complete();
   }
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>There are 2 forms of <code>start</code> (and <code>stop</code>) methods: 1 with no argument and 1 with a <em>future</em> object reference.
+<p>There are 2 forms of <code>start</code> (and <code>stop</code>) methods: 1 with no argument and 1 with a <em>promise</em> object reference.
 The no-argument variants imply that the verticle initialization or house-keeping phases always succeed unless an exception is being thrown.
-The variants with a <em>future</em> object provide a more fine-grained approach to <em>eventually</em> signal that operations succeeded or not.
-Indeed, some initialization or cleanup code may require asynchronous operations, so reporting via a <em>future</em> object naturally fits with asynchronous idioms.</p>
+The variants with a <em>promise</em> object provide a more fine-grained approach to <em>eventually</em> signal that operations succeeded or not.
+Indeed, some initialization or cleanup code may require asynchronous operations, so reporting via a <em>promise</em> object naturally fits with asynchronous idioms.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+A promise has a <code>future()</code> method which eventually holds the result of an asynchronous operation.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_a_word_on_vert_x_future_objects_and_callbacks">A word on Vert.x future objects and callbacks</h3>
+<h3 id="_a_word_on_vert_x_promise_future_objects_and_callbacks">A word on Vert.x promise / future objects and callbacks</h3>
 <div class="paragraph">
 <p>Vert.x futures are not JDK futures: they can be composed and queried in a non-blocking fashion.
 They shall be used for simple coordination of asynchronous tasks, and especially those of deploying verticles and checking if they were successfully deployed or not.</p>
@@ -820,7 +833,7 @@ The seasoned developer will naturally think that this opens the door to the so-c
 </div>
 </div>
 <div class="paragraph">
-<p>While the core APIs could have been designed to favor promises and futures, the choice of callbacks is actually interesting since it allows different programming abstractions to be used.
+<p>While the core APIs could have been designed to favor promises and futures, the choice of callbacks as the cardinal model is actually interesting since it allows different programming abstractions to be used.
 Vert.x is a largely un-opinionated project, and callbacks allow the implementation of different models that better cope with asynchronous programming: reactive extensions (via RxJava), promises and futures, fibers (using bytecode instrumentation), etc.</p>
 </div>
 <div class="paragraph">
@@ -848,20 +861,20 @@ Once it becomes evident in the sample code that callbacks do not always lead to 
 <p>Each phase can fail (e.g., the HTTP server TCP port is already being used), and they should not run in parallel as the web application code first needs the database access to work.</p>
 </div>
 <div class="paragraph">
-<p>To make our code <em>cleaner</em> we will define 1 method per phase, and adopt a pattern of returning a <em>future / promise</em> object to notify when each of the phases completes, and whether it did so successfully or not:</p>
+<p>To make our code <em>cleaner</em> we will define 1 method per phase, and adopt a pattern of returning a <em>future</em> object to notify when each of the phases completes, and whether it did so successfully or not:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; prepareDatabase() {
-  <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; future = <span class="predefined-type">Future</span>.future();
+  Promise&lt;<span class="type">void</span>&gt; promise = Promise.promise();
   <span class="comment">// (...)</span>
-  <span class="keyword">return</span> future;
+  <span class="keyword">return</span> promise.future();
 }
 
 <span class="directive">private</span> <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startHttpServer() {
-  <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; future = <span class="predefined-type">Future</span>.future();
+  Promise&lt;<span class="type">void</span>&gt; promise = Promise.promise();
   <span class="comment">// (...)</span>
-  <span class="keyword">return</span> future;
+  <span class="keyword">return</span> promise.future();
 }</code></pre>
 </div>
 </div>
@@ -871,9 +884,9 @@ Once it becomes evident in the sample code that callbacks do not always lead to 
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
-<span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
+<span class="directive">public</span> <span class="type">void</span> start(Promise&lt;<span class="predefined-type">Void</span>&gt; promise) <span class="directive">throws</span> <span class="exception">Exception</span> {
   <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; steps = prepareDatabase().compose(v -&gt; startHttpServer());
-  steps.setHandler(startFuture.completer());
+  steps.setHandler(promise);
 }</code></pre>
 </div>
 </div>
@@ -891,9 +904,9 @@ This is equivalent to:</p>
 <pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; steps = prepareDatabase().compose(v -&gt; startHttpServer());
 steps.setHandler(ar -&gt; {  <b class="conum">(1)</b>
   <span class="keyword">if</span> (ar.succeeded()) {
-    startFuture.complete();
+    promise.complete();
   } <span class="keyword">else</span> {
-    startFuture.fail(ar.cause());
+    promise.fail(ar.cause());
   }
 });</code></pre>
 </div>
@@ -982,7 +995,7 @@ It attempts to obtain a JDBC client connection, then performs a SQL query to cre
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; prepareDatabase() {
-  <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; future = <span class="predefined-type">Future</span>.future();
+  Promise&lt;<span class="predefined-type">Void</span>&gt; promise = Promise.promise();
 
   dbClient = JDBCClient.createShared(vertx, <span class="keyword">new</span> JsonObject()  <b class="conum">(1)</b>
     .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">url</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">jdbc:hsqldb:file:db/wiki</span><span class="delimiter">&quot;</span></span>)   <b class="conum">(2)</b>
@@ -992,22 +1005,22 @@ It attempts to obtain a JDBC client connection, then performs a SQL query to cre
   dbClient.getConnection(ar -&gt; {    <b class="conum">(5)</b>
     <span class="keyword">if</span> (ar.failed()) {
       LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Could not open a database connection</span><span class="delimiter">&quot;</span></span>, ar.cause());
-      future.fail(ar.cause());    <b class="conum">(6)</b>
+      promise.fail(ar.cause());    <b class="conum">(6)</b>
     } <span class="keyword">else</span> {
       SQLConnection connection = ar.result();   <b class="conum">(7)</b>
       connection.execute(SQL_CREATE_PAGES_TABLE, create -&gt; {
         connection.close();   <b class="conum">(8)</b>
         <span class="keyword">if</span> (create.failed()) {
           LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Database preparation error</span><span class="delimiter">&quot;</span></span>, create.cause());
-          future.fail(create.cause());
+          promise.fail(create.cause());
         } <span class="keyword">else</span> {
-          future.complete();  <b class="conum">(9)</b>
+          promise.complete();  <b class="conum">(9)</b>
         }
       });
     }
   });
 
-  <span class="keyword">return</span> future;
+  <span class="keyword">return</span> promise.future();
 }</code></pre>
 </div>
 </div>
@@ -1122,7 +1135,7 @@ This is the role of a <em>router</em> as it dispatches requests to different pro
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> FreeMarkerTemplateEngine templateEngine;
 
 <span class="directive">private</span> <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startHttpServer() {
-  <span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; future = <span class="predefined-type">Future</span>.future();
+  Promise&lt;<span class="predefined-type">Void</span>&gt; promise = Promise.promise();
   HttpServer server = vertx.createHttpServer();   <b class="conum">(1)</b>
 
   Router router = Router.router(vertx);   <b class="conum">(2)</b>
@@ -1140,14 +1153,14 @@ This is the role of a <em>router</em> as it dispatches requests to different pro
     .listen(<span class="integer">8080</span>, ar -&gt; {   <b class="conum">(6)</b>
       <span class="keyword">if</span> (ar.succeeded()) {
         LOGGER.info(<span class="string"><span class="delimiter">&quot;</span><span class="content">HTTP server running on port 8080</span><span class="delimiter">&quot;</span></span>);
-        future.complete();
+        promise.complete();
       } <span class="keyword">else</span> {
         LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Could not start a HTTP server</span><span class="delimiter">&quot;</span></span>, ar.cause());
-        future.fail(ar.cause());
+        promise.fail(ar.cause());
       }
     });
 
-  <span class="keyword">return</span> future;
+  <span class="keyword">return</span> promise.future();
 }</code></pre>
 </div>
 </div>
@@ -1694,7 +1707,7 @@ As Vert.x is <em>polyglot</em>, JSON is ideal should verticles written in differ
   <span class="directive">private</span> FreeMarkerTemplateEngine templateEngine;
 
   <span class="annotation">@Override</span>
-  <span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
+  <span class="directive">public</span> <span class="type">void</span> start(Promise&lt;<span class="predefined-type">Void</span>&gt; promise) <span class="directive">throws</span> <span class="exception">Exception</span> {
 
     wikiDbQueue = config().getString(CONFIG_WIKIDB_QUEUE, <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.queue</span><span class="delimiter">&quot;</span></span>);  <b class="conum">(2)</b>
 
@@ -1716,10 +1729,10 @@ As Vert.x is <em>polyglot</em>, JSON is ideal should verticles written in differ
       .listen(portNumber, ar -&gt; {
         <span class="keyword">if</span> (ar.succeeded()) {
           LOGGER.info(<span class="string"><span class="delimiter">&quot;</span><span class="content">HTTP server running on port </span><span class="delimiter">&quot;</span></span> + portNumber);
-          startFuture.complete();
+          promise.complete();
         } <span class="keyword">else</span> {
           LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Could not start a HTTP server</span><span class="delimiter">&quot;</span></span>, ar.cause());
-          startFuture.fail(ar.cause());
+          promise.fail(ar.cause());
         }
       });
   }
@@ -1750,7 +1763,7 @@ Here is the <code>indexHandler</code> method code:</p>
 
   DeliveryOptions options = <span class="keyword">new</span> DeliveryOptions().addHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">action</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">all-pages</span><span class="delimiter">&quot;</span></span>); <b class="conum">(2)</b>
 
-  vertx.eventBus().send(wikiDbQueue, <span class="keyword">new</span> JsonObject(), options, reply -&gt; {  <b class="conum">(1)</b>
+  vertx.eventBus().request(wikiDbQueue, <span class="keyword">new</span> JsonObject(), options, reply -&gt; {  <b class="conum">(1)</b>
     <span class="keyword">if</span> (reply.succeeded()) {
       JsonObject body = (JsonObject) reply.result().body();   <b class="conum">(3)</b>
       context.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Wiki home</span><span class="delimiter">&quot;</span></span>);
@@ -1806,7 +1819,7 @@ In the event that no response is expected there is a variant of the <code>send</
   JsonObject request = <span class="keyword">new</span> JsonObject().put(<span class="string"><span class="delimiter">&quot;</span><span class="content">page</span><span class="delimiter">&quot;</span></span>, requestedPage);
 
   DeliveryOptions options = <span class="keyword">new</span> DeliveryOptions().addHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">action</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">get-page</span><span class="delimiter">&quot;</span></span>);
-  vertx.eventBus().send(wikiDbQueue, request, options, reply -&gt; {
+  vertx.eventBus().request(wikiDbQueue, request, options, reply -&gt; {
 
     <span class="keyword">if</span> (reply.succeeded()) {
       JsonObject body = (JsonObject) reply.result().body();
@@ -1850,7 +1863,7 @@ In the event that no response is expected there is a variant of the <code>send</
     options.addHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">action</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">save-page</span><span class="delimiter">&quot;</span></span>);
   }
 
-  vertx.eventBus().send(wikiDbQueue, request, options, reply -&gt; {
+  vertx.eventBus().request(wikiDbQueue, request, options, reply -&gt; {
     <span class="keyword">if</span> (reply.succeeded()) {
       context.response().setStatusCode(<span class="integer">303</span>);
       context.response().putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Location</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">/wiki/</span><span class="delimiter">&quot;</span></span> + title);
@@ -1876,7 +1889,7 @@ In the event that no response is expected there is a variant of the <code>send</
   <span class="predefined-type">String</span> id = context.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>);
   JsonObject request = <span class="keyword">new</span> JsonObject().put(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, id);
   DeliveryOptions options = <span class="keyword">new</span> DeliveryOptions().addHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">action</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">delete-page</span><span class="delimiter">&quot;</span></span>);
-  vertx.eventBus().send(wikiDbQueue, request, options, reply -&gt; {
+  vertx.eventBus().request(wikiDbQueue, request, options, reply -&gt; {
     <span class="keyword">if</span> (reply.succeeded()) {
       context.response().setStatusCode(<span class="integer">303</span>);
       context.response().putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Location</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span>);
@@ -1983,7 +1996,7 @@ The code of the verticle <code>start</code> method is the following:</p>
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> JDBCClient dbClient;
 
 <span class="annotation">@Override</span>
-<span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
+<span class="directive">public</span> <span class="type">void</span> start(Promise&lt;<span class="predefined-type">Void</span>&gt; promise) <span class="directive">throws</span> <span class="exception">Exception</span> {
 
   <span class="comment">/*
    * Note: this uses blocking APIs, but data is small...
@@ -1998,17 +2011,17 @@ The code of the verticle <code>start</code> method is the following:</p>
   dbClient.getConnection(ar -&gt; {
     <span class="keyword">if</span> (ar.failed()) {
       LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Could not open a database connection</span><span class="delimiter">&quot;</span></span>, ar.cause());
-      startFuture.fail(ar.cause());
+      promise.fail(ar.cause());
     } <span class="keyword">else</span> {
       SQLConnection connection = ar.result();
       connection.execute(sqlQueries.get(SqlQuery.CREATE_PAGES_TABLE), create -&gt; {   <b class="conum">(2)</b>
         connection.close();
         <span class="keyword">if</span> (create.failed()) {
           LOGGER.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Database preparation error</span><span class="delimiter">&quot;</span></span>, create.cause());
-          startFuture.fail(create.cause());
+          promise.fail(create.cause());
         } <span class="keyword">else</span> {
           vertx.eventBus().consumer(config().getString(CONFIG_WIKIDB_QUEUE, <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.queue</span><span class="delimiter">&quot;</span></span>), <span class="local-variable">this</span>::onMessage);  <b class="conum">(3)</b>
-          startFuture.complete();
+          promise.complete();
         }
       });
     }
@@ -2258,26 +2271,26 @@ Performance-wise it is important to note that re-using a connection for chained 
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MainVerticle</span> <span class="directive">extends</span> AbstractVerticle {
 
   <span class="annotation">@Override</span>
-  <span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
+  <span class="directive">public</span> <span class="type">void</span> start(Promise&lt;<span class="predefined-type">Void</span>&gt; promise) <span class="directive">throws</span> <span class="exception">Exception</span> {
 
-    <span class="predefined-type">Future</span>&lt;<span class="predefined-type">String</span>&gt; dbVerticleDeployment = <span class="predefined-type">Future</span>.future();  <b class="conum">(1)</b>
-    vertx.deployVerticle(<span class="keyword">new</span> WikiDatabaseVerticle(), dbVerticleDeployment.completer());  <b class="conum">(2)</b>
+    Promise&lt;<span class="predefined-type">String</span>&gt; dbVerticleDeployment = Promise.promise();  <b class="conum">(1)</b>
+    vertx.deployVerticle(<span class="keyword">new</span> WikiDatabaseVerticle(), dbVerticleDeployment);  <b class="conum">(2)</b>
 
-    dbVerticleDeployment.compose(id -&gt; {  <b class="conum">(3)</b>
+    dbVerticleDeployment.future().compose(id -&gt; {  <b class="conum">(3)</b>
 
-      <span class="predefined-type">Future</span>&lt;<span class="predefined-type">String</span>&gt; httpVerticleDeployment = <span class="predefined-type">Future</span>.future();
+      Promise&lt;<span class="predefined-type">String</span>&gt; httpVerticleDeployment = Promise.promise();
       vertx.deployVerticle(
         <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.guides.wiki.HttpServerVerticle</span><span class="delimiter">&quot;</span></span>,  <b class="conum">(4)</b>
         <span class="keyword">new</span> DeploymentOptions().setInstances(<span class="integer">2</span>),    <b class="conum">(5)</b>
-        httpVerticleDeployment.completer());
+        httpVerticleDeployment);
 
-      <span class="keyword">return</span> httpVerticleDeployment;  <b class="conum">(6)</b>
+      <span class="keyword">return</span> httpVerticleDeployment.future();  <b class="conum">(6)</b>
 
     }).setHandler(ar -&gt; {   <b class="conum">(7)</b>
       <span class="keyword">if</span> (ar.succeeded()) {
-        startFuture.complete();
+        promise.complete();
       } <span class="keyword">else</span> {
-        startFuture.fail(ar.cause());
+        promise.fail(ar.cause());
       }
     });
   }
@@ -2696,7 +2709,7 @@ The essential difference is the support of the asynchronous result handler in th
   <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> CONFIG_WIKIDB_QUEUE = <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.queue</span><span class="delimiter">&quot;</span></span>;
 
   <span class="annotation">@Override</span>
-  <span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
+  <span class="directive">public</span> <span class="type">void</span> start(Promise&lt;<span class="predefined-type">Void</span>&gt; promise) <span class="directive">throws</span> <span class="exception">Exception</span> {
 
     <span class="predefined-type">HashMap</span>&lt;SqlQuery, <span class="predefined-type">String</span>&gt; sqlQueries = loadSqlQueries();
 
@@ -2711,9 +2724,9 @@ The essential difference is the support of the asynchronous result handler in th
         binder
           .setAddress(CONFIG_WIKIDB_QUEUE)
           .register(WikiDatabaseService.class, ready.result()); <b class="conum">(1)</b>
-        startFuture.complete();
+        promise.complete();
       } <span class="keyword">else</span> {
-        startFuture.fail(ready.cause());
+        promise.fail(ready.cause());
       }
     });
   }
@@ -2776,7 +2789,7 @@ and use it in the handlers instead of the event bus.</p>
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> WikiDatabaseService dbService;
 
 <span class="annotation">@Override</span>
-<span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
+<span class="directive">public</span> <span class="type">void</span> start(Promise&lt;<span class="predefined-type">Void</span>&gt; promise) <span class="directive">throws</span> <span class="exception">Exception</span> {
 
   <span class="predefined-type">String</span> wikiDbQueue = config().getString(CONFIG_WIKIDB_QUEUE, <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.queue</span><span class="delimiter">&quot;</span></span>); <b class="conum">(1)</b>
   dbService = WikiDatabaseService.createProxy(vertx, wikiDbQueue);
@@ -3258,7 +3271,7 @@ The test starts a HTTP server and then it does a HTTP GET request with the web c
           webClient.close();
           async.complete();
         } <span class="keyword">else</span> {
-          async.resolve(<span class="predefined-type">Future</span>.failedFuture(ar.cause()));
+          async.resolve(Promise.failedPromise(ar.cause()));
         }
       });
     }));
@@ -3721,70 +3734,52 @@ It creates a page, fetches it, updates it then deletes it:</p>
     .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Sample</span><span class="delimiter">&quot;</span></span>)
     .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content"># A page</span><span class="delimiter">&quot;</span></span>);
 
-  <span class="predefined-type">Future</span>&lt;JsonObject&gt; postRequest = <span class="predefined-type">Future</span>.future();
+  Promise&lt;HttpResponse&lt;JsonObject&gt;&gt; postPagePromise = Promise.promise();
   webClient.post(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages</span><span class="delimiter">&quot;</span></span>)
     .as(BodyCodec.jsonObject())
-    .sendJsonObject(page, ar -&gt; {
-      <span class="keyword">if</span> (ar.succeeded()) {
-        HttpResponse&lt;JsonObject&gt; postResponse = ar.result();
-        postRequest.complete(postResponse.body());
-      } <span class="keyword">else</span> {
-        context.fail(ar.cause());
-      }
-    });
+    .sendJsonObject(page, postPagePromise);
 
-  <span class="predefined-type">Future</span>&lt;JsonObject&gt; getRequest = <span class="predefined-type">Future</span>.future();
-  postRequest.compose(h -&gt; {
+  <span class="predefined-type">Future</span>&lt;HttpResponse&lt;JsonObject&gt;&gt; getPageFuture = postPagePromise.future().compose(resp -&gt; {
+    Promise&lt;HttpResponse&lt;JsonObject&gt;&gt; promise = Promise.promise();
     webClient.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages</span><span class="delimiter">&quot;</span></span>)
       .as(BodyCodec.jsonObject())
-      .send(ar -&gt; {
-        <span class="keyword">if</span> (ar.succeeded()) {
-          HttpResponse&lt;JsonObject&gt; getResponse = ar.result();
-          getRequest.complete(getResponse.body());
-        } <span class="keyword">else</span> {
-          context.fail(ar.cause());
-        }
-      });
-  }, getRequest);
+      .send(promise);
+    <span class="keyword">return</span> promise.future();
+  });
 
-  <span class="predefined-type">Future</span>&lt;JsonObject&gt; putRequest = <span class="predefined-type">Future</span>.future();
-  getRequest.compose(response -&gt; {
-    JsonArray array = response.getJsonArray(<span class="string"><span class="delimiter">&quot;</span><span class="content">pages</span><span class="delimiter">&quot;</span></span>);
+  <span class="predefined-type">Future</span>&lt;HttpResponse&lt;JsonObject&gt;&gt; updatePageFuture = getPageFuture.compose(resp -&gt; {
+    JsonArray array = resp.body().getJsonArray(<span class="string"><span class="delimiter">&quot;</span><span class="content">pages</span><span class="delimiter">&quot;</span></span>);
     context.assertEquals(<span class="integer">1</span>, array.size());
     context.assertEquals(<span class="integer">0</span>, array.getJsonObject(<span class="integer">0</span>).getInteger(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>));
+    Promise&lt;HttpResponse&lt;JsonObject&gt;&gt; promise = Promise.promise();
+    JsonObject data = <span class="keyword">new</span> JsonObject()
+      .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="integer">0</span>)
+      .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Oh Yeah!</span><span class="delimiter">&quot;</span></span>);
     webClient.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages/0</span><span class="delimiter">&quot;</span></span>)
       .as(BodyCodec.jsonObject())
-      .sendJsonObject(<span class="keyword">new</span> JsonObject()
-        .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="integer">0</span>)
-        .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Oh Yeah!</span><span class="delimiter">&quot;</span></span>), ar -&gt; {
-        <span class="keyword">if</span> (ar.succeeded()) {
-          HttpResponse&lt;JsonObject&gt; putResponse = ar.result();
-          putRequest.complete(putResponse.body());
-        } <span class="keyword">else</span> {
-          context.fail(ar.cause());
-        }
-      });
-  }, putRequest);
+      .sendJsonObject(data, promise);
+    <span class="keyword">return</span> promise.future();
+  });
 
-  <span class="predefined-type">Future</span>&lt;JsonObject&gt; deleteRequest = <span class="predefined-type">Future</span>.future();
-  putRequest.compose(response -&gt; {
-    context.assertTrue(response.getBoolean(<span class="string"><span class="delimiter">&quot;</span><span class="content">success</span><span class="delimiter">&quot;</span></span>));
+  <span class="predefined-type">Future</span>&lt;HttpResponse&lt;JsonObject&gt;&gt; deletePageFuture = updatePageFuture.compose(resp -&gt; {
+    context.assertTrue(resp.body().getBoolean(<span class="string"><span class="delimiter">&quot;</span><span class="content">success</span><span class="delimiter">&quot;</span></span>));
+    Promise&lt;HttpResponse&lt;JsonObject&gt;&gt; promise = Promise.promise();
     webClient.delete(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages/0</span><span class="delimiter">&quot;</span></span>)
       .as(BodyCodec.jsonObject())
-      .send(ar -&gt; {
-        <span class="keyword">if</span> (ar.succeeded()) {
-          HttpResponse&lt;JsonObject&gt; delResponse = ar.result();
-          deleteRequest.complete(delResponse.body());
-        } <span class="keyword">else</span> {
-          context.fail(ar.cause());
-        }
-      });
-  }, deleteRequest);
+      .send(promise);
+    <span class="keyword">return</span> promise.future();
+  });
 
-  deleteRequest.compose(response -&gt; {
-    context.assertTrue(response.getBoolean(<span class="string"><span class="delimiter">&quot;</span><span class="content">success</span><span class="delimiter">&quot;</span></span>));
-    async.complete();
-  }, <span class="predefined-type">Future</span>.failedFuture(<span class="string"><span class="delimiter">&quot;</span><span class="content">Oh?</span><span class="delimiter">&quot;</span></span>));
+  deletePageFuture.setHandler(ar -&gt; {
+    <span class="keyword">if</span> (ar.succeeded()) {
+      context.assertTrue(ar.result().body().getBoolean(<span class="string"><span class="delimiter">&quot;</span><span class="content">success</span><span class="delimiter">&quot;</span></span>));
+      async.complete();
+    } <span class="keyword">else</span> {
+      context.fail(ar.cause());
+    }
+  });
+
+  async.awaitSuccess(<span class="integer">5000</span>);
 }</code></pre>
 </div>
 </div>
@@ -4444,27 +4439,28 @@ Salt values can also be generated using <code>auth.generateSalt()</code>.</p>
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MainVerticle</span> <span class="directive">extends</span> AbstractVerticle {
 
   <span class="annotation">@Override</span>
-  <span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
+  <span class="directive">public</span> <span class="type">void</span> start(Promise&lt;<span class="predefined-type">Void</span>&gt; promise) {
 
-    <span class="predefined-type">Future</span>&lt;<span class="predefined-type">String</span>&gt; dbVerticleDeployment = <span class="predefined-type">Future</span>.future();
-    vertx.deployVerticle(<span class="keyword">new</span> WikiDatabaseVerticle(), dbVerticleDeployment);
+    Promise&lt;<span class="predefined-type">String</span>&gt; dbDeploymentPromise = Promise.promise();
+    vertx.deployVerticle(<span class="keyword">new</span> WikiDatabaseVerticle(), dbDeploymentPromise);
 
-    dbVerticleDeployment.compose(id -&gt; {
-      <span class="predefined-type">Future</span>&lt;<span class="predefined-type">String</span>&gt; authInitDeployment = <span class="predefined-type">Future</span>.future();
-      vertx.deployVerticle(<span class="keyword">new</span> AuthInitializerVerticle(), authInitDeployment);
-      <span class="keyword">return</span> authInitDeployment;
-    }).compose(id -&gt; {
-      <span class="predefined-type">Future</span>&lt;<span class="predefined-type">String</span>&gt; httpVerticleDeployment = <span class="predefined-type">Future</span>.future();
-      vertx.deployVerticle(
-        <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.guides.wiki.http.HttpServerVerticle</span><span class="delimiter">&quot;</span></span>,
-        <span class="keyword">new</span> DeploymentOptions().setInstances(<span class="integer">2</span>),
-        httpVerticleDeployment.completer());
-      <span class="keyword">return</span> httpVerticleDeployment;
-    }).setHandler(ar -&gt; {
+    <span class="predefined-type">Future</span>&lt;<span class="predefined-type">String</span>&gt; authDeploymentFuture = dbDeploymentPromise.future().compose(id -&gt; {
+      Promise&lt;<span class="predefined-type">String</span>&gt; deployPromise = Promise.promise();
+      vertx.deployVerticle(<span class="keyword">new</span> AuthInitializerVerticle(), deployPromise);
+      <span class="keyword">return</span> deployPromise.future();
+    });
+
+    authDeploymentFuture.compose(id -&gt; {
+      Promise&lt;<span class="predefined-type">String</span>&gt; deployPromise = Promise.promise();
+      vertx.deployVerticle(<span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.guides.wiki.http.HttpServerVerticle</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> DeploymentOptions().setInstances(<span class="integer">2</span>), deployPromise);
+      <span class="keyword">return</span> deployPromise.future();
+    });
+
+    authDeploymentFuture.setHandler(ar -&gt; {
       <span class="keyword">if</span> (ar.succeeded()) {
-        startFuture.complete();
+        promise.complete();
       } <span class="keyword">else</span> {
-        startFuture.fail(ar.cause());
+        promise.fail(ar.cause());
       }
     });
   }
@@ -4742,18 +4738,17 @@ Set-Cookie: vertx-web.session=0598697483371c7f3cb434fbe35f15e4; Path=/
 <span class="directive">public</span> <span class="type">void</span> play_with_api(TestContext context) {
   Async async = context.async();
 
-  <span class="predefined-type">Future</span>&lt;<span class="predefined-type">String</span>&gt; tokenRequest = <span class="predefined-type">Future</span>.future();
+  Promise&lt;HttpResponse&lt;<span class="predefined-type">String</span>&gt;&gt; tokenPromise = Promise.promise();
   webClient.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/token</span><span class="delimiter">&quot;</span></span>)
     .putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">login</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>)  <b class="conum">(1)</b>
     .putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">bar</span><span class="delimiter">&quot;</span></span>)
-    .as(BodyCodec.string()) <b class="conum">(2)</b>
-    .send(ar -&gt; {
-      <span class="keyword">if</span> (ar.succeeded()) {
-        tokenRequest.complete(ar.result().body());  <b class="conum">(3)</b>
-      } <span class="keyword">else</span> {
-        context.fail(ar.cause());
-      }
-    });
+    .as(BodyCodec.string())   <b class="conum">(2)</b>
+    .send(tokenPromise);
+  <span class="predefined-type">Future</span>&lt;HttpResponse&lt;<span class="predefined-type">String</span>&gt;&gt; tokenFuture = tokenPromise.future(); <b class="conum">(3)</b>
+
+  JsonObject page = <span class="keyword">new</span> JsonObject()
+    .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Sample</span><span class="delimiter">&quot;</span></span>)
+    .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content"># A page</span><span class="delimiter">&quot;</span></span>);
   <span class="comment">// (...)</span></code></pre>
 </div>
 </div>
@@ -4775,36 +4770,24 @@ Set-Cookie: vertx-web.session=0598697483371c7f3cb434fbe35f15e4; Path=/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Future</span>&lt;JsonObject&gt; postRequest = <span class="predefined-type">Future</span>.future();
-tokenRequest.compose(token -&gt; {
-  jwtTokenHeaderValue = <span class="string"><span class="delimiter">&quot;</span><span class="content">Bearer </span><span class="delimiter">&quot;</span></span> + token;  <b class="conum">(1)</b>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Future</span>&lt;HttpResponse&lt;JsonObject&gt;&gt; postPageFuture = tokenFuture.compose(tokenResponse -&gt; {
+  Promise&lt;HttpResponse&lt;JsonObject&gt;&gt; promise = Promise.promise();
+  jwtTokenHeaderValue = <span class="string"><span class="delimiter">&quot;</span><span class="content">Bearer </span><span class="delimiter">&quot;</span></span> + tokenResponse.body();   <b class="conum">(1)</b>
   webClient.post(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages</span><span class="delimiter">&quot;</span></span>)
     .putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Authorization</span><span class="delimiter">&quot;</span></span>, jwtTokenHeaderValue)  <b class="conum">(2)</b>
     .as(BodyCodec.jsonObject())
-    .sendJsonObject(page, ar -&gt; {
-      <span class="keyword">if</span> (ar.succeeded()) {
-        HttpResponse&lt;JsonObject&gt; postResponse = ar.result();
-        postRequest.complete(postResponse.body());
-      } <span class="keyword">else</span> {
-        context.fail(ar.cause());
-      }
-    });
-}, postRequest);
+    .sendJsonObject(page, promise);
+  <span class="keyword">return</span> promise.future();
+});
 
-<span class="predefined-type">Future</span>&lt;JsonObject&gt; getRequest = <span class="predefined-type">Future</span>.future();
-postRequest.compose(h -&gt; {
+<span class="predefined-type">Future</span>&lt;HttpResponse&lt;JsonObject&gt;&gt; getPageFuture = postPageFuture.compose(resp -&gt; {
+  Promise&lt;HttpResponse&lt;JsonObject&gt;&gt; promise = Promise.promise();
   webClient.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages</span><span class="delimiter">&quot;</span></span>)
     .putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Authorization</span><span class="delimiter">&quot;</span></span>, jwtTokenHeaderValue)
     .as(BodyCodec.jsonObject())
-    .send(ar -&gt; {
-      <span class="keyword">if</span> (ar.succeeded()) {
-        HttpResponse&lt;JsonObject&gt; getResponse = ar.result();
-        getRequest.complete(getResponse.body());
-      } <span class="keyword">else</span> {
-        context.fail(ar.cause());
-      }
-    });
-}, getRequest);
+    .send(promise);
+  <span class="keyword">return</span> promise.future();
+});
 <span class="comment">// (...)</span></code></pre>
 </div>
 </div>
@@ -4870,6 +4853,11 @@ To enable it, start by adding the <code>vertx-rx-java2</code> module to the Mave
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
   <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>vertx-rx-java2<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>vertx-rx-java2-gen<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>${vertx.version}<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -4916,7 +4904,7 @@ When the operation completes, it emits the deployment <code>id</code> or signals
     <span class="keyword">return</span> httpVerticleDeployment;
   })
   .flatMap(id -&gt; vertx.rxDeployVerticle(<span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.guides.wiki.http.AuthInitializerVerticle</span><span class="delimiter">&quot;</span></span>)) <b class="conum">(2)</b>
-  .subscribe(id -&gt; startFuture.complete(), startFuture::fail); <b class="conum">(3)</b></code></pre>
+  .subscribe(id -&gt; promise.complete(), promise::fail); <b class="conum">(3)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -4971,7 +4959,7 @@ the <code>getDelegate()</code> method. Verticle&#8217;s <code>start()</code> met
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
-<span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
+<span class="directive">public</span> <span class="type">void</span> start(Promise&lt;<span class="predefined-type">Void</span>&gt; promise) <span class="directive">throws</span> <span class="exception">Exception</span> {
 
   <span class="predefined-type">String</span> wikiDbQueue = config().getString(CONFIG_WIKIDB_QUEUE, <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.queue</span><span class="delimiter">&quot;</span></span>);
   dbService = io.vertx.guides.wiki.database.WikiDatabaseService.createProxy(vertx.getDelegate(), wikiDbQueue);</code></pre>
@@ -6169,9 +6157,9 @@ Of course we appreciate praise, but we appreciate as much any constructive feedb
           <div id="footer">
             <div id="footer-text">
               
-                Version 1.4.0<br>
+                Version 1.5.0 2019/07/25<br>
               
-                Last updated 2018-11-29 10:01:34 CET
+                Last updated 2019-07-25 13:05:56 CEST
               
               
             </div>

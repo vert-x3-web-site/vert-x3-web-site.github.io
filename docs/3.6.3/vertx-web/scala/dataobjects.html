@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -106,6 +107,7 @@
 <li><a href="#BridgeOptions">BridgeOptions</a></li>
 <li><a href="#Http2PushMapping">Http2PushMapping</a></li>
 <li><a href="#PermittedOptions">PermittedOptions</a></li>
+<li><a href="#SockJSBridgeOptions">SockJSBridgeOptions</a></li>
 <li><a href="#SockJSHandlerOptions">SockJSHandlerOptions</a></li>
 </ul>
         </div>
@@ -117,13 +119,14 @@
 <li><a href="#BridgeOptions">BridgeOptions</a></li>
 <li><a href="#Http2PushMapping">Http2PushMapping</a></li>
 <li><a href="#PermittedOptions">PermittedOptions</a></li>
+<li><a href="#SockJSBridgeOptions">SockJSBridgeOptions</a></li>
 <li><a href="#SockJSHandlerOptions">SockJSHandlerOptions</a></li>
 </ul>
         </div>
         <div class="sect1">
 <h2 id="BridgeOptions">BridgeOptions</h2>
 <div class="sectionbody">
-Options for configuring the event bus bridge.
+Deprecated: use link instead.
 <hr>
 <table class="tableblock frame-topbot grid-all spread">
 <colgroup>
@@ -258,6 +261,67 @@ link.
 </div>
 </div>
 <div class="sect1">
+<h2 id="SockJSBridgeOptions">SockJSBridgeOptions</h2>
+<div class="sectionbody">
+Options for configuring the event bus bridge.
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="inboundPermitted"></a><code>@inboundPermitted</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of <a href="dataobjects.html#PermittedOptions">PermittedOptions</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="inboundPermitteds"></a><code>@inboundPermitteds</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of <a href="dataobjects.html#PermittedOptions">PermittedOptions</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="maxAddressLength"></a><code>@maxAddressLength</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="maxHandlersPerSocket"></a><code>@maxHandlersPerSocket</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="outboundPermitted"></a><code>@outboundPermitted</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of <a href="dataobjects.html#PermittedOptions">PermittedOptions</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="outboundPermitteds"></a><code>@outboundPermitteds</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of <a href="dataobjects.html#PermittedOptions">PermittedOptions</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="pingTimeout"></a><code>@pingTimeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (long)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="replyTimeout"></a><code>@replyTimeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (long)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
 <h2 id="SockJSHandlerOptions">SockJSHandlerOptions</h2>
 <div class="sectionbody">
 Options for configuring a SockJS handler
@@ -315,7 +379,7 @@ Options for configuring a SockJS handler
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:30 CEST
               
               
             </div>

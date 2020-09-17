@@ -266,7 +266,7 @@ scalability and low overhead.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-lang-kotlin<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.9.2<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -280,7 +280,7 @@ scalability and low overhead.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
- compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-lang-kotlin:3.9.2</span><span class="delimiter">'</span></span>
+ compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-lang-kotlin:3.9.3</span><span class="delimiter">'</span></span>
 }</code></pre>
 </div>
 </div>
@@ -847,7 +847,7 @@ client.preparedQuery(&quot;INSERT INTO USERS (id, name) VALUES (?, ?)&quot;).exe
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="kotlin">client.preparedQuery(&quot;INSERT INTO color (color_name) VALUES (\$$1), (\$$2), (\$$3) RETURNING color_id&quot;).execute(Tuple.of(&quot;white&quot;, &quot;red&quot;, &quot;blue&quot;), { ar -&gt;
+<pre class="CodeRay highlight"><code data-lang="kotlin">client.preparedQuery(&quot;INSERT INTO color (color_name) VALUES (\$1), (\$2), (\$3) RETURNING color_id&quot;).execute(Tuple.of(&quot;white&quot;, &quot;red&quot;, &quot;blue&quot;), { ar -&gt;
   if (ar.succeeded()) {
     var rows = ar.result()
     println(rows.rowCount())
@@ -1311,7 +1311,14 @@ if (numeric.isNaN()) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="kotlin">Code not translatable</code></pre>
+<pre class="CodeRay highlight"><code data-lang="kotlin">// Create a tuple with a single array
+var tuple = Tuple.of(arrayOf(&quot;a&quot;, &quot;tuple&quot;, &quot;with&quot;, &quot;arrays&quot;))
+
+// Add a string array to the tuple
+tuple.addStringArray(arrayOf(&quot;another&quot;, &quot;array&quot;))
+
+// Get the first array of string
+var array = tuple.getStringArray(0)</code></pre>
 </div>
 </div>
 </div>
@@ -1327,7 +1334,7 @@ if (numeric.isNaN()) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="kotlin">client.preparedQuery(&quot;SELECT address, (address).city FROM address_book WHERE id=\$$1&quot;).execute(Tuple.of(3), { ar -&gt;
+<pre class="CodeRay highlight"><code data-lang="kotlin">client.preparedQuery(&quot;SELECT address, (address).city FROM address_book WHERE id=\$1&quot;).execute(Tuple.of(3), { ar -&gt;
   if (ar.succeeded()) {
     var rows = ar.result()
     for (row in rows) {
@@ -1344,7 +1351,7 @@ if (numeric.isNaN()) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="kotlin">client.preparedQuery(&quot;INSERT INTO address_book (id, address) VALUES (\$$1, \$$2)&quot;).execute(Tuple.of(3, &quot;('Anytown', 'Second Ave', false)&quot;), { ar -&gt;
+<pre class="CodeRay highlight"><code data-lang="kotlin">client.preparedQuery(&quot;INSERT INTO address_book (id, address) VALUES (\$1, \$2)&quot;).execute(Tuple.of(3, &quot;('Anytown', 'Second Ave', false)&quot;), { ar -&gt;
   if (ar.succeeded()) {
     var rows = ar.result()
     println(rows.rowCount())
@@ -1364,7 +1371,7 @@ if (numeric.isNaN()) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="kotlin">client.preparedQuery(&quot;SELECT to_tsvector( \$$1 ) @@ to_tsquery( \$$2 )&quot;).execute(Tuple.of(&quot;fat cats ate fat rats&quot;, &quot;fat &amp; rat&quot;), { ar -&gt;
+<pre class="CodeRay highlight"><code data-lang="kotlin">client.preparedQuery(&quot;SELECT to_tsvector( \$1 ) @@ to_tsquery( \$2 )&quot;).execute(Tuple.of(&quot;fat cats ate fat rats&quot;, &quot;fat &amp; rat&quot;), { ar -&gt;
   if (ar.succeeded()) {
     var rows = ar.result()
     for (row in rows) {
@@ -1381,7 +1388,7 @@ if (numeric.isNaN()) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="kotlin">client.preparedQuery(&quot;SELECT to_tsvector( \$$1 ), to_tsquery( \$$2 )&quot;).execute(Tuple.of(&quot;fat cats ate fat rats&quot;, &quot;fat &amp; rat&quot;), { ar -&gt;
+<pre class="CodeRay highlight"><code data-lang="kotlin">client.preparedQuery(&quot;SELECT to_tsvector( \$1 ), to_tsquery( \$2 )&quot;).execute(Tuple.of(&quot;fat cats ate fat rats&quot;, &quot;fat &amp; rat&quot;), { ar -&gt;
   if (ar.succeeded()) {
     var rows = ar.result()
     for (row in rows) {
@@ -1649,7 +1656,7 @@ PgConnection.connect(vertx, options, { res -&gt;
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2020-07-16 01:06:42 CEST
+                Last updated 2020-09-16 10:26:32 CEST
               
               
             </div>

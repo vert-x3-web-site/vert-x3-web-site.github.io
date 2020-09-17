@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>vertx-lang-scala-docs_2.12 3.6.3 API  - io.vertx.scala.core.file.FileSystem</title>
-          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.3 API - io.vertx.scala.core.file.FileSystem" />
-          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.3 API io.vertx.scala.core.file.FileSystem" />
+          <title>vertx-lang-scala-docs_2.12 3.9.1 API  - io.vertx.scala.core.file.FileSystem</title>
+          <meta name="description" content="vertx - lang - scala - docs 2.12 3.9.1 API - io.vertx.scala.core.file.FileSystem" />
+          <meta name="keywords" content="vertx lang scala docs 2.12 3.9.1 API io.vertx.scala.core.file.FileSystem" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.3 API<span id="doc-version"></span></span>
+        <span id="doc-title">vertx-lang-scala-docs_2.12 3.9.1 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -1615,7 +1615,7 @@ in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute
       </span>
       
       <p class="shortcomment cmt">Create the directory represented by <code>path</code> and any non existent parents, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Create the directory represented by <code>path</code> and any non existent parents, asynchronously.</p><p>The new directory will be created with permissions as specified by <code>perms</code>.</p><p>The permission String takes the form rwxr-x--- as specified
-in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.</p><p>The operation will fail if the directory already exists.   * @param path path to the file</p></div><dl class="paramcmts block"><dt class="param">perms</dt><dd class="cmt"><p>the permissions string</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute/PosixFilePermissions.html">here</a>.</p><p>The operation will fail if the <code>path</code> already exists but is not a directory.   * @param path path to the file</p></div><dl class="paramcmts block"><dt class="param">perms</dt><dd class="cmt"><p>the permissions string</p></dd><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#mkdirs" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mkdirs(path:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.file.FileSystem"></a><a id="mkdirs(String,Handler[AsyncResult[Unit]]):FileSystem"></a>
       <span class="permalink">
@@ -1631,7 +1631,7 @@ in <a href="http://download.oracle.com/javase/7/docs/api/java/nio/file/attribute
         <span class="name">mkdirs</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.file.FileSystem">FileSystem</a></span>
       </span>
       
-      <p class="shortcomment cmt">Create the directory represented by <code>path</code> and any non existent parents, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Create the directory represented by <code>path</code> and any non existent parents, asynchronously.</p><p>The operation will fail if the directory already exists.   * @param path path to the file</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Create the directory represented by <code>path</code> and any non existent parents, asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Create the directory represented by <code>path</code> and any non existent parents, asynchronously.</p><p>The operation will fail if the <code>path</code> already exists but is not a directory.   * @param path path to the file</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the handler that will be called on completion</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.file.FileSystem#mkdirsBlocking" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="mkdirsBlocking(path:String,perms:String):io.vertx.scala.core.file.FileSystem"></a><a id="mkdirsBlocking(String,String):FileSystem"></a>
       <span class="permalink">

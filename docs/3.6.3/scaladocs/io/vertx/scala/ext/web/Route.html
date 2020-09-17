@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>vertx-lang-scala-docs_2.12 3.6.3 API  - io.vertx.scala.ext.web.Route</title>
-          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.3 API - io.vertx.scala.ext.web.Route" />
-          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.3 API io.vertx.scala.ext.web.Route" />
+          <title>vertx-lang-scala-docs_2.12 3.9.1 API  - io.vertx.scala.ext.web.Route</title>
+          <meta name="description" content="vertx - lang - scala - docs 2.12 3.9.1 API - io.vertx.scala.ext.web.Route" />
+          <meta name="keywords" content="vertx lang scala docs 2.12 3.9.1 API io.vertx.scala.ext.web.Route" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.3 API<span id="doc-version"></span></span>
+        <span id="doc-title">vertx-lang-scala-docs_2.12 3.9.1 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -262,10 +262,6 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="io.vertx.scala.ext.web">web</a></dd></dl></div>
     </li><li class="current-entities indented5">
-                        <a class="object" href="Cookie$.html" title=""></a>
-                        <a class="class" href="Cookie.html" title="Represents an HTTP Cookie."></a>
-                        <a href="Cookie.html" title="Represents an HTTP Cookie.">Cookie</a>
-                      </li><li class="current-entities indented5">
                         <a class="object" href="FileUpload$.html" title=""></a>
                         <a class="class" href="FileUpload.html" title="Represents a file-upload from an HTTP multipart form submission."></a>
                         <a href="FileUpload.html" title="Represents a file-upload from an HTTP multipart form submission.">FileUpload</a>
@@ -769,6 +765,23 @@ handlers to the same route object rather than creating two different routes obje
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="io.vertx.scala.ext.web.Route#isRegexPath" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isRegexPath():Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/ext/web/Route.html#isRegexPath():Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isRegexPath</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Returns true of the path is a regular expression, this includes expression paths.</p><div class="fullcomment"><div class="comment cmt"><p>Returns true of the path is a regular expression, this includes expression paths.   * @return true if backed by a pattern.
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.Route#last" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="last():io.vertx.scala.ext.web.Route"></a><a id="last():Route"></a>
       <span class="permalink">
@@ -803,6 +816,22 @@ handlers to the same route object rather than creating two different routes obje
       
       <p class="shortcomment cmt">Add an HTTP method for this route.</p><div class="fullcomment"><div class="comment cmt"><p>Add an HTTP method for this route. By default a route will match all HTTP methods. If any are specified then the route
 will only match any of the specified methods   * @param method the HTTP method to add</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+    </li><li name="io.vertx.scala.ext.web.Route#methods" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="methods():scala.collection.mutable.Set[io.vertx.core.http.HttpMethod]"></a><a id="methods():Set[HttpMethod]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/ext/web/Route.html#methods():scala.collection.mutable.Set[io.vertx.core.http.HttpMethod]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">methods</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.collection.mutable.Set">Set</span>[<span class="extype" name="io.vertx.core.http.HttpMethod">HttpMethod</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the http methods accepted by this route</p></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -961,6 +990,24 @@ this function. You have to name capture groups in regex with names: &quot;p0&quo
 <br/>
 For example: If you declare route with regex \/(?&lt;p0&gt;[a-z]*)\/(?&lt;p1&gt;[a-z]*) and group names [&quot;param_a&quot;, &quot;param-b&quot;]
 for uri /hello/world you receive inside pathParams() the parameter param_a = &quot;hello&quot;   * @param groups group names</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+    </li><li name="io.vertx.scala.ext.web.Route#subRouter" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="subRouter(subRouter:io.vertx.scala.ext.web.Router):io.vertx.scala.ext.web.Route"></a><a id="subRouter(Router):Route"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/ext/web/Route.html#subRouter(subRouter:io.vertx.scala.ext.web.Router):io.vertx.scala.ext.web.Route" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">subRouter</span><span class="params">(<span name="subRouter">subRouter: <a href="Router.html" class="extype" name="io.vertx.scala.ext.web.Router">Router</a></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.Route">Route</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Use a (sub) <a href="Router.html" class="extype" name="io.vertx.scala.ext.web.Router">io.vertx.scala.ext.web.Router</a> as a handler.</p><div class="fullcomment"><div class="comment cmt"><p>Use a (sub) <a href="Router.html" class="extype" name="io.vertx.scala.ext.web.Router">io.vertx.scala.ext.web.Router</a> as a handler. There are several requirements to be fulfilled for this
+to be accepted.</p><ul><li>The route path must end with a wild card</li><li>Parameters are allowed but full regex patterns not</li><li>No other handler can be registered before or after this call (but they can on a new route object for the same path)</li><li>Only 1 router per path object
+   * @param subRouter the router to add</li></ul></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">

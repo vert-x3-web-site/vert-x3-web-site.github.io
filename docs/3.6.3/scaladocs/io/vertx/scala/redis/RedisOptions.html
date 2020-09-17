@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>vertx-lang-scala-docs_2.12 3.6.3 API  - io.vertx.scala.redis.RedisOptions</title>
-          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.3 API - io.vertx.scala.redis.RedisOptions" />
-          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.3 API io.vertx.scala.redis.RedisOptions" />
+          <title>vertx-lang-scala-docs_2.12 3.9.1 API  - io.vertx.scala.redis.RedisOptions</title>
+          <meta name="description" content="vertx - lang - scala - docs 2.12 3.9.1 API - io.vertx.scala.redis.RedisOptions" />
+          <meta name="keywords" content="vertx lang scala docs 2.12 3.9.1 API io.vertx.scala.redis.RedisOptions" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.3 API<span id="doc-version"></span></span>
+        <span id="doc-title">vertx-lang-scala-docs_2.12 3.9.1 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -133,6 +133,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="io.vertx.scala">scala</a></dd></dl></div>
+    </li><li name="io.vertx.scala.redis.client" visbl="pub" class="indented5 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="client"></a><a id="client:client"></a>
+      <span class="permalink">
+      <a href="../../../../io/vertx/scala/redis/index.html#client" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="client/index.html"><span class="name">client</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="io.vertx.scala.redis">redis</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.op" visbl="pub" class="indented5 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="op"></a><a id="op:op"></a>
       <span class="permalink">
@@ -167,20 +183,20 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="io.vertx.scala.redis">redis</a></dd></dl></div>
     </li><li class="current-entities indented4">
                         <a class="object" href="RedisClient$.html" title=""></a>
-                        <a class="class" href="RedisClient.html" title=""></a>
-                        <a href="RedisClient.html" title="">RedisClient</a>
+                        <a class="class" href="RedisClient.html" title="This factory is deprecated use io.vertx.scala.redis.client.Redis instead, or for a typed API io.vertx.scala.redis.client.RedisAPI."></a>
+                        <a href="RedisClient.html" title="This factory is deprecated use io.vertx.scala.redis.client.Redis instead, or for a typed API io.vertx.scala.redis.client.RedisAPI.">RedisClient</a>
                       </li><li class="current-entities indented4">
                         <a class="object" href="RedisOptions$.html" title=""></a>
-                        <a class="class" href="" title="This object controls the connection setting to the Redis Server."></a>
-                        <a href="" title="This object controls the connection setting to the Redis Server.">RedisOptions</a>
+                        <a class="class" href="" title=""></a>
+                        <a href="" title="">RedisOptions</a>
                       </li><li class="current-entities indented4">
                         <a class="object" href="RedisTransaction$.html" title=""></a>
-                        <a class="class" href="RedisTransaction.html" title="This Interface represents a TX"></a>
-                        <a href="RedisTransaction.html" title="This Interface represents a TX">RedisTransaction</a>
+                        <a class="class" href="RedisTransaction.html" title="This factory is deprecated use io.vertx.scala.redis.client.Redis instead, or for a typed API io.vertx.scala.redis.client.RedisAPI."></a>
+                        <a href="RedisTransaction.html" title="This factory is deprecated use io.vertx.scala.redis.client.Redis instead, or for a typed API io.vertx.scala.redis.client.RedisAPI.">RedisTransaction</a>
                       </li><li class="current-entities indented4">
                         <a class="object" href="Script$.html" title=""></a>
-                        <a class="class" href="Script.html" title="Container for a script and its sha1 hash."></a>
-                        <a href="Script.html" title="Container for a script and its sha1 hash.">Script</a>
+                        <a class="class" href="Script.html" title="This factory is deprecated use io.vertx.scala.redis.client.Redis instead, or for a typed API io.vertx.scala.redis.client.RedisAPI."></a>
+                        <a href="Script.html" title="This factory is deprecated use io.vertx.scala.redis.client.Redis instead, or for a typed API io.vertx.scala.redis.client.RedisAPI.">Script</a>
                       </li>
               </ul>
             </div>
@@ -211,17 +227,7 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This object controls the connection setting to the Redis Server. There is no need to specify most of the settings
-since it has built the following sensible defaults:</p><p>* <code>encoding</code>: <code>UTF-8</code>
-* <code>host</code>: <code>localhost</code>
-* <code>port</code>: 6379
-* <code>tcpKeepAlive</code>: true
-* <code>tcpNoDelay</code>: true
-* <code>binary</code>: false</p><p>However there are two extra properties that have no defaults since they are optional:</p><p>* <code>auth</code>
-* <code>select</code></p><p>The usage of this two extra properties is to setup required authentication and optionally the selection of the active
-database at connection time. If you define this extra properties on every connection to Redis server this client
-will perform the authentication handshake and database selection, however if you don't do this and call <a href="RedisClient.html" class="extype" name="io.vertx.scala.redis.RedisClient">io.vertx.scala.redis.RedisClient</a>
-yourself in case of connection failure the client will not be able to perform the correct authentication handshake.</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -362,7 +368,7 @@ yourself in case of connection failure the client will not be able to perform th
       
       <p class="shortcomment cmt">Add a CRL path
 </p><div class="fullcomment"><div class="comment cmt"><p>Add a CRL path
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#addCrlValue" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addCrlValue(value:io.vertx.core.buffer.Buffer):io.vertx.scala.redis.RedisOptions"></a><a id="addCrlValue(Buffer):RedisOptions"></a>
       <span class="permalink">
@@ -380,7 +386,7 @@ yourself in case of connection failure the client will not be able to perform th
       
       <p class="shortcomment cmt">Add a CRL value
 </p><div class="fullcomment"><div class="comment cmt"><p>Add a CRL value
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#addEnabledCipherSuite" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addEnabledCipherSuite(value:String):io.vertx.scala.redis.RedisOptions"></a><a id="addEnabledCipherSuite(String):RedisOptions"></a>
       <span class="permalink">
@@ -397,7 +403,7 @@ yourself in case of connection failure the client will not be able to perform th
       </span>
       
       <p class="shortcomment cmt">Add an enabled cipher suite, appended to the ordered suites.</p><div class="fullcomment"><div class="comment cmt"><p>Add an enabled cipher suite, appended to the ordered suites.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#addEnabledSecureTransportProtocol" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addEnabledSecureTransportProtocol(value:String):io.vertx.scala.redis.RedisOptions"></a><a id="addEnabledSecureTransportProtocol(String):RedisOptions"></a>
       <span class="permalink">
@@ -414,7 +420,7 @@ yourself in case of connection failure the client will not be able to perform th
       </span>
       
       <p class="shortcomment cmt">Sets the list of enabled SSL/TLS protocols.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the list of enabled SSL/TLS protocols.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#addSentinel" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="addSentinel(value:String):io.vertx.scala.redis.RedisOptions"></a><a id="addSentinel(String):RedisOptions"></a>
       <span class="permalink">
@@ -623,7 +629,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getCrlPaths</span><span class="result">: <span class="extype" name="scala.collection.mutable.Buffer">Buffer</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getCrlValues" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getCrlValues:scala.collection.mutable.Buffer[io.vertx.core.buffer.Buffer]"></a><a id="getCrlValues:Buffer[Buffer]"></a>
       <span class="permalink">
@@ -639,7 +645,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getCrlValues</span><span class="result">: <span class="extype" name="scala.collection.mutable.Buffer">Buffer</span>[<span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span>]</span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getDomainSocketAddress" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getDomainSocketAddress:String"></a>
       <span class="permalink">
@@ -671,7 +677,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getEnabledCipherSuites</span><span class="result">: <span class="extype" name="scala.collection.mutable.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getEnabledSecureTransportProtocols" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getEnabledSecureTransportProtocols:scala.collection.mutable.Set[String]"></a><a id="getEnabledSecureTransportProtocols:Set[String]"></a>
       <span class="permalink">
@@ -687,7 +693,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getEnabledSecureTransportProtocols</span><span class="result">: <span class="extype" name="scala.collection.mutable.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getEncoding" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getEncoding:String"></a>
       <span class="permalink">
@@ -751,7 +757,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getIdleTimeout</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getIdleTimeoutUnit" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getIdleTimeoutUnit:java.util.concurrent.TimeUnit"></a><a id="getIdleTimeoutUnit:TimeUnit"></a>
       <span class="permalink">
@@ -767,7 +773,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getIdleTimeoutUnit</span><span class="result">: <span class="extype" name="java.util.concurrent.TimeUnit">TimeUnit</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getJdkSslEngineOptions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getJdkSslEngineOptions:io.vertx.scala.core.net.JdkSSLEngineOptions"></a><a id="getJdkSslEngineOptions:JdkSSLEngineOptions"></a>
       <span class="permalink">
@@ -783,7 +789,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getJdkSslEngineOptions</span><span class="result">: <a href="../core/net/JdkSSLEngineOptions.html" class="extype" name="io.vertx.scala.core.net.JdkSSLEngineOptions">JdkSSLEngineOptions</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getKeyStoreOptions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getKeyStoreOptions:io.vertx.scala.core.net.JksOptions"></a><a id="getKeyStoreOptions:JksOptions"></a>
       <span class="permalink">
@@ -799,7 +805,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getKeyStoreOptions</span><span class="result">: <a href="../core/net/JksOptions.html" class="extype" name="io.vertx.scala.core.net.JksOptions">JksOptions</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getLocalAddress" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getLocalAddress:String"></a>
       <span class="permalink">
@@ -831,7 +837,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getLogActivity</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getMasterName" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getMasterName:String"></a>
       <span class="permalink">
@@ -879,7 +885,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getOpenSslEngineOptions</span><span class="result">: <a href="../core/net/OpenSSLEngineOptions.html" class="extype" name="io.vertx.scala.core.net.OpenSSLEngineOptions">OpenSSLEngineOptions</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getPemKeyCertOptions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getPemKeyCertOptions:io.vertx.scala.core.net.PemKeyCertOptions"></a><a id="getPemKeyCertOptions:PemKeyCertOptions"></a>
       <span class="permalink">
@@ -895,7 +901,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getPemKeyCertOptions</span><span class="result">: <a href="../core/net/PemKeyCertOptions.html" class="extype" name="io.vertx.scala.core.net.PemKeyCertOptions">PemKeyCertOptions</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getPemTrustOptions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getPemTrustOptions:io.vertx.scala.core.net.PemTrustOptions"></a><a id="getPemTrustOptions:PemTrustOptions"></a>
       <span class="permalink">
@@ -911,7 +917,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getPemTrustOptions</span><span class="result">: <a href="../core/net/PemTrustOptions.html" class="extype" name="io.vertx.scala.core.net.PemTrustOptions">PemTrustOptions</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getPfxKeyCertOptions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getPfxKeyCertOptions:io.vertx.scala.core.net.PfxOptions"></a><a id="getPfxKeyCertOptions:PfxOptions"></a>
       <span class="permalink">
@@ -927,7 +933,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getPfxKeyCertOptions</span><span class="result">: <a href="../core/net/PfxOptions.html" class="extype" name="io.vertx.scala.core.net.PfxOptions">PfxOptions</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getPfxTrustOptions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getPfxTrustOptions:io.vertx.scala.core.net.PfxOptions"></a><a id="getPfxTrustOptions:PfxOptions"></a>
       <span class="permalink">
@@ -943,7 +949,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getPfxTrustOptions</span><span class="result">: <a href="../core/net/PfxOptions.html" class="extype" name="io.vertx.scala.core.net.PfxOptions">PfxOptions</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getPort" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getPort:Int"></a>
       <span class="permalink">
@@ -991,7 +997,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getReceiveBufferSize</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getReconnectAttempts" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getReconnectAttempts:Int"></a>
       <span class="permalink">
@@ -1055,7 +1061,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getSendBufferSize</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getSentinels" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getSentinels:scala.collection.mutable.Buffer[String]"></a><a id="getSentinels:Buffer[String]"></a>
       <span class="permalink">
@@ -1087,7 +1093,39 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getSoLinger</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+    </li><li name="io.vertx.scala.redis.RedisOptions#getSslHandshakeTimeout" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getSslHandshakeTimeout:Long"></a>
+      <span class="permalink">
+      <a href="../../../../io/vertx/scala/redis/RedisOptions.html#getSslHandshakeTimeout:Long" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getSslHandshakeTimeout</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+    </li><li name="io.vertx.scala.redis.RedisOptions#getSslHandshakeTimeoutUnit" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getSslHandshakeTimeoutUnit:java.util.concurrent.TimeUnit"></a><a id="getSslHandshakeTimeoutUnit:TimeUnit"></a>
+      <span class="permalink">
+      <a href="../../../../io/vertx/scala/redis/RedisOptions.html#getSslHandshakeTimeoutUnit:java.util.concurrent.TimeUnit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getSslHandshakeTimeoutUnit</span><span class="result">: <span class="extype" name="java.util.concurrent.TimeUnit">TimeUnit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getTrafficClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getTrafficClass:Int"></a>
       <span class="permalink">
@@ -1103,7 +1141,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getTrafficClass</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#getTrustStoreOptions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getTrustStoreOptions:io.vertx.scala.core.net.JksOptions"></a><a id="getTrustStoreOptions:JksOptions"></a>
       <span class="permalink">
@@ -1119,7 +1157,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">getTrustStoreOptions</span><span class="result">: <a href="../core/net/JksOptions.html" class="extype" name="io.vertx.scala.core.net.JksOptions">JksOptions</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
@@ -1202,7 +1240,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">isReuseAddress</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#isReusePort" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isReusePort:Boolean"></a>
       <span class="permalink">
@@ -1218,7 +1256,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">isReusePort</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#isSsl" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isSsl:Boolean"></a>
       <span class="permalink">
@@ -1234,7 +1272,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">isSsl</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#isTcpCork" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isTcpCork:Boolean"></a>
       <span class="permalink">
@@ -1250,7 +1288,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">isTcpCork</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#isTcpFastOpen" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isTcpFastOpen:Boolean"></a>
       <span class="permalink">
@@ -1266,7 +1304,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">isTcpFastOpen</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#isTcpKeepAlive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isTcpKeepAlive:Boolean"></a>
       <span class="permalink">
@@ -1282,7 +1320,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">isTcpKeepAlive</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#isTcpNoDelay" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isTcpNoDelay:Boolean"></a>
       <span class="permalink">
@@ -1298,7 +1336,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">isTcpNoDelay</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#isTcpQuickAck" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isTcpQuickAck:Boolean"></a>
       <span class="permalink">
@@ -1314,7 +1352,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">isTcpQuickAck</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#isTrustAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isTrustAll:Boolean"></a>
       <span class="permalink">
@@ -1346,7 +1384,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">isUseAlpn</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#isUsePooledBuffers" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isUsePooledBuffers:Boolean"></a>
       <span class="permalink">
@@ -1362,7 +1400,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">isUsePooledBuffers</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -1534,7 +1572,7 @@ yourself in case of connection failure the client will not be able to perform th
         <span class="name">setEnabledSecureTransportProtocols</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setEncoding" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setEncoding(value:String):io.vertx.scala.redis.RedisOptions"></a><a id="setEncoding(String):RedisOptions"></a>
       <span class="permalink">
@@ -1608,7 +1646,7 @@ To disable hostname verification, set hostnameVerificationAlgorithm to an empty 
       
       <p class="shortcomment cmt">Set the idle timeout, default time unit is seconds.</p><div class="fullcomment"><div class="comment cmt"><p>Set the idle timeout, default time unit is seconds. Zero means don't timeout.
 This determines if a connection will timeout and be closed if no data is received within the timeout.</p><p>If you want change default time unit, use <a href="../../../../../../../cheatsheet/NetClientOptions.html">NetClientOptions</a>
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setIdleTimeoutUnit" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setIdleTimeoutUnit(value:java.util.concurrent.TimeUnit):io.vertx.scala.redis.RedisOptions"></a><a id="setIdleTimeoutUnit(TimeUnit):RedisOptions"></a>
       <span class="permalink">
@@ -1625,7 +1663,7 @@ This determines if a connection will timeout and be closed if no data is receive
       </span>
       
       <p class="shortcomment cmt">Set the idle timeout unit.</p><div class="fullcomment"><div class="comment cmt"><p>Set the idle timeout unit. If not specified, default is seconds.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setJdkSslEngineOptions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setJdkSslEngineOptions(value:io.vertx.scala.core.net.JdkSSLEngineOptions):io.vertx.scala.redis.RedisOptions"></a><a id="setJdkSslEngineOptions(JdkSSLEngineOptions):RedisOptions"></a>
       <span class="permalink">
@@ -1641,7 +1679,7 @@ This determines if a connection will timeout and be closed if no data is receive
         <span class="name">setJdkSslEngineOptions</span><span class="params">(<span name="value">value: <a href="../core/net/JdkSSLEngineOptions.html" class="extype" name="io.vertx.scala.core.net.JdkSSLEngineOptions">JdkSSLEngineOptions</a></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setKeyStoreOptions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setKeyStoreOptions(value:io.vertx.scala.core.net.JksOptions):io.vertx.scala.redis.RedisOptions"></a><a id="setKeyStoreOptions(JksOptions):RedisOptions"></a>
       <span class="permalink">
@@ -1658,7 +1696,7 @@ This determines if a connection will timeout and be closed if no data is receive
       </span>
       
       <p class="shortcomment cmt">Set the key/cert options in jks format, aka Java keystore.</p><div class="fullcomment"><div class="comment cmt"><p>Set the key/cert options in jks format, aka Java keystore.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setLocalAddress" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setLocalAddress(value:String):io.vertx.scala.redis.RedisOptions"></a><a id="setLocalAddress(String):RedisOptions"></a>
       <span class="permalink">
@@ -1693,7 +1731,7 @@ it will pick any local address, the default local address is null.
       </span>
       
       <p class="shortcomment cmt">Set to true to enabled network activity logging: Netty's pipeline is configured for logging on Netty's logger.</p><div class="fullcomment"><div class="comment cmt"><p>Set to true to enabled network activity logging: Netty's pipeline is configured for logging on Netty's logger.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setMasterName" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="setMasterName(value:String):io.vertx.scala.redis.RedisOptions"></a><a id="setMasterName(String):RedisOptions"></a>
       <span class="permalink">
@@ -1744,7 +1782,7 @@ with the same name.
         <span class="name">setOpenSslEngineOptions</span><span class="params">(<span name="value">value: <a href="../core/net/OpenSSLEngineOptions.html" class="extype" name="io.vertx.scala.core.net.OpenSSLEngineOptions">OpenSSLEngineOptions</a></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setPemKeyCertOptions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setPemKeyCertOptions(value:io.vertx.scala.core.net.PemKeyCertOptions):io.vertx.scala.redis.RedisOptions"></a><a id="setPemKeyCertOptions(PemKeyCertOptions):RedisOptions"></a>
       <span class="permalink">
@@ -1761,7 +1799,7 @@ with the same name.
       </span>
       
       <p class="shortcomment cmt">Set the key/cert store options in pem format.</p><div class="fullcomment"><div class="comment cmt"><p>Set the key/cert store options in pem format.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setPemTrustOptions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setPemTrustOptions(value:io.vertx.scala.core.net.PemTrustOptions):io.vertx.scala.redis.RedisOptions"></a><a id="setPemTrustOptions(PemTrustOptions):RedisOptions"></a>
       <span class="permalink">
@@ -1779,7 +1817,7 @@ with the same name.
       
       <p class="shortcomment cmt">Set the trust options in pem format
 </p><div class="fullcomment"><div class="comment cmt"><p>Set the trust options in pem format
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setPfxKeyCertOptions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setPfxKeyCertOptions(value:io.vertx.scala.core.net.PfxOptions):io.vertx.scala.redis.RedisOptions"></a><a id="setPfxKeyCertOptions(PfxOptions):RedisOptions"></a>
       <span class="permalink">
@@ -1796,7 +1834,7 @@ with the same name.
       </span>
       
       <p class="shortcomment cmt">Set the key/cert options in pfx format.</p><div class="fullcomment"><div class="comment cmt"><p>Set the key/cert options in pfx format.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setPfxTrustOptions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setPfxTrustOptions(value:io.vertx.scala.core.net.PfxOptions):io.vertx.scala.redis.RedisOptions"></a><a id="setPfxTrustOptions(PfxOptions):RedisOptions"></a>
       <span class="permalink">
@@ -1814,7 +1852,7 @@ with the same name.
       
       <p class="shortcomment cmt">Set the trust options in pfx format
 </p><div class="fullcomment"><div class="comment cmt"><p>Set the trust options in pfx format
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setPort" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="setPort(value:Int):io.vertx.scala.redis.RedisOptions"></a><a id="setPort(Int):RedisOptions"></a>
       <span class="permalink">
@@ -1865,7 +1903,7 @@ with the same name.
       
       <p class="shortcomment cmt">Set the TCP receive buffer size
 </p><div class="fullcomment"><div class="comment cmt"><p>Set the TCP receive buffer size
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setReconnectAttempts" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setReconnectAttempts(value:Int):io.vertx.scala.redis.RedisOptions"></a><a id="setReconnectAttempts(Int):RedisOptions"></a>
       <span class="permalink">
@@ -1919,7 +1957,7 @@ with the same name.
       
       <p class="shortcomment cmt">Set the value of reuse address
 </p><div class="fullcomment"><div class="comment cmt"><p>Set the value of reuse address
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setReusePort" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setReusePort(value:Boolean):io.vertx.scala.redis.RedisOptions"></a><a id="setReusePort(Boolean):RedisOptions"></a>
       <span class="permalink">
@@ -1936,7 +1974,7 @@ with the same name.
       </span>
       
       <p class="shortcomment cmt">Set the value of reuse port.</p><div class="fullcomment"><div class="comment cmt"><p>Set the value of reuse port.</p><p>This is only supported by native transports.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setSelect" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setSelect(value:Int):io.vertx.scala.redis.RedisOptions"></a><a id="setSelect(Int):RedisOptions"></a>
       <span class="permalink">
@@ -1972,7 +2010,7 @@ with the same name.
       
       <p class="shortcomment cmt">Set the TCP send buffer size
 </p><div class="fullcomment"><div class="comment cmt"><p>Set the TCP send buffer size
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setSentinels" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="setSentinels(value:scala.collection.mutable.Buffer[String]):io.vertx.scala.redis.RedisOptions"></a><a id="setSentinels(Buffer[String]):RedisOptions"></a>
       <span class="permalink">
@@ -2006,7 +2044,7 @@ with the same name.
       
       <p class="shortcomment cmt">Set whether SO_linger keep alive is enabled
 </p><div class="fullcomment"><div class="comment cmt"><p>Set whether SO_linger keep alive is enabled
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setSsl" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setSsl(value:Boolean):io.vertx.scala.redis.RedisOptions"></a><a id="setSsl(Boolean):RedisOptions"></a>
       <span class="permalink">
@@ -2024,7 +2062,41 @@ with the same name.
       
       <p class="shortcomment cmt">Set whether SSL/TLS is enabled
 </p><div class="fullcomment"><div class="comment cmt"><p>Set whether SSL/TLS is enabled
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+    </li><li name="io.vertx.scala.redis.RedisOptions#setSslHandshakeTimeout" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setSslHandshakeTimeout(value:Long):io.vertx.scala.redis.RedisOptions"></a><a id="setSslHandshakeTimeout(Long):RedisOptions"></a>
+      <span class="permalink">
+      <a href="../../../../io/vertx/scala/redis/RedisOptions.html#setSslHandshakeTimeout(value:Long):io.vertx.scala.redis.RedisOptions" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setSslHandshakeTimeout</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Set the SSL handshake timeout, default time unit is seconds.</p><div class="fullcomment"><div class="comment cmt"><p>Set the SSL handshake timeout, default time unit is seconds.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+    </li><li name="io.vertx.scala.redis.RedisOptions#setSslHandshakeTimeoutUnit" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setSslHandshakeTimeoutUnit(value:java.util.concurrent.TimeUnit):io.vertx.scala.redis.RedisOptions"></a><a id="setSslHandshakeTimeoutUnit(TimeUnit):RedisOptions"></a>
+      <span class="permalink">
+      <a href="../../../../io/vertx/scala/redis/RedisOptions.html#setSslHandshakeTimeoutUnit(value:java.util.concurrent.TimeUnit):io.vertx.scala.redis.RedisOptions" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setSslHandshakeTimeoutUnit</span><span class="params">(<span name="value">value: <span class="extype" name="java.util.concurrent.TimeUnit">TimeUnit</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Set the SSL handshake timeout unit.</p><div class="fullcomment"><div class="comment cmt"><p>Set the SSL handshake timeout unit. If not specified, default is seconds.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setTcpCork" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setTcpCork(value:Boolean):io.vertx.scala.redis.RedisOptions"></a><a id="setTcpCork(Boolean):RedisOptions"></a>
       <span class="permalink">
@@ -2041,7 +2113,7 @@ with the same name.
       </span>
       
       <p class="shortcomment cmt">Enable the <code>TCP_CORK</code> option - only with linux native transport.</p><div class="fullcomment"><div class="comment cmt"><p>Enable the <code>TCP_CORK</code> option - only with linux native transport.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setTcpFastOpen" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setTcpFastOpen(value:Boolean):io.vertx.scala.redis.RedisOptions"></a><a id="setTcpFastOpen(Boolean):RedisOptions"></a>
       <span class="permalink">
@@ -2058,7 +2130,7 @@ with the same name.
       </span>
       
       <p class="shortcomment cmt">Enable the <code>TCP_FASTOPEN</code> option - only with linux native transport.</p><div class="fullcomment"><div class="comment cmt"><p>Enable the <code>TCP_FASTOPEN</code> option - only with linux native transport.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setTcpKeepAlive" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setTcpKeepAlive(value:Boolean):io.vertx.scala.redis.RedisOptions"></a><a id="setTcpKeepAlive(Boolean):RedisOptions"></a>
       <span class="permalink">
@@ -2076,7 +2148,7 @@ with the same name.
       
       <p class="shortcomment cmt">Set whether TCP keep alive is enabled
 </p><div class="fullcomment"><div class="comment cmt"><p>Set whether TCP keep alive is enabled
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setTcpNoDelay" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setTcpNoDelay(value:Boolean):io.vertx.scala.redis.RedisOptions"></a><a id="setTcpNoDelay(Boolean):RedisOptions"></a>
       <span class="permalink">
@@ -2094,7 +2166,7 @@ with the same name.
       
       <p class="shortcomment cmt">Set whether TCP no delay is enabled
 </p><div class="fullcomment"><div class="comment cmt"><p>Set whether TCP no delay is enabled
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setTcpQuickAck" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setTcpQuickAck(value:Boolean):io.vertx.scala.redis.RedisOptions"></a><a id="setTcpQuickAck(Boolean):RedisOptions"></a>
       <span class="permalink">
@@ -2111,7 +2183,7 @@ with the same name.
       </span>
       
       <p class="shortcomment cmt">Enable the <code>TCP_QUICKACK</code> option - only with linux native transport.</p><div class="fullcomment"><div class="comment cmt"><p>Enable the <code>TCP_QUICKACK</code> option - only with linux native transport.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setTrafficClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setTrafficClass(value:Int):io.vertx.scala.redis.RedisOptions"></a><a id="setTrafficClass(Int):RedisOptions"></a>
       <span class="permalink">
@@ -2129,7 +2201,7 @@ with the same name.
       
       <p class="shortcomment cmt">Set the value of traffic class
 </p><div class="fullcomment"><div class="comment cmt"><p>Set the value of traffic class
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/NetworkOptions.html" class="extype" name="io.vertx.scala.core.net.NetworkOptions">NetworkOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setTrustAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setTrustAll(value:Boolean):io.vertx.scala.redis.RedisOptions"></a><a id="setTrustAll(Boolean):RedisOptions"></a>
       <span class="permalink">
@@ -2165,7 +2237,7 @@ with the same name.
       
       <p class="shortcomment cmt">Set the trust options in jks format, aka Java truststore
 </p><div class="fullcomment"><div class="comment cmt"><p>Set the trust options in jks format, aka Java truststore
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setUseAlpn" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setUseAlpn(value:Boolean):io.vertx.scala.redis.RedisOptions"></a><a id="setUseAlpn(Boolean):RedisOptions"></a>
       <span class="permalink">
@@ -2182,7 +2254,7 @@ with the same name.
       </span>
       
       <p class="shortcomment cmt">Set the ALPN usage.</p><div class="fullcomment"><div class="comment cmt"><p>Set the ALPN usage.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="io.vertx.scala.redis.RedisOptions#setUsePooledBuffers" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setUsePooledBuffers(value:Boolean):io.vertx.scala.redis.RedisOptions"></a><a id="setUsePooledBuffers(Boolean):RedisOptions"></a>
       <span class="permalink">
@@ -2200,7 +2272,7 @@ with the same name.
       
       <p class="shortcomment cmt">Set whether Netty pooled buffers are enabled
 </p><div class="fullcomment"><div class="comment cmt"><p>Set whether Netty pooled buffers are enabled
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/ClientOptionsBase.html" class="extype" name="io.vertx.scala.core.net.ClientOptionsBase">ClientOptionsBase</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.redis.RedisOptions">RedisOptions</a> → <a href="../core/net/NetClientOptions.html" class="extype" name="io.vertx.scala.core.net.NetClientOptions">NetClientOptions</a> → <a href="../core/net/TCPSSLOptions.html" class="extype" name="io.vertx.scala.core.net.TCPSSLOptions">TCPSSLOptions</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">

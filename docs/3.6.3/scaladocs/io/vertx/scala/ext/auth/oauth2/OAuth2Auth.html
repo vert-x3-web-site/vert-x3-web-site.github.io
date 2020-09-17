@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>vertx-lang-scala-docs_2.12 3.6.3 API  - io.vertx.scala.ext.auth.oauth2.OAuth2Auth</title>
-          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.3 API - io.vertx.scala.ext.auth.oauth2.OAuth2Auth" />
-          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.3 API io.vertx.scala.ext.auth.oauth2.OAuth2Auth" />
+          <title>vertx-lang-scala-docs_2.12 3.9.1 API  - io.vertx.scala.ext.auth.oauth2.OAuth2Auth</title>
+          <meta name="description" content="vertx - lang - scala - docs 2.12 3.9.1 API - io.vertx.scala.ext.auth.oauth2.OAuth2Auth" />
+          <meta name="keywords" content="vertx lang scala docs 2.12 3.9.1 API io.vertx.scala.ext.auth.oauth2.OAuth2Auth" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.3 API<span id="doc-version"></span></span>
+        <span id="doc-title">vertx-lang-scala-docs_2.12 3.9.1 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -800,6 +800,27 @@ meta-information about this token.   * @param token the access token (base64 str
       </span>
       
       <p class="shortcomment cmt">Like <a href="#loadJWK(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.ext.auth.oauth2.OAuth2Auth" class="extmbr" name="io.vertx.scala.ext.auth.oauth2.OAuth2Auth#loadJWK">loadJWK</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
+    </li><li name="io.vertx.scala.ext.auth.oauth2.OAuth2Auth#missingKeyHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="missingKeyHandler(handler:io.vertx.core.Handler[String]):io.vertx.scala.ext.auth.oauth2.OAuth2Auth"></a><a id="missingKeyHandler(Handler[String]):OAuth2Auth"></a>
+      <span class="permalink">
+      <a href="../../../../../../io/vertx/scala/ext/auth/oauth2/OAuth2Auth.html#missingKeyHandler(handler:io.vertx.core.Handler[String]):io.vertx.scala.ext.auth.oauth2.OAuth2Auth" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">missingKeyHandler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.auth.oauth2.OAuth2Auth">OAuth2Auth</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Handled to be called when a key (mentioned on a JWT) is missing from the current config.</p><div class="fullcomment"><div class="comment cmt"><p>Handled to be called when a key (mentioned on a JWT) is missing from the current config.
+Users are advised to call <a href="#loadJWK(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.ext.auth.oauth2.OAuth2Auth" class="extmbr" name="io.vertx.scala.ext.auth.oauth2.OAuth2Auth#loadJWK">io.vertx.scala.ext.auth.oauth2.OAuth2Auth#loadJWK</a> but being careful to implement
+some rate limiting function.</p><p>This method isn't generic for several reasons. The provider is not aware of the capabilities
+of the backend IdP in terms of max allowed API calls. Some validation could be done at the
+key id, which only the end user is aware of.   * @return Future result.
+</p></div></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">

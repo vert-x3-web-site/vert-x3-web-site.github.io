@@ -128,6 +128,7 @@
 </li>
 <li><a href="#_cursors_and_streaming">Cursors and streaming</a></li>
 <li><a href="#_db2_type_mapping">DB2 type mapping</a></li>
+<li><a href="#_using_java_enum_types">Using Java enum types</a></li>
 <li><a href="#_collector_queries">Collector queries</a></li>
 <li><a href="#_using_ssl_tls">Using SSL/TLS</a></li>
 <li><a href="#_using_a_proxy">Using a proxy</a></li>
@@ -162,6 +163,7 @@
 </li>
 <li><a href="#_cursors_and_streaming">Cursors and streaming</a></li>
 <li><a href="#_db2_type_mapping">DB2 type mapping</a></li>
+<li><a href="#_using_java_enum_types">Using Java enum types</a></li>
 <li><a href="#_collector_queries">Collector queries</a></li>
 <li><a href="#_using_ssl_tls">Using SSL/TLS</a></li>
 <li><a href="#_using_a_proxy">Using a proxy</a></li>
@@ -255,7 +257,7 @@ scalability and low overhead.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-db2-client<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.9.2<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -269,7 +271,7 @@ scalability and low overhead.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
- compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-db2-client:3.9.2</span><span class="delimiter">'</span></span>
+ compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-db2-client:3.9.3</span><span class="delimiter">'</span></span>
 }</code></pre>
 </div>
 </div>
@@ -1019,6 +1021,9 @@ will stop iterating.</p>
 <p>VARCHAR (<code>java.lang.String</code>)</p>
 </li>
 <li>
+<p>ENUM (<code>java.lang.String</code>)</p>
+</li>
+<li>
 <p>DATE (<code>java.time.LocalDate</code>)</p>
 </li>
 <li>
@@ -1091,6 +1096,59 @@ will stop iterating.</p>
   <span class="predefined-type">Long</span> longValue = row.getLong(<span class="integer">0</span>);
 });</code></pre>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_java_enum_types">Using Java enum types</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can map Java <a href="https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html">enum types</a> to these column
+types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Strings (VARCHAR, TEXT)</p>
+</li>
+<li>
+<p>Numbers (SMALLINT, INTEGER, BIGINT)</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT day_name FROM FINAL TABLE ( INSERT INTO days (day_name) VALUES (?), (?), (?) )</span><span class="delimiter">&quot;</span></span>)
+.execute(Tuple.of(Days.FRIDAY, Days.SATURDAY, Days.SUNDAY), ar -&gt; {
+ <span class="keyword">if</span> (ar.succeeded()) {
+  <span class="predefined-type">RowSet</span>&lt;Row&gt; rows = ar.result();
+  <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Inserted </span><span class="delimiter">&quot;</span></span> + rows.rowCount() + <span class="string"><span class="delimiter">&quot;</span><span class="content"> new rows</span><span class="delimiter">&quot;</span></span>);
+  <span class="keyword">for</span> (Row row : rows) {
+          <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Day: </span><span class="delimiter">&quot;</span></span> + row.getValues(Days.class, row.getColumnIndex(<span class="string"><span class="delimiter">&quot;</span><span class="content">day_name</span><span class="delimiter">&quot;</span></span>)));
+  }
+ } <span class="keyword">else</span> {
+  <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Failure: </span><span class="delimiter">&quot;</span></span> + ar.cause().getMessage());
+ }
+});
+client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT day_num FROM FINAL TABLE ( INSERT INTO days (day_num) VALUES (?), (?), (?) )</span><span class="delimiter">&quot;</span></span>)
+.execute(Tuple.of(Days.FRIDAY.ordinal(), Days.SATURDAY.ordinal(), Days.SUNDAY.ordinal()), ar -&gt; {
+ <span class="keyword">if</span> (ar.succeeded()) {
+  <span class="predefined-type">RowSet</span>&lt;Row&gt; rows = ar.result();
+  <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Inserted </span><span class="delimiter">&quot;</span></span> + rows.rowCount() + <span class="string"><span class="delimiter">&quot;</span><span class="content"> new rows</span><span class="delimiter">&quot;</span></span>);
+  <span class="keyword">for</span> (Row row : rows) {
+          <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Day: </span><span class="delimiter">&quot;</span></span> + row.getValues(Days.class, row.getColumnIndex(<span class="string"><span class="delimiter">&quot;</span><span class="content">day_num</span><span class="delimiter">&quot;</span></span>)));
+  }
+ } <span class="keyword">else</span> {
+  <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Failure: </span><span class="delimiter">&quot;</span></span> + ar.cause().getMessage());
+ }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The String type is matched with the Java enum&#8217;s name returned by the <code>name()</code> method.</p>
+</div>
+<div class="paragraph">
+<p>Number types are matched with the Java enum&#8217;s ordinal returned by the <code>ordinal()</code> method and the row.get() method returns the corresponding enum&#8217;s <code>name()</code> value at the ordinal position of the integer value retrieved.</p>
 </div>
 </div>
 </div>
@@ -1208,7 +1266,7 @@ DB2Connection.connect(vertx, options, res -&gt; {
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2020-07-16 01:06:40 CEST
+                Last updated 2020-09-16 10:26:28 CEST
               
               
             </div>

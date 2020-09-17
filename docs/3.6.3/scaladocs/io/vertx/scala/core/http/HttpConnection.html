@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>vertx-lang-scala-docs_2.12 3.6.3 API  - io.vertx.scala.core.http.HttpConnection</title>
-          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.3 API - io.vertx.scala.core.http.HttpConnection" />
-          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.3 API io.vertx.scala.core.http.HttpConnection" />
+          <title>vertx-lang-scala-docs_2.12 3.9.1 API  - io.vertx.scala.core.http.HttpConnection</title>
+          <meta name="description" content="vertx - lang - scala - docs 2.12 3.9.1 API - io.vertx.scala.core.http.HttpConnection" />
+          <meta name="keywords" content="vertx lang scala docs 2.12 3.9.1 API io.vertx.scala.core.http.HttpConnection" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.3 API<span id="doc-version"></span></span>
+        <span id="doc-title">vertx-lang-scala-docs_2.12 3.9.1 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -150,6 +150,10 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="io.vertx.scala.core">core</a></dd></dl></div>
     </li><li class="current-entities indented5">
+                        <a class="object" href="Cookie$.html" title=""></a>
+                        <a class="class" href="Cookie.html" title="Represents an HTTP Cookie."></a>
+                        <a href="Cookie.html" title="Represents an HTTP Cookie.">Cookie</a>
+                      </li><li class="current-entities indented5">
                         <a class="object" href="GoAway$.html" title=""></a>
                         <a class="class" href="GoAway.html" title="A  frame."></a>
                         <a href="GoAway.html" title="A  frame.">GoAway</a>
@@ -221,6 +225,10 @@
                         <a class="object" href="WebSocketBase$.html" title=""></a>
                         <a class="trait" href="WebSocketBase.html" title="Base WebSocket implementation."></a>
                         <a href="WebSocketBase.html" title="Base WebSocket implementation.">WebSocketBase</a>
+                      </li><li class="current-entities indented5">
+                        <a class="object" href="WebSocketConnectOptions$.html" title=""></a>
+                        <a class="class" href="WebSocketConnectOptions.html" title="Options describing how an io.vertx.scala.core.http.HttpClient connect a io.vertx.scala.core.http.WebSocket."></a>
+                        <a href="WebSocketConnectOptions.html" title="Options describing how an io.vertx.scala.core.http.HttpClient connect a io.vertx.scala.core.http.WebSocket.">WebSocketConnectOptions</a>
                       </li><li class="current-entities indented5">
                         <a class="object" href="WebSocketFrame$.html" title=""></a>
                         <a class="class" href="WebSocketFrame.html" title="A WebSocket frame that represents either text or binary data."></a>
@@ -720,7 +728,7 @@
         <span class="name">localAddress</span><span class="params">()</span><span class="result">: <a href="../net/SocketAddress.html" class="extype" name="io.vertx.scala.core.net.SocketAddress">SocketAddress</a></span>
       </span>
       
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the remote address for this connection</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the local address for this connection, possibly <code>null</code> (e.g a server bound on a domain socket)</p></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -838,7 +846,7 @@
         <span class="name">remoteAddress</span><span class="params">()</span><span class="result">: <a href="../net/SocketAddress.html" class="extype" name="io.vertx.scala.core.net.SocketAddress">SocketAddress</a></span>
       </span>
       
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the remote address for this connection</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the remote address for this connection, possibly <code>null</code> (e.g a server bound on a domain socket)</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpConnection#remoteSettings" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="remoteSettings():io.vertx.scala.core.http.Http2Settings"></a><a id="remoteSettings():Http2Settings"></a>
       <span class="permalink">
@@ -918,9 +926,7 @@
         <span class="name">shutdown</span><span class="params">(<span name="timeoutMs">timeoutMs: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpConnection">HttpConnection</a></span>
       </span>
       
-      <p class="shortcomment cmt">Initiate a connection shutdown, a go away frame is sent and the connection is closed when all current streams
-will be closed or the <code>timeout</code> is fired.</p><div class="fullcomment"><div class="comment cmt"><p>Initiate a connection shutdown, a go away frame is sent and the connection is closed when all current streams
-will be closed or the <code>timeout</code> is fired.</p><p>This is not implemented for HTTP/1.x.   * @param timeoutMs the timeout in milliseconds</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+      <p class="shortcomment cmt">Like <a href="#shutdown(timeoutMs:Long):io.vertx.scala.core.http.HttpConnection" class="extmbr" name="io.vertx.scala.core.http.HttpConnection#shutdown">io.vertx.scala.core.http.HttpConnection#shutdown</a> but with a configurable timeout value.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#shutdown(timeoutMs:Long):io.vertx.scala.core.http.HttpConnection" class="extmbr" name="io.vertx.scala.core.http.HttpConnection#shutdown">io.vertx.scala.core.http.HttpConnection#shutdown</a> but with a configurable timeout value.   * @param timeoutMs the timeout in milliseconds</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpConnection#shutdown" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="shutdown():io.vertx.scala.core.http.HttpConnection"></a><a id="shutdown():HttpConnection"></a>
       <span class="permalink">
@@ -936,10 +942,12 @@ will be closed or the <code>timeout</code> is fired.</p><p>This is not implement
         <span class="name">shutdown</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpConnection">HttpConnection</a></span>
       </span>
       
-      <p class="shortcomment cmt">Initiate a connection shutdown, a go away frame is sent and the connection is closed when all current active streams
-are closed or after a time out of 30 seconds.</p><div class="fullcomment"><div class="comment cmt"><p>Initiate a connection shutdown, a go away frame is sent and the connection is closed when all current active streams
-are closed or after a time out of 30 seconds.</p><p>This is not implemented for HTTP/1.x.   * @return a reference to this, so the API can be used fluently
-</p></div></div>
+      <p class="shortcomment cmt">Initiate a graceful connection shutdown, the connection is taken out of service and closed when all current requests
+are processed, otherwise after 30 seconds the connection will be closed.</p><div class="fullcomment"><div class="comment cmt"><p>Initiate a graceful connection shutdown, the connection is taken out of service and closed when all current requests
+are processed, otherwise after 30 seconds the connection will be closed. Client connection are immediately removed
+from the pool.</p><ul><li>HTTP/2 connections will send a go away frame immediately to signal the other side the connection will close</li><li>HTTP/1.x client connection supports this feature</li><li>HTTP/1.x server connections do not support this feature
+   * @return a reference to this, so the API can be used fluently
+</li></ul></div></div>
     </li><li name="io.vertx.scala.core.http.HttpConnection#shutdownHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="shutdownHandler(handler:io.vertx.core.Handler[Unit]):io.vertx.scala.core.http.HttpConnection"></a><a id="shutdownHandler(Handler[Unit]):HttpConnection"></a>
       <span class="permalink">

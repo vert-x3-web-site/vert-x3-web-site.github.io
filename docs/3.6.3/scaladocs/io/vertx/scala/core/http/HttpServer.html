@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>vertx-lang-scala-docs_2.12 3.6.3 API  - io.vertx.scala.core.http.HttpServer</title>
-          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.3 API - io.vertx.scala.core.http.HttpServer" />
-          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.3 API io.vertx.scala.core.http.HttpServer" />
+          <title>vertx-lang-scala-docs_2.12 3.9.1 API  - io.vertx.scala.core.http.HttpServer</title>
+          <meta name="description" content="vertx - lang - scala - docs 2.12 3.9.1 API - io.vertx.scala.core.http.HttpServer" />
+          <meta name="keywords" content="vertx lang scala docs 2.12 3.9.1 API io.vertx.scala.core.http.HttpServer" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.3 API<span id="doc-version"></span></span>
+        <span id="doc-title">vertx-lang-scala-docs_2.12 3.9.1 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -150,6 +150,10 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="io.vertx.scala.core">core</a></dd></dl></div>
     </li><li class="current-entities indented5">
+                        <a class="object" href="Cookie$.html" title=""></a>
+                        <a class="class" href="Cookie.html" title="Represents an HTTP Cookie."></a>
+                        <a href="Cookie.html" title="Represents an HTTP Cookie.">Cookie</a>
+                      </li><li class="current-entities indented5">
                         <a class="object" href="GoAway$.html" title=""></a>
                         <a class="class" href="GoAway.html" title="A  frame."></a>
                         <a href="GoAway.html" title="A  frame.">GoAway</a>
@@ -222,6 +226,10 @@
                         <a class="trait" href="WebSocketBase.html" title="Base WebSocket implementation."></a>
                         <a href="WebSocketBase.html" title="Base WebSocket implementation.">WebSocketBase</a>
                       </li><li class="current-entities indented5">
+                        <a class="object" href="WebSocketConnectOptions$.html" title=""></a>
+                        <a class="class" href="WebSocketConnectOptions.html" title="Options describing how an io.vertx.scala.core.http.HttpClient connect a io.vertx.scala.core.http.WebSocket."></a>
+                        <a href="WebSocketConnectOptions.html" title="Options describing how an io.vertx.scala.core.http.HttpClient connect a io.vertx.scala.core.http.WebSocket.">WebSocketConnectOptions</a>
+                      </li><li class="current-entities indented5">
                         <a class="object" href="WebSocketFrame$.html" title=""></a>
                         <a class="class" href="WebSocketFrame.html" title="A WebSocket frame that represents either text or binary data."></a>
                         <a href="WebSocketFrame.html" title="A WebSocket frame that represents either text or binary data.">WebSocketFrame</a>
@@ -256,7 +264,7 @@
 
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>An HTTP and WebSockets server.</p><p>You receive HTTP requests by providing a <a href="#requestHandler(handler:io.vertx.core.Handler[io.vertx.scala.core.http.HttpServerRequest]):io.vertx.scala.core.http.HttpServer" class="extmbr" name="io.vertx.scala.core.http.HttpServer#requestHandler">io.vertx.scala.core.http.HttpServer#requestHandler</a>. As requests arrive on the server the handler
-will be called with the requests.</p><p>You receive WebSockets by providing a <a href="#websocketHandler(handler:io.vertx.core.Handler[io.vertx.scala.core.http.ServerWebSocket]):io.vertx.scala.core.http.HttpServer" class="extmbr" name="io.vertx.scala.core.http.HttpServer#websocketHandler">io.vertx.scala.core.http.HttpServer#websocketHandler</a>. As WebSocket connections arrive on the server, the
+will be called with the requests.</p><p>You receive WebSockets by providing a <a href="#webSocketHandler(handler:io.vertx.core.Handler[io.vertx.scala.core.http.ServerWebSocket]):io.vertx.scala.core.http.HttpServer" class="extmbr" name="io.vertx.scala.core.http.HttpServer#webSocketHandler">io.vertx.scala.core.http.HttpServer#webSocketHandler</a>. As WebSocket connections arrive on the server, the
 WebSocket is passed to the handler.
 </p></div><div class="toggleContainer block">
           <span class="toggle">
@@ -1045,6 +1053,42 @@ instances of <a href="HttpServerRequest.html" class="extype" name="io.vertx.scal
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServer#webSocketHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="webSocketHandler(handler:io.vertx.core.Handler[io.vertx.scala.core.http.ServerWebSocket]):io.vertx.scala.core.http.HttpServer"></a><a id="webSocketHandler(Handler[ServerWebSocket]):HttpServer"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServer.html#webSocketHandler(handler:io.vertx.core.Handler[io.vertx.scala.core.http.ServerWebSocket]):io.vertx.scala.core.http.HttpServer" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">webSocketHandler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<a href="ServerWebSocket.html" class="extype" name="io.vertx.scala.core.http.ServerWebSocket">ServerWebSocket</a>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpServer">HttpServer</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Set the WebSocket handler for the server to <code>wsHandler</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Set the WebSocket handler for the server to <code>wsHandler</code>. If a WebSocket connect handshake is successful a
+new <a href="ServerWebSocket.html" class="extype" name="io.vertx.scala.core.http.ServerWebSocket">io.vertx.scala.core.http.ServerWebSocket</a> instance will be created and passed to the handler.   * @return a reference to this, so the API can be used fluently
+</p></div></div>
+    </li><li name="io.vertx.scala.core.http.HttpServer#webSocketStream" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="webSocketStream():io.vertx.scala.core.streams.ReadStream[io.vertx.scala.core.http.ServerWebSocket]"></a><a id="webSocketStream():ReadStream[ServerWebSocket]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServer.html#webSocketStream():io.vertx.scala.core.streams.ReadStream[io.vertx.scala.core.http.ServerWebSocket]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">webSocketStream</span><span class="params">()</span><span class="result">: <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a>[<a href="ServerWebSocket.html" class="extype" name="io.vertx.scala.core.http.ServerWebSocket">ServerWebSocket</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Return the WebSocket stream for the server.</p><div class="fullcomment"><div class="comment cmt"><p>Return the WebSocket stream for the server. If a WebSocket connect handshake is successful a
+new <a href="ServerWebSocket.html" class="extype" name="io.vertx.scala.core.http.ServerWebSocket">io.vertx.scala.core.http.ServerWebSocket</a> instance will be created and passed to the stream .   * @return the WebSocket stream
+</p></div></div>
     </li><li name="io.vertx.scala.core.http.HttpServer#websocketHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="websocketHandler(handler:io.vertx.core.Handler[io.vertx.scala.core.http.ServerWebSocket]):io.vertx.scala.core.http.HttpServer"></a><a id="websocketHandler(Handler[ServerWebSocket]):HttpServer"></a>
       <span class="permalink">
@@ -1060,7 +1104,7 @@ instances of <a href="HttpServerRequest.html" class="extype" name="io.vertx.scal
         <span class="name">websocketHandler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<a href="ServerWebSocket.html" class="extype" name="io.vertx.scala.core.http.ServerWebSocket">ServerWebSocket</a>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpServer">HttpServer</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set the websocket handler for the server to <code>wsHandler</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Set the websocket handler for the server to <code>wsHandler</code>. If a websocket connect handshake is successful a
+      <p class="shortcomment cmt">Set the WebSocket handler for the server to <code>wsHandler</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Set the WebSocket handler for the server to <code>wsHandler</code>. If a WebSocket connect handshake is successful a
 new <a href="ServerWebSocket.html" class="extype" name="io.vertx.scala.core.http.ServerWebSocket">io.vertx.scala.core.http.ServerWebSocket</a> instance will be created and passed to the handler.   * @return a reference to this, so the API can be used fluently
 </p></div></div>
     </li><li name="io.vertx.scala.core.http.HttpServer#websocketStream" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -1078,8 +1122,8 @@ new <a href="ServerWebSocket.html" class="extype" name="io.vertx.scala.core.http
         <span class="name">websocketStream</span><span class="params">()</span><span class="result">: <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a>[<a href="ServerWebSocket.html" class="extype" name="io.vertx.scala.core.http.ServerWebSocket">ServerWebSocket</a>]</span>
       </span>
       
-      <p class="shortcomment cmt">Return the websocket stream for the server.</p><div class="fullcomment"><div class="comment cmt"><p>Return the websocket stream for the server. If a websocket connect handshake is successful a
-new <a href="ServerWebSocket.html" class="extype" name="io.vertx.scala.core.http.ServerWebSocket">io.vertx.scala.core.http.ServerWebSocket</a> instance will be created and passed to the stream .   * @return the websocket stream
+      <p class="shortcomment cmt">Return the WebSocket stream for the server.</p><div class="fullcomment"><div class="comment cmt"><p>Return the WebSocket stream for the server. If a webSocket connect handshake is successful a
+new <a href="ServerWebSocket.html" class="extype" name="io.vertx.scala.core.http.ServerWebSocket">io.vertx.scala.core.http.ServerWebSocket</a> instance will be created and passed to the stream .   * @return the WebSocket stream
 </p></div></div>
     </li>
               </ol>

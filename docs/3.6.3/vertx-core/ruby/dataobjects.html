@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -134,6 +135,7 @@
 <li><a href="#StreamPriority">StreamPriority</a></li>
 <li><a href="#TCPSSLOptions">TCPSSLOptions</a></li>
 <li><a href="#VertxOptions">VertxOptions</a></li>
+<li><a href="#WebSocketConnectOptions">WebSocketConnectOptions</a></li>
 </ul>
         </div>
       </div>
@@ -172,6 +174,7 @@
 <li><a href="#StreamPriority">StreamPriority</a></li>
 <li><a href="#TCPSSLOptions">TCPSSLOptions</a></li>
 <li><a href="#VertxOptions">VertxOptions</a></li>
+<li><a href="#WebSocketConnectOptions">WebSocketConnectOptions</a></li>
 </ul>
         </div>
         <div class="sect1">
@@ -479,6 +482,16 @@ This is only supported by native transports.</p></td>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="ssl"></a><code>@ssl</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set whether SSL/TLS is enabled</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sslHandshakeTimeout"></a><code>@sslHandshakeTimeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (long)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the SSL handshake timeout, default time unit is seconds.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sslHandshakeTimeoutUnit"></a><code>@sslHandshakeTimeoutUnit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="enums.html#TimeUnit">TimeUnit</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the SSL handshake timeout unit. If not specified, default is seconds.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tcpCork"></a><code>@tcpCork</code></p></td>
@@ -1032,6 +1045,16 @@ This is only supported by native transports.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set whether SSL/TLS is enabled</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sslHandshakeTimeout"></a><code>@sslHandshakeTimeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (long)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the SSL handshake timeout, default time unit is seconds.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sslHandshakeTimeoutUnit"></a><code>@sslHandshakeTimeoutUnit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="enums.html#TimeUnit">TimeUnit</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the SSL handshake timeout unit. If not specified, default is seconds.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tcpCork"></a><code>@tcpCork</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enable the <code>TCP_CORK</code> option - only with linux native transport.</p></td>
@@ -1108,6 +1131,13 @@ those specific implementations.
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When vert.x cannot find the file on the filesystem it tries to resolve the
 file from the class path when this is set to <code>true</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="fileCacheDir"></a><code>@fileCacheDir</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When vert.x reads a file that is packaged with the application it gets
+extracted to this directory first and subsequent reads will use the extracted
+file to get better IO performance.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="fileCachingEnabled"></a><code>@fileCachingEnabled</code></p></td>
@@ -1302,7 +1332,9 @@ A value of <code>-1</code> reuses the initial window size setting.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the keep alive timeout for HTTP/2 connections, in seconds.
 <p/>
-This value determines how long a connection remains unused in the pool before being evicted and closed.</p></td>
+This value determines how long a connection remains unused in the pool before being evicted and closed.
+<p/>
+A timeout of <code>0</code> means there is no timeout and the connection can remain indefinitely in the pool.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="http2MaxPoolSize"></a><code>@http2MaxPoolSize</code></p></td>
@@ -1351,7 +1383,9 @@ This determines if a connection will timeout and be closed if no data is receive
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the keep alive timeout for HTTP/1.x, in seconds.
 <p/>
-This value determines how long a connection remains unused in the pool before being evicted and closed.</p></td>
+This value determines how long a connection remains unused in the pool before being evicted and closed.
+<p/>
+A timeout of <code>0</code> means there is no timeout and the connection can remain indefinitely in the pool.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="keyStoreOptions"></a><code>@keyStoreOptions</code></p></td>
@@ -1401,14 +1435,24 @@ it will pick any local address, the default local address is null.</p></td>
 a ConnectionPoolTooBusyException.  If the value is set to a negative number then the queue will be unbounded.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="maxWebSocketFrameSize"></a><code>@maxWebSocketFrameSize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the max WebSocket frame size</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="maxWebSocketMessageSize"></a><code>@maxWebSocketMessageSize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the max WebSocket message size</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="maxWebsocketFrameSize"></a><code>@maxWebsocketFrameSize</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the max websocket frame size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the max WebSocket frame size</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="maxWebsocketMessageSize"></a><code>@maxWebsocketMessageSize</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the max websocket message size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the max WebSocket message size</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="metricsName"></a><code>@metricsName</code></p></td>
@@ -1492,9 +1536,12 @@ This is only supported by native transports.</p></td>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sendUnmaskedFrames"></a><code>@sendUnmaskedFrames</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set true when the client wants to skip frame masking.
-You may want to set it true on server by server websocket communication: In this case you are by passing RFC6455 protocol.
-It's false as default.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set <code>true</code> when the client wants to skip frame masking.
+<p>
+You may want to set it <code>true</code> on server by server WebSocket communication: in this case you are by passing
+RFC6455 protocol.
+<p>
+It's <code>false</code> as default.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="soLinger"></a><code>@soLinger</code></p></td>
@@ -1505,6 +1552,16 @@ It's false as default.</p></td>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="ssl"></a><code>@ssl</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set whether SSL/TLS is enabled</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sslHandshakeTimeout"></a><code>@sslHandshakeTimeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (long)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the SSL handshake timeout, default time unit is seconds.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sslHandshakeTimeoutUnit"></a><code>@sslHandshakeTimeoutUnit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="enums.html#TimeUnit">TimeUnit</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the SSL handshake timeout unit. If not specified, default is seconds.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tcpCork"></a><code>@tcpCork</code></p></td>
@@ -1552,14 +1609,34 @@ It's false as default.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set whether compression is enabled</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tryUsePerFrameWebSocketCompression"></a><code>@tryUsePerFrameWebSocketCompression</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the client will offer the WebSocket per-frame deflate compression extension.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tryUsePerFrameWebsocketCompression"></a><code>@tryUsePerFrameWebsocketCompression</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set option to offer per frame WebSocket compression.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the client will offer the WebSocket per-frame deflate compression extension.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tryUsePerMessageWebSocketCompression"></a><code>@tryUsePerMessageWebSocketCompression</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the client will offer the WebSocket per-message deflate compression extension.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tryUsePerMessageWebsocketCompression"></a><code>@tryUsePerMessageWebsocketCompression</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set option to offer per message WebSocket compression.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the client will offer the WebSocket per-message deflate compression extension.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tryWebSocketDeflateFrameCompression"></a><code>@tryWebSocketDeflateFrameCompression</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tryWebsocketDeflateFrameCompression"></a><code>@tryWebsocketDeflateFrameCompression</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="useAlpn"></a><code>@useAlpn</code></p></td>
@@ -1577,19 +1654,46 @@ It's false as default.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set whether hostname verification is enabled</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="webSocketClosingTimeout"></a><code>@webSocketClosingTimeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the amount of time a client WebSocket will wait until it closes the TCP connection after receiving a close frame.
+</p><p class="tableblock"><p> When a WebSocket is closed, the server should close the TCP connection. This timeout will close
+the TCP connection on the client when it expires.
+</p><p class="tableblock"><p> Set <code>0L</code> or a negative value to disable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="webSocketCompressionAllowClientNoContext"></a><code>@webSocketCompressionAllowClientNoContext</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the <code>client_no_context_takeover</code> parameter of the WebSocket per-message
+deflate compression extension will be offered.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="webSocketCompressionLevel"></a><code>@webSocketCompressionLevel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the WebSocket deflate compression level.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="webSocketCompressionRequestServerNoContext"></a><code>@webSocketCompressionRequestServerNoContext</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the <code>server_no_context_takeover</code> parameter of the WebSocket per-message
+deflate compression extension will be offered.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="websocketCompressionAllowClientNoContext"></a><code>@websocketCompressionAllowClientNoContext</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the WebSocket compression allow client no context option.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the <code>client_no_context_takeover</code> parameter of the WebSocket per-message
+deflate compression extension will be offered.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="websocketCompressionLevel"></a><code>@websocketCompressionLevel</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set WebSocket compression level</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the WebSocket deflate compression level.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="websocketCompressionRequestServerNoContext"></a><code>@websocketCompressionRequestServerNoContext</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the WebSocket compression server no context option</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the <code>server_no_context_takeover</code> parameter of the WebSocket per-message
+deflate compression extension will be offered.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1620,9 +1724,9 @@ Represents options used by an link instance
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="acceptUnmaskedFrames"></a><code>@acceptUnmaskedFrames</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set true when the server accepts unmasked frame.
-As default Server doesn't accept unmasked frame, you can bypass this behaviour (RFC 6455) setting true
-It's set to false as default.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set <code>true</code> when the server accepts unmasked frame.
+As default Server doesn't accept unmasked frame, you can bypass this behaviour (RFC 6455) setting <code>true</code>.
+It's set to <code>false</code> as default.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="alpnVersions"></a><code>@alpnVersions</code></p></td>
@@ -1762,14 +1866,24 @@ This determines if a connection will timeout and be closed if no data is receive
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the maximum length of the initial line for HTTP/1.x (e.g. <code>"GET / HTTP/1.0"</code>)</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="maxWebSocketFrameSize"></a><code>@maxWebSocketFrameSize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the maximum WebSocket frames size</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="maxWebSocketMessageSize"></a><code>@maxWebSocketMessageSize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the maximum WebSocket message size</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="maxWebsocketFrameSize"></a><code>@maxWebsocketFrameSize</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the maximum websocket frames size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the maximum WebSocket frames size</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="maxWebsocketMessageSize"></a><code>@maxWebsocketMessageSize</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the maximum websocket message size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the maximum WebSocket message size</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="openSslEngineOptions"></a><code>@openSslEngineOptions</code></p></td>
@@ -1787,14 +1901,24 @@ This determines if a connection will timeout and be closed if no data is receive
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the trust options in pem format</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="perFrameWebSocketCompressionSupported"></a><code>@perFrameWebSocketCompressionSupported</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable or disable support for the WebSocket per-frame deflate compression extension.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="perFrameWebsocketCompressionSupported"></a><code>@perFrameWebsocketCompressionSupported</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enable or disable support for WebSocket Defalte Frame compression</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable or disable support for the WebSocket per-frame deflate compression extension.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="perMessageWebSocketCompressionSupported"></a><code>@perMessageWebSocketCompressionSupported</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable or disable support for WebSocket per-message deflate compression extension.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="perMessageWebsocketCompressionSupported"></a><code>@perMessageWebsocketCompressionSupported</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enable or disable support for WebSocket Permessage Deflate compression</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable or disable support for WebSocket per-message deflate compression extension.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="pfxKeyCertOptions"></a><code>@pfxKeyCertOptions</code></p></td>
@@ -1849,6 +1973,16 @@ This is only supported by native transports.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set whether SSL/TLS is enabled</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sslHandshakeTimeout"></a><code>@sslHandshakeTimeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (long)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the SSL handshake timeout, default time unit is seconds.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sslHandshakeTimeoutUnit"></a><code>@sslHandshakeTimeoutUnit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="enums.html#TimeUnit">TimeUnit</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the SSL handshake timeout unit. If not specified, default is seconds.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tcpCork"></a><code>@tcpCork</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enable the <code>TCP_CORK</code> option - only with linux native transport.</p></td>
@@ -1894,24 +2028,48 @@ This is only supported by native transports.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set whether Netty pooled buffers are enabled</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="webSocketAllowServerNoContext"></a><code>@webSocketAllowServerNoContext</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the WebSocket server will accept the <code>server_no_context_takeover</code> parameter of the per-message
+deflate compression extension offered by the client.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="webSocketCompressionLevel"></a><code>@webSocketCompressionLevel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the WebSocket compression level.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="webSocketPreferredClientNoContext"></a><code>@webSocketPreferredClientNoContext</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the WebSocket server will accept the <code>client_no_context_takeover</code> parameter of the per-message
+deflate compression extension offered by the client.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="webSocketSubProtocols"></a><code>@webSocketSubProtocols</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the WebSocket list of sub-protocol supported by the server.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="websocketAllowServerNoContext"></a><code>@websocketAllowServerNoContext</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the WebSocket Allow Server No Context option</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the WebSocket server will accept the <code>server_no_context_takeover</code> parameter of the per-message
+deflate compression extension offered by the client.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="websocketCompressionLevel"></a><code>@websocketCompressionLevel</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the WebSocket compression level</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the WebSocket compression level.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="websocketPreferredClientNoContext"></a><code>@websocketPreferredClientNoContext</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the WebSocket Preferred Client No Context setting</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the WebSocket server will accept the <code>client_no_context_takeover</code> parameter of the per-message
+deflate compression extension offered by the client.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="websocketSubProtocols"></a><code>@websocketSubProtocols</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the websocket subprotocols supported by the server.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the WebSocket sub-protocols supported by the server.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1957,7 +2115,7 @@ Or directly provided as a buffer:
 <p>
 
 <pre>
-Buffer store = vertx.fileSystem().readFileSync("/mykeystore.jks");
+Buffer store = vertx.fileSystem().readFileBlocking("/mykeystore.jks");
 options.setKeyStore(new JKSOptions().setValue(store).setPassword("foo"));
 </pre>
 <hr>
@@ -2179,6 +2337,16 @@ This is only supported by native transports.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set whether SSL/TLS is enabled</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sslHandshakeTimeout"></a><code>@sslHandshakeTimeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (long)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the SSL handshake timeout, default time unit is seconds.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sslHandshakeTimeoutUnit"></a><code>@sslHandshakeTimeoutUnit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="enums.html#TimeUnit">TimeUnit</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the SSL handshake timeout unit. If not specified, default is seconds.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tcpCork"></a><code>@tcpCork</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enable the <code>TCP_CORK</code> option - only with linux native transport.</p></td>
@@ -2382,6 +2550,16 @@ This is only supported by native transports.</p></td>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="ssl"></a><code>@ssl</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set whether SSL/TLS is enabled</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sslHandshakeTimeout"></a><code>@sslHandshakeTimeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (long)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the SSL handshake timeout, default time unit is seconds.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sslHandshakeTimeoutUnit"></a><code>@sslHandshakeTimeoutUnit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="enums.html#TimeUnit">TimeUnit</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the SSL handshake timeout unit. If not specified, default is seconds.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tcpCork"></a><code>@tcpCork</code></p></td>
@@ -2733,8 +2911,8 @@ options.setPemKeyCertOptions(new PemKeyCertOptions().setKeyPath("/mykey.pem").se
 Or directly provided as a buffer:<p>
 
 <pre>
-Buffer key = vertx.fileSystem().readFileSync("/mykey.pem");
-Buffer cert = vertx.fileSystem().readFileSync("/mycert.pem");
+Buffer key = vertx.fileSystem().readFileBlocking("/mykey.pem");
+Buffer cert = vertx.fileSystem().readFileBlocking("/mycert.pem");
 options.setPemKeyCertOptions(new PemKeyCertOptions().setKeyValue(key).setCertValue(cert));
 </pre>
 
@@ -2831,7 +3009,7 @@ Or directly provided as a buffer:
 <p>
 
 <pre>
-Buffer cert = vertx.fileSystem().readFileSync("/cert.pem");
+Buffer cert = vertx.fileSystem().readFileBlocking("/cert.pem");
 HttpServerOptions options = new HttpServerOptions();
 options.setPemTrustOptions(new PemTrustOptions().addCertValue(cert));
 </pre>
@@ -2881,7 +3059,7 @@ options.setPfxKeyCertOptions(new PfxOptions().setPath("/mykeystore.p12").setPass
 Or directly provided as a buffer:<p>
 
 <pre>
-Buffer store = vertx.fileSystem().readFileSync("/mykeystore.p12");
+Buffer store = vertx.fileSystem().readFileBlocking("/mykeystore.p12");
 options.setPfxKeyCertOptions(new PfxOptions().setValue(store).setPassword("foo"));
 </pre>
 <hr>
@@ -2979,6 +3157,11 @@ Options describing how an link will make connect to make a request.
 <td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="headers"></a><code>@headers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add a request header.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="host"></a><code>@host</code></p></td>
@@ -3162,6 +3345,16 @@ This is only supported by native transports.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set whether SSL/TLS is enabled</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sslHandshakeTimeout"></a><code>@sslHandshakeTimeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (long)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the SSL handshake timeout, default time unit is seconds.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sslHandshakeTimeoutUnit"></a><code>@sslHandshakeTimeoutUnit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="enums.html#TimeUnit">TimeUnit</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the SSL handshake timeout unit. If not specified, default is seconds.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tcpCork"></a><code>@tcpCork</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enable the <code>TCP_CORK</code> option - only with linux native transport.</p></td>
@@ -3296,8 +3489,7 @@ The default value is null which means use the same as the cluster hostname.</p><
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="fileResolverCachingEnabled"></a><code>@fileResolverCachingEnabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the Vert.x file resolver uses caching for classpath resources.
-</p><p class="tableblock">Deprecated. Use FileSystemOptions instead.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the Vert.x file resolver uses caching for classpath resources.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="fileSystemOptions"></a><code>@fileSystemOptions</code></p></td>
@@ -3378,6 +3570,62 @@ The default value of link is</p></td>
 </table>
 </div>
 </div>
+<div class="sect1">
+<h2 id="WebSocketConnectOptions">WebSocketConnectOptions</h2>
+<div class="sectionbody">
+Options describing how an link connect a link.
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="headers"></a><code>@headers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add a request header.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="host"></a><code>@host</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the host name to be used by the client request.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="port"></a><code>@port</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the port to be used by the client request.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="ssl"></a><code>@ssl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether SSL/TLS is enabled</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="subProtocols"></a><code>@subProtocols</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the WebSocket sub protocols to use.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="uri"></a><code>@uri</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the request relative URI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="version"></a><code>@version</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="enums.html#WebsocketVersion">WebsocketVersion</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the WebSocket version.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 
         
 
@@ -3385,7 +3633,7 @@ The default value of link is</p></td>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:34 CET
+                Last updated 2020-09-16 10:26:32 CEST
               
               
             </div>

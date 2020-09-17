@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -103,12 +104,25 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
+<li><a href="#ClusterDescription">ClusterDescription</a></li>
+<li><a href="#Config">Config</a></li>
+<li><a href="#ConfigEntry">ConfigEntry</a></li>
+<li><a href="#ConfigResource">ConfigResource</a></li>
+<li><a href="#ConfigSynonym">ConfigSynonym</a></li>
+<li><a href="#ConsumerGroupDescription">ConsumerGroupDescription</a></li>
+<li><a href="#ConsumerGroupListing">ConsumerGroupListing</a></li>
+<li><a href="#ListConsumerGroupOffsetsOptions">ListConsumerGroupOffsetsOptions</a></li>
+<li><a href="#MemberAssignment">MemberAssignment</a></li>
+<li><a href="#MemberDescription">MemberDescription</a></li>
+<li><a href="#NewTopic">NewTopic</a></li>
 <li><a href="#Node">Node</a></li>
 <li><a href="#OffsetAndMetadata">OffsetAndMetadata</a></li>
 <li><a href="#OffsetAndTimestamp">OffsetAndTimestamp</a></li>
 <li><a href="#PartitionInfo">PartitionInfo</a></li>
 <li><a href="#RecordMetadata">RecordMetadata</a></li>
+<li><a href="#TopicDescription">TopicDescription</a></li>
 <li><a href="#TopicPartition">TopicPartition</a></li>
+<li><a href="#TopicPartitionInfo">TopicPartitionInfo</a></li>
 </ul>
         </div>
       </div>
@@ -116,15 +130,427 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
+<li><a href="#ClusterDescription">ClusterDescription</a></li>
+<li><a href="#Config">Config</a></li>
+<li><a href="#ConfigEntry">ConfigEntry</a></li>
+<li><a href="#ConfigResource">ConfigResource</a></li>
+<li><a href="#ConfigSynonym">ConfigSynonym</a></li>
+<li><a href="#ConsumerGroupDescription">ConsumerGroupDescription</a></li>
+<li><a href="#ConsumerGroupListing">ConsumerGroupListing</a></li>
+<li><a href="#ListConsumerGroupOffsetsOptions">ListConsumerGroupOffsetsOptions</a></li>
+<li><a href="#MemberAssignment">MemberAssignment</a></li>
+<li><a href="#MemberDescription">MemberDescription</a></li>
+<li><a href="#NewTopic">NewTopic</a></li>
 <li><a href="#Node">Node</a></li>
 <li><a href="#OffsetAndMetadata">OffsetAndMetadata</a></li>
 <li><a href="#OffsetAndTimestamp">OffsetAndTimestamp</a></li>
 <li><a href="#PartitionInfo">PartitionInfo</a></li>
 <li><a href="#RecordMetadata">RecordMetadata</a></li>
+<li><a href="#TopicDescription">TopicDescription</a></li>
 <li><a href="#TopicPartition">TopicPartition</a></li>
+<li><a href="#TopicPartitionInfo">TopicPartitionInfo</a></li>
 </ul>
         </div>
         <div class="sect1">
+<h2 id="ClusterDescription">ClusterDescription</h2>
+<div class="sectionbody">
+A detailed description of the cluster
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="clusterId"></a><code>@clusterId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the cluster ID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="controller"></a><code>@controller</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="dataobjects.html#Node">Node</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the controller node.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="nodes"></a><code>@nodes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of <a href="dataobjects.html#Node">Node</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the nodes belonging to this cluster</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Config">Config</h2>
+<div class="sectionbody">
+A configuration object containing the configuration entries for a resource
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="entries"></a><code>@entries</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of <a href="dataobjects.html#ConfigEntry">ConfigEntry</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the configuration entries for a resource</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ConfigEntry">ConfigEntry</h2>
+<div class="sectionbody">
+A class representing a configuration entry containing name, value and additional metadata
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="default"></a><code>@default</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the config value is the default or if it's been explicitly set</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="name"></a><code>@name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the config name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="readOnly"></a><code>@readOnly</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the config is read-only and cannot be updated</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sensitive"></a><code>@sensitive</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the config value is sensitive. The value is always set to null by the broker if the config value is sensitive</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="source"></a><code>@source</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="enums.html#ConfigSource">ConfigSource</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the source of this configuration entry</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="synonyms"></a><code>@synonyms</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of <a href="dataobjects.html#ConfigSynonym">ConfigSynonym</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set all config values that may be used as the value of this config along with their source, in the order of precedence</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="value"></a><code>@value</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the value or null. Null is returned if the config is unset or if isSensitive is true</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ConfigResource">ConfigResource</h2>
+<div class="sectionbody">
+A class representing resources that have configuration
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="default"></a><code>@default</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set if this is the default resource of a resource type. Resource name is empty for the default resource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="name"></a><code>@name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the resource name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="type"></a><code>@type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="enums.html#Type">Type</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the resource type</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ConfigSynonym">ConfigSynonym</h2>
+<div class="sectionbody">
+Class representing a configuration synonym of a link
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="name"></a><code>@name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the name of this configuration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="source"></a><code>@source</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="enums.html#ConfigSource">ConfigSource</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the source of this configuration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="value"></a><code>@value</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the value of this configuration, which may be null if the configuration is sensitive</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ConsumerGroupDescription">ConsumerGroupDescription</h2>
+<div class="sectionbody">
+A detailed description of a single consumer group in the cluster
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="coordinator"></a><code>@coordinator</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="dataobjects.html#Node">Node</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the consumer group coordinator, or null if the coordinator is not known</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="groupId"></a><code>@groupId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the id of the consumer group</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="members"></a><code>@members</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of <a href="dataobjects.html#MemberDescription">MemberDescription</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set a list of the members of the consumer group</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="partitionAssignor"></a><code>@partitionAssignor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the consumer group partition assignor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="simpleConsumerGroup"></a><code>@simpleConsumerGroup</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set if consumer group is simple or not</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="state"></a><code>@state</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="enums.html#ConsumerGroupState">ConsumerGroupState</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the consumer group state, or UNKNOWN if the state is too new for us to parse</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ConsumerGroupListing">ConsumerGroupListing</h2>
+<div class="sectionbody">
+A listing of a consumer group in the cluster.
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="groupId"></a><code>@groupId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the consumer group id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="simpleConsumerGroup"></a><code>@simpleConsumerGroup</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set if consumer group is simple or not</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ListConsumerGroupOffsetsOptions">ListConsumerGroupOffsetsOptions</h2>
+<div class="sectionbody">
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="MemberAssignment">MemberAssignment</h2>
+<div class="sectionbody">
+A description of the assignments of a specific group member
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="topicPartitions"></a><code>@topicPartitions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of <a href="dataobjects.html#TopicPartition">TopicPartition</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the list of topic partitions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="MemberDescription">MemberDescription</h2>
+<div class="sectionbody">
+A detailed description of a single group instance in the cluster
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="assignment"></a><code>@assignment</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="dataobjects.html#MemberAssignment">MemberAssignment</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the assignment of the group member</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="clientId"></a><code>@clientId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the client id of the group member</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="consumerId"></a><code>@consumerId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the consumer id of the group member</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="host"></a><code>@host</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the host where the group member is running</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="NewTopic">NewTopic</h2>
+<div class="sectionbody">
+A new topic to be created
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="config"></a><code>@config</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the configuration for the new topic or null if no configs ever specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="name"></a><code>@name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the name of the topic to be created</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="numPartitions"></a><code>@numPartitions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the number of partitions for the new topic or -1 if a replica assignment has been specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="replicationFactor"></a><code>@replicationFactor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (short)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the replication factor for the new topic or -1 if a replica assignment has been specified</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
 <h2 id="Node">Node</h2>
 <div class="sectionbody">
 Information about a Kafka cluster node
@@ -340,6 +766,43 @@ Metadata related to a Kafka record
 </div>
 </div>
 <div class="sect1">
+<h2 id="TopicDescription">TopicDescription</h2>
+<div class="sectionbody">
+A detailed description of a single topic in the cluster
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="internal"></a><code>@internal</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the topic is internal to Kafka.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="name"></a><code>@name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the name of the topic.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="partitions"></a><code>@partitions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of <a href="dataobjects.html#TopicPartitionInfo">TopicPartitionInfo</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set A list of partitions where the index represents the partition id and the element
+contains leadership and replica information for that partition.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
 <h2 id="TopicPartition">TopicPartition</h2>
 <div class="sectionbody">
 Represent information related to a partition for a topic
@@ -370,6 +833,47 @@ Represent information related to a partition for a topic
 </table>
 </div>
 </div>
+<div class="sect1">
+<h2 id="TopicPartitionInfo">TopicPartitionInfo</h2>
+<div class="sectionbody">
+A class containing leadership, replicas and ISR information for a topic partition.
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="isr"></a><code>@isr</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of <a href="dataobjects.html#Node">Node</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the subset of the replicas that are in sync</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="leader"></a><code>@leader</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="dataobjects.html#Node">Node</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the node id of the node currently acting as a leader</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="partition"></a><code>@partition</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the partition id</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="replicas"></a><code>@replicas</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of <a href="dataobjects.html#Node">Node</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the complete set of replicas for this partition</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 
         
 
@@ -377,7 +881,7 @@ Represent information related to a partition for a topic
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:30 CEST
               
               
             </div>

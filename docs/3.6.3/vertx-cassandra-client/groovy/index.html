@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -103,17 +104,21 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
-<li><a href="#_using_the_cassandra_client_for_vert_x">Using the Cassandra Client for Vert.x</a></li>
+<li><a href="#_getting_started">Getting started</a></li>
 <li><a href="#_creating_a_client">Creating a client</a>
 <ul class="sectlevel2">
-<li><a href="#_connect_disconnect">Connect/Disconnect</a></li>
+<li><a href="#_client_options">Client options</a></li>
+<li><a href="#_shared_clients">Shared clients</a></li>
+<li><a href="#_client_lifecycle">Client lifecycle</a></li>
 </ul>
 </li>
 <li><a href="#_using_the_api">Using the API</a>
 <ul class="sectlevel2">
 <li><a href="#_querying">Querying</a></li>
+<li><a href="#_collector_queries">Collector queries</a></li>
 <li><a href="#_prepared_queries">Prepared queries</a></li>
 <li><a href="#_batching">Batching</a></li>
+<li><a href="#_object_mapper">Object Mapper</a></li>
 </ul>
 </li>
 </ul>
@@ -123,17 +128,21 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
-<li><a href="#_using_the_cassandra_client_for_vert_x">Using the Cassandra Client for Vert.x</a></li>
+<li><a href="#_getting_started">Getting started</a></li>
 <li><a href="#_creating_a_client">Creating a client</a>
 <ul class="sectlevel2">
-<li><a href="#_connect_disconnect">Connect/Disconnect</a></li>
+<li><a href="#_client_options">Client options</a></li>
+<li><a href="#_shared_clients">Shared clients</a></li>
+<li><a href="#_client_lifecycle">Client lifecycle</a></li>
 </ul>
 </li>
 <li><a href="#_using_the_api">Using the API</a>
 <ul class="sectlevel2">
 <li><a href="#_querying">Querying</a></li>
+<li><a href="#_collector_queries">Collector queries</a></li>
 <li><a href="#_prepared_queries">Prepared queries</a></li>
 <li><a href="#_batching">Batching</a></li>
+<li><a href="#_object_mapper">Object Mapper</a></li>
 </ul>
 </li>
 </ul>
@@ -141,7 +150,7 @@
         <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>A Vert.x client allowing applications to interact with a Cassandra service.</p>
+<p>A Vert.x client allowing applications to interact with an <a href="http://cassandra.apache.org/">Apache Cassandra</a> service.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -150,7 +159,7 @@
 <div class="title">Warning</div>
 </td>
 <td class="content">
-This module has Tech Preview status, this means the API can change between versions.
+This module has <em>Tech Preview</em> status, this means the API can change between versions.
 </td>
 </tr>
 </table>
@@ -158,7 +167,7 @@ This module has Tech Preview status, this means the API can change between versi
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_the_cassandra_client_for_vert_x">Using the Cassandra Client for Vert.x</h2>
+<h2 id="_getting_started">Getting started</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>To use this module, add the following to the <em>dependencies</em> section of your Maven POM file:</p>
@@ -167,8 +176,8 @@ This module has Tech Preview status, this means the API can change between versi
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
- <span class="tag">&lt;artifactId&gt;</span>vertx-lang-groovy<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;artifactId&gt;</span>vertx-cassandra-client<span class="tag">&lt;/artifactId&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -177,7 +186,7 @@ This module has Tech Preview status, this means the API can change between versi
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-lang-groovy:3.6.3</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-cassandra-client:3.9.3</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="admonitionblock warning">
@@ -187,10 +196,9 @@ This module has Tech Preview status, this means the API can change between versi
 <div class="title">Warning</div>
 </td>
 <td class="content">
-the Cassandra client is not compatible with the Vert.x Dropwizard Metrics library. Both are using a different
-major version of the Dropwizard Metrics library and the Cassandra driver <a href="https://github.com/datastax/java-driver/pull/943">won&#8217;t upgrade</a>
-to the most recent version due to the drop of Java 7. The next major version of the Cassandra driver (4)
-will uses a more recent Dropwizard Metrics library  version.
+The Cassandra client is not compatible with the Vert.x Dropwizard Metrics library.
+Both are using a different major version of the Dropwizard Metrics library and the Datastax Java driver <a href="https://github.com/datastax/java-driver/pull/943">won&#8217;t upgrade</a> to the most recent version due to the drop of Java 7.
+The next major version (4.x) of the driver will use a more recent Dropwizard Metrics library  version.
 </td>
 </tr>
 </table>
@@ -200,8 +208,10 @@ will uses a more recent Dropwizard Metrics library  version.
 <div class="sect1">
 <h2 id="_creating_a_client">Creating a client</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_client_options">Client options</h3>
 <div class="paragraph">
-<p><a href="http://cassandra.apache.org/">Cassandra</a> is a distributed system, and it can have many nodes.
+<p>Cassandra is a distributed system, and it can have many nodes.
 To connect to Cassandra you need to specify the addresses of some cluster nodes when creating a <code><a href="../../apidocs/io/vertx/cassandra/CassandraClientOptions.html">CassandraClientOptions</a></code> object:</p>
 </div>
 <div class="listingblock">
@@ -213,8 +223,80 @@ To connect to Cassandra you need to specify the addresses of some cluster nodes 
     <span class="string"><span class="delimiter">&quot;</span><span class="content">node3.address</span><span class="delimiter">&quot;</span></span>
   ]
 ]
-<span class="keyword">def</span> client = CassandraClient.createShared(vertx, options)</code></pre>
+<span class="keyword">def</span> client = CassandraClient.create(vertx, options)</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>By default, the Cassandra client for Vert.x connects to the local machine&#8217;s port <code>9042</code> and is not tied to any specific keyspace.
+But you can set either or both of these options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> options = [
+  <span class="key">port</span>:<span class="integer">9142</span>,
+  <span class="key">keyspace</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">my_keyspace</span><span class="delimiter">&quot;</span></span>
+]
+<span class="keyword">def</span> client = CassandraClient.create(vertx, options)</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+For fine tuning purposes, <code><a href="../../apidocs/io/vertx/cassandra/CassandraClientOptions.html">CassandraClientOptions</a></code> exposes a <code>com.datastax.driver.core.Cluster.Builder</code> instance.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_shared_clients">Shared clients</h3>
+<div class="paragraph">
+<p>If you deploy multiple instances of your verticle or have different verticles interacting with the same database, it is recommended to create a shared client:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> options = [
+  <span class="key">contactPoints</span>:[
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">node1.address</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">node2.address</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">node3.address</span><span class="delimiter">&quot;</span></span>
+  ],
+  <span class="key">keyspace</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">my_keyspace</span><span class="delimiter">&quot;</span></span>
+]
+<span class="keyword">def</span> client = CassandraClient.createShared(vertx, <span class="string"><span class="delimiter">&quot;</span><span class="content">sharedClientName</span><span class="delimiter">&quot;</span></span>, options)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Shared clients with the same name will use a single underlying <code>com.datastax.driver.core.Session</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_client_lifecycle">Client lifecycle</h3>
+<div class="paragraph">
+<p>After the client is created, it is not connected until the first query is executed.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+A shared client can be connected after creation if another client with the same name has already executed a query.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Clients created inside a verticle are automatically stopped when the verticle is undeployed.
+In other words, you do not need to invoke <code><a href="../../apidocs/io/vertx/cassandra/CassandraClient.html#close--">close</a></code> in the verticle <code>stop</code> method.</p>
+</div>
+<div class="paragraph">
+<p>In all other cases, you must manually close the client.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -223,42 +305,10 @@ To connect to Cassandra you need to specify the addresses of some cluster nodes 
 <div class="title">Note</div>
 </td>
 <td class="content">
-By default, the Cassandra client for Vert.x will connect to the local machine&#8217;s port <code>9042</code>.
+When a shared client is closed, the driver dession is not closed if other clients with the same name are still running.
 </td>
 </tr>
 </table>
-</div>
-<div class="sect2">
-<h3 id="_connect_disconnect">Connect/Disconnect</h3>
-<div class="paragraph">
-<p>After the client is created you can connect using specific cluster options:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">cassandraClient.connect({ connect -&gt;
-  <span class="keyword">if</span> (connect.succeeded()) {
-    println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Just connected</span><span class="delimiter">&quot;</span></span>)
-  } <span class="keyword">else</span> {
-    println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to connect</span><span class="delimiter">&quot;</span></span>)
-    connect.cause().printStackTrace()
-  }
-})</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>To disconnect, you can do it in a similar way:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">cassandraClient.disconnect({ disconnect -&gt;
-  <span class="keyword">if</span> (disconnect.succeeded()) {
-    println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Just disconnected</span><span class="delimiter">&quot;</span></span>)
-  } <span class="keyword">else</span> {
-    println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to disconnect</span><span class="delimiter">&quot;</span></span>)
-    disconnect.cause().printStackTrace()
-  }
-})</code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -354,6 +404,17 @@ Use bulk fetching only if you can afford to load the full result set in memory.
 </table>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_collector_queries">Collector queries</h3>
+<div class="paragraph">
+<p>You can use Java collectors with the query API:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">Code not translatable</code></pre>
+</div>
+</div>
 <div class="sect3">
 <h4 id="_low_level_fetch">Low level fetch</h4>
 <div class="paragraph">
@@ -422,7 +483,7 @@ Use bulk fetching only if you can afford to load the full result set in memory.
 </div>
 </div>
 <div class="paragraph">
-<p>And then use the <a href="https://docs.datastax.com/en/drivers/java/${datastax-driver.minor.version}/com/datastax/driver/core/PreparedStatement.html"><code>PreparedStatement</code></a> for all the next queries:</p>
+<p>And then use the <a href="https://docs.datastax.com/en/drivers/java/3.5/com/datastax/driver/core/PreparedStatement.html"><code>PreparedStatement</code></a> for all the next queries:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -451,7 +512,7 @@ cassandraClient.queryStream(preparedStatement.bind(<span class="string"><span cl
 <div class="sect2">
 <h3 id="_batching">Batching</h3>
 <div class="paragraph">
-<p>In case you&#8217;d like to execute several queries at once, you can use <a href="https://docs.datastax.com/en/drivers/java/${datastax-driver.minor.version}/com/datastax/driver/core/BatchStatement.html"><code>BatchStatement</code></a> for that:</p>
+<p>In case you&#8217;d like to execute several queries at once, you can use <a href="https://docs.datastax.com/en/drivers/java/3.5/com/datastax/driver/core/BatchStatement.html"><code>BatchStatement</code></a> for that:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -468,6 +529,89 @@ cassandraClient.execute(batchStatement, { result -&gt;
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_object_mapper">Object Mapper</h3>
+<div class="paragraph">
+<p>You can use the object <code><a href="../../apidocs/io/vertx/cassandra/Mapper.html">Mapper</a></code> to map between domain classes and queries.</p>
+</div>
+<div class="paragraph">
+<p>First, add the following to the <em>dependencies</em> section of your Maven POM file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+ <span class="tag">&lt;groupId&gt;</span>com.datastax.cassandra<span class="tag">&lt;/groupId&gt;</span>
+ <span class="tag">&lt;artifactId&gt;</span>cassandra-driver-mapping<span class="tag">&lt;/artifactId&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.5.0<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or, if you use Gradle:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">com.datastax.cassandra:cassandra-driver-mapping:3.5.0</span><span class="delimiter">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Consider the following entity:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Table</span>(keyspace = <span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>, name = <span class="string"><span class="delimiter">&quot;</span><span class="content">names</span><span class="delimiter">&quot;</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">MappedClass</span> {
+ <span class="annotation">@PartitionKey</span>
+ <span class="directive">private</span> <span class="predefined-type">String</span> name;
+
+ <span class="directive">public</span> MappedClass(<span class="predefined-type">String</span> name) {
+   <span class="local-variable">this</span>.name = name;
+ }
+
+ MappedClass() {
+   <span class="comment">// Required for mapping</span>
+ }
+
+ <span class="comment">// getters / setters</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create a mapper for it and you may save, retrieve or delete data from the corresponding table:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> mappingManager = MappingManager.create(cassandraClient)
+<span class="keyword">def</span> mapper = mappingManager.mapper(examples.CassandraClientExamples.MappedClass.class)
+
+<span class="keyword">def</span> value = <span class="keyword">new</span> examples.CassandraClientExamples.MappedClass(<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>)
+
+mapper.save(value, { handler -&gt;
+  <span class="comment">// Entity saved</span>
+})
+
+mapper.get(java.util.Collections.singletonList(<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>), { handler -&gt;
+  <span class="comment">// Entity loaded</span>
+})
+
+mapper.delete(java.util.Collections.singletonList(<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>), { handler -&gt;
+  <span class="comment">// Entity deleted</span>
+})</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+It is safe to reuse mapping manager and mapper instances for a given Cassandra client.
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 
@@ -477,7 +621,7 @@ cassandraClient.execute(batchStatement, { result -&gt;
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:30 CEST
               
               
             </div>

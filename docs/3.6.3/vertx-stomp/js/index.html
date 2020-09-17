@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -204,7 +205,7 @@ descriptor:</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-stomp<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -217,7 +218,7 @@ descriptor:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-stomp:3.6.3</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-stomp:3.9.3</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -1008,7 +1009,7 @@ HTML page, or as an npm module (<a href="https://www.npmjs.com/package/stompjs" 
 <div class="paragraph">
 <p>To achieve the first step, you would need a HTTP server, and pass the
 <code><a href="../../jsdoc/module-vertx-stomp-js_stomp_server-StompServer.html#webSocketHandler">webSocketHandler</a></code> result to
-<code><a href="../../jsdoc/module-vertx-js_http_server-HttpServer.html#websocketHandler">websocketHandler</a></code>:</p>
+<code><a href="../../jsdoc/module-vertx-js_http_server-HttpServer.html#webSocketHandler">webSocketHandler</a></code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1021,8 +1022,8 @@ HTML page, or as an npm module (<a href="https://www.npmjs.com/package/stompjs" 
 }).handler(StompServerHandler.create(vertx));
 
 <span class="keyword">var</span> http = vertx.createHttpServer({
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">websocketSubProtocols</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">v10.stomp, v11.stomp</span><span class="delimiter">&quot;</span></span>
-}).websocketHandler(server.webSocketHandler()).listen(<span class="integer">8080</span>);</code></pre>
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">webSocketSubProtocols</span><span class="delimiter">&quot;</span></span> : [<span class="string"><span class="delimiter">&quot;</span><span class="content">v10.stomp, v11.stomp</span><span class="delimiter">&quot;</span></span>]
+}).webSocketHandler(server.webSocketHandler()).listen(<span class="integer">8080</span>);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1103,7 +1104,7 @@ in the headers using the <code><a href="todo">Frame.STOMP_FRAME_COMMAND</a></cod
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:34 CET
+                Last updated 2020-09-16 10:26:32 CEST
               
               
             </div>

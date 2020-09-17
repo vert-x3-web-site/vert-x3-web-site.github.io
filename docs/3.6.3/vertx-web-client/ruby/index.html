@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -103,9 +104,9 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
-<li><a href="#_using_the_web_client">Using the web client</a></li>
+<li><a href="#_using_the_web_client">Using the Web Client</a></li>
 <li><a href="#_re_cap_on_vert_x_core_http_client">Re-cap on Vert.x core HTTP client</a></li>
-<li><a href="#_creating_a_web_client">Creating a web client</a></li>
+<li><a href="#_creating_a_web_client">Creating a Web Client</a></li>
 <li><a href="#_making_requests">Making requests</a>
 <ul class="sectlevel2">
 <li><a href="#_simple_requests_with_no_body">Simple requests with no body</a></li>
@@ -131,6 +132,7 @@
 <li><a href="#_setting_session_level_headers">Setting session level headers</a></li>
 </ul>
 </li>
+<li><a href="#_domain_sockets">Domain sockets</a></li>
 </ul>
         </div>
       </div>
@@ -138,9 +140,9 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
-<li><a href="#_using_the_web_client">Using the web client</a></li>
+<li><a href="#_using_the_web_client">Using the Web Client</a></li>
 <li><a href="#_re_cap_on_vert_x_core_http_client">Re-cap on Vert.x core HTTP client</a></li>
-<li><a href="#_creating_a_web_client">Creating a web client</a></li>
+<li><a href="#_creating_a_web_client">Creating a Web Client</a></li>
 <li><a href="#_making_requests">Making requests</a>
 <ul class="sectlevel2">
 <li><a href="#_simple_requests_with_no_body">Simple requests with no body</a></li>
@@ -166,6 +168,7 @@
 <li><a href="#_setting_session_level_headers">Setting session level headers</a></li>
 </ul>
 </li>
+<li><a href="#_domain_sockets">Domain sockets</a></li>
 </ul>
         </div>
         <div id="preamble">
@@ -197,19 +200,19 @@ features like:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The web client does not deprecate the Vert.x Core <code><a href="../../yardoc/Vertx/HttpClient.html">HttpClient</a></code>, indeed it is based on
+<p>The Web Client does not deprecate the Vert.x Core <code><a href="../../yardoc/Vertx/HttpClient.html">HttpClient</a></code>, indeed it is based on
 this client and inherits its configuration and great features like pooling, HTTP/2 support, pipelining support, etc&#8230;&#8203;
 The <code><a href="../../yardoc/Vertx/HttpClient.html">HttpClient</a></code> should be used when fine grained control over the HTTP
 requests/responses is necessary.</p>
 </div>
 <div class="paragraph">
-<p>The web client does not provide a WebSocket API, the Vert.x Core <code><a href="../../yardoc/Vertx/HttpClient.html">HttpClient</a></code> should
+<p>The Web Client does not provide a WebSocket API, the Vert.x Core <code><a href="../../yardoc/Vertx/HttpClient.html">HttpClient</a></code> should
 be used. It also does not handle cookies at the moment.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_the_web_client">Using the web client</h2>
+<h2 id="_using_the_web_client">Using the Web Client</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>To use Vert.x Web Client, add the following dependency to the <em>dependencies</em> section of your build descriptor:</p>
@@ -226,7 +229,7 @@ be used. It also does not handle cookies at the moment.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-web-client<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -240,7 +243,7 @@ be used. It also does not handle cookies at the moment.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
- compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-web-client:3.6.3</span><span class="delimiter">'</span></span>
+ compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-web-client:3.9.3</span><span class="delimiter">'</span></span>
 }</code></pre>
 </div>
 </div>
@@ -256,7 +259,7 @@ be used. It also does not handle cookies at the moment.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_creating_a_web_client">Creating a web client</h2>
+<h2 id="_creating_a_web_client">Creating a Web Client</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>You create an <code><a href="../../yardoc/VertxWebClient/WebClient.html">WebClient</a></code> instance with default options as follows</p>
@@ -291,6 +294,19 @@ client = <span class="constant">VertxWebClient</span>::<span class="constant">We
 <pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx-web-client/web_client</span><span class="delimiter">'</span></span>
 client = <span class="constant">VertxWebClient</span>::<span class="constant">WebClient</span>.wrap(httpClient)</code></pre>
 </div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+In most cases, a Web Client should be created once on application startup and then reused.
+Otherwise you lose a lot of benefits such as connection pooling and may leak resources if instances are not closed properly.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -402,7 +418,7 @@ client.post(<span class="integer">8080</span>, <span class="string"><span class=
 <div class="paragraph">
 <p>Sending a single buffer is useful but often you don&#8217;t want to load fully the content in memory because
 it may be too large or you want to handle many concurrent requests and want to use just the minimum
-for each request. For this purpose the web client can send <code>ReadStream&lt;Buffer&gt;</code> (e.g a
+for each request. For this purpose the Web Client can send <code>ReadStream&lt;Buffer&gt;</code> (e.g a
 <code><a href="../../yardoc/Vertx/AsyncFile.html">AsyncFile</a></code> is a ReadStream&lt;Buffer&gt;`) with the <code><a href="../../yardoc/VertxWebClient/HttpRequest.html#send_stream-instance_method">sendStream</a></code> method</p>
 </div>
 <div class="listingblock">
@@ -416,7 +432,7 @@ client.post(<span class="integer">8080</span>, <span class="string"><span class=
 </div>
 </div>
 <div class="paragraph">
-<p>The web client takes care of setting up the transfer pump for you. Since the length of the stream is not know
+<p>The Web Client takes care of setting up the transfer pump for you. Since the length of the stream is not know
 the request will use chunked transfer encoding .</p>
 </div>
 <div class="paragraph">
@@ -680,7 +696,7 @@ handler.</p>
 <h2 id="_handling_http_responses">Handling http responses</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When the web client sends a request you always deal with a single async result <code><a href="../../yardoc/VertxWebClient/HttpResponse.html">HttpResponse</a></code>.</p>
+<p>When the Web Client sends a request you always deal with a single async result <code><a href="../../yardoc/VertxWebClient/HttpResponse.html">HttpResponse</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>On a success result the callback happens after the response has been received</p>
@@ -731,7 +747,7 @@ to pipe the response to a write stream
 <div class="sect2">
 <h3 id="_decoding_responses">Decoding responses</h3>
 <div class="paragraph">
-<p>By default the web client provides an http response body as a <code>Buffer</code> and does not apply
+<p>By default the Web Client provides an http response body as a <code>Buffer</code> and does not apply
 any decoding.</p>
 </div>
 <div class="paragraph">
@@ -1030,6 +1046,18 @@ client = <span class="constant">VertxWebClient</span>::<span class="constant">We
 })</code></pre>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+For security reason, client won&#8217;t follow redirects for request with methods different from GET or HEAD
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -1037,7 +1065,7 @@ client = <span class="constant">VertxWebClient</span>::<span class="constant">We
 <h2 id="_using_https">Using HTTPS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x web client can be configured to use HTTPS in exactly the same way as the Vert.x <code><a href="../../yardoc/Vertx/HttpClient.html">HttpClient</a></code>.</p>
+<p>Vert.x Web Client can be configured to use HTTPS in exactly the same way as the Vert.x <code><a href="../../yardoc/Vertx/HttpClient.html">HttpClient</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>You can specify the behavior per request</p>
@@ -1123,6 +1151,42 @@ to send different headers to different hosts, you have to add them manually to e
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_domain_sockets">Domain sockets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since 3.7.1 the Web Client supports domain sockets, e.g you can interact with the <a href="https://docs.docker.com/engine/reference/commandline/dockerd/">local Docker daemon</a>.</p>
+</div>
+<div class="paragraph">
+<p>To achieve this, the <code><a href="../../yardoc/Vertx/Vertx.html">Vertx</a></code> instance must be created using a native transport, you can read
+the Vert.x core documentation that explains it clearly.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx/socket_address</span><span class="delimiter">'</span></span>
+require <span class="string"><span class="delimiter">'</span><span class="content">vertx-web-common/body_codec</span><span class="delimiter">'</span></span>
+require <span class="string"><span class="delimiter">'</span><span class="content">vertx-web-client/response_predicate</span><span class="delimiter">'</span></span>
+
+<span class="comment"># Creates the unix domain socket address to access the Docker API</span>
+serverAddress = <span class="constant">Vertx</span>::<span class="constant">SocketAddress</span>.domain_socket_address(<span class="string"><span class="delimiter">&quot;</span><span class="content">/var/run/docker.sock</span><span class="delimiter">&quot;</span></span>)
+
+<span class="comment"># We still need to specify host and port so the request HTTP header will be localhost:8080</span>
+<span class="comment"># otherwise it will be a malformed HTTP request</span>
+<span class="comment"># the actual value does not matter much for this example</span>
+client.request(<span class="symbol">:GET</span>, serverAddress, <span class="integer">8080</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">/images/json</span><span class="delimiter">&quot;</span></span>).expect(<span class="constant">VertxWebClient</span>::<span class="constant">ResponsePredicate</span>::<span class="constant">SC_ACCEPTED</span>).as(<span class="constant">VertxWebCommon</span>::<span class="constant">BodyCodec</span>.json_object()).send() { |ar_err,ar|
+  <span class="keyword">if</span> (ar_err == <span class="predefined-constant">nil</span>)
+    <span class="comment"># Obtain response</span>
+    response = ar
+
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Current Docker images</span><span class="inline"><span class="inline-delimiter">#{</span>response.body()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">else</span>
+    puts <span class="string"><span class="delimiter">&quot;</span><span class="content">Something went wrong </span><span class="inline"><span class="inline-delimiter">#{</span>ar_err.get_message()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>
+  <span class="keyword">end</span>
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
 
         
 
@@ -1130,7 +1194,7 @@ to send different headers to different hosts, you have to add them manually to e
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:34 CET
+                Last updated 2020-09-16 10:26:32 CEST
               
               
             </div>

@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -172,7 +173,7 @@ application.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-jdbc-client<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -185,7 +186,7 @@ application.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-jdbc-client:3.6.3</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-jdbc-client:3.9.3</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -254,11 +255,11 @@ interacting with different databases.</p>
 However, it&#8217;s possible you want to create a client instance that doesn&#8217;t share its data source with any other client.</p>
 </div>
 <div class="paragraph">
-<p>In that case you can use <code><a href="../../apidocs/io/vertx/ext/jdbc/JDBCClient.html#createNonShared-io.vertx.core.Vertx-io.vertx.core.json.JsonObject-">JDBCClient.createNonShared</a></code>.</p>
+<p>In that case you can use <code><a href="../../apidocs/io/vertx/ext/jdbc/JDBCClient.html#create-io.vertx.core.Vertx-io.vertx.core.json.JsonObject-">JDBCClient.create</a></code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">SQLClient client = JDBCClient.createNonShared(vertx, config);</code></pre>
+<pre class="CodeRay highlight"><code data-lang="java">SQLClient client = JDBCClient.create(vertx, config);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -540,7 +541,7 @@ deployed as bundle.</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:28 CEST
               
               
             </div>

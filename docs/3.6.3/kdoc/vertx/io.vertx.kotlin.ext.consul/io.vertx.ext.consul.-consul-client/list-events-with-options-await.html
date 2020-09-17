@@ -10,15 +10,15 @@
 <h1>listEventsWithOptionsAwait</h1>
 <a name="io.vertx.kotlin.ext.consul$listEventsWithOptionsAwait(io.vertx.ext.consul.ConsulClient, io.vertx.ext.consul.EventListOptions)"></a>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">ConsulClient</span><span class="symbol">.</span><span class="identifier">listEventsWithOptionsAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.consul$listEventsWithOptionsAwait(io.vertx.ext.consul.ConsulClient, io.vertx.ext.consul.EventListOptions)/options">options</span><span class="symbol">:</span>&nbsp;<span class="identifier">EventListOptions</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EventList</span></code>
-<p>Returns the most recent events known by the agent.
-This is blocking query unlike <a href="#">io.vertx.ext.consul.ConsulClient</a>. However, the semantics of this endpoint
-are slightly different. Most blocking queries provide a monotonic index and block until a newer index is available.
-This can be supported as a consequence of the total ordering of the consensus protocol. With gossip,
-there is no ordering, and instead X-Consul-Index maps to the newest event that matches the query.</p>
+<p>Suspending version of method <a href="#">io.vertx.ext.consul.ConsulClient.listEventsWithOptions</a></p>
 <h3>Parameters</h3>
 <p><a name="options"></a>
 <code>options</code> - the blocking options</p>
 <p><strong>Return</strong><br/>
-reference to this, for fluency *</p>
+<p><a href="#">EventList</a></p>
+
+
+<p>NOTE: This function has been automatically generated from <a href="#">io.vertx.ext.consul.ConsulClient</a> using Vert.x codegen.</p>
+</p>
 </BODY>
 </HTML>

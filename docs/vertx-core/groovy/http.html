@@ -2929,15 +2929,19 @@ the WebSocket will be automatically accepted after the handler is called unless 
 <h5 id="_upgrading_to_websocket">Upgrading to WebSocket</h5>
 <div class="paragraph">
 <p>The second way of handling WebSockets is to handle the HTTP Upgrade request that was sent from the client, and
-call <code><a href="../../apidocs/io/vertx/core/http/HttpServerRequest.html#upgrade--">upgrade</a></code> on the server request.</p>
+call <code><a href="../../apidocs/io/vertx/core/http/HttpServerRequest.html#toWebSocket-io.vertx.core.Handler-">toWebSocket</a></code> on the server request.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">server.requestHandler({ request -&gt;
   <span class="keyword">if</span> (request.path() == <span class="string"><span class="delimiter">&quot;</span><span class="content">/myapi</span><span class="delimiter">&quot;</span></span>) {
 
-    <span class="keyword">def</span> webSocket = request.upgrade()
-    <span class="comment">// Do something</span>
+    request.toWebSocket({ ar -&gt;
+      <span class="keyword">if</span> (ar.succeeded()) {
+        <span class="keyword">def</span> webSocket = ar.result()
+        <span class="comment">// Do something</span>
+      }
+    })
 
   } <span class="keyword">else</span> {
     <span class="comment">// Reject</span>
@@ -3208,7 +3212,7 @@ when the verticle is undeployed.</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2020-07-16 01:06:42 CEST
+                Last updated 2020-09-16 10:26:30 CEST
               
               
             </div>

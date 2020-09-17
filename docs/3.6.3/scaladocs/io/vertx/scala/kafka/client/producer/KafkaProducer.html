@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>vertx-lang-scala-docs_2.12 3.6.3 API  - io.vertx.scala.kafka.client.producer.KafkaProducer</title>
-          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.3 API - io.vertx.scala.kafka.client.producer.KafkaProducer" />
-          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.3 API io.vertx.scala.kafka.client.producer.KafkaProducer" />
+          <title>vertx-lang-scala-docs_2.12 3.9.1 API  - io.vertx.scala.kafka.client.producer.KafkaProducer</title>
+          <meta name="description" content="vertx - lang - scala - docs 2.12 3.9.1 API - io.vertx.scala.kafka.client.producer.KafkaProducer" />
+          <meta name="keywords" content="vertx lang scala docs 2.12 3.9.1 API io.vertx.scala.kafka.client.producer.KafkaProducer" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.3 API<span id="doc-version"></span></span>
+        <span id="doc-title">vertx-lang-scala-docs_2.12 3.9.1 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -492,9 +492,9 @@
 queue is ready to accept buffers again. See <a href="../../../core/streams/Pump.html" class="extype" name="io.vertx.scala.core.streams.Pump">io.vertx.scala.core.streams.Pump</a> for an example of this being used.</p><p>The stream implementation defines when the drain handler, for example it could be when the queue size has been
 reduced to <code>maxSize / 2</code>.   * @param handler the handler</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer">KafkaProducer</a> → <a href="../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.kafka.client.producer.KafkaProducer#end" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="end(kafkaProducerRecord:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V]):Unit"></a><a id="end(KafkaProducerRecord[K,V]):Unit"></a>
+      <a id="end(arg0:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit"></a><a id="end(Handler[AsyncResult[Unit]]):Unit"></a>
       <span class="permalink">
-      <a href="../../../../../../io/vertx/scala/kafka/client/producer/KafkaProducer.html#end(kafkaProducerRecord:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V]):Unit" title="Permalink">
+      <a href="../../../../../../io/vertx/scala/kafka/client/producer/KafkaProducer.html#end(arg0:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -503,10 +503,11 @@ reduced to <code>maxSize / 2</code>.   * @param handler the handler</p></div><dl
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">end</span><span class="params">(<span name="kafkaProducerRecord">kafkaProducerRecord: <a href="KafkaProducerRecord.html" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducerRecord">KafkaProducerRecord</a>[<span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.K">K</span>, <span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.V">V</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">end</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <p class="shortcomment cmt">Same as <a href="../../../core/streams/WriteStream.html#end(t:T):Unit" class="extmbr" name="io.vertx.scala.core.streams.WriteStream#end">io.vertx.scala.core.streams.WriteStream#end</a> but writes some data to the stream before ending.</p><div class="fullcomment"><div class="comment cmt"><p>Same as <a href="../../../core/streams/WriteStream.html#end(t:T):Unit" class="extmbr" name="io.vertx.scala.core.streams.WriteStream#end">io.vertx.scala.core.streams.WriteStream#end</a> but writes some data to the stream before ending.
+      <p class="shortcomment cmt">Same as <a href="../../../core/streams/WriteStream.html#end(data:T,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" class="extmbr" name="io.vertx.scala.core.streams.WriteStream#end">io.vertx.scala.core.streams.WriteStream#end</a> but with an <code>handler</code> called when the operation completes
+</p><div class="fullcomment"><div class="comment cmt"><p>Same as <a href="../../../core/streams/WriteStream.html#end(data:T,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" class="extmbr" name="io.vertx.scala.core.streams.WriteStream#end">io.vertx.scala.core.streams.WriteStream#end</a> but with an <code>handler</code> called when the operation completes
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer">KafkaProducer</a> → <a href="../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.kafka.client.producer.KafkaProducer#end" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="end():Unit"></a>
@@ -524,6 +525,75 @@ reduced to <code>maxSize / 2</code>.   * @param handler the handler</p></div><dl
       </span>
       
       <p class="shortcomment cmt">Ends the stream.</p><div class="fullcomment"><div class="comment cmt"><p>Ends the stream.</p><p>Once the stream has ended, it cannot be used any more.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer">KafkaProducer</a> → <a href="../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
+    </li><li name="io.vertx.scala.kafka.client.producer.KafkaProducer#end" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="end(data:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit"></a><a id="end(KafkaProducerRecord[K,V],Handler[AsyncResult[Unit]]):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../io/vertx/scala/kafka/client/producer/KafkaProducer.html#end(data:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">end</span><span class="params">(<span name="data">data: <a href="KafkaProducerRecord.html" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducerRecord">KafkaProducerRecord</a>[<span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.K">K</span>, <span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.V">V</span>]</span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Same as  but with an <code>handler</code> called when the operation completes
+</p><div class="fullcomment"><div class="comment cmt"><p>Same as  but with an <code>handler</code> called when the operation completes
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer">KafkaProducer</a> → <a href="../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
+    </li><li name="io.vertx.scala.kafka.client.producer.KafkaProducer#end" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="end(data:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V]):Unit"></a><a id="end(KafkaProducerRecord[K,V]):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../../io/vertx/scala/kafka/client/producer/KafkaProducer.html#end(data:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V]):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">end</span><span class="params">(<span name="data">data: <a href="KafkaProducerRecord.html" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducerRecord">KafkaProducerRecord</a>[<span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.K">K</span>, <span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.V">V</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Same as <a href="../../../core/streams/WriteStream.html#end(data:T,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" class="extmbr" name="io.vertx.scala.core.streams.WriteStream#end">io.vertx.scala.core.streams.WriteStream#end</a> but writes some data to the stream before ending.</p><div class="fullcomment"><div class="comment cmt"><p>Same as <a href="../../../core/streams/WriteStream.html#end(data:T,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" class="extmbr" name="io.vertx.scala.core.streams.WriteStream#end">io.vertx.scala.core.streams.WriteStream#end</a> but writes some data to the stream before ending.   * @param data the data to write
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer">KafkaProducer</a> → <a href="../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
+    </li><li name="io.vertx.scala.kafka.client.producer.KafkaProducer#endFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="endFuture(data:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V]):scala.concurrent.Future[Unit]"></a><a id="endFuture(KafkaProducerRecord[K,V]):Future[Unit]"></a>
+      <span class="permalink">
+      <a href="../../../../../../io/vertx/scala/kafka/client/producer/KafkaProducer.html#endFuture(data:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V]):scala.concurrent.Future[Unit]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">endFuture</span><span class="params">(<span name="data">data: <a href="KafkaProducerRecord.html" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducerRecord">KafkaProducerRecord</a>[<span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.K">K</span>, <span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.V">V</span>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#end(arg0:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" class="extmbr" name="io.vertx.scala.kafka.client.producer.KafkaProducer#end">end</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#end(arg0:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" class="extmbr" name="io.vertx.scala.kafka.client.producer.KafkaProducer#end">end</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer">KafkaProducer</a> → <a href="../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
+    </li><li name="io.vertx.scala.kafka.client.producer.KafkaProducer#endFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="endFuture():scala.concurrent.Future[Unit]"></a><a id="endFuture():Future[Unit]"></a>
+      <span class="permalink">
+      <a href="../../../../../../io/vertx/scala/kafka/client/producer/KafkaProducer.html#endFuture():scala.concurrent.Future[Unit]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">endFuture</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#end(arg0:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" class="extmbr" name="io.vertx.scala.kafka.client.producer.KafkaProducer#end">end</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#end(arg0:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" class="extmbr" name="io.vertx.scala.kafka.client.producer.KafkaProducer#end">end</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer">KafkaProducer</a> → <a href="../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
@@ -751,6 +821,54 @@ reduced to <code>maxSize / 2</code>.   * @param handler the handler</p></div><dl
       </span>
       
       <p class="shortcomment cmt">Like <a href="#partitionsFor(topic:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[scala.collection.mutable.Buffer[io.vertx.scala.kafka.client.common.PartitionInfo]]]):io.vertx.scala.kafka.client.producer.KafkaProducer[K,V]" class="extmbr" name="io.vertx.scala.kafka.client.producer.KafkaProducer#partitionsFor">partitionsFor</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
+    </li><li name="io.vertx.scala.kafka.client.producer.KafkaProducer#send" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="send(record:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.kafka.client.producer.RecordMetadata]]):io.vertx.scala.kafka.client.producer.KafkaProducer[K,V]"></a><a id="send(KafkaProducerRecord[K,V],Handler[AsyncResult[RecordMetadata]]):KafkaProducer[K,V]"></a>
+      <span class="permalink">
+      <a href="../../../../../../io/vertx/scala/kafka/client/producer/KafkaProducer.html#send(record:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.kafka.client.producer.RecordMetadata]]):io.vertx.scala.kafka.client.producer.KafkaProducer[K,V]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">send</span><span class="params">(<span name="record">record: <a href="KafkaProducerRecord.html" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducerRecord">KafkaProducerRecord</a>[<span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.K">K</span>, <span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.V">V</span>]</span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="RecordMetadata.html" class="extype" name="io.vertx.scala.kafka.client.producer.RecordMetadata">RecordMetadata</a>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer">KafkaProducer</a>[<span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.K">K</span>, <span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.V">V</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Asynchronously write a record to a topic   * @param record record to write</p><div class="fullcomment"><div class="comment cmt"><p>Asynchronously write a record to a topic   * @param record record to write</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>handler called on operation completed</p></dd><dt>returns</dt><dd class="cmt"><p>current KafkaWriteStream instance</p></dd></dl></div>
+    </li><li name="io.vertx.scala.kafka.client.producer.KafkaProducer#send" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="send(record:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V]):io.vertx.scala.kafka.client.producer.KafkaProducer[K,V]"></a><a id="send(KafkaProducerRecord[K,V]):KafkaProducer[K,V]"></a>
+      <span class="permalink">
+      <a href="../../../../../../io/vertx/scala/kafka/client/producer/KafkaProducer.html#send(record:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V]):io.vertx.scala.kafka.client.producer.KafkaProducer[K,V]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">send</span><span class="params">(<span name="record">record: <a href="KafkaProducerRecord.html" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducerRecord">KafkaProducerRecord</a>[<span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.K">K</span>, <span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.V">V</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer">KafkaProducer</a>[<span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.K">K</span>, <span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.V">V</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Asynchronously write a record to a topic   * @param record record to write</p><div class="fullcomment"><div class="comment cmt"><p>Asynchronously write a record to a topic   * @param record record to write</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>current KafkaWriteStream instance</p></dd></dl></div>
+    </li><li name="io.vertx.scala.kafka.client.producer.KafkaProducer#sendFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="sendFuture(record:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V]):scala.concurrent.Future[io.vertx.scala.kafka.client.producer.RecordMetadata]"></a><a id="sendFuture(KafkaProducerRecord[K,V]):Future[RecordMetadata]"></a>
+      <span class="permalink">
+      <a href="../../../../../../io/vertx/scala/kafka/client/producer/KafkaProducer.html#sendFuture(record:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V]):scala.concurrent.Future[io.vertx.scala.kafka.client.producer.RecordMetadata]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sendFuture</span><span class="params">(<span name="record">record: <a href="KafkaProducerRecord.html" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducerRecord">KafkaProducerRecord</a>[<span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.K">K</span>, <span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.V">V</span>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="RecordMetadata.html" class="extype" name="io.vertx.scala.kafka.client.producer.RecordMetadata">RecordMetadata</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#send(record:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.kafka.client.producer.RecordMetadata]]):io.vertx.scala.kafka.client.producer.KafkaProducer[K,V]" class="extmbr" name="io.vertx.scala.kafka.client.producer.KafkaProducer#send">send</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
     </li><li name="io.vertx.scala.kafka.client.producer.KafkaProducer#setWriteQueueMaxSize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setWriteQueueMaxSize(i:Int):io.vertx.scala.kafka.client.producer.KafkaProducer[K,V]"></a><a id="setWriteQueueMaxSize(Int):KafkaProducer[K,V]"></a>
       <span class="permalink">
@@ -872,9 +990,9 @@ if there is more than <code>maxSize</code> items in the write queue. This is use
               
         </dd></dl></div>
     </li><li name="io.vertx.scala.kafka.client.producer.KafkaProducer#write" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="write(record:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.kafka.client.producer.RecordMetadata]]):io.vertx.scala.kafka.client.producer.KafkaProducer[K,V]"></a><a id="write(KafkaProducerRecord[K,V],Handler[AsyncResult[RecordMetadata]]):KafkaProducer[K,V]"></a>
+      <a id="write(data:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.kafka.client.producer.KafkaProducer[K,V]"></a><a id="write(KafkaProducerRecord[K,V],Handler[AsyncResult[Unit]]):KafkaProducer[K,V]"></a>
       <span class="permalink">
-      <a href="../../../../../../io/vertx/scala/kafka/client/producer/KafkaProducer.html#write(record:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.kafka.client.producer.RecordMetadata]]):io.vertx.scala.kafka.client.producer.KafkaProducer[K,V]" title="Permalink">
+      <a href="../../../../../../io/vertx/scala/kafka/client/producer/KafkaProducer.html#write(data:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.kafka.client.producer.KafkaProducer[K,V]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -883,10 +1001,12 @@ if there is more than <code>maxSize</code> items in the write queue. This is use
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">write</span><span class="params">(<span name="record">record: <a href="KafkaProducerRecord.html" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducerRecord">KafkaProducerRecord</a>[<span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.K">K</span>, <span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.V">V</span>]</span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="RecordMetadata.html" class="extype" name="io.vertx.scala.kafka.client.producer.RecordMetadata">RecordMetadata</a>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer">KafkaProducer</a>[<span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.K">K</span>, <span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.V">V</span>]</span>
+        <span class="name">write</span><span class="params">(<span name="data">data: <a href="KafkaProducerRecord.html" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducerRecord">KafkaProducerRecord</a>[<span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.K">K</span>, <span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.V">V</span>]</span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer">KafkaProducer</a>[<span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.K">K</span>, <span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.V">V</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Asynchronously write a record to a topic   * @param record record to write</p><div class="fullcomment"><div class="comment cmt"><p>Asynchronously write a record to a topic   * @param record record to write</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>handler called on operation completed</p></dd><dt>returns</dt><dd class="cmt"><p>current KafkaWriteStream instance</p></dd></dl></div>
+      <p class="shortcomment cmt">Same as  but with an <code>handler</code> called when the operation completes
+</p><div class="fullcomment"><div class="comment cmt"><p>Same as  but with an <code>handler</code> called when the operation completes
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer">KafkaProducer</a> → <a href="../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.kafka.client.producer.KafkaProducer#write" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="write(kafkaProducerRecord:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V]):io.vertx.scala.kafka.client.producer.KafkaProducer[K,V]"></a><a id="write(KafkaProducerRecord[K,V]):KafkaProducer[K,V]"></a>
       <span class="permalink">
@@ -905,10 +1025,10 @@ if there is more than <code>maxSize</code> items in the write queue. This is use
       <p class="shortcomment cmt">Write some data to the stream.</p><div class="fullcomment"><div class="comment cmt"><p>Write some data to the stream. The data is put on an internal write queue, and the write actually happens
 asynchronously. To avoid running out of memory by putting too much on the write queue,
 check the <a href="../../../core/streams/WriteStream.html#writeQueueFull():Boolean" class="extmbr" name="io.vertx.scala.core.streams.WriteStream#writeQueueFull">io.vertx.scala.core.streams.WriteStream#writeQueueFull</a> method before writing. This is done automatically if using a <a href="../../../core/streams/Pump.html" class="extype" name="io.vertx.scala.core.streams.Pump">io.vertx.scala.core.streams.Pump</a>.   * @param data the data to write</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer">KafkaProducer</a> → <a href="../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
-    </li><li name="io.vertx.scala.kafka.client.producer.KafkaProducer#writeFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="writeFuture(record:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V]):scala.concurrent.Future[io.vertx.scala.kafka.client.producer.RecordMetadata]"></a><a id="writeFuture(KafkaProducerRecord[K,V]):Future[RecordMetadata]"></a>
+    </li><li name="io.vertx.scala.kafka.client.producer.KafkaProducer#writeFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="writeFuture(data:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V]):scala.concurrent.Future[Unit]"></a><a id="writeFuture(KafkaProducerRecord[K,V]):Future[Unit]"></a>
       <span class="permalink">
-      <a href="../../../../../../io/vertx/scala/kafka/client/producer/KafkaProducer.html#writeFuture(record:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V]):scala.concurrent.Future[io.vertx.scala.kafka.client.producer.RecordMetadata]" title="Permalink">
+      <a href="../../../../../../io/vertx/scala/kafka/client/producer/KafkaProducer.html#writeFuture(data:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V]):scala.concurrent.Future[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -917,10 +1037,11 @@ check the <a href="../../../core/streams/WriteStream.html#writeQueueFull():Boole
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">writeFuture</span><span class="params">(<span name="record">record: <a href="KafkaProducerRecord.html" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducerRecord">KafkaProducerRecord</a>[<span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.K">K</span>, <span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.V">V</span>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="RecordMetadata.html" class="extype" name="io.vertx.scala.kafka.client.producer.RecordMetadata">RecordMetadata</a>]</span>
+        <span class="name">writeFuture</span><span class="params">(<span name="data">data: <a href="KafkaProducerRecord.html" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducerRecord">KafkaProducerRecord</a>[<span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.K">K</span>, <span class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer.V">V</span>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Like <a href="#write(record:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.kafka.client.producer.RecordMetadata]]):io.vertx.scala.kafka.client.producer.KafkaProducer[K,V]" class="extmbr" name="io.vertx.scala.kafka.client.producer.KafkaProducer#write">write</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
+      <p class="shortcomment cmt">Like <a href="#write(data:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.kafka.client.producer.KafkaProducer[K,V]" class="extmbr" name="io.vertx.scala.kafka.client.producer.KafkaProducer#write">write</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#write(data:io.vertx.scala.kafka.client.producer.KafkaProducerRecord[K,V],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.kafka.client.producer.KafkaProducer[K,V]" class="extmbr" name="io.vertx.scala.kafka.client.producer.KafkaProducer#write">write</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.kafka.client.producer.KafkaProducer">KafkaProducer</a> → <a href="../../../core/streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.kafka.client.producer.KafkaProducer#writeQueueFull" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="writeQueueFull():Boolean"></a>
       <span class="permalink">

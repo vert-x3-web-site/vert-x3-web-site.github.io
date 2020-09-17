@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>vertx-lang-scala-docs_2.12 3.6.3 API  - io.vertx.scala.ext.web.handler.SessionHandler</title>
-          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.3 API - io.vertx.scala.ext.web.handler.SessionHandler" />
-          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.3 API io.vertx.scala.ext.web.handler.SessionHandler" />
+          <title>vertx-lang-scala-docs_2.12 3.9.1 API  - io.vertx.scala.ext.web.handler.SessionHandler</title>
+          <meta name="description" content="vertx - lang - scala - docs 2.12 3.9.1 API - io.vertx.scala.ext.web.handler.SessionHandler" />
+          <meta name="keywords" content="vertx lang scala docs 2.12 3.9.1 API io.vertx.scala.ext.web.handler.SessionHandler" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.3 API<span id="doc-version"></span></span>
+        <span id="doc-title">vertx-lang-scala-docs_2.12 3.9.1 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -234,6 +234,10 @@
                         <a class="class" href="LoggerHandler.html" title="A handler which logs request information to the Vert.x logger."></a>
                         <a href="LoggerHandler.html" title="A handler which logs request information to the Vert.x logger.">LoggerHandler</a>
                       </li><li class="current-entities indented6">
+                        <a class="object" href="MultiTenantHandler$.html" title=""></a>
+                        <a class="class" href="MultiTenantHandler.html" title="A handler which selectively executes another handler if a precondition is met."></a>
+                        <a href="MultiTenantHandler.html" title="A handler which selectively executes another handler if a precondition is met.">MultiTenantHandler</a>
+                      </li><li class="current-entities indented6">
                         <a class="object" href="OAuth2AuthHandler$.html" title=""></a>
                         <a class="class" href="OAuth2AuthHandler.html" title="An auth handler that provides OAuth2 Authentication support."></a>
                         <a href="OAuth2AuthHandler.html" title="An auth handler that provides OAuth2 Authentication support.">OAuth2AuthHandler</a>
@@ -307,8 +311,7 @@
 session.</p><p>It looks up the session for each request based on a session cookie which
 contains a session ID. It stores the session when the response is ended in
 the session store.</p><p>The session is available on the routing context with
-.</p><p>The session handler requires a <a href="CookieHandler.html" class="extype" name="io.vertx.scala.ext.web.handler.CookieHandler">io.vertx.scala.ext.web.handler.CookieHandler</a> to be on the routing
-chain before it.
+.
 </p></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
@@ -543,6 +546,40 @@ chain before it.
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="io.vertx.scala.ext.web.handler.SessionHandler#flush" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="flush(ctx:io.vertx.scala.ext.web.RoutingContext,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.ext.web.handler.SessionHandler"></a><a id="flush(RoutingContext,Handler[AsyncResult[Unit]]):SessionHandler"></a>
+      <span class="permalink">
+      <a href="../../../../../../io/vertx/scala/ext/web/handler/SessionHandler.html#flush(ctx:io.vertx.scala.ext.web.RoutingContext,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.ext.web.handler.SessionHandler" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">flush</span><span class="params">(<span name="ctx">ctx: <a href="../RoutingContext.html" class="extype" name="io.vertx.scala.ext.web.RoutingContext">RoutingContext</a></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.handler.SessionHandler">SessionHandler</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Flush a context session earlier to the store, this will allow the end user to have full control on the event of
+a failure at the store level.</p><div class="fullcomment"><div class="comment cmt"><p>Flush a context session earlier to the store, this will allow the end user to have full control on the event of
+a failure at the store level. Once a session is flushed no automatic save will be performed at end of request.   * @param ctx the current context</p></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>the event handler to signal a asynchronous response.</p></dd><dt>returns</dt><dd class="cmt"><p>fluent self</p></dd></dl></div>
+    </li><li name="io.vertx.scala.ext.web.handler.SessionHandler#flushFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="flushFuture(ctx:io.vertx.scala.ext.web.RoutingContext):scala.concurrent.Future[Unit]"></a><a id="flushFuture(RoutingContext):Future[Unit]"></a>
+      <span class="permalink">
+      <a href="../../../../../../io/vertx/scala/ext/web/handler/SessionHandler.html#flushFuture(ctx:io.vertx.scala.ext.web.RoutingContext):scala.concurrent.Future[Unit]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">flushFuture</span><span class="params">(<span name="ctx">ctx: <a href="../RoutingContext.html" class="extype" name="io.vertx.scala.ext.web.RoutingContext">RoutingContext</a></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#flush(ctx:io.vertx.scala.ext.web.RoutingContext,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.ext.web.handler.SessionHandler" class="extmbr" name="io.vertx.scala.ext.web.handler.SessionHandler#flush">flush</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -667,6 +704,22 @@ chain before it.
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="io.vertx.scala.ext.web.handler.SessionHandler#setAuthProvider" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setAuthProvider(authProvider:io.vertx.scala.ext.auth.AuthProvider):io.vertx.scala.ext.web.handler.SessionHandler"></a><a id="setAuthProvider(AuthProvider):SessionHandler"></a>
+      <span class="permalink">
+      <a href="../../../../../../io/vertx/scala/ext/web/handler/SessionHandler.html#setAuthProvider(authProvider:io.vertx.scala.ext.auth.AuthProvider):io.vertx.scala.ext.web.handler.SessionHandler" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setAuthProvider</span><span class="params">(<span name="authProvider">authProvider: <a href="../../auth/AuthProvider.html" class="extype" name="io.vertx.scala.ext.auth.AuthProvider">AuthProvider</a></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.handler.SessionHandler">SessionHandler</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Set an auth provider that will allow retrieving the User object from the session to the current routing context.</p><div class="fullcomment"><div class="comment cmt"><p>Set an auth provider that will allow retrieving the User object from the session to the current routing context.   * @param authProvider any auth provider.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.handler.SessionHandler#setCookieHttpOnlyFlag" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setCookieHttpOnlyFlag(httpOnly:Boolean):io.vertx.scala.ext.web.handler.SessionHandler"></a><a id="setCookieHttpOnlyFlag(Boolean):SessionHandler"></a>
       <span class="permalink">
@@ -685,6 +738,22 @@ chain before it.
       <p class="shortcomment cmt">Sets whether the 'HttpOnly' flag should be set for the session cookie.</p><div class="fullcomment"><div class="comment cmt"><p>Sets whether the 'HttpOnly' flag should be set for the session cookie. When
 set this flag instructs browsers to prevent Javascript access to the the
 cookie. Used as a line of defence against the most common XSS attacks.   * @param httpOnly true to set the HttpOnly flag on the cookie</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+    </li><li name="io.vertx.scala.ext.web.handler.SessionHandler#setCookieSameSite" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setCookieSameSite(policy:io.vertx.core.http.CookieSameSite):io.vertx.scala.ext.web.handler.SessionHandler"></a><a id="setCookieSameSite(CookieSameSite):SessionHandler"></a>
+      <span class="permalink">
+      <a href="../../../../../../io/vertx/scala/ext/web/handler/SessionHandler.html#setCookieSameSite(policy:io.vertx.core.http.CookieSameSite):io.vertx.scala.ext.web.handler.SessionHandler" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setCookieSameSite</span><span class="params">(<span name="policy">policy: <span class="extype" name="io.vertx.core.http.CookieSameSite">CookieSameSite</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.handler.SessionHandler">SessionHandler</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Set the session cookie SameSite policy to use.</p><div class="fullcomment"><div class="comment cmt"><p>Set the session cookie SameSite policy to use.   * @param policy to use, <code>null</code> for no policy.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.handler.SessionHandler#setCookieSecureFlag" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setCookieSecureFlag(secure:Boolean):io.vertx.scala.ext.web.handler.SessionHandler"></a><a id="setCookieSecureFlag(Boolean):SessionHandler"></a>
       <span class="permalink">
@@ -704,6 +773,23 @@ cookie. Used as a line of defence against the most common XSS attacks.   * @para
 this flag instructs browsers to only send the cookie over HTTPS. Note that
 this will probably stop your sessions working if used without HTTPS (e.g. in
 development).   * @param secure true to set the secure flag on the cookie</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+    </li><li name="io.vertx.scala.ext.web.handler.SessionHandler#setLazySession" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setLazySession(lazySession:Boolean):io.vertx.scala.ext.web.handler.SessionHandler"></a><a id="setLazySession(Boolean):SessionHandler"></a>
+      <span class="permalink">
+      <a href="../../../../../../io/vertx/scala/ext/web/handler/SessionHandler.html#setLazySession(lazySession:Boolean):io.vertx.scala.ext.web.handler.SessionHandler" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setLazySession</span><span class="params">(<span name="lazySession">lazySession: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.ext.web.handler.SessionHandler">SessionHandler</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Use a lazy session creation mechanism.</p><div class="fullcomment"><div class="comment cmt"><p>Use a lazy session creation mechanism. The session will only be created when accessed from the context. Thus the
+session cookie is set only if the session was accessed.   * @param lazySession true to have a lazy session creation.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.ext.web.handler.SessionHandler#setMinLength" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setMinLength(minLength:Int):io.vertx.scala.ext.web.handler.SessionHandler"></a><a id="setMinLength(Int):SessionHandler"></a>
       <span class="permalink">

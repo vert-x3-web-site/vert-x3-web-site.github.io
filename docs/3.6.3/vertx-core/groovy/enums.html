@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -104,6 +105,7 @@
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
 <li><a href="#ClientAuth">ClientAuth</a></li>
+<li><a href="#CookieSameSite">CookieSameSite</a></li>
 <li><a href="#DnsResponseCode">DnsResponseCode</a></li>
 <li><a href="#HttpMethod">HttpMethod</a></li>
 <li><a href="#HttpVersion">HttpVersion</a></li>
@@ -119,6 +121,7 @@
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
 <li><a href="#ClientAuth">ClientAuth</a></li>
+<li><a href="#CookieSameSite">CookieSameSite</a></li>
 <li><a href="#DnsResponseCode">DnsResponseCode</a></li>
 <li><a href="#HttpMethod">HttpMethod</a></li>
 <li><a href="#HttpVersion">HttpVersion</a></li>
@@ -157,6 +160,40 @@ not to provide authentication information about itself, the negotiations will co
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="REQUIRED"></a><code>REQUIRED</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Require client to present authentication, if not presented then negotiations will be declined.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="CookieSameSite">CookieSameSite</h2>
+<div class="sectionbody">
+Represents the Cookie SameSite policy to be used. For more info <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#SameSite_cookies">https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#SameSite_cookies</a>.
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="NONE"></a><code>NONE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The browser will send cookies with both cross-site requests and same-site requests.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="STRICT"></a><code>STRICT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The browser will only send cookies for same-site requests (requests originating from the site that set the cookie).
+If the request originated from a different URL than the URL of the current location, none of the cookies tagged
+with the Strict attribute will be included.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="LAX"></a><code>LAX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Same-site cookies are withheld on cross-site subrequests, such as calls to load images or frames, but will be sent
+when a user navigates to the URL from an external site; for example, by following a link.</p></td>
 </tr>
 </tbody>
 </table>
@@ -475,7 +512,7 @@ Represents the WebSocket version
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:30 CEST
               
               
             </div>

@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -788,27 +789,28 @@ Salt values can also be generated using <code>auth.generateSalt()</code>.</p>
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MainVerticle</span> <span class="directive">extends</span> AbstractVerticle {
 
   <span class="annotation">@Override</span>
-  <span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
+  <span class="directive">public</span> <span class="type">void</span> start(Promise&lt;<span class="predefined-type">Void</span>&gt; promise) {
 
-    <span class="predefined-type">Future</span>&lt;<span class="predefined-type">String</span>&gt; dbVerticleDeployment = <span class="predefined-type">Future</span>.future();
-    vertx.deployVerticle(<span class="keyword">new</span> WikiDatabaseVerticle(), dbVerticleDeployment);
+    Promise&lt;<span class="predefined-type">String</span>&gt; dbDeploymentPromise = Promise.promise();
+    vertx.deployVerticle(<span class="keyword">new</span> WikiDatabaseVerticle(), dbDeploymentPromise);
 
-    dbVerticleDeployment.compose(id -&gt; {
-      <span class="predefined-type">Future</span>&lt;<span class="predefined-type">String</span>&gt; authInitDeployment = <span class="predefined-type">Future</span>.future();
-      vertx.deployVerticle(<span class="keyword">new</span> AuthInitializerVerticle(), authInitDeployment);
-      <span class="keyword">return</span> authInitDeployment;
-    }).compose(id -&gt; {
-      <span class="predefined-type">Future</span>&lt;<span class="predefined-type">String</span>&gt; httpVerticleDeployment = <span class="predefined-type">Future</span>.future();
-      vertx.deployVerticle(
-        <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.guides.wiki.http.HttpServerVerticle</span><span class="delimiter">&quot;</span></span>,
-        <span class="keyword">new</span> DeploymentOptions().setInstances(<span class="integer">2</span>),
-        httpVerticleDeployment.completer());
-      <span class="keyword">return</span> httpVerticleDeployment;
-    }).setHandler(ar -&gt; {
+    <span class="predefined-type">Future</span>&lt;<span class="predefined-type">String</span>&gt; authDeploymentFuture = dbDeploymentPromise.future().compose(id -&gt; {
+      Promise&lt;<span class="predefined-type">String</span>&gt; deployPromise = Promise.promise();
+      vertx.deployVerticle(<span class="keyword">new</span> AuthInitializerVerticle(), deployPromise);
+      <span class="keyword">return</span> deployPromise.future();
+    });
+
+    authDeploymentFuture.compose(id -&gt; {
+      Promise&lt;<span class="predefined-type">String</span>&gt; deployPromise = Promise.promise();
+      vertx.deployVerticle(<span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.guides.wiki.http.HttpServerVerticle</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> DeploymentOptions().setInstances(<span class="integer">2</span>), deployPromise);
+      <span class="keyword">return</span> deployPromise.future();
+    });
+
+    authDeploymentFuture.setHandler(ar -&gt; {
       <span class="keyword">if</span> (ar.succeeded()) {
-        startFuture.complete();
+        promise.complete();
       } <span class="keyword">else</span> {
-        startFuture.fail(ar.cause());
+        promise.fail(ar.cause());
       }
     });
   }
@@ -1088,18 +1090,17 @@ Set-Cookie: vertx-web.session=0598697483371c7f3cb434fbe35f15e4; Path=/
 <span class="directive">public</span> <span class="type">void</span> play_with_api(TestContext context) {
   Async async = context.async();
 
-  <span class="predefined-type">Future</span>&lt;<span class="predefined-type">String</span>&gt; tokenRequest = <span class="predefined-type">Future</span>.future();
+  Promise&lt;HttpResponse&lt;<span class="predefined-type">String</span>&gt;&gt; tokenPromise = Promise.promise();
   webClient.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/token</span><span class="delimiter">&quot;</span></span>)
     .putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">login</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>)  <b class="conum">(1)</b>
     .putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">bar</span><span class="delimiter">&quot;</span></span>)
-    .as(BodyCodec.string()) <b class="conum">(2)</b>
-    .send(ar -&gt; {
-      <span class="keyword">if</span> (ar.succeeded()) {
-        tokenRequest.complete(ar.result().body());  <b class="conum">(3)</b>
-      } <span class="keyword">else</span> {
-        context.fail(ar.cause());
-      }
-    });
+    .as(BodyCodec.string())   <b class="conum">(2)</b>
+    .send(tokenPromise);
+  <span class="predefined-type">Future</span>&lt;HttpResponse&lt;<span class="predefined-type">String</span>&gt;&gt; tokenFuture = tokenPromise.future(); <b class="conum">(3)</b>
+
+  JsonObject page = <span class="keyword">new</span> JsonObject()
+    .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Sample</span><span class="delimiter">&quot;</span></span>)
+    .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content"># A page</span><span class="delimiter">&quot;</span></span>);
   <span class="comment">// (...)</span></code></pre>
 </div>
 </div>
@@ -1121,36 +1122,24 @@ Set-Cookie: vertx-web.session=0598697483371c7f3cb434fbe35f15e4; Path=/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Future</span>&lt;JsonObject&gt; postRequest = <span class="predefined-type">Future</span>.future();
-tokenRequest.compose(token -&gt; {
-  jwtTokenHeaderValue = <span class="string"><span class="delimiter">&quot;</span><span class="content">Bearer </span><span class="delimiter">&quot;</span></span> + token;  <b class="conum">(1)</b>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Future</span>&lt;HttpResponse&lt;JsonObject&gt;&gt; postPageFuture = tokenFuture.compose(tokenResponse -&gt; {
+  Promise&lt;HttpResponse&lt;JsonObject&gt;&gt; promise = Promise.promise();
+  jwtTokenHeaderValue = <span class="string"><span class="delimiter">&quot;</span><span class="content">Bearer </span><span class="delimiter">&quot;</span></span> + tokenResponse.body();   <b class="conum">(1)</b>
   webClient.post(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages</span><span class="delimiter">&quot;</span></span>)
     .putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Authorization</span><span class="delimiter">&quot;</span></span>, jwtTokenHeaderValue)  <b class="conum">(2)</b>
     .as(BodyCodec.jsonObject())
-    .sendJsonObject(page, ar -&gt; {
-      <span class="keyword">if</span> (ar.succeeded()) {
-        HttpResponse&lt;JsonObject&gt; postResponse = ar.result();
-        postRequest.complete(postResponse.body());
-      } <span class="keyword">else</span> {
-        context.fail(ar.cause());
-      }
-    });
-}, postRequest);
+    .sendJsonObject(page, promise);
+  <span class="keyword">return</span> promise.future();
+});
 
-<span class="predefined-type">Future</span>&lt;JsonObject&gt; getRequest = <span class="predefined-type">Future</span>.future();
-postRequest.compose(h -&gt; {
+<span class="predefined-type">Future</span>&lt;HttpResponse&lt;JsonObject&gt;&gt; getPageFuture = postPageFuture.compose(resp -&gt; {
+  Promise&lt;HttpResponse&lt;JsonObject&gt;&gt; promise = Promise.promise();
   webClient.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages</span><span class="delimiter">&quot;</span></span>)
     .putHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">Authorization</span><span class="delimiter">&quot;</span></span>, jwtTokenHeaderValue)
     .as(BodyCodec.jsonObject())
-    .send(ar -&gt; {
-      <span class="keyword">if</span> (ar.succeeded()) {
-        HttpResponse&lt;JsonObject&gt; getResponse = ar.result();
-        getRequest.complete(getResponse.body());
-      } <span class="keyword">else</span> {
-        context.fail(ar.cause());
-      }
-    });
-}, getRequest);
+    .send(promise);
+  <span class="keyword">return</span> promise.future();
+});
 <span class="comment">// (...)</span></code></pre>
 </div>
 </div>
@@ -1174,7 +1163,7 @@ postRequest.compose(h -&gt; {
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2018-11-29 10:01:34 CET
+                Last updated 2019-07-25 13:05:56 CEST
               
               
             </div>

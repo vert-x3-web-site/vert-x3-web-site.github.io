@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -206,8 +207,7 @@ to all handlers that are registered at that address.</p>
 <p>Messages are sent to an address. Vert.x will then route them to just one of the handlers registered at that address.</p>
 </div>
 <div class="paragraph">
-<p>If there is more than one handler registered at the address,
-one will be chosen using a non-strict round-robin algorithm.</p>
+<p>If there is more than one handler registered at the address, one will be chosen using a non-strict round-robin algorithm.</p>
 </div>
 <div class="paragraph">
 <p>With point-to-point messaging, an optional reply handler can be specified when sending the message.</p>
@@ -439,10 +439,12 @@ println e.headers()[<span class="string"><span class="delimiter">&quot;</span><s
 <code><a href="../../apidocs/io/vertx/core/eventbus/MessageConsumer.html">MessageConsumer</a></code> registered with the event bus.</p>
 </div>
 <div class="paragraph">
-<p>In some cases it&#8217;s useful for the sender to know when the consumer has received the message and "processed" it.</p>
+<p>In some cases it&#8217;s useful for the sender to know when the consumer has received the message and "processed" it using
+<strong>request-response</strong> pattern.</p>
 </div>
 <div class="paragraph">
-<p>To acknowledge that the message has been processed, the consumer can reply to the message by calling <code><a href="../../apidocs/io/vertx/core/eventbus/Message.html#reply-java.lang.Object-">reply</a></code>.</p>
+<p>To acknowledge that the message has been processed, the consumer can reply to the message by calling
+<code><a href="../../apidocs/io/vertx/core/eventbus/Message.html#reply-java.lang.Object-">reply</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>When this happens it causes a reply to be sent back to the sender and the reply handler is invoked with the reply.</p>
@@ -467,7 +469,7 @@ consumer.handler({ message -&gt;
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">eventBus.send(<span class="string"><span class="delimiter">&quot;</span><span class="content">news.uk.sport</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Yay! Someone kicked a ball across a patch of grass</span><span class="delimiter">&quot;</span></span>, { ar -&gt;
+<pre class="CodeRay highlight"><code data-lang="groovy">eventBus.request(<span class="string"><span class="delimiter">&quot;</span><span class="content">news.uk.sport</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Yay! Someone kicked a ball across a patch of grass</span><span class="delimiter">&quot;</span></span>, { ar -&gt;
   <span class="keyword">if</span> (ar.succeeded()) {
     println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Received reply: </span><span class="inline"><span class="inline-delimiter">${</span>ar.result().body()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)
   }
@@ -638,7 +640,7 @@ when the verticle is undeployed.</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:30 CEST
               
               
             </div>

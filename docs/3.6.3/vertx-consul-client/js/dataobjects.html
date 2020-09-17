@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -690,6 +691,16 @@ it will pick any local address, the default local address is null.</p></td>
 a ConnectionPoolTooBusyException.  If the value is set to a negative number then the queue will be unbounded.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="maxWebSocketFrameSize"></a><code>@maxWebSocketFrameSize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="maxWebSocketMessageSize"></a><code>@maxWebSocketMessageSize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="maxWebsocketFrameSize"></a><code>@maxWebsocketFrameSize</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the max websocket frame size</p></td>
@@ -795,6 +806,16 @@ It's false as default.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set whether SSL/TLS is enabled</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sslHandshakeTimeout"></a><code>@sslHandshakeTimeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (long)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="sslHandshakeTimeoutUnit"></a><code>@sslHandshakeTimeoutUnit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="enums.html#TimeUnit">TimeUnit</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tcpCork"></a><code>@tcpCork</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enable the <code>TCP_CORK</code> option - only with linux native transport.</p></td>
@@ -846,12 +867,32 @@ within the timeout period an failure will be passed to the handler and the reque
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set whether compression is enabled</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tryUsePerFrameWebSocketCompression"></a><code>@tryUsePerFrameWebSocketCompression</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tryUsePerFrameWebsocketCompression"></a><code>@tryUsePerFrameWebsocketCompression</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tryUsePerMessageWebSocketCompression"></a><code>@tryUsePerMessageWebSocketCompression</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tryUsePerMessageWebsocketCompression"></a><code>@tryUsePerMessageWebsocketCompression</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tryWebSocketDeflateFrameCompression"></a><code>@tryWebSocketDeflateFrameCompression</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="tryWebsocketDeflateFrameCompression"></a><code>@tryWebsocketDeflateFrameCompression</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 </tr>
@@ -879,6 +920,26 @@ within the timeout period an failure will be passed to the handler and the reque
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="verifyHost"></a><code>@verifyHost</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set whether hostname verification is enabled</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="webSocketClosingTimeout"></a><code>@webSocketClosingTimeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="webSocketCompressionAllowClientNoContext"></a><code>@webSocketCompressionAllowClientNoContext</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="webSocketCompressionLevel"></a><code>@webSocketCompressionLevel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="webSocketCompressionRequestServerNoContext"></a><code>@webSocketCompressionRequestServerNoContext</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="websocketCompressionAllowClientNoContext"></a><code>@websocketCompressionAllowClientNoContext</code></p></td>
@@ -1807,6 +1868,11 @@ Options used to register service.
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set service address</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="checkListOptions"></a><code>@checkListOptions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of <a href="dataobjects.html#CheckOptions">CheckOptions</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set checks options of service</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="checkOptions"></a><code>@checkOptions</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="dataobjects.html#CheckOptions">CheckOptions</a></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set check options of service</p></td>
@@ -2168,7 +2234,7 @@ Holds results of transaction
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:34 CET
+                Last updated 2020-09-16 10:26:32 CEST
               
               
             </div>

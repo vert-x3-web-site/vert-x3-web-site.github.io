@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -191,7 +192,7 @@
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-infinispan<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -226,12 +227,12 @@
 <h2 id="_using_this_cluster_manager">Using this cluster manager</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you are using Vert.x from the command line, the jar corresponding to this cluster manager (it will be named <code>vertx-infinispan-3.6.3.jar</code>
+<p>If you are using Vert.x from the command line, the jar corresponding to this cluster manager (it will be named <code>vertx-infinispan-3.9.3.jar</code>
 should be in the <code>lib</code> directory of the Vert.x installation.</p>
 </div>
 <div class="paragraph">
 <p>If you want clustering with this cluster manager in your Vert.x Maven or Gradle project then just add a dependency to
-the artifact: <code>io.vertx:vertx-infinispan:3.6.3</code> in your project.</p>
+the artifact: <code>io.vertx:vertx-infinispan:3.9.3</code> in your project.</p>
 </div>
 <div class="paragraph">
 <p>If the jar is on your classpath as above then Vert.x will automatically detect this and use it as the cluster manager.
@@ -372,7 +373,7 @@ Vertx.clusteredVertx(options, res -&gt; {
 <p>On Kubernetes, JGroups should be configured to use the <code>KUBE_PING</code> protocol.</p>
 </div>
 <div class="paragraph">
-<p>First, add the <code>org.infinispan:infinispan-cloud:9.4.0.Final</code> and <code>org.jgroups.kubernetes:jgroups-kubernetes:${jgroups.kubernetes.version}</code> dependencies to your project.
+<p>First, add the <code>org.infinispan:infinispan-cloud:9.4.10.Final</code> dependency to your project.
 With Maven it looks like:</p>
 </div>
 <div class="listingblock">
@@ -380,14 +381,8 @@ With Maven it looks like:</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>org.infinispan<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>infinispan-cloud<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>9.4.0.Final<span class="tag">&lt;/version&gt;</span>
-<span class="tag">&lt;/dependency&gt;</span>
-<span class="tag">&lt;dependency&gt;</span>
- <span class="tag">&lt;groupId&gt;</span>org.jgroups.kubernetes<span class="tag">&lt;/groupId&gt;</span>
- <span class="tag">&lt;artifactId&gt;</span>jgroups-kubernetes<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>${jgroups.kubernetes.version}<span class="tag">&lt;/version&gt;</span>
-<span class="tag">&lt;/dependency&gt;</span>
-<span class="tag">&lt;dependency&gt;</span></code></pre>
+ <span class="tag">&lt;version&gt;</span>9.4.10.Final<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -759,7 +754,7 @@ Adding them one by one allows for clean, incremental rebalancing operations.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Handler</span>&lt;<span class="predefined-type">Future</span>&lt;Status&gt;&gt; procedure = ClusterHealthCheck.createProcedure(vertx, <span class="predefined-constant">true</span>);
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Handler</span>&lt;Promise&lt;Status&gt;&gt; procedure = ClusterHealthCheck.createProcedure(vertx, <span class="predefined-constant">true</span>);
 HealthChecks checks = HealthChecks.create(vertx).register(<span class="string"><span class="delimiter">&quot;</span><span class="content">cluster-health</span><span class="delimiter">&quot;</span></span>, procedure);</code></pre>
 </div>
 </div>
@@ -783,7 +778,7 @@ router.get(<span class="string"><span class="delimiter">&quot;</span><span class
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:28 CEST
               
               
             </div>

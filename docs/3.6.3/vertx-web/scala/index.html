@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -103,7 +104,11 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
-<li><a href="#_using_vert_x_web">Using Vert.x Web</a></li>
+<li><a href="#_using_vert_x_web">Using Vert.x Web</a>
+<ul class="sectlevel2">
+<li><a href="#_development_mode">Development mode</a></li>
+</ul>
+</li>
 <li><a href="#_re_cap_on_vert_x_core_http_servers">Re-cap on Vert.x core HTTP servers</a></li>
 <li><a href="#_basic_vert_x_web_concepts">Basic Vert.x-Web concepts</a></li>
 <li><a href="#_handling_requests_and_calling_the_next_handler">Handling requests and calling the next handler</a></li>
@@ -124,7 +129,7 @@
 <li><a href="#_reroute">Reroute</a></li>
 <li><a href="#_sub_routers">Sub-routers</a></li>
 <li><a href="#_localization">Localization</a></li>
-<li><a href="#_default_404_handling">Default 404 Handling</a></li>
+<li><a href="#_route_match_failures">Route match failures</a></li>
 <li><a href="#_error_handling">Error handling</a></li>
 <li><a href="#_request_body_handling">Request body handling</a>
 <ul class="sectlevel2">
@@ -169,6 +174,7 @@
 </ul>
 </li>
 <li><a href="#_cors_handling">CORS handling</a></li>
+<li><a href="#_multi_tenant">Multi Tenant</a></li>
 <li><a href="#_templates">Templates</a>
 <ul class="sectlevel2">
 <li><a href="#_mvel_template_engine">MVEL template engine</a></li>
@@ -177,6 +183,7 @@
 <li><a href="#_thymeleaf_template_engine">Thymeleaf template engine</a></li>
 <li><a href="#_apache_freemarker_template_engine">Apache FreeMarker template engine</a></li>
 <li><a href="#_pebble_template_engine">Pebble template engine</a></li>
+<li><a href="#_rocker_template_engine">Rocker template engine</a></li>
 <li><a href="#_disabling_caching">Disabling caching</a></li>
 </ul>
 </li>
@@ -220,7 +227,11 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
-<li><a href="#_using_vert_x_web">Using Vert.x Web</a></li>
+<li><a href="#_using_vert_x_web">Using Vert.x Web</a>
+<ul class="sectlevel2">
+<li><a href="#_development_mode">Development mode</a></li>
+</ul>
+</li>
 <li><a href="#_re_cap_on_vert_x_core_http_servers">Re-cap on Vert.x core HTTP servers</a></li>
 <li><a href="#_basic_vert_x_web_concepts">Basic Vert.x-Web concepts</a></li>
 <li><a href="#_handling_requests_and_calling_the_next_handler">Handling requests and calling the next handler</a></li>
@@ -241,7 +252,7 @@
 <li><a href="#_reroute">Reroute</a></li>
 <li><a href="#_sub_routers">Sub-routers</a></li>
 <li><a href="#_localization">Localization</a></li>
-<li><a href="#_default_404_handling">Default 404 Handling</a></li>
+<li><a href="#_route_match_failures">Route match failures</a></li>
 <li><a href="#_error_handling">Error handling</a></li>
 <li><a href="#_request_body_handling">Request body handling</a>
 <ul class="sectlevel2">
@@ -286,6 +297,7 @@
 </ul>
 </li>
 <li><a href="#_cors_handling">CORS handling</a></li>
+<li><a href="#_multi_tenant">Multi Tenant</a></li>
 <li><a href="#_templates">Templates</a>
 <ul class="sectlevel2">
 <li><a href="#_mvel_template_engine">MVEL template engine</a></li>
@@ -294,6 +306,7 @@
 <li><a href="#_thymeleaf_template_engine">Thymeleaf template engine</a></li>
 <li><a href="#_apache_freemarker_template_engine">Apache FreeMarker template engine</a></li>
 <li><a href="#_pebble_template_engine">Pebble template engine</a></li>
+<li><a href="#_rocker_template_engine">Rocker template engine</a></li>
 <li><a href="#_disabling_caching">Disabling caching</a></li>
 </ul>
 </li>
@@ -446,6 +459,9 @@ the type of app you prefer, not Vert.x-Web.</p>
 <li>
 <p>Pebble</p>
 </li>
+<li>
+<p>Rocker</p>
+</li>
 </ul>
 </div>
 </li>
@@ -515,6 +531,42 @@ over time.</p>
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
  compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-web:${maven.version}</span><span class="delimiter">'</span></span>
 }</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_development_mode">Development mode</h3>
+<div class="paragraph">
+<p>Vert.x Web by default operates in production mode.
+You can switch the development mode by assigning the <code>dev</code> value to either:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the <code>VERTXWEB_ENVIRONMENT</code> environment variable, or</p>
+</li>
+<li>
+<p>the <code>vertxweb.environment</code> system property</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In development mode:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>template engine caches are disabled</p>
+</li>
+<li>
+<p>the <code>ErrorHandler</code> does not display exception details</p>
+</li>
+<li>
+<p>the <code>StaticHandler</code> does not handle cache headers</p>
+</li>
+<li>
+<p>the GraphiQL development tool is disabled</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -938,24 +990,17 @@ and <code>productType</code> will receive the value <code>tools</code> and produ
 <p>Using int index param names might be troublesome in some cases.
 It&#8217;s possible to use named capture groups in the regex path.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>[source,scala]</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre>// This regular expression matches paths that start with something like: "/foo/bar"
+<pre class="CodeRay highlight"><code data-lang="scala">// This regular expression matches paths that start with something like: &quot;/foo/bar&quot;
 // It uses named regex groups to capture path params
-var route = router.routeWithRegex("\\/(?&lt;productType&gt;[^\\/]+)\\/(?&lt;productId&gt;[^\\/]+)").handler((routingContext: io.vertx.scala.ext.web.RoutingContext) =&gt; {
+var route = router.routeWithRegex(&quot;\\/(?&lt;productType&gt;[^\\/]+)\\/(?&lt;productId&gt;[^\\/]+)&quot;).handler((routingContext: io.vertx.scala.ext.web.RoutingContext) =&gt; {
 
-  var productType = routingContext.request().getParam("productType")
-  var productID = routingContext.request().getParam("productId")
+  var productType = routingContext.request().getParam(&quot;productType&quot;)
+  var productID = routingContext.request().getParam(&quot;productId&quot;)
 
   // Do something with them...
-})</pre>
+})</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1129,7 +1174,7 @@ want to ensure a route is evaluated before route number <code>0</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="scala">var route1 = router.route(&quot;/some/path/&quot;).handler((routingContext: io.vertx.scala.ext.web.RoutingContext) =&gt; {
+<pre class="CodeRay highlight"><code data-lang="scala">var route1 = router.route(&quot;/some/path/&quot;).order(1).handler((routingContext: io.vertx.scala.ext.web.RoutingContext) =&gt; {
 
   var response = routingContext.response()
   response.write(&quot;route1\n&quot;)
@@ -1138,7 +1183,7 @@ want to ensure a route is evaluated before route number <code>0</code>.</p>
   routingContext.next()
 })
 
-var route2 = router.route(&quot;/some/path/&quot;).handler((routingContext: io.vertx.scala.ext.web.RoutingContext) =&gt; {
+var route2 = router.route(&quot;/some/path/&quot;).order(0).handler((routingContext: io.vertx.scala.ext.web.RoutingContext) =&gt; {
 
   var response = routingContext.response()
   // enable chunked responses because we will be adding data as
@@ -1152,17 +1197,14 @@ var route2 = router.route(&quot;/some/path/&quot;).handler((routingContext: io.v
   routingContext.next()
 })
 
-var route3 = router.route(&quot;/some/path/&quot;).handler((routingContext: io.vertx.scala.ext.web.RoutingContext) =&gt; {
+var route3 = router.route(&quot;/some/path/&quot;).order(2).handler((routingContext: io.vertx.scala.ext.web.RoutingContext) =&gt; {
 
   var response = routingContext.response()
   response.write(&quot;route3&quot;)
 
   // Now end the response
   routingContext.response().end()
-})
-
-// Change the order of route2 so it runs before route1
-route2.order(-1)</code></pre>
+})</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1180,6 +1222,9 @@ route3</pre>
 </div>
 <div class="paragraph">
 <p>You can also specify that a route is handled last, with <code><a href="../../scaladocs/io/vertx/scala/ext/web/Route.html#last()">last</a></code></p>
+</div>
+<div class="paragraph">
+<p>Note: Route order can be specified only before you configure an handler!</p>
 </div>
 </div>
 </div>
@@ -1611,14 +1656,32 @@ locale was provided by the user.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_default_404_handling">Default 404 Handling</h2>
+<h2 id="_route_match_failures">Route match failures</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If no routes match for any particular request, Vert.x-Web will signal a 404 error.</p>
+<p>If no routes match for any particular request, Vert.x-Web will signal an error depending on match failure:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>404 If no route matches the path</p>
+</li>
+<li>
+<p>405 If a route matches the path but don&#8217;t match the HTTP Method</p>
+</li>
+<li>
+<p>406 If a route matches the path and the method but It can&#8217;t provide a response with a content type matching <code>Accept</code> header</p>
+</li>
+<li>
+<p>415 If a route matches the path and the method but It can&#8217;t accept the <code>Content-type</code></p>
+</li>
+<li>
+<p>400 If a route matches the path and the method but It can&#8217;t accept an empty body</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>A default 404 error handler is provided by Router. Anyway you can provide your own 404 error handler with
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/Router.html#errorHandler(int)">errorHandler</a></code></p>
+<p>You can manually manage those failures using <code><a href="../../scaladocs/io/vertx/scala/ext/web/Router.html#errorHandler(int)">errorHandler</a></code></p>
 </div>
 </div>
 </div>
@@ -1729,6 +1792,33 @@ to install handlers to consume the HTTP request body and this must be done befor
 router.route().handler(BodyHandler.create())</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>If an async call is required before, the <code>HttpServerRequest</code> should be paused and then resumed so that the request
+events are not delivered until the body handler is ready to process them.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="scala">router.route().handler((routingContext: io.vertx.scala.ext.web.RoutingContext) =&gt; {
+
+  var request = routingContext.request()
+
+  // Pause the request
+  request.pause()
+
+  someAsyncCall((result: java.lang.Void) =&gt; {
+
+    // Resume the request
+    request.resume()
+
+    // And continue processing
+    routingContext.next()
+  })
+})
+
+// This body handler will be called for all routes
+router.route().handler(BodyHandler.create())</code></pre>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_getting_the_request_body">Getting the request body</h3>
 <div class="paragraph">
@@ -1797,22 +1887,19 @@ such as the name, file-name and size to be accessed.</p>
 <h2 id="_handling_cookies">Handling cookies</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x-Web has cookies support using the <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/CookieHandler.html">CookieHandler</a></code>.</p>
+<p>Vert.x-Web has out of the box cookies support.</p>
 </div>
 <div class="paragraph">
-<p>You should make sure a cookie handler is on a matching route for any requests that require this functionality.</p>
+<p>Before 3.8.1, cookie required to use the <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/CookieHandler.html">CookieHandler</a></code> to active this functionality.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="scala">// This cookie handler will be called for all routes
-router.route().handler(CookieHandler.create())</code></pre>
-</div>
+<div class="paragraph">
+<p>Since 3.8.1, the <code>CookieHandler</code> has been deprecated and should not be used anymore.</p>
 </div>
 <div class="sect2">
 <h3 id="_manipulating_cookies">Manipulating cookies</h3>
 <div class="paragraph">
 <p>You use <code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#getCookie()">getCookie</a></code> to retrieve
-a cookie by name, or use <code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#cookies()">cookies</a></code> to retrieve the entire set.</p>
+a cookie by name, or use <code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#cookieMap()">cookieMap</a></code> to retrieve the entire set.</p>
 </div>
 <div class="paragraph">
 <p>To remove a cookie, use <code><a href="../../scaladocs/io/vertx/scala/ext/web/RoutingContext.html#removeCookie()">removeCookie</a></code>.</p>
@@ -1825,7 +1912,7 @@ a cookie by name, or use <code><a href="../../scaladocs/io/vertx/scala/ext/web/R
 browser can store them.</p>
 </div>
 <div class="paragraph">
-<p>Cookies are described by instances of <code><a href="../../scaladocs/io/vertx/scala/ext/web/Cookie.html">Cookie</a></code>. This allows you to retrieve the name,
+<p>Cookies are described by instances of <code><a href="../../scaladocs/io/vertx/scala/core/http/Cookie.html">Cookie</a></code>. This allows you to retrieve the name,
 value, domain, path and other normal cookie properties.</p>
 </div>
 <div class="paragraph">
@@ -1833,19 +1920,13 @@ value, domain, path and other normal cookie properties.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="scala">// This cookie handler will be called for all routes
-router.route().handler(CookieHandler.create())
+<pre class="CodeRay highlight"><code data-lang="scala">var someCookie = routingContext.getCookie(&quot;mycookie&quot;)
+var cookieValue = someCookie.getValue()
 
-router.route(&quot;some/path/&quot;).handler((routingContext: io.vertx.scala.ext.web.RoutingContext) =&gt; {
+// Do something with cookie...
 
-  var someCookie = routingContext.getCookie(&quot;mycookie&quot;)
-  var cookieValue = someCookie.getValue()
-
-  // Do something with cookie...
-
-  // Add a cookie - this will get written back in the response automatically
-  routingContext.addCookie(Cookie.cookie(&quot;othercookie&quot;, &quot;somevalue&quot;))
-})</code></pre>
+// Add a cookie - this will get written back in the response automatically
+routingContext.addCookie(Cookie.cookie(&quot;othercookie&quot;, &quot;somevalue&quot;))</code></pre>
 </div>
 </div>
 </div>
@@ -1881,6 +1962,28 @@ on a matching route before your application logic.</p>
 <div class="paragraph">
 <p>The session handler handles the creation of session cookies and the lookup of the session so you don&#8217;t have to do
 that yourself.</p>
+</div>
+<div class="paragraph">
+<p>Sessions data is saved to a session store automatically after the response headers have been sent to the client.
+But note that, with this mechanism, there is no guarantee the data is fully persisted before the client receives the response.
+There are occasions though when this guarantee is needed.
+In this case you can force a flush.
+This will disable the automatic saving process, unless the flushing operation failed.
+This allows to control the state before completing the response like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="scala">router.route().handler((ctx: io.vertx.scala.ext.web.RoutingContext) =&gt; {
+  sessionHandler.flushFuture(ctx).onComplete{
+    case Success(result) =&gt; {
+      ctx.response().end(&quot;Success!&quot;)
+    }
+    case Failure(cause) =&gt; {
+      println(s&quot;$cause&quot;)
+    }
+  }
+})</code></pre>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_session_stores">Session stores</h3>
@@ -2000,23 +2103,21 @@ Vertx.clusteredVertx(VertxOptions()
 your session handler is routed to before your application handlers.</p>
 </div>
 <div class="paragraph">
-<p>You&#8217;ll also need to include a <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/CookieHandler.html">CookieHandler</a></code> as the session handler uses cookies to
-lookup the session. The cookie handler should be before the session handler when routing.</p>
-</div>
-<div class="paragraph">
 <p>Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="scala">var router = Router.router(vertx)
 
-// We need a cookie handler first
-router.route().handler(CookieHandler.create())
-
 // Create a clustered session store using defaults
 var store = ClusteredSessionStore.create(vertx)
 
 var sessionHandler = SessionHandler.create(store)
+
+// the session handler controls the cookie used for the session
+// this includes configuring, for example, the same site policy
+// like this, for strict same site policy.
+sessionHandler.setCookieSameSite(CookieSameSite.STRICT)
 
 // Make sure all requests are routed through the session handler too
 router.route().handler(sessionHandler)
@@ -2056,8 +2157,7 @@ a clustered session store they can be any basic type, or <code><a href="../../sc
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="scala">router.route().handler(CookieHandler.create())
-router.route().handler(sessionHandler)
+<pre class="CodeRay highlight"><code data-lang="scala">router.route().handler(sessionHandler)
 
 // Now your application handlers
 router.route(&quot;/somepath/blah&quot;).handler((routingContext: io.vertx.scala.ext.web.RoutingContext) =&gt; {
@@ -2123,8 +2223,7 @@ please consult the auth documentation.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="scala">router.route().handler(CookieHandler.create())
-router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)))
+<pre class="CodeRay highlight"><code data-lang="scala">router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)))
 
 var basicAuthHandler = BasicAuthHandler.create(authProvider)</code></pre>
 </div>
@@ -2138,9 +2237,7 @@ your auth handler is before your application handlers on those paths:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="scala">router.route().handler(CookieHandler.create())
-router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)))
-router.route().handler(UserSessionHandler.create(authProvider))
+<pre class="CodeRay highlight"><code data-lang="scala">router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)).setAuthProvider(authProvider))
 
 var basicAuthHandler = BasicAuthHandler.create(authProvider)
 
@@ -2234,9 +2331,7 @@ To handle the login we provide a prebuilt handler <code><a href="../../scaladocs
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="scala">router.route().handler(CookieHandler.create())
-router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)))
-router.route().handler(UserSessionHandler.create(authProvider))
+<pre class="CodeRay highlight"><code data-lang="scala">router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)).setAuthProvider(authProvider))
 
 var redirectAuthHandler = RedirectAuthHandler.create(authProvider)
 
@@ -2269,7 +2364,7 @@ router.route(&quot;/private/somepath&quot;).handler((routingContext: io.vertx.sc
 <h3 id="_jwt_authorisation">JWT authorisation</h3>
 <div class="paragraph">
 <p>With JWT authorisation resources can be protected by means of permissions and users without enough rights are denied
-access.</p>
+access. You need to add the <code>io.vertx:vertx-auth-jwt:${maven.version}</code> dependency to use <code>JWTAuthProvider</code></p>
 </div>
 <div class="paragraph">
 <p>To use this handler there are 2 steps involved:</p>
@@ -2648,6 +2743,70 @@ router.route().handler((routingContext: io.vertx.scala.ext.web.RoutingContext) =
 </div>
 </div>
 <div class="sect1">
+<h2 id="_multi_tenant">Multi Tenant</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are cases where your application needs to handle more than just 1 tenant. In this case a helper handler is
+provided that simplifies setting up the application.</p>
+</div>
+<div class="paragraph">
+<p>In the case the tenant is identified by a HTTP header, say for example <code>X-Tenant</code>, then creating the handler is as
+simple as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="scala">router.route().handler(MultiTenantHandler.create(&quot;X-Tenant&quot;))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You now should register what handler should be executed for the given tenant:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="scala">MultiTenantHandler.create(&quot;X-Tenant&quot;).addTenantHandler(&quot;tenant-A&quot;, (ctx: io.vertx.scala.ext.web.RoutingContext) =&gt; {
+  // do something for tenant A...
+}).addTenantHandler(&quot;tenant-B&quot;, (ctx: io.vertx.scala.ext.web.RoutingContext) =&gt; {
+  // do something for tenant B...
+}).addDefaultHandler((ctx: io.vertx.scala.ext.web.RoutingContext) =&gt; {
+  // do something when no tenant matches...
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is useful for security situations:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="scala">// create an OAuth2 provider, clientID and clientSecret should be requested to github
+var gitHubAuthProvider = GithubAuth.create(vertx, &quot;CLIENT_ID&quot;, &quot;CLIENT_SECRET&quot;)
+// create a oauth2 handler on our running server
+// the second argument is the full url to the callback as you entered in your provider management console.
+var githubOAuth2 = OAuth2AuthHandler.create(gitHubAuthProvider, &quot;https://myserver.com/github-callback&quot;)
+// setup the callback handler for receiving the GitHub callback
+githubOAuth2.setupCallback(router.route())
+
+// create an OAuth2 provider, clientID and clientSecret should be requested to Google
+var googleAuthProvider = OAuth2Auth.create(vertx, OAuth2ClientOptions()
+  .setClientID(&quot;CLIENT_ID&quot;)
+  .setClientSecret(&quot;CLIENT_SECRET&quot;)
+  .setFlow(OAuth2FlowType.AUTH_CODE)
+  .setSite(&quot;https://accounts.google.com&quot;)
+  .setTokenPath(&quot;https://www.googleapis.com/oauth2/v3/token&quot;)
+  .setAuthorizationPath(&quot;/o/oauth2/auth&quot;)
+)
+
+// create a oauth2 handler on our domain: &quot;http://localhost:8080&quot;
+var googleOAuth2 = OAuth2AuthHandler.create(googleAuthProvider, &quot;http://localhost:8080&quot;)
+
+
+MultiTenantHandler.create(&quot;X-Tenant&quot;).addTenantHandler(&quot;tenant-github&quot;, githubOAuth2).addTenantHandler(&quot;tenant-google&quot;, googleOAuth2).addDefaultHandler((ctx: io.vertx.scala.ext.web.RoutingContext) =&gt; {
+  ctx.fail(401)
+})</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_templates">Templates</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -2891,6 +3050,42 @@ Pebble templates.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_rocker_template_engine">Rocker template engine</h3>
+<div class="paragraph">
+<p>To use Rocker, then add <code>io.vertx:vertx-web-templ-rocker:${maven.version}</code> as a dependency to your project.
+You can then create a Rocker template engine instance with <code>io.vertx.ext.web.templ.rocker#create()</code>.</p>
+</div>
+<div class="paragraph">
+<p>The values of the JSON context object passed to the <code>render</code> method are then exposed as template parameters.
+Given:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[snip]
+final JsonObject context = new JsonObject()
+ .put("foo", "badger")
+ .put("bar", "fox")
+ .put("context", new JsonObject().put("path", "/foo/bar"));
+
+engine.render(context, "somedir/TestRockerTemplate2", render -&gt; {
+ // (...)
+});
+[snip]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>then the template can be as the following <code>somedir/TestRockerTemplate2.rocker.html</code> resource file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@import io.vertx.core.json.JsonObject
+@args (JsonObject context, String foo, String bar)
+Hello @foo and @bar
+Request path is @context.getString("path")</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_disabling_caching">Disabling caching</h3>
 <div class="paragraph">
 <p>During development you might want to disable template caching so that the template gets reevaluated on each request.
@@ -2919,7 +3114,8 @@ failure handler for any paths that you want covered.</p>
 <h2 id="_request_logger">Request logger</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x-Web includes a handler <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/LoggerHandler.html">LoggerHandler</a></code> that you can use to log HTTP requests.</p>
+<p>Vert.x-Web includes a handler <code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/LoggerHandler.html">LoggerHandler</a></code> that you can use to log HTTP requests.
+You should mount this handler before any handler that could fail the <code>RoutingContext</code></p>
 </div>
 <div class="paragraph">
 <p>By default requests are logged to the Vert.x logger which can be configured to use JUL logging, log4j or SLF4J.</p>
@@ -3241,10 +3437,9 @@ SockJS handler.</p>
 <pre class="CodeRay highlight"><code data-lang="scala">var router = Router.router(vertx)
 
 var sockJSHandler = SockJSHandler.create(vertx)
-var options = BridgeOptions()
-sockJSHandler.bridge(options)
-
-router.route(&quot;/eventbus/*&quot;).handler(sockJSHandler)</code></pre>
+var options = SockJSBridgeOptions()
+// mount the bridge on the router
+router.mountSubRouter(&quot;/eventbus&quot;, sockJSHandler.bridge(options))</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3397,7 +3592,7 @@ bridge what messages are ok for it to pass through. (There is an exception for r
 </div>
 <div class="paragraph">
 <p>You can specify which <em>matches</em> you want to allow for inbound and outbound traffic using the
-<code><a href="../dataobjects.html#BridgeOptions">BridgeOptions</a></code> that you pass in when calling bridge.</p>
+<code><a href="../dataobjects.html#SockJSBridgeOptions">SockJSBridgeOptions</a></code> that you pass in when calling bridge.</p>
 </div>
 <div class="paragraph">
 <p>Each match is a <code><a href="../dataobjects.html#PermittedOptions">PermittedOptions</a></code> object:</p>
@@ -3485,14 +3680,13 @@ var outboundPermitted2 = PermittedOptions()
 
 
 // Let's define what we're going to allow from client -&gt; server
-var options = BridgeOptions()
+var options = SockJSBridgeOptions()
   .setInboundPermitteds(Set(inboundPermitted1, inboundPermitted1, inboundPermitted3))
   .setOutboundPermitteds(Set(outboundPermitted1, outboundPermitted2))
 
 
-sockJSHandler.bridge(options)
-
-router.route(&quot;/eventbus/*&quot;).handler(sockJSHandler)</code></pre>
+// mount the bridge on the router
+router.mountSubRouter(&quot;/eventbus&quot;, sockJSHandler.bridge(options))</code></pre>
 </div>
 </div>
 </div>
@@ -3523,7 +3717,7 @@ var inboundPermitted = PermittedOptions()
 // But only if the user is logged in and has the authority &quot;place_orders&quot;
 inboundPermitted.setRequiredAuthority(&quot;place_orders&quot;)
 
-var options = BridgeOptions()
+var options = SockJSBridgeOptions()
   .setInboundPermitteds(Set(inboundPermitted))</code></pre>
 </div>
 </div>
@@ -3546,21 +3740,19 @@ var inboundPermitted = PermittedOptions()
 inboundPermitted.setRequiredAuthority(&quot;place_orders&quot;)
 
 var sockJSHandler = SockJSHandler.create(vertx)
-sockJSHandler.bridge(BridgeOptions()
-  .setInboundPermitteds(Set(inboundPermitted))
-)
 
 // Now set up some basic auth handling:
 
-router.route().handler(CookieHandler.create())
 router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)))
 
 var basicAuthHandler = BasicAuthHandler.create(authProvider)
 
 router.route(&quot;/eventbus/*&quot;).handler(basicAuthHandler)
 
-
-router.route(&quot;/eventbus/*&quot;).handler(sockJSHandler)</code></pre>
+// mount the bridge on the router
+router.mountSubRouter(&quot;/eventbus&quot;, sockJSHandler.bridge(SockJSBridgeOptions()
+  .setInboundPermitteds(Set(inboundPermitted))
+))</code></pre>
 </div>
 </div>
 </div>
@@ -3568,7 +3760,7 @@ router.route(&quot;/eventbus/*&quot;).handler(sockJSHandler)</code></pre>
 <h3 id="_handling_event_bus_bridge_events">Handling event bus bridge events</h3>
 <div class="paragraph">
 <p>If you want to be notified when an event occurs on the bridge you can provide a handler when calling
-<code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/sockjs/SockJSHandler.html#bridge(io.vertx.ext.web.handler.sockjs.BridgeOptions)">bridge</a></code>.</p>
+<code><a href="../../scaladocs/io/vertx/scala/ext/web/handler/sockjs/SockJSHandler.html#bridge(io.vertx.ext.web.handler.sockjs.SockJSBridgeOptions)">bridge</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Whenever an event occurs on the bridge it will be passed to the handler. The event is described by an instance of
@@ -3655,11 +3847,12 @@ var inboundPermitted = PermittedOptions()
 
 
 var sockJSHandler = SockJSHandler.create(vertx)
-var options = BridgeOptions()
+var options = SockJSBridgeOptions()
   .setInboundPermitteds(Set(inboundPermitted))
 
 
-sockJSHandler.bridge(options, (be: io.vertx.scala.ext.web.handler.sockjs.BridgeEvent) =&gt; {
+// mount the bridge on the router
+router.mountSubRouter(&quot;/eventbus&quot;, sockJSHandler.bridge(options, (be: io.vertx.scala.ext.web.handler.sockjs.BridgeEvent) =&gt; {
   if (be.type() == BridgeEventType.PUBLISH || be.type() == BridgeEventType.RECEIVE) {
     if (be.getRawMessage().getValue(&quot;body&quot;) == &quot;armadillos&quot;) {
       // Reject it
@@ -3668,9 +3861,7 @@ sockJSHandler.bridge(options, (be: io.vertx.scala.ext.web.handler.sockjs.BridgeE
     }
   }
   be.complete(true)
-})
-
-router.route(&quot;/eventbus/*&quot;).handler(sockJSHandler)</code></pre>
+}))</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3684,20 +3875,19 @@ then the SOCKET_IDLE bridge event would be triggered.</p>
 
 // Initialize SockJS handler
 var sockJSHandler = SockJSHandler.create(vertx)
-var options = BridgeOptions()
+var options = SockJSBridgeOptions()
   .setInboundPermitteds(Set(inboundPermitted))
   .setPingTimeout(5000)
 
 
-sockJSHandler.bridge(options, (be: io.vertx.scala.ext.web.handler.sockjs.BridgeEvent) =&gt; {
+// mount the bridge on the router
+router.mountSubRouter(&quot;/eventbus&quot;, sockJSHandler.bridge(options, (be: io.vertx.scala.ext.web.handler.sockjs.BridgeEvent) =&gt; {
   if (be.type() == BridgeEventType.SOCKET_IDLE) {
     // Do some custom handling...
   }
 
   be.complete(true)
-})
-
-router.route(&quot;/eventbus/*&quot;).handler(sockJSHandler)</code></pre>
+}))</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3752,11 +3942,12 @@ var inboundPermitted = PermittedOptions()
 
 
 var sockJSHandler = SockJSHandler.create(vertx)
-var options = BridgeOptions()
+var options = SockJSBridgeOptions()
   .setInboundPermitteds(Set(inboundPermitted))
 
 
-sockJSHandler.bridge(options, (be: io.vertx.scala.ext.web.handler.sockjs.BridgeEvent) =&gt; {
+// mount the bridge on the router
+router.mountSubRouter(&quot;/eventbus&quot;, sockJSHandler.bridge(options, (be: io.vertx.scala.ext.web.handler.sockjs.BridgeEvent) =&gt; {
   if (be.type() == BridgeEventType.PUBLISH || be.type() == BridgeEventType.SEND) {
     // Add some headers
     var headers = new io.vertx.core.json.JsonObject().put(&quot;header1&quot;, &quot;val&quot;).put(&quot;header2&quot;, &quot;val2&quot;)
@@ -3765,9 +3956,7 @@ sockJSHandler.bridge(options, (be: io.vertx.scala.ext.web.handler.sockjs.BridgeE
     be.setRawMessage(rawMessage)
   }
   be.complete(true)
-})
-
-router.route(&quot;/eventbus/*&quot;).handler(sockJSHandler)</code></pre>
+}))</code></pre>
 </div>
 </div>
 </div>
@@ -3807,8 +3996,7 @@ or the header name they have chosen during the instantiation of the <code>CSRFHa
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="scala">router.route().handler(CookieHandler.create())
-router.route().handler(CSRFHandler.create(&quot;abracadabra&quot;))
+<pre class="CodeRay highlight"><code data-lang="scala">router.route().handler(CSRFHandler.create(&quot;abracadabra&quot;))
 router.route().handler((rc: io.vertx.scala.ext.web.RoutingContext) =&gt; {
 
 })</code></pre>
@@ -4059,15 +4247,12 @@ need an application like the following snippet:</p>
 // we use a Router to route all HTTP requests
 // to organize our code in a reusable way.
 
-// We need cookies and sessions
-router.route().handler(CookieHandler.create())
-router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)))
 // Simple auth service which uses a GitHub to
 // authenticate the user
 var authProvider = GithubAuth.create(vertx, &quot;YOUR PROVIDER CLIENTID&quot;, &quot;YOUR PROVIDER CLIENT SECRET&quot;)
 // We need a user session handler too to make sure
 // the user is stored in the session between requests
-router.route().handler(UserSessionHandler.create(authProvider))
+router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)).setAuthProvider(authProvider))
 // we now protect the resource under the path &quot;/protected&quot;
 router.route(&quot;/protected&quot;).handler(OAuth2AuthHandler.create(authProvider).setupCallback(router.route(&quot;/callback&quot;)).addAuthority(&quot;user:email&quot;))
 // Entry point to the application, this will render
@@ -4113,7 +4298,7 @@ value <code>Bearer BASE64_ACCESS_TOKEN</code>.</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:30 CEST
               
               
             </div>

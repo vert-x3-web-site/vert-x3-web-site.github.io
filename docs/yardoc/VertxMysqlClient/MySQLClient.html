@@ -218,7 +218,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>SqlResult Property for last_insert_id.</div></span>
+    <span class="summary_desc"><div class='inline'>SqlResult  for MySQL last_insert_id.</div></span>
   
 </li>
 
@@ -399,7 +399,9 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    SqlResult Property for last_insert_id
+    SqlResult  for MySQL last_insert_id.<br>
+ The property kind can be used to fetch the auto incremented id of the last row when executing inserting or updating operations.
+ The property name is <code>last-inserted-id</code>.
 
   </div>
 </div>
@@ -412,12 +414,12 @@
       <pre class="lines">
 
 
-34
-35
-36</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-mysql-client/my_sql_client.rb', line 34</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-mysql-client/my_sql_client.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='const'>LAST_INSERTED_ID</span>
   <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxMysqlclient</span><span class='op'>::</span><span class='const'>MySQLClient</span><span class='period'>.</span><span class='const'>LAST_INSERTED_ID</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxSqlClient</span><span class='op'>::</span><span class='const'>PropertyKind</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
@@ -492,7 +494,7 @@
 </div>
 
     <div id="footer">
-  Generated on Thu Jul 16 00:57:56 2020 by
+  Generated on Wed Sep 16 10:09:47 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.3.3).
 </div>

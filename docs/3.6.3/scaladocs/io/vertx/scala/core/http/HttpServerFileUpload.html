@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>vertx-lang-scala-docs_2.12 3.6.3 API  - io.vertx.scala.core.http.HttpServerFileUpload</title>
-          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.3 API - io.vertx.scala.core.http.HttpServerFileUpload" />
-          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.3 API io.vertx.scala.core.http.HttpServerFileUpload" />
+          <title>vertx-lang-scala-docs_2.12 3.9.1 API  - io.vertx.scala.core.http.HttpServerFileUpload</title>
+          <meta name="description" content="vertx - lang - scala - docs 2.12 3.9.1 API - io.vertx.scala.core.http.HttpServerFileUpload" />
+          <meta name="keywords" content="vertx lang scala docs 2.12 3.9.1 API io.vertx.scala.core.http.HttpServerFileUpload" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.3 API<span id="doc-version"></span></span>
+        <span id="doc-title">vertx-lang-scala-docs_2.12 3.9.1 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -150,6 +150,10 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="io.vertx.scala.core">core</a></dd></dl></div>
     </li><li class="current-entities indented5">
+                        <a class="object" href="Cookie$.html" title=""></a>
+                        <a class="class" href="Cookie.html" title="Represents an HTTP Cookie."></a>
+                        <a href="Cookie.html" title="Represents an HTTP Cookie.">Cookie</a>
+                      </li><li class="current-entities indented5">
                         <a class="object" href="GoAway$.html" title=""></a>
                         <a class="class" href="GoAway.html" title="A  frame."></a>
                         <a href="GoAway.html" title="A  frame.">GoAway</a>
@@ -221,6 +225,10 @@
                         <a class="object" href="WebSocketBase$.html" title=""></a>
                         <a class="trait" href="WebSocketBase.html" title="Base WebSocket implementation."></a>
                         <a href="WebSocketBase.html" title="Base WebSocket implementation.">WebSocketBase</a>
+                      </li><li class="current-entities indented5">
+                        <a class="object" href="WebSocketConnectOptions$.html" title=""></a>
+                        <a class="class" href="WebSocketConnectOptions.html" title="Options describing how an io.vertx.scala.core.http.HttpClient connect a io.vertx.scala.core.http.WebSocket."></a>
+                        <a href="WebSocketConnectOptions.html" title="Options describing how an io.vertx.scala.core.http.HttpClient connect a io.vertx.scala.core.http.WebSocket.">WebSocketConnectOptions</a>
                       </li><li class="current-entities indented5">
                         <a class="object" href="WebSocketFrame$.html" title=""></a>
                         <a class="class" href="WebSocketFrame.html" title="A WebSocket frame that represents either text or binary data."></a>
@@ -568,6 +576,22 @@
 recommence with the specified <code>amount</code> of items, otherwise the specified <code>amount</code> will
 be added to the current stream demand.   * @return a reference to this, so the API can be used fluently
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpServerFileUpload">HttpServerFileUpload</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerFileUpload#file" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="file():io.vertx.scala.core.file.AsyncFile"></a><a id="file():AsyncFile"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerFileUpload.html#file():io.vertx.scala.core.file.AsyncFile" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">file</span><span class="params">()</span><span class="result">: <a href="../file/AsyncFile.html" class="extype" name="io.vertx.scala.core.file.AsyncFile">AsyncFile</a></span>
+      </span>
+      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the async uploaded file when #streamToFileSystem has been used</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpServerFileUpload#filename" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="filename():String"></a>
       <span class="permalink">
@@ -692,7 +716,7 @@ be added to the current stream demand.   * @return a reference to this, so the A
         <span class="name">isSizeAvailable</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>true if the size of the upload can be retrieved via #size().</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p><code>true</code> if the size of the upload can be retrieved via #size().</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpServerFileUpload#name" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="name():String"></a>
       <span class="permalink">
@@ -779,6 +803,75 @@ be added to the current stream demand.   * @return a reference to this, so the A
       </span>
       
       <p class="shortcomment cmt">Pause the <code>ReadStream</code>, it sets the buffer in <code>fetch</code> mode and clears the actual demand.</p><div class="fullcomment"><div class="comment cmt"><p>Pause the <code>ReadStream</code>, it sets the buffer in <code>fetch</code> mode and clears the actual demand.</p><p>While it's paused, no data will be sent to the data <code>handler</code>.   * @return a reference to this, so the API can be used fluently
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpServerFileUpload">HttpServerFileUpload</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerFileUpload#pipe" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="pipe():io.vertx.scala.core.streams.Pipe[io.vertx.core.buffer.Buffer]"></a><a id="pipe():Pipe[Buffer]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerFileUpload.html#pipe():io.vertx.scala.core.streams.Pipe[io.vertx.core.buffer.Buffer]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">pipe</span><span class="params">()</span><span class="result">: <a href="../streams/Pipe.html" class="extype" name="io.vertx.scala.core.streams.Pipe">Pipe</a>[<span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Pause this stream and return a  to transfer the elements of this stream to a destination .</p><div class="fullcomment"><div class="comment cmt"><p>Pause this stream and return a  to transfer the elements of this stream to a destination .</p><p>The stream will be resumed when the pipe will be wired to a <code>WriteStream</code>.   * @return a pipe
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpServerFileUpload">HttpServerFileUpload</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerFileUpload#pipeTo" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="pipeTo(dst:io.vertx.scala.core.streams.WriteStream[io.vertx.core.buffer.Buffer],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit"></a><a id="pipeTo(WriteStream[Buffer],Handler[AsyncResult[Unit]]):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerFileUpload.html#pipeTo(dst:io.vertx.scala.core.streams.WriteStream[io.vertx.core.buffer.Buffer],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">pipeTo</span><span class="params">(<span name="dst">dst: <a href="../streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a>[<span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span>]</span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Pipe this <code>ReadStream</code> to the <code>WriteStream</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Pipe this <code>ReadStream</code> to the <code>WriteStream</code>.</p><p>Elements emitted by this stream will be written to the write stream until this stream ends or fails.</p><p>Once this stream has ended or failed, the write stream will be ended and the <code>handler</code> will be
+called with the result.   * @param dst the destination write stream
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpServerFileUpload">HttpServerFileUpload</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerFileUpload#pipeTo" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="pipeTo(dst:io.vertx.scala.core.streams.WriteStream[io.vertx.core.buffer.Buffer]):Unit"></a><a id="pipeTo(WriteStream[Buffer]):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerFileUpload.html#pipeTo(dst:io.vertx.scala.core.streams.WriteStream[io.vertx.core.buffer.Buffer]):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">pipeTo</span><span class="params">(<span name="dst">dst: <a href="../streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a>[<span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="../streams/ReadStream.html#pipeTo(dst:io.vertx.scala.core.streams.WriteStream[T],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" class="extmbr" name="io.vertx.scala.core.streams.ReadStream#pipeTo">io.vertx.scala.core.streams.ReadStream#pipeTo</a> but with no completion handler.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="../streams/ReadStream.html#pipeTo(dst:io.vertx.scala.core.streams.WriteStream[T],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" class="extmbr" name="io.vertx.scala.core.streams.ReadStream#pipeTo">io.vertx.scala.core.streams.ReadStream#pipeTo</a> but with no completion handler.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpServerFileUpload">HttpServerFileUpload</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerFileUpload#pipeToFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="pipeToFuture(dst:io.vertx.scala.core.streams.WriteStream[io.vertx.core.buffer.Buffer]):scala.concurrent.Future[Unit]"></a><a id="pipeToFuture(WriteStream[Buffer]):scala.concurrent.Future[Unit]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerFileUpload.html#pipeToFuture(dst:io.vertx.scala.core.streams.WriteStream[io.vertx.core.buffer.Buffer]):scala.concurrent.Future[Unit]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">pipeToFuture</span><span class="params">(<span name="dst">dst: <a href="../streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a>[<span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#pipeTo(dst:io.vertx.scala.core.streams.WriteStream[io.vertx.core.buffer.Buffer],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerFileUpload#pipeTo">pipeTo</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#pipeTo(dst:io.vertx.scala.core.streams.WriteStream[io.vertx.core.buffer.Buffer],handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerFileUpload#pipeTo">pipeTo</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpServerFileUpload">HttpServerFileUpload</a> → <a href="../streams/ReadStream.html" class="extype" name="io.vertx.scala.core.streams.ReadStream">ReadStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpServerFileUpload#resume" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="resume():io.vertx.scala.core.http.HttpServerFileUpload"></a><a id="resume():HttpServerFileUpload"></a>

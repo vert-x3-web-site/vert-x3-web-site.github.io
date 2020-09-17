@@ -2949,15 +2949,19 @@ the WebSocket will be automatically accepted after the handler is called unless 
 <h5 id="_upgrading_to_websocket">Upgrading to WebSocket</h5>
 <div class="paragraph">
 <p>The second way of handling WebSockets is to handle the HTTP Upgrade request that was sent from the client, and
-call <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html#upgrade">upgrade</a></code> on the server request.</p>
+call <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html#toWebSocket">toWebSocket</a></code> on the server request.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js">server.requestHandler(<span class="keyword">function</span> (request) {
   <span class="keyword">if</span> (request.path() == <span class="string"><span class="delimiter">&quot;</span><span class="content">/myapi</span><span class="delimiter">&quot;</span></span>) {
 
-    <span class="keyword">var</span> webSocket = request.upgrade();
-    <span class="comment">// Do something</span>
+    request.toWebSocket(<span class="keyword">function</span> (ar, ar_err) {
+      <span class="keyword">if</span> (ar_err == <span class="predefined-constant">null</span>) {
+        <span class="keyword">var</span> webSocket = ar;
+        <span class="comment">// Do something</span>
+      }
+    });
 
   } <span class="keyword">else</span> {
     <span class="comment">// Reject</span>
@@ -3233,7 +3237,7 @@ when the verticle is undeployed.</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2020-07-16 01:06:42 CEST
+                Last updated 2020-09-16 10:26:32 CEST
               
               
             </div>

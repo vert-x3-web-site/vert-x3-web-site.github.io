@@ -104,8 +104,7 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
-<li><a href="#PoolOptions">PoolOptions</a></li>
-<li><a href="#SqlConnectOptions">SqlConnectOptions</a></li>
+<li><a href="#DB2ConnectOptions">DB2ConnectOptions</a></li>
 </ul>
         </div>
       </div>
@@ -113,44 +112,11 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
-<li><a href="#PoolOptions">PoolOptions</a></li>
-<li><a href="#SqlConnectOptions">SqlConnectOptions</a></li>
+<li><a href="#DB2ConnectOptions">DB2ConnectOptions</a></li>
 </ul>
         </div>
         <div class="sect1">
-<h2 id="PoolOptions">PoolOptions</h2>
-<div class="sectionbody">
-The options for configuring a connection pool.
-<hr>
-<table class="tableblock frame-topbot grid-all spread">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="maxSize"></a><code>@maxSize</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the maximum pool size</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="maxWaitQueueSize"></a><code>@maxWaitQueueSize</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the maximum connection request allowed in the wait queue, any requests beyond the max size will result in
-an failure.  If the value is set to a negative number then the queue will be unbounded.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="SqlConnectOptions">SqlConnectOptions</h2>
+<h2 id="DB2ConnectOptions">DB2ConnectOptions</h2>
 <div class="sectionbody">
 Connect options for configuring link or link.
 <hr>
@@ -169,7 +135,7 @@ Connect options for configuring link or link.
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="cachePreparedStatements"></a><code>@cachePreparedStatements</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set whether prepared statements cache should be enabled.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="connectTimeout"></a><code>@connectTimeout</code></p></td>
@@ -189,7 +155,7 @@ Connect options for configuring link or link.
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="database"></a><code>@database</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specify the default database for the connection.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="enabledCipherSuites"></a><code>@enabledCipherSuites</code></p></td>
@@ -204,7 +170,7 @@ Connect options for configuring link or link.
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="host"></a><code>@host</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specify the host for connecting to the server.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="hostnameVerificationAlgorithm"></a><code>@hostnameVerificationAlgorithm</code></p></td>
@@ -254,7 +220,7 @@ Connect options for configuring link or link.
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="password"></a><code>@password</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specify the user password to be used for the authentication.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="pemKeyCertOptions"></a><code>@pemKeyCertOptions</code></p></td>
@@ -277,25 +243,29 @@ Connect options for configuring link or link.
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="pipeliningLimit"></a><code>@pipeliningLimit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="port"></a><code>@port</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specify the port for connecting to the server.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="preparedStatementCacheMaxSize"></a><code>@preparedStatementCacheMaxSize</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the maximum number of prepared statements that the connection will cache.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="preparedStatementCacheSqlLimit"></a><code>@preparedStatementCacheSqlLimit</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the maximum length of prepared statement SQL string that the connection will cache.
-</p><p class="tableblock"><p> This is an helper setting the link.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="properties"></a><code>@properties</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set properties for this client, which will be sent to server at the connection start.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="proxyOptions"></a><code>@proxyOptions</code></p></td>
@@ -405,7 +375,7 @@ Connect options for configuring link or link.
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="user"></a><code>@user</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specify the user account to be used for the authentication.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 </tr>
 </tbody>
 </table>
@@ -418,7 +388,7 @@ Connect options for configuring link or link.
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2020-07-16 01:06:40 CEST
+                Last updated 2020-09-16 10:26:28 CEST
               
               
             </div>

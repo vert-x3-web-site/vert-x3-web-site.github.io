@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -104,22 +105,26 @@
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
 <li><a href="#_using_vert_x_api_contract">Using Vert.x API Contract</a></li>
-<li><a href="#_http_requests_validation_without_openapi_3">HTTP Requests validation without OpenAPI 3</a>
+<li><a href="#_http_requests_validation">HTTP Requests validation</a>
 <ul class="sectlevel2">
 <li><a href="#_types_of_request_parameters">Types of request parameters</a></li>
 <li><a href="#_handling_parameters">Handling parameters</a></li>
+<li><a href="#_manage_validation_failures">Manage validation failures</a></li>
 </ul>
 </li>
 <li><a href="#_openapi_3">OpenAPI 3</a>
 <ul class="sectlevel2">
-<li><a href="#_the_router_factory">The router factory</a></li>
+<li><a href="#_the_router_factory">The Router Factory</a></li>
 <li><a href="#_create_a_new_router_factory">Create a new router factory</a></li>
 <li><a href="#_mount_the_handlers">Mount the handlers</a></li>
-</ul>
-</li>
-<li><a href="#_define_security_handlers">Define security handlers</a>
-<ul class="sectlevel2">
-<li><a href="#_customize_the_router_factory_behaviours">Customize the router factory behaviours</a></li>
+<li><a href="#_define_security_handlers">Define security handlers</a></li>
+<li><a href="#_not_implemented_error">Not Implemented Error</a></li>
+<li><a href="#_response_content_type_handler">Response Content Type Handler</a></li>
+<li><a href="#_operation_model">Operation model</a></li>
+<li><a href="#_body_handler">Body Handler</a></li>
+<li><a href="#__code_multipart_form_data_code_validation"><code>multipart/form-data</code> validation</a></li>
+<li><a href="#_custom_global_handlers">Custom global handlers</a></li>
+<li><a href="#_router_factory_handlers_mount_order">Router factory handlers mount order</a></li>
 <li><a href="#_generate_the_router">Generate the router</a></li>
 </ul>
 </li>
@@ -132,22 +137,26 @@
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
 <li><a href="#_using_vert_x_api_contract">Using Vert.x API Contract</a></li>
-<li><a href="#_http_requests_validation_without_openapi_3">HTTP Requests validation without OpenAPI 3</a>
+<li><a href="#_http_requests_validation">HTTP Requests validation</a>
 <ul class="sectlevel2">
 <li><a href="#_types_of_request_parameters">Types of request parameters</a></li>
 <li><a href="#_handling_parameters">Handling parameters</a></li>
+<li><a href="#_manage_validation_failures">Manage validation failures</a></li>
 </ul>
 </li>
 <li><a href="#_openapi_3">OpenAPI 3</a>
 <ul class="sectlevel2">
-<li><a href="#_the_router_factory">The router factory</a></li>
+<li><a href="#_the_router_factory">The Router Factory</a></li>
 <li><a href="#_create_a_new_router_factory">Create a new router factory</a></li>
 <li><a href="#_mount_the_handlers">Mount the handlers</a></li>
-</ul>
-</li>
-<li><a href="#_define_security_handlers">Define security handlers</a>
-<ul class="sectlevel2">
-<li><a href="#_customize_the_router_factory_behaviours">Customize the router factory behaviours</a></li>
+<li><a href="#_define_security_handlers">Define security handlers</a></li>
+<li><a href="#_not_implemented_error">Not Implemented Error</a></li>
+<li><a href="#_response_content_type_handler">Response Content Type Handler</a></li>
+<li><a href="#_operation_model">Operation model</a></li>
+<li><a href="#_body_handler">Body Handler</a></li>
+<li><a href="#__code_multipart_form_data_code_validation"><code>multipart/form-data</code> validation</a></li>
+<li><a href="#_custom_global_handlers">Custom global handlers</a></li>
+<li><a href="#_router_factory_handlers_mount_order">Router factory handlers mount order</a></li>
 <li><a href="#_generate_the_router">Generate the router</a></li>
 </ul>
 </li>
@@ -182,7 +191,7 @@
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-web-api-contract<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -196,14 +205,14 @@
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
- compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-web-api-contract:3.6.3</span><span class="delimiter">'</span></span>
+ compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-web-api-contract:3.9.3</span><span class="delimiter">'</span></span>
 }</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_http_requests_validation_without_openapi_3">HTTP Requests validation without OpenAPI 3</h2>
+<h2 id="_http_requests_validation">HTTP Requests validation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Vert.x provides a validation framework that will validate requests for you and will put results of validation inside a container. To define a <code><a href="../../apidocs/io/vertx/ext/web/api/validation/HTTPRequestValidationHandler.html">HTTPRequestValidationHandler</a></code>:</p>
@@ -245,7 +254,8 @@ router.get(<span class="string"><span class="delimiter">&quot;</span><span class
 </div>
 </div>
 <div class="paragraph">
-<p>If validation succeeds, It returns request parameters inside <code><a href="../../apidocs/io/vertx/ext/web/api/RequestParameters.html">RequestParameters</a></code>, otherwise It will throw a <code><a href="../../apidocs/io/vertx/ext/web/api/validation/ValidationException.html">ValidationException</a></code></p>
+<p>If validation succeeds, It returns request parameters inside <code><a href="../../apidocs/io/vertx/ext/web/api/RequestParameters.html">RequestParameters</a></code>,
+otherwise It will throw a fail inside <code>RoutingContext</code> with 400 status code and <code><a href="../../apidocs/io/vertx/ext/web/api/validation/ValidationException.html">ValidationException</a></code> failure.</p>
 </div>
 <div class="sect2">
 <h3 id="_types_of_request_parameters">Types of request parameters</h3>
@@ -301,18 +311,55 @@ RequestParameter awesomeParameter = params.queryParameter(<span class="string"><
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_manage_validation_failures">Manage validation failures</h3>
+<div class="paragraph">
+<p>A validation error fails the <code>RoutingContext</code> with 400 status code and <code><a href="../../apidocs/io/vertx/ext/web/api/validation/ValidationException.html">ValidationException</a></code> failure.
+You can manage these failures both at route level using <code><a href="../../apidocs/io/vertx/ext/web/Route.html#failureHandler-io.vertx.core.Handler-">failureHandler</a></code> or at router level using <code><a href="../../apidocs/io/vertx/ext/web/Router.html#errorHandler-int-io.vertx.core.Handler-">errorHandler</a></code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">router.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">/awesome/:pathParam</span><span class="delimiter">&quot;</span></span>)
+  <span class="comment">// Mount validation handler</span>
+  .handler(validationHandler)
+  <span class="comment">//Mount your handler</span>
+  .handler((routingContext) -&gt; {
+    <span class="comment">// Your logic</span>
+  })
+  <span class="comment">//Mount your failure handler to manage the validation failure at path level</span>
+  .failureHandler((routingContext) -&gt; {
+    <span class="predefined-type">Throwable</span> failure = routingContext.failure();
+    <span class="keyword">if</span> (failure <span class="keyword">instanceof</span> ValidationException) {
+      <span class="comment">// Something went wrong during validation!</span>
+      <span class="predefined-type">String</span> validationErrorMessage = failure.getMessage();
+    }
+  });
+
+<span class="comment">// Manage the validation failure for all routes in the router</span>
+router.errorHandler(<span class="integer">400</span>, routingContext -&gt; {
+  <span class="keyword">if</span> (routingContext.failure() <span class="keyword">instanceof</span> ValidationException) {
+    <span class="comment">// Something went wrong during validation!</span>
+    <span class="predefined-type">String</span> validationErrorMessage = routingContext.failure().getMessage();
+  } <span class="keyword">else</span> {
+    <span class="comment">// Unknown 400 failure happened</span>
+    routingContext.response().setStatusCode(<span class="integer">400</span>).end();
+  }
+});</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_openapi_3">OpenAPI 3</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x allows you to use your OpenApi 3 specification directly inside your code using the design first approach. Vert.x-Web provides:</p>
+<p>Vert.x allows you to use your OpenAPI 3 specification directly inside your code using the design first approach. Vert.x-Web API Contract provides:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>OpenAPI 3 compliant API specification validation with automatic*loading of external Json schemas**</p>
+<p>OpenAPI 3 compliant API specification validation with automatic <strong>loading of external Json schemas</strong></p>
 </li>
 <li>
 <p>Automatic request validation</p>
@@ -320,23 +367,17 @@ RequestParameter awesomeParameter = params.queryParameter(<span class="string"><
 <li>
 <p>Automatic mount of security validation handlers</p>
 </li>
-<li>
-<p>Automatic 501 response for not implemented operations</p>
-</li>
-<li>
-<p>Router factory to provide all these features to users</p>
-</li>
 </ul>
 </div>
 <div class="paragraph">
-<p>You can also use the community project <a href="https://github.com/pmlopes/slush-vertx"><code>slush-vertx</code></a> to generate server code from your OpenAPI 3 specification.</p>
+<p>You can also use the community project <a href="https://github.com/pmlopes/vertx-starter"><code>vertx-starter</code></a> to generate server code from your OpenAPI 3 specification.</p>
 </div>
 <div class="sect2">
-<h3 id="_the_router_factory">The router factory</h3>
+<h3 id="_the_router_factory">The Router Factory</h3>
 <div class="paragraph">
-<p>You can create your web service based on OpenAPI3 specification with <code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html">OpenAPI3RouterFactory</a></code>.
+<p>You can create your web service based on OpenAPI 3 specification with <code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html">OpenAPI3RouterFactory</a></code>.
 This class, as name says, is a router factory based on your OpenAPI 3 specification.
-<code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html">OpenAPI3RouterFactory</a></code> is intended to give you a really simple user interface to use OpenAPI 3 support. It includes:</p>
+<code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html">OpenAPI3RouterFactory</a></code> is intended to give you a really simple user interface to use OpenAPI 3 related features. It includes:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -347,16 +388,16 @@ This class, as name says, is a router factory based on your OpenAPI 3 specificat
 <p>Mount path with operationId or with combination of path and HTTP method</p>
 </li>
 <li>
-<p>Automatic request parameters validation</p>
+<p>Automatic generation of validation handlers</p>
 </li>
 <li>
-<p>Automatic convert OpenAPI style paths to Vert.x style paths</p>
+<p>Automatic conversion between OpenAPI style paths and Vert.x style paths</p>
 </li>
 <li>
-<p>Lazy methods: operations (combination of paths and HTTP methods) are mounted in declaration order inside specification</p>
+<p>Lazy methods: operations are mounted in declaration order inside specification</p>
 </li>
 <li>
-<p>Automatic mount of security validation handlers</p>
+<p>Automatic mount of security handlers</p>
 </li>
 </ul>
 </div>
@@ -364,11 +405,11 @@ This class, as name says, is a router factory based on your OpenAPI 3 specificat
 <div class="sect2">
 <h3 id="_create_a_new_router_factory">Create a new router factory</h3>
 <div class="paragraph">
-<p>To create a new router factory, Use method <code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html#create-io.vertx.core.Vertx-java.lang.String-io.vertx.core.Handler-">OpenAPI3RouterFactory.create</a></code>.
+<p>To create a new router factory, use method <code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html#create-io.vertx.core.Vertx-java.lang.String-io.vertx.core.Handler-">OpenAPI3RouterFactory.create</a></code>.
 As location It accepts absolute paths, local paths and local or remote URLs (HTTP or file protocol).</p>
 </div>
 <div class="paragraph">
-<p>For example:</p>
+<p>For example to load a spec from the local filesystem:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -428,29 +469,18 @@ OpenAPI3RouterFactory.create(
 </div>
 </div>
 <div class="paragraph">
-<p>You can also modify the behaviours of the router factory with <code><a href="../../apidocs/io/vertx/ext/web/api/contract/RouterFactoryOptions.html">RouterFactoryOptions</a></code>.
-For example you can ask to router factory to mount the validation failure handler but to not mount the not implemented handler as follows:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">OpenAPI3RouterFactory routerFactory = ar.result();
-<span class="comment">// Create and mount options to router factory</span>
-RouterFactoryOptions options =
-  <span class="keyword">new</span> RouterFactoryOptions()
-  .setMountNotImplementedHandler(<span class="predefined-constant">true</span>)
-  .setMountValidationFailureHandler(<span class="predefined-constant">false</span>);
-
-routerFactory.setOptions(options);</code></pre>
-</div>
+<p>You can also modify the behaviours of the router factory with <code><a href="../../apidocs/io/vertx/ext/web/api/contract/RouterFactoryOptions.html">RouterFactoryOptions</a></code>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_mount_the_handlers">Mount the handlers</h3>
 <div class="paragraph">
-<p>Now load your first operation handlers. To load an handler use <code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html#addHandlerByOperationId-java.lang.String-io.vertx.core.Handler-">addHandlerByOperationId</a></code>. To load a failure handler use <code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html#addFailureHandlerByOperationId-java.lang.String-io.vertx.core.Handler-">addFailureHandlerByOperationId</a></code></p>
+<p>Now load your first operation handlers.
+To load an handler use <code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html#addHandlerByOperationId-java.lang.String-io.vertx.core.Handler-">addHandlerByOperationId</a></code>.
+To load a failure handler use <code><a href="../../apidocs/io/vertx/ext/web/api/contract/openapi3/OpenAPI3RouterFactory.html#addFailureHandlerByOperationId-java.lang.String-io.vertx.core.Handler-">addFailureHandlerByOperationId</a></code></p>
 </div>
 <div class="paragraph">
-<p>You can, of course,<strong>add multiple handlers to same operation</strong>*, without overwrite the existing ones.</p>
+<p>You can, of course, <strong>add multiple handlers to same operation</strong>, without overwrite the existing ones.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -468,28 +498,12 @@ routerFactory.addFailureHandlerByOperationId(<span class="string"><span class="d
 });</code></pre>
 </div>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
-<div class="title">Add operations with operationId</div>
-Usage of combination of path and HTTP method is allowed, but it&#8217;s better to add operations handlers with operationId, for performance reasons and to avoid paths nomenclature errors
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
 <p>Now you can use parameter values as described above</p>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_define_security_handlers">Define security handlers</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_define_security_handlers">Define security handlers</h3>
 <div class="paragraph">
 <p>A security handler is defined by a combination of schema name and scope. You can mount only one security handler for a combination.
 For example:</p>
@@ -507,27 +521,120 @@ For example:</p>
 <pre class="CodeRay highlight"><code data-lang="java">routerFactory.addSecurityHandler(<span class="string"><span class="delimiter">&quot;</span><span class="content">jwt_auth</span><span class="delimiter">&quot;</span></span>, JWTAuthHandler.create(jwtAuthProvider));</code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_customize_the_router_factory_behaviours">Customize the router factory behaviours</h3>
 <div class="paragraph">
-<p>The router factory allows you to customize some behaviours during router generation with
-<code><a href="../../apidocs/io/vertx/ext/web/api/contract/RouterFactoryOptions.html">RouterFactoryOptions</a></code>. Router factory can:</p>
+<p>When you generate the <code><a href="../../apidocs/io/vertx/ext/web/Router.html">Router</a></code> the Router Factory fails if For debugging/testing purpose</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_not_implemented_error">Not Implemented Error</h3>
+<div class="paragraph">
+<p>Router Factory automatically mounts a default handler for operations without a specified handler.
+This default handler fails the routing context with 501 <code>Not Implemented</code> error.
+You can enable/disable it with <code><a href="../../apidocs/io/vertx/ext/web/api/contract/RouterFactoryOptions.html#setMountNotImplementedHandler-boolean-">setMountNotImplementedHandler</a></code>
+and you can customize this error handling with <code><a href="../../apidocs/io/vertx/ext/web/Router.html#errorHandler-int-io.vertx.core.Handler-">errorHandler</a></code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_response_content_type_handler">Response Content Type Handler</h3>
+<div class="paragraph">
+<p>Router Factory automatically mounts a <code><a href="../../apidocs/io/vertx/ext/web/handler/ResponseContentTypeHandler.html">ResponseContentTypeHandler</a></code> handler when contract requires it.
+You can disable this feature with <code><a href="../../apidocs/io/vertx/ext/web/api/contract/RouterFactoryOptions.html#setMountResponseContentTypeHandler-boolean-">setMountResponseContentTypeHandler</a></code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_operation_model">Operation model</h3>
+<div class="paragraph">
+<p>If you need to access to your operation contract while handling the request,
+you can configure the router factory to push it inside the <code>RoutingContext</code> with <code><a href="../../apidocs/io/vertx/ext/web/api/contract/RouterFactoryOptions.html#setOperationModelKey-java.lang.String-">setOperationModelKey</a></code>. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">options.setOperationModelKey(<span class="string"><span class="delimiter">&quot;</span><span class="content">operationPOJO</span><span class="delimiter">&quot;</span></span>);
+routerFactory.setOptions(options);
+
+<span class="comment">// Add an handler that uses the operation model</span>
+routerFactory.addHandlerByOperationId(<span class="string"><span class="delimiter">&quot;</span><span class="content">listPets</span><span class="delimiter">&quot;</span></span>, routingContext -&gt; {
+  io.swagger.v3.oas.models.Operation operation = routingContext.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">operationPOJO</span><span class="delimiter">&quot;</span></span>);
+
+  routingContext
+    .response()
+    .setStatusCode(<span class="integer">200</span>)
+    .setStatusMessage(<span class="string"><span class="delimiter">&quot;</span><span class="content">OK</span><span class="delimiter">&quot;</span></span>)
+    <span class="comment">// Write the response with operation id &quot;listPets&quot;</span>
+    .end(operation.getOperationId());
+});</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_body_handler">Body Handler</h3>
+<div class="paragraph">
+<p>Router Factory automatically mounts a <code><a href="../../apidocs/io/vertx/ext/web/handler/BodyHandler.html">BodyHandler</a></code> to manage request bodies.
+You can configure the instance of <code><a href="../../apidocs/io/vertx/ext/web/handler/BodyHandler.html">BodyHandler</a></code> (e.g. to change upload directory) with <code><a href="../../apidocs/io/vertx/ext/web/api/contract/RouterFactory.html#setBodyHandler-io.vertx.ext.web.handler.BodyHandler-">setBodyHandler</a></code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__code_multipart_form_data_code_validation"><code>multipart/form-data</code> validation</h3>
+<div class="paragraph">
+<p>The validation handler separates file uploads and form attributes as explained:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Mount a 501 <code>Not Implemented</code> handler for operations where you haven&#8217;t mounted any handler</p>
+<p>If the parameter doesn&#8217;t have an encoding associated field:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the parameter has <code>type: string</code> and <code>format: base64</code> or <code>format: binary</code> is a file upload with content-type <code>application/octet-stream</code></p>
 </li>
 <li>
-<p>Mount a 400 <code>Bad Request</code> handler that manages <code>ValidationException</code></p>
+<p>Otherwise is a form attribute</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Mount the <code><a href="../../apidocs/io/vertx/ext/web/handler/ResponseContentTypeHandler.html">ResponseContentTypeHandler</a></code> handler when needed</p>
+<p>If the parameter has the encoding associated field is a file upload</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Give a deeper look at <code><a href="../../apidocs/io/vertx/ext/web/api/contract/RouterFactoryOptions.html">RouterFactoryOptions</a></code> documentation</p>
+<p>The form attributes are parsed and validated as other request parameters,
+while for file uploads the validation handler just checks the existence and the content type.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_custom_global_handlers">Custom global handlers</h3>
+<div class="paragraph">
+<p>If you need to mount handlers that must be executed for each operationin your router before the operation specific handlers, you can use <code><a href="../../apidocs/io/vertx/ext/web/api/contract/RouterFactory.html#addGlobalHandler-io.vertx.core.Handler-">addGlobalHandler</a></code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_router_factory_handlers_mount_order">Router factory handlers mount order</h3>
+<div class="paragraph">
+<p>Handlers are loaded by the router factory in this order:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Body handler</p>
+</li>
+<li>
+<p>Custom global handlers</p>
+</li>
+<li>
+<p>Global security handlers defined in upper spec level</p>
+</li>
+<li>
+<p>Operation specific security handlers</p>
+</li>
+<li>
+<p>Generated validation handler</p>
+</li>
+<li>
+<p>User handlers or "Not implemented" handler (if enabled)</p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
@@ -542,6 +649,9 @@ For example:</p>
 HttpServer server = vertx.createHttpServer(<span class="keyword">new</span> HttpServerOptions().setPort(<span class="integer">8080</span>).setHost(<span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>));
 server.requestHandler(router).listen();</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>This method can fail with a <code><a href="../../apidocs/io/vertx/ext/web/api/contract/RouterFactoryException.html">RouterFactoryException</a></code> if you didn&#8217;t provide the required security handlers.</p>
 </div>
 </div>
 </div>
@@ -597,7 +707,7 @@ server.requestHandler(router).listen();</code></pre>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:28 CEST
               
               
             </div>

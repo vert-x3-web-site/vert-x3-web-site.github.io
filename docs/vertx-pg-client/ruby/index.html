@@ -266,7 +266,7 @@ scalability and low overhead.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-lang-ruby<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.9.2<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -280,7 +280,7 @@ scalability and low overhead.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
- compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-lang-ruby:3.9.2</span><span class="delimiter">'</span></span>
+ compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-lang-ruby:3.9.3</span><span class="delimiter">'</span></span>
 }</code></pre>
 </div>
 </div>
@@ -1352,7 +1352,15 @@ within a transaction, otherwise you will likely get the <code>34000</code> Postg
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="ruby"><span class="constant">Code</span> <span class="keyword">not</span> translatable</code></pre>
+<pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx-sql-client/tuple</span><span class="delimiter">'</span></span>
+<span class="comment"># Create a tuple with a single array</span>
+tuple = <span class="constant">VertxSqlClient</span>::<span class="constant">Tuple</span>.of([<span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">tuple</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">with</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">arrays</span><span class="delimiter">&quot;</span></span>])
+
+<span class="comment"># Add a string array to the tuple</span>
+tuple.add_string_array([<span class="string"><span class="delimiter">&quot;</span><span class="content">another</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">array</span><span class="delimiter">&quot;</span></span>])
+
+<span class="comment"># Get the first array of string</span>
+array = tuple.get_string_array(<span class="integer">0</span>)</code></pre>
 </div>
 </div>
 </div>
@@ -1709,7 +1717,7 @@ options = {
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2020-07-16 01:06:42 CEST
+                Last updated 2020-09-16 10:26:32 CEST
               
               
             </div>

@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -185,7 +186,7 @@ on the Future (or fail) to signal that you&#8217;re done.</p>
 
  private HttpServer server;
 
- public void start(Future&lt;Void&gt; startFuture) {
+ public void start(Promise&lt;Void&gt; startPromise) {
    server = vertx.createHttpServer().requestHandler(req -&gt; {
      req.response()
        .putHeader("content-type", "text/plain")
@@ -195,9 +196,9 @@ on the Future (or fail) to signal that you&#8217;re done.</p>
    // Now bind the server:
    server.listen(8080, res -&gt; {
      if (res.succeeded()) {
-       startFuture.complete();
+       startPromise.complete();
      } else {
-       startFuture.fail(res.cause());
+       startPromise.fail(res.cause());
      }
    });
  }
@@ -240,7 +241,7 @@ will automatically stop any running server when the verticle is undeployed.</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:28 CEST
               
               
             </div>

@@ -160,7 +160,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create_non_shared-class_method" title="create_non_shared (class method)">+ (::VertxCassandra::CassandraClient) <strong>create_non_shared</strong>(vertx = nil, cassandraClientOptions = nil) </a>
+      <a href="#create-class_method" title="create (class method)">+ (::VertxCassandra::CassandraClient) <strong>create</strong>(vertx = nil, options = nil) </a>
     
 
     
@@ -174,7 +174,29 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Create a Cassandra client which maintains its own data source.</div></span>
+    <span class="summary_desc"><div class='inline'>Create a Cassandra client which maintains its own driver session.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_non_shared-class_method" title="create_non_shared (class method)">+ (::VertxCassandra::CassandraClient) <strong>create_non_shared</strong>(vertx = nil, options = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -196,7 +218,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Create a Cassandra client which shares its data source with any other Cassandra clients created with the same  data source name.</div></span>
+    <span class="summary_desc"><div class='inline'>Create a Cassandra client that shares its driver session with any other client having the same name.</div></span>
   
 </li>
 
@@ -204,7 +226,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#DEFAULT_POOL_NAME-class_method" title="DEFAULT_POOL_NAME (class method)">+ (Object) <strong>DEFAULT_POOL_NAME</strong> </a>
+      <a href="#DEFAULT_SHARED_CLIENT_NAME-class_method" title="DEFAULT_SHARED_CLIENT_NAME (class method)">+ (Object) <strong>DEFAULT_SHARED_CLIENT_NAME</strong> </a>
     
 
     
@@ -218,7 +240,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>The name of the default pool.</div></span>
+    <span class="summary_desc"><div class='inline'>The default shared client name.</div></span>
   
 </li>
 
@@ -323,7 +345,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#connect-instance_method" title="#connect (instance method)">- (self) <strong>connect</strong>(keyspace = nil) { ... }</a>
+      <a href="#close-instance_method" title="#close (instance method)">- (self) <strong>close</strong> { ... }</a>
     
 
     
@@ -337,7 +359,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Connect to a Cassandra service.</div></span>
+    <span class="summary_desc"><div class='inline'>Closes this client.</div></span>
   
 </li>
 
@@ -359,29 +381,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Whether this Cassandra client instance connected.</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#disconnect-instance_method" title="#disconnect (instance method)">- (self) <strong>disconnect</strong> { ... }</a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>Disconnects from the Cassandra service.</div></span>
+    <span class="summary_desc"><div class='inline'>Whether this Cassandra client instance is connected.</div></span>
   
 </li>
 
@@ -492,9 +492,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="create_non_shared-class_method">
+  <h3 class="signature " id="create-class_method">
   
-    + (<tt><span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">::VertxCassandra::CassandraClient</a></span></tt>) <strong>create_non_shared</strong>(vertx = nil, cassandraClientOptions = nil) 
+    + (<tt><span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">::VertxCassandra::CassandraClient</a></span></tt>) <strong>create</strong>(vertx = nil, options = nil) 
   
 
   
@@ -502,13 +502,9 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Create a Cassandra client which maintains its own data source.
+    Create a Cassandra client which maintains its own driver session.
  <p>
  It is not recommended to create several non shared clients in an application.
- Your application should either use only single non shared client, or use shared client.
- This is because <span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">VertxCassandra::CassandraClient</a></span> backed by Session.
- And Datastax does not recommended to have several Session
- instances. Better to have only one, and share it.
 
   </div>
 </div>
@@ -534,7 +530,7 @@
   
     <li>
       
-        <span class='name'>cassandraClientOptions</span>
+        <span class='name'>options</span>
       
       
         <span class='type'>(<tt>Hash</tt>)</span>
@@ -586,25 +582,130 @@
       <pre class="lines">
 
 
-45
-46
-47
-48
-49
-50
-51
-52</pre>
+52
+53
+54
+55
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-cassandra/cassandra_client.rb', line 45</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-cassandra/cassandra_client.rb', line 52</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_non_shared'>create_non_shared</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_cassandraClientOptions'>cassandraClientOptions</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_cassandraClientOptions'>cassandraClientOptions</span> <span class='op'>==</span> <span class='kw'>nil</span>
-    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClient</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:createNonShared</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClient</span><span class='rparen'>)</span>
-  <span class='kw'>elsif</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_cassandraClientOptions'>cassandraClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Hash</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClient</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:createNonShared</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_to_json_object'>to_json_object</span><span class='lparen'>(</span><span class='id identifier rubyid_cassandraClientOptions'>cassandraClientOptions</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClient</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClient</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:create</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClient</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Hash</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClient</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:create</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_to_json_object'>to_json_object</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClient</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling create_non_shared(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vertx'>vertx</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cassandraClientOptions'>cassandraClientOptions</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling create(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vertx'>vertx</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_non_shared-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">::VertxCassandra::CassandraClient</a></span></tt>) <strong>create_non_shared</strong>(vertx = nil, options = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>vertx</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Vertx/Vertx.html" title="Vertx::Vertx (class)">::Vertx::Vertx</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">::VertxCassandra::CassandraClient</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40
+41
+42
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-cassandra/cassandra_client.rb', line 38</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_non_shared'>create_non_shared</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>==</span> <span class='kw'>nil</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClient</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:createNonShared</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClient</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Hash</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClient</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:createNonShared</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Vertx</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_vertx'>vertx</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClientOptions</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_to_json_object'>to_json_object</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>VertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClient</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling create_non_shared(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vertx'>vertx</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -617,11 +718,11 @@
     
       <span class="overload">+ (<tt><span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">::VertxCassandra::CassandraClient</a></span></tt>) <strong>createShared</strong>(vertx) </span>
     
-      <span class="overload">+ (<tt><span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">::VertxCassandra::CassandraClient</a></span></tt>) <strong>createShared</strong>(vertx, datasourceName) </span>
+      <span class="overload">+ (<tt><span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">::VertxCassandra::CassandraClient</a></span></tt>) <strong>createShared</strong>(vertx, clientName) </span>
     
-      <span class="overload">+ (<tt><span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">::VertxCassandra::CassandraClient</a></span></tt>) <strong>createShared</strong>(vertx, cassandraClientOptions) </span>
+      <span class="overload">+ (<tt><span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">::VertxCassandra::CassandraClient</a></span></tt>) <strong>createShared</strong>(vertx, options) </span>
     
-      <span class="overload">+ (<tt><span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">::VertxCassandra::CassandraClient</a></span></tt>) <strong>createShared</strong>(vertx, datasourceName, cassandraClientOptions) </span>
+      <span class="overload">+ (<tt><span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">::VertxCassandra::CassandraClient</a></span></tt>) <strong>createShared</strong>(vertx, clientName, options) </span>
     
   
 
@@ -630,8 +731,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Create a Cassandra client which shares its data source with any other Cassandra clients created with the same
- data source name.
+    Create a Cassandra client that shares its driver session with any other client having the same name.
 
   </div>
 </div>
@@ -672,7 +772,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">+ (<tt><span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">::VertxCassandra::CassandraClient</a></span></tt>) <strong>createShared</strong>(vertx, datasourceName) </span>
+        <span class="signature">+ (<tt><span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">::VertxCassandra::CassandraClient</a></span></tt>) <strong>createShared</strong>(vertx, clientName) </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -696,7 +796,7 @@
   
     <li>
       
-        <span class='name'>datasourceName</span>
+        <span class='name'>clientName</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -713,7 +813,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">+ (<tt><span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">::VertxCassandra::CassandraClient</a></span></tt>) <strong>createShared</strong>(vertx, cassandraClientOptions) </span>
+        <span class="signature">+ (<tt><span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">::VertxCassandra::CassandraClient</a></span></tt>) <strong>createShared</strong>(vertx, options) </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -737,7 +837,7 @@
   
     <li>
       
-        <span class='name'>cassandraClientOptions</span>
+        <span class='name'>options</span>
       
       
         <span class='type'>(<tt>Hash</tt>)</span>
@@ -754,7 +854,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">+ (<tt><span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">::VertxCassandra::CassandraClient</a></span></tt>) <strong>createShared</strong>(vertx, datasourceName, cassandraClientOptions) </span>
+        <span class="signature">+ (<tt><span class='object_link'><a href="" title="VertxCassandra::CassandraClient (class)">::VertxCassandra::CassandraClient</a></span></tt>) <strong>createShared</strong>(vertx, clientName, options) </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -781,7 +881,7 @@
   
     <li>
       
-        <span class='name'>datasourceName</span>
+        <span class='name'>clientName</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -789,13 +889,13 @@
       
       
         &mdash;
-        <div class='inline'>the data source name</div>
+        <div class='inline'>the shared client name</div>
       
     </li>
   
     <li>
       
-        <span class='name'>cassandraClientOptions</span>
+        <span class='name'>options</span>
       
       
         <span class='type'>(<tt>Hash</tt>)</span>
@@ -851,21 +951,21 @@
       <pre class="lines">
 
 
-68
-69
-70
-71
-72
-73
 74
 75
 76
 77
 78
-79</pre>
+79
+80
+81
+82
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-cassandra/cassandra_client.rb', line 68</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-cassandra/cassandra_client.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_shared'>create_shared</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_param_2'>param_2</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_param_3'>param_3</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_2'>param_2</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_3'>param_3</span> <span class='op'>==</span> <span class='kw'>nil</span>
@@ -885,9 +985,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="DEFAULT_POOL_NAME-class_method">
+  <h3 class="signature " id="DEFAULT_SHARED_CLIENT_NAME-class_method">
   
-    + (<tt>Object</tt>) <strong>DEFAULT_POOL_NAME</strong> 
+    + (<tt>Object</tt>) <strong>DEFAULT_SHARED_CLIENT_NAME</strong> 
   
 
   
@@ -895,7 +995,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    The name of the default pool
+    The default shared client name.
 
   </div>
 </div>
@@ -908,15 +1008,15 @@
       <pre class="lines">
 
 
-140
-141
-142</pre>
+129
+130
+131</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-cassandra/cassandra_client.rb', line 140</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-cassandra/cassandra_client.rb', line 129</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='const'>DEFAULT_POOL_NAME</span>
-  <span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClient</span><span class='period'>.</span><span class='const'>DEFAULT_POOL_NAME</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='const'>DEFAULT_SHARED_CLIENT_NAME</span>
+  <span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCassandra</span><span class='op'>::</span><span class='const'>CassandraClient</span><span class='period'>.</span><span class='const'>DEFAULT_SHARED_CLIENT_NAME</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1050,9 +1150,9 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="connect-instance_method">
+  <h3 class="signature first" id="close-instance_method">
   
-    - (<tt>self</tt>) <strong>connect</strong>(keyspace = nil) { ... }
+    - (<tt>self</tt>) <strong>close</strong> { ... }
   
 
   
@@ -1060,32 +1160,12 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Connect to a Cassandra service.
+    Closes this client.
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
   
-    <li>
-      
-        <span class='name'>keyspace</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'>The name of the keyspace to use for the created connection.</div>
-      
-    </li>
-  
-</ul>
-
 <p class="tag_title">Yields:</p>
 <ul class="yield">
   
@@ -1097,7 +1177,7 @@
       
       
         
-        <div class='inline'>handler called when asynchronous connect call ends</div>
+        <div class='inline'>handler called when client is closed</div>
       
     </li>
   
@@ -1135,35 +1215,29 @@
       <pre class="lines">
 
 
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96</pre>
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-cassandra/cassandra_client.rb', line 84</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-cassandra/cassandra_client.rb', line 118</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_keyspace'>keyspace</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_keyspace'>keyspace</span> <span class='op'>==</span> <span class='kw'>nil</span>
-    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:connect</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:close</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
     <span class='kw'>return</span> <span class='kw'>self</span>
-  <span class='kw'>elsif</span> <span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_keyspace'>keyspace</span> <span class='op'>==</span> <span class='kw'>nil</span>
-    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:connect</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ar'>ar</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_failed'>failed</span> <span class='op'>?</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_cause'>cause</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='kw'>return</span> <span class='kw'>self</span>
-  <span class='kw'>elsif</span> <span class='id identifier rubyid_keyspace'>keyspace</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:connect</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_keyspace'>keyspace</span><span class='comma'>,</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ar'>ar</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_failed'>failed</span> <span class='op'>?</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_cause'>cause</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:close</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ar'>ar</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_failed'>failed</span> <span class='op'>?</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_cause'>cause</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
     <span class='kw'>return</span> <span class='kw'>self</span>
   <span class='kw'>end</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling connect(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_keyspace'>keyspace</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling close()</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1181,7 +1255,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Returns whether this Cassandra client instance connected.
+    Returns whether this Cassandra client instance is connected
 
   </div>
 </div>
@@ -1198,7 +1272,7 @@
       
       
         &mdash;
-        <div class='inline'>whether this Cassandra client instance connected.</div>
+        <div class='inline'>whether this Cassandra client instance is connected</div>
       
     </li>
   
@@ -1223,116 +1297,21 @@
       <pre class="lines">
 
 
-98
-99
-100
-101
-102
-103</pre>
+87
+88
+89
+90
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-cassandra/cassandra_client.rb', line 98</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-cassandra/cassandra_client.rb', line 87</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_connected?'>connected?</span>
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
     <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:isConnected</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling connected?()</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="disconnect-instance_method">
-  
-    - (<tt>self</tt>) <strong>disconnect</strong> { ... }
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    Disconnects from the Cassandra service.
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Yields:</p>
-<ul class="yield">
-  
-    <li>
-      
-      
-        <span class='type'></span>
-      
-      
-      
-        
-        <div class='inline'>handler called when asynchronous disconnect call ends</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>self</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>ArgumentError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-cassandra/cassandra_client.rb', line 129</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_disconnect'>disconnect</span>
-  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:disconnect</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
-    <span class='kw'>return</span> <span class='kw'>self</span>
-  <span class='kw'>elsif</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:disconnect</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ar'>ar</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_failed'>failed</span> <span class='op'>?</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_cause'>cause</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='kw'>return</span> <span class='kw'>self</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling disconnect()</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1425,16 +1404,16 @@
       <pre class="lines">
 
 
-108
-109
-110
-111
-112
-113
-114</pre>
+97
+98
+99
+100
+101
+102
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-cassandra/cassandra_client.rb', line 108</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-cassandra/cassandra_client.rb', line 97</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='id identifier rubyid_query'>query</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_query'>query</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1534,16 +1513,16 @@
       <pre class="lines">
 
 
-119
-120
-121
-122
-123
-124
-125</pre>
+108
+109
+110
+111
+112
+113
+114</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-cassandra/cassandra_client.rb', line 119</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-cassandra/cassandra_client.rb', line 108</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_query_stream'>query_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_sql'>sql</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_sql'>sql</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>String</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1562,7 +1541,7 @@
 </div>
 
     <div id="footer">
-  Generated on Wed Jan 30 21:08:04 2019 by
+  Generated on Wed Sep 16 10:09:47 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.3.3).
 </div>

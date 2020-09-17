@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -105,20 +106,14 @@
           <ul class="sectlevel1">
 <li><a href="#_using_vert_x_redis">Using Vert.x-Redis</a></li>
 <li><a href="#_connecting_to_redis">Connecting to Redis</a></li>
+<li><a href="#_connection_string">Connection String</a></li>
 <li><a href="#_running_commands">Running commands</a></li>
+<li><a href="#_high_availability_mode">High Availability mode</a></li>
+<li><a href="#_cluster_mode">Cluster mode</a></li>
 <li><a href="#_pub_sub_mode">Pub/Sub mode</a></li>
-<li><a href="#_friendlier_hash_commands">Friendlier hash commands</a>
-<ul class="sectlevel2">
-<li><a href="#_command_hgetall">Command hgetall</a></li>
-<li><a href="#_command_mset">command mset</a></li>
-<li><a href="#_command_msetnx">command msetnx</a></li>
-<li><a href="#_command_hmset">command hmset</a></li>
-<li><a href="#_command_zadd">command zadd</a></li>
-</ul>
-</li>
-<li><a href="#_server_info">Server Info</a></li>
-<li><a href="#_eval_and_evalsha">Eval and Evalsha</a></li>
-<li><a href="#_redis_sentinel">Redis Sentinel</a></li>
+<li><a href="#_domain_sockets">Domain Sockets</a></li>
+<li><a href="#_connection_pooling">Connection Pooling</a></li>
+<li><a href="#_implementing_reconnect_on_error">Implementing Reconnect on Error</a></li>
 </ul>
         </div>
       </div>
@@ -128,20 +123,14 @@
           <ul class="sectlevel1">
 <li><a href="#_using_vert_x_redis">Using Vert.x-Redis</a></li>
 <li><a href="#_connecting_to_redis">Connecting to Redis</a></li>
+<li><a href="#_connection_string">Connection String</a></li>
 <li><a href="#_running_commands">Running commands</a></li>
+<li><a href="#_high_availability_mode">High Availability mode</a></li>
+<li><a href="#_cluster_mode">Cluster mode</a></li>
 <li><a href="#_pub_sub_mode">Pub/Sub mode</a></li>
-<li><a href="#_friendlier_hash_commands">Friendlier hash commands</a>
-<ul class="sectlevel2">
-<li><a href="#_command_hgetall">Command hgetall</a></li>
-<li><a href="#_command_mset">command mset</a></li>
-<li><a href="#_command_msetnx">command msetnx</a></li>
-<li><a href="#_command_hmset">command hmset</a></li>
-<li><a href="#_command_zadd">command zadd</a></li>
-</ul>
-</li>
-<li><a href="#_server_info">Server Info</a></li>
-<li><a href="#_eval_and_evalsha">Eval and Evalsha</a></li>
-<li><a href="#_redis_sentinel">Redis Sentinel</a></li>
+<li><a href="#_domain_sockets">Domain Sockets</a></li>
+<li><a href="#_connection_pooling">Connection Pooling</a></li>
+<li><a href="#_implementing_reconnect_on_error">Implementing Reconnect on Error</a></li>
 </ul>
         </div>
         <div id="preamble">
@@ -150,10 +139,9 @@
 <p>Vert.x-redis is redis client to be used with Vert.x.</p>
 </div>
 <div class="paragraph">
-<p>This module allows data to be saved, retrieved, searched for, and deleted in a Redis. Redis is an open source, BSD
-licensed, advanced key-value store. It is often referred to as a data structure server since keys can contain
-strings, hashes, lists, sets and sorted sets. To use this module you must have a Redis server instance running on
-your network.</p>
+<p>This module allows data to be saved, retrieved, searched for, and deleted in a Redis. Redis is an open source, advanced
+key-value store. It is often referred to as a data structure server since keys can contain  strings, hashes, lists, sets
+and sorted sets. To use this module you must have a Redis server instance running on your network.</p>
 </div>
 <div class="paragraph">
 <p>Redis has a rich API and it can be organized in the following groups:</p>
@@ -199,6 +187,9 @@ your network.</p>
 <li>
 <p>Transactions - Commands to handle transaction lifecycle.</p>
 </li>
+<li>
+<p>Streams - Commands to handle streaming.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -221,7 +212,7 @@ your network.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
 <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
 <span class="tag">&lt;artifactId&gt;</span>vertx-redis-client<span class="tag">&lt;/artifactId&gt;</span>
-<span class="tag">&lt;version&gt;</span>3.5.2.CR3<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -234,7 +225,7 @@ your network.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-redis-client:3.5.2.CR3</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-redis-client:3.9.3</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -243,59 +234,96 @@ your network.</p>
 <h2 id="_connecting_to_redis">Connecting to Redis</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In order to connect to Redis there is a config required. This config is provided in the form of <code><a href="../../apidocs/io/vertx/redis/RedisOptions.html">RedisOptions</a></code>
-containing the following values:</p>
+<p>The Redis client can operate in 3 distinct modes:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>host</code>: default is <code>localhost</code></p>
+<p>Simple client (probably what most users need).</p>
 </li>
 <li>
-<p><code>port</code>: default is <code>6379</code></p>
+<p>Sentinel (when working with Redis in High Availability mode).</p>
 </li>
 <li>
-<p><code>encoding</code>: default is <code>UTF-8</code></p>
-</li>
-<li>
-<p><code>tcpKeepAlive</code>: default <code>true</code></p>
-</li>
-<li>
-<p><code>tcpNoDelay</code>: default <code>true</code></p>
+<p>Cluster (when working with Redis in Clustered mode).</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>An connection example can then be:</p>
+<p>The connection mode is selected by the factory method on the Redis interface. Regardless of the mode the client can be
+configured using a <code><a href="../dataobjects.html#RedisOptions">RedisOptions</a></code> data object. By default some configuration values are
+initialized with the following values:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>netClientOptions</code>: default is <code>TcpKeepAlive: true</code>, <code>TcpNoDelay: true</code></p>
+</li>
+<li>
+<p><code>endpoint</code>: default is <code>redis://localhost:6379</code></p>
+</li>
+<li>
+<p><code>masterName</code>: default is <code>mymaster</code></p>
+</li>
+<li>
+<p><code>role</code> default is <code>MASTER</code></p>
+</li>
+<li>
+<p><code>slaves</code> default is <code>NEVER</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In order to obtain a connection use the following code:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> config = [
- <span class="key">host</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">127.0.0.1</span><span class="delimiter">&quot;</span></span>
-]
-
-<span class="keyword">def</span> redis = RedisClient.create(vertx, config)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Redis = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-redis-js/redis</span><span class="delimiter">&quot;</span></span>);
+Redis.createClient(vertx, {
+}).connect(<span class="keyword">function</span> (onConnect, onConnect_err) {
+  <span class="keyword">if</span> (onConnect_err == <span class="predefined-constant">null</span>) {
+    <span class="keyword">var</span> client = onConnect;
+  }
+});</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The client attempts to reconnect to the server on connection errors, for this reason if you are connecting to a server
-that requires authentication and/or you are not using the default database you must provide the authentication
-password and/or database id to the config object, the properties names are:</p>
+<p>In the configuration contains a <code>password</code> and/or a <code>select</code> database, these 2 commands will be executed automatically
+once a successful connection is established to the server.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>auth</code></p>
-</li>
-<li>
-<p><code>select</code></p>
-</li>
-</ul>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Redis = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-redis-js/redis</span><span class="delimiter">&quot;</span></span>);
+Redis.createClient(vertx, <span class="string"><span class="delimiter">&quot;</span><span class="content">redis://:abracadabra@localhost:6379/1</span><span class="delimiter">&quot;</span></span>).connect(<span class="keyword">function</span> (onConnect, onConnect_err) {
+  <span class="keyword">if</span> (onConnect_err == <span class="predefined-constant">null</span>) {
+    <span class="keyword">var</span> client = onConnect;
+  }
+});</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_connection_string">Connection String</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The client will recognize addresses that follow the expression:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>redis://[:password@]host[:port][/db-number]</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>If you do not do this and manually call the <code><a href="../../apidocs/io/vertx/redis/RedisClient.html#auth-java.lang.String-io.vertx.core.Handler-">auth</a></code>
-or <code><a href="../../apidocs/io/vertx/redis/RedisClient.html#select-int-io.vertx.core.Handler-">select</a></code> then the client will not know how to recover
-the connection in case of socket error.</p>
+<p>Or</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>unix://[:password@]/domain/docker.sock[?select=db-number]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When specifying a password or a database those commands are always executed on connection start.</p>
 </div>
 </div>
 </div>
@@ -309,17 +337,102 @@ if one wants to get a value of a key it can be done as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> redis = RedisClient.create(vertx, [:])
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> RedisAPI = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-redis-js/redis_api</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">var</span> redis = RedisAPI.api(client);
 
-redis.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">mykey</span><span class="delimiter">&quot;</span></span>, { res -&gt;
- <span class="keyword">if</span> (res.succeeded()) {
-   <span class="comment">// so something...</span>
- }
-})</code></pre>
+redis.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">mykey</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (res, res_err) {
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">null</span>) {
+    <span class="comment">// so something...</span>
+  }
+});</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In order to know more about the commands available you should look at: &lt;a href="http://redis.io/commands"&gt;redis documentation&lt;/a&gt;.</p>
+<p>The response object is a generic type that allow converting from the basic redis types to your language types. For
+example, if your response is of type <code>INTEGER</code> then you can get the value as any numeric primitive type <code>int</code>, <code>long</code>,
+etc&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>Or you can perform more complex tasks such as handling responses as iterators:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="comment">// this is a multi redis response (think of it as an array</span>
+<span class="keyword">if</span> (response.type() === <span class="string"><span class="delimiter">'</span><span class="content">MULTI</span><span class="delimiter">'</span></span>) {
+  Array.prototype.forEach.call(response, <span class="keyword">function</span>(item) {
+    <span class="comment">// do something with item...</span>
+  });
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_high_availability_mode">High Availability mode</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To work with high availability mode the connection creation is quite similar:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Command = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-redis-js/command</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">var</span> Request = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-redis-js/request</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">var</span> Redis = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-redis-js/redis</span><span class="delimiter">&quot;</span></span>);
+Redis.createClient(vertx, {
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">SENTINEL</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">connectionStrings</span><span class="delimiter">&quot;</span></span> : [
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">redis://127.0.0.1:5000</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">redis://127.0.0.1:5001</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">redis://127.0.0.1:5002</span><span class="delimiter">&quot;</span></span>
+  ],
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">masterName</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">sentinel7000</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">role</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">MASTER</span><span class="delimiter">&quot;</span></span>
+}).connect(<span class="keyword">function</span> (onConnect, onConnect_err) {
+  <span class="comment">// assuming we got a connection to the master node</span>
+  <span class="comment">// query the info for the node</span>
+  onConnect.send(Request.cmd(Command.INFO), <span class="keyword">function</span> (info, info_err) {
+    <span class="comment">// do something...</span>
+  });
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>What is important to notice is that in this mode, an extra connection is established to the server(s) and behind the
+scenes the client will listen for events from the sentinel. When the sentinel notifies that we switched masters, then
+an exception is send to the client and you can decide what to do next.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cluster_mode">Cluster mode</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To work with cluster the connection creation is quite similar:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> options = {
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">connectionStrings</span><span class="delimiter">&quot;</span></span> : [
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">redis://127.0.0.1:7000</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">redis://127.0.0.1:7001</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">redis://127.0.0.1:7002</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">redis://127.0.0.1:7003</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">redis://127.0.0.1:7004</span><span class="delimiter">&quot;</span></span>,
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">redis://127.0.0.1:7005</span><span class="delimiter">&quot;</span></span>
+  ]
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case the configuration requires one of more members of the cluster to be known. This list will be used to ask
+the cluster for the current configuration, which means if any of the listed members is not available it will be skipped.</p>
+</div>
+<div class="paragraph">
+<p>In cluster mode a connection is established to each node and special care is needed when executing commands. It is
+recommended to read redis manual in order to understand how clustering works. The client operating in this mode will do
+a best effort to identify which slot is used by the executed command in order to execute it on the right node. There
+could be cases where this isn&#8217;t possible to identify and in that case as a best effort the command will be run on a
+random node.</p>
 </div>
 </div>
 </div>
@@ -335,23 +448,18 @@ it cannot be used for running other commands than the command to leave that mode
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="comment">// register a handler for the incoming message the naming the Redis module will use is base address + '.' + redis channel</span>
-vertx.eventBus().consumer(<span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.redis.channel1</span><span class="delimiter">&quot;</span></span>, { received -&gt;
- <span class="comment">// do whatever you need to do with your message</span>
- <span class="keyword">def</span> value = received.body().value
- <span class="comment">// the value is a JSON doc with the following properties</span>
- <span class="comment">// channel - The channel to which this message was sent</span>
- <span class="comment">// pattern - Pattern is present if you use psubscribe command and is the pattern that matched this message channel</span>
- <span class="comment">// message - The message payload</span>
-})
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Redis = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-redis-js/redis</span><span class="delimiter">&quot;</span></span>);
 
-<span class="keyword">def</span> redis = RedisClient.create(vertx, [:])
+Redis.createClient(vertx, {
+}).connect(<span class="keyword">function</span> (onConnect, onConnect_err) {
+  <span class="keyword">if</span> (onConnect_err == <span class="predefined-constant">null</span>) {
+    <span class="keyword">var</span> client = onConnect;
 
-redis.subscribe(<span class="string"><span class="delimiter">&quot;</span><span class="content">channel1</span><span class="delimiter">&quot;</span></span>, { res -&gt;
- <span class="keyword">if</span> (res.succeeded()) {
-   <span class="comment">// so something...</span>
- }
-})</code></pre>
+    client.handler(<span class="keyword">function</span> (message) {
+      <span class="comment">// do whatever you need to do with your message</span>
+    });
+  }
+});</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -359,187 +467,174 @@ redis.subscribe(<span class="string"><span class="delimiter">&quot;</span><span 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> redis = RedisClient.create(vertx, [:])
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Command = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-redis-js/command</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">var</span> Request = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-redis-js/request</span><span class="delimiter">&quot;</span></span>);
 
-redis.publish(<span class="string"><span class="delimiter">&quot;</span><span class="content">channel1</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span>, { res -&gt;
- <span class="keyword">if</span> (res.succeeded()) {
-   <span class="comment">// so something...</span>
- }
-})</code></pre>
+redis.send(Request.cmd(Command.PUBLISH).arg(<span class="string"><span class="delimiter">&quot;</span><span class="content">channel1</span><span class="delimiter">&quot;</span></span>).arg(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span>), <span class="keyword">function</span> (res, res_err) {
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">null</span>) {
+    <span class="comment">// published!</span>
+  }
+});</code></pre>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_friendlier_hash_commands">Friendlier hash commands</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Most Redis commands take a single String or an Array of Strings as arguments, and replies are sent back as a single
-String or an Array of Strings. When dealing with hash values, there are a couple of useful exceptions to this.</p>
-</div>
-<div class="sect2">
-<h3 id="_command_hgetall">Command hgetall</h3>
-<div class="paragraph">
-<p>The reply from an hgetall command will be converted into a JSON Object. That way you can interact with the responses
-using JSON syntax which is handy for the EventBus communication.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_command_mset">command mset</h3>
-<div class="paragraph">
-<p>Multiple values in a hash can be set by supplying an object. Note however that key and value will be coerced to
-strings.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>{
-keyName: "value",
-otherKeyName: "other value"
-}</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_command_msetnx">command msetnx</h3>
-<div class="paragraph">
-<p>Multiple values in a hash can be set by supplying an object. Note however that key and value will be coerced to
-strings.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>{
-keyName: "value",
-otherKeyName: "other value"
-}</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_command_hmset">command hmset</h3>
-<div class="paragraph">
-<p>Multiple values in a hash can be set by supplying an object. Note however that key and value will be coerced to
-strings.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>{
-keyName: "value",
-otherKeyName: "other value"
-}</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_command_zadd">command zadd</h3>
-<div class="paragraph">
-<p>Multiple values in a hash can be set by supplying an object. Note however that key and value will be coerced to
-strings.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>{
-score: "member",
-otherScore: "other member"
-}</pre>
-</div>
-</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+It is important to remember that the commands <code>SUBSCRIBE</code>, <code>UNSUBSCRIBE</code>, <code>PSUBSCRIBE</code> and <code>PUNSUBSCRIBE</code> are <code>void</code>.
+This means that the result in case of success is <code>null</code> not a instance of response. All messages are then routed through
+the handler on the client.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_server_info">Server Info</h2>
+<h2 id="_domain_sockets">Domain Sockets</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In order to make it easier to work with the info response you don&#8217;t need to parse the data yourself and the module
-will return it in a easy to understand JSON format. The format is as follows: A JSON object for each section filled
-with properties that belong to that section. If for some reason there is no section the properties will be visible
-at the top level object.</p>
+<p>Most of the examples shown connecting to a TCP sockets, however it is also possible to use Redis connecting to a UNIX
+domain docket:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>{
-server: {
-redis_version: "2.5.13",
-redis_git_sha1: "2812b945",
-redis_git_dirty: "0",
-os: "Linux 2.6.32.16-linode28 i686",
-arch_bits: "32",
-multiplexing_api: "epoll",
-gcc_version: "4.4.1",
-process_id: "8107",
-...
-},
-memory: {...},
-client: {...},
-...
-}</pre>
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Redis = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-redis-js/redis</span><span class="delimiter">&quot;</span></span>);
+
+Redis.createClient(vertx, <span class="string"><span class="delimiter">&quot;</span><span class="content">unix:///tmp/redis.sock</span><span class="delimiter">&quot;</span></span>).connect(<span class="keyword">function</span> (onConnect, onConnect_err) {
+  <span class="keyword">if</span> (onConnect_err == <span class="predefined-constant">null</span>) {
+    <span class="keyword">var</span> client = onConnect;
+  }
+});</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Be aware that HA and cluster modes report server addresses always on TCP addresses not domain sockets. So the
+combination is not possible. Not because of this client but how Redis works.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_eval_and_evalsha">Eval and Evalsha</h2>
+<h2 id="_connection_pooling">Connection Pooling</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Eval and Evalsha commands are special due to its return value can be any type. Vert.x is built on top of Java and the
-language adheres to strong typing so returning any type turns to be problematic since we want to avoid having <code>Object</code>
-type being used. The reason to avoid the type <code>Object</code> is that we also are polyglot and the conversion between
-languages would become rather complicated and hard to implement. For all these reasons the commands eval and evalsha
-will always return a JsonArray, even for example for scripts such as:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>return 10</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In this case the return value will be a json array with the value 10 on index 0.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_redis_sentinel">Redis Sentinel</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This client support the Redis Sentinel API with the API interface:
-<code><a href="../../apidocs/io/vertx/redis/sentinel/RedisSentinel.html">RedisSentinel</a></code>.</p>
-</div>
-<div class="paragraph">
-<p>The API exposes the sentinel commands:</p>
+<p>All client variations are backed by a connection pool. By default the configuration sets the pool size to 1, which means
+that it operates just like a single connection. There are 4 tunnables for the pool:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>masters</p>
+<p><code>maxPoolSize</code> the max number of connections on the pool (default <code>6</code>)</p>
 </li>
 <li>
-<p>master</p>
+<p><code>maxPoolWaiting</code> the max waiting handlers to get a connection on a queue (default <code>24</code>)</p>
 </li>
 <li>
-<p>slaves</p>
+<p><code>poolCleanerInterval</code> the interval when connections will be clean default is <code>-1</code> (disabled)</p>
 </li>
 <li>
-<p>sentinels</p>
-</li>
-<li>
-<p>get-master-addr-by-name</p>
-</li>
-<li>
-<p>reset</p>
-</li>
-<li>
-<p>failover</p>
-</li>
-<li>
-<p>ckquorum</p>
-</li>
-<li>
-<p>flushconfig</p>
+<p><code>poolRecycleTimeout</code> the timeout to keep an open connection on the pool waiting and then close (default <code>15_000</code>)</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>For more information please read the redis official documentation: <a href="https://redis.io/topics/sentinel" class="bare">https://redis.io/topics/sentinel</a></p>
+<p>Pooling is quite useful to avoid custom connection management, for example you can just use as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Command = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-redis-js/command</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">var</span> Request = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-redis-js/request</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">var</span> Redis = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-redis-js/redis</span><span class="delimiter">&quot;</span></span>);
+Redis.createClient(vertx, <span class="string"><span class="delimiter">&quot;</span><span class="content">redis://localhost:7006</span><span class="delimiter">&quot;</span></span>).send(Request.cmd(Command.PING), <span class="keyword">function</span> (send, send_err) {
+  <span class="keyword">if</span> (send_err == <span class="predefined-constant">null</span>) {
+    <span class="comment">// Should have received a pong...</span>
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is important to observe that no connection was acquired or returned, it&#8217;s all handled by the pool. However there might
+be some scalability issues when more than 1 concurrent request attempts to get a connection from the pool, in order to
+overcome this we need to tune the pool. A common configuration is to set the maximum size of the pool to the number of
+available CPU cores and allow requests to get a connection from the pool to queue:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Command = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-redis-js/command</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">var</span> Request = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-redis-js/request</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">var</span> Redis = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-redis-js/redis</span><span class="delimiter">&quot;</span></span>);
+Redis.createClient(vertx, {
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">connectionString</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">redis://localhost:7006</span><span class="delimiter">&quot;</span></span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">maxPoolSize</span><span class="delimiter">&quot;</span></span> : <span class="integer">8</span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">maxWaitingHandlers</span><span class="delimiter">&quot;</span></span> : <span class="integer">32</span>
+}).send(Request.cmd(Command.PING), <span class="keyword">function</span> (send, send_err) {
+  <span class="keyword">if</span> (send_err == <span class="predefined-constant">null</span>) {
+    <span class="comment">// Should have received a pong...</span>
+  }
+});</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Pooling is not compatible with <code>SUBSCRIBE</code>, <code>UNSUBSCRIBE</code>, <code>PSUBSCRIBE</code> or <code>PUNSUBSCRIBE</code> because these commands
+will modify the way the connection operates and the connection cannot be reused.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_implementing_reconnect_on_error">Implementing Reconnect on Error</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While the connection pool is quite useful, for performance, a connection should not be auto managed but controlled by
+you. In this case you will need to handle connection recovery, error handling and reconnect.</p>
+</div>
+<div class="paragraph">
+<p>A typical scenario is that a user will want to reconnect to the server whenever an error occurs. The automatic reconnect
+is not part of the redis client as it will force a behaviour that might not match the user expectations, for example:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>What should happen to current in-flight requests?</p>
+</li>
+<li>
+<p>Should the exception handler be invoked or not?</p>
+</li>
+<li>
+<p>What if the retry will also fail?</p>
+</li>
+<li>
+<p>Should the previous state (db, authentication, subscriptions) be restored?</p>
+</li>
+<li>
+<p>Etc&#8230;&#8203;</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In order to give the user full flexibility, this decision should not be performed by the client. However a simple
+reconnect with backoff timeout could be implemented as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js">Code not translatable</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example the client object will be replaced on reconnect and the application will retry up to 16 times with a
+backoff up to 1280ms. By discarding the client we ensure that all old inflight responses are lost and all new ones
+will be on the new connection.</p>
 </div>
 </div>
 </div>
@@ -550,7 +645,7 @@ will always return a JsonArray, even for example for scripts such as:</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:34 CET
+                Last updated 2020-09-16 10:26:32 CEST
               
               
             </div>

@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -215,7 +216,7 @@ as it natively handles JSON (BSON) documents.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-mongo-client<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -228,7 +229,7 @@ as it natively handles JSON (BSON) documents.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-mongo-client:3.6.3</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-mongo-client:3.9.3</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -299,12 +300,12 @@ interacting with different databases.</p>
 However, it&#8217;s possible you want to create a client instance that doesn&#8217;t share its pool with any other client.</p>
 </div>
 <div class="paragraph">
-<p>In that case you can use <code><a href="../../yardoc/VertxMongo/MongoClient.html#create_non_shared-class_method">MongoClient.createNonShared</a></code>.</p>
+<p>In that case you can use <code><a href="../../yardoc/VertxMongo/MongoClient.html#create-class_method">MongoClient.create</a></code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">vertx-mongo/mongo_client</span><span class="delimiter">'</span></span>
-client = <span class="constant">VertxMongo</span>::<span class="constant">MongoClient</span>.create_non_shared(vertx, config)</code></pre>
+client = <span class="constant">VertxMongo</span>::<span class="constant">MongoClient</span>.create(vertx, config)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1300,6 +1301,18 @@ For more information on the format of the connection string please consult the d
 <dd>
 <p>The minimum heartbeat frequency. The default value is <code>1000</code> (1 second)</p>
 </dd>
+<dt class="hdlist1"><code>ssl</code></dt>
+<dd>
+<p>Enable ssl between the vertx-mongo-client and mongo</p>
+</dd>
+<dt class="hdlist1"><code>trustAll</code></dt>
+<dd>
+<p>When using ssl, trust <em>ALL</em> certificates. <strong>WARNING</strong> - Trusting <em>ALL</em> certificates will open you up to potential security issues such as MITM attacks.</p>
+</dd>
+<dt class="hdlist1"><code>caPath</code></dt>
+<dd>
+<p>Set a path to a file that contains a certificate that will be used as a source of trust when making SSL connections to mongo.</p>
+</dd>
 </dl>
 </div>
 <div class="admonitionblock note">
@@ -1324,7 +1337,7 @@ Please consult the driver documentation for up to date information.
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:34 CET
+                Last updated 2020-09-16 10:26:32 CEST
               
               
             </div>

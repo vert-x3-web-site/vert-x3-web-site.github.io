@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -103,7 +104,11 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
-<li><a href="#_using_vert_x_web">Using Vert.x Web</a></li>
+<li><a href="#_using_vert_x_web">Using Vert.x Web</a>
+<ul class="sectlevel2">
+<li><a href="#_development_mode">Development mode</a></li>
+</ul>
+</li>
 <li><a href="#_re_cap_on_vert_x_core_http_servers">Re-cap on Vert.x core HTTP servers</a></li>
 <li><a href="#_basic_vert_x_web_concepts">Basic Vert.x-Web concepts</a></li>
 <li><a href="#_handling_requests_and_calling_the_next_handler">Handling requests and calling the next handler</a></li>
@@ -124,7 +129,7 @@
 <li><a href="#_reroute">Reroute</a></li>
 <li><a href="#_sub_routers">Sub-routers</a></li>
 <li><a href="#_localization">Localization</a></li>
-<li><a href="#_default_404_handling">Default 404 Handling</a></li>
+<li><a href="#_route_match_failures">Route match failures</a></li>
 <li><a href="#_error_handling">Error handling</a></li>
 <li><a href="#_request_body_handling">Request body handling</a>
 <ul class="sectlevel2">
@@ -169,6 +174,7 @@
 </ul>
 </li>
 <li><a href="#_cors_handling">CORS handling</a></li>
+<li><a href="#_multi_tenant">Multi Tenant</a></li>
 <li><a href="#_templates">Templates</a>
 <ul class="sectlevel2">
 <li><a href="#_mvel_template_engine">MVEL template engine</a></li>
@@ -177,6 +183,7 @@
 <li><a href="#_thymeleaf_template_engine">Thymeleaf template engine</a></li>
 <li><a href="#_apache_freemarker_template_engine">Apache FreeMarker template engine</a></li>
 <li><a href="#_pebble_template_engine">Pebble template engine</a></li>
+<li><a href="#_rocker_template_engine">Rocker template engine</a></li>
 <li><a href="#_disabling_caching">Disabling caching</a></li>
 </ul>
 </li>
@@ -220,7 +227,11 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
-<li><a href="#_using_vert_x_web">Using Vert.x Web</a></li>
+<li><a href="#_using_vert_x_web">Using Vert.x Web</a>
+<ul class="sectlevel2">
+<li><a href="#_development_mode">Development mode</a></li>
+</ul>
+</li>
 <li><a href="#_re_cap_on_vert_x_core_http_servers">Re-cap on Vert.x core HTTP servers</a></li>
 <li><a href="#_basic_vert_x_web_concepts">Basic Vert.x-Web concepts</a></li>
 <li><a href="#_handling_requests_and_calling_the_next_handler">Handling requests and calling the next handler</a></li>
@@ -241,7 +252,7 @@
 <li><a href="#_reroute">Reroute</a></li>
 <li><a href="#_sub_routers">Sub-routers</a></li>
 <li><a href="#_localization">Localization</a></li>
-<li><a href="#_default_404_handling">Default 404 Handling</a></li>
+<li><a href="#_route_match_failures">Route match failures</a></li>
 <li><a href="#_error_handling">Error handling</a></li>
 <li><a href="#_request_body_handling">Request body handling</a>
 <ul class="sectlevel2">
@@ -286,6 +297,7 @@
 </ul>
 </li>
 <li><a href="#_cors_handling">CORS handling</a></li>
+<li><a href="#_multi_tenant">Multi Tenant</a></li>
 <li><a href="#_templates">Templates</a>
 <ul class="sectlevel2">
 <li><a href="#_mvel_template_engine">MVEL template engine</a></li>
@@ -294,6 +306,7 @@
 <li><a href="#_thymeleaf_template_engine">Thymeleaf template engine</a></li>
 <li><a href="#_apache_freemarker_template_engine">Apache FreeMarker template engine</a></li>
 <li><a href="#_pebble_template_engine">Pebble template engine</a></li>
+<li><a href="#_rocker_template_engine">Rocker template engine</a></li>
 <li><a href="#_disabling_caching">Disabling caching</a></li>
 </ul>
 </li>
@@ -446,6 +459,9 @@ the type of app you prefer, not Vert.x-Web.</p>
 <li>
 <p>Pebble</p>
 </li>
+<li>
+<p>Rocker</p>
+</li>
 </ul>
 </div>
 </li>
@@ -499,7 +515,7 @@ over time.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-web<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -513,8 +529,44 @@ over time.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
- compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-web:3.6.3</span><span class="delimiter">'</span></span>
+ compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-web:3.9.3</span><span class="delimiter">'</span></span>
 }</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_development_mode">Development mode</h3>
+<div class="paragraph">
+<p>Vert.x Web by default operates in production mode.
+You can switch the development mode by assigning the <code>dev</code> value to either:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the <code>VERTXWEB_ENVIRONMENT</code> environment variable, or</p>
+</li>
+<li>
+<p>the <code>vertxweb.environment</code> system property</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In development mode:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>template engine caches are disabled</p>
+</li>
+<li>
+<p>the <code>ErrorHandler</code> does not display exception details</p>
+</li>
+<li>
+<p>the <code>StaticHandler</code> does not handle cache headers</p>
+</li>
+<li>
+<p>the GraphiQL development tool is disabled</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -769,6 +821,22 @@ so it will be called for paths <code>/some/path</code> and <code>/some/path//</c
 route.handler({ routingContext -&gt;
   <span class="comment">// This handler will be called for the following request paths:</span>
 
+  <span class="comment">// `/some/path/`</span>
+  <span class="comment">// `/some/path//`</span>
+  <span class="comment">//</span>
+  <span class="comment">// but not:</span>
+  <span class="comment">// `/some/path` the end slash in the path makes it strict</span>
+  <span class="comment">// `/some/path/subdir`</span>
+})
+
+<span class="comment">// paths that do not end with slash are not strict</span>
+<span class="comment">// this means that the trailing slash is optional</span>
+<span class="comment">// and they match regardless</span>
+<span class="keyword">def</span> route2 = router.route().path(<span class="string"><span class="delimiter">&quot;</span><span class="content">/some/path</span><span class="delimiter">&quot;</span></span>)
+
+route2.handler({ ctx -&gt;
+  <span class="comment">// This handler will be called for the following request paths:</span>
+
   <span class="comment">// `/some/path`</span>
   <span class="comment">// `/some/path/`</span>
   <span class="comment">// `/some/path//`</span>
@@ -802,12 +870,12 @@ route.handler({ routingContext -&gt;
   <span class="comment">// This handler will be called for any path that starts with</span>
   <span class="comment">// `/some/path/`, e.g.</span>
 
-  <span class="comment">// `/some/path`</span>
   <span class="comment">// `/some/path/`</span>
   <span class="comment">// `/some/path/subdir`</span>
   <span class="comment">// `/some/path/subdir/blah.html`</span>
   <span class="comment">//</span>
   <span class="comment">// but not:</span>
+  <span class="comment">// `/some/path` the path is strict because it ends with slash</span>
   <span class="comment">// `/some/bath`</span>
 })</code></pre>
 </div>
@@ -938,24 +1006,17 @@ and <code>productType</code> will receive the value <code>tools</code> and produ
 <p>Using int index param names might be troublesome in some cases.
 It&#8217;s possible to use named capture groups in the regex path.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>[source,groovy]</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre>// This regular expression matches paths that start with something like: "/foo/bar"
-// It uses named regex groups to capture path params
-def route = router.routeWithRegex("\\/(?&lt;productType&gt;[^\\/]+)\\/(?&lt;productId&gt;[^\\/]+)").handler({ routingContext -&gt;
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="comment">// This regular expression matches paths that start with something like: &quot;/foo/bar&quot;</span>
+<span class="comment">// It uses named regex groups to capture path params</span>
+<span class="keyword">def</span> route = router.routeWithRegex(<span class="string"><span class="delimiter">&quot;</span><span class="char">\\</span><span class="content">/(?&lt;productType&gt;[^</span><span class="char">\\</span><span class="content">/]+)</span><span class="char">\\</span><span class="content">/(?&lt;productId&gt;[^</span><span class="char">\\</span><span class="content">/]+)</span><span class="delimiter">&quot;</span></span>).handler({ routingContext -&gt;
 
-  def productType = routingContext.request().getParam("productType")
-  def productID = routingContext.request().getParam("productId")
+  <span class="keyword">def</span> productType = routingContext.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">productType</span><span class="delimiter">&quot;</span></span>)
+  <span class="keyword">def</span> productID = routingContext.request().getParam(<span class="string"><span class="delimiter">&quot;</span><span class="content">productId</span><span class="delimiter">&quot;</span></span>)
 
-  // Do something with them...
-})</pre>
+  <span class="comment">// Do something with them...</span>
+})</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1129,7 +1190,7 @@ want to ensure a route is evaluated before route number <code>0</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> route1 = router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">/some/path/</span><span class="delimiter">&quot;</span></span>).handler({ routingContext -&gt;
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> route1 = router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">/some/path/</span><span class="delimiter">&quot;</span></span>).order(<span class="integer">1</span>).handler({ routingContext -&gt;
 
   <span class="keyword">def</span> response = routingContext.response()
   response.write(<span class="string"><span class="delimiter">&quot;</span><span class="content">route1</span><span class="char">\n</span><span class="delimiter">&quot;</span></span>)
@@ -1138,7 +1199,7 @@ want to ensure a route is evaluated before route number <code>0</code>.</p>
   routingContext.next()
 })
 
-<span class="keyword">def</span> route2 = router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">/some/path/</span><span class="delimiter">&quot;</span></span>).handler({ routingContext -&gt;
+<span class="keyword">def</span> route2 = router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">/some/path/</span><span class="delimiter">&quot;</span></span>).order(<span class="integer">0</span>).handler({ routingContext -&gt;
 
   <span class="keyword">def</span> response = routingContext.response()
   <span class="comment">// enable chunked responses because we will be adding data as</span>
@@ -1152,17 +1213,14 @@ want to ensure a route is evaluated before route number <code>0</code>.</p>
   routingContext.next()
 })
 
-<span class="keyword">def</span> route3 = router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">/some/path/</span><span class="delimiter">&quot;</span></span>).handler({ routingContext -&gt;
+<span class="keyword">def</span> route3 = router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">/some/path/</span><span class="delimiter">&quot;</span></span>).order(<span class="integer">2</span>).handler({ routingContext -&gt;
 
   <span class="keyword">def</span> response = routingContext.response()
   response.write(<span class="string"><span class="delimiter">&quot;</span><span class="content">route3</span><span class="delimiter">&quot;</span></span>)
 
   <span class="comment">// Now end the response</span>
   routingContext.response().end()
-})
-
-<span class="comment">// Change the order of route2 so it runs before route1</span>
-route2.order(-<span class="integer">1</span>)</code></pre>
+})</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1180,6 +1238,9 @@ route3</pre>
 </div>
 <div class="paragraph">
 <p>You can also specify that a route is handled last, with <code><a href="../../apidocs/io/vertx/ext/web/Route.html#last--">last</a></code></p>
+</div>
+<div class="paragraph">
+<p>Note: Route order can be specified only before you configure an handler!</p>
 </div>
 </div>
 </div>
@@ -1486,20 +1547,25 @@ should use the <code>RoutingContext</code> object. For example you want to rerou
   <span class="comment">// continue from here...</span>
 })
 
-<span class="comment">// THE WRONG WAY! (Will reroute to /final-target excluding the query string)</span>
+<span class="comment">// (Will reroute to /final-target including the query string)</span>
 router.get().handler({ ctx -&gt;
   ctx.reroute(<span class="string"><span class="delimiter">&quot;</span><span class="content">/final-target?variable=value</span><span class="delimiter">&quot;</span></span>)
 })
 
-<span class="comment">// THE CORRECT WAY!</span>
+<span class="comment">// A safer way would be to add the variable to the context</span>
 router.get().handler({ ctx -&gt;
   ctx.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">variable</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>).reroute(<span class="string"><span class="delimiter">&quot;</span><span class="content">/final-target</span><span class="delimiter">&quot;</span></span>)
 })</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Even though the wrong reroute path will warn you that the query string is ignored, the reroute will happen since the
-implementation will strip any query string or html fragment from the path.</p>
+<p>Reroute will re-parse the query params too. Be aware that previously query params will be discarded. The method
+will also silently discard and ignore any html fragment from the path. This is to keep the semantics of reroute
+consistent between a regular request and a re route.</p>
+</div>
+<div class="paragraph">
+<p>If more information is required to be passed to the new request, it should use the context that is preserved all the
+lifetime of the HTTP transaction.</p>
 </div>
 </div>
 </div>
@@ -1610,14 +1676,32 @@ locale was provided by the user.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_default_404_handling">Default 404 Handling</h2>
+<h2 id="_route_match_failures">Route match failures</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If no routes match for any particular request, Vert.x-Web will signal a 404 error.</p>
+<p>If no routes match for any particular request, Vert.x-Web will signal an error depending on match failure:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>404 If no route matches the path</p>
+</li>
+<li>
+<p>405 If a route matches the path but don&#8217;t match the HTTP Method</p>
+</li>
+<li>
+<p>406 If a route matches the path and the method but It can&#8217;t provide a response with a content type matching <code>Accept</code> header</p>
+</li>
+<li>
+<p>415 If a route matches the path and the method but It can&#8217;t accept the <code>Content-type</code></p>
+</li>
+<li>
+<p>400 If a route matches the path and the method but It can&#8217;t accept an empty body</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>A default 404 error handler is provided by Router. Anyway you can provide your own 404 error handler with
-<code><a href="../../apidocs/io/vertx/ext/web/Router.html#errorHandler-int-io.vertx.core.Handler-">errorHandler</a></code></p>
+<p>You can manually manage those failures using <code><a href="../../apidocs/io/vertx/ext/web/Router.html#errorHandler-int-io.vertx.core.Handler-">errorHandler</a></code></p>
 </div>
 </div>
 </div>
@@ -1728,6 +1812,33 @@ to install handlers to consume the HTTP request body and this must be done befor
 router.route().handler(BodyHandler.create())</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>If an async call is required before, the <code>HttpServerRequest</code> should be paused and then resumed so that the request
+events are not delivered until the body handler is ready to process them.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">router.route().handler({ routingContext -&gt;
+
+  <span class="keyword">def</span> request = routingContext.request()
+
+  <span class="comment">// Pause the request</span>
+  request.pause()
+
+  <span class="local-variable">this</span>.someAsyncCall({ result -&gt;
+
+    <span class="comment">// Resume the request</span>
+    request.resume()
+
+    <span class="comment">// And continue processing</span>
+    routingContext.next()
+  })
+})
+
+<span class="comment">// This body handler will be called for all routes</span>
+router.route().handler(BodyHandler.create())</code></pre>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_getting_the_request_body">Getting the request body</h3>
 <div class="paragraph">
@@ -1796,35 +1907,32 @@ such as the name, file-name and size to be accessed.</p>
 <h2 id="_handling_cookies">Handling cookies</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x-Web has cookies support using the <code><a href="../../apidocs/io/vertx/ext/web/handler/CookieHandler.html">CookieHandler</a></code>.</p>
+<p>Vert.x-Web has out of the box cookies support.</p>
 </div>
 <div class="paragraph">
-<p>You should make sure a cookie handler is on a matching route for any requests that require this functionality.</p>
+<p>Before 3.8.1, cookie required to use the <code><a href="../../apidocs/io/vertx/ext/web/handler/CookieHandler.html">CookieHandler</a></code> to active this functionality.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="comment">// This cookie handler will be called for all routes</span>
-router.route().handler(<span class="predefined-type">CookieHandler</span>.create())</code></pre>
-</div>
+<div class="paragraph">
+<p>Since 3.8.1, the <code>CookieHandler</code> has been deprecated and should not be used anymore.</p>
 </div>
 <div class="sect2">
 <h3 id="_manipulating_cookies">Manipulating cookies</h3>
 <div class="paragraph">
 <p>You use <code><a href="../../apidocs/io/vertx/ext/web/RoutingContext.html#getCookie-java.lang.String-">getCookie</a></code> to retrieve
-a cookie by name, or use <code><a href="../../apidocs/io/vertx/ext/web/RoutingContext.html#cookies--">cookies</a></code> to retrieve the entire set.</p>
+a cookie by name, or use <code><a href="../../apidocs/io/vertx/ext/web/RoutingContext.html#cookieMap--">cookieMap</a></code> to retrieve the entire set.</p>
 </div>
 <div class="paragraph">
 <p>To remove a cookie, use <code><a href="../../apidocs/io/vertx/ext/web/RoutingContext.html#removeCookie-java.lang.String-">removeCookie</a></code>.</p>
 </div>
 <div class="paragraph">
-<p>To add a cookie use <code><a href="../../apidocs/io/vertx/ext/web/RoutingContext.html#addCookie-io.vertx.ext.web.Cookie-">addCookie</a></code>.</p>
+<p>To add a cookie use <code><a href="../../apidocs/io/vertx/ext/web/RoutingContext.html#addCookie-io.vertx.core.http.Cookie-">addCookie</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>The set of cookies will be written back in the response automatically when the response headers are written so the
 browser can store them.</p>
 </div>
 <div class="paragraph">
-<p>Cookies are described by instances of <code><a href="../../apidocs/io/vertx/ext/web/Cookie.html">Cookie</a></code>. This allows you to retrieve the name,
+<p>Cookies are described by instances of <code><a href="../../apidocs/io/vertx/core/http/Cookie.html">Cookie</a></code>. This allows you to retrieve the name,
 value, domain, path and other normal cookie properties.</p>
 </div>
 <div class="paragraph">
@@ -1832,19 +1940,13 @@ value, domain, path and other normal cookie properties.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="comment">// This cookie handler will be called for all routes</span>
-router.route().handler(<span class="predefined-type">CookieHandler</span>.create())
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> someCookie = routingContext.getCookie(<span class="string"><span class="delimiter">&quot;</span><span class="content">mycookie</span><span class="delimiter">&quot;</span></span>)
+<span class="keyword">def</span> cookieValue = someCookie.getValue()
 
-router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">some/path/</span><span class="delimiter">&quot;</span></span>).handler({ routingContext -&gt;
+<span class="comment">// Do something with cookie...</span>
 
-  <span class="keyword">def</span> someCookie = routingContext.getCookie(<span class="string"><span class="delimiter">&quot;</span><span class="content">mycookie</span><span class="delimiter">&quot;</span></span>)
-  <span class="keyword">def</span> cookieValue = someCookie.getValue()
-
-  <span class="comment">// Do something with cookie...</span>
-
-  <span class="comment">// Add a cookie - this will get written back in the response automatically</span>
-  routingContext.addCookie(Cookie.cookie(<span class="string"><span class="delimiter">&quot;</span><span class="content">othercookie</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">somevalue</span><span class="delimiter">&quot;</span></span>))
-})</code></pre>
+<span class="comment">// Add a cookie - this will get written back in the response automatically</span>
+routingContext.addCookie(Cookie.cookie(<span class="string"><span class="delimiter">&quot;</span><span class="content">othercookie</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">somevalue</span><span class="delimiter">&quot;</span></span>))</code></pre>
 </div>
 </div>
 </div>
@@ -1880,6 +1982,28 @@ on a matching route before your application logic.</p>
 <div class="paragraph">
 <p>The session handler handles the creation of session cookies and the lookup of the session so you don&#8217;t have to do
 that yourself.</p>
+</div>
+<div class="paragraph">
+<p>Sessions data is saved to a session store automatically after the response headers have been sent to the client.
+But note that, with this mechanism, there is no guarantee the data is fully persisted before the client receives the response.
+There are occasions though when this guarantee is needed.
+In this case you can force a flush.
+This will disable the automatic saving process, unless the flushing operation failed.
+This allows to control the state before completing the response like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">router.route().handler({ ctx -&gt;
+  sessionHandler.flush(ctx, { flush -&gt;
+    <span class="keyword">if</span> (flush.succeeded()) {
+      ctx.response().end(<span class="string"><span class="delimiter">&quot;</span><span class="content">Success!</span><span class="delimiter">&quot;</span></span>)
+    } <span class="keyword">else</span> {
+      <span class="comment">// session wasn't saved...</span>
+      <span class="comment">// go for plan B</span>
+    }
+  })
+})</code></pre>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_session_stores">Session stores</h3>
@@ -2007,23 +2131,21 @@ Vertx.clusteredVertx([
 your session handler is routed to before your application handlers.</p>
 </div>
 <div class="paragraph">
-<p>You&#8217;ll also need to include a <code><a href="../../apidocs/io/vertx/ext/web/handler/CookieHandler.html">CookieHandler</a></code> as the session handler uses cookies to
-lookup the session. The cookie handler should be before the session handler when routing.</p>
-</div>
-<div class="paragraph">
 <p>Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> router = Router.router(vertx)
 
-<span class="comment">// We need a cookie handler first</span>
-router.route().handler(<span class="predefined-type">CookieHandler</span>.create())
-
 <span class="comment">// Create a clustered session store using defaults</span>
 <span class="keyword">def</span> store = ClusteredSessionStore.create(vertx)
 
 <span class="keyword">def</span> sessionHandler = SessionHandler.create(store)
+
+<span class="comment">// the session handler controls the cookie used for the session</span>
+<span class="comment">// this includes configuring, for example, the same site policy</span>
+<span class="comment">// like this, for strict same site policy.</span>
+sessionHandler.setCookieSameSite(CookieSameSite.STRICT)
 
 <span class="comment">// Make sure all requests are routed through the session handler too</span>
 router.route().handler(sessionHandler)
@@ -2063,8 +2185,7 @@ a clustered session store they can be any basic type, or <code><a href="../../ap
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">router.route().handler(<span class="predefined-type">CookieHandler</span>.create())
-router.route().handler(sessionHandler)
+<pre class="CodeRay highlight"><code data-lang="groovy">router.route().handler(sessionHandler)
 
 <span class="comment">// Now your application handlers</span>
 router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">/somepath/blah</span><span class="delimiter">&quot;</span></span>).handler({ routingContext -&gt;
@@ -2130,8 +2251,7 @@ please consult the auth documentation.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">router.route().handler(<span class="predefined-type">CookieHandler</span>.create())
-router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)))
+<pre class="CodeRay highlight"><code data-lang="groovy">router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)))
 
 <span class="keyword">def</span> basicAuthHandler = BasicAuthHandler.create(authProvider)</code></pre>
 </div>
@@ -2145,9 +2265,7 @@ your auth handler is before your application handlers on those paths:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">router.route().handler(<span class="predefined-type">CookieHandler</span>.create())
-router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)))
-router.route().handler(UserSessionHandler.create(authProvider))
+<pre class="CodeRay highlight"><code data-lang="groovy">router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)).setAuthProvider(authProvider))
 
 <span class="keyword">def</span> basicAuthHandler = BasicAuthHandler.create(authProvider)
 
@@ -2241,9 +2359,7 @@ To handle the login we provide a prebuilt handler <code><a href="../../apidocs/i
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">router.route().handler(<span class="predefined-type">CookieHandler</span>.create())
-router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)))
-router.route().handler(UserSessionHandler.create(authProvider))
+<pre class="CodeRay highlight"><code data-lang="groovy">router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)).setAuthProvider(authProvider))
 
 <span class="keyword">def</span> redirectAuthHandler = RedirectAuthHandler.create(authProvider)
 
@@ -2276,7 +2392,7 @@ router.route(<span class="string"><span class="delimiter">&quot;</span><span cla
 <h3 id="_jwt_authorisation">JWT authorisation</h3>
 <div class="paragraph">
 <p>With JWT authorisation resources can be protected by means of permissions and users without enough rights are denied
-access.</p>
+access. You need to add the <code>io.vertx:vertx-auth-jwt:3.9.3</code> dependency to use <code>JWTAuthProvider</code></p>
 </div>
 <div class="paragraph">
 <p>To use this handler there are 2 steps involved:</p>
@@ -2660,6 +2776,70 @@ router.route().handler({ routingContext -&gt;
 </div>
 </div>
 <div class="sect1">
+<h2 id="_multi_tenant">Multi Tenant</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are cases where your application needs to handle more than just 1 tenant. In this case a helper handler is
+provided that simplifies setting up the application.</p>
+</div>
+<div class="paragraph">
+<p>In the case the tenant is identified by a HTTP header, say for example <code>X-Tenant</code>, then creating the handler is as
+simple as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">router.route().handler(MultiTenantHandler.create(<span class="string"><span class="delimiter">&quot;</span><span class="content">X-Tenant</span><span class="delimiter">&quot;</span></span>))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You now should register what handler should be executed for the given tenant:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">MultiTenantHandler.create(<span class="string"><span class="delimiter">&quot;</span><span class="content">X-Tenant</span><span class="delimiter">&quot;</span></span>).addTenantHandler(<span class="string"><span class="delimiter">&quot;</span><span class="content">tenant-A</span><span class="delimiter">&quot;</span></span>, { ctx -&gt;
+  <span class="comment">// do something for tenant A...</span>
+}).addTenantHandler(<span class="string"><span class="delimiter">&quot;</span><span class="content">tenant-B</span><span class="delimiter">&quot;</span></span>, { ctx -&gt;
+  <span class="comment">// do something for tenant B...</span>
+}).addDefaultHandler({ ctx -&gt;
+  <span class="comment">// do something when no tenant matches...</span>
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is useful for security situations:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="comment">// create an OAuth2 provider, clientID and clientSecret should be requested to github</span>
+<span class="keyword">def</span> gitHubAuthProvider = GithubAuth.create(vertx, <span class="string"><span class="delimiter">&quot;</span><span class="content">CLIENT_ID</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">CLIENT_SECRET</span><span class="delimiter">&quot;</span></span>)
+<span class="comment">// create a oauth2 handler on our running server</span>
+<span class="comment">// the second argument is the full url to the callback as you entered in your provider management console.</span>
+<span class="keyword">def</span> githubOAuth2 = OAuth2AuthHandler.create(gitHubAuthProvider, <span class="string"><span class="delimiter">&quot;</span><span class="content">https://myserver.com/github-callback</span><span class="delimiter">&quot;</span></span>)
+<span class="comment">// setup the callback handler for receiving the GitHub callback</span>
+githubOAuth2.setupCallback(router.route())
+
+<span class="comment">// create an OAuth2 provider, clientID and clientSecret should be requested to Google</span>
+<span class="keyword">def</span> googleAuthProvider = OAuth2Auth.create(vertx, [
+  <span class="key">clientID</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">CLIENT_ID</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">clientSecret</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">CLIENT_SECRET</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">flow</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">AUTH_CODE</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">site</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">https://accounts.google.com</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">tokenPath</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">https://www.googleapis.com/oauth2/v3/token</span><span class="delimiter">&quot;</span></span>,
+  <span class="key">authorizationPath</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">/o/oauth2/auth</span><span class="delimiter">&quot;</span></span>
+])
+
+<span class="comment">// create a oauth2 handler on our domain: &quot;http://localhost:8080&quot;</span>
+<span class="keyword">def</span> googleOAuth2 = OAuth2AuthHandler.create(googleAuthProvider, <span class="string"><span class="delimiter">&quot;</span><span class="content">http://localhost:8080</span><span class="delimiter">&quot;</span></span>)
+
+
+MultiTenantHandler.create(<span class="string"><span class="delimiter">&quot;</span><span class="content">X-Tenant</span><span class="delimiter">&quot;</span></span>).addTenantHandler(<span class="string"><span class="delimiter">&quot;</span><span class="content">tenant-github</span><span class="delimiter">&quot;</span></span>, githubOAuth2).addTenantHandler(<span class="string"><span class="delimiter">&quot;</span><span class="content">tenant-google</span><span class="delimiter">&quot;</span></span>, googleOAuth2).addDefaultHandler({ ctx -&gt;
+  ctx.fail(<span class="integer">401</span>)
+})</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_templates">Templates</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -2709,7 +2889,7 @@ router.getWithRegex(<span class="string"><span class="delimiter">&quot;</span><s
 <h3 id="_mvel_template_engine">MVEL template engine</h3>
 <div class="paragraph">
 <p>To use MVEL, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-mvel:3.6.3</code>. Create an instance of the MVEL template engine using:
+<code>io.vertx:vertx-web-templ-mvel:3.9.3</code>. Create an instance of the MVEL template engine using:
 <code>io.vertx.ext.web.templ.MVELTemplateEngine#create()</code></p>
 </div>
 <div class="paragraph">
@@ -2742,7 +2922,7 @@ MVEL templates.</p>
 <h3 id="_jade_template_engine">Jade template engine</h3>
 <div class="paragraph">
 <p>To use the Jade template engine, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-jade:3.6.3</code>. Create an instance of the Jade template engine using:
+<code>io.vertx:vertx-web-templ-jade:3.9.3</code>. Create an instance of the Jade template engine using:
 <code>io.vertx.ext.web.templ.JadeTemplateEngine#create()</code>.</p>
 </div>
 <div class="paragraph">
@@ -2775,7 +2955,7 @@ Jade templates.</p>
 <h3 id="_handlebars_template_engine">Handlebars template engine</h3>
 <div class="paragraph">
 <p>To use Handlebars, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-handlebars:3.6.3</code>. Create an instance of the Handlebars template engine
+<code>io.vertx:vertx-web-templ-handlebars:3.9.3</code>. Create an instance of the Handlebars template engine
 using: <code>io.vertx.ext.web.templ.HandlebarsTemplateEngine#create()</code>.</p>
 </div>
 <div class="paragraph">
@@ -2817,7 +2997,7 @@ handlebars templates.</p>
 <h3 id="_thymeleaf_template_engine">Thymeleaf template engine</h3>
 <div class="paragraph">
 <p>To use Thymeleaf, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-thymeleaf:3.6.3</code>. Create an instance of the Thymeleaf template engine
+<code>io.vertx:vertx-web-templ-thymeleaf:3.9.3</code>. Create an instance of the Thymeleaf template engine
 using: <code>io.vertx.ext.web.templ.ThymeleafTemplateEngine#create()</code>.</p>
 </div>
 <div class="paragraph">
@@ -2852,7 +3032,7 @@ Thymeleaf templates.</p>
 <h3 id="_apache_freemarker_template_engine">Apache FreeMarker template engine</h3>
 <div class="paragraph">
 <p>To use Apache FreeMarker, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-freemarker:3.6.3</code>. Create an instance of the Apache FreeMarker template engine
+<code>io.vertx:vertx-web-templ-freemarker:3.9.3</code>. Create an instance of the Apache FreeMarker template engine
 using: <code>io.vertx.ext.web.templ.Engine#create()</code>.</p>
 </div>
 <div class="paragraph">
@@ -2887,7 +3067,7 @@ Apache FreeMarker templates.</p>
 <h3 id="_pebble_template_engine">Pebble template engine</h3>
 <div class="paragraph">
 <p>To use Pebble, you need to add the following <em>dependency</em> to your project:
-<code>io.vertx:vertx-web-templ-pebble:3.6.3</code>. Create an instance of the Pebble template engine
+<code>io.vertx:vertx-web-templ-pebble:3.9.3</code>. Create an instance of the Pebble template engine
 using: <code>io.vertx.ext.web.templ.PebbleTemplateEngine#create(vertx)</code>.</p>
 </div>
 <div class="paragraph">
@@ -2919,6 +3099,42 @@ Pebble templates.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_rocker_template_engine">Rocker template engine</h3>
+<div class="paragraph">
+<p>To use Rocker, then add <code>io.vertx:vertx-web-templ-rocker:3.9.3</code> as a dependency to your project.
+You can then create a Rocker template engine instance with <code>io.vertx.ext.web.templ.rocker#create()</code>.</p>
+</div>
+<div class="paragraph">
+<p>The values of the JSON context object passed to the <code>render</code> method are then exposed as template parameters.
+Given:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[snip]
+final JsonObject context = new JsonObject()
+ .put("foo", "badger")
+ .put("bar", "fox")
+ .put("context", new JsonObject().put("path", "/foo/bar"));
+
+engine.render(context, "somedir/TestRockerTemplate2", render -&gt; {
+ // (...)
+});
+[snip]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>then the template can be as the following <code>somedir/TestRockerTemplate2.rocker.html</code> resource file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@import io.vertx.core.json.JsonObject
+@args (JsonObject context, String foo, String bar)
+Hello @foo and @bar
+Request path is @context.getString("path")</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_disabling_caching">Disabling caching</h3>
 <div class="paragraph">
 <p>During development you might want to disable template caching so that the template gets reevaluated on each request.
@@ -2947,7 +3163,8 @@ failure handler for any paths that you want covered.</p>
 <h2 id="_request_logger">Request logger</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vert.x-Web includes a handler <code><a href="../../apidocs/io/vertx/ext/web/handler/LoggerHandler.html">LoggerHandler</a></code> that you can use to log HTTP requests.</p>
+<p>Vert.x-Web includes a handler <code><a href="../../apidocs/io/vertx/ext/web/handler/LoggerHandler.html">LoggerHandler</a></code> that you can use to log HTTP requests.
+You should mount this handler before any handler that could fail the <code>RoutingContext</code></p>
 </div>
 <div class="paragraph">
 <p>By default requests are logged to the Vert.x logger which can be configured to use JUL logging, log4j or SLF4J.</p>
@@ -3258,7 +3475,7 @@ handles the SockJS data and bridges it to and from the server side event bus.</p
 </div>
 <div class="paragraph">
 <p>To activate the bridge you simply call
-<code><a href="../../apidocs/io/vertx/ext/web/handler/sockjs/SockJSHandler.html#bridge-io.vertx.ext.web.handler.sockjs.BridgeOptions-">bridge</a></code> on the
+<code><a href="../../apidocs/io/vertx/ext/web/handler/sockjs/SockJSHandler.html#bridge-io.vertx.ext.web.handler.sockjs.SockJSBridgeOptions-">bridge</a></code> on the
 SockJS handler.</p>
 </div>
 <div class="listingblock">
@@ -3267,9 +3484,8 @@ SockJS handler.</p>
 
 <span class="keyword">def</span> sockJSHandler = SockJSHandler.create(vertx)
 <span class="keyword">def</span> options = [:]
-sockJSHandler.bridge(options)
-
-router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">/eventbus/*</span><span class="delimiter">&quot;</span></span>).handler(sockJSHandler)</code></pre>
+<span class="comment">// mount the bridge on the router</span>
+router.mountSubRouter(<span class="string"><span class="delimiter">&quot;</span><span class="content">/eventbus</span><span class="delimiter">&quot;</span></span>, sockJSHandler.bridge(options))</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3354,7 +3570,7 @@ eb2.enableReconnect(<span class="predefined-constant">true</span>);
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-lang-groovy<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
  <span class="tag">&lt;classifier&gt;</span>client<span class="tag">&lt;/classifier&gt;</span>
  <span class="tag">&lt;type&gt;</span>js<span class="tag">&lt;/type&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
@@ -3369,7 +3585,7 @@ eb2.enableReconnect(<span class="predefined-constant">true</span>);
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-lang-groovy:3.6.3:client</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-lang-groovy:3.9.3:client</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3422,7 +3638,7 @@ bridge what messages are ok for it to pass through. (There is an exception for r
 </div>
 <div class="paragraph">
 <p>You can specify which <em>matches</em> you want to allow for inbound and outbound traffic using the
-<code><a href="../../apidocs/io/vertx/ext/web/handler/sockjs/BridgeOptions.html">BridgeOptions</a></code> that you pass in when calling bridge.</p>
+<code><a href="../../apidocs/io/vertx/ext/web/handler/sockjs/SockJSBridgeOptions.html">SockJSBridgeOptions</a></code> that you pass in when calling bridge.</p>
 </div>
 <div class="paragraph">
 <p>Each match is a <code><a href="../../apidocs/io/vertx/ext/web/handler/sockjs/PermittedOptions.html">PermittedOptions</a></code> object:</p>
@@ -3527,9 +3743,8 @@ by looking at all the fields and values in the match object and checking they al
   ]
 ]
 
-sockJSHandler.bridge(options)
-
-router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">/eventbus/*</span><span class="delimiter">&quot;</span></span>).handler(sockJSHandler)</code></pre>
+<span class="comment">// mount the bridge on the router</span>
+router.mountSubRouter(<span class="string"><span class="delimiter">&quot;</span><span class="content">/eventbus</span><span class="delimiter">&quot;</span></span>, sockJSHandler.bridge(options))</code></pre>
 </div>
 </div>
 </div>
@@ -3586,23 +3801,21 @@ inboundPermitted.requiredAuthority = <span class="string"><span class="delimiter
 inboundPermitted.requiredAuthority = <span class="string"><span class="delimiter">&quot;</span><span class="content">place_orders</span><span class="delimiter">&quot;</span></span>
 
 <span class="keyword">def</span> sockJSHandler = SockJSHandler.create(vertx)
-sockJSHandler.bridge([
-  <span class="key">inboundPermitteds</span>:[
-    inboundPermitted
-  ]
-])
 
 <span class="comment">// Now set up some basic auth handling:</span>
 
-router.route().handler(<span class="predefined-type">CookieHandler</span>.create())
 router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)))
 
 <span class="keyword">def</span> basicAuthHandler = BasicAuthHandler.create(authProvider)
 
 router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">/eventbus/*</span><span class="delimiter">&quot;</span></span>).handler(basicAuthHandler)
 
-
-router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">/eventbus/*</span><span class="delimiter">&quot;</span></span>).handler(sockJSHandler)</code></pre>
+<span class="comment">// mount the bridge on the router</span>
+router.mountSubRouter(<span class="string"><span class="delimiter">&quot;</span><span class="content">/eventbus</span><span class="delimiter">&quot;</span></span>, sockJSHandler.bridge([
+  <span class="key">inboundPermitteds</span>:[
+    inboundPermitted
+  ]
+]))</code></pre>
 </div>
 </div>
 </div>
@@ -3610,7 +3823,7 @@ router.route(<span class="string"><span class="delimiter">&quot;</span><span cla
 <h3 id="_handling_event_bus_bridge_events">Handling event bus bridge events</h3>
 <div class="paragraph">
 <p>If you want to be notified when an event occurs on the bridge you can provide a handler when calling
-<code><a href="../../apidocs/io/vertx/ext/web/handler/sockjs/SockJSHandler.html#bridge-io.vertx.ext.web.handler.sockjs.BridgeOptions-io.vertx.core.Handler-">bridge</a></code>.</p>
+<code><a href="../../apidocs/io/vertx/ext/web/handler/sockjs/SockJSHandler.html#bridge-io.vertx.ext.web.handler.sockjs.SockJSBridgeOptions-io.vertx.core.Handler-">bridge</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Whenever an event occurs on the bridge it will be passed to the handler. The event is described by an instance of
@@ -3703,7 +3916,8 @@ authorisation or metrics.</p>
   ]
 ]
 
-sockJSHandler.bridge(options, { be -&gt;
+<span class="comment">// mount the bridge on the router</span>
+router.mountSubRouter(<span class="string"><span class="delimiter">&quot;</span><span class="content">/eventbus</span><span class="delimiter">&quot;</span></span>, sockJSHandler.bridge(options, { be -&gt;
   <span class="keyword">if</span> (be.type() == BridgeEventType.PUBLISH || be.type() == BridgeEventType.RECEIVE) {
     <span class="keyword">if</span> (be.getRawMessage().body == <span class="string"><span class="delimiter">&quot;</span><span class="content">armadillos</span><span class="delimiter">&quot;</span></span>) {
       <span class="comment">// Reject it</span>
@@ -3712,9 +3926,7 @@ sockJSHandler.bridge(options, { be -&gt;
     }
   }
   be.complete(<span class="predefined-constant">true</span>)
-})
-
-router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">/eventbus/*</span><span class="delimiter">&quot;</span></span>).handler(sockJSHandler)</code></pre>
+}))</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3735,15 +3947,14 @@ then the SOCKET_IDLE bridge event would be triggered.</p>
   <span class="key">pingTimeout</span>:<span class="integer">5000</span>
 ]
 
-sockJSHandler.bridge(options, { be -&gt;
+<span class="comment">// mount the bridge on the router</span>
+router.mountSubRouter(<span class="string"><span class="delimiter">&quot;</span><span class="content">/eventbus</span><span class="delimiter">&quot;</span></span>, sockJSHandler.bridge(options, { be -&gt;
   <span class="keyword">if</span> (be.type() == BridgeEventType.SOCKET_IDLE) {
     <span class="comment">// Do some custom handling...</span>
   }
 
   be.complete(<span class="predefined-constant">true</span>)
-})
-
-router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">/eventbus/*</span><span class="delimiter">&quot;</span></span>).handler(sockJSHandler)</code></pre>
+}))</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3804,7 +4015,8 @@ also add headers to the message, here&#8217;s an example:</p>
   ]
 ]
 
-sockJSHandler.bridge(options, { be -&gt;
+<span class="comment">// mount the bridge on the router</span>
+router.mountSubRouter(<span class="string"><span class="delimiter">&quot;</span><span class="content">/eventbus</span><span class="delimiter">&quot;</span></span>, sockJSHandler.bridge(options, { be -&gt;
   <span class="keyword">if</span> (be.type() == BridgeEventType.PUBLISH || be.type() == BridgeEventType.SEND) {
     <span class="comment">// Add some headers</span>
     <span class="keyword">def</span> headers = [
@@ -3816,9 +4028,7 @@ sockJSHandler.bridge(options, { be -&gt;
     be.setRawMessage(rawMessage)
   }
   be.complete(<span class="predefined-constant">true</span>)
-})
-
-router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">/eventbus/*</span><span class="delimiter">&quot;</span></span>).handler(sockJSHandler)</code></pre>
+}))</code></pre>
 </div>
 </div>
 </div>
@@ -3858,8 +4068,7 @@ or the header name they have chosen during the instantiation of the <code>CSRFHa
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">router.route().handler(<span class="predefined-type">CookieHandler</span>.create())
-router.route().handler(CSRFHandler.create(<span class="string"><span class="delimiter">&quot;</span><span class="content">abracadabra</span><span class="delimiter">&quot;</span></span>))
+<pre class="CodeRay highlight"><code data-lang="groovy">router.route().handler(CSRFHandler.create(<span class="string"><span class="delimiter">&quot;</span><span class="content">abracadabra</span><span class="delimiter">&quot;</span></span>))
 router.route().handler({ rc -&gt;
 
 })</code></pre>
@@ -4110,15 +4319,12 @@ need an application like the following snippet:</p>
 <span class="comment">// we use a Router to route all HTTP requests</span>
 <span class="comment">// to organize our code in a reusable way.</span>
 
-<span class="comment">// We need cookies and sessions</span>
-router.route().handler(<span class="predefined-type">CookieHandler</span>.create())
-router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)))
 <span class="comment">// Simple auth service which uses a GitHub to</span>
 <span class="comment">// authenticate the user</span>
 <span class="keyword">def</span> authProvider = GithubAuth.create(vertx, <span class="string"><span class="delimiter">&quot;</span><span class="content">YOUR PROVIDER CLIENTID</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">YOUR PROVIDER CLIENT SECRET</span><span class="delimiter">&quot;</span></span>)
 <span class="comment">// We need a user session handler too to make sure</span>
 <span class="comment">// the user is stored in the session between requests</span>
-router.route().handler(UserSessionHandler.create(authProvider))
+router.route().handler(SessionHandler.create(LocalSessionStore.create(vertx)).setAuthProvider(authProvider))
 <span class="comment">// we now protect the resource under the path &quot;/protected&quot;</span>
 router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">/protected</span><span class="delimiter">&quot;</span></span>).handler(OAuth2AuthHandler.create(authProvider).setupCallback(router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">/callback</span><span class="delimiter">&quot;</span></span>)).addAuthority(<span class="string"><span class="delimiter">&quot;</span><span class="content">user:email</span><span class="delimiter">&quot;</span></span>))
 <span class="comment">// Entry point to the application, this will render</span>
@@ -4164,7 +4370,7 @@ value <code>Bearer BASE64_ACCESS_TOKEN</code>.</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:30 CEST
               
               
             </div>

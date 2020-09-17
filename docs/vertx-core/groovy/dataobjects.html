@@ -1654,6 +1654,14 @@ It's <code>false</code> as default.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set whether hostname verification is enabled</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="webSocketClosingTimeout"></a><code>@webSocketClosingTimeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the amount of time a client WebSocket will wait until it closes the TCP connection after receiving a close frame.
+</p><p class="tableblock"><p> When a WebSocket is closed, the server should close the TCP connection. This timeout will close
+the TCP connection on the client when it expires.
+</p><p class="tableblock"><p> Set <code>0L</code> or a negative value to disable.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="webSocketCompressionAllowClientNoContext"></a><code>@webSocketCompressionAllowClientNoContext</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set whether the <code>client_no_context_takeover</code> parameter of the WebSocket per-message
@@ -3625,7 +3633,7 @@ Options describing how an link connect a link.
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2020-07-16 01:06:42 CEST
+                Last updated 2020-09-16 10:26:30 CEST
               
               
             </div>

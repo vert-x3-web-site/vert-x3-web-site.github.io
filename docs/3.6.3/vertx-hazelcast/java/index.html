@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -194,7 +195,7 @@ cluster managers are pluggable.  This implementation is packaged inside:</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-hazelcast<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -229,12 +230,12 @@ cluster managers are pluggable.  This implementation is packaged inside:</p>
 <h2 id="_using_this_cluster_manager">Using this cluster manager</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you are using Vert.x from the command line, the jar corresponding to this cluster manager (it will be named <code>vertx-hazelcast-3.6.3.jar</code>
+<p>If you are using Vert.x from the command line, the jar corresponding to this cluster manager (it will be named <code>vertx-hazelcast-3.9.3.jar</code>
 should be in the <code>lib</code> directory of the Vert.x installation.</p>
 </div>
 <div class="paragraph">
 <p>If you want clustering with this cluster manager in your Vert.x Maven or Gradle project then just add a dependency to
-the artifact: <code>io.vertx:vertx-hazelcast:3.6.3</code> in your project.</p>
+the artifact: <code>io.vertx:vertx-hazelcast:3.9.3</code> in your project.</p>
 </div>
 <div class="paragraph">
 <p>If the jar is on your classpath as above then Vert.x will automatically detect this and use it as the cluster manager.
@@ -627,7 +628,7 @@ another library, you need to set the <code>hazelcast.logging.type</code> system 
 <h2 id="_using_a_different_hazelcast_version">Using a different Hazelcast version</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You may want to use a different version of Hazelcast. The default version is <code>3.10.5</code>. To do so, you
+<p>You may want to use a different version of Hazelcast. The default version is <code>3.12.2</code>. To do so, you
 need to:</p>
 </div>
 <div class="ulist">
@@ -653,7 +654,7 @@ need to:</p>
 <span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-hazelcast<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -666,7 +667,7 @@ need to:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>dependencies {
-compile ("io.vertx:vertx-hazelcast:3.6.3"){
+compile ("io.vertx:vertx-hazelcast:3.9.3"){
   exclude group: 'com.hazelcast', module: 'hazelcast'
 }
 compile "com.hazelcast:hazelcast:ENTER_YOUR_VERSION_HERE"
@@ -696,8 +697,7 @@ With Maven it looks like:</p>
  <span class="tag">&lt;groupId&gt;</span>com.hazelcast<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>hazelcast-kubernetes<span class="tag">&lt;/artifactId&gt;</span>
  <span class="tag">&lt;version&gt;</span>${hazelcast-kubernetes.version}<span class="tag">&lt;/version&gt;</span>
-<span class="tag">&lt;/dependency&gt;</span>
-<span class="tag">&lt;dependency&gt;</span></code></pre>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -944,7 +944,7 @@ Adding them one by one allows for clean, incremental data partition migrations.<
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Handler</span>&lt;<span class="predefined-type">Future</span>&lt;Status&gt;&gt; procedure = ClusterHealthCheck.createProcedure(vertx);
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Handler</span>&lt;Promise&lt;Status&gt;&gt; procedure = ClusterHealthCheck.createProcedure(vertx);
 HealthChecks checks = HealthChecks.create(vertx).register(<span class="string"><span class="delimiter">&quot;</span><span class="content">cluster-health</span><span class="delimiter">&quot;</span></span>, procedure);</code></pre>
 </div>
 </div>
@@ -1022,7 +1022,7 @@ Vertx.clusteredVertx(options, res -&gt; {
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:28 CEST
               
               
             </div>

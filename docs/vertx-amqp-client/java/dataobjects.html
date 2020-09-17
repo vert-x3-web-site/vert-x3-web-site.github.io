@@ -414,16 +414,12 @@ link.</p></td>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="capabilities"></a><code>@capabilities</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the list of desired capabilities
-A registry of commonly defined source capabilities and their meanings is maintained at
-<a href="http://www.amqp.org/specification/1.0/source-capabilities">AMQP Source Capabilities</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the list of capabilities to be set on the receiver source terminus.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="capabilitys"></a><code>@capabilitys</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Adds a desired capability.
-A registry of commonly defined source capabilities and their meanings is maintained at
-<a href="http://www.amqp.org/specification/1.0/source-capabilities">AMQP Source Capabilities</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds a capability to be set on the receiver source terminus.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="durable"></a><code>@durable</code></p></td>
@@ -436,8 +432,8 @@ to <code>UNSETTLED_STATE</code>.</p></td>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="dynamic"></a><code>@dynamic</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sets whether the link remote terminus to be used should indicate it is
-'dynamic', requesting the peer names it with a dynamic address.
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets whether the Source terminus to be used should specify it is 'dynamic',
+requesting the peer creates a node and names it with a generated address.
 <p>
 The address provided by the peer can then be inspected using the
 link method on the link received once opened.</p></td>
@@ -464,7 +460,7 @@ link method on the link received once opened.</p></td>
 <div class="sect1">
 <h2 id="AmqpSenderOptions">AmqpSenderOptions</h2>
 <div class="sectionbody">
-Configures the AMQP Receiver.
+Configures the AMQP Sender.
 <hr>
 <table class="tableblock frame-topbot grid-all spread">
 <colgroup>
@@ -487,10 +483,20 @@ returns if the receiving peer requested that credit be drained.
 <code>true</code> by default.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="capabilities"></a><code>@capabilities</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the list of capabilities to be set on the sender target terminus.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="capabilitys"></a><code>@capabilitys</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds a capability to be set on the sender target terminus.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="dynamic"></a><code>@dynamic</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sets whether the link remote terminus to be used should indicate it is
-'dynamic', requesting the peer names it with a dynamic address.
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets whether the Target terminus to be used should specify it is 'dynamic',
+requesting the peer creates a node and names it with a generated address.
 <p>
 The address provided by the peer can then be inspected using the
 link method on the link received once opened.</p></td>
@@ -511,7 +517,7 @@ link method on the link received once opened.</p></td>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2020-07-16 01:06:40 CEST
+                Last updated 2020-09-16 10:26:28 CEST
               
               
             </div>

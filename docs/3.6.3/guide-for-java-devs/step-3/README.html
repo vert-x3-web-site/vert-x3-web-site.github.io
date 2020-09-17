@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -506,7 +507,7 @@ The essential difference is the support of the asynchronous result handler in th
   <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> CONFIG_WIKIDB_QUEUE = <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.queue</span><span class="delimiter">&quot;</span></span>;
 
   <span class="annotation">@Override</span>
-  <span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
+  <span class="directive">public</span> <span class="type">void</span> start(Promise&lt;<span class="predefined-type">Void</span>&gt; promise) <span class="directive">throws</span> <span class="exception">Exception</span> {
 
     <span class="predefined-type">HashMap</span>&lt;SqlQuery, <span class="predefined-type">String</span>&gt; sqlQueries = loadSqlQueries();
 
@@ -521,9 +522,9 @@ The essential difference is the support of the asynchronous result handler in th
         binder
           .setAddress(CONFIG_WIKIDB_QUEUE)
           .register(WikiDatabaseService.class, ready.result()); <b class="conum">(1)</b>
-        startFuture.complete();
+        promise.complete();
       } <span class="keyword">else</span> {
-        startFuture.fail(ready.cause());
+        promise.fail(ready.cause());
       }
     });
   }
@@ -588,7 +589,7 @@ and use it in the handlers instead of the event bus.</p>
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> WikiDatabaseService dbService;
 
 <span class="annotation">@Override</span>
-<span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
+<span class="directive">public</span> <span class="type">void</span> start(Promise&lt;<span class="predefined-type">Void</span>&gt; promise) <span class="directive">throws</span> <span class="exception">Exception</span> {
 
   <span class="predefined-type">String</span> wikiDbQueue = config().getString(CONFIG_WIKIDB_QUEUE, <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.queue</span><span class="delimiter">&quot;</span></span>); <b class="conum">(1)</b>
   dbService = WikiDatabaseService.createProxy(vertx, wikiDbQueue);
@@ -727,7 +728,7 @@ It is still perfectly possible to consume a Vert.x service directly via event bu
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2018-11-29 10:01:34 CET
+                Last updated 2019-07-25 13:05:56 CEST
               
               
             </div>

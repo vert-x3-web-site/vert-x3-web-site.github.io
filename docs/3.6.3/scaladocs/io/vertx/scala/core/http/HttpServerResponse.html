@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>vertx-lang-scala-docs_2.12 3.6.3 API  - io.vertx.scala.core.http.HttpServerResponse</title>
-          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.3 API - io.vertx.scala.core.http.HttpServerResponse" />
-          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.3 API io.vertx.scala.core.http.HttpServerResponse" />
+          <title>vertx-lang-scala-docs_2.12 3.9.1 API  - io.vertx.scala.core.http.HttpServerResponse</title>
+          <meta name="description" content="vertx - lang - scala - docs 2.12 3.9.1 API - io.vertx.scala.core.http.HttpServerResponse" />
+          <meta name="keywords" content="vertx lang scala docs 2.12 3.9.1 API io.vertx.scala.core.http.HttpServerResponse" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.3 API<span id="doc-version"></span></span>
+        <span id="doc-title">vertx-lang-scala-docs_2.12 3.9.1 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -150,6 +150,10 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="io.vertx.scala.core">core</a></dd></dl></div>
     </li><li class="current-entities indented5">
+                        <a class="object" href="Cookie$.html" title=""></a>
+                        <a class="class" href="Cookie.html" title="Represents an HTTP Cookie."></a>
+                        <a href="Cookie.html" title="Represents an HTTP Cookie.">Cookie</a>
+                      </li><li class="current-entities indented5">
                         <a class="object" href="GoAway$.html" title=""></a>
                         <a class="class" href="GoAway.html" title="A  frame."></a>
                         <a href="GoAway.html" title="A  frame.">GoAway</a>
@@ -221,6 +225,10 @@
                         <a class="object" href="WebSocketBase$.html" title=""></a>
                         <a class="trait" href="WebSocketBase.html" title="Base WebSocket implementation."></a>
                         <a href="WebSocketBase.html" title="Base WebSocket implementation.">WebSocketBase</a>
+                      </li><li class="current-entities indented5">
+                        <a class="object" href="WebSocketConnectOptions$.html" title=""></a>
+                        <a class="class" href="WebSocketConnectOptions.html" title="Options describing how an io.vertx.scala.core.http.HttpClient connect a io.vertx.scala.core.http.WebSocket."></a>
+                        <a href="WebSocketConnectOptions.html" title="Options describing how an io.vertx.scala.core.http.HttpClient connect a io.vertx.scala.core.http.WebSocket.">WebSocketConnectOptions</a>
                       </li><li class="current-entities indented5">
                         <a class="object" href="WebSocketFrame$.html" title=""></a>
                         <a class="class" href="WebSocketFrame.html" title="A WebSocket frame that represents either text or binary data."></a>
@@ -387,6 +395,22 @@ from the file and written to the outgoing socket.</p><p>It implements <a href=".
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerResponse#addCookie" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="addCookie(cookie:io.vertx.scala.core.http.Cookie):io.vertx.scala.core.http.HttpServerResponse"></a><a id="addCookie(Cookie):HttpServerResponse"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#addCookie(cookie:io.vertx.scala.core.http.Cookie):io.vertx.scala.core.http.HttpServerResponse" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addCookie</span><span class="params">(<span name="cookie">cookie: <a href="Cookie.html" class="extype" name="io.vertx.scala.core.http.Cookie">Cookie</a></span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpServerResponse">HttpServerResponse</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Add a cookie.</p><div class="fullcomment"><div class="comment cmt"><p>Add a cookie. This will be sent back to the client in the response.   * @param cookie the cookie</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
@@ -566,6 +590,24 @@ reduced to <code>maxSize / 2</code>.   * @param handler the handler</p></div><dl
 the actual response won't get written until this method gets called.</p><p>Once the response has ended, it cannot be used any more.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpServerResponse">HttpServerResponse</a> → <a href="../streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpServerResponse#end" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="end(chunk:io.vertx.core.buffer.Buffer,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit"></a><a id="end(Buffer,Handler[AsyncResult[Unit]]):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#end(chunk:io.vertx.core.buffer.Buffer,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">end</span><span class="params">(<span name="chunk">chunk: <span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Same as <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">io.vertx.scala.core.http.HttpServerResponse#end</a> but with an <code>handler</code> called when the operation completes
+</p><div class="fullcomment"><div class="comment cmt"><p>Same as <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">io.vertx.scala.core.http.HttpServerResponse#end</a> but with an <code>handler</code> called when the operation completes
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpServerResponse">HttpServerResponse</a> → <a href="../streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerResponse#end" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="end(chunk:io.vertx.core.buffer.Buffer):Unit"></a><a id="end(Buffer):Unit"></a>
       <span class="permalink">
       <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#end(chunk:io.vertx.core.buffer.Buffer):Unit" title="Permalink">
@@ -583,6 +625,23 @@ the actual response won't get written until this method gets called.</p><p>Once 
       <p class="shortcomment cmt">Same as <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">io.vertx.scala.core.http.HttpServerResponse#end</a> but writes some data to the response body before ending.</p><div class="fullcomment"><div class="comment cmt"><p>Same as <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">io.vertx.scala.core.http.HttpServerResponse#end</a> but writes some data to the response body before ending. If the response is not chunked and
 no other data has been written then the <code>Content-Length</code> header will be automatically set.   * @param chunk the buffer to write before ending the response
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpServerResponse">HttpServerResponse</a> → <a href="../streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerResponse#end" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="end(chunk:String,enc:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit"></a><a id="end(String,String,Handler[AsyncResult[Unit]]):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#end(chunk:String,enc:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">end</span><span class="params">(<span name="chunk">chunk: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="enc">enc: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Same as <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">io.vertx.scala.core.http.HttpServerResponse#end</a> but with an <code>handler</code> called when the operation completes
+</p>
     </li><li name="io.vertx.scala.core.http.HttpServerResponse#end" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="end(chunk:String,enc:String):Unit"></a><a id="end(String,String):Unit"></a>
       <span class="permalink">
@@ -599,6 +658,23 @@ no other data has been written then the <code>Content-Length</code> header will 
       </span>
       
       <p class="shortcomment cmt">Same as <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">io.vertx.scala.core.http.HttpServerResponse#end</a> but writes a String with the specified encoding before ending the response.</p><div class="fullcomment"><div class="comment cmt"><p>Same as <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">io.vertx.scala.core.http.HttpServerResponse#end</a> but writes a String with the specified encoding before ending the response.   * @param chunk the string to write before ending the response</p></div><dl class="paramcmts block"><dt class="param">enc</dt><dd class="cmt"><p>the encoding to use</p></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerResponse#end" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="end(chunk:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit"></a><a id="end(String,Handler[AsyncResult[Unit]]):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#end(chunk:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">end</span><span class="params">(<span name="chunk">chunk: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Same as <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">io.vertx.scala.core.http.HttpServerResponse#end</a> but with an <code>handler</code> called when the operation completes
+</p>
     </li><li name="io.vertx.scala.core.http.HttpServerResponse#end" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="end(chunk:String):Unit"></a><a id="end(String):Unit"></a>
       <span class="permalink">
@@ -616,6 +692,90 @@ no other data has been written then the <code>Content-Length</code> header will 
       
       <p class="shortcomment cmt">Same as <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">io.vertx.scala.core.http.HttpServerResponse#end</a> but writes a String in UTF-8 encoding before ending the response.</p><div class="fullcomment"><div class="comment cmt"><p>Same as <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">io.vertx.scala.core.http.HttpServerResponse#end</a> but writes a String in UTF-8 encoding before ending the response.   * @param chunk the string to write before ending the response
 </p></div></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerResponse#end" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="end(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit"></a><a id="end(Handler[AsyncResult[Unit]]):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#end(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">end</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Same as <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">io.vertx.scala.core.http.HttpServerResponse#end</a> but with an <code>handler</code> called when the operation completes
+</p><div class="fullcomment"><div class="comment cmt"><p>Same as <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">io.vertx.scala.core.http.HttpServerResponse#end</a> but with an <code>handler</code> called when the operation completes
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpServerResponse">HttpServerResponse</a> → <a href="../streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerResponse#endFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="endFuture(chunk:io.vertx.core.buffer.Buffer):scala.concurrent.Future[Unit]"></a><a id="endFuture(Buffer):scala.concurrent.Future[Unit]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#endFuture(chunk:io.vertx.core.buffer.Buffer):scala.concurrent.Future[Unit]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">endFuture</span><span class="params">(<span name="chunk">chunk: <span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">end</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">end</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpServerResponse">HttpServerResponse</a> → <a href="../streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerResponse#endFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="endFuture(chunk:String,enc:String):scala.concurrent.Future[Unit]"></a><a id="endFuture(String,String):scala.concurrent.Future[Unit]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#endFuture(chunk:String,enc:String):scala.concurrent.Future[Unit]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">endFuture</span><span class="params">(<span name="chunk">chunk: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="enc">enc: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">end</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
+    </li><li name="io.vertx.scala.core.http.HttpServerResponse#endFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="endFuture(chunk:String):scala.concurrent.Future[Unit]"></a><a id="endFuture(String):scala.concurrent.Future[Unit]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#endFuture(chunk:String):scala.concurrent.Future[Unit]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">endFuture</span><span class="params">(<span name="chunk">chunk: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">end</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
+    </li><li name="io.vertx.scala.core.http.HttpServerResponse#endFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="endFuture():scala.concurrent.Future[Unit]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#endFuture():scala.concurrent.Future[Unit]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">endFuture</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">end</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#end():Unit" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#end">end</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpServerResponse">HttpServerResponse</a> → <a href="../streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpServerResponse#endHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="endHandler(handler:io.vertx.core.Handler[Unit]):io.vertx.scala.core.http.HttpServerResponse"></a><a id="endHandler(Handler[Unit]):HttpServerResponse"></a>
       <span class="permalink">
@@ -1086,6 +1246,39 @@ concurrently.</p><p>Push can be sent only for peer initiated streams and if the 
       </span>
       
       <p class="shortcomment cmt">Put an HTTP trailer   * @param name the trailer name</p><div class="fullcomment"><div class="comment cmt"><p>Put an HTTP trailer   * @param name the trailer name</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>the trailer value</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerResponse#removeCookie" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="removeCookie(name:String,invalidate:Boolean):Option[io.vertx.scala.core.http.Cookie]"></a><a id="removeCookie(String,Boolean):Option[Cookie]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#removeCookie(name:String,invalidate:Boolean):Option[io.vertx.scala.core.http.Cookie]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">removeCookie</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="invalidate">invalidate: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="Cookie.html" class="extype" name="io.vertx.scala.core.http.Cookie">Cookie</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Remove a cookie from the cookie set.</p><div class="fullcomment"><div class="comment cmt"><p>Remove a cookie from the cookie set. If invalidate is true then it will expire a cookie, notifying a User Agent to
+remove it from its cookie jar.   * @param name the name of the cookie</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the cookie, if it existed, or null</p></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerResponse#removeCookie" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="removeCookie(name:String):Option[io.vertx.scala.core.http.Cookie]"></a><a id="removeCookie(String):Option[Cookie]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#removeCookie(name:String):Option[io.vertx.scala.core.http.Cookie]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">removeCookie</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="Cookie.html" class="extype" name="io.vertx.scala.core.http.Cookie">Cookie</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Expire a cookie, notifying a User Agent to remove it from its cookie jar.</p><div class="fullcomment"><div class="comment cmt"><p>Expire a cookie, notifying a User Agent to remove it from its cookie jar.   * @param name the name of the cookie</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the cookie, if it existed, or null</p></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpServerResponse#reset" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="reset(code:Long):Unit"></a><a id="reset(Long):Unit"></a>
       <span class="permalink">
@@ -1503,6 +1696,23 @@ if there is more than <code>maxSize</code> items in the write queue. This is use
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerResponse#write" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="write(chunk:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.http.HttpServerResponse"></a><a id="write(String,Handler[AsyncResult[Unit]]):HttpServerResponse"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#write(chunk:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.http.HttpServerResponse" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">write</span><span class="params">(<span name="chunk">chunk: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpServerResponse">HttpServerResponse</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Same as <a href="#write(chunk:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.http.HttpServerResponse" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#write">io.vertx.scala.core.http.HttpServerResponse#write</a> but with an <code>handler</code> called when the operation completes
+</p>
     </li><li name="io.vertx.scala.core.http.HttpServerResponse#write" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="write(chunk:String):io.vertx.scala.core.http.HttpServerResponse"></a><a id="write(String):HttpServerResponse"></a>
       <span class="permalink">
@@ -1519,6 +1729,23 @@ if there is more than <code>maxSize</code> items in the write queue. This is use
       </span>
       
       <p class="shortcomment cmt">Write a String to the response body, encoded in UTF-8.</p><div class="fullcomment"><div class="comment cmt"><p>Write a String to the response body, encoded in UTF-8.   * @param chunk the string to write</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerResponse#write" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="write(chunk:String,enc:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.http.HttpServerResponse"></a><a id="write(String,String,Handler[AsyncResult[Unit]]):HttpServerResponse"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#write(chunk:String,enc:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.http.HttpServerResponse" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">write</span><span class="params">(<span name="chunk">chunk: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="enc">enc: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpServerResponse">HttpServerResponse</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Same as <a href="#write(chunk:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.http.HttpServerResponse" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#write">io.vertx.scala.core.http.HttpServerResponse#write</a> but with an <code>handler</code> called when the operation completes
+</p>
     </li><li name="io.vertx.scala.core.http.HttpServerResponse#write" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="write(chunk:String,enc:String):io.vertx.scala.core.http.HttpServerResponse"></a><a id="write(String,String):HttpServerResponse"></a>
       <span class="permalink">
@@ -1535,6 +1762,24 @@ if there is more than <code>maxSize</code> items in the write queue. This is use
       </span>
       
       <p class="shortcomment cmt">Write a String to the response body, encoded using the encoding <code>enc</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Write a String to the response body, encoded using the encoding <code>enc</code>.   * @param chunk the string to write</p></div><dl class="paramcmts block"><dt class="param">enc</dt><dd class="cmt"><p>the encoding to use</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerResponse#write" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="write(data:io.vertx.core.buffer.Buffer,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.http.HttpServerResponse"></a><a id="write(Buffer,Handler[AsyncResult[Unit]]):HttpServerResponse"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#write(data:io.vertx.core.buffer.Buffer,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.http.HttpServerResponse" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">write</span><span class="params">(<span name="data">data: <span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span></span>, <span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.http.HttpServerResponse">HttpServerResponse</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Same as <a href="#write(chunk:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.http.HttpServerResponse" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#write">io.vertx.scala.core.http.HttpServerResponse#write</a> but with an <code>handler</code> called when the operation completes
+</p><div class="fullcomment"><div class="comment cmt"><p>Same as <a href="#write(chunk:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.http.HttpServerResponse" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#write">io.vertx.scala.core.http.HttpServerResponse#write</a> but with an <code>handler</code> called when the operation completes
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpServerResponse">HttpServerResponse</a> → <a href="../streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpServerResponse#write" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="write(data:io.vertx.core.buffer.Buffer):io.vertx.scala.core.http.HttpServerResponse"></a><a id="write(Buffer):HttpServerResponse"></a>
       <span class="permalink">
@@ -1604,6 +1849,55 @@ Must only be used if the request contains an &quot;Expect:100-Continue&quot; hea
       </span>
       
       <p class="shortcomment cmt">Write an HTTP/2 frame to the response, allowing to extend the HTTP/2 protocol.</p><div class="fullcomment"><div class="comment cmt"><p>Write an HTTP/2 frame to the response, allowing to extend the HTTP/2 protocol.</p><p>The frame is sent immediatly and is not subject to flow control.   * @param type the 8-bit frame type</p></div><dl class="paramcmts block"><dt class="param">flags</dt><dd class="cmt"><p>the 8-bit frame flags</p></dd><dt class="param">payload</dt><dd class="cmt"><p>the frame payload</p></dd><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
+    </li><li name="io.vertx.scala.core.http.HttpServerResponse#writeFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="writeFuture(chunk:String):scala.concurrent.Future[Unit]"></a><a id="writeFuture(String):scala.concurrent.Future[Unit]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#writeFuture(chunk:String):scala.concurrent.Future[Unit]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">writeFuture</span><span class="params">(<span name="chunk">chunk: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#write(chunk:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.http.HttpServerResponse" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#write">write</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
+    </li><li name="io.vertx.scala.core.http.HttpServerResponse#writeFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="writeFuture(chunk:String,enc:String):scala.concurrent.Future[Unit]"></a><a id="writeFuture(String,String):scala.concurrent.Future[Unit]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#writeFuture(chunk:String,enc:String):scala.concurrent.Future[Unit]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">writeFuture</span><span class="params">(<span name="chunk">chunk: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="enc">enc: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#write(chunk:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.http.HttpServerResponse" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#write">write</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
+    </li><li name="io.vertx.scala.core.http.HttpServerResponse#writeFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="writeFuture(data:io.vertx.core.buffer.Buffer):scala.concurrent.Future[Unit]"></a><a id="writeFuture(Buffer):scala.concurrent.Future[Unit]"></a>
+      <span class="permalink">
+      <a href="../../../../../io/vertx/scala/core/http/HttpServerResponse.html#writeFuture(data:io.vertx.core.buffer.Buffer):scala.concurrent.Future[Unit]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">writeFuture</span><span class="params">(<span name="data">data: <span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#write(chunk:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.http.HttpServerResponse" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#write">write</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#write(chunk:String,handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):io.vertx.scala.core.http.HttpServerResponse" class="extmbr" name="io.vertx.scala.core.http.HttpServerResponse#write">write</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.http.HttpServerResponse">HttpServerResponse</a> → <a href="../streams/WriteStream.html" class="extype" name="io.vertx.scala.core.streams.WriteStream">WriteStream</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.http.HttpServerResponse#writeQueueFull" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="writeQueueFull():Boolean"></a>
       <span class="permalink">

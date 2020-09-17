@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -193,7 +194,7 @@ of your build descriptor:</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
    <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
    <span class="tag">&lt;artifactId&gt;</span>vertx-mqtt<span class="tag">&lt;/artifactId&gt;</span>
-   <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+   <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -206,7 +207,7 @@ of your build descriptor:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile io.vertx:vertx-<span class="key">mqtt</span>:<span class="float">3.6</span><span class="float">.3</span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile io.vertx:vertx-<span class="key">mqtt</span>:<span class="float">3.9</span><span class="float">.3</span></code></pre>
 </div>
 </div>
 </div>
@@ -265,7 +266,7 @@ mqttServer.endpointHandler({ endpoint -&gt;
     println(<span class="string"><span class="delimiter">&quot;</span><span class="content">[username = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.auth().username<span class="inline-delimiter">}</span></span><span class="content">, password = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.auth().password<span class="inline-delimiter">}</span></span><span class="content">]</span><span class="delimiter">&quot;</span></span>)
   }
   <span class="keyword">if</span> (endpoint.will() != <span class="predefined-constant">null</span>) {
-    println(<span class="string"><span class="delimiter">&quot;</span><span class="content">[will topic = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.will().willTopic<span class="inline-delimiter">}</span></span><span class="content"> msg = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.will().willMessage<span class="inline-delimiter">}</span></span><span class="content"> QoS = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.will().willQos<span class="inline-delimiter">}</span></span><span class="content"> isRetain = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.will().illRetain<span class="inline-delimiter">}</span></span><span class="content">]</span><span class="delimiter">&quot;</span></span>)
+    println(<span class="string"><span class="delimiter">&quot;</span><span class="content">[will topic = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.will().willTopic<span class="inline-delimiter">}</span></span><span class="content"> msg = </span><span class="inline"><span class="inline-delimiter">${</span><span class="keyword">new</span> java.lang.String(endpoint.will().willMessageBytes)<span class="inline-delimiter">}</span></span><span class="content"> QoS = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.will().willQos<span class="inline-delimiter">}</span></span><span class="content"> isRetain = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.will().illRetain<span class="inline-delimiter">}</span></span><span class="content">]</span><span class="delimiter">&quot;</span></span>)
   }
 
   println(<span class="string"><span class="delimiter">&quot;</span><span class="content">[keep alive timeout = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.keepAliveTimeSeconds()<span class="inline-delimiter">}</span></span><span class="content">]</span><span class="delimiter">&quot;</span></span>)
@@ -337,7 +338,7 @@ mqttServer.endpointHandler({ endpoint -&gt;
     println(<span class="string"><span class="delimiter">&quot;</span><span class="content">[username = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.auth().username<span class="inline-delimiter">}</span></span><span class="content">, password = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.auth().password<span class="inline-delimiter">}</span></span><span class="content">]</span><span class="delimiter">&quot;</span></span>)
   }
   <span class="keyword">if</span> (endpoint.will() != <span class="predefined-constant">null</span>) {
-    println(<span class="string"><span class="delimiter">&quot;</span><span class="content">[will topic = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.will().willTopic<span class="inline-delimiter">}</span></span><span class="content"> msg = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.will().willMessage<span class="inline-delimiter">}</span></span><span class="content"> QoS = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.will().willQos<span class="inline-delimiter">}</span></span><span class="content"> isRetain = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.will().illRetain<span class="inline-delimiter">}</span></span><span class="content">]</span><span class="delimiter">&quot;</span></span>)
+    println(<span class="string"><span class="delimiter">&quot;</span><span class="content">[will topic = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.will().willTopic<span class="inline-delimiter">}</span></span><span class="content"> msg = </span><span class="inline"><span class="inline-delimiter">${</span><span class="keyword">new</span> java.lang.String(endpoint.will().willMessageBytes)<span class="inline-delimiter">}</span></span><span class="content"> QoS = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.will().willQos<span class="inline-delimiter">}</span></span><span class="content"> isRetain = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.will().illRetain<span class="inline-delimiter">}</span></span><span class="content">]</span><span class="delimiter">&quot;</span></span>)
   }
 
   println(<span class="string"><span class="delimiter">&quot;</span><span class="content">[keep alive timeout = </span><span class="inline"><span class="inline-delimiter">${</span>endpoint.keepAliveTimeSeconds()<span class="inline-delimiter">}</span></span><span class="content">]</span><span class="delimiter">&quot;</span></span>)
@@ -626,7 +627,7 @@ and calling <code><a href="../../apidocs/io/vertx/mqtt/MqttClient.html#connect-i
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> client = MqttClient.create(vertx)
 
-client.connect(<span class="integer">1883</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">iot.eclipse.org</span><span class="delimiter">&quot;</span></span>, { s -&gt;
+client.connect(<span class="integer">1883</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">mqtt.eclipse.org</span><span class="delimiter">&quot;</span></span>, { s -&gt;
   client.disconnect()
 })</code></pre>
 </div>
@@ -799,7 +800,7 @@ The handler WILL NOT BE CALLED if sent publish packet with QoS=0.
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:30 CEST
               
               
             </div>

@@ -16,7 +16,7 @@
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLOperations</span><span class="symbol">.</span><span class="identifier">callAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$callAwait(io.vertx.ext.sql.SQLOperations, kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultSet</span></code>
-<p>Calls the given SQL PROCEDURE which returns the result from the procedure.</p>
+<p>Suspending version of method <a href="#">io.vertx.ext.sql.SQLOperations.call</a></p>
 </td>
 </tr>
 <tr>
@@ -25,7 +25,7 @@
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLOperations</span><span class="symbol">.</span><span class="identifier">callWithParamsAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$callWithParamsAwait(io.vertx.ext.sql.SQLOperations, kotlin.String, io.vertx.core.json.JsonArray, io.vertx.core.json.JsonArray)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.sql$callWithParamsAwait(io.vertx.ext.sql.SQLOperations, kotlin.String, io.vertx.core.json.JsonArray, io.vertx.core.json.JsonArray)/params">params</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.sql$callWithParamsAwait(io.vertx.ext.sql.SQLOperations, kotlin.String, io.vertx.core.json.JsonArray, io.vertx.core.json.JsonArray)/outputs">outputs</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultSet</span></code>
-<p>Calls the given SQL PROCEDURE which returns the result from the procedure.</p>
+<p>Suspending version of method <a href="#">io.vertx.ext.sql.SQLOperations.callWithParams</a></p>
 </td>
 </tr>
 <tr>
@@ -34,7 +34,7 @@
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLOperations</span><span class="symbol">.</span><span class="identifier">queryAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$queryAwait(io.vertx.ext.sql.SQLOperations, kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultSet</span></code>
-<p>Executes the given SQL SELECT statement which returns the results of the query.</p>
+<p>Suspending version of method <a href="#">io.vertx.ext.sql.SQLOperations.query</a></p>
 </td>
 </tr>
 <tr>
@@ -43,9 +43,7 @@
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLOperations</span><span class="symbol">.</span><span class="identifier">querySingleAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$querySingleAwait(io.vertx.ext.sql.SQLOperations, kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonArray</span><span class="symbol">?</span></code>
-<p>Execute a one shot SQL statement that returns a single SQL row. This method will reduce the boilerplate code by
-getting a connection from the pool (this object) and return it back after the execution. Only the first result
-from the result set is returned.</p>
+<p>Suspending version of method <a href="#">io.vertx.ext.sql.SQLOperations.querySingle</a></p>
 </td>
 </tr>
 <tr>
@@ -54,9 +52,7 @@ from the result set is returned.</p>
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLOperations</span><span class="symbol">.</span><span class="identifier">querySingleWithParamsAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$querySingleWithParamsAwait(io.vertx.ext.sql.SQLOperations, kotlin.String, io.vertx.core.json.JsonArray)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.sql$querySingleWithParamsAwait(io.vertx.ext.sql.SQLOperations, kotlin.String, io.vertx.core.json.JsonArray)/arguments">arguments</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonArray</span><span class="symbol">?</span></code>
-<p>Execute a one shot SQL statement with arguments that returns a single SQL row. This method will reduce the
-boilerplate code by getting a connection from the pool (this object) and return it back after the execution.
-Only the first result from the result set is returned.</p>
+<p>Suspending version of method <a href="#">io.vertx.ext.sql.SQLOperations.querySingleWithParams</a></p>
 </td>
 </tr>
 <tr>
@@ -65,7 +61,7 @@ Only the first result from the result set is returned.</p>
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLOperations</span><span class="symbol">.</span><span class="identifier">queryStreamAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$queryStreamAwait(io.vertx.ext.sql.SQLOperations, kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SQLRowStream</span></code>
-<p>Executes the given SQL SELECT statement which returns the results of the query as a read stream.</p>
+<p>Suspending version of method <a href="#">io.vertx.ext.sql.SQLOperations.queryStream</a></p>
 </td>
 </tr>
 <tr>
@@ -74,7 +70,7 @@ Only the first result from the result set is returned.</p>
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLOperations</span><span class="symbol">.</span><span class="identifier">queryStreamWithParamsAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$queryStreamWithParamsAwait(io.vertx.ext.sql.SQLOperations, kotlin.String, io.vertx.core.json.JsonArray)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.sql$queryStreamWithParamsAwait(io.vertx.ext.sql.SQLOperations, kotlin.String, io.vertx.core.json.JsonArray)/params">params</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SQLRowStream</span></code>
-<p>Executes the given SQL SELECT statement which returns the results of the query as a read stream.</p>
+<p>Suspending version of method <a href="#">io.vertx.ext.sql.SQLOperations.queryStreamWithParams</a></p>
 </td>
 </tr>
 <tr>
@@ -83,7 +79,7 @@ Only the first result from the result set is returned.</p>
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLOperations</span><span class="symbol">.</span><span class="identifier">queryWithParamsAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$queryWithParamsAwait(io.vertx.ext.sql.SQLOperations, kotlin.String, io.vertx.core.json.JsonArray)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.sql$queryWithParamsAwait(io.vertx.ext.sql.SQLOperations, kotlin.String, io.vertx.core.json.JsonArray)/params">params</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultSet</span></code>
-<p>Executes the given SQL SELECT prepared statement which returns the results of the query.</p>
+<p>Suspending version of method <a href="#">io.vertx.ext.sql.SQLOperations.queryWithParams</a></p>
 </td>
 </tr>
 <tr>
@@ -92,8 +88,7 @@ Only the first result from the result set is returned.</p>
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLOperations</span><span class="symbol">.</span><span class="identifier">updateAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$updateAwait(io.vertx.ext.sql.SQLOperations, kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">UpdateResult</span></code>
-<p>Executes the given SQL statement which may be an INSERT, UPDATE, or DELETE
-statement.</p>
+<p>Suspending version of method <a href="#">io.vertx.ext.sql.SQLOperations.update</a></p>
 </td>
 </tr>
 <tr>
@@ -102,8 +97,7 @@ statement.</p>
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLOperations</span><span class="symbol">.</span><span class="identifier">updateWithParamsAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$updateWithParamsAwait(io.vertx.ext.sql.SQLOperations, kotlin.String, io.vertx.core.json.JsonArray)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.sql$updateWithParamsAwait(io.vertx.ext.sql.SQLOperations, kotlin.String, io.vertx.core.json.JsonArray)/params">params</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">UpdateResult</span></code>
-<p>Executes the given prepared statement which may be an INSERT, UPDATE, or DELETE
-statement with the given parameters</p>
+<p>Suspending version of method <a href="#">io.vertx.ext.sql.SQLOperations.updateWithParams</a></p>
 </td>
 </tr>
 </tbody>

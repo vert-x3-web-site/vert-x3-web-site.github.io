@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -145,18 +146,6 @@ Then use one of the <code>create</code> methods to get an instance:</p>
 CassandraClient cassandraClient = CassandraClient.createShared(vertx, options);</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Before querying, connect to the cluster:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">cassandraClient.rxConnect().subscribe(() -&gt; {
-  <span class="comment">// Connected succesfully</span>
-}, throwable -&gt; {
-  <span class="comment">// Handle failure</span>
-});</code></pre>
-</div>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_querying">Querying</h3>
@@ -209,7 +198,7 @@ CassandraClient cassandraClient = CassandraClient.createShared(vertx, options);<
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:28 CEST
               
               
             </div>

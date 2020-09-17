@@ -16,9 +16,7 @@
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">RedisSentinel</span><span class="symbol">.</span><span class="identifier">ckquorumAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.redis.sentinel$ckquorumAwait(io.vertx.redis.sentinel.RedisSentinel, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
-<p>Check if the current Sentinel configuration is able to reach the quorum needed to failover a master,
-and the majority needed to authorize the failover. This command should be used in monitoring systems
-to check if a Sentinel deployment is ok.</p>
+<p>Suspending version of method <a href="#">io.vertx.redis.sentinel.RedisSentinel.ckquorum</a></p>
 </td>
 </tr>
 <tr>
@@ -27,7 +25,7 @@ to check if a Sentinel deployment is ok.</p>
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">RedisSentinel</span><span class="symbol">.</span><span class="identifier">closeAwait</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Close the client - when it is fully closed the handler will be called.</p>
+<p>Suspending version of method <a href="#">io.vertx.redis.sentinel.RedisSentinel.close</a></p>
 </td>
 </tr>
 <tr>
@@ -36,9 +34,7 @@ to check if a Sentinel deployment is ok.</p>
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">RedisSentinel</span><span class="symbol">.</span><span class="identifier">failoverAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.redis.sentinel$failoverAwait(io.vertx.redis.sentinel.RedisSentinel, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
-<p>Force a failover as if the master was not reachable, and without asking for agreement to other Sentinels
-(however a new version of the configuration will be published so that the other Sentinels
-will update their configurations)</p>
+<p>Suspending version of method <a href="#">io.vertx.redis.sentinel.RedisSentinel.failover</a></p>
 </td>
 </tr>
 <tr>
@@ -47,13 +43,7 @@ will update their configurations)</p>
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">RedisSentinel</span><span class="symbol">.</span><span class="identifier">flushConfigAwait</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Force Sentinel to rewrite its configuration on disk, including the current Sentinel state.
-Normally Sentinel rewrites the configuration every time something changes in its state
-(in the context of the subset of the state which is persisted on disk across restart).
-However sometimes it is possible that the configuration file is lost because of operation errors,
-disk failures, package upgrade scripts or configuration managers. In those cases a way to to force Sentinel to
-rewrite the configuration file is handy. This command works even if the previous configuration file
-is completely missing.</p>
+<p>Suspending version of method <a href="#">io.vertx.redis.sentinel.RedisSentinel.flushConfig</a></p>
 </td>
 </tr>
 <tr>
@@ -62,9 +52,7 @@ is completely missing.</p>
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">RedisSentinel</span><span class="symbol">.</span><span class="identifier">getMasterAddrByNameAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.redis.sentinel$getMasterAddrByNameAwait(io.vertx.redis.sentinel.RedisSentinel, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonArray</span></code>
-<p>Return the ip and port number of the master with that name.
-If a failover is in progress or terminated successfully for this master
-it returns the address and port of the promoted slave</p>
+<p>Suspending version of method <a href="#">io.vertx.redis.sentinel.RedisSentinel.getMasterAddrByName</a></p>
 </td>
 </tr>
 <tr>
@@ -73,7 +61,7 @@ it returns the address and port of the promoted slave</p>
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">RedisSentinel</span><span class="symbol">.</span><span class="identifier">masterAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.redis.sentinel$masterAwait(io.vertx.redis.sentinel.RedisSentinel, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonArray</span></code>
-<p>Show the state and info of the specified master</p>
+<p>Suspending version of method <a href="#">io.vertx.redis.sentinel.RedisSentinel.master</a></p>
 </td>
 </tr>
 <tr>
@@ -82,7 +70,7 @@ it returns the address and port of the promoted slave</p>
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">RedisSentinel</span><span class="symbol">.</span><span class="identifier">mastersAwait</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonArray</span></code>
-<p>Show a list of monitored masters and their state</p>
+<p>Suspending version of method <a href="#">io.vertx.redis.sentinel.RedisSentinel.masters</a></p>
 </td>
 </tr>
 <tr>
@@ -91,9 +79,7 @@ it returns the address and port of the promoted slave</p>
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">RedisSentinel</span><span class="symbol">.</span><span class="identifier">resetAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.redis.sentinel$resetAwait(io.vertx.redis.sentinel.RedisSentinel, kotlin.String)/pattern">pattern</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
-<p>Reset all the masters with matching name.
-The pattern argument is a glob-style pattern.
-The reset process clears any previous state in a master (including a failover in pro</p>
+<p>Suspending version of method <a href="#">io.vertx.redis.sentinel.RedisSentinel.reset</a></p>
 </td>
 </tr>
 <tr>
@@ -102,7 +88,7 @@ The reset process clears any previous state in a master (including a failover in
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">RedisSentinel</span><span class="symbol">.</span><span class="identifier">sentinelsAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.redis.sentinel$sentinelsAwait(io.vertx.redis.sentinel.RedisSentinel, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonArray</span></code>
-<p>Show a list of sentinel instances for this master, and their state</p>
+<p>Suspending version of method <a href="#">io.vertx.redis.sentinel.RedisSentinel.sentinels</a></p>
 </td>
 </tr>
 <tr>
@@ -111,7 +97,7 @@ The reset process clears any previous state in a master (including a failover in
 </td>
 <td>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">RedisSentinel</span><span class="symbol">.</span><span class="identifier">slavesAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.redis.sentinel$slavesAwait(io.vertx.redis.sentinel.RedisSentinel, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonArray</span></code>
-<p>Show a list of slaves for this master, and their state</p>
+<p>Suspending version of method <a href="#">io.vertx.redis.sentinel.RedisSentinel.slaves</a></p>
 </td>
 </tr>
 </tbody>

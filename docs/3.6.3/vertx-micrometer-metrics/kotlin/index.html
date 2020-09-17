@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -130,7 +131,8 @@
 <li><a href="#_averages_and_quantiles_in_prometheus">Averages and quantiles in Prometheus</a></li>
 <li><a href="#_disable_some_metric_domains">Disable some metric domains</a></li>
 <li><a href="#_user_defined_metrics">User-defined metrics</a></li>
-<li><a href="#_other_instrumentation">Other instrumentation</a></li>
+<li><a href="#_reusing_an_existing_registry">Reusing an existing registry</a></li>
+<li><a href="#_jvm_or_other_instrumentations">JVM or other instrumentations</a></li>
 <li><a href="#_labels_and_matchers">Labels and matchers</a></li>
 <li><a href="#_snapshots">Snapshots</a></li>
 </ul>
@@ -139,9 +141,9 @@
 <ul class="sectlevel2">
 <li><a href="#_net_client">Net Client</a></li>
 <li><a href="#_http_client">HTTP Client</a></li>
-<li><a href="#_datagram_socket">Datagram socket</a></li>
 <li><a href="#_net_server">Net Server</a></li>
 <li><a href="#_http_server">HTTP Server</a></li>
+<li><a href="#_datagram_socket">Datagram socket</a></li>
 <li><a href="#_event_bus">Event Bus</a></li>
 </ul>
 </li>
@@ -181,7 +183,8 @@
 <li><a href="#_averages_and_quantiles_in_prometheus">Averages and quantiles in Prometheus</a></li>
 <li><a href="#_disable_some_metric_domains">Disable some metric domains</a></li>
 <li><a href="#_user_defined_metrics">User-defined metrics</a></li>
-<li><a href="#_other_instrumentation">Other instrumentation</a></li>
+<li><a href="#_reusing_an_existing_registry">Reusing an existing registry</a></li>
+<li><a href="#_jvm_or_other_instrumentations">JVM or other instrumentations</a></li>
 <li><a href="#_labels_and_matchers">Labels and matchers</a></li>
 <li><a href="#_snapshots">Snapshots</a></li>
 </ul>
@@ -190,9 +193,9 @@
 <ul class="sectlevel2">
 <li><a href="#_net_client">Net Client</a></li>
 <li><a href="#_http_client">HTTP Client</a></li>
-<li><a href="#_datagram_socket">Datagram socket</a></li>
 <li><a href="#_net_server">Net Server</a></li>
 <li><a href="#_http_server">HTTP Server</a></li>
+<li><a href="#_datagram_socket">Datagram socket</a></li>
 <li><a href="#_event_bus">Event Bus</a></li>
 </ul>
 </li>
@@ -252,7 +255,7 @@ It uses <a href="http://micrometer.io/">Micrometer</a> for managing metrics and 
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-micrometer-metrics<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.micrometer<span class="tag">&lt;/groupId&gt;</span>
@@ -266,7 +269,7 @@ It uses <a href="http://micrometer.io/">Micrometer</a> for managing metrics and 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-micrometer-metrics:3.6.3</span><span class="delimiter">'</span></span>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-micrometer-metrics:3.9.3</span><span class="delimiter">'</span></span>
 compile <span class="string"><span class="delimiter">'</span><span class="content">io.micrometer:micrometer-registry-influx:${micrometer.version}</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
@@ -339,7 +342,7 @@ You may also probably need <em>vertx-web</em>, to expose the metrics.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-micrometer-metrics<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.micrometer<span class="tag">&lt;/groupId&gt;</span>
@@ -353,7 +356,7 @@ You may also probably need <em>vertx-web</em>, to expose the metrics.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-micrometer-metrics:3.6.3</span><span class="delimiter">'</span></span>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-micrometer-metrics:3.9.3</span><span class="delimiter">'</span></span>
 compile <span class="string"><span class="delimiter">'</span><span class="content">io.micrometer:micrometer-registry-prometheus:${micrometer.version}</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
@@ -427,7 +430,7 @@ vertx.createHttpServer().requestHandler(router).listen(8080)</code></pre>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-micrometer-metrics<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.micrometer<span class="tag">&lt;/groupId&gt;</span>
@@ -441,7 +444,7 @@ vertx.createHttpServer().requestHandler(router).listen(8080)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-micrometer-metrics:3.6.3</span><span class="delimiter">'</span></span>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-micrometer-metrics:3.9.3</span><span class="delimiter">'</span></span>
 compile <span class="string"><span class="delimiter">'</span><span class="content">io.micrometer:micrometer-registry-jmx:${micrometer.version}</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
@@ -649,7 +652,34 @@ vertx.setPeriodic(1000, { l -&gt;
 </div>
 </div>
 <div class="sect2">
-<h3 id="_other_instrumentation">Other instrumentation</h3>
+<h3 id="_reusing_an_existing_registry">Reusing an existing registry</h3>
+<div class="paragraph">
+<p>It is possible to reuse an existing Micrometer registry (or <code>CollectorRegistry</code> from the Prometheus Java client),
+and inject it into the Vert.x metrics options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">// This registry might be used to collect metrics other than Vert.x ones
+var registry = io.micrometer.prometheus.PrometheusMeterRegistry(io.micrometer.prometheus.PrometheusConfig.DEFAULT)
+
+// You could also reuse an existing registry from the Prometheus Java client:
+var prometheusClientRegistry = io.prometheus.client.CollectorRegistry()
+registry = io.micrometer.prometheus.PrometheusMeterRegistry(io.micrometer.prometheus.PrometheusConfig.DEFAULT, prometheusClientRegistry, io.micrometer.core.instrument.Clock.SYSTEM)
+
+// It's reused in MicrometerMetricsOptions.
+// Prometheus options configured here, such as &quot;setPublishQuantiles(true)&quot;, will affect the whole registry.
+var vertx = Vertx.vertx(VertxOptions(
+  metricsOptions = MicrometerMetricsOptions(
+    prometheusOptions = VertxPrometheusOptions(
+      enabled = true,
+      publishQuantiles = true),
+    micrometerRegistry = registry,
+    enabled = true)))</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jvm_or_other_instrumentations">JVM or other instrumentations</h3>
 <div class="paragraph">
 <p>Since plain access to Micrometer registries is provided, it is possible to leverage the Micrometer API.
 For instance, to instrument the JVM:</p>
@@ -848,36 +878,42 @@ depending on the backend used.
 <h3 id="_net_client">Net Client</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 15%;">
-<col style="width: 50%;">
+<col style="width: 35%;">
+<col style="width: 20%;">
+<col style="width: 10%;">
 <col style="width: 35%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Metric type</th>
 <th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Labels</th>
+<th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_client_connections</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_client_connections{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of connections to the remote host currently opened.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_client_bytesReceived</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_client_bytesReceived{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes received from the remote host.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_client_bytesSent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_client_bytesSent{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes sent to the remote host.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_client_errors</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code>, <code>class</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_client_errors{local=&lt;local address&gt;,remote=&lt;remote address&gt;,class=&lt;class&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of errors.</p></td>
 </tr>
 </tbody>
@@ -887,96 +923,73 @@ depending on the backend used.
 <h3 id="_http_client">HTTP Client</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 15%;">
-<col style="width: 50%;">
+<col style="width: 35%;">
+<col style="width: 20%;">
+<col style="width: 10%;">
 <col style="width: 35%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Metric type</th>
 <th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Labels</th>
+<th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_connections</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_connections{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of connections to the remote host currently opened.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_bytesReceived</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_bytesReceived{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes received from the remote host.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_bytesSent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_bytesSent{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes sent to the remote host.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_errors</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code>, <code>class</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_errors{local=&lt;local address&gt;,remote=&lt;remote address&gt;,class=&lt;class&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of errors.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_requests</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code>, <code>path</code>, <code>method</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_requests{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of requests waiting for a response.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_requestCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code>, <code>path</code>, <code>method</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_requestCount{local=&lt;local address&gt;,remote=&lt;remote address&gt;,method=&lt;http method&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of requests sent.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_responseTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code>, <code>path</code>, <code>method</code>, <code>code</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Timer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_responseTime{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Response time.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_responseCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code>, <code>path</code>, <code>method</code>, <code>code</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_responseCount{local=&lt;local address&gt;,remote=&lt;remote address&gt;,code=&lt;response code&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of received responses.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_wsConnections</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_wsConnections{local=&lt;local address&gt;,remote=&lt;remote address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of websockets currently opened.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_datagram_socket">Datagram socket</h3>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 15%;">
-<col style="width: 50%;">
-<col style="width: 35%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Metric type</th>
-<th class="tableblock halign-left valign-top">Metric name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_datagram_bytesReceived{local=&lt;local&gt;,remote=&lt;remote&gt;}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes received on the <code>&lt;host&gt;:&lt;port&gt;</code> listening address.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_datagram_bytesSent{remote=&lt;remote&gt;}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes sent to the remote host.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_datagram_errors{class=&lt;class&gt;}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of errors.</p></td>
 </tr>
 </tbody>
 </table>
@@ -985,36 +998,42 @@ depending on the backend used.
 <h3 id="_net_server">Net Server</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 15%;">
-<col style="width: 50%;">
+<col style="width: 35%;">
+<col style="width: 20%;">
+<col style="width: 10%;">
 <col style="width: 35%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Metric type</th>
 <th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Labels</th>
+<th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_server_connections</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_server_connections{local=&lt;local address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of opened connections to the Net Server.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_server_bytesReceived</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_server_bytesReceived{local=&lt;local address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes received by the Net Server.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_server_bytesSent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_server_bytesSent{local=&lt;local address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes sent by the Net Server.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_server_errors</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code>, <code>class</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_net_server_errors{local=&lt;local address&gt;,class=&lt;class&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of errors.</p></td>
 </tr>
 </tbody>
@@ -1024,62 +1043,112 @@ depending on the backend used.
 <h3 id="_http_server">HTTP Server</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 15%;">
-<col style="width: 50%;">
+<col style="width: 35%;">
+<col style="width: 20%;">
+<col style="width: 10%;">
 <col style="width: 35%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Metric type</th>
 <th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Labels</th>
+<th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_connections</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_connections{local=&lt;local address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of opened connections to the HTTP Server.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_bytesReceived</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_bytesReceived{local=&lt;local address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes received by the HTTP Server.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_bytesSent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_bytesSent{local=&lt;local address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of bytes sent by the HTTP Server.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_errors</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code>, <code>class</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_errors{local=&lt;local address&gt;,class=&lt;class&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of errors.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_requests</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code>, <code>path</code>, <code>method</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_requests{local=&lt;local address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of requests being processed.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_requestCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code>, <code>path</code>, <code>method</code>, <code>code</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_requestCount{local=&lt;local address&gt;,method=&lt;http method&gt;,code=&lt;response code&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of processed requests.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_requestResetCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code>, <code>path</code>, <code>method</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_requestResetCount{local=&lt;local address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of requests reset.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_processingTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code>, <code>path</code>, <code>method</code>, <code>code</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Timer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_server_processingTime{local=&lt;local address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Request processing time.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_wsConnections</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code>, <code>remote</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_http_client_wsConnections{local=&lt;local address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of websockets currently opened.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_datagram_socket">Datagram socket</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 35%;">
+<col style="width: 20%;">
+<col style="width: 10%;">
+<col style="width: 35%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Labels</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_datagram_bytesReceived</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>local</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes received on the <code>&lt;host&gt;:&lt;port&gt;</code> listening address.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_datagram_bytesSent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(none)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes sent to the remote host.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_datagram_errors</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total number of errors.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1088,72 +1157,91 @@ depending on the backend used.
 <h3 id="_event_bus">Event Bus</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 15%;">
-<col style="width: 50%;">
+<col style="width: 35%;">
+<col style="width: 20%;">
+<col style="width: 10%;">
 <col style="width: 35%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Metric type</th>
 <th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Labels</th>
+<th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_handlers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>address</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_handlers{address=&lt;address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of event bus handlers in use.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_errors</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>address</code>,<code>class</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_errors{address=&lt;address&gt;,class=&lt;class&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of errors.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_bytesWritten</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>address</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_bytesWritten{address=&lt;address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes sent while sending messages to event bus cluster peers.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_bytesRead</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>address</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Summary</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_bytesRead{address=&lt;address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Total number of bytes received while reading messages from event bus cluster peers.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_pending</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>address</code>,<code>side</code> (local/remote)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_pending{address=&lt;address&gt;,side=&lt;local/remote&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of messages not processed yet. One message published will count for <code>N</code> pending if <code>N</code> handlers
 are registered to the corresponding address.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_published</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>address</code>,<code>side</code> (local/remote)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_published{address=&lt;address&gt;,side=&lt;local/remote&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of messages published (publish / subscribe).</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_discarded</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>address</code>,<code>side</code> (local/remote)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_sent{address=&lt;address&gt;,side=&lt;local/remote&gt;}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of discarded messages (e.g. still pending messages while handler is unregistered, or overflowing messages).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_sent</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>address</code>,<code>side</code> (local/remote)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of messages sent (point-to-point).</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_received</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>address</code>,<code>side</code> (local/remote)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_received{address=&lt;address&gt;,side=&lt;local/remote&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of messages received.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_delivered</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>address</code>,<code>side</code> (local/remote)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_delivered{address=&lt;address&gt;,side=&lt;local/remote&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of messages delivered to handlers.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_replyFailures</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>address</code>,<code>failure</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_replyFailures{address=&lt;address&gt;,failure=&lt;failure name&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of message reply failures.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_processingTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>address</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Timer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_eventbus_processingTime{address=&lt;address&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Processing time for handlers listening to the <code>address</code>.</p></td>
 </tr>
 </tbody>
@@ -1194,46 +1282,54 @@ Vert.x creates two worker pools upfront, <em>worker-thread</em> and <em>internal
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 15%;">
-<col style="width: 50%;">
+<col style="width: 35%;">
+<col style="width: 20%;">
+<col style="width: 10%;">
 <col style="width: 35%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Metric type</th>
 <th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Labels</th>
+<th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_queue_delay</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pool_type</code>,<code>pool_name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Timer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_queue_delay{pool_type=&lt;type&gt;,pool_name=&lt;name&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Time waiting for a resource (queue time).</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_queue_size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pool_type</code>,<code>pool_name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_queue_size{pool_type=&lt;type&gt;,pool_name=&lt;name&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of elements waiting for a resource.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_usage</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pool_type</code>,<code>pool_name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Timer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_usage{pool_type=&lt;type&gt;,pool_name=&lt;name&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Time using a resource (i.e. processing time for worker pools).</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_inUse</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pool_type</code>,<code>pool_name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_inUse{pool_type=&lt;type&gt;,pool_name=&lt;name&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of resources used.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_completed</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pool_type</code>,<code>pool_name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Counter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_completed{pool_type=&lt;type&gt;,pool_name=&lt;name&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of elements done with the resource (i.e. total number of tasks executed for worker pools).</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_ratio</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pool_type</code>,<code>pool_name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_pool_ratio{pool_type=&lt;type&gt;,pool_name=&lt;name&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Pool usage ratio, only present if maximum pool size could be determined.</p></td>
 </tr>
 </tbody>
@@ -1245,21 +1341,24 @@ Vert.x creates two worker pools upfront, <em>worker-thread</em> and <em>internal
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 15%;">
-<col style="width: 50%;">
+<col style="width: 35%;">
+<col style="width: 20%;">
+<col style="width: 10%;">
 <col style="width: 35%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Metric type</th>
 <th class="tableblock halign-left valign-top">Metric name</th>
+<th class="tableblock halign-left valign-top">Labels</th>
+<th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_verticle_deployed</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Gauge</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>vertx_verticle_deployed{name=&lt;name&gt;}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of verticle instances deployed.</p></td>
 </tr>
 </tbody>
@@ -1273,7 +1372,7 @@ Vert.x creates two worker pools upfront, <em>worker-thread</em> and <em>internal
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:34 CET
+                Last updated 2020-09-16 10:26:32 CEST
               
               
             </div>

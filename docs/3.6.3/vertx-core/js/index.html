@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -119,6 +120,7 @@
 <ul class="sectlevel2">
 <li><a href="#_concurrent_composition">Concurrent composition</a></li>
 <li><a href="#_sequential_composition">Sequential composition</a></li>
+<li><a href="#_completionstage_interoperability">CompletionStage interoperability</a></li>
 </ul>
 </li>
 <li><a href="#_verticles">Verticles</a>
@@ -155,6 +157,7 @@
 </ul>
 </li>
 <li><a href="#_configuring_the_event_bus">Configuring the event bus</a></li>
+<li><a href="#_json_pointers">Json Pointers</a></li>
 <li><a href="#_buffers">Buffers</a>
 <ul class="sectlevel2">
 <li><a href="#_creating_buffers">Creating buffers</a></li>
@@ -223,9 +226,9 @@
 <li><a href="#_automatic_clean_up_in_verticles_4">Automatic clean-up in verticles</a></li>
 </ul>
 </li>
-<li><a href="#_using_shared_data_with_vert_x">Using Shared Data with Vert.x</a>
+<li><a href="#_using_the_shareddata_api">Using the SharedData API</a>
 <ul class="sectlevel2">
-<li><a href="#_local_shared_maps">Local shared maps</a></li>
+<li><a href="#_local_maps">Local maps</a></li>
 <li><a href="#_asynchronous_shared_maps">Asynchronous shared maps</a></li>
 <li><a href="#_asynchronous_locks">Asynchronous locks</a></li>
 <li><a href="#_asynchronous_counters">Asynchronous counters</a></li>
@@ -358,6 +361,7 @@
 <ul class="sectlevel2">
 <li><a href="#_concurrent_composition">Concurrent composition</a></li>
 <li><a href="#_sequential_composition">Sequential composition</a></li>
+<li><a href="#_completionstage_interoperability">CompletionStage interoperability</a></li>
 </ul>
 </li>
 <li><a href="#_verticles">Verticles</a>
@@ -394,6 +398,7 @@
 </ul>
 </li>
 <li><a href="#_configuring_the_event_bus">Configuring the event bus</a></li>
+<li><a href="#_json_pointers">Json Pointers</a></li>
 <li><a href="#_buffers">Buffers</a>
 <ul class="sectlevel2">
 <li><a href="#_creating_buffers">Creating buffers</a></li>
@@ -462,9 +467,9 @@
 <li><a href="#_automatic_clean_up_in_verticles_4">Automatic clean-up in verticles</a></li>
 </ul>
 </li>
-<li><a href="#_using_shared_data_with_vert_x">Using Shared Data with Vert.x</a>
+<li><a href="#_using_the_shareddata_api">Using the SharedData API</a>
 <ul class="sectlevel2">
-<li><a href="#_local_shared_maps">Local shared maps</a></li>
+<li><a href="#_local_maps">Local maps</a></li>
 <li><a href="#_asynchronous_shared_maps">Asynchronous shared maps</a></li>
 <li><a href="#_asynchronous_locks">Asynchronous locks</a></li>
 <li><a href="#_asynchronous_counters">Asynchronous counters</a></li>
@@ -661,12 +666,12 @@ project descriptor to access the Vert.x Core API and enable the JavaScript suppo
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
 <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
 <span class="tag">&lt;artifactId&gt;</span>vertx-core<span class="tag">&lt;/artifactId&gt;</span>
-<span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-lang-js<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -679,8 +684,8 @@ project descriptor to access the Vert.x Core API and enable the JavaScript suppo
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx:vertx-core:3.6.3</span><span class="delimiter">&quot;</span></span>
-compile <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx:vertx-lang-js:3.6.3</span><span class="delimiter">&quot;</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx:vertx-core:3.9.3</span><span class="delimiter">&quot;</span></span>
+compile <span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx:vertx-lang-js:3.9.3</span><span class="delimiter">&quot;</span></span></code></pre>
 </div>
 </div>
 <div class="admonitionblock important">
@@ -1100,10 +1105,10 @@ result handler to be called back asynchronous when the blocking code has been ex
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js">vertx.executeBlocking(<span class="keyword">function</span> (future) {
+<pre class="CodeRay highlight"><code data-lang="js">vertx.executeBlocking(<span class="keyword">function</span> (promise) {
   <span class="comment">// Call some blocking API that takes a significant amount of time to return</span>
   <span class="keyword">var</span> result = someAPI.blockingMethod(<span class="string"><span class="delimiter">&quot;</span><span class="content">hello</span><span class="delimiter">&quot;</span></span>);
-  future.complete(result);
+  promise.complete(result);
 }, <span class="keyword">function</span> (res, res_err) {
   console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">The result is: </span><span class="delimiter">&quot;</span></span> + res);
 });</code></pre>
@@ -1149,10 +1154,10 @@ on the worker pool.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> executor = vertx.createSharedWorkerExecutor(<span class="string"><span class="delimiter">&quot;</span><span class="content">my-worker-pool</span><span class="delimiter">&quot;</span></span>);
-executor.executeBlocking(<span class="keyword">function</span> (future) {
+executor.executeBlocking(<span class="keyword">function</span> (promise) {
   <span class="comment">// Call some blocking API that takes a significant amount of time to return</span>
   <span class="keyword">var</span> result = someAPI.blockingMethod(<span class="string"><span class="delimiter">&quot;</span><span class="content">hello</span><span class="delimiter">&quot;</span></span>);
-  future.complete(result);
+  promise.complete(result);
 }, <span class="keyword">function</span> (res, res_err) {
   console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">The result is: </span><span class="delimiter">&quot;</span></span> + res);
 });</code></pre>
@@ -1222,13 +1227,15 @@ supports concurrent composition (run several async operations in parallel) and s
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Future = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/future</span><span class="delimiter">&quot;</span></span>);
 <span class="keyword">var</span> CompositeFuture = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/composite_future</span><span class="delimiter">&quot;</span></span>);
-<span class="keyword">var</span> httpServerFuture = Future.future();
-httpServer.listen(httpServerFuture.completer());
+<span class="keyword">var</span> httpServerFuture = Future.future(<span class="keyword">function</span> (promise) {
+  httpServer.listen(promise);
+});
 
-<span class="keyword">var</span> netServerFuture = Future.future();
-netServer.listen(netServerFuture.completer());
+<span class="keyword">var</span> netServerFuture = Future.future(<span class="keyword">function</span> (promise) {
+  netServer.listen(promise);
+});
 
-CompositeFuture.all(httpServerFuture, netServerFuture).setHandler(<span class="keyword">function</span> (ar, ar_err) {
+CompositeFuture.all(httpServerFuture, netServerFuture).onComplete(<span class="keyword">function</span> (ar, ar_err) {
   <span class="keyword">if</span> (ar_err == <span class="predefined-constant">null</span>) {
     <span class="comment">// All servers started</span>
   } <span class="keyword">else</span> {
@@ -1261,7 +1268,7 @@ all the futures are failed:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> CompositeFuture = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/composite_future</span><span class="delimiter">&quot;</span></span>);
-CompositeFuture.any(future1, future2).setHandler(<span class="keyword">function</span> (ar, ar_err) {
+CompositeFuture.any(future1, future2).onComplete(<span class="keyword">function</span> (ar, ar_err) {
   <span class="keyword">if</span> (ar_err == <span class="predefined-constant">null</span>) {
     <span class="comment">// At least one is succeeded</span>
   } <span class="keyword">else</span> {
@@ -1288,7 +1295,7 @@ them is failed:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> CompositeFuture = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/composite_future</span><span class="delimiter">&quot;</span></span>);
-CompositeFuture.join(future1, future2, future3).setHandler(<span class="keyword">function</span> (ar, ar_err) {
+CompositeFuture.join(future1, future2, future3).onComplete(<span class="keyword">function</span> (ar, ar_err) {
   <span class="keyword">if</span> (ar_err == <span class="predefined-constant">null</span>) {
     <span class="comment">// All succeeded</span>
   } <span class="keyword">else</span> {
@@ -1319,20 +1326,22 @@ for chaining futures (so sequential composition).</p>
 <span class="keyword">var</span> Buffer = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/buffer</span><span class="delimiter">&quot;</span></span>);
 
 <span class="keyword">var</span> fs = vertx.fileSystem();
-<span class="keyword">var</span> startFuture = Future.future();
 
-<span class="keyword">var</span> fut1 = Future.future();
-fs.createFile(<span class="string"><span class="delimiter">&quot;</span><span class="content">/foo</span><span class="delimiter">&quot;</span></span>, fut1.completer());
+<span class="keyword">var</span> fut1 = Future.future(<span class="keyword">function</span> (promise) {
+  fs.createFile(<span class="string"><span class="delimiter">&quot;</span><span class="content">/foo</span><span class="delimiter">&quot;</span></span>, promise);
+});
 
-fut1.compose(<span class="keyword">function</span> (v) {
+<span class="keyword">var</span> startFuture = fut1.compose(<span class="keyword">function</span> (v) {
   <span class="comment">// When the file is created (fut1), execute this:</span>
-  <span class="keyword">var</span> fut2 = Future.future();
-  fs.writeFile(<span class="string"><span class="delimiter">&quot;</span><span class="content">/foo</span><span class="delimiter">&quot;</span></span>, Buffer.buffer(), fut2.completer());
-  <span class="keyword">return</span> fut2
+  <span class="keyword">return</span> Future.future(<span class="keyword">function</span> (promise) {
+    fs.writeFile(<span class="string"><span class="delimiter">&quot;</span><span class="content">/foo</span><span class="delimiter">&quot;</span></span>, Buffer.buffer(), promise);
+  })
 }).compose(<span class="keyword">function</span> (v) {
   <span class="comment">// When the file is written (fut2), execute this:</span>
-  fs.move(<span class="string"><span class="delimiter">&quot;</span><span class="content">/foo</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">/bar</span><span class="delimiter">&quot;</span></span>, startFuture.completer());
-}, startFuture);</code></pre>
+  <span class="keyword">return</span> Future.future(<span class="keyword">function</span> (promise) {
+    fs.move(<span class="string"><span class="delimiter">&quot;</span><span class="content">/foo</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">/bar</span><span class="delimiter">&quot;</span></span>, promise);
+  })
+});</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1374,9 +1383,74 @@ completes, run the given handler that completes the given <code>future</code> (n
 <p>In this second case, the <code>Handler</code> should complete the <code>next</code> future to report its success or
 failure.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_completionstage_interoperability">CompletionStage interoperability</h3>
 <div class="paragraph">
-<p>You can use <code><a href="../../jsdoc/module-vertx-js_future-Future.html#completer">completer</a></code> that completes a future with the operation result or
-failure. It avoids having to write the <em>traditional</em>: <code>if success then complete the future else fail the future</code>.</p>
+<p>The Vert.x <code>Future</code> API offers compatibility <em>from</em> and <em>to</em> <code>CompletionStage</code> which is the JDK interface for composable
+asynchronous operations.</p>
+</div>
+<div class="paragraph">
+<p>We can go from a Vert.x <code>Future</code> to a <code>CompletionStage</code> using the <code><a href="../../jsdoc/module-vertx-js_future-Future.html#toCompletionStage">toCompletionStage</a></code> method, as in:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Promise = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/promise</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">var</span> promise = Promise.promise();
+vertx.createDnsClient().lookup(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx.io</span><span class="delimiter">&quot;</span></span>, promise);
+promise.future().toCompletionStage().whenComplete(<span class="keyword">function</span> (ip, err) {
+  <span class="keyword">if</span> ((err !== <span class="predefined-constant">null</span> &amp;&amp; err !== <span class="predefined-constant">undefined</span>)) {
+    console.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Could not resolve vertx.io</span><span class="delimiter">&quot;</span></span>);
+    err.printStackTrace();
+  } <span class="keyword">else</span> {
+    console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx.io =&gt; </span><span class="delimiter">&quot;</span></span> + ip);
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can conversely go from a <code>CompletionStage</code> to Vert.x <code>Future</code> using <code><a href="../../jsdoc/module-vertx-js_future-Future.html#fromCompletionStage">Future.fromCompletionStage</a></code>.
+There are 2 variants:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>the first variant takes just a <code>CompletionStage</code> and calls the <code>Future</code> methods from the thread that resolves the <code>CompletionStage</code> instance, and</p>
+</li>
+<li>
+<p>the second variant takes an extra <code><a href="../../jsdoc/module-vertx-js_context-Context.html">Context</a></code> parameter to call the <code>Future</code> methods on a Vert.x context.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+In most cases the variant with a <code>CompletionStage</code> and a <code>Context</code> is the one you will want to use to respect the Vert.x threading model,
+since Vert.x <code>Future</code> are more likely to be used with Vert.x code, libraries and clients.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here is an example of going from a <code>CompletionStage</code> to a Vert.x <code>Future</code> and dispatching on a context:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Future = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/future</span><span class="delimiter">&quot;</span></span>);
+Future.fromCompletionStage(completionStage, vertx.getOrCreateContext()).flatMap(<span class="keyword">function</span> (str) {
+  <span class="keyword">var</span> key = Java.type(<span class="string"><span class="delimiter">&quot;</span><span class="content">java.util.UUID</span><span class="delimiter">&quot;</span></span>).randomUUID().toString();
+  <span class="keyword">return</span> storeInDb(key, str)
+}).onSuccess(<span class="keyword">function</span> (str) {
+  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">We have a result: </span><span class="delimiter">&quot;</span></span> + str);
+}).onFailure(<span class="keyword">function</span> (err) {
+  console.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">We have a problem</span><span class="delimiter">&quot;</span></span>);
+  err.printStackTrace();
+});</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1569,7 +1643,7 @@ Vert.x will automatically undeploy any child verticles when the parent is undepl
 <div class="sect2">
 <h3 id="_verticle_types">Verticle Types</h3>
 <div class="paragraph">
-<p>There are three different types of verticles:</p>
+<p>There are two different types of verticles:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -1581,11 +1655,6 @@ We&#8217;ll discuss this more in the next section.</p>
 <dt class="hdlist1">Worker Verticles</dt>
 <dd>
 <p>These run using a thread from the worker pool. An instance is never executed concurrently by more
-than one thread.</p>
-</dd>
-<dt class="hdlist1">Multi-threaded worker verticles</dt>
-<dd>
-<p>These run using a thread from the worker pool. An instance can be executed concurrently by more
 than one thread.</p>
 </dd>
 </dl>
@@ -1635,75 +1704,6 @@ vertx.deployVerticle(<span class="string"><span class="delimiter">&quot;</span><
 <div class="paragraph">
 <p>Worker verticle instances are never executed concurrently by Vert.x by more than one thread, but can executed by
 different threads at different times.</p>
-</div>
-<div class="sect3">
-<h4 id="_multi_threaded_worker_verticles">Multi-threaded worker verticles</h4>
-<div class="paragraph">
-<p>A multi-threaded worker verticle is just like a normal worker verticle but it <strong>can</strong> be executed concurrently by
-different threads.</p>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Caution</div>
-</td>
-<td class="content">
-Multi-threaded worker verticles are an advanced feature and most applications will have no need for them.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Because of the concurrency in these verticles you have to be very careful to keep the verticle in a consistent state
-using standard Java techniques for multi-threaded programming.</p>
-</div>
-<div class="paragraph">
-<p>Multi-threaded worker verticles were designed and are intended for the sole use of consuming simultaneously <code>EventBus</code> messages in a blocking fashion.</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-Vert.x clients and servers (TCP, HTTP, &#8230;&#8203;etc) cannot be created in a multi-threaded worker verticle.
-Should you incidentally try, an exception will be thrown.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Essentially, multi-threaded worker verticles simply avoid the user from deploying as much instances of a worker verticle as the number of threads in a worker pool.
-So you could for example provide a worker pool name/size in <code><a href="../dataobjects.html#DeploymentOptions">DeploymentOptions</a></code> and set the number of instances accordingly:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> options = {
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">worker</span><span class="delimiter">&quot;</span></span> : <span class="predefined-constant">true</span>,
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">instances</span><span class="delimiter">&quot;</span></span> : <span class="integer">5</span>,
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">workerPoolName</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">the-specific-pool</span><span class="delimiter">&quot;</span></span>,
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">workerPoolSize</span><span class="delimiter">&quot;</span></span> : <span class="integer">5</span>
-};
-vertx.deployVerticle(<span class="string"><span class="delimiter">&quot;</span><span class="content">com.mycompany.MyOrderProcessorVerticle</span><span class="delimiter">&quot;</span></span>, options);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Alternatively, you could create a regular verticle and wrap you blocking code with multiple <code>executeBlocking</code> with the <code>ordered</code> flag set to <code>false</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="js">vertx.eventBus().consumer(<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (msg) {
-  vertx.executeBlocking(<span class="keyword">function</span> (fut) {
-    <span class="comment">// Invoke blocking code with received message data</span>
-    fut.complete(someresult);
-  }, <span class="predefined-constant">false</span>, <span class="keyword">function</span> (ar, ar_err) {
-    <span class="comment">// Handle result, e.g. reply to the message</span>
-  });
-});</code></pre>
-</div>
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -2309,8 +2309,7 @@ to all handlers that are registered at that address.</p>
 <p>Messages are sent to an address. Vert.x will then route them to just one of the handlers registered at that address.</p>
 </div>
 <div class="paragraph">
-<p>If there is more than one handler registered at the address,
-one will be chosen using a non-strict round-robin algorithm.</p>
+<p>If there is more than one handler registered at the address, one will be chosen using a non-strict round-robin algorithm.</p>
 </div>
 <div class="paragraph">
 <p>With point-to-point messaging, an optional reply handler can be specified when sending the message.</p>
@@ -2542,10 +2541,12 @@ console.log(e.headers().get(<span class="string"><span class="delimiter">&quot;<
 <code><a href="../../jsdoc/module-vertx-js_message_consumer-MessageConsumer.html">MessageConsumer</a></code> registered with the event bus.</p>
 </div>
 <div class="paragraph">
-<p>In some cases it&#8217;s useful for the sender to know when the consumer has received the message and "processed" it.</p>
+<p>In some cases it&#8217;s useful for the sender to know when the consumer has received the message and "processed" it using
+<strong>request-response</strong> pattern.</p>
 </div>
 <div class="paragraph">
-<p>To acknowledge that the message has been processed, the consumer can reply to the message by calling <code><a href="../../jsdoc/module-vertx-js_message-Message.html#reply">reply</a></code>.</p>
+<p>To acknowledge that the message has been processed, the consumer can reply to the message by calling
+<code><a href="../../jsdoc/module-vertx-js_message-Message.html#reply">reply</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>When this happens it causes a reply to be sent back to the sender and the reply handler is invoked with the reply.</p>
@@ -2570,7 +2571,7 @@ consumer.handler(<span class="keyword">function</span> (message) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js">eventBus.send(<span class="string"><span class="delimiter">&quot;</span><span class="content">news.uk.sport</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Yay! Someone kicked a ball across a patch of grass</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (ar, ar_err) {
+<pre class="CodeRay highlight"><code data-lang="js">eventBus.request(<span class="string"><span class="delimiter">&quot;</span><span class="content">news.uk.sport</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Yay! Someone kicked a ball across a patch of grass</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (ar, ar_err) {
   <span class="keyword">if</span> (ar_err == <span class="predefined-constant">null</span>) {
     console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Received reply: </span><span class="delimiter">&quot;</span></span> + ar.body());
   }
@@ -2732,9 +2733,7 @@ Refer to the documentation of the cluster manager for further details.</p>
 <p>The event bus configuration needs to be consistent in all the cluster nodes.</p>
 </div>
 <div class="paragraph">
-<p>The <code><a href="../dataobjects.html#EventBusOptions">EventBusOptions</a></code> also lets you specify whether or not the event bus is
-clustered, the port and host, as you would do with <code><a href="../dataobjects.html#VertxOptions#setClustered">clustered</a></code>,
-<code><a href="../dataobjects.html#VertxOptions#getClusterHost">getClusterHost</a></code> and <code><a href="../dataobjects.html#VertxOptions#getClusterPort">getClusterPort</a></code>.</p>
+<p>The <code><a href="../dataobjects.html#EventBusOptions">EventBusOptions</a></code> also lets you specify whether or not the event bus is clustered, the port and host.</p>
 </div>
 <div class="paragraph">
 <p>When used in containers, you can also configure the public host and port:</p>
@@ -2748,6 +2747,44 @@ clustered, the port and host, as you would do with <code><a href="../dataobjects
  }
 }</code></pre>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_json_pointers">Json Pointers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vert.x provides an implementation of <a href="https://tools.ietf.org/html/rfc6901">Json Pointers from RFC6901</a>.
+You can use pointers both for querying and for writing. You can build your <code><a href="../../jsdoc/module-vertx-js_json_pointer-JsonPointer.html">JsonPointer</a></code> using
+a string, a URI or manually appending paths:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">var JsonPointer = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/json_pointer</span><span class="delimiter">&quot;</span></span>);
+<span class="comment">// Build a pointer from a string</span>
+var pointer1 = JsonPointer.from(<span class="string"><span class="delimiter">&quot;</span><span class="content">/hello/world</span><span class="delimiter">&quot;</span></span>);
+<span class="comment">// Build a pointer manually</span>
+var pointer2 = JsonPointer.create().append(<span class="string"><span class="delimiter">&quot;</span><span class="content">hello</span><span class="delimiter">&quot;</span></span>).append(<span class="string"><span class="delimiter">&quot;</span><span class="content">world</span><span class="delimiter">&quot;</span></span>);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After instantiating your pointer, use <code><a href="../../jsdoc/module-vertx-js_json_pointer-JsonPointer.html#queryJson">queryJson</a></code> to query
+a JSON value. You can update a Json Value using <code><a href="../../jsdoc/module-vertx-js_json_pointer-JsonPointer.html#writeJson">writeJson</a></code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// Query a JsonObject</span>
+var result1 = objectPointer.queryJson(jsonObject);
+<span class="comment">// Query a JsonArray</span>
+var result2 = arrayPointer.queryJson(jsonArray);
+<span class="comment">// Write starting from a JsonObject</span>
+objectPointer.writeJson(jsonObject, <span class="string"><span class="delimiter">&quot;</span><span class="content">new element</span><span class="delimiter">&quot;</span></span>);
+<span class="comment">// Write starting from a JsonObject</span>
+arrayPointer.writeJson(jsonArray, <span class="string"><span class="delimiter">&quot;</span><span class="content">new element</span><span class="delimiter">&quot;</span></span>);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can use Vert.x Json Pointer with any object model by providing a custom implementation of <code><a href="../../jsdoc/module-vertx-js_json_pointer_iterator-JsonPointerIterator.html">JsonPointerIterator</a></code></p>
 </div>
 </div>
 </div>
@@ -3127,11 +3164,10 @@ exceptions that happens before the connection is passed to the <code><a href="..
 <h3 id="_event_bus_write_handler">Event bus write handler</h3>
 <div class="paragraph">
 <p>Every socket automatically registers a handler on the event bus, and when any buffers are received in this handler,
-it writes them to itself.</p>
+it writes them to itself. Those are local subscriptions not routed on the cluster.</p>
 </div>
 <div class="paragraph">
-<p>This enables you to write data to a socket which is potentially in a completely different verticle or even in a
-different Vert.x instance by sending the buffer to the address of that handler.</p>
+<p>This enables you to write data to a socket which is potentially in a completely different verticle by sending the buffer to the address of that handler.</p>
 </div>
 <div class="paragraph">
 <p>The address of the handler is given by <code><a href="../../jsdoc/module-vertx-js_net_socket-NetSocket.html#writeHandlerID">writeHandlerID</a></code></p>
@@ -3167,11 +3203,11 @@ classpath resolution or disabling it.</p>
 <h3 id="_streaming_sockets">Streaming sockets</h3>
 <div class="paragraph">
 <p>Instances of <code><a href="../../jsdoc/module-vertx-js_net_socket-NetSocket.html">NetSocket</a></code> are also <code><a href="../../jsdoc/module-vertx-js_read_stream-ReadStream.html">ReadStream</a></code> and
-<code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code> instances so they can be used to pump data to or from other
+<code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code> instances so they can be used to pipe data to or from other
 read and write streams.</p>
 </div>
 <div class="paragraph">
-<p>See the chapter on <a href="#streams">streams and pumps</a> for more information.</p>
+<p>See the chapter on <a href="#streams">streams</a> for more information.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3550,7 +3586,10 @@ extension can also be loaded in a similar fashion than JKS key stores:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>PKCS8, PKCS1 and X.509 certificates wrapped in a PEM block formats are supported.</p>
+<p>Vert.x supports reading of unencrypted RSA and/or ECC based private keys from PKCS8 PEM files.
+RSA based private keys can also be read from PKCS1 PEM files.
+X.509 certificates can be read from PEM files containing a textual encoding of the certificate as defined by
+<a href="https://tools.ietf.org/html/rfc7468#section-5">RFC 7468, Section 5</a>.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -3559,7 +3598,9 @@ extension can also be loaded in a similar fashion than JKS key stores:</p>
 <div class="title">Warning</div>
 </td>
 <td class="content">
-keep in mind that pem configuration, the private key is not crypted.
+Keep in mind that the keys contained in an unencrypted PKCS8 or a PKCS1 PEM file can be extracted by
+anybody who can read the file. Thus, make sure to put proper access restrictions on such PEM files in order to
+prevent misuse.
 </td>
 </tr>
 </table>
@@ -4414,7 +4455,7 @@ instance when creating it:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> options = {
-  <span class="key"><span class="delimiter">&quot;</span><span class="content">maxWebsocketFrameSize</span><span class="delimiter">&quot;</span></span> : <span class="integer">1000000</span>
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">maxWebSocketFrameSize</span><span class="delimiter">&quot;</span></span> : <span class="integer">1000000</span>
 };
 
 <span class="keyword">var</span> server = vertx.createHttpServer(options);</code></pre>
@@ -4821,13 +4862,13 @@ for you. The body handler is called once when all the body has been received:</p
 </div>
 </div>
 <div class="sect3">
-<h4 id="_pumping_requests">Pumping requests</h4>
+<h4 id="_streaming_requests">Streaming requests</h4>
 <div class="paragraph">
-<p>The request object is a <code><a href="../../jsdoc/module-vertx-js_read_stream-ReadStream.html">ReadStream</a></code> so you can pump the request body to any
+<p>The request object is a <code><a href="../../jsdoc/module-vertx-js_read_stream-ReadStream.html">ReadStream</a></code> so you can pipe the request body to any
 <code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code> instance.</p>
 </div>
 <div class="paragraph">
-<p>See the chapter on <a href="#streams">streams and pumps</a> for a detailed explanation.</p>
+<p>See the chapter on <a href="#streams">streams</a> for a detailed explanation.</p>
 </div>
 </div>
 <div class="sect3">
@@ -4903,8 +4944,8 @@ exhaustion, instead, the upload data is received in chunks:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The upload object is a <code><a href="../../jsdoc/module-vertx-js_read_stream-ReadStream.html">ReadStream</a></code> so you can pump the request body to any
-<code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code> instance. See the chapter on <a href="#streams">streams and pumps</a> for a
+<p>The upload object is a <code><a href="../../jsdoc/module-vertx-js_read_stream-ReadStream.html">ReadStream</a></code> so you can pipe the request body to any
+<code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code> instance. See the chapter on <a href="#streams">streams</a> for a
 detailed explanation.</p>
 </div>
 <div class="paragraph">
@@ -4929,6 +4970,66 @@ to arbitrary places on your filesystem. See <a href="#_security_notes">security 
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_handling_cookies">Handling cookies</h4>
+<div class="paragraph">
+<p>You use <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html#getCookie">getCookie</a></code> to retrieve
+a cookie by name, or use <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html#cookieMap">cookieMap</a></code> to retrieve all the cookies.</p>
+</div>
+<div class="paragraph">
+<p>To remove a cookie, use <code><a href="../../jsdoc/module-vertx-js_http_server_response-HttpServerResponse.html#removeCookie">removeCookie</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>To add a cookie use <code><a href="../../jsdoc/module-vertx-js_http_server_response-HttpServerResponse.html#addCookie">addCookie</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>The set of cookies will be written back in the response automatically when the response headers are written so the
+browser can store them.</p>
+</div>
+<div class="paragraph">
+<p>Cookies are described by instances of <code><a href="../../jsdoc/module-vertx-js_cookie-Cookie.html">Cookie</a></code>. This allows you to retrieve the name,
+value, domain, path and other normal cookie properties.</p>
+</div>
+<div class="paragraph">
+<p>Same Site Cookies let servers require that a cookie shouldn&#8217;t be sent with cross-site (where Site is defined by the
+registrable domain) requests, which provides some protection against cross-site request forgery attacks. This kind
+of cookies are enabled using the setter: <code><a href="../../jsdoc/module-vertx-js_cookie-Cookie.html#setSameSite">setSameSite</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>Same site cookies can have one of 3 values:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>None - The browser will send cookies with both cross-site requests and same-site requests.</p>
+</li>
+<li>
+<p>Strict - he browser will only send cookies for same-site requests (requests originating from the site that set the
+cookie). If the request originated from a different URL than the URL of the current location, none of the cookies
+tagged with the Strict attribute will be included.</p>
+</li>
+<li>
+<p>Lax - Same-site cookies are withheld on cross-site subrequests, such as calls to load images or frames, but will be
+sent when a user navigates to the URL from an external site; for example, by following a link.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example of querying and adding cookies:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Cookie = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/cookie</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">var</span> someCookie = request.getCookie(<span class="string"><span class="delimiter">&quot;</span><span class="content">mycookie</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">var</span> cookieValue = someCookie.getValue();
+
+<span class="comment">// Do something with cookie...</span>
+
+<span class="comment">// Add a cookie - this will get written back in the response automatically</span>
+request.response().addCookie(Cookie.cookie(<span class="string"><span class="delimiter">&quot;</span><span class="content">othercookie</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">somevalue</span><span class="delimiter">&quot;</span></span>));</code></pre>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -5065,7 +5166,7 @@ be too late otherwise. If you are using HTTP chunking you do not have to worry.<
 <div class="sect3">
 <h4 id="_ending_http_responses">Ending HTTP responses</h4>
 <div class="paragraph">
-<p>Once you have finished with the HTTP response you should <code><a href="../../jsdoc/module-vertx-js_http_server_response-HttpServerResponse.html#end">end</a></code> it.</p>
+<p>Once you have finished with the HTTP response you should <code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html#end">end</a></code> it.</p>
 </div>
 <div class="paragraph">
 <p>This can be done in several ways:</p>
@@ -5198,7 +5299,7 @@ response.putTrailer(<span class="string"><span class="delimiter">&quot;</span><s
 <h4 id="_serving_files_directly_from_disk_or_the_classpath">Serving files directly from disk or the classpath</h4>
 <div class="paragraph">
 <p>If you were writing a web server, one way to serve a file from disk would be to open it as an <code><a href="../../jsdoc/module-vertx-js_async_file-AsyncFile.html">AsyncFile</a></code>
-and pump it to the HTTP response.</p>
+and pipe it to the HTTP response.</p>
 </div>
 <div class="paragraph">
 <p>Or you could load it it one go using <code><a href="../../jsdoc/module-vertx-js_file_system-FileSystem.html#readFile">readFile</a></code> and write it straight to the response.</p>
@@ -5310,28 +5411,24 @@ case you can just do:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_pumping_responses">Pumping responses</h4>
+<h4 id="_piping_responses">Piping responses</h4>
 <div class="paragraph">
-<p>The server response is a <code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code> instance so you can pump to it from any
+<p>The server response is a <code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code> instance so you can pipe to it from any
 <code><a href="../../jsdoc/module-vertx-js_read_stream-ReadStream.html">ReadStream</a></code>, e.g. <code><a href="../../jsdoc/module-vertx-js_async_file-AsyncFile.html">AsyncFile</a></code>, <code><a href="../../jsdoc/module-vertx-js_net_socket-NetSocket.html">NetSocket</a></code>,
 <code><a href="../../jsdoc/module-vertx-js_web_socket-WebSocket.html">WebSocket</a></code> or <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html">HttpServerRequest</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example which echoes the request body back in the response for any PUT methods.
-It uses a pump for the body, so it will work even if the HTTP request body is much larger than can fit in memory
+It uses a pipe for the body, so it will work even if the HTTP request body is much larger than can fit in memory
 at any one time:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Pump = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/pump</span><span class="delimiter">&quot;</span></span>);
-vertx.createHttpServer().requestHandler(<span class="keyword">function</span> (request) {
+<pre class="CodeRay highlight"><code data-lang="js">vertx.createHttpServer().requestHandler(<span class="keyword">function</span> (request) {
   <span class="keyword">var</span> response = request.response();
   <span class="keyword">if</span> (request.method() === <span class="string"><span class="delimiter">'</span><span class="content">PUT</span><span class="delimiter">'</span></span>) {
     response.setChunked(<span class="predefined-constant">true</span>);
-    Pump.pump(request, response).start();
-    request.endHandler(<span class="keyword">function</span> (v) {
-      response.end();
-    });
+    request.pipeTo(response);
   } <span class="keyword">else</span> {
     response.setStatusCode(<span class="integer">400</span>).end();
   }
@@ -5456,7 +5553,7 @@ the pushed response can be written after.</p>
 <div class="paragraph">
 <p>You can set an <code><a href="../../jsdoc/module-vertx-js_http_server-HttpServer.html#exceptionHandler">exceptionHandler</a></code> to receive any
 exceptions that happens before the connection is passed to the <code><a href="../../jsdoc/module-vertx-js_http_server-HttpServer.html#requestHandler">requestHandler</a></code>
-or to the <code><a href="../../jsdoc/module-vertx-js_http_server-HttpServer.html#websocketHandler">websocketHandler</a></code>, e.g during the TLS handshake.</p>
+or to the <code><a href="../../jsdoc/module-vertx-js_http_server-HttpServer.html#webSocketHandler">webSocketHandler</a></code>, e.g during the TLS handshake.</p>
 </div>
 </div>
 </div>
@@ -6096,7 +6193,7 @@ and <code><a href="../../jsdoc/module-vertx-js_http_client_response-HttpClientRe
 <h4 id="_using_the_response_as_a_stream">Using the response as a stream</h4>
 <div class="paragraph">
 <p>The <code><a href="../../jsdoc/module-vertx-js_http_client_response-HttpClientResponse.html">HttpClientResponse</a></code> instance is also a <code><a href="../../jsdoc/module-vertx-js_read_stream-ReadStream.html">ReadStream</a></code> which means
-you can pump it to any <code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code> instance.</p>
+you can pipe it to any <code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code> instance.</p>
 </div>
 </div>
 <div class="sect3">
@@ -6205,9 +6302,17 @@ or immediately after the headers have been read and the response handler has bee
 <div class="sect3">
 <h4 id="_30x_redirection_handling">30x redirection handling</h4>
 <div class="paragraph">
-<p>The client can be configured to follow HTTP redirections: when the client receives an
-<code>301</code>, <code>302</code>, <code>303</code> or <code>307</code> status code, it follows the redirection provided by the <code>Location</code> response header
-and the response handler is passed the redirected response instead of the original response.</p>
+<p>The client can be configured to follow HTTP redirections provided by the <code>Location</code> response header when the client receives:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a <code>301</code>, <code>302</code>, <code>307</code> or <code>308</code> status code along with a HTTP GET or HEAD method</p>
+</li>
+<li>
+<p>a <code>303</code> status code, in addition the directed request perform an HTTP GET methodn</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example:</p>
@@ -6218,31 +6323,6 @@ and the response handler is passed the redirected response instead of the origin
   console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Received response with status code </span><span class="delimiter">&quot;</span></span> + response.statusCode());
 }).setFollowRedirects(<span class="predefined-constant">true</span>).end();</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>The redirection policy is as follow</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>on a <code>301</code>, <code>302</code> or <code>303</code> status code, follow the redirection with a <code>GET</code> method</p>
-</li>
-<li>
-<p>on a <code>307</code> status code, follow the redirection with the same HTTP method and the cached body</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-following redirections caches the request body
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>The maximum redirects is <code>16</code> by default and can be changed with <code><a href="../dataobjects.html#HttpClientOptions#setMaxRedirects">maxRedirects</a></code>.</p>
@@ -6690,11 +6770,11 @@ server.connectionHandler(<span class="keyword">function</span> (connection) {
 </div>
 </div>
 <div class="paragraph">
-<p>A connection handler can be set on the request to be notified when the connection happens:</p>
+<p>A connection handler can be set on the client to be notified when a connection has been established happens:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js">request.connectionHandler(<span class="keyword">function</span> (connection) {
+<pre class="CodeRay highlight"><code data-lang="js">client.connectionHandler(<span class="keyword">function</span> (connection) {
   console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Connected to the server</span><span class="delimiter">&quot;</span></span>);
 });</code></pre>
 </div>
@@ -7055,7 +7135,7 @@ connection between HTTP servers and HTTP clients (typically browsers).</p>
 <div class="sect4">
 <h5 id="_websocket_handler">WebSocket handler</h5>
 <div class="paragraph">
-<p>The first way involves providing a <code><a href="../../jsdoc/module-vertx-js_http_server-HttpServer.html#websocketHandler">websocketHandler</a></code>
+<p>The first way involves providing a <code><a href="../../jsdoc/module-vertx-js_http_server-HttpServer.html#webSocketHandler">webSocketHandler</a></code>
 on the server instance.</p>
 </div>
 <div class="paragraph">
@@ -7064,7 +7144,7 @@ on the server instance.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js">server.websocketHandler(<span class="keyword">function</span> (websocket) {
+<pre class="CodeRay highlight"><code data-lang="js">server.webSocketHandler(<span class="keyword">function</span> (webSocket) {
   console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Connected!</span><span class="delimiter">&quot;</span></span>);
 });</code></pre>
 </div>
@@ -7074,29 +7154,67 @@ on the server instance.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js">server.websocketHandler(<span class="keyword">function</span> (websocket) {
-  <span class="keyword">if</span> (websocket.path() == <span class="string"><span class="delimiter">&quot;</span><span class="content">/myapi</span><span class="delimiter">&quot;</span></span>) {
-    websocket.reject();
+<pre class="CodeRay highlight"><code data-lang="js">server.webSocketHandler(<span class="keyword">function</span> (webSocket) {
+  <span class="keyword">if</span> (webSocket.path() == <span class="string"><span class="delimiter">&quot;</span><span class="content">/myapi</span><span class="delimiter">&quot;</span></span>) {
+    webSocket.reject();
   } <span class="keyword">else</span> {
     <span class="comment">// Do something</span>
   }
 });</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>You can perform an asynchronous handshake by calling <code><a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html#setHandshake">setHandshake</a></code> with a <code>Future</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Promise = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/promise</span><span class="delimiter">&quot;</span></span>);
+server.webSocketHandler(<span class="keyword">function</span> (webSocket) {
+  <span class="keyword">var</span> promise = Promise.promise();
+  webSocket.setHandshake(promise.future());
+  authenticate(webSocket.headers(), <span class="keyword">function</span> (ar, ar_err) {
+    <span class="keyword">if</span> (ar_err == <span class="predefined-constant">null</span>) {
+      <span class="comment">// Terminate the handshake with the status code 101 (Switching Protocol)</span>
+      <span class="comment">// Reject the handshake with 401 (Unauthorized)</span>
+      promise.complete(ar_err == <span class="predefined-constant">null</span> ? <span class="integer">101</span> : <span class="integer">401</span>);
+    } <span class="keyword">else</span> {
+      <span class="comment">// Will send a 500 error</span>
+      promise.fail(ar_err);
+    }
+  });
+});</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+the WebSocket will be automatically accepted after the handler is called unless the WebSocket&#8217;s handshake has been set
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect4">
 <h5 id="_upgrading_to_websocket">Upgrading to WebSocket</h5>
 <div class="paragraph">
 <p>The second way of handling WebSockets is to handle the HTTP Upgrade request that was sent from the client, and
-call <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html#upgrade">upgrade</a></code> on the server request.</p>
+call <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRequest.html#toWebSocket">toWebSocket</a></code> on the server request.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js">server.requestHandler(<span class="keyword">function</span> (request) {
   <span class="keyword">if</span> (request.path() == <span class="string"><span class="delimiter">&quot;</span><span class="content">/myapi</span><span class="delimiter">&quot;</span></span>) {
 
-    <span class="keyword">var</span> websocket = request.upgrade();
-    <span class="comment">// Do something</span>
+    request.toWebSocket(<span class="keyword">function</span> (ar, ar_err) {
+      <span class="keyword">if</span> (ar_err == <span class="predefined-constant">null</span>) {
+        <span class="keyword">var</span> webSocket = ar;
+        <span class="comment">// Do something</span>
+      }
+    });
 
   } <span class="keyword">else</span> {
     <span class="comment">// Reject</span>
@@ -7109,7 +7227,7 @@ call <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRe
 <div class="sect4">
 <h5 id="_the_server_websocket">The server WebSocket</h5>
 <div class="paragraph">
-<p>The <code><a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html">ServerWebSocket</a></code> instance enables you to retrieve the <code><a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html#headers">headers</a></code>,
+<p>The <code><a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html">ServerWebSocket</a></code> instance enables you to retrieve the <code><a href="../../jsdoc/module-vertx-js_web_socket_base-WebSocketBase.html#headers">headers</a></code>,
 <code><a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html#path">path</a></code>, <code><a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html#query">query</a></code> and
 <code><a href="../../jsdoc/module-vertx-js_server_web_socket-ServerWebSocket.html#uri">URI</a></code> of the HTTP request of the WebSocket handshake.</p>
 </div>
@@ -7121,7 +7239,7 @@ call <code><a href="../../jsdoc/module-vertx-js_http_server_request-HttpServerRe
 <p>The Vert.x <code><a href="../../jsdoc/module-vertx-js_http_client-HttpClient.html">HttpClient</a></code> supports WebSockets.</p>
 </div>
 <div class="paragraph">
-<p>You can connect a WebSocket to a server using one of the <code><a href="../../jsdoc/module-vertx-js_http_client-HttpClient.html#websocket">websocket</a></code> operations and
+<p>You can connect a WebSocket to a server using one of the <code><a href="../../jsdoc/module-vertx-js_http_client-HttpClient.html#webSocket">webSocket</a></code> operations and
 providing a handler.</p>
 </div>
 <div class="paragraph">
@@ -7129,8 +7247,11 @@ providing a handler.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js">client.websocket(<span class="string"><span class="delimiter">&quot;</span><span class="content">/some-uri</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (websocket) {
-  console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Connected!</span><span class="delimiter">&quot;</span></span>);
+<pre class="CodeRay highlight"><code data-lang="js">client.webSocket(<span class="string"><span class="delimiter">&quot;</span><span class="content">/some-uri</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (res, res_err) {
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">null</span>) {
+    <span class="keyword">var</span> ws = res;
+    console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Connected!</span><span class="delimiter">&quot;</span></span>);
+  }
 });</code></pre>
 </div>
 </div>
@@ -7147,16 +7268,16 @@ providing a handler.</p>
 <pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Buffer = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/buffer</span><span class="delimiter">&quot;</span></span>);
 <span class="comment">// Write a simple binary message</span>
 <span class="keyword">var</span> buffer = Buffer.buffer().appendInt(<span class="integer">123</span>).appendFloat(<span class="float">1.23</span>);
-websocket.writeBinaryMessage(buffer);
+webSocket.writeBinaryMessage(buffer);
 
 <span class="comment">// Write a simple text message</span>
 <span class="keyword">var</span> message = <span class="string"><span class="delimiter">&quot;</span><span class="content">hello</span><span class="delimiter">&quot;</span></span>;
-websocket.writeTextMessage(message);</code></pre>
+webSocket.writeTextMessage(message);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If the WebSocket message is larger than the maximum websocket frame size as configured with
-<code><a href="../dataobjects.html#HttpClientOptions#setMaxWebsocketFrameSize">maxWebsocketFrameSize</a></code>
+<p>If the WebSocket message is larger than the maximum WebSocket frame size as configured with
+<code><a href="../dataobjects.html#HttpClientOptions#setMaxWebSocketFrameSize">maxWebSocketFrameSize</a></code>
 then Vert.x will split it into multiple WebSocket frames before sending it on the wire.</p>
 </div>
 </div>
@@ -7184,18 +7305,18 @@ to the WebSocket using <code><a href="../../jsdoc/module-vertx-js_web_socket-Web
 <pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> WebSocketFrame = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/web_socket_frame</span><span class="delimiter">&quot;</span></span>);
 
 <span class="keyword">var</span> frame1 = WebSocketFrame.binaryFrame(buffer1, <span class="predefined-constant">false</span>);
-websocket.writeFrame(frame1);
+webSocket.writeFrame(frame1);
 
 <span class="keyword">var</span> frame2 = WebSocketFrame.continuationFrame(buffer2, <span class="predefined-constant">false</span>);
-websocket.writeFrame(frame2);
+webSocket.writeFrame(frame2);
 
 <span class="comment">// Write the final frame</span>
 <span class="keyword">var</span> frame3 = WebSocketFrame.continuationFrame(buffer2, <span class="predefined-constant">true</span>);
-websocket.writeFrame(frame3);</code></pre>
+webSocket.writeFrame(frame3);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In many cases you just want to send a websocket message that consists of a single final frame, so we provide a couple
+<p>In many cases you just want to send a WebSocket message that consists of a single final frame, so we provide a couple
 of shortcut methods to do that with <code><a href="../../jsdoc/module-vertx-js_web_socket-WebSocket.html#writeFinalBinaryFrame">writeFinalBinaryFrame</a></code>
 and <code><a href="../../jsdoc/module-vertx-js_web_socket-WebSocket.html#writeFinalTextFrame">writeFinalTextFrame</a></code>.</p>
 </div>
@@ -7206,15 +7327,15 @@ and <code><a href="../../jsdoc/module-vertx-js_web_socket-WebSocket.html#writeFi
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Buffer = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/buffer</span><span class="delimiter">&quot;</span></span>);
 
-<span class="comment">// Send a websocket messages consisting of a single final text frame:</span>
+<span class="comment">// Send a WebSocket messages consisting of a single final text frame:</span>
 
-websocket.writeFinalTextFrame(<span class="string"><span class="delimiter">&quot;</span><span class="content">Geronimo!</span><span class="delimiter">&quot;</span></span>);
+webSocket.writeFinalTextFrame(<span class="string"><span class="delimiter">&quot;</span><span class="content">Geronimo!</span><span class="delimiter">&quot;</span></span>);
 
-<span class="comment">// Send a websocket messages consisting of a single final binary frame:</span>
+<span class="comment">// Send a WebSocket messages consisting of a single final binary frame:</span>
 
 <span class="keyword">var</span> buff = Buffer.buffer().appendInt(<span class="integer">12</span>).appendString(<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>);
 
-websocket.writeFinalBinaryFrame(buff);</code></pre>
+webSocket.writeFinalBinaryFrame(buff);</code></pre>
 </div>
 </div>
 </div>
@@ -7229,7 +7350,7 @@ for example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js">websocket.frameHandler(<span class="keyword">function</span> (frame) {
+<pre class="CodeRay highlight"><code data-lang="js">webSocket.frameHandler(<span class="keyword">function</span> (frame) {
   console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Received a frame of size!</span><span class="delimiter">&quot;</span></span>);
 });</code></pre>
 </div>
@@ -7242,14 +7363,29 @@ for example:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_streaming_websockets">Streaming WebSockets</h4>
+<h4 id="_piping_websockets">Piping WebSockets</h4>
 <div class="paragraph">
 <p>The <code><a href="../../jsdoc/module-vertx-js_web_socket-WebSocket.html">WebSocket</a></code> instance is also a <code><a href="../../jsdoc/module-vertx-js_read_stream-ReadStream.html">ReadStream</a></code> and a
-<code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code> so it can be used with pumps.</p>
+<code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code> so it can be used with pipes.</p>
 </div>
 <div class="paragraph">
 <p>When using a WebSocket as a write stream or a read stream it can only be used with WebSockets connections that are
 used with binary frames that are no split over multiple frames.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_event_bus_handlers">Event bus handlers</h4>
+<div class="paragraph">
+<p>Every WebSocket automatically registers two handler on the event bus, and when any data are received in this handler,
+it writes them to itself. Those are local subscriptions not routed on the cluster.</p>
+</div>
+<div class="paragraph">
+<p>This enables you to write data to a WebSocket which is potentially in a completely different verticle sending data
+to the address of that handler.</p>
+</div>
+<div class="paragraph">
+<p>The addresses of the handlers are given by <code><a href="../../jsdoc/module-vertx-js_web_socket_base-WebSocketBase.html#binaryHandlerID">binaryHandlerID</a></code> and
+<code><a href="../../jsdoc/module-vertx-js_web_socket_base-WebSocketBase.html#textHandlerID">textHandlerID</a></code>.</p>
 </div>
 </div>
 </div>
@@ -7348,28 +7484,40 @@ when the verticle is undeployed.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_using_shared_data_with_vert_x">Using Shared Data with Vert.x</h2>
+<h2 id="_using_the_shareddata_api">Using the SharedData API</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Shared data contains functionality that allows you to safely share data between different parts of your application,
-or different applications in the same Vert.x instance or across a cluster of Vert.x instances.</p>
-</div>
-<div class="paragraph">
-<p>Shared data provides:</p>
+<p>As its name suggests, the <code><a href="../../jsdoc/module-vertx-js_shared_data-SharedData.html">SharedData</a></code> API allows you to safely share data between:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>synchronous shared maps (local)</p>
+<p>different parts of your application, or</p>
 </li>
 <li>
-<p>asynchronous maps (local or cluster-wide)</p>
+<p>different applications in the same Vert.x instance, or</p>
 </li>
 <li>
-<p>asynchronous locks (local or cluster-wide)</p>
+<p>different applications across a cluster of Vert.x instances.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In practice, it provides:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>synchronous maps (local-only)</p>
 </li>
 <li>
-<p>asynchronous counters (local or cluster-wide)</p>
+<p>asynchronous maps</p>
+</li>
+<li>
+<p>asynchronous locks</p>
+</li>
+<li>
+<p>asynchronous counters</p>
 </li>
 </ul>
 </div>
@@ -7380,27 +7528,37 @@ or different applications in the same Vert.x instance or across a cluster of Ver
 <div class="title">Important</div>
 </td>
 <td class="content">
-The behavior of the distributed data structure depends on the cluster manager you use. Backup
-(replication) and behavior when a network partition is faced are defined by the cluster manager and its
-configuration. Refer to the cluster manager documentation as well as to the underlying framework manual.
+The behavior of the distributed data structure depends on the cluster manager you use.
+Backup (replication) and behavior when a network partition is faced are defined by the cluster manager and its configuration.
+Please refer to the cluster manager documentation as well as to the underlying framework manual.
 </td>
 </tr>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_local_shared_maps">Local shared maps</h3>
+<h3 id="_local_maps">Local maps</h3>
 <div class="paragraph">
-<p><code><a href="../../jsdoc/module-vertx-js_local_map-LocalMap.html">Local shared maps</a></code> allow you to share data safely between different event
-loops (e.g. different verticles) in the same Vert.x instance.</p>
+<p><code><a href="../../jsdoc/module-vertx-js_local_map-LocalMap.html">Local maps</a></code> allow you to share data safely between different event loops (e.g. different verticles) in the same Vert.x instance.</p>
 </div>
 <div class="paragraph">
-<p>Local shared maps only allow certain data types to be used as keys and values. Those types must either be immutable,
-or certain other types that can be copied like <code><a href="../../jsdoc/module-vertx-js_buffer-Buffer.html">Buffer</a></code>. In the latter case the key/value
-will be copied before putting it in the map.</p>
+<p>They only allow certain data types to be used as keys and values:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>immutable types (e.g. strings, booleans, &#8230;&#8203; etc), or</p>
+</li>
+<li>
+<p>types implementing the <code>Shareable</code> interface (buffers, JSON arrays, JSON objects, or your own shareable objects).</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>This way we can ensure there is no <em>shared access to mutable state</em> between different threads in your Vert.x application
-so you don&#8217;t have to worry about protecting that state by synchronising access to it.</p>
+<p>In the latter case the key/value will be copied before putting it into the map.</p>
+</div>
+<div class="paragraph">
+<p>This way we can ensure there is no <em>shared access to mutable state</em> between different threads in your Vert.x application.
+And you won&#8217;t have to worry about protecting that state by synchronising access to it.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example of using a shared local map:</p>
@@ -7408,24 +7566,23 @@ so you don&#8217;t have to worry about protecting that state by synchronising ac
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Buffer = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/buffer</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">var</span> sharedData = vertx.sharedData();
 
-<span class="keyword">var</span> sd = vertx.sharedData();
-
-<span class="keyword">var</span> map1 = sd.getLocalMap(<span class="string"><span class="delimiter">&quot;</span><span class="content">mymap1</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">var</span> map1 = sharedData.getLocalMap(<span class="string"><span class="delimiter">&quot;</span><span class="content">mymap1</span><span class="delimiter">&quot;</span></span>);
 
 map1.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">bar</span><span class="delimiter">&quot;</span></span>);
 
-<span class="keyword">var</span> map2 = sd.getLocalMap(<span class="string"><span class="delimiter">&quot;</span><span class="content">mymap2</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">var</span> map2 = sharedData.getLocalMap(<span class="string"><span class="delimiter">&quot;</span><span class="content">mymap2</span><span class="delimiter">&quot;</span></span>);
 
 map2.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">eek</span><span class="delimiter">&quot;</span></span>, Buffer.buffer().appendInt(<span class="integer">123</span>));
 
 <span class="comment">// Then... in another part of your application:</span>
 
-map1 = sd.getLocalMap(<span class="string"><span class="delimiter">&quot;</span><span class="content">mymap1</span><span class="delimiter">&quot;</span></span>);
+map1 = sharedData.getLocalMap(<span class="string"><span class="delimiter">&quot;</span><span class="content">mymap1</span><span class="delimiter">&quot;</span></span>);
 
 <span class="keyword">var</span> val = map1.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>);
 
-map2 = sd.getLocalMap(<span class="string"><span class="delimiter">&quot;</span><span class="content">mymap2</span><span class="delimiter">&quot;</span></span>);
+map2 = sharedData.getLocalMap(<span class="string"><span class="delimiter">&quot;</span><span class="content">mymap2</span><span class="delimiter">&quot;</span></span>);
 
 <span class="keyword">var</span> buff = map2.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">eek</span><span class="delimiter">&quot;</span></span>);</code></pre>
 </div>
@@ -7434,8 +7591,29 @@ map2 = sd.getLocalMap(<span class="string"><span class="delimiter">&quot;</span>
 <div class="sect2">
 <h3 id="_asynchronous_shared_maps">Asynchronous shared maps</h3>
 <div class="paragraph">
-<p>Asynchronous shared maps allow data to be put in the map and retrieved locally when Vert.x is not clustered.
-When clustered, data can be put from any node and retrieved from the same node or any other node.</p>
+<p><code><a href="../../jsdoc/module-vertx-js_async_map-AsyncMap.html">Asynchronous shared maps</a></code> allow data to be put in the map and retrieved locally or from any other node.</p>
+</div>
+<div class="paragraph">
+<p>This makes them really useful for things like storing session state in a farm of servers hosting a Vert.x Web application.</p>
+</div>
+<div class="paragraph">
+<p>Getting the map is asynchronous and the result is returned to you in the handler that you specify. Here&#8217;s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> sharedData = vertx.sharedData();
+
+sharedData.getAsyncMap(<span class="string"><span class="delimiter">&quot;</span><span class="content">mymap</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (res, res_err) {
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">null</span>) {
+    <span class="keyword">var</span> map = res;
+  } <span class="keyword">else</span> {
+    <span class="comment">// Something went wrong!</span>
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When Vert.x is clustered, data that you put into the map is accessible locally as well as on any of the other cluster members.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -7451,22 +7629,15 @@ Beware that the latency relative to asynchronous shared map operations can be mu
 </table>
 </div>
 <div class="paragraph">
-<p>This makes them really useful for things like storing session state in a farm of servers hosting a Vert.x web
-application.</p>
-</div>
-<div class="paragraph">
-<p>You get an instance of <code><a href="../../jsdoc/module-vertx-js_async_map-AsyncMap.html">AsyncMap</a></code> with
-<code><a href="../../jsdoc/module-vertx-js_shared_data-SharedData.html#getAsyncMap">getAsyncMap</a></code>.</p>
-</div>
-<div class="paragraph">
-<p>Getting the map is asynchronous and the result is returned to you in the handler that you specify. Here&#8217;s an example:</p>
+<p>If your application doesn&#8217;t need data to be shared with every other node, you can retrieve a local-only map:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> sd = vertx.sharedData();
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> sharedData = vertx.sharedData();
 
-sd.getAsyncMap(<span class="string"><span class="delimiter">&quot;</span><span class="content">mymap</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (res, res_err) {
+sharedData.getLocalAsyncMap(<span class="string"><span class="delimiter">&quot;</span><span class="content">mymap</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (res, res_err) {
   <span class="keyword">if</span> (res_err == <span class="predefined-constant">null</span>) {
+    <span class="comment">// Local-only async map</span>
     <span class="keyword">var</span> map = res;
   } <span class="keyword">else</span> {
     <span class="comment">// Something went wrong!</span>
@@ -7500,7 +7671,7 @@ sd.getAsyncMap(<span class="string"><span class="delimiter">&quot;</span><span c
 <p>You get data from a map with <code><a href="../../jsdoc/module-vertx-js_async_map-AsyncMap.html#get">get</a></code>.</p>
 </div>
 <div class="paragraph">
-<p>The actual get is asynchronous and the handler is notified with the result some time later</p>
+<p>The actual get is asynchronous and the handler is notified with the result some time later:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7520,7 +7691,7 @@ sd.getAsyncMap(<span class="string"><span class="delimiter">&quot;</span><span c
 <p>You can also remove entries from an asynchronous map, clear them and get the size.</p>
 </div>
 <div class="paragraph">
-<p>See the <code><a href="../../jsdoc/module-vertx-js_async_map-AsyncMap.html">API docs</a></code> for more information.</p>
+<p>See the <code><a href="../../jsdoc/module-vertx-js_async_map-AsyncMap.html">API docs</a></code> for a detailed list of map operations.</p>
 </div>
 </div>
 </div>
@@ -7528,30 +7699,27 @@ sd.getAsyncMap(<span class="string"><span class="delimiter">&quot;</span><span c
 <div class="sect2">
 <h3 id="_asynchronous_locks">Asynchronous locks</h3>
 <div class="paragraph">
-<p><code><a href="../../jsdoc/module-vertx-js_lock-Lock.html">Asynchronous locks</a></code> allow you to obtain exclusive locks locally or across the cluster -
-this is useful when you want to do something or access a resource on only one node of a cluster at any one time.</p>
+<p><code><a href="../../jsdoc/module-vertx-js_lock-Lock.html">Asynchronous locks</a></code> allow you to obtain exclusive locks locally or across the cluster.
+This is useful when you want to do something or access a resource on only one node of a cluster at any one time.</p>
 </div>
 <div class="paragraph">
-<p>Asynchronous locks have an asynchronous API unlike most lock APIs which block the calling thread until the lock
-is obtained.</p>
+<p>Asynchronous locks have an asynchronous API unlike most lock APIs which block the calling thread until the lock is obtained.</p>
 </div>
 <div class="paragraph">
-<p>To obtain a lock use <code><a href="../../jsdoc/module-vertx-js_shared_data-SharedData.html#getLock">getLock</a></code>.</p>
+<p>To obtain a lock use <code><a href="../../jsdoc/module-vertx-js_shared_data-SharedData.html#getLock">getLock</a></code>.
+This won&#8217;t block, but when the lock is available, the handler will be called with an instance of <code><a href="../../jsdoc/module-vertx-js_lock-Lock.html">Lock</a></code>, signalling that you now own the lock.</p>
 </div>
 <div class="paragraph">
-<p>This won&#8217;t block, but when the lock is available, the handler will be called with an instance of <code><a href="../../jsdoc/module-vertx-js_lock-Lock.html">Lock</a></code>,
-signifying that you now own the lock.</p>
+<p>While you own the lock, no other caller, locally or on the cluster, will be able to obtain the lock.</p>
 </div>
 <div class="paragraph">
-<p>While you own the lock no other caller, anywhere on the cluster will be able to obtain the lock.</p>
-</div>
-<div class="paragraph">
-<p>When you&#8217;ve finished with the lock, you call <code><a href="../../jsdoc/module-vertx-js_lock-Lock.html#release">release</a></code> to release it, so
-another caller can obtain it.</p>
+<p>When you&#8217;ve finished with the lock, you call <code><a href="../../jsdoc/module-vertx-js_lock-Lock.html#release">release</a></code> to release it, so another caller can obtain it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js">sd.getLock(<span class="string"><span class="delimiter">&quot;</span><span class="content">mylock</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (res, res_err) {
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> sharedData = vertx.sharedData();
+
+sharedData.getLock(<span class="string"><span class="delimiter">&quot;</span><span class="content">mylock</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (res, res_err) {
   <span class="keyword">if</span> (res_err == <span class="predefined-constant">null</span>) {
     <span class="comment">// Got the lock!</span>
     <span class="keyword">var</span> lock = res;
@@ -7569,18 +7737,59 @@ another caller can obtain it.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You can also get a lock with a timeout. If it fails to obtain the lock within the timeout the handler will be called
-with a failure:</p>
+<p>You can also get a lock with a timeout. If it fails to obtain the lock within the timeout the handler will be called with a failure:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js">sd.getLockWithTimeout(<span class="string"><span class="delimiter">&quot;</span><span class="content">mylock</span><span class="delimiter">&quot;</span></span>, <span class="integer">10000</span>, <span class="keyword">function</span> (res, res_err) {
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> sharedData = vertx.sharedData();
+
+sharedData.getLockWithTimeout(<span class="string"><span class="delimiter">&quot;</span><span class="content">mylock</span><span class="delimiter">&quot;</span></span>, <span class="integer">10000</span>, <span class="keyword">function</span> (res, res_err) {
   <span class="keyword">if</span> (res_err == <span class="predefined-constant">null</span>) {
     <span class="comment">// Got the lock!</span>
     <span class="keyword">var</span> lock = res;
 
   } <span class="keyword">else</span> {
     <span class="comment">// Failed to get lock</span>
+  }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See the <code><a href="../../jsdoc/module-vertx-js_lock-Lock.html">API docs</a></code> for a detailed list of lock operations.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+In clustered mode, asynchronous locks rely on distributed data structures provided by the cluster manager.
+Beware that the latency relative to asynchronous shared lock operations can be much higher in clustered than in local mode.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If your application doesn&#8217;t need the lock to be shared with every other node, you can retrieve a local-only lock:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> sharedData = vertx.sharedData();
+
+sharedData.getLocalLock(<span class="string"><span class="delimiter">&quot;</span><span class="content">mylock</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (res, res_err) {
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">null</span>) {
+    <span class="comment">// Local-only lock</span>
+    <span class="keyword">var</span> lock = res;
+
+    <span class="comment">// 5 seconds later we release the lock so someone else can get it</span>
+
+    vertx.setTimer(<span class="integer">5000</span>, <span class="keyword">function</span> (tid) {
+      lock.release();
+    });
+
+  } <span class="keyword">else</span> {
+    <span class="comment">// Something went wrong</span>
   }
 });</code></pre>
 </div>
@@ -7599,7 +7808,9 @@ with a failure:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js">sd.getCounter(<span class="string"><span class="delimiter">&quot;</span><span class="content">mycounter</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (res, res_err) {
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> sharedData = vertx.sharedData();
+
+sharedData.getCounter(<span class="string"><span class="delimiter">&quot;</span><span class="content">mycounter</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (res, res_err) {
   <span class="keyword">if</span> (res_err == <span class="predefined-constant">null</span>) {
     <span class="keyword">var</span> counter = res;
   } <span class="keyword">else</span> {
@@ -7613,7 +7824,37 @@ with a failure:</p>
 it using the various methods.</p>
 </div>
 <div class="paragraph">
-<p>See the <code><a href="../../jsdoc/module-vertx-js_counter-Counter.html">API docs</a></code> for more information.</p>
+<p>See the <code><a href="../../jsdoc/module-vertx-js_counter-Counter.html">API docs</a></code> for a detailed list of counter operations.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+In clustered mode, asynchronous counters rely on distributed data structures provided by the cluster manager.
+Beware that the latency relative to asynchronous shared counter operations can be much higher in clustered than in local mode.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If your application doesn&#8217;t need the counter to be shared with every other node, you can retrieve a local-only counter:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> sharedData = vertx.sharedData();
+
+sharedData.getLocalCounter(<span class="string"><span class="delimiter">&quot;</span><span class="content">mycounter</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (res, res_err) {
+  <span class="keyword">if</span> (res_err == <span class="predefined-constant">null</span>) {
+    <span class="comment">// Local-only counter</span>
+    <span class="keyword">var</span> counter = res;
+  } <span class="keyword">else</span> {
+    <span class="comment">// Something went wrong!</span>
+  }
+});</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -7736,7 +7977,7 @@ fileSystem.open(<span class="string"><span class="delimiter">&quot;</span><span 
 </div>
 </div>
 <div class="paragraph">
-<p><code>AsyncFile</code> implements <code>ReadStream</code> and <code>WriteStream</code> so you can <em>pump</em>
+<p><code>AsyncFile</code> implements <code>ReadStream</code> and <code>WriteStream</code> so you can <em>pipe</em>
 files to and from other stream objects such as net sockets, http requests and responses, and WebSockets.</p>
 </div>
 <div class="paragraph">
@@ -7882,22 +8123,22 @@ cache by calling the <code><a href="../../jsdoc/module-vertx-js_async_file-Async
 <h4 id="_using_asyncfile_as_readstream_and_writestream">Using AsyncFile as ReadStream and WriteStream</h4>
 <div class="paragraph">
 <p><code>AsyncFile</code> implements <code>ReadStream</code> and <code>WriteStream</code>. You can then
-use them with a <em>pump</em> to pump data to and from other read and write streams. For example, this would
+use them with a <em>pipe</em> to pipe data to and from other read and write streams. For example, this would
 copy the content to another <code>AsyncFile</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Pump = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/pump</span><span class="delimiter">&quot;</span></span>);
-<span class="keyword">var</span> output = vertx.fileSystem().openBlocking(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/classes/plagiary.txt</span><span class="delimiter">&quot;</span></span>, {
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> output = vertx.fileSystem().openBlocking(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/classes/plagiary.txt</span><span class="delimiter">&quot;</span></span>, {
 });
 
 vertx.fileSystem().open(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/classes/les_miserables.txt</span><span class="delimiter">&quot;</span></span>, {
 }, <span class="keyword">function</span> (result, result_err) {
   <span class="keyword">if</span> (result_err == <span class="predefined-constant">null</span>) {
     <span class="keyword">var</span> file = result;
-    Pump.pump(file, output).start();
-    file.endHandler(<span class="keyword">function</span> (r) {
-      console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Copy done</span><span class="delimiter">&quot;</span></span>);
+    file.pipeTo(output, <span class="keyword">function</span> (ar, ar_err) {
+      <span class="keyword">if</span> (ar_err == <span class="predefined-constant">null</span>) {
+        console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Copy done</span><span class="delimiter">&quot;</span></span>);
+      }
     });
   } <span class="keyword">else</span> {
     console.error(<span class="string"><span class="delimiter">&quot;</span><span class="content">Cannot open file </span><span class="delimiter">&quot;</span></span> + result_err);
@@ -7906,7 +8147,7 @@ vertx.fileSystem().open(<span class="string"><span class="delimiter">&quot;</spa
 </div>
 </div>
 <div class="paragraph">
-<p>You can also use the <em>pump</em> to write file content into HTTP responses, or more generally in any
+<p>You can also use the <em>pipe</em> to write file content into HTTP responses, or more generally in any
 <code>WriteStream</code>.</p>
 </div>
 </div>
@@ -8807,24 +9048,129 @@ get called when the write queue is ready to accept more data, this resumes the <
 allows more data to be read.</p>
 </div>
 <div class="paragraph">
-<p>Wanting to do this is quite common while writing Vert.x applications, so we provide a helper class
-called <code><a href="../../jsdoc/module-vertx-js_pump-Pump.html">Pump</a></code> that does all of this hard work for you.
-You just feed it the <code>ReadStream</code> plus the <code>WriteStream</code> then start it:</p>
+<p>Wanting to do this is quite common while writing Vert.x applications, so we added the
+<code><a href="../../jsdoc/module-vertx-js_read_stream-ReadStream.html#pipeTo">pipeTo</a></code> method that does all of this hard work for you.
+You just feed it the <code>WriteStream</code> and use it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Pump = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/pump</span><span class="delimiter">&quot;</span></span>);
-<span class="keyword">var</span> server = vertx.createNetServer({
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> server = vertx.createNetServer({
   <span class="key"><span class="delimiter">&quot;</span><span class="content">port</span><span class="delimiter">&quot;</span></span> : <span class="integer">1234</span>,
   <span class="key"><span class="delimiter">&quot;</span><span class="content">host</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>
 });
 server.connectHandler(<span class="keyword">function</span> (sock) {
-  Pump.pump(sock, sock).start();
+  sock.pipeTo(sock);
 }).listen();</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This does exactly the same thing as the more verbose example.</p>
+<p>This does exactly the same thing as the more verbose example, plus it handles stream failures and termination: the
+destination <code>WriteStream</code> is ended when the pipe completes with success or a failure.</p>
+</div>
+<div class="paragraph">
+<p>You can be notified when the operation completes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js">server.connectHandler(<span class="keyword">function</span> (sock) {
+
+  <span class="comment">// Pipe the socket providing an handler to be notified of the result</span>
+  sock.pipeTo(sock, <span class="keyword">function</span> (ar, ar_err) {
+    <span class="keyword">if</span> (ar_err == <span class="predefined-constant">null</span>) {
+      console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Pipe succeeded</span><span class="delimiter">&quot;</span></span>);
+    } <span class="keyword">else</span> {
+      console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Pipe failed</span><span class="delimiter">&quot;</span></span>);
+    }
+  });
+}).listen();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you deal with an asynchronous destination, you can create a <code><a href="../../jsdoc/module-vertx-js_pipe-Pipe.html">Pipe</a></code> instance that
+pauses the source and resumes it when the source is piped to the destination:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js">server.connectHandler(<span class="keyword">function</span> (sock) {
+
+  <span class="comment">// Create a pipe to use asynchronously</span>
+  <span class="keyword">var</span> pipe = sock.pipe();
+
+  <span class="comment">// Open a destination file</span>
+  fs.open(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/file</span><span class="delimiter">&quot;</span></span>, {
+  }, <span class="keyword">function</span> (ar, ar_err) {
+    <span class="keyword">if</span> (ar_err == <span class="predefined-constant">null</span>) {
+      <span class="keyword">var</span> file = ar;
+
+      <span class="comment">// Pipe the socket to the file and close the file at the end</span>
+      pipe.to(file);
+    } <span class="keyword">else</span> {
+      sock.close();
+    }
+  });
+}).listen();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you need to abort the transfer, you need to close it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js">vertx.createHttpServer().requestHandler(<span class="keyword">function</span> (request) {
+
+  <span class="comment">// Create a pipe that to use asynchronously</span>
+  <span class="keyword">var</span> pipe = request.pipe();
+
+  <span class="comment">// Open a destination file</span>
+  fs.open(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/file</span><span class="delimiter">&quot;</span></span>, {
+  }, <span class="keyword">function</span> (ar, ar_err) {
+    <span class="keyword">if</span> (ar_err == <span class="predefined-constant">null</span>) {
+      <span class="keyword">var</span> file = ar;
+
+      <span class="comment">// Pipe the socket to the file and close the file at the end</span>
+      pipe.to(file);
+    } <span class="keyword">else</span> {
+      <span class="comment">// Close the pipe and resume the request, the body buffers will be discarded</span>
+      pipe.close();
+
+      <span class="comment">// Send an error response</span>
+      request.response().setStatusCode(<span class="integer">500</span>).end();
+    }
+  });
+}).listen(<span class="integer">8080</span>);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the pipe is closed, the streams handlers are unset and the <code>ReadStream</code> resumed.</p>
+</div>
+<div class="paragraph">
+<p>As seen above, by default the destination is always ended when the stream completes, you can control this behavior
+on the pipe object:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><a href="../../jsdoc/module-vertx-js_pipe-Pipe.html#endOnFailure">endOnFailure</a></code> controls the behavior when a failure happens</p>
+</li>
+<li>
+<p><code><a href="../../jsdoc/module-vertx-js_pipe-Pipe.html#endOnSuccess">endOnSuccess</a></code> controls the behavior when the read stream ends</p>
+</li>
+<li>
+<p><code><a href="../../jsdoc/module-vertx-js_pipe-Pipe.html#endOnComplete">endOnComplete</a></code> controls the behavior in all cases</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here is a short example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Buffer = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/buffer</span><span class="delimiter">&quot;</span></span>);
+src.pipe().endOnSuccess(<span class="predefined-constant">false</span>).to(dst, <span class="keyword">function</span> (rs, rs_err) {
+  <span class="comment">// Append some text and close the file</span>
+  dst.end(Buffer.buffer(<span class="string"><span class="delimiter">&quot;</span><span class="content">done</span><span class="delimiter">&quot;</span></span>));
+});</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s now look at the methods on <code>ReadStream</code> and <code>WriteStream</code> in more detail:</p>
@@ -8908,6 +9254,35 @@ The handler will be called if the <code>WriteStream</code> is considered no long
 </div>
 <div class="sect2">
 <h3 id="_pump">Pump</h3>
+<div class="paragraph">
+<p>The pump exposes a subset of the pipe API and only transfers the items between streams, it does not handle
+the completion or failure of the transfer operation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Pump = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/pump</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">var</span> server = vertx.createNetServer({
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">port</span><span class="delimiter">&quot;</span></span> : <span class="integer">1234</span>,
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">host</span><span class="delimiter">&quot;</span></span> : <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>
+});
+server.connectHandler(<span class="keyword">function</span> (sock) {
+  Pump.pump(sock, sock).start();
+}).listen();</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+Before Vert.x 3.7 the <code><a href="../../jsdoc/module-vertx-js_pump-Pump.html">Pump</a></code> was the advocated API for transferring a read stream to
+a write stream. Since 3.7 the pipe API supersedes the pump API.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Instances of Pump have the following methods:</p>
 </div>
@@ -10258,7 +10633,7 @@ vertx.createHttpServer({
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.netty<span class="tag">&lt;/groupId&gt;</span>
- <span class="tag">&lt;artifactId&gt;</span>netty-transport-native-epoll<span class="tag">&lt;/artifactId&gt;</span>
+ <span class="tag">&lt;artifactId&gt;</span>netty-transport-native-kqueue<span class="tag">&lt;/artifactId&gt;</span>
  <span class="tag">&lt;version&gt;</span>4.1.15.Final<span class="tag">&lt;/version&gt;</span>
  <span class="tag">&lt;classifier&gt;</span>osx-x86_64<span class="tag">&lt;/classifier&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
@@ -10289,7 +10664,7 @@ vertx.createHttpServer({
 <div class="sect2">
 <h3 id="_domain_sockets">Domain sockets</h3>
 <div class="paragraph">
-<p>Natives provide domain sockets support for <code>NetServer</code> and <code>HttpServer</code>:</p>
+<p>Natives provide domain sockets support for servers:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10301,7 +10676,7 @@ vertx.createNetServer().connectHandler(<span class="keyword">function</span> (so
 </div>
 </div>
 <div class="paragraph">
-<p>Or for http:</p>
+<p>or for http:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10318,7 +10693,7 @@ vertx.createHttpServer().requestHandler(<span class="keyword">function</span> (r
 </div>
 </div>
 <div class="paragraph">
-<p>As well as <code>NetClient</code>:</p>
+<p>As well as clients:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10326,7 +10701,10 @@ vertx.createHttpServer().requestHandler(<span class="keyword">function</span> (r
 <span class="keyword">var</span> netClient = vertx.createNetClient();
 
 <span class="comment">// Only available on BSD and Linux</span>
-netClient.connect(SocketAddress.domainSocketAddress(<span class="string"><span class="delimiter">&quot;</span><span class="content">/var/tmp/myservice.sock</span><span class="delimiter">&quot;</span></span>), <span class="keyword">function</span> (ar, ar_err) {
+<span class="keyword">var</span> addr = SocketAddress.domainSocketAddress(<span class="string"><span class="delimiter">&quot;</span><span class="content">/var/tmp/myservice.sock</span><span class="delimiter">&quot;</span></span>);
+
+<span class="comment">// Connect to the server</span>
+netClient.connect(addr, <span class="keyword">function</span> (ar, ar_err) {
   <span class="keyword">if</span> (ar_err == <span class="predefined-constant">null</span>) {
     <span class="comment">// Connected</span>
   } <span class="keyword">else</span> {
@@ -10335,17 +10713,22 @@ netClient.connect(SocketAddress.domainSocketAddress(<span class="string"><span c
 });</code></pre>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-support for <code>HttpClient</code> can be expected in later versions of Vert.x
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>or for http:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> SocketAddress = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-js/socket_address</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">var</span> httpClient = vertx.createHttpClient();
+
+<span class="comment">// Only available on BSD and Linux</span>
+<span class="keyword">var</span> addr = SocketAddress.domainSocketAddress(<span class="string"><span class="delimiter">&quot;</span><span class="content">/var/tmp/myservice.sock</span><span class="delimiter">&quot;</span></span>);
+
+<span class="comment">// Send request to the server</span>
+httpClient.request(<span class="string"><span class="delimiter">'</span><span class="content">GET</span><span class="delimiter">'</span></span>, addr, <span class="integer">8080</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (resp) {
+  <span class="comment">// Process response</span>
+}).end();</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -10940,7 +11323,7 @@ very careful when using this settings.</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:34 CET
+                Last updated 2020-09-16 10:26:32 CEST
               
               
             </div>

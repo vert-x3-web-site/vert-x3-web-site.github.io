@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>vertx-lang-scala-docs_2.12 3.6.3 API  - io.vertx.scala.core.eventbus</title>
-          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.3 API - io.vertx.scala.core.eventbus" />
-          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.3 API io.vertx.scala.core.eventbus" />
+          <title>vertx-lang-scala-docs_2.12 3.9.1 API  - io.vertx.scala.core.eventbus</title>
+          <meta name="description" content="vertx - lang - scala - docs 2.12 3.9.1 API - io.vertx.scala.core.eventbus" />
+          <meta name="keywords" content="vertx lang scala docs 2.12 3.9.1 API io.vertx.scala.core.eventbus" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.3 API<span id="doc-version"></span></span>
+        <span id="doc-title">vertx-lang-scala-docs_2.12 3.9.1 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -254,6 +254,22 @@
       </span>
       <span class="symbol">
         <a title="" href="../http/index.html"><span class="name">http</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="io.vertx.scala.core">core</a></dd></dl></div>
+    </li><li name="io.vertx.scala.core.json" visbl="pub" class="indented5 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="json"></a><a id="json:json"></a>
+      <span class="permalink">
+      <a href="../../../../io/vertx/scala/core/index.html#json" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../json/index.html"><span class="name">json</span></a>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="io.vertx.scala.core">core</a></dd></dl></div>
@@ -485,7 +501,7 @@ or different applications and services to communicate with each in a loosely cou
         <a title="Represents a message that is received from the event bus in a handler." href="Message.html"><span class="name">Message</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      <p class="shortcomment cmt">Represents a message that is received from the event bus in a handler.</p><div class="fullcomment"><div class="comment cmt"><p>Represents a message that is received from the event bus in a handler.</p><p>Messages have a <a href="Message.html#body():T" class="extmbr" name="io.vertx.scala.core.eventbus.Message#body">io.vertx.scala.core.eventbus.Message#body</a>, which can be null, and also <a href="Message.html#headers():io.vertx.scala.core.MultiMap" class="extmbr" name="io.vertx.scala.core.eventbus.Message#headers">io.vertx.scala.core.eventbus.Message#headers</a>, which can be empty.</p><p>If the message was sent specifying a reply handler, it can be replied to using <a href="Message.html#reply[R](message:AnyRef,options:io.vertx.scala.core.eventbus.DeliveryOptions,replyHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.core.eventbus.Message[R]]])(implicitevidence$3:reflect.runtime.universe.TypeTag[R]):Unit" class="extmbr" name="io.vertx.scala.core.eventbus.Message#reply">io.vertx.scala.core.eventbus.Message#reply</a>.</p><p>If you want to notify the sender that processing failed, then <a href="Message.html#fail(failureCode:Int,message:String):Unit" class="extmbr" name="io.vertx.scala.core.eventbus.Message#fail">io.vertx.scala.core.eventbus.Message#fail</a> can be called.
+      <p class="shortcomment cmt">Represents a message that is received from the event bus in a handler.</p><div class="fullcomment"><div class="comment cmt"><p>Represents a message that is received from the event bus in a handler.</p><p>Messages have a <a href="Message.html#body():T" class="extmbr" name="io.vertx.scala.core.eventbus.Message#body">io.vertx.scala.core.eventbus.Message#body</a>, which can be null, and also <a href="Message.html#headers():io.vertx.scala.core.MultiMap" class="extmbr" name="io.vertx.scala.core.eventbus.Message#headers">io.vertx.scala.core.eventbus.Message#headers</a>, which can be empty.</p><p>If the message was sent specifying a reply handler, it can be replied to using <a href="Message.html#reply[R](message:Option[AnyRef],options:io.vertx.scala.core.eventbus.DeliveryOptions,replyHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.core.eventbus.Message[R]]])(implicitevidence$5:reflect.runtime.universe.TypeTag[R]):Unit" class="extmbr" name="io.vertx.scala.core.eventbus.Message#reply">io.vertx.scala.core.eventbus.Message#reply</a>.</p><p>If you want to notify the sender that processing failed, then <a href="Message.html#fail(failureCode:Int,message:String):Unit" class="extmbr" name="io.vertx.scala.core.eventbus.Message#fail">io.vertx.scala.core.eventbus.Message#fail</a> can be called.
 </p></div></div>
     </li><li name="io.vertx.scala.core.eventbus.MessageConsumer" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="MessageConsumer[T]extendsReadStream[io.vertx.scala.core.eventbus.Message[T]]"></a><a id="MessageConsumer[T]:MessageConsumer[T]"></a>
@@ -504,7 +520,7 @@ or different applications and services to communicate with each in a loosely cou
       
       <p class="shortcomment cmt">An event bus consumer object representing a stream of message to an <a href="EventBus.html" class="extype" name="io.vertx.scala.core.eventbus.EventBus">io.vertx.scala.core.eventbus.EventBus</a> address that can
 be read from.</p><div class="fullcomment"><div class="comment cmt"><p>An event bus consumer object representing a stream of message to an <a href="EventBus.html" class="extype" name="io.vertx.scala.core.eventbus.EventBus">io.vertx.scala.core.eventbus.EventBus</a> address that can
-be read from.</p><p>The <a href="EventBus.html#consumer[T](address:String,handler:io.vertx.core.Handler[io.vertx.scala.core.eventbus.Message[T]])(implicitevidence$8:reflect.runtime.universe.TypeTag[T]):io.vertx.scala.core.eventbus.MessageConsumer[T]" class="extmbr" name="io.vertx.scala.core.eventbus.EventBus#consumer">io.vertx.scala.core.eventbus.EventBus#consumer</a> or <a href="EventBus.html#localConsumer[T](address:String,handler:io.vertx.core.Handler[io.vertx.scala.core.eventbus.Message[T]])(implicitevidence$10:reflect.runtime.universe.TypeTag[T]):io.vertx.scala.core.eventbus.MessageConsumer[T]" class="extmbr" name="io.vertx.scala.core.eventbus.EventBus#localConsumer">io.vertx.scala.core.eventbus.EventBus#localConsumer</a>
+be read from.</p><p>The <a href="EventBus.html#consumer[T](address:String,handler:io.vertx.core.Handler[io.vertx.scala.core.eventbus.Message[T]])(implicitevidence$10:reflect.runtime.universe.TypeTag[T]):io.vertx.scala.core.eventbus.MessageConsumer[T]" class="extmbr" name="io.vertx.scala.core.eventbus.EventBus#consumer">io.vertx.scala.core.eventbus.EventBus#consumer</a> or <a href="EventBus.html#localConsumer[T](address:String,handler:io.vertx.core.Handler[io.vertx.scala.core.eventbus.Message[T]])(implicitevidence$12:reflect.runtime.universe.TypeTag[T]):io.vertx.scala.core.eventbus.MessageConsumer[T]" class="extmbr" name="io.vertx.scala.core.eventbus.EventBus#localConsumer">io.vertx.scala.core.eventbus.EventBus#localConsumer</a>
 creates a new consumer, the returned consumer is not yet registered against the event bus. Registration
 is effective after the <a href="MessageConsumer.html#handler(handler:io.vertx.core.Handler[io.vertx.scala.core.eventbus.Message[T]]):io.vertx.scala.core.eventbus.MessageConsumer[T]" class="extmbr" name="io.vertx.scala.core.eventbus.MessageConsumer#handler">io.vertx.scala.core.eventbus.MessageConsumer#handler</a> method is invoked.</p><p>The consumer is unregistered from the event bus using the <a href="MessageConsumer.html#unregister(completionHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Unit]]):Unit" class="extmbr" name="io.vertx.scala.core.eventbus.MessageConsumer#unregister">io.vertx.scala.core.eventbus.MessageConsumer#unregister</a> method or by calling the
 <a href="MessageConsumer.html#handler(handler:io.vertx.core.Handler[io.vertx.scala.core.eventbus.Message[T]]):io.vertx.scala.core.eventbus.MessageConsumer[T]" class="extmbr" name="io.vertx.scala.core.eventbus.MessageConsumer#handler">io.vertx.scala.core.eventbus.MessageConsumer#handler</a> with a null value..

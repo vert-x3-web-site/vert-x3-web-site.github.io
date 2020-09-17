@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>vertx-lang-scala-docs_2.12 3.6.3 API  - io.vertx.scala.core</title>
-          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.3 API - io.vertx.scala.core" />
-          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.3 API io.vertx.scala.core" />
+          <title>vertx-lang-scala-docs_2.12 3.9.1 API  - io.vertx.scala.core</title>
+          <meta name="description" content="vertx - lang - scala - docs 2.12 3.9.1 API - io.vertx.scala.core" />
+          <meta name="keywords" content="vertx lang scala docs 2.12 3.9.1 API io.vertx.scala.core" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.3 API<span id="doc-version"></span></span>
+        <span id="doc-title">vertx-lang-scala-docs_2.12 3.9.1 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -261,6 +261,22 @@
       </span>
       
       
+    </li><li name="io.vertx.scala.core.json" visbl="pub" class="indented5 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="json"></a><a id="json:json"></a>
+      <span class="permalink">
+      <a href="../../../../io/vertx/scala/core/index.html#json" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="json/index.html"><span class="name">json</span></a>
+      </span>
+      
+      
     </li><li name="io.vertx.scala.core.metrics" visbl="pub" class="indented5 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="metrics"></a><a id="metrics:metrics"></a>
       <span class="permalink">
@@ -361,6 +377,10 @@
                         <a class="object" href="MultiMap$.html" title=""></a>
                         <a class="class" href="MultiMap.html" title="This class represents a MultiMap of String keys to a List of String values."></a>
                         <a href="MultiMap.html" title="This class represents a MultiMap of String keys to a List of String values.">MultiMap</a>
+                      </li><li class="current-entities indented4">
+                        <a class="object" href="Promise$.html" title=""></a>
+                        <a class="class" href="Promise.html" title="Represents the writable side of an action that may, or may not, have occurred yet."></a>
+                        <a href="Promise.html" title="Represents the writable side of an action that may, or may not, have occurred yet.">Promise</a>
                       </li><li class="current-entities indented4">
                         <a class="object" href="TimeoutStream$.html" title=""></a>
                         <a class="class" href="TimeoutStream.html" title="A timeout stream is triggered by a timer, the scala-function will be call when the timer is fired, it can be once or several times depending on the nature of the timer related to this stream."></a>
@@ -632,6 +652,24 @@ amongst different handlers of, for example, a verticle instance.</p><p>This clas
       <p class="shortcomment cmt">This class represents a MultiMap of String keys to a List of String values.</p><div class="fullcomment"><div class="comment cmt"><p>This class represents a MultiMap of String keys to a List of String values.</p><p>It's useful in Vert.x to represent things in Vert.x like HTTP headers and HTTP parameters which allow
 multiple values for keys.
 </p></div></div>
+    </li><li name="io.vertx.scala.core.Promise" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Promise[T]extendsAnyRef"></a><a id="Promise[T]:Promise[T]"></a>
+      <span class="permalink">
+      <a href="../../../../io/vertx/scala/core/index.html#Promise[T]extendsAnyRef" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Represents the writable side of an action that may, or may not, have occurred yet." href="Promise.html"><span class="name">Promise</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Represents the writable side of an action that may, or may not, have occurred yet.</p><div class="fullcomment"><div class="comment cmt"><p>Represents the writable side of an action that may, or may not, have occurred yet.</p><p>The <a href="Promise.html#future():io.vertx.scala.core.Future[T]" class="extmbr" name="io.vertx.scala.core.Promise#future">io.vertx.scala.core.Promise#future</a> method returns the <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">io.vertx.scala.core.Future</a> associated with a promise, the future
+can be used for getting notified of the promise completion and retrieve its value.</p><p>A promise extends <code>Handler&lt;AsyncResult&lt;T&gt;&gt;</code> so it can be used as a callback.
+</p></div></div>
     </li><li name="io.vertx.scala.core.TimeoutStream" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="TimeoutStreamextendsReadStream[Long]"></a><a id="TimeoutStream:TimeoutStream"></a>
       <span class="permalink">
@@ -790,6 +828,22 @@ the timer.
       </span>
       <span class="symbol">
         <a title="" href="MultiMap$.html"><span class="name">MultiMap</span></a>
+      </span>
+      
+      
+    </li><li name="io.vertx.scala.core.Promise" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Promise"></a><a id="Promise:Promise"></a>
+      <span class="permalink">
+      <a href="../../../../io/vertx/scala/core/index.html#Promise" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="Promise$.html"><span class="name">Promise</span></a>
       </span>
       
       

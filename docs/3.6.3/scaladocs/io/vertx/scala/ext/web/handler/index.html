@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>vertx-lang-scala-docs_2.12 3.6.3 API  - io.vertx.scala.ext.web.handler</title>
-          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.3 API - io.vertx.scala.ext.web.handler" />
-          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.3 API io.vertx.scala.ext.web.handler" />
+          <title>vertx-lang-scala-docs_2.12 3.9.1 API  - io.vertx.scala.ext.web.handler</title>
+          <meta name="description" content="vertx - lang - scala - docs 2.12 3.9.1 API - io.vertx.scala.ext.web.handler" />
+          <meta name="keywords" content="vertx lang scala docs 2.12 3.9.1 API io.vertx.scala.ext.web.handler" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.3 API<span id="doc-version"></span></span>
+        <span id="doc-title">vertx-lang-scala-docs_2.12 3.9.1 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -282,6 +282,10 @@
                         <a class="class" href="LoggerHandler.html" title="A handler which logs request information to the Vert.x logger."></a>
                         <a href="LoggerHandler.html" title="A handler which logs request information to the Vert.x logger.">LoggerHandler</a>
                       </li><li class="current-entities indented6">
+                        <a class="object" href="MultiTenantHandler$.html" title=""></a>
+                        <a class="class" href="MultiTenantHandler.html" title="A handler which selectively executes another handler if a precondition is met."></a>
+                        <a href="MultiTenantHandler.html" title="A handler which selectively executes another handler if a precondition is met.">MultiTenantHandler</a>
+                      </li><li class="current-entities indented6">
                         <a class="object" href="OAuth2AuthHandler$.html" title=""></a>
                         <a class="class" href="OAuth2AuthHandler.html" title="An auth handler that provides OAuth2 Authentication support."></a>
                         <a href="OAuth2AuthHandler.html" title="An auth handler that provides OAuth2 Authentication support.">OAuth2AuthHandler</a>
@@ -516,7 +520,7 @@ with a unique token, that is expected to be sent back in a (X-XSRF-TOKEN) header
       </span>
       
       <p class="shortcomment cmt">An auth handler that chains to a sequence of handlers.</p>
-    </li><li name="io.vertx.scala.ext.web.handler.CookieHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.vertx.scala.ext.web.handler.CookieHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="CookieHandlerextendsHandler[io.vertx.scala.ext.web.RoutingContext]"></a><a id="CookieHandler:CookieHandler"></a>
       <span class="permalink">
       <a href="../../../../../../io/vertx/scala/ext/web/handler/index.html#CookieHandlerextendsHandler[io.vertx.scala.ext.web.RoutingContext]" title="Permalink">
@@ -532,7 +536,9 @@ with a unique token, that is expected to be sent back in a (X-XSRF-TOKEN) header
       </span>
       
       <p class="shortcomment cmt">A handler which decodes cookies from the request, makes them available in the
-and writes them back in the response.</p>
+and writes them back in the response.</p><div class="fullcomment"><div class="comment cmt"><p>A handler which decodes cookies from the request, makes them available in the
+and writes them back in the response.</p><p>Since 3.8.1 this handler simply calls the next request handler. This handler will be removed in Vert.x 4.
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.handler.CorsHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="CorsHandlerextendsHandler[io.vertx.scala.ext.web.RoutingContext]"></a><a id="CorsHandler:CorsHandler"></a>
       <span class="permalink">
@@ -565,7 +571,7 @@ and writes them back in the response.</p>
       </span>
       
       <p class="shortcomment cmt">An auth handler that provides HTTP Basic Authentication support.</p>
-    </li><li name="io.vertx.scala.ext.web.handler.ErrorHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.vertx.scala.ext.web.handler.ErrorHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ErrorHandlerextendsHandler[io.vertx.scala.ext.web.RoutingContext]"></a><a id="ErrorHandler:ErrorHandler"></a>
       <span class="permalink">
       <a href="../../../../../../io/vertx/scala/ext/web/handler/index.html#ErrorHandlerextendsHandler[io.vertx.scala.ext.web.RoutingContext]" title="Permalink">
@@ -580,7 +586,12 @@ and writes them back in the response.</p>
         <a title="A pretty error handler for rendering error pages." href="ErrorHandler.html"><span class="name">ErrorHandler</span></a><span class="result"> extends <span class="extype" name="io.vertx.core.Handler">Handler</span>[<a href="../RoutingContext.html" class="extype" name="io.vertx.scala.ext.web.RoutingContext">RoutingContext</a>]</span>
       </span>
       
-      <p class="shortcomment cmt">A pretty error handler for rendering error pages.</p>
+      <p class="shortcomment cmt">A pretty error handler for rendering error pages.</p><div class="fullcomment"><div class="comment cmt"><p>A pretty error handler for rendering error pages. When working in development mode
+exception details will be returned in the server responses, otherwise or when
+manually specified no exception details are returned in the HTTP response.</p><p>The reason the display of the exception details is by default dependent of the mode
+is to follow the security best practices:
+<a href="https://www.owasp.org/index.php/Improper_Error_Handling">https://www.owasp.org/index.php/Improper_Error_Handling</a>
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.handler.FaviconHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="FaviconHandlerextendsHandler[io.vertx.scala.ext.web.RoutingContext]"></a><a id="FaviconHandler:FaviconHandler"></a>
       <span class="permalink">
@@ -631,7 +642,7 @@ and writes them back in the response.</p>
       </span>
       
       <p class="shortcomment cmt">An auth handler that provides JWT Authentication support.</p>
-    </li><li name="io.vertx.scala.ext.web.handler.LoggerHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="io.vertx.scala.ext.web.handler.LoggerHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="LoggerHandlerextendsHandler[io.vertx.scala.ext.web.RoutingContext]"></a><a id="LoggerHandler:LoggerHandler"></a>
       <span class="permalink">
       <a href="../../../../../../io/vertx/scala/ext/web/handler/index.html#LoggerHandlerextendsHandler[io.vertx.scala.ext.web.RoutingContext]" title="Permalink">
@@ -646,7 +657,32 @@ and writes them back in the response.</p>
         <a title="A handler which logs request information to the Vert.x logger." href="LoggerHandler.html"><span class="name">LoggerHandler</span></a><span class="result"> extends <span class="extype" name="io.vertx.core.Handler">Handler</span>[<a href="../RoutingContext.html" class="extype" name="io.vertx.scala.ext.web.RoutingContext">RoutingContext</a>]</span>
       </span>
       
-      <p class="shortcomment cmt">A handler which logs request information to the Vert.x logger.</p>
+      <p class="shortcomment cmt">A handler which logs request information to the Vert.x logger.</p><div class="fullcomment"><div class="comment cmt"><p>A handler which logs request information to the Vert.x logger.
+You should mount this handler before any handler that could fail the routing context
+</p></div></div>
+    </li><li name="io.vertx.scala.ext.web.handler.MultiTenantHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="MultiTenantHandlerextendsHandler[io.vertx.scala.ext.web.RoutingContext]"></a><a id="MultiTenantHandler:MultiTenantHandler"></a>
+      <span class="permalink">
+      <a href="../../../../../../io/vertx/scala/ext/web/handler/index.html#MultiTenantHandlerextendsHandler[io.vertx.scala.ext.web.RoutingContext]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="A handler which selectively executes another handler if a precondition is met." href="MultiTenantHandler.html"><span class="name">MultiTenantHandler</span></a><span class="result"> extends <span class="extype" name="io.vertx.core.Handler">Handler</span>[<a href="../RoutingContext.html" class="extype" name="io.vertx.scala.ext.web.RoutingContext">RoutingContext</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">A handler which selectively executes another handler if a precondition is met.</p><div class="fullcomment"><div class="comment cmt"><p>A handler which selectively executes another handler if a precondition is met.</p><p>There are cases where applications are build as multi tenant, in this cases one of the
+common tasks is to configure different authentication mechanisms for each tenant.</p><p>This handler will allow registering any other handler and will only execute it if
+the precondition is met. There are 2 way of defining a precondition:</p><ul><li>A http header value for example 
+<pre>
+X-Tenant
+</pre></li><li>A custom extractor function that can return a String from the context</li></ul><p>Requests that pass the validation will contain a new key in the routing context with
+the tenant id, for the case of being a default handler the value if this key will be &quot;default&quot;.
+</p></div></div>
     </li><li name="io.vertx.scala.ext.web.handler.OAuth2AuthHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="OAuth2AuthHandlerextendsAuthHandlerwithHandler[io.vertx.scala.ext.web.RoutingContext]"></a><a id="OAuth2AuthHandler:OAuth2AuthHandler"></a>
       <span class="permalink">
@@ -733,8 +769,7 @@ session.</p><div class="fullcomment"><div class="comment cmt"><p>A handler that 
 session.</p><p>It looks up the session for each request based on a session cookie which
 contains a session ID. It stores the session when the response is ended in
 the session store.</p><p>The session is available on the routing context with
-.</p><p>The session handler requires a <a href="CookieHandler.html" class="extype" name="io.vertx.scala.ext.web.handler.CookieHandler">io.vertx.scala.ext.web.handler.CookieHandler</a> to be on the routing
-chain before it.
+.
 </p></div></div>
     </li><li name="io.vertx.scala.ext.web.handler.StaticHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="StaticHandlerextendsHandler[io.vertx.scala.ext.web.RoutingContext]"></a><a id="StaticHandler:StaticHandler"></a>
@@ -1036,6 +1071,22 @@ to associate the session with.
       </span>
       <span class="symbol">
         <a title="" href="LoggerHandler$.html"><span class="name">LoggerHandler</span></a>
+      </span>
+      
+      
+    </li><li name="io.vertx.scala.ext.web.handler.MultiTenantHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MultiTenantHandler"></a><a id="MultiTenantHandler:MultiTenantHandler"></a>
+      <span class="permalink">
+      <a href="../../../../../../io/vertx/scala/ext/web/handler/index.html#MultiTenantHandler" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="MultiTenantHandler$.html"><span class="name">MultiTenantHandler</span></a>
       </span>
       
       

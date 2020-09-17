@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -366,11 +367,10 @@ exceptions that happens before the connection is passed to the <code><a href="..
 <h3 id="_event_bus_write_handler">Event bus write handler</h3>
 <div class="paragraph">
 <p>Every socket automatically registers a handler on the event bus, and when any buffers are received in this handler,
-it writes them to itself.</p>
+it writes them to itself. Those are local subscriptions not routed on the cluster.</p>
 </div>
 <div class="paragraph">
-<p>This enables you to write data to a socket which is potentially in a completely different verticle or even in a
-different Vert.x instance by sending the buffer to the address of that handler.</p>
+<p>This enables you to write data to a socket which is potentially in a completely different verticle by sending the buffer to the address of that handler.</p>
 </div>
 <div class="paragraph">
 <p>The address of the handler is given by <code><a href="../../jsdoc/module-vertx-js_net_socket-NetSocket.html#writeHandlerID">writeHandlerID</a></code></p>
@@ -406,11 +406,11 @@ classpath resolution or disabling it.</p>
 <h3 id="_streaming_sockets">Streaming sockets</h3>
 <div class="paragraph">
 <p>Instances of <code><a href="../../jsdoc/module-vertx-js_net_socket-NetSocket.html">NetSocket</a></code> are also <code><a href="../../jsdoc/module-vertx-js_read_stream-ReadStream.html">ReadStream</a></code> and
-<code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code> instances so they can be used to pump data to or from other
+<code><a href="../../jsdoc/module-vertx-js_write_stream-WriteStream.html">WriteStream</a></code> instances so they can be used to pipe data to or from other
 read and write streams.</p>
 </div>
 <div class="paragraph">
-<p>See the chapter on <a href="#streams">streams and pumps</a> for more information.</p>
+<p>See the chapter on <a href="#streams">streams</a> for more information.</p>
 </div>
 </div>
 <div class="sect2">
@@ -789,7 +789,10 @@ extension can also be loaded in a similar fashion than JKS key stores:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>PKCS8, PKCS1 and X.509 certificates wrapped in a PEM block formats are supported.</p>
+<p>Vert.x supports reading of unencrypted RSA and/or ECC based private keys from PKCS8 PEM files.
+RSA based private keys can also be read from PKCS1 PEM files.
+X.509 certificates can be read from PEM files containing a textual encoding of the certificate as defined by
+<a href="https://tools.ietf.org/html/rfc7468#section-5">RFC 7468, Section 5</a>.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -798,7 +801,9 @@ extension can also be loaded in a similar fashion than JKS key stores:</p>
 <div class="title">Warning</div>
 </td>
 <td class="content">
-keep in mind that pem configuration, the private key is not crypted.
+Keep in mind that the keys contained in an unencrypted PKCS8 or a PKCS1 PEM file can be extracted by
+anybody who can read the file. Thus, make sure to put proper access restrictions on such PEM files in order to
+prevent misuse.
 </td>
 </tr>
 </table>
@@ -1627,7 +1632,7 @@ to resolve the DNS address locally.</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:34 CET
+                Last updated 2020-09-16 10:26:32 CEST
               
               
             </div>

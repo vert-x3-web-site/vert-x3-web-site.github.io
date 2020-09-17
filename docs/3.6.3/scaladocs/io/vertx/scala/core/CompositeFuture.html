@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>vertx-lang-scala-docs_2.12 3.6.3 API  - io.vertx.scala.core.CompositeFuture</title>
-          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.3 API - io.vertx.scala.core.CompositeFuture" />
-          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.3 API io.vertx.scala.core.CompositeFuture" />
+          <title>vertx-lang-scala-docs_2.12 3.9.1 API  - io.vertx.scala.core.CompositeFuture</title>
+          <meta name="description" content="vertx - lang - scala - docs 2.12 3.9.1 API - io.vertx.scala.core.CompositeFuture" />
+          <meta name="keywords" content="vertx lang scala docs 2.12 3.9.1 API io.vertx.scala.core.CompositeFuture" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.3 API<span id="doc-version"></span></span>
+        <span id="doc-title">vertx-lang-scala-docs_2.12 3.9.1 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -229,6 +229,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="io.vertx.scala.core">core</a></dd></dl></div>
+    </li><li name="io.vertx.scala.core.json" visbl="pub" class="indented5 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="json"></a><a id="json:json"></a>
+      <span class="permalink">
+      <a href="../../../../io/vertx/scala/core/index.html#json" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="json/index.html"><span class="name">json</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="io.vertx.scala.core">core</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.metrics" visbl="pub" class="indented5 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="metrics"></a><a id="metrics:metrics"></a>
       <span class="permalink">
@@ -329,6 +345,10 @@
                         <a class="object" href="MultiMap$.html" title=""></a>
                         <a class="class" href="MultiMap.html" title="This class represents a MultiMap of String keys to a List of String values."></a>
                         <a href="MultiMap.html" title="This class represents a MultiMap of String keys to a List of String values.">MultiMap</a>
+                      </li><li class="current-entities indented4">
+                        <a class="object" href="Promise$.html" title=""></a>
+                        <a class="class" href="Promise.html" title="Represents the writable side of an action that may, or may not, have occurred yet."></a>
+                        <a href="Promise.html" title="Represents the writable side of an action that may, or may not, have occurred yet.">Promise</a>
                       </li><li class="current-entities indented4">
                         <a class="object" href="TimeoutStream$.html" title=""></a>
                         <a class="class" href="TimeoutStream.html" title="A timeout stream is triggered by a timer, the scala-function will be call when the timer is fired, it can be once or several times depending on the nature of the timer related to this stream."></a>
@@ -643,6 +663,26 @@ The handlers set for the coordinated futures are overridden by the handler of th
       
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>an handler completing this future</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a> → <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.CompositeFuture#compose" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="compose[U](successMapper:io.vertx.scala.core.CompositeFuture=&gt;io.vertx.scala.core.Future[U],failureMapper:Throwable=&gt;io.vertx.scala.core.Future[U])(implicitevidence$3:reflect.runtime.universe.TypeTag[U]):io.vertx.scala.core.Future[U]"></a><a id="compose[U]((CompositeFuture)⇒Future[U],(Throwable)⇒Future[U])(scala.reflect.api.JavaUniverse.TypeTag[U]):Future[U]"></a>
+      <span class="permalink">
+      <a href="../../../../io/vertx/scala/core/CompositeFuture.html#compose[U](successMapper:io.vertx.scala.core.CompositeFuture=&gt;io.vertx.scala.core.Future[U],failureMapper:Throwable=&gt;io.vertx.scala.core.Future[U])(implicitevidence$3:reflect.runtime.universe.TypeTag[U]):io.vertx.scala.core.Future[U]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">compose</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="successMapper">successMapper: (<a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a>) ⇒ <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a>[<span class="extype" name="io.vertx.scala.core.CompositeFuture.compose.U">U</span>]</span>, <span name="failureMapper">failureMapper: (<span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a>[<span class="extype" name="io.vertx.scala.core.CompositeFuture.compose.U">U</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.api.TypeTags.TypeTag">scala.reflect.api.JavaUniverse.TypeTag</span>[<span class="extype" name="io.vertx.scala.core.CompositeFuture.compose.U">U</span>]</span>)</span><span class="result">: <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a>[<span class="extype" name="io.vertx.scala.core.CompositeFuture.compose.U">U</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Compose this future with a <code>successMapper</code> and <code>failureMapper</code> functions.</p><div class="fullcomment"><div class="comment cmt"><p>Compose this future with a <code>successMapper</code> and <code>failureMapper</code> functions.</p><p>When this future (the one on which <code>compose</code> is called) succeeds, the <code>successMapper</code> will be called with
+the completed value and this mapper returns another future object. This returned future completion will complete
+the future returned by this method call.</p><p>When this future (the one on which <code>compose</code> is called) fails, the <code>failureMapper</code> will be called with
+the failure and this mapper returns another future object. This returned future completion will complete
+the future returned by this method call.</p><p>If any mapper function throws an exception, the returned future will be failed with this exception.   * @param successMapper the function mapping the success</p></div><dl class="paramcmts block"><dt class="param">failureMapper</dt><dd class="cmt"><p>the function mapping the failure</p></dd><dt>returns</dt><dd class="cmt"><p>the composed future</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a> → <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a></dd></dl></div>
+    </li><li name="io.vertx.scala.core.CompositeFuture#compose" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="compose[U](mapper:io.vertx.scala.core.CompositeFuture=&gt;io.vertx.scala.core.Future[U])(implicitevidence$2:reflect.runtime.universe.TypeTag[U]):io.vertx.scala.core.Future[U]"></a><a id="compose[U]((CompositeFuture)⇒Future[U])(scala.reflect.api.JavaUniverse.TypeTag[U]):Future[U]"></a>
       <span class="permalink">
       <a href="../../../../io/vertx/scala/core/CompositeFuture.html#compose[U](mapper:io.vertx.scala.core.CompositeFuture=&gt;io.vertx.scala.core.Future[U])(implicitevidence$2:reflect.runtime.universe.TypeTag[U]):io.vertx.scala.core.Future[U]" title="Permalink">
@@ -661,24 +701,6 @@ The handlers set for the coordinated futures are overridden by the handler of th
 the completed value and this mapper returns another future object. This returned future completion will complete
 the future returned by this method call.</p><p>If the <code>mapper</code> throws an exception, the returned future will be failed with this exception.</p><p>When this future fails, the failure will be propagated to the returned future and the <code>mapper</code>
 will not be called.   * @param mapper the mapper function</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the composed future</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a> → <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a></dd></dl></div>
-    </li><li name="io.vertx.scala.core.CompositeFuture#compose" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="compose[U](handler:io.vertx.core.Handler[io.vertx.scala.core.CompositeFuture],next:io.vertx.scala.core.Future[U])(implicitevidence$1:reflect.runtime.universe.TypeTag[U]):io.vertx.scala.core.Future[U]"></a><a id="compose[U](Handler[CompositeFuture],Future[U])(scala.reflect.api.JavaUniverse.TypeTag[U]):Future[U]"></a>
-      <span class="permalink">
-      <a href="../../../../io/vertx/scala/core/CompositeFuture.html#compose[U](handler:io.vertx.core.Handler[io.vertx.scala.core.CompositeFuture],next:io.vertx.scala.core.Future[U])(implicitevidence$1:reflect.runtime.universe.TypeTag[U]):io.vertx.scala.core.Future[U]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">compose</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a>]</span>, <span name="next">next: <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a>[<span class="extype" name="io.vertx.scala.core.CompositeFuture.compose.U">U</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.api.TypeTags.TypeTag">scala.reflect.api.JavaUniverse.TypeTag</span>[<span class="extype" name="io.vertx.scala.core.CompositeFuture.compose.U">U</span>]</span>)</span><span class="result">: <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a>[<span class="extype" name="io.vertx.scala.core.CompositeFuture.compose.U">U</span>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Compose this future with a provided <code>next</code> future.</p><div class="fullcomment"><div class="comment cmt"><p>Compose this future with a provided <code>next</code> future.</p><p>When this (the one on which <code>compose</code> is called) future succeeds, the <code>handler</code> will be called with
-the completed value, this handler should complete the next future.</p><p>If the <code>handler</code> throws an exception, the returned future will be failed with this exception.</p><p>When this future fails, the failure will be propagated to the <code>next</code> future and the <code>handler</code>
-will not be called.   * @param handler the handler</p></div><dl class="paramcmts block"><dt class="param">next</dt><dd class="cmt"><p>the next future</p></dd><dt>returns</dt><dd class="cmt"><p>the next future, used for chaining</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a> → <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -802,6 +824,23 @@ will not be called.   * @param handler the handler</p></div><dl class="paramcmts
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="io.vertx.scala.core.CompositeFuture#flatMap" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="flatMap[U](mapper:io.vertx.scala.core.CompositeFuture=&gt;io.vertx.scala.core.Future[U])(implicitevidence$1:reflect.runtime.universe.TypeTag[U]):io.vertx.scala.core.Future[U]"></a><a id="flatMap[U]((CompositeFuture)⇒Future[U])(scala.reflect.api.JavaUniverse.TypeTag[U]):Future[U]"></a>
+      <span class="permalink">
+      <a href="../../../../io/vertx/scala/core/CompositeFuture.html#flatMap[U](mapper:io.vertx.scala.core.CompositeFuture=&gt;io.vertx.scala.core.Future[U])(implicitevidence$1:reflect.runtime.universe.TypeTag[U]):io.vertx.scala.core.Future[U]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">flatMap</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="mapper">mapper: (<a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a>) ⇒ <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a>[<span class="extype" name="io.vertx.scala.core.CompositeFuture.flatMap.U">U</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.api.TypeTags.TypeTag">scala.reflect.api.JavaUniverse.TypeTag</span>[<span class="extype" name="io.vertx.scala.core.CompositeFuture.flatMap.U">U</span>]</span>)</span><span class="result">: <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a>[<span class="extype" name="io.vertx.scala.core.CompositeFuture.flatMap.U">U</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Alias for <a href="Future.html#compose[U](successMapper:T=&gt;io.vertx.scala.core.Future[U],failureMapper:Throwable=&gt;io.vertx.scala.core.Future[U])(implicitevidence$4:reflect.runtime.universe.TypeTag[U]):io.vertx.scala.core.Future[U]" class="extmbr" name="io.vertx.scala.core.Future#compose">io.vertx.scala.core.Future#compose</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Alias for <a href="Future.html#compose[U](successMapper:T=&gt;io.vertx.scala.core.Future[U],failureMapper:Throwable=&gt;io.vertx.scala.core.Future[U])(implicitevidence$4:reflect.runtime.universe.TypeTag[U]):io.vertx.scala.core.Future[U]" class="extmbr" name="io.vertx.scala.core.Future#compose">io.vertx.scala.core.Future#compose</a>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a> → <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -891,9 +930,9 @@ will not be called.   * @param handler the handler</p></div><dl class="paramcmts
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="io.vertx.scala.core.CompositeFuture#map" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="map[U](mapper:io.vertx.scala.core.CompositeFuture=&gt;U)(implicitevidence$3:reflect.runtime.universe.TypeTag[U]):io.vertx.scala.core.Future[U]"></a><a id="map[U]((CompositeFuture)⇒U)(scala.reflect.api.JavaUniverse.TypeTag[U]):Future[U]"></a>
+      <a id="map[U](mapper:io.vertx.scala.core.CompositeFuture=&gt;U)(implicitevidence$4:reflect.runtime.universe.TypeTag[U]):io.vertx.scala.core.Future[U]"></a><a id="map[U]((CompositeFuture)⇒U)(scala.reflect.api.JavaUniverse.TypeTag[U]):Future[U]"></a>
       <span class="permalink">
-      <a href="../../../../io/vertx/scala/core/CompositeFuture.html#map[U](mapper:io.vertx.scala.core.CompositeFuture=&gt;U)(implicitevidence$3:reflect.runtime.universe.TypeTag[U]):io.vertx.scala.core.Future[U]" title="Permalink">
+      <a href="../../../../io/vertx/scala/core/CompositeFuture.html#map[U](mapper:io.vertx.scala.core.CompositeFuture=&gt;U)(implicitevidence$4:reflect.runtime.universe.TypeTag[U]):io.vertx.scala.core.Future[U]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -909,9 +948,9 @@ will not be called.   * @param handler the handler</p></div><dl class="paramcmts
 returns a value. This value will complete the future returned by this method call.</p><p>If the <code>mapper</code> throws an exception, the returned future will be failed with this exception.</p><p>When this future fails, the failure will be propagated to the returned future and the <code>mapper</code>
 will not be called.   * @param mapper the mapper function</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the mapped future</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a> → <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.Future#map" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="map[V](value:V)(implicitevidence$5:reflect.runtime.universe.TypeTag[V]):io.vertx.scala.core.Future[V]"></a><a id="map[V](V)(scala.reflect.api.JavaUniverse.TypeTag[V]):Future[V]"></a>
+      <a id="map[V](value:V)(implicitevidence$6:reflect.runtime.universe.TypeTag[V]):io.vertx.scala.core.Future[V]"></a><a id="map[V](V)(scala.reflect.api.JavaUniverse.TypeTag[V]):Future[V]"></a>
       <span class="permalink">
-      <a href="../../../../io/vertx/scala/core/CompositeFuture.html#map[V](value:V)(implicitevidence$5:reflect.runtime.universe.TypeTag[V]):io.vertx.scala.core.Future[V]" title="Permalink">
+      <a href="../../../../io/vertx/scala/core/CompositeFuture.html#map[V](value:V)(implicitevidence$6:reflect.runtime.universe.TypeTag[V]):io.vertx.scala.core.Future[V]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -925,9 +964,9 @@ will not be called.   * @param mapper the mapper function</p></div><dl class="pa
       
       <p class="shortcomment cmt">Map the result of a future to a specific <code>value</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Map the result of a future to a specific <code>value</code>.</p><p>When this future succeeds, this <code>value</code> will complete the future returned by this method call.</p><p>When this future fails, the failure will be propagated to the returned future.   * @param value the value that eventually completes the mapped future</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the mapped future</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.Future#mapEmpty" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="mapEmpty[V]()(implicitevidence$6:reflect.runtime.universe.TypeTag[V]):io.vertx.scala.core.Future[V]"></a><a id="mapEmpty[V]()(scala.reflect.api.JavaUniverse.TypeTag[V]):Future[V]"></a>
+      <a id="mapEmpty[V]()(implicitevidence$7:reflect.runtime.universe.TypeTag[V]):io.vertx.scala.core.Future[V]"></a><a id="mapEmpty[V]()(scala.reflect.api.JavaUniverse.TypeTag[V]):Future[V]"></a>
       <span class="permalink">
-      <a href="../../../../io/vertx/scala/core/CompositeFuture.html#mapEmpty[V]()(implicitevidence$6:reflect.runtime.universe.TypeTag[V]):io.vertx.scala.core.Future[V]" title="Permalink">
+      <a href="../../../../io/vertx/scala/core/CompositeFuture.html#mapEmpty[V]()(implicitevidence$7:reflect.runtime.universe.TypeTag[V]):io.vertx.scala.core.Future[V]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -995,6 +1034,57 @@ will not be called.   * @param mapper the mapper function</p></div><dl class="pa
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="io.vertx.scala.core.CompositeFuture#onComplete" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onComplete(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.core.CompositeFuture]]):io.vertx.scala.core.CompositeFuture"></a><a id="onComplete(Handler[AsyncResult[CompositeFuture]]):CompositeFuture"></a>
+      <span class="permalink">
+      <a href="../../../../io/vertx/scala/core/CompositeFuture.html#onComplete(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[io.vertx.scala.core.CompositeFuture]]):io.vertx.scala.core.CompositeFuture" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onComplete</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Add a handler to be notified of the result.</p><div class="fullcomment"><div class="comment cmt"><p>Add a handler to be notified of the result.
+<br/>   * @param handler the handler that will be called with the result</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so it can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a> → <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a></dd></dl></div>
+    </li><li name="io.vertx.scala.core.CompositeFuture#onFailure" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onFailure(handler:io.vertx.core.Handler[Throwable]):io.vertx.scala.core.CompositeFuture"></a><a id="onFailure(Handler[Throwable]):CompositeFuture"></a>
+      <span class="permalink">
+      <a href="../../../../io/vertx/scala/core/CompositeFuture.html#onFailure(handler:io.vertx.core.Handler[Throwable]):io.vertx.scala.core.CompositeFuture" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onFailure</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="scala.Throwable">Throwable</span>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Add a handler to be notified of the failed result.</p><div class="fullcomment"><div class="comment cmt"><p>Add a handler to be notified of the failed result.
+<br/>   * @param handler the handler that will be called with the failed result</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so it can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a> → <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a></dd></dl></div>
+    </li><li name="io.vertx.scala.core.CompositeFuture#onSuccess" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onSuccess(handler:io.vertx.core.Handler[io.vertx.scala.core.CompositeFuture]):io.vertx.scala.core.CompositeFuture"></a><a id="onSuccess(Handler[CompositeFuture]):CompositeFuture"></a>
+      <span class="permalink">
+      <a href="../../../../io/vertx/scala/core/CompositeFuture.html#onSuccess(handler:io.vertx.core.Handler[io.vertx.scala.core.CompositeFuture]):io.vertx.scala.core.CompositeFuture" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onSuccess</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a>]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Add a handler to be notified of the succeeded result.</p><div class="fullcomment"><div class="comment cmt"><p>Add a handler to be notified of the succeeded result.
+<br/>   * @param handler the handler that will be called with the succeeded result</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so it can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a> → <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.CompositeFuture#otherwise" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="otherwise(value:io.vertx.scala.core.CompositeFuture):io.vertx.scala.core.Future[io.vertx.scala.core.CompositeFuture]"></a><a id="otherwise(CompositeFuture):Future[CompositeFuture]"></a>
       <span class="permalink">
@@ -1081,9 +1171,9 @@ If the mapper fails, then the returned future will be failed with this failure. 
       <p class="shortcomment cmt">The result of the operation.</p><div class="fullcomment"><div class="comment cmt"><p>The result of the operation. This will be null if the operation failed.   * @return the result or null if the operation failed.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a> → <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.CompositeFuture#resultAt" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="resultAt[T](index:Int)(implicitevidence$4:reflect.runtime.universe.TypeTag[T]):T"></a><a id="resultAt[T](Int)(scala.reflect.api.JavaUniverse.TypeTag[T]):T"></a>
+      <a id="resultAt[T](index:Int)(implicitevidence$5:reflect.runtime.universe.TypeTag[T]):T"></a><a id="resultAt[T](Int)(scala.reflect.api.JavaUniverse.TypeTag[T]):T"></a>
       <span class="permalink">
-      <a href="../../../../io/vertx/scala/core/CompositeFuture.html#resultAt[T](index:Int)(implicitevidence$4:reflect.runtime.universe.TypeTag[T]):T" title="Permalink">
+      <a href="../../../../io/vertx/scala/core/CompositeFuture.html#resultAt[T](index:Int)(implicitevidence$5:reflect.runtime.universe.TypeTag[T]):T" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -1112,8 +1202,7 @@ If the mapper fails, then the returned future will be failed with this failure. 
         <span class="name">setHandler</span><span class="params">(<span name="handler">handler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a></span>
       </span>
       
-      <p class="shortcomment cmt">Set a handler for the result.</p><div class="fullcomment"><div class="comment cmt"><p>Set a handler for the result.</p><p>If the future has already been completed it will be called immediately. Otherwise it will be called when the
-future is completed.   * @param handler the Handler that will be called with the result</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so it can be used fluently</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a> → <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a></dd></dl></div>
+      <p class="shortcomment cmt">Like <a href="Future.html#onComplete(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[T]]):io.vertx.scala.core.Future[T]" class="extmbr" name="io.vertx.scala.core.Future#onComplete">io.vertx.scala.core.Future#onComplete</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="Future.html#onComplete(handler:io.vertx.core.Handler[io.vertx.core.AsyncResult[T]]):io.vertx.scala.core.Future[T]" class="extmbr" name="io.vertx.scala.core.Future#onComplete">io.vertx.scala.core.Future#onComplete</a>.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="io.vertx.scala.core.CompositeFuture">CompositeFuture</a> → <a href="Future.html" class="extype" name="io.vertx.scala.core.Future">Future</a></dd></dl></div>
     </li><li name="io.vertx.scala.core.CompositeFuture#size" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="size():Int"></a>
       <span class="permalink">

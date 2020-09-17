@@ -266,7 +266,7 @@ scalability and low overhead.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-lang-groovy<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.9.2<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -280,7 +280,7 @@ scalability and low overhead.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
- compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-lang-groovy:3.9.2</span><span class="delimiter">'</span></span>
+ compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-lang-groovy:3.9.3</span><span class="delimiter">'</span></span>
 }</code></pre>
 </div>
 </div>
@@ -859,7 +859,7 @@ client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">INSERT INTO color (color_name) VALUES (</span><span class="content">$</span><span class="content">1), (</span><span class="content">$</span><span class="content">2), (</span><span class="content">$</span><span class="content">3) RETURNING color_id</span><span class="delimiter">&quot;</span></span>).execute(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">red</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">blue</span><span class="delimiter">&quot;</span></span>), { ar -&gt;
+<pre class="CodeRay highlight"><code data-lang="groovy">client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">INSERT INTO color (color_name) VALUES (</span><span class="char">\$</span><span class="content">1), (</span><span class="char">\$</span><span class="content">2), (</span><span class="char">\$</span><span class="content">3) RETURNING color_id</span><span class="delimiter">&quot;</span></span>).execute(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">white</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">red</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">blue</span><span class="delimiter">&quot;</span></span>), { ar -&gt;
   <span class="keyword">if</span> (ar.succeeded()) {
     <span class="keyword">def</span> rows = ar.result()
     println(rows.rowCount())
@@ -1323,7 +1323,14 @@ within a transaction, otherwise you will likely get the <code>34000</code> Postg
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">Code not translatable</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="comment">// Create a tuple with a single array</span>
+<span class="keyword">def</span> tuple = Tuple.of([<span class="string"><span class="delimiter">&quot;</span><span class="content">a</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">tuple</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">with</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">arrays</span><span class="delimiter">&quot;</span></span>])
+
+<span class="comment">// Add a string array to the tuple</span>
+tuple.addStringArray([<span class="string"><span class="delimiter">&quot;</span><span class="content">another</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">array</span><span class="delimiter">&quot;</span></span>])
+
+<span class="comment">// Get the first array of string</span>
+java.lang.String<span class="type">[]</span> array = tuple.getStringArray(<span class="integer">0</span>)</code></pre>
 </div>
 </div>
 </div>
@@ -1339,7 +1346,7 @@ within a transaction, otherwise you will likely get the <code>34000</code> Postg
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT address, (address).city FROM address_book WHERE id=</span><span class="content">$</span><span class="content">1</span><span class="delimiter">&quot;</span></span>).execute(Tuple.of(<span class="integer">3</span>), { ar -&gt;
+<pre class="CodeRay highlight"><code data-lang="groovy">client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT address, (address).city FROM address_book WHERE id=</span><span class="char">\$</span><span class="content">1</span><span class="delimiter">&quot;</span></span>).execute(Tuple.of(<span class="integer">3</span>), { ar -&gt;
   <span class="keyword">if</span> (ar.succeeded()) {
     <span class="keyword">def</span> rows = ar.result()
     rows.each { row -&gt;
@@ -1356,7 +1363,7 @@ within a transaction, otherwise you will likely get the <code>34000</code> Postg
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">INSERT INTO address_book (id, address) VALUES (</span><span class="content">$</span><span class="content">1, </span><span class="content">$</span><span class="content">2)</span><span class="delimiter">&quot;</span></span>).execute(Tuple.of(<span class="integer">3</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">('Anytown', 'Second Ave', false)</span><span class="delimiter">&quot;</span></span>), { ar -&gt;
+<pre class="CodeRay highlight"><code data-lang="groovy">client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">INSERT INTO address_book (id, address) VALUES (</span><span class="char">\$</span><span class="content">1, </span><span class="char">\$</span><span class="content">2)</span><span class="delimiter">&quot;</span></span>).execute(Tuple.of(<span class="integer">3</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">('Anytown', 'Second Ave', false)</span><span class="delimiter">&quot;</span></span>), { ar -&gt;
   <span class="keyword">if</span> (ar.succeeded()) {
     <span class="keyword">def</span> rows = ar.result()
     println(rows.rowCount())
@@ -1376,7 +1383,7 @@ within a transaction, otherwise you will likely get the <code>34000</code> Postg
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT to_tsvector( </span><span class="content">$</span><span class="content">1 ) @@ to_tsquery( </span><span class="content">$</span><span class="content">2 )</span><span class="delimiter">&quot;</span></span>).execute(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">fat cats ate fat rats</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">fat &amp; rat</span><span class="delimiter">&quot;</span></span>), { ar -&gt;
+<pre class="CodeRay highlight"><code data-lang="groovy">client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT to_tsvector( </span><span class="char">\$</span><span class="content">1 ) @@ to_tsquery( </span><span class="char">\$</span><span class="content">2 )</span><span class="delimiter">&quot;</span></span>).execute(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">fat cats ate fat rats</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">fat &amp; rat</span><span class="delimiter">&quot;</span></span>), { ar -&gt;
   <span class="keyword">if</span> (ar.succeeded()) {
     <span class="keyword">def</span> rows = ar.result()
     rows.each { row -&gt;
@@ -1393,7 +1400,7 @@ within a transaction, otherwise you will likely get the <code>34000</code> Postg
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT to_tsvector( </span><span class="content">$</span><span class="content">1 ), to_tsquery( </span><span class="content">$</span><span class="content">2 )</span><span class="delimiter">&quot;</span></span>).execute(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">fat cats ate fat rats</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">fat &amp; rat</span><span class="delimiter">&quot;</span></span>), { ar -&gt;
+<pre class="CodeRay highlight"><code data-lang="groovy">client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT to_tsvector( </span><span class="char">\$</span><span class="content">1 ), to_tsquery( </span><span class="char">\$</span><span class="content">2 )</span><span class="delimiter">&quot;</span></span>).execute(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">fat cats ate fat rats</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">fat &amp; rat</span><span class="delimiter">&quot;</span></span>), { ar -&gt;
   <span class="keyword">if</span> (ar.succeeded()) {
     <span class="keyword">def</span> rows = ar.result()
     rows.each { row -&gt;
@@ -1668,7 +1675,7 @@ PgConnection.connect(vertx, options, { res -&gt;
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2020-07-16 01:06:42 CEST
+                Last updated 2020-09-16 10:26:30 CEST
               
               
             </div>

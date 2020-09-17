@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -104,6 +105,7 @@
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
 <li><a href="#AuthOptions">AuthOptions</a></li>
+<li><a href="#JWTOptions">JWTOptions</a></li>
 <li><a href="#KeyStoreOptions">KeyStoreOptions</a></li>
 <li><a href="#PubSecKeyOptions">PubSecKeyOptions</a></li>
 <li><a href="#SecretOptions">SecretOptions</a></li>
@@ -115,6 +117,7 @@
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
 <li><a href="#AuthOptions">AuthOptions</a></li>
+<li><a href="#JWTOptions">JWTOptions</a></li>
 <li><a href="#KeyStoreOptions">KeyStoreOptions</a></li>
 <li><a href="#PubSecKeyOptions">PubSecKeyOptions</a></li>
 <li><a href="#SecretOptions">SecretOptions</a></li>
@@ -136,6 +139,92 @@ A common base object for authentication options.<p>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="JWTOptions">JWTOptions</h2>
+<div class="sectionbody">
+Options related to creation of new tokens.
+
+If any expiresInMinutes, audience, subject, issuer are not provided, there is no default.
+The jwt generated won't include those properties in the payload.
+
+Generated JWTs will include an iat claim by default unless noTimestamp is specified.
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="algorithm"></a><code>@algorithm</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="audience"></a><code>@audience</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="audiences"></a><code>@audiences</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="expiresInMinutes"></a><code>@expiresInMinutes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="expiresInSeconds"></a><code>@expiresInSeconds</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="header"></a><code>@header</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Json object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="ignoreExpiration"></a><code>@ignoreExpiration</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="issuer"></a><code>@issuer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="leeway"></a><code>@leeway</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="noTimestamp"></a><code>@noTimestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="permissions"></a><code>@permissions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array of String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The permissions of this token.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="subject"></a><code>@subject</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 </tr>
 </tbody>
 </table>
@@ -261,7 +350,7 @@ Options describing a secret.
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:30 CEST
               
               
             </div>

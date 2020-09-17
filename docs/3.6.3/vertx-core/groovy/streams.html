@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -253,9 +254,9 @@ get called when the write queue is ready to accept more data, this resumes the <
 allows more data to be read.</p>
 </div>
 <div class="paragraph">
-<p>Wanting to do this is quite common while writing Vert.x applications, so we provide a helper class
-called <code><a href="../../apidocs/io/vertx/core/streams/Pump.html">Pump</a></code> that does all of this hard work for you.
-You just feed it the <code>ReadStream</code> plus the <code>WriteStream</code> then start it:</p>
+<p>Wanting to do this is quite common while writing Vert.x applications, so we added the
+<code><a href="../../apidocs/io/vertx/core/streams/ReadStream.html#pipeTo-io.vertx.core.streams.WriteStream-">pipeTo</a></code> method that does all of this hard work for you.
+You just feed it the <code>WriteStream</code> and use it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -264,12 +265,115 @@ You just feed it the <code>ReadStream</code> plus the <code>WriteStream</code> t
   <span class="key">host</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>
 ])
 server.connectHandler({ sock -&gt;
-  Pump.pump(sock, sock).start()
+  sock.pipeTo(sock)
 }).listen()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This does exactly the same thing as the more verbose example.</p>
+<p>This does exactly the same thing as the more verbose example, plus it handles stream failures and termination: the
+destination <code>WriteStream</code> is ended when the pipe completes with success or a failure.</p>
+</div>
+<div class="paragraph">
+<p>You can be notified when the operation completes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">server.connectHandler({ sock -&gt;
+
+  <span class="comment">// Pipe the socket providing an handler to be notified of the result</span>
+  sock.pipeTo(sock, { ar -&gt;
+    <span class="keyword">if</span> (ar.succeeded()) {
+      println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Pipe succeeded</span><span class="delimiter">&quot;</span></span>)
+    } <span class="keyword">else</span> {
+      println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Pipe failed</span><span class="delimiter">&quot;</span></span>)
+    }
+  })
+}).listen()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you deal with an asynchronous destination, you can create a <code><a href="../../apidocs/io/vertx/core/streams/Pipe.html">Pipe</a></code> instance that
+pauses the source and resumes it when the source is piped to the destination:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">server.connectHandler({ sock -&gt;
+
+  <span class="comment">// Create a pipe to use asynchronously</span>
+  <span class="keyword">def</span> pipe = sock.pipe()
+
+  <span class="comment">// Open a destination file</span>
+  fs.open(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/file</span><span class="delimiter">&quot;</span></span>, [:], { ar -&gt;
+    <span class="keyword">if</span> (ar.succeeded()) {
+      <span class="keyword">def</span> file = ar.result()
+
+      <span class="comment">// Pipe the socket to the file and close the file at the end</span>
+      pipe.to(file)
+    } <span class="keyword">else</span> {
+      sock.close()
+    }
+  })
+}).listen()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you need to abort the transfer, you need to close it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">vertx.createHttpServer().requestHandler({ request -&gt;
+
+  <span class="comment">// Create a pipe that to use asynchronously</span>
+  <span class="keyword">def</span> pipe = request.pipe()
+
+  <span class="comment">// Open a destination file</span>
+  fs.open(<span class="string"><span class="delimiter">&quot;</span><span class="content">/path/to/file</span><span class="delimiter">&quot;</span></span>, [:], { ar -&gt;
+    <span class="keyword">if</span> (ar.succeeded()) {
+      <span class="keyword">def</span> file = ar.result()
+
+      <span class="comment">// Pipe the socket to the file and close the file at the end</span>
+      pipe.to(file)
+    } <span class="keyword">else</span> {
+      <span class="comment">// Close the pipe and resume the request, the body buffers will be discarded</span>
+      pipe.close()
+
+      <span class="comment">// Send an error response</span>
+      request.response().setStatusCode(<span class="integer">500</span>).end()
+    }
+  })
+}).listen(<span class="integer">8080</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the pipe is closed, the streams handlers are unset and the <code>ReadStream</code> resumed.</p>
+</div>
+<div class="paragraph">
+<p>As seen above, by default the destination is always ended when the stream completes, you can control this behavior
+on the pipe object:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><a href="../../apidocs/io/vertx/core/streams/Pipe.html#endOnFailure-boolean-">endOnFailure</a></code> controls the behavior when a failure happens</p>
+</li>
+<li>
+<p><code><a href="../../apidocs/io/vertx/core/streams/Pipe.html#endOnSuccess-boolean-">endOnSuccess</a></code> controls the behavior when the read stream ends</p>
+</li>
+<li>
+<p><code><a href="../../apidocs/io/vertx/core/streams/Pipe.html#endOnComplete-boolean-">endOnComplete</a></code> controls the behavior in all cases</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here is a short example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">src.pipe().endOnSuccess(<span class="predefined-constant">false</span>).to(dst, { rs -&gt;
+  <span class="comment">// Append some text and close the file</span>
+  dst.end(<span class="predefined-type">Buffer</span>.buffer(<span class="string"><span class="delimiter">&quot;</span><span class="content">done</span><span class="delimiter">&quot;</span></span>))
+})</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s now look at the methods on <code>ReadStream</code> and <code>WriteStream</code> in more detail:</p>
@@ -354,6 +458,34 @@ The handler will be called if the <code>WriteStream</code> is considered no long
 <div class="sect2">
 <h3 id="_pump">Pump</h3>
 <div class="paragraph">
+<p>The pump exposes a subset of the pipe API and only transfers the items between streams, it does not handle
+the completion or failure of the transfer operation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> server = vertx.createNetServer([
+  <span class="key">port</span>:<span class="integer">1234</span>,
+  <span class="key">host</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>
+])
+server.connectHandler({ sock -&gt;
+  Pump.pump(sock, sock).start()
+}).listen()</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+Before Vert.x 3.7 the <code><a href="../../apidocs/io/vertx/core/streams/Pump.html">Pump</a></code> was the advocated API for transferring a read stream to
+a write stream. Since 3.7 the pipe API supersedes the pump API.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
 <p>Instances of Pump have the following methods:</p>
 </div>
 <div class="ulist">
@@ -388,7 +520,7 @@ This has the same meaning as <code><a href="../../apidocs/io/vertx/core/streams/
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:30 CEST
               
               
             </div>

@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -465,70 +466,52 @@ It creates a page, fetches it, updates it then deletes it:</p>
     .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Sample</span><span class="delimiter">&quot;</span></span>)
     .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content"># A page</span><span class="delimiter">&quot;</span></span>);
 
-  <span class="predefined-type">Future</span>&lt;JsonObject&gt; postRequest = <span class="predefined-type">Future</span>.future();
+  Promise&lt;HttpResponse&lt;JsonObject&gt;&gt; postPagePromise = Promise.promise();
   webClient.post(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages</span><span class="delimiter">&quot;</span></span>)
     .as(BodyCodec.jsonObject())
-    .sendJsonObject(page, ar -&gt; {
-      <span class="keyword">if</span> (ar.succeeded()) {
-        HttpResponse&lt;JsonObject&gt; postResponse = ar.result();
-        postRequest.complete(postResponse.body());
-      } <span class="keyword">else</span> {
-        context.fail(ar.cause());
-      }
-    });
+    .sendJsonObject(page, postPagePromise);
 
-  <span class="predefined-type">Future</span>&lt;JsonObject&gt; getRequest = <span class="predefined-type">Future</span>.future();
-  postRequest.compose(h -&gt; {
+  <span class="predefined-type">Future</span>&lt;HttpResponse&lt;JsonObject&gt;&gt; getPageFuture = postPagePromise.future().compose(resp -&gt; {
+    Promise&lt;HttpResponse&lt;JsonObject&gt;&gt; promise = Promise.promise();
     webClient.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages</span><span class="delimiter">&quot;</span></span>)
       .as(BodyCodec.jsonObject())
-      .send(ar -&gt; {
-        <span class="keyword">if</span> (ar.succeeded()) {
-          HttpResponse&lt;JsonObject&gt; getResponse = ar.result();
-          getRequest.complete(getResponse.body());
-        } <span class="keyword">else</span> {
-          context.fail(ar.cause());
-        }
-      });
-  }, getRequest);
+      .send(promise);
+    <span class="keyword">return</span> promise.future();
+  });
 
-  <span class="predefined-type">Future</span>&lt;JsonObject&gt; putRequest = <span class="predefined-type">Future</span>.future();
-  getRequest.compose(response -&gt; {
-    JsonArray array = response.getJsonArray(<span class="string"><span class="delimiter">&quot;</span><span class="content">pages</span><span class="delimiter">&quot;</span></span>);
+  <span class="predefined-type">Future</span>&lt;HttpResponse&lt;JsonObject&gt;&gt; updatePageFuture = getPageFuture.compose(resp -&gt; {
+    JsonArray array = resp.body().getJsonArray(<span class="string"><span class="delimiter">&quot;</span><span class="content">pages</span><span class="delimiter">&quot;</span></span>);
     context.assertEquals(<span class="integer">1</span>, array.size());
     context.assertEquals(<span class="integer">0</span>, array.getJsonObject(<span class="integer">0</span>).getInteger(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>));
+    Promise&lt;HttpResponse&lt;JsonObject&gt;&gt; promise = Promise.promise();
+    JsonObject data = <span class="keyword">new</span> JsonObject()
+      .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="integer">0</span>)
+      .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Oh Yeah!</span><span class="delimiter">&quot;</span></span>);
     webClient.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages/0</span><span class="delimiter">&quot;</span></span>)
       .as(BodyCodec.jsonObject())
-      .sendJsonObject(<span class="keyword">new</span> JsonObject()
-        .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="integer">0</span>)
-        .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">markdown</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Oh Yeah!</span><span class="delimiter">&quot;</span></span>), ar -&gt; {
-        <span class="keyword">if</span> (ar.succeeded()) {
-          HttpResponse&lt;JsonObject&gt; putResponse = ar.result();
-          putRequest.complete(putResponse.body());
-        } <span class="keyword">else</span> {
-          context.fail(ar.cause());
-        }
-      });
-  }, putRequest);
+      .sendJsonObject(data, promise);
+    <span class="keyword">return</span> promise.future();
+  });
 
-  <span class="predefined-type">Future</span>&lt;JsonObject&gt; deleteRequest = <span class="predefined-type">Future</span>.future();
-  putRequest.compose(response -&gt; {
-    context.assertTrue(response.getBoolean(<span class="string"><span class="delimiter">&quot;</span><span class="content">success</span><span class="delimiter">&quot;</span></span>));
+  <span class="predefined-type">Future</span>&lt;HttpResponse&lt;JsonObject&gt;&gt; deletePageFuture = updatePageFuture.compose(resp -&gt; {
+    context.assertTrue(resp.body().getBoolean(<span class="string"><span class="delimiter">&quot;</span><span class="content">success</span><span class="delimiter">&quot;</span></span>));
+    Promise&lt;HttpResponse&lt;JsonObject&gt;&gt; promise = Promise.promise();
     webClient.delete(<span class="string"><span class="delimiter">&quot;</span><span class="content">/api/pages/0</span><span class="delimiter">&quot;</span></span>)
       .as(BodyCodec.jsonObject())
-      .send(ar -&gt; {
-        <span class="keyword">if</span> (ar.succeeded()) {
-          HttpResponse&lt;JsonObject&gt; delResponse = ar.result();
-          deleteRequest.complete(delResponse.body());
-        } <span class="keyword">else</span> {
-          context.fail(ar.cause());
-        }
-      });
-  }, deleteRequest);
+      .send(promise);
+    <span class="keyword">return</span> promise.future();
+  });
 
-  deleteRequest.compose(response -&gt; {
-    context.assertTrue(response.getBoolean(<span class="string"><span class="delimiter">&quot;</span><span class="content">success</span><span class="delimiter">&quot;</span></span>));
-    async.complete();
-  }, <span class="predefined-type">Future</span>.failedFuture(<span class="string"><span class="delimiter">&quot;</span><span class="content">Oh?</span><span class="delimiter">&quot;</span></span>));
+  deletePageFuture.setHandler(ar -&gt; {
+    <span class="keyword">if</span> (ar.succeeded()) {
+      context.assertTrue(ar.result().body().getBoolean(<span class="string"><span class="delimiter">&quot;</span><span class="content">success</span><span class="delimiter">&quot;</span></span>));
+      async.complete();
+    } <span class="keyword">else</span> {
+      context.fail(ar.cause());
+    }
+  });
+
+  async.awaitSuccess(<span class="integer">5000</span>);
 }</code></pre>
 </div>
 </div>
@@ -554,7 +537,7 @@ async future or the test will eventually time out.
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2018-11-29 10:01:34 CET
+                Last updated 2019-07-25 13:05:56 CEST
               
               
             </div>

@@ -73,12 +73,12 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName"><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">Vertx::Future</a></span></span>
+      <span class="inheritName"><span class='object_link'><a href="../Vertx/Promise.html" title="Vertx::Promise (class)">Vertx::Promise</a></span></span>
       
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next"><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">Vertx::Future</a></span></li>
+            <li class="next"><span class='object_link'><a href="../Vertx/Promise.html" title="Vertx::Promise (class)">Vertx::Promise</a></span></li>
           
             <li class="next">VertxBridgeCommon::BaseBridgeEvent</li>
           
@@ -265,28 +265,6 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#cause-instance_method" title="#cause (instance method)">- (Exception) <strong>cause</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>A Throwable describing failure.</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#complete-instance_method" title="#complete (instance method)">- (void) <strong>complete</strong>(result = nil) </a>
     
 
@@ -309,72 +287,6 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#complete%3F-instance_method" title="#complete? (instance method)">- (true, false) <strong>complete?</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>Has the future completed?    It's completed if it's either succeeded or failed.</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#completer-instance_method" title="#completer (instance method)">- (Proc) <strong>completer</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>An handler completing this future.</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#compose-instance_method" title="#compose (instance method)">- (::Vertx::Future) <strong>compose</strong>(param_1 = nil, param_2 = nil) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>Compose this future with a provided next future.</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#fail-instance_method" title="#fail (instance method)">- (void) <strong>fail</strong>(param_1 = nil) </a>
     
 
@@ -389,7 +301,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Try to set the failure.</div></span>
+    <span class="summary_desc"><div class='inline'>Calls <span class='object_link'><a href="../Vertx/Promise.html#fail-instance_method" title="Vertx::Promise#fail (method)">Vertx::Promise#fail</a></span> with the message.</div></span>
   
 </li>
 
@@ -397,7 +309,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#failed%3F-instance_method" title="#failed? (instance method)">- (true, false) <strong>failed?</strong> </a>
+      <a href="#future-instance_method" title="#future (instance method)">- (::Vertx::Future) <strong>future</strong> </a>
     
 
     
@@ -411,7 +323,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Did it fail?.</div></span>
+    <span class="summary_desc"><div class='inline'>The  associated with this promise, it can be used to be aware of the promise completion.</div></span>
   
 </li>
 
@@ -441,160 +353,6 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#map-instance_method" title="#map (instance method)">- (::Vertx::Future) <strong>map</strong>(param_1 = nil) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>Map the result of a future to a specific value.</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#map_empty-instance_method" title="#map_empty (instance method)">- (::Vertx::Future) <strong>map_empty</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>Map the result of a future to null.</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#otherwise-instance_method" title="#otherwise (instance method)">- (::Vertx::Future) <strong>otherwise</strong>(param_1 = nil) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>Map the failure of a future to a specific value.</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#otherwise_empty-instance_method" title="#otherwise_empty (instance method)">- (::Vertx::Future) <strong>otherwise_empty</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>Map the failure of a future to null.</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#recover-instance_method" title="#recover (instance method)">- (::Vertx::Future) <strong>recover</strong>(mapper = nil) { ... }</a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>Handles a failure of this Future by returning the result of another Future.</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#result%3F-instance_method" title="#result? (instance method)">- (true, false) <strong>result?</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>The result of the operation.</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#set_handler-instance_method" title="#set_handler (instance method)">- (self) <strong>set_handler</strong> { ... }</a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>Set a handler for the result.</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#set_raw_message-instance_method" title="#set_raw_message (instance method)">- (self) <strong>set_raw_message</strong>(message = nil) </a>
     
 
@@ -617,28 +375,6 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#succeeded%3F-instance_method" title="#succeeded? (instance method)">- (true, false) <strong>succeeded?</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>Did it succeed?.</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#try_complete%3F-instance_method" title="#try_complete? (instance method)">- (true, false) <strong>try_complete?</strong>(result = nil) </a>
     
 
@@ -653,7 +389,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Set the failure.</div></span>
+    <span class="summary_desc"><div class='inline'>Like <span class='object_link'><a href="../Vertx/Promise.html#complete-instance_method" title="Vertx::Promise#complete (method)">Vertx::Promise#complete</a></span> but returns false when the promise is already completed instead of throwing  an IllegalStateException, it returns true otherwise.</div></span>
   
 </li>
 
@@ -675,7 +411,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Try to set the failure.</div></span>
+    <span class="summary_desc"><div class='inline'>Calls <span class='object_link'><a href="../Vertx/Promise.html#fail-instance_method" title="Vertx::Promise#fail (method)">Vertx::Promise#fail</a></span> with the message.</div></span>
   
 </li>
 
@@ -714,8 +450,8 @@
   
   
   
-  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">Vertx::Future</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Vertx/Future.html#failed_future-class_method" title="Vertx::Future.failed_future (method)">failed_future</a></span>, <span class='object_link'><a href="../Vertx/Future.html#future-class_method" title="Vertx::Future.future (method)">future</a></span>, <span class='object_link'><a href="../Vertx/Future.html#result-instance_method" title="Vertx::Future#result (method)">#result</a></span>, <span class='object_link'><a href="../Vertx/Future.html#succeeded_future-class_method" title="Vertx::Future.succeeded_future (method)">succeeded_future</a></span></p>
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Vertx/Promise.html" title="Vertx::Promise (class)">Vertx::Promise</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Vertx/Promise.html#promise-class_method" title="Vertx::Promise.promise (method)">promise</a></span></p>
 
 
   <div id="class_method_details" class="method_details_list">
@@ -759,12 +495,12 @@
       <pre class="lines">
 
 
-21
 22
-23</pre>
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 21</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='cvar'>@@j_api_type</span><span class='period'>.</span><span class='id identifier rubyid_accept?'>accept?</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>BaseBridgeEvent</span>
@@ -789,12 +525,12 @@
       <pre class="lines">
 
 
-30
 31
-32</pre>
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 30</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_j_api_type'>j_api_type</span>
   <span class='cvar'>@@j_api_type</span>
@@ -819,12 +555,12 @@
       <pre class="lines">
 
 
-33
 34
-35</pre>
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 33</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_j_class'>j_class</span>
   <span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxExtBridge</span><span class='op'>::</span><span class='const'>BaseBridgeEvent</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span>
@@ -849,12 +585,12 @@
       <pre class="lines">
 
 
-27
 28
-29</pre>
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 27</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='cvar'>@@j_api_type</span><span class='period'>.</span><span class='id identifier rubyid_unwrap'>unwrap</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span>
@@ -879,12 +615,12 @@
       <pre class="lines">
 
 
-24
 25
-26</pre>
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 24</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='cvar'>@@j_api_type</span><span class='period'>.</span><span class='id identifier rubyid_wrap'>wrap</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
   <span class='const'>BaseBridgeEvent</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
@@ -901,81 +637,7 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="cause-instance_method">
-  
-    - (<tt>Exception</tt>) <strong>cause</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    A Throwable describing failure. This will be null if the operation succeeded.
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Exception</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>the cause or null if the operation succeeded.</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>ArgumentError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-119
-120
-121
-122
-123
-124</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 119</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_cause'>cause</span>
-  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_from_throwable'>from_throwable</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:cause</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling cause()</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="complete-instance_method">
+  <h3 class="signature first" id="complete-instance_method">
   
     - (<tt>void</tt>) <strong>complete</strong>(result = nil) 
   
@@ -985,7 +647,9 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note returns_void">This method returns an undefined value.</p>Set the result. Any handler will be called, if there is one, and the future will be marked as completed.
+    <p class="note returns_void">This method returns an undefined value.</p>Set the result. Any handler will be called, if there is one, and the promise will be marked as completed.
+ <p/>
+ Any handler set on the associated promise will be called.
 
   </div>
 </div>
@@ -1031,17 +695,17 @@
       <pre class="lines">
 
 
-62
-63
-64
-65
-66
-67
-68
-69</pre>
+42
+43
+44
+45
+46
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 62</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_complete'>complete</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_result'>result</span> <span class='op'>==</span> <span class='kw'>nil</span>
@@ -1057,341 +721,12 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="complete?-instance_method">
-  
-    - (<tt>true</tt>, <tt>false</tt>) <strong>complete?</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    Has the future completed?
- <p>
- It's completed if it's either succeeded or failed.
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>true if completed, false if not</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>ArgumentError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-40
-41
-42
-43
-44
-45</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 40</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_complete?'>complete?</span>
-  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:isComplete</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling complete?()</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="completer-instance_method">
-  
-    - (<tt>Proc</tt>) <strong>completer</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    Returns an handler completing this future
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Proc</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>an handler completing this future</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>ArgumentError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-197
-198
-199
-200
-201
-202
-203
-204
-205</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 197</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_completer'>completer</span>
-  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='kw'>if</span> <span class='ivar'>@cached_completer</span> <span class='op'>!=</span> <span class='kw'>nil</span>
-      <span class='kw'>return</span> <span class='ivar'>@cached_completer</span>
-    <span class='kw'>end</span>
-    <span class='kw'>return</span> <span class='ivar'>@cached_completer</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_to_async_result_handler_proc'>to_async_result_handler_proc</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:completer</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_val'>val</span><span class='op'>|</span> <span class='id identifier rubyid_val'>val</span> <span class='rbrace'>}</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling completer()</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="compose-instance_method">
-  
-    
-      <span class="overload">- (<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>) <strong>compose</strong>(mapper) { ... }</span>
-    
-      <span class="overload">- (<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>) <strong>compose</strong>(handler) </span>
-    
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    Compose this future with a provided <code>next</code> future.<p>
-
- When this (the one on which <code>compose</code> is called) future succeeds, the <code>handler</code> will be called with
- the completed value, this handler should complete the next future.<p>
-
- If the <code>handler</code> throws an exception, the returned future will be failed with this exception.<p>
-
- When this future fails, the failure will be propagated to the <code>next</code> future and the <code>handler</code>
- will not be called.
-
-  </div>
-</div>
-<div class="tags">
-  
-  <p class="tag_title">Overloads:</p>
-  <ul class="overload">
-    
-      
-      <li class="overload_item">
-        <span class="signature">- (<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>) <strong>compose</strong>(mapper) { ... }</span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Yields:</p>
-<ul class="yield">
-  
-    <li>
-      
-      
-        <span class='type'></span>
-      
-      
-      
-        
-        <div class='inline'>the mapper function</div>
-      
-    </li>
-  
-</ul>
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">- (<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>) <strong>compose</strong>(handler) </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>handler</span>
-      
-      
-        <span class='type'>(<tt>Proc</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>the handler</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>_next</span>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>the next future</div>
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-  </ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>the next future, used for chaining</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>ArgumentError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-156
-157
-158
-159
-160
-161
-162
-163</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 156</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_compose'>compose</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_param_2'>param_2</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_1'>param_1</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_2'>param_2</span> <span class='op'>==</span> <span class='kw'>nil</span>
-    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:compose</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>JavaUtilFunction</span><span class='op'>::</span><span class='const'>Function</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Future</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>elsif</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Proc</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_2'>param_2</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_method_defined?'>method_defined?</span><span class='lparen'>(</span><span class='symbol'>:j_del</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:compose</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='comma'>,</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Future</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='comma'>,</span><span class='id identifier rubyid_param_2'>param_2</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Future</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling compose(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_param_1'>param_1</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_param_2'>param_2</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
   <h3 class="signature " id="fail-instance_method">
   
     
       <span class="overload">- (<tt>void</tt>) <strong>fail</strong>(cause) </span>
     
-      <span class="overload">- (<tt>void</tt>) <strong>fail</strong>(failureMessage) </span>
+      <span class="overload">- (<tt>void</tt>) <strong>fail</strong>(message) </span>
     
   
 
@@ -1400,7 +735,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note returns_void">This method returns an undefined value.</p>Try to set the failure. When it happens, any handler will be called, if there is one, and the future will be marked as completed.
+    <p class="note returns_void">This method returns an undefined value.</p>Calls <span class='object_link'><a href="../Vertx/Promise.html#fail-instance_method" title="Vertx::Promise#fail (method)">Vertx::Promise#fail</a></span> with the <code>message</code>.
 
   </div>
 </div>
@@ -1444,7 +779,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">- (<tt>void</tt>) <strong>fail</strong>(failureMessage) </span>
+        <span class="signature">- (<tt>void</tt>) <strong>fail</strong>(message) </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -1457,7 +792,7 @@
   
     <li>
       
-        <span class='name'>failureMessage</span>
+        <span class='name'>message</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -1497,17 +832,17 @@
       <pre class="lines">
 
 
-76
-77
-78
-79
-80
-81
-82
-83</pre>
+56
+57
+58
+59
+60
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 76</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_fail'>fail</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Exception</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1523,9 +858,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="failed?-instance_method">
+  <h3 class="signature " id="future-instance_method">
   
-    - (<tt>true</tt>, <tt>false</tt>) <strong>failed?</strong> 
+    - (<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>) <strong>future</strong> 
   
 
   
@@ -1533,7 +868,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Did it fail?
+    Returns the  associated with this promise, it can be used to be aware of the promise completion
 
   </div>
 </div>
@@ -1545,12 +880,12 @@
     <li>
       
       
-        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>)</span>
       
       
       
         &mdash;
-        <div class='inline'>true if it failed or false otherwise</div>
+        <div class='inline'>the  associated with this promise, it can be used to be aware of the promise completion</div>
       
     </li>
   
@@ -1575,21 +910,27 @@
       <pre class="lines">
 
 
-135
-136
-137
-138
-139
-140</pre>
+91
+92
+93
+94
+95
+96
+97
+98
+99</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 135</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 91</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_failed?'>failed?</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_future'>future</span>
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:failed</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='ivar'>@cached_future</span> <span class='op'>!=</span> <span class='kw'>nil</span>
+      <span class='kw'>return</span> <span class='ivar'>@cached_future</span>
+    <span class='kw'>end</span>
+    <span class='kw'>return</span> <span class='ivar'>@cached_future</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:future</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Future</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling failed?()</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling future()</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1651,748 +992,21 @@
       <pre class="lines">
 
 
-262
-263
-264
-265
-266
-267</pre>
+114
+115
+116
+117
+118
+119</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 262</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 114</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_raw_message'>get_raw_message</span>
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
     <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:getRawMessage</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='op'>!=</span> <span class='kw'>nil</span> <span class='op'>?</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:getRawMessage</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_encode'>encode</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='kw'>nil</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling get_raw_message()</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="map-instance_method">
-  
-    
-      <span class="overload">- (<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>) <strong>map</strong>(mapper) { ... }</span>
-    
-      <span class="overload">- (<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>) <strong>map</strong>(value) </span>
-    
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    Map the result of a future to a specific <code>value</code>.<p>
-
- When this future succeeds, this <code>value</code> will complete the future returned by this method call.<p>
-
- When this future fails, the failure will be propagated to the returned future.
-
-  </div>
-</div>
-<div class="tags">
-  
-  <p class="tag_title">Overloads:</p>
-  <ul class="overload">
-    
-      
-      <li class="overload_item">
-        <span class="signature">- (<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>) <strong>map</strong>(mapper) { ... }</span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Yields:</p>
-<ul class="yield">
-  
-    <li>
-      
-      
-        <span class='type'></span>
-      
-      
-      
-        
-        <div class='inline'>the mapper function</div>
-      
-    </li>
-  
-</ul>
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">- (<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>) <strong>map</strong>(value) </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>value</span>
-      
-      
-        <span class='type'>(<tt>Object</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>the value that eventually completes the mapped future</div>
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-  </ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>the mapped future</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>ArgumentError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-174
-175
-176
-177
-178
-179
-180
-181</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 174</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_1'>param_1</span> <span class='op'>==</span> <span class='kw'>nil</span>
-    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:map</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>JavaUtilFunction</span><span class='op'>::</span><span class='const'>Function</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_to_object'>to_object</span><span class='lparen'>(</span><span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Future</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>elsif</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='id identifier rubyid_unknown_type'>unknown_type</span><span class='period'>.</span><span class='id identifier rubyid_accept?'>accept?</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:map</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='id identifier rubyid_java'>java</span><span class='period'>.</span><span class='id identifier rubyid_lang'>lang</span><span class='period'>.</span><span class='const'>Object</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_to_object'>to_object</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Future</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling map(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_param_1'>param_1</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="map_empty-instance_method">
-  
-    - (<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>) <strong>map_empty</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    Map the result of a future to <code>null</code>.<p>
-
- This is a conveniency for <code>future.map((T) null)</code> or <code>future.map((Void) null)</code>.<p>
-
- When this future succeeds, <code>null</code> will complete the future returned by this method call.<p>
-
- When this future fails, the failure will be propagated to the returned future.
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>the mapped future</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>ArgumentError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-190
-191
-192
-193
-194
-195</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 190</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_map_empty'>map_empty</span>
-  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:mapEmpty</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Future</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling map_empty()</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="otherwise-instance_method">
-  
-    
-      <span class="overload">- (<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>) <strong>otherwise</strong>(mapper) { ... }</span>
-    
-      <span class="overload">- (<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>) <strong>otherwise</strong>(value) </span>
-    
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    Map the failure of a future to a specific <code>value</code>.<p>
-
- When this future fails, this <code>value</code> will complete the future returned by this method call.<p>
-
- When this future succeeds, the result will be propagated to the returned future.
-
-  </div>
-</div>
-<div class="tags">
-  
-  <p class="tag_title">Overloads:</p>
-  <ul class="overload">
-    
-      
-      <li class="overload_item">
-        <span class="signature">- (<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>) <strong>otherwise</strong>(mapper) { ... }</span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Yields:</p>
-<ul class="yield">
-  
-    <li>
-      
-      
-        <span class='type'></span>
-      
-      
-      
-        
-        <div class='inline'>the mapper function</div>
-      
-    </li>
-  
-</ul>
-
-</div>
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">- (<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>) <strong>otherwise</strong>(value) </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>value</span>
-      
-      
-        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>the value that eventually completes the mapped future</div>
-      
-    </li>
-  
-</ul>
-
-
-</div>
-      </li>
-    
-  </ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>the mapped future</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>ArgumentError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-226
-227
-228
-229
-230
-231
-232
-233</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 226</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_otherwise'>otherwise</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_1'>param_1</span> <span class='op'>==</span> <span class='kw'>nil</span>
-    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:otherwise</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>JavaUtilFunction</span><span class='op'>::</span><span class='const'>Function</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_from_throwable'>from_throwable</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Future</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>elsif</span> <span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>TrueClass</span> <span class='op'>||</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>FalseClass</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:otherwise</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>JavaLang</span><span class='op'>::</span><span class='const'>Boolean</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Future</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling otherwise(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_param_1'>param_1</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="otherwise_empty-instance_method">
-  
-    - (<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>) <strong>otherwise_empty</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    Map the failure of a future to <code>null</code>.<p>
-
- This is a convenience for <code>future.otherwise((T) null)</code>.<p>
-
- When this future fails, the <code>null</code> value will complete the future returned by this method call.<p>
-
- When this future succeeds, the result will be propagated to the returned future.
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>the mapped future</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>ArgumentError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-242
-243
-244
-245
-246
-247</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 242</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_otherwise_empty'>otherwise_empty</span>
-  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:otherwiseEmpty</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Future</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling otherwise_empty()</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="recover-instance_method">
-  
-    - (<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>) <strong>recover</strong>(mapper = nil) { ... }
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    Handles a failure of this Future by returning the result of another Future.
- If the mapper fails, then the returned future will be failed with this failure.
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Yields:</p>
-<ul class="yield">
-  
-    <li>
-      
-      
-        <span class='type'></span>
-      
-      
-      
-        
-        <div class='inline'>A function which takes the exception of a failure and returns a new future.</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="../Vertx/Future.html" title="Vertx::Future (class)">::Vertx::Future</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>A recovered future</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>ArgumentError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-210
-211
-212
-213
-214
-215</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 210</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_recover'>recover</span><span class='lparen'>(</span><span class='id identifier rubyid_mapper'>mapper</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_mapper'>mapper</span> <span class='op'>==</span> <span class='kw'>nil</span>
-    <span class='kw'>return</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:recover</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>JavaUtilFunction</span><span class='op'>::</span><span class='const'>Function</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_from_throwable'>from_throwable</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_j_del'>j_del</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Future</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling recover(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_mapper'>mapper</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="result?-instance_method">
-  
-    - (<tt>true</tt>, <tt>false</tt>) <strong>result?</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    The result of the operation. This will be null if the operation failed.
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>the result or null if the operation failed.</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>ArgumentError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-111
-112
-113
-114
-115
-116</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 111</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_result?'>result?</span>
-  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:result</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling result?()</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="set_handler-instance_method">
-  
-    - (<tt>self</tt>) <strong>set_handler</strong> { ... }
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    Set a handler for the result.
- <p>
- If the future has already been completed it will be called immediately. Otherwise it will be called when the
- future is completed.
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Yields:</p>
-<ul class="yield">
-  
-    <li>
-      
-      
-        <span class='type'></span>
-      
-      
-      
-        
-        <div class='inline'>the Handler that will be called with the result</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>self</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>ArgumentError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-52
-53
-54
-55
-56
-57
-58</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 52</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_set_handler'>set_handler</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:setHandler</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ar'>ar</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_failed'>failed</span> <span class='op'>?</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_cause'>cause</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_succeeded'>succeeded</span> <span class='op'>?</span> <span class='id identifier rubyid_ar'>ar</span><span class='period'>.</span><span class='id identifier rubyid_result'>result</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='kw'>return</span> <span class='kw'>self</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling set_handler()</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2470,16 +1084,16 @@
       <pre class="lines">
 
 
-272
-273
-274
-275
-276
-277
-278</pre>
+124
+125
+126
+127
+128
+129
+130</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 272</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 124</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_raw_message'>set_raw_message</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Hash</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -2487,80 +1101,6 @@
     <span class='kw'>return</span> <span class='kw'>self</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling set_raw_message(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_message'>message</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="succeeded?-instance_method">
-  
-    - (<tt>true</tt>, <tt>false</tt>) <strong>succeeded?</strong> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    Did it succeed?
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>true if it succeded or false otherwise</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>ArgumentError</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-127
-128
-129
-130
-131
-132</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 127</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_succeeded?'>succeeded?</span>
-  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='kw'>return</span> <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:succeeded</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling succeeded?()</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2578,7 +1118,8 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Set the failure. Any handler will be called, if there is one, and the future will be marked as completed.
+    Like <span class='object_link'><a href="../Vertx/Promise.html#complete-instance_method" title="Vertx::Promise#complete (method)">Vertx::Promise#complete</a></span> but returns <code>false</code> when the promise is already completed instead of throwing
+ an IllegalStateException, it returns <code>true</code> otherwise.
 
   </div>
 </div>
@@ -2615,7 +1156,7 @@
       
       
         &mdash;
-        <div class='inline'>false when the future is already completed</div>
+        <div class='inline'><code>false</code> when the future is already completed</div>
       
     </li>
   
@@ -2640,17 +1181,17 @@
       <pre class="lines">
 
 
-87
-88
-89
-90
-91
-92
-93
-94</pre>
+68
+69
+70
+71
+72
+73
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 87</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_try_complete?'>try_complete?</span><span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_result'>result</span> <span class='op'>==</span> <span class='kw'>nil</span>
@@ -2671,7 +1212,7 @@
     
       <span class="overload">- (<tt>true</tt>, <tt>false</tt>) <strong>tryFail</strong>(cause) </span>
     
-      <span class="overload">- (<tt>true</tt>, <tt>false</tt>) <strong>tryFail</strong>(failureMessage) </span>
+      <span class="overload">- (<tt>true</tt>, <tt>false</tt>) <strong>tryFail</strong>(message) </span>
     
   
 
@@ -2680,7 +1221,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Try to set the failure. When it happens, any handler will be called, if there is one, and the future will be marked as completed.
+    Calls <span class='object_link'><a href="../Vertx/Promise.html#fail-instance_method" title="Vertx::Promise#fail (method)">Vertx::Promise#fail</a></span> with the <code>message</code>.
 
   </div>
 </div>
@@ -2724,7 +1265,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">- (<tt>true</tt>, <tt>false</tt>) <strong>tryFail</strong>(failureMessage) </span>
+        <span class="signature">- (<tt>true</tt>, <tt>false</tt>) <strong>tryFail</strong>(message) </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -2737,7 +1278,7 @@
   
     <li>
       
-        <span class='name'>failureMessage</span>
+        <span class='name'>message</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -2793,17 +1334,17 @@
       <pre class="lines">
 
 
-101
-102
-103
-104
-105
-106
-107
-108</pre>
+82
+83
+84
+85
+86
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 101</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_try_fail?'>try_fail?</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_param_1'>param_1</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Exception</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -2871,18 +1412,18 @@
       <pre class="lines">
 
 
-249
-250
-251
-252
-253
-254
-255
-256
-257</pre>
+101
+102
+103
+104
+105
+106
+107
+108
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 249</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx-bridge-common/base_bridge_event.rb', line 101</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_type'>type</span>
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -2903,7 +1444,7 @@
 </div>
 
     <div id="footer">
-  Generated on Wed Jan 30 21:08:06 2019 by
+  Generated on Wed Sep 16 10:09:50 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.3.3).
 </div>

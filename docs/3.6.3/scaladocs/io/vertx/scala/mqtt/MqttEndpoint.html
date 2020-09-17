@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>vertx-lang-scala-docs_2.12 3.6.3 API  - io.vertx.scala.mqtt.MqttEndpoint</title>
-          <meta name="description" content="vertx - lang - scala - docs 2.12 3.6.3 API - io.vertx.scala.mqtt.MqttEndpoint" />
-          <meta name="keywords" content="vertx lang scala docs 2.12 3.6.3 API io.vertx.scala.mqtt.MqttEndpoint" />
+          <title>vertx-lang-scala-docs_2.12 3.9.1 API  - io.vertx.scala.mqtt.MqttEndpoint</title>
+          <meta name="description" content="vertx - lang - scala - docs 2.12 3.9.1 API - io.vertx.scala.mqtt.MqttEndpoint" />
+          <meta name="keywords" content="vertx lang scala docs 2.12 3.9.1 API io.vertx.scala.mqtt.MqttEndpoint" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">vertx-lang-scala-docs_2.12 3.6.3 API<span id="doc-version"></span></span>
+        <span id="doc-title">vertx-lang-scala-docs_2.12 3.9.1 API<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -913,6 +913,22 @@ PINGRESP internally after executing this handler.   * @param handler the handler
       
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the protocol version required by the remote MQTT client</p></dd></dl></div>
     </li><li name="io.vertx.scala.mqtt.MqttEndpoint#publish" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="publish(topic:String,payload:io.vertx.core.buffer.Buffer,qosLevel:io.netty.handler.codec.mqtt.MqttQoS,isDup:Boolean,isRetain:Boolean,messageId:Int,publishSentHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Int]]):io.vertx.scala.mqtt.MqttEndpoint"></a><a id="publish(String,Buffer,MqttQoS,Boolean,Boolean,Int,Handler[AsyncResult[Int]]):MqttEndpoint"></a>
+      <span class="permalink">
+      <a href="../../../../io/vertx/scala/mqtt/MqttEndpoint.html#publish(topic:String,payload:io.vertx.core.buffer.Buffer,qosLevel:io.netty.handler.codec.mqtt.MqttQoS,isDup:Boolean,isRetain:Boolean,messageId:Int,publishSentHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Int]]):io.vertx.scala.mqtt.MqttEndpoint" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">publish</span><span class="params">(<span name="topic">topic: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="payload">payload: <span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span></span>, <span name="qosLevel">qosLevel: <span class="extype" name="io.netty.handler.codec.mqtt.MqttQoS">MqttQoS</span></span>, <span name="isDup">isDup: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="isRetain">isRetain: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="messageId">messageId: <span class="extype" name="scala.Int">Int</span></span>, <span name="publishSentHandler">publishSentHandler: <span class="extype" name="io.vertx.core.Handler">Handler</span>[<span class="extype" name="io.vertx.core.AsyncResult">AsyncResult</span>[<span class="extype" name="scala.Int">Int</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="io.vertx.scala.mqtt.MqttEndpoint">MqttEndpoint</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Sends the PUBLISH message to the remote MQTT server explicitly specifying the messageId   * @param topic topic on which the message is published</p><div class="fullcomment"><div class="comment cmt"><p>Sends the PUBLISH message to the remote MQTT server explicitly specifying the messageId   * @param topic topic on which the message is published</p></div><dl class="paramcmts block"><dt class="param">payload</dt><dd class="cmt"><p>message payload</p></dd><dt class="param">qosLevel</dt><dd class="cmt"><p>QoS level</p></dd><dt class="param">isDup</dt><dd class="cmt"><p>if the message is a duplicate</p></dd><dt class="param">isRetain</dt><dd class="cmt"><p>if the message needs to be retained</p></dd><dt class="param">messageId</dt><dd class="cmt"><p>message ID</p></dd><dt class="param">publishSentHandler</dt><dd class="cmt"><p>handler called after PUBLISH packet sent with a packetId</p></dd><dt>returns</dt><dd class="cmt"><p>current MQTT client instance</p></dd></dl></div>
+    </li><li name="io.vertx.scala.mqtt.MqttEndpoint#publish" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="publish(topic:String,payload:io.vertx.core.buffer.Buffer,qosLevel:io.netty.handler.codec.mqtt.MqttQoS,isDup:Boolean,isRetain:Boolean,publishSentHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Int]]):io.vertx.scala.mqtt.MqttEndpoint"></a><a id="publish(String,Buffer,MqttQoS,Boolean,Boolean,Handler[AsyncResult[Int]]):MqttEndpoint"></a>
       <span class="permalink">
       <a href="../../../../io/vertx/scala/mqtt/MqttEndpoint.html#publish(topic:String,payload:io.vertx.core.buffer.Buffer,qosLevel:io.netty.handler.codec.mqtt.MqttQoS,isDup:Boolean,isRetain:Boolean,publishSentHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Int]]):io.vertx.scala.mqtt.MqttEndpoint" title="Permalink">
@@ -1027,6 +1043,22 @@ message is received by the remote MQTT client   * @param handler the handler</p>
       <p class="shortcomment cmt">Set the pubcomp handler on the MQTT endpoint.</p><div class="fullcomment"><div class="comment cmt"><p>Set the pubcomp handler on the MQTT endpoint. This handler is called when a PUBCOMP
 message is received by the remote MQTT client   * @param handler the handler</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a reference to this, so the API can be used fluently</p></dd></dl></div>
     </li><li name="io.vertx.scala.mqtt.MqttEndpoint#publishFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="publishFuture(topic:String,payload:io.vertx.core.buffer.Buffer,qosLevel:io.netty.handler.codec.mqtt.MqttQoS,isDup:Boolean,isRetain:Boolean,messageId:Int):scala.concurrent.Future[Int]"></a><a id="publishFuture(String,Buffer,MqttQoS,Boolean,Boolean,Int):Future[Int]"></a>
+      <span class="permalink">
+      <a href="../../../../io/vertx/scala/mqtt/MqttEndpoint.html#publishFuture(topic:String,payload:io.vertx.core.buffer.Buffer,qosLevel:io.netty.handler.codec.mqtt.MqttQoS,isDup:Boolean,isRetain:Boolean,messageId:Int):scala.concurrent.Future[Int]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">publishFuture</span><span class="params">(<span name="topic">topic: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="payload">payload: <span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span></span>, <span name="qosLevel">qosLevel: <span class="extype" name="io.netty.handler.codec.mqtt.MqttQoS">MqttQoS</span></span>, <span name="isDup">isDup: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="isRetain">isRetain: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="messageId">messageId: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Like <a href="#publish(topic:String,payload:io.vertx.core.buffer.Buffer,qosLevel:io.netty.handler.codec.mqtt.MqttQoS,isDup:Boolean,isRetain:Boolean,messageId:Int,publishSentHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Int]]):io.vertx.scala.mqtt.MqttEndpoint" class="extmbr" name="io.vertx.scala.mqtt.MqttEndpoint#publish">publish</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
+    </li><li name="io.vertx.scala.mqtt.MqttEndpoint#publishFuture" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="publishFuture(topic:String,payload:io.vertx.core.buffer.Buffer,qosLevel:io.netty.handler.codec.mqtt.MqttQoS,isDup:Boolean,isRetain:Boolean):scala.concurrent.Future[Int]"></a><a id="publishFuture(String,Buffer,MqttQoS,Boolean,Boolean):Future[Int]"></a>
       <span class="permalink">
       <a href="../../../../io/vertx/scala/mqtt/MqttEndpoint.html#publishFuture(topic:String,payload:io.vertx.core.buffer.Buffer,qosLevel:io.netty.handler.codec.mqtt.MqttQoS,isDup:Boolean,isRetain:Boolean):scala.concurrent.Future[Int]" title="Permalink">
@@ -1041,7 +1073,7 @@ message is received by the remote MQTT client   * @param handler the handler</p>
         <span class="name">publishFuture</span><span class="params">(<span name="topic">topic: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="payload">payload: <span class="extype" name="io.vertx.core.buffer.Buffer">Buffer</span></span>, <span name="qosLevel">qosLevel: <span class="extype" name="io.netty.handler.codec.mqtt.MqttQoS">MqttQoS</span></span>, <span name="isDup">isDup: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="isRetain">isRetain: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Int">Int</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Like <a href="#publish(topic:String,payload:io.vertx.core.buffer.Buffer,qosLevel:io.netty.handler.codec.mqtt.MqttQoS,isDup:Boolean,isRetain:Boolean,publishSentHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Int]]):io.vertx.scala.mqtt.MqttEndpoint" class="extmbr" name="io.vertx.scala.mqtt.MqttEndpoint#publish">publish</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
+      <p class="shortcomment cmt">Like <a href="#publish(topic:String,payload:io.vertx.core.buffer.Buffer,qosLevel:io.netty.handler.codec.mqtt.MqttQoS,isDup:Boolean,isRetain:Boolean,messageId:Int,publishSentHandler:io.vertx.core.Handler[io.vertx.core.AsyncResult[Int]]):io.vertx.scala.mqtt.MqttEndpoint" class="extmbr" name="io.vertx.scala.mqtt.MqttEndpoint#publish">publish</a> but returns a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> instead of taking an AsyncResultHandler.</p>
     </li><li name="io.vertx.scala.mqtt.MqttEndpoint#publishHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="publishHandler(handler:io.vertx.core.Handler[io.vertx.scala.mqtt.messages.MqttPublishMessage]):io.vertx.scala.mqtt.MqttEndpoint"></a><a id="publishHandler(Handler[MqttPublishMessage]):MqttEndpoint"></a>
       <span class="permalink">

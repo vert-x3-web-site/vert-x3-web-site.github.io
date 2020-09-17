@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -238,7 +239,7 @@ fileSystem.open(&quot;myfile.txt&quot;, options, { res -&gt;
 </div>
 </div>
 <div class="paragraph">
-<p><code>AsyncFile</code> implements <code>ReadStream</code> and <code>WriteStream</code> so you can <em>pump</em>
+<p><code>AsyncFile</code> implements <code>ReadStream</code> and <code>WriteStream</code> so you can <em>pipe</em>
 files to and from other stream objects such as net sockets, http requests and responses, and WebSockets.</p>
 </div>
 <div class="paragraph">
@@ -384,7 +385,7 @@ cache by calling the <code><a href="../../apidocs/io/vertx/core/file/AsyncFile.h
 <h4 id="_using_asyncfile_as_readstream_and_writestream">Using AsyncFile as ReadStream and WriteStream</h4>
 <div class="paragraph">
 <p><code>AsyncFile</code> implements <code>ReadStream</code> and <code>WriteStream</code>. You can then
-use them with a <em>pump</em> to pump data to and from other read and write streams. For example, this would
+use them with a <em>pipe</em> to pipe data to and from other read and write streams. For example, this would
 copy the content to another <code>AsyncFile</code>:</p>
 </div>
 <div class="listingblock">
@@ -394,9 +395,10 @@ copy the content to another <code>AsyncFile</code>:</p>
 vertx.fileSystem().open(&quot;target/classes/les_miserables.txt&quot;, OpenOptions(), { result -&gt;
   if (result.succeeded()) {
     var file = result.result()
-    Pump.pump(file, output).start()
-    file.endHandler({ r -&gt;
-      println(&quot;Copy done&quot;)
+    file.pipeTo(output, { ar -&gt;
+      if (ar.succeeded()) {
+        println(&quot;Copy done&quot;)
+      }
     })
   } else {
     System.err.println(&quot;Cannot open file ${result.cause()}&quot;)
@@ -405,7 +407,7 @@ vertx.fileSystem().open(&quot;target/classes/les_miserables.txt&quot;, OpenOptio
 </div>
 </div>
 <div class="paragraph">
-<p>You can also use the <em>pump</em> to write file content into HTTP responses, or more generally in any
+<p>You can also use the <em>pipe</em> to write file content into HTTP responses, or more generally in any
 <code>WriteStream</code>.</p>
 </div>
 </div>
@@ -473,7 +475,7 @@ if you want to be notified when the close has been completed you can specify a h
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:34 CET
+                Last updated 2020-09-16 10:26:32 CEST
               
               
             </div>

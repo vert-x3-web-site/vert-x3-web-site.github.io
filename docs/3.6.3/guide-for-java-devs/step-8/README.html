@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -196,6 +197,11 @@ To enable it, start by adding the <code>vertx-rx-java2</code> module to the Mave
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
   <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>vertx-rx-java2<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>vertx-rx-java2-gen<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>${vertx.version}<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -244,7 +250,7 @@ When the operation completes, it emits the deployment <code>id</code> or signals
     <span class="keyword">return</span> httpVerticleDeployment;
   })
   .flatMap(id -&gt; vertx.rxDeployVerticle(<span class="string"><span class="delimiter">&quot;</span><span class="content">io.vertx.guides.wiki.http.AuthInitializerVerticle</span><span class="delimiter">&quot;</span></span>)) <b class="conum">(2)</b>
-  .subscribe(id -&gt; startFuture.complete(), startFuture::fail); <b class="conum">(3)</b></code></pre>
+  .subscribe(id -&gt; promise.complete(), promise::fail); <b class="conum">(3)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -301,7 +307,7 @@ the <code>getDelegate()</code> method. Verticle&#8217;s <code>start()</code> met
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
-<span class="directive">public</span> <span class="type">void</span> start(<span class="predefined-type">Future</span>&lt;<span class="predefined-type">Void</span>&gt; startFuture) <span class="directive">throws</span> <span class="exception">Exception</span> {
+<span class="directive">public</span> <span class="type">void</span> start(Promise&lt;<span class="predefined-type">Void</span>&gt; promise) <span class="directive">throws</span> <span class="exception">Exception</span> {
 
   <span class="predefined-type">String</span> wikiDbQueue = config().getString(CONFIG_WIKIDB_QUEUE, <span class="string"><span class="delimiter">&quot;</span><span class="content">wikidb.queue</span><span class="delimiter">&quot;</span></span>);
   dbService = io.vertx.guides.wiki.database.WikiDatabaseService.createProxy(vertx.getDelegate(), wikiDbQueue);</code></pre>
@@ -513,7 +519,7 @@ And it comes with an extensive set of data manipulation operators.</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2018-11-29 10:01:34 CET
+                Last updated 2019-07-25 13:05:56 CEST
               
               
             </div>

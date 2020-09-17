@@ -10,9 +10,7 @@
 <h1>callWithParamsAwait</h1>
 <a name="io.vertx.kotlin.ext.sql$callWithParamsAwait(io.vertx.ext.sql.SQLOperations, kotlin.String, io.vertx.core.json.JsonArray, io.vertx.core.json.JsonArray)"></a>
 <code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">SQLOperations</span><span class="symbol">.</span><span class="identifier">callWithParamsAwait</span><span class="symbol">(</span><span class="identifier" id="io.vertx.kotlin.ext.sql$callWithParamsAwait(io.vertx.ext.sql.SQLOperations, kotlin.String, io.vertx.core.json.JsonArray, io.vertx.core.json.JsonArray)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.sql$callWithParamsAwait(io.vertx.ext.sql.SQLOperations, kotlin.String, io.vertx.core.json.JsonArray, io.vertx.core.json.JsonArray)/params">params</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">, </span><span class="identifier" id="io.vertx.kotlin.ext.sql$callWithParamsAwait(io.vertx.ext.sql.SQLOperations, kotlin.String, io.vertx.core.json.JsonArray, io.vertx.core.json.JsonArray)/outputs">outputs</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonArray</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultSet</span></code>
-<p>Calls the given SQL PROCEDURE which returns the result from the procedure.</p>
-<p>The index of params and outputs are important for both arrays, for example when dealing with a prodecure that
-takes the first 2 arguments as input values and the 3 arg as an output then the arrays should be like:</p>
+<p>Suspending version of method <a href="#">io.vertx.ext.sql.SQLOperations.callWithParams</a></p>
 <h3>Parameters</h3>
 <p><a name="sql"></a>
 <code>sql</code> - the SQL to execute. For example {call getEmpName (?, ?)}.</p>
@@ -21,10 +19,10 @@ takes the first 2 arguments as input values and the 3 arg as an output then the 
 <p><a name="outputs"></a>
 <code>outputs</code> - these are the outputs to fill the statement.</p>
 <p><strong>Return</strong><br/>
-<ul><li></li>
-</ul>
+<p><a href="#">ResultSet</a></p>
 
 
+<p>NOTE: This function has been automatically generated from <a href="#">io.vertx.ext.sql.SQLOperations</a> using Vert.x codegen.</p>
 </p>
 </BODY>
 </HTML>

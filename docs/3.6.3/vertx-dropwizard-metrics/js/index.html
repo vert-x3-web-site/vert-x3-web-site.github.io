@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -229,7 +230,7 @@ interface which is implemented by various Vert.x components like <code><a href="
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-dropwizard-metrics<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -242,7 +243,7 @@ interface which is implemented by various Vert.x components like <code><a href="
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-dropwizard-metrics:3.6.3</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-dropwizard-metrics:3.9.3</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -652,6 +653,15 @@ that are specific for that particular http server.</p>
 <p><code>messages.pending-remote</code> - A <a href="#counter">Counter</a> of the number of messages remotely received but not yet processed by an handler</p>
 </li>
 <li>
+<p><code>messages.discarded</code> - A <a href="#counter">Counter</a> of the number of messages discarded by an handler</p>
+</li>
+<li>
+<p><code>messages.discarded-local</code> - A <a href="#counter">Counter</a> of the number of messages locally discarded by an handler</p>
+</li>
+<li>
+<p><code>messages.discarded-remote</code> - A <a href="#counter">Counter</a> of the number of messages remotely discarded by an handler</p>
+</li>
+<li>
 <p><code>messages.received</code> - A <a href="#throughput_meter">ThroughputMeter</a> representing the rate of which messages are being received</p>
 </li>
 <li>
@@ -790,7 +800,7 @@ if you use regex match, a wrong regex can potentially match a lot of handlers.
 </ul>
 </div>
 <div class="paragraph">
-<p>Http URI metrics must be explicitely configured in the options either by exact match or regex match:</p>
+<p>Http URI metrics must be explicitly configured in the options either by exact match or regex match:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -814,7 +824,8 @@ if you use regex match, a wrong regex can potentially match a lot of handlers.
 <div class="paragraph">
 <p>In case if the uri contains some path parameters like <code>/users/:userId</code> it might not make sense to have a separate entry in the registry for each user
 id (like <code>get-requests./users/1</code>, <code>get-requests./users/2</code> and so on) but a summarized one. To achieve that you can set an alias to the match instance
-in this case the alias will be used as a part of the registry name instead of uri like <code>&lt;http-method&gt;-requests.&lt;alias&gt;</code></p>
+in this case the alias will be used as a part of the registry name instead of uri like <code>&lt;http-method&gt;-requests.&lt;alias&gt;</code>.
+In addition there will be separate counters for each response group for each defined alias like <code>responses-&lt;code&gt;.&lt;alias&gt;</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1335,7 +1346,7 @@ details about check configuration.</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:34 CET
+                Last updated 2020-09-16 10:26:32 CEST
               
               
             </div>

@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -146,10 +147,7 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>When you compose a Vert.x application, you may want to isolate a functionality somewhere and make it available to
-the rest of your application.</p>
-</div>
-<div class="paragraph">
-<p>That&#8217;s the main purpose of service proxies. It lets you expose a <em>service</em> on the
+the rest of your application. That&#8217;s the main purpose of service proxies. It lets you expose a <em>service</em> on the
 event bus, so, any other Vert.x component can consume it, as soon as they know the <em>address</em> on which the service
 is published.</p>
 </div>
@@ -177,9 +175,9 @@ your build descriptor:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
-  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
-  <span class="tag">&lt;artifactId&gt;</span>vertx-service-proxy<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
+ <span class="tag">&lt;artifactId&gt;</span>vertx-service-proxy<span class="tag">&lt;/artifactId&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -192,7 +190,7 @@ your build descriptor:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-service-proxy:3.6.3</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-service-proxy:3.9.3</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -208,10 +206,10 @@ your build descriptor:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
-  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
-  <span class="tag">&lt;artifactId&gt;</span>vertx-codegen<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
-  <span class="tag">&lt;scope&gt;</span>provided<span class="tag">&lt;/scope&gt;</span>
+ <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
+ <span class="tag">&lt;artifactId&gt;</span>vertx-codegen<span class="tag">&lt;/artifactId&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;scope&gt;</span>provided<span class="tag">&lt;/scope&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -224,7 +222,7 @@ your build descriptor:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compileOnly <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-codegen:3.6.3</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">compileOnly <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-codegen:3.9.3</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -250,7 +248,7 @@ exposed on the event bus, you should do something like this:</p>
 message.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">collection</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">mycollection</span><span class="delimiter">&quot;</span></span>)
     .put(<span class="string"><span class="delimiter">&quot;</span><span class="content">document</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> JsonObject().put(<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">tim</span><span class="delimiter">&quot;</span></span>));
 DeliveryOptions options = <span class="keyword">new</span> DeliveryOptions().addHeader(<span class="string"><span class="delimiter">&quot;</span><span class="content">action</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">save</span><span class="delimiter">&quot;</span></span>);
-vertx.eventBus().send(<span class="string"><span class="delimiter">&quot;</span><span class="content">database-service-address</span><span class="delimiter">&quot;</span></span>, message, options, res2 -&gt; {
+vertx.eventBus().request(<span class="string"><span class="delimiter">&quot;</span><span class="content">database-service-address</span><span class="delimiter">&quot;</span></span>, message, options, res2 -&gt; {
   <span class="keyword">if</span> (res2.succeeded()) {
     <span class="comment">// done</span>
   } <span class="keyword">else</span> {
@@ -274,19 +272,19 @@ messages, route them to the appropriate method and return results on the event b
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ProxyGen</span>
 <span class="directive">public</span> <span class="type">interface</span> <span class="class">SomeDatabaseService</span> {
 
-  <span class="comment">// A couple of factory methods to create an instance and a proxy</span>
-  <span class="directive">static</span> SomeDatabaseService create(Vertx vertx) {
-    <span class="keyword">return</span> <span class="keyword">new</span> SomeDatabaseServiceImpl(vertx);
-  }
+ <span class="comment">// A couple of factory methods to create an instance and a proxy</span>
+ <span class="directive">static</span> SomeDatabaseService create(Vertx vertx) {
+   <span class="keyword">return</span> <span class="keyword">new</span> SomeDatabaseServiceImpl(vertx);
+ }
 
-  <span class="directive">static</span> SomeDatabaseService createProxy(Vertx vertx,
-    <span class="predefined-type">String</span> address) {
-    <span class="keyword">return</span> <span class="keyword">new</span> SomeDatabaseServiceVertxEBProxy(vertx, address);
-  }
+ <span class="directive">static</span> SomeDatabaseService createProxy(Vertx vertx,
+   <span class="predefined-type">String</span> address) {
+   <span class="keyword">return</span> <span class="keyword">new</span> SomeDatabaseServiceVertxEBProxy(vertx, address);
+ }
 
- <span class="comment">// Actual service operations here...</span>
- <span class="type">void</span> save(<span class="predefined-type">String</span> collection, JsonObject document,
-   <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;<span class="predefined-type">Void</span>&gt;&gt; resultHandler);
+<span class="comment">// Actual service operations here...</span>
+<span class="type">void</span> save(<span class="predefined-type">String</span> collection, JsonObject document,
+  <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;<span class="predefined-type">Void</span>&gt;&gt; resultHandler);
 }</code></pre>
 </div>
 </div>
@@ -323,7 +321,7 @@ the event bus entirely. For this don&#8217;t forget to add the dependency on you
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ProxyGen</span> <span class="comment">// Generate service proxies</span>
 <span class="annotation">@VertxGen</span> <span class="comment">// Generate the clients</span>
 <span class="directive">public</span> <span class="type">interface</span> <span class="class">SomeDatabaseService</span> {
-  <span class="comment">// ...</span>
+ <span class="comment">// ...</span>
 }</code></pre>
 </div>
 </div>
@@ -345,27 +343,27 @@ should follow the async pattern. To return a result, the method should declare a
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ProxyGen</span>
 <span class="directive">public</span> <span class="type">interface</span> <span class="class">SomeDatabaseService</span> {
 
- <span class="comment">// A couple of factory methods to create an instance and a proxy</span>
+<span class="comment">// A couple of factory methods to create an instance and a proxy</span>
 
- <span class="directive">static</span> SomeDatabaseService create(Vertx vertx) {
-   <span class="keyword">return</span> <span class="keyword">new</span> SomeDatabaseServiceImpl(vertx);
- }
+<span class="directive">static</span> SomeDatabaseService create(Vertx vertx) {
+  <span class="keyword">return</span> <span class="keyword">new</span> SomeDatabaseServiceImpl(vertx);
+}
 
- <span class="directive">static</span> SomeDatabaseService createProxy(Vertx vertx, <span class="predefined-type">String</span> address) {
-   <span class="keyword">return</span> <span class="keyword">new</span> SomeDatabaseServiceVertxEBProxy(vertx, address);
- }
+<span class="directive">static</span> SomeDatabaseService createProxy(Vertx vertx, <span class="predefined-type">String</span> address) {
+  <span class="keyword">return</span> <span class="keyword">new</span> SomeDatabaseServiceVertxEBProxy(vertx, address);
+}
 
- <span class="comment">// A method notifying the completion without a result (void)</span>
- <span class="type">void</span> save(<span class="predefined-type">String</span> collection, JsonObject document,
-   <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;<span class="predefined-type">Void</span>&gt;&gt; result);
+<span class="comment">// A method notifying the completion without a result (void)</span>
+<span class="type">void</span> save(<span class="predefined-type">String</span> collection, JsonObject document,
+  <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;<span class="predefined-type">Void</span>&gt;&gt; result);
 
- <span class="comment">// A method providing a result (a json object)</span>
- <span class="type">void</span> findOne(<span class="predefined-type">String</span> collection, JsonObject query,
-   <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;JsonObject&gt;&gt; result);
+<span class="comment">// A method providing a result (a json object)</span>
+<span class="type">void</span> findOne(<span class="predefined-type">String</span> collection, JsonObject query,
+  <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;JsonObject&gt;&gt; result);
 
- <span class="comment">// Create a connection</span>
- <span class="type">void</span> createConnection(<span class="predefined-type">String</span> shoeSize,
-   <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;MyDatabaseConnection&gt;&gt; resultHandler);
+<span class="comment">// Create a connection</span>
+<span class="type">void</span> createConnection(<span class="predefined-type">String</span> shoeSize,
+  <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;MyDatabaseConnection&gt;&gt; resultHandler);
 
 }</code></pre>
 </div>
@@ -379,12 +377,12 @@ should follow the async pattern. To return a result, the method should declare a
 <span class="annotation">@VertxGen</span>
 <span class="directive">public</span> <span class="type">interface</span> <span class="class">MyDatabaseConnection</span> {
 
- <span class="type">void</span> insert(JsonObject someData);
+<span class="type">void</span> insert(JsonObject someData);
 
- <span class="type">void</span> commit(<span class="predefined-type">Handler</span>&lt;AsyncResult&lt;<span class="predefined-type">Void</span>&gt;&gt; resultHandler);
+<span class="type">void</span> commit(<span class="predefined-type">Handler</span>&lt;AsyncResult&lt;<span class="predefined-type">Void</span>&gt;&gt; resultHandler);
 
- <span class="annotation">@ProxyClose</span>
- <span class="type">void</span> close();
+<span class="annotation">@ProxyClose</span>
+<span class="type">void</span> close();
 }</code></pre>
 </div>
 </div>
@@ -436,15 +434,15 @@ dependencies to your build.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
-  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
-  <span class="tag">&lt;artifactId&gt;</span>vertx-codegen<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
-  <span class="tag">&lt;classifier&gt;</span>processor<span class="tag">&lt;/classifier&gt;</span>
+ <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
+ <span class="tag">&lt;artifactId&gt;</span>vertx-codegen<span class="tag">&lt;/artifactId&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;classifier&gt;</span>processor<span class="tag">&lt;/classifier&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;dependency&gt;</span>
-  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
-  <span class="tag">&lt;artifactId&gt;</span>vertx-service-proxy<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
+ <span class="tag">&lt;artifactId&gt;</span>vertx-service-proxy<span class="tag">&lt;/artifactId&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -453,8 +451,8 @@ dependencies to your build.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>compile "io.vertx:vertx-codegen:3.6.3:processor"
-compile "io.vertx:vertx-service-proxy:3.6.3"</code></pre>
+<pre class="CodeRay highlight"><code>compile "io.vertx:vertx-codegen:3.9.3:processor"
+compile "io.vertx:vertx-service-proxy:3.9.3"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -471,12 +469,12 @@ explicitly, for instance in Maven:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
-  <span class="tag">&lt;artifactId&gt;</span>maven-compiler-plugin<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;configuration&gt;</span>
-    <span class="tag">&lt;annotationProcessors&gt;</span>
-      <span class="tag">&lt;annotationProcessor&gt;</span>io.vertx.codegen.CodeGenProcessor<span class="tag">&lt;/annotationProcessor&gt;</span>
-    <span class="tag">&lt;/annotationProcessors&gt;</span>
-  <span class="tag">&lt;/configuration&gt;</span>
+ <span class="tag">&lt;artifactId&gt;</span>maven-compiler-plugin<span class="tag">&lt;/artifactId&gt;</span>
+ <span class="tag">&lt;configuration&gt;</span>
+   <span class="tag">&lt;annotationProcessors&gt;</span>
+     <span class="tag">&lt;annotationProcessor&gt;</span>io.vertx.codegen.CodeGenProcessor<span class="tag">&lt;/annotationProcessor&gt;</span>
+   <span class="tag">&lt;/annotationProcessors&gt;</span>
+ <span class="tag">&lt;/configuration&gt;</span>
 <span class="tag">&lt;/plugin&gt;</span></code></pre>
 </div>
 </div>
@@ -533,7 +531,7 @@ binder.unregister(consumer);</code></pre>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Now that the service is exposed, you probably want to consume it. For this, you need to create a proxy. The proxy
-can be created using the <code>ProxyHelper</code> class:</p>
+can be created using the <code><a href="../../apidocs/io/vertx/serviceproxy/ServiceProxyBuilder.html">ServiceProxyBuilder</a></code> class:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -561,12 +559,12 @@ class is named <code>SomeDatabaseServiceVertxEBProxy</code>.</p>
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ProxyGen</span>
 <span class="directive">public</span> <span class="type">interface</span> <span class="class">SomeDatabaseService</span> {
 
- <span class="comment">// Method to create the proxy.</span>
- <span class="directive">static</span> SomeDatabaseService createProxy(Vertx vertx, <span class="predefined-type">String</span> address) {
-   <span class="keyword">return</span> <span class="keyword">new</span> SomeDatabaseServiceVertxEBProxy(vertx, address);
- }
+<span class="comment">// Method to create the proxy.</span>
+<span class="directive">static</span> SomeDatabaseService createProxy(Vertx vertx, <span class="predefined-type">String</span> address) {
+  <span class="keyword">return</span> <span class="keyword">new</span> SomeDatabaseServiceVertxEBProxy(vertx, address);
+}
 
- <span class="comment">// ...</span>
+<span class="comment">// ...</span>
 }</code></pre>
 </div>
 </div>
@@ -588,21 +586,21 @@ instance to the method&#8217;s <code>Handler</code>. A <code>ServiceException</c
 <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> BAD_SHOE_SIZE = <span class="integer">42</span>;
 <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> CONNECTION_FAILED = <span class="integer">43</span>;
 
-  <span class="comment">// Create a connection</span>
-  <span class="type">void</span> createConnection(<span class="predefined-type">String</span> shoeSize, <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;MyDatabaseConnection&gt;&gt; resultHandler) {
-    <span class="keyword">if</span> (!shoeSize.equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">9</span><span class="delimiter">&quot;</span></span>)) {
-      resultHandler.handle(ServiceException.fail(BAD_SHOE_SIZE, <span class="string"><span class="delimiter">&quot;</span><span class="content">The shoe size must be 9!</span><span class="delimiter">&quot;</span></span>,
-        <span class="keyword">new</span> JsonObject().put(<span class="string"><span class="delimiter">&quot;</span><span class="content">shoeSize</span><span class="delimiter">&quot;</span></span>, shoeSize));
-     } <span class="keyword">else</span> {
-        doDbConnection(result -&gt; {
-          <span class="keyword">if</span> (result.succeeded()) {
-            resultHandler.handle(<span class="predefined-type">Future</span>.succeededFuture(result.result()));
-          } <span class="keyword">else</span> {
-            resultHandler.handle(ServiceException.fail(CONNECTION_FAILED, result.cause().getMessage()));
-          }
-        });
-     }
-  }
+ <span class="comment">// Create a connection</span>
+ <span class="type">void</span> createConnection(<span class="predefined-type">String</span> shoeSize, <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;MyDatabaseConnection&gt;&gt; resultHandler) {
+   <span class="keyword">if</span> (!shoeSize.equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">9</span><span class="delimiter">&quot;</span></span>)) {
+     resultHandler.handle(ServiceException.fail(BAD_SHOE_SIZE, <span class="string"><span class="delimiter">&quot;</span><span class="content">The shoe size must be 9!</span><span class="delimiter">&quot;</span></span>,
+       <span class="keyword">new</span> JsonObject().put(<span class="string"><span class="delimiter">&quot;</span><span class="content">shoeSize</span><span class="delimiter">&quot;</span></span>, shoeSize));
+    } <span class="keyword">else</span> {
+       doDbConnection(result -&gt; {
+         <span class="keyword">if</span> (result.succeeded()) {
+           resultHandler.handle(<span class="predefined-type">Future</span>.succeededFuture(result.result()));
+         } <span class="keyword">else</span> {
+           resultHandler.handle(ServiceException.fail(CONNECTION_FAILED, result.cause().getMessage()));
+         }
+       });
+    }
+ }
 }</code></pre>
 </div>
 </div>
@@ -615,30 +613,30 @@ which business logic error occurred.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> foo(<span class="predefined-type">String</span> shoeSize, <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;JsonObject&gt;&gt; handler) {
-  SomeDatabaseService service = SomeDatabaseService.createProxy(vertx, SERVICE_ADDRESS);
-  service.createConnection(<span class="string"><span class="delimiter">&quot;</span><span class="content">8</span><span class="delimiter">&quot;</span></span>, result -&gt; {
-    <span class="keyword">if</span> (result.succeeded()) {
-      <span class="comment">// Do success stuff.</span>
-    } <span class="keyword">else</span> {
-      <span class="keyword">if</span> (result.cause() <span class="keyword">instanceof</span> ServiceException) {
-        ServiceException exc = (ServiceException) result.cause();
-        <span class="keyword">if</span> (exc.failureCode() == SomeDatabaseServiceImpl.BAD_SHOE_SIZE) {
-          handler.handle(<span class="predefined-type">Future</span>.failedFuture(
-            <span class="keyword">new</span> InvalidInputError(<span class="string"><span class="delimiter">&quot;</span><span class="content">You provided a bad shoe size: </span><span class="delimiter">&quot;</span></span> +
-              exc.getDebugInfo().getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">shoeSize</span><span class="delimiter">&quot;</span></span>))
-          ));
-        } <span class="keyword">else</span> <span class="keyword">if</span> (exc.failureCode() == SomeDatabaseServiceImpl.CONNECTION) {
-          handler.handle(<span class="predefined-type">Future</span>.failedFuture(
-            <span class="keyword">new</span> ConnectionError(<span class="string"><span class="delimiter">&quot;</span><span class="content">Failed to connect to the DB</span><span class="delimiter">&quot;</span></span>)));
-        }
-      } <span class="keyword">else</span> {
-        <span class="comment">// Must be a system error (e.g. No service registered for the proxy)</span>
-        handler.handle(<span class="predefined-type">Future</span>.failedFuture(
-          <span class="keyword">new</span> SystemError(<span class="string"><span class="delimiter">&quot;</span><span class="content">An unexpected error occurred: + </span><span class="delimiter">&quot;</span></span> result.cause().getMessage())
-        ));
-      }
-    }
-  }
+ SomeDatabaseService service = SomeDatabaseService.createProxy(vertx, SERVICE_ADDRESS);
+ service.createConnection(<span class="string"><span class="delimiter">&quot;</span><span class="content">8</span><span class="delimiter">&quot;</span></span>, result -&gt; {
+   <span class="keyword">if</span> (result.succeeded()) {
+     <span class="comment">// Do success stuff.</span>
+   } <span class="keyword">else</span> {
+     <span class="keyword">if</span> (result.cause() <span class="keyword">instanceof</span> ServiceException) {
+       ServiceException exc = (ServiceException) result.cause();
+       <span class="keyword">if</span> (exc.failureCode() == SomeDatabaseServiceImpl.BAD_SHOE_SIZE) {
+         handler.handle(<span class="predefined-type">Future</span>.failedFuture(
+           <span class="keyword">new</span> InvalidInputError(<span class="string"><span class="delimiter">&quot;</span><span class="content">You provided a bad shoe size: </span><span class="delimiter">&quot;</span></span> +
+             exc.getDebugInfo().getString(<span class="string"><span class="delimiter">&quot;</span><span class="content">shoeSize</span><span class="delimiter">&quot;</span></span>))
+         ));
+       } <span class="keyword">else</span> <span class="keyword">if</span> (exc.failureCode() == SomeDatabaseServiceImpl.CONNECTION) {
+         handler.handle(<span class="predefined-type">Future</span>.failedFuture(
+           <span class="keyword">new</span> ConnectionError(<span class="string"><span class="delimiter">&quot;</span><span class="content">Failed to connect to the DB</span><span class="delimiter">&quot;</span></span>)));
+       }
+     } <span class="keyword">else</span> {
+       <span class="comment">// Must be a system error (e.g. No service registered for the proxy)</span>
+       handler.handle(<span class="predefined-type">Future</span>.failedFuture(
+         <span class="keyword">new</span> SystemError(<span class="string"><span class="delimiter">&quot;</span><span class="content">An unexpected error occurred: + </span><span class="delimiter">&quot;</span></span> result.cause().getMessage())
+       ));
+     }
+   }
+ }
 }</code></pre>
 </div>
 </div>
@@ -649,22 +647,22 @@ default <code>MessageCodec</code> is registered for it . For example, given the 
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">ShoeSizeException</span> <span class="directive">extends</span> ServiceException {
-  <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> BAD_SHOE_SIZE_ERROR = <span class="integer">42</span>;
+ <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> BAD_SHOE_SIZE_ERROR = <span class="integer">42</span>;
 
-  <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> shoeSize;
+ <span class="directive">private</span> <span class="directive">final</span> <span class="predefined-type">String</span> shoeSize;
 
-  <span class="directive">public</span> ShoeSizeException(<span class="predefined-type">String</span> shoeSize) {
-    <span class="local-variable">super</span>(BAD_SHOE_SIZE_ERROR, <span class="string"><span class="delimiter">&quot;</span><span class="content">In invalid shoe size was received: </span><span class="delimiter">&quot;</span></span> + shoeSize);
-    <span class="local-variable">this</span>.shoeSize = shoeSize;
-  }
+ <span class="directive">public</span> ShoeSizeException(<span class="predefined-type">String</span> shoeSize) {
+   <span class="local-variable">super</span>(BAD_SHOE_SIZE_ERROR, <span class="string"><span class="delimiter">&quot;</span><span class="content">In invalid shoe size was received: </span><span class="delimiter">&quot;</span></span> + shoeSize);
+   <span class="local-variable">this</span>.shoeSize = shoeSize;
+ }
 
-  <span class="directive">public</span> <span class="predefined-type">String</span> getShoeSize() {
-    <span class="keyword">return</span> extra;
-  }
+ <span class="directive">public</span> <span class="predefined-type">String</span> getShoeSize() {
+   <span class="keyword">return</span> extra;
+ }
 
-  <span class="directive">public</span> <span class="directive">static</span> &lt;T&gt; AsyncResult&lt;T&gt; fail(<span class="type">int</span> failureCode, <span class="predefined-type">String</span> message, <span class="predefined-type">String</span> shoeSize) {
-    <span class="keyword">return</span> <span class="predefined-type">Future</span>.failedFuture(<span class="keyword">new</span> MyServiceException(failureCode, message, shoeSize));
-  }
+ <span class="directive">public</span> <span class="directive">static</span> &lt;T&gt; AsyncResult&lt;T&gt; fail(<span class="type">int</span> failureCode, <span class="predefined-type">String</span> message, <span class="predefined-type">String</span> shoeSize) {
+   <span class="keyword">return</span> <span class="predefined-type">Future</span>.failedFuture(<span class="keyword">new</span> MyServiceException(failureCode, message, shoeSize));
+ }
 }</code></pre>
 </div>
 </div>
@@ -675,23 +673,23 @@ exception directly to the caller:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">SomeDatabaseServiceImpl</span> <span class="directive">implements</span> SomeDatabaseService {
-  <span class="directive">public</span> SomeDataBaseServiceImpl(Vertx vertx) {
-    <span class="comment">// Register on the service side. If using a local event bus, this is all</span>
-    <span class="comment">// that's required, since the proxy side will share the same Vertx instance.</span>
-  SomeDatabaseService service = SomeDatabaseService.createProxy(vertx, SERVICE_ADDRESS);
-    vertx.eventBus().registerDefaultCodec(ShoeSizeException.class,
-      <span class="keyword">new</span> ShoeSizeExceptionMessageCodec());
-  }
+ <span class="directive">public</span> SomeDataBaseServiceImpl(Vertx vertx) {
+   <span class="comment">// Register on the service side. If using a local event bus, this is all</span>
+   <span class="comment">// that's required, since the proxy side will share the same Vertx instance.</span>
+ SomeDatabaseService service = SomeDatabaseService.createProxy(vertx, SERVICE_ADDRESS);
+   vertx.eventBus().registerDefaultCodec(ShoeSizeException.class,
+     <span class="keyword">new</span> ShoeSizeExceptionMessageCodec());
+ }
 
-  <span class="comment">// Create a connection</span>
-  <span class="type">void</span> createConnection(<span class="predefined-type">String</span> shoeSize, <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;MyDatabaseConnection&gt;&gt; resultHandler) {
-    <span class="keyword">if</span> (!shoeSize.equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">9</span><span class="delimiter">&quot;</span></span>)) {
-      resultHandler.handle(ShoeSizeException.fail(shoeSize));
-    } <span class="keyword">else</span> {
-      <span class="comment">// Create the connection here</span>
-      resultHandler.Handle(<span class="predefined-type">Future</span>.succeededFuture(myDbConnection));
-    }
-  }
+ <span class="comment">// Create a connection</span>
+ <span class="type">void</span> createConnection(<span class="predefined-type">String</span> shoeSize, <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;MyDatabaseConnection&gt;&gt; resultHandler) {
+   <span class="keyword">if</span> (!shoeSize.equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">9</span><span class="delimiter">&quot;</span></span>)) {
+     resultHandler.handle(ShoeSizeException.fail(shoeSize));
+   } <span class="keyword">else</span> {
+     <span class="comment">// Create the connection here</span>
+     resultHandler.Handle(<span class="predefined-type">Future</span>.succeededFuture(myDbConnection));
+   }
+ }
 }</code></pre>
 </div>
 </div>
@@ -701,26 +699,26 @@ exception directly to the caller:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> foo(<span class="predefined-type">String</span> shoeSize, <span class="predefined-type">Handler</span>&lt;AsyncResult&lt;JsonObject&gt;&gt; handler) {
-  <span class="comment">// If this code is running on a different node in the cluster, the</span>
-  <span class="comment">// ShoeSizeExceptionMessageCodec will need to be registered with the</span>
-  <span class="comment">// Vertx instance on this node, too.</span>
-  SomeDatabaseService service = SomeDatabaseService.createProxy(vertx, SERVICE_ADDRESS);
-  service.createConnection(<span class="string"><span class="delimiter">&quot;</span><span class="content">8</span><span class="delimiter">&quot;</span></span>, result -&gt; {
-    <span class="keyword">if</span> (result.succeeded()) {
-      <span class="comment">// Do success stuff.</span>
-    } <span class="keyword">else</span> {
-      <span class="keyword">if</span> (result.cause() <span class="keyword">instanceof</span> ShoeSizeException) {
-        ShoeSizeException exc = (ShoeSizeException) result.cause();
-        handler.handle(<span class="predefined-type">Future</span>.failedFuture(
-          <span class="keyword">new</span> InvalidInputError(<span class="string"><span class="delimiter">&quot;</span><span class="content">You provided a bad shoe size: </span><span class="delimiter">&quot;</span></span> + exc.getShoeSize())));
-      } <span class="keyword">else</span> {
-        <span class="comment">// Must be a system error (e.g. No service registered for the proxy)</span>
-        handler.handle(<span class="predefined-type">Future</span>.failedFuture(
-          <span class="keyword">new</span> SystemError(<span class="string"><span class="delimiter">&quot;</span><span class="content">An unexpected error occurred: + </span><span class="delimiter">&quot;</span></span> result.cause().getMessage())
-        ));
-      }
-    }
-  }
+ <span class="comment">// If this code is running on a different node in the cluster, the</span>
+ <span class="comment">// ShoeSizeExceptionMessageCodec will need to be registered with the</span>
+ <span class="comment">// Vertx instance on this node, too.</span>
+ SomeDatabaseService service = SomeDatabaseService.createProxy(vertx, SERVICE_ADDRESS);
+ service.createConnection(<span class="string"><span class="delimiter">&quot;</span><span class="content">8</span><span class="delimiter">&quot;</span></span>, result -&gt; {
+   <span class="keyword">if</span> (result.succeeded()) {
+     <span class="comment">// Do success stuff.</span>
+   } <span class="keyword">else</span> {
+     <span class="keyword">if</span> (result.cause() <span class="keyword">instanceof</span> ShoeSizeException) {
+       ShoeSizeException exc = (ShoeSizeException) result.cause();
+       handler.handle(<span class="predefined-type">Future</span>.failedFuture(
+         <span class="keyword">new</span> InvalidInputError(<span class="string"><span class="delimiter">&quot;</span><span class="content">You provided a bad shoe size: </span><span class="delimiter">&quot;</span></span> + exc.getShoeSize())));
+     } <span class="keyword">else</span> {
+       <span class="comment">// Must be a system error (e.g. No service registered for the proxy)</span>
+       handler.handle(<span class="predefined-type">Future</span>.failedFuture(
+         <span class="keyword">new</span> SystemError(<span class="string"><span class="delimiter">&quot;</span><span class="content">An unexpected error occurred: + </span><span class="delimiter">&quot;</span></span> result.cause().getMessage())
+       ));
+     }
+   }
+ }
 }</code></pre>
 </div>
 </div>
@@ -885,14 +883,14 @@ Vert.x services.</p>
 <div class="listingblock">
 <div class="content">
 <pre>Headers:
-    "action": "save"
+   "action": "save"
 Body:
-    {
-        "collection", "mycollection",
-        "document", {
-            "name": "tim"
-        }
-    }</pre>
+   {
+       "collection", "mycollection",
+       "document", {
+           "name": "tim"
+       }
+   }</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -919,7 +917,7 @@ any type supported by the event bus. To signal a failure the method <code>messag
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:28 CEST
               
               
             </div>

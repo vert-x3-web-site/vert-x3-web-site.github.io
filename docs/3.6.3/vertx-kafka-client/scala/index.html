@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -122,18 +123,6 @@
 <li><a href="#_handling_errors">Handling errors</a></li>
 <li><a href="#_automatic_clean_up_in_verticles">Automatic clean-up in verticles</a></li>
 <li><a href="#_using_vert_x_serializers_deserializers">Using Vert.x serializers/deserializers</a></li>
-<li><a href="#_vert_x_kafka_adminutils">Vert.x Kafka AdminUtils</a>
-<ul class="sectlevel1">
-<li><a href="#_using_the_adminutils">Using the AdminUtils</a>
-<ul class="sectlevel2">
-<li><a href="#_create_a_topic">Create a topic</a></li>
-<li><a href="#_delete_a_topic">Delete a topic</a></li>
-<li><a href="#_change_a_topic_s_configuration">Change a topic&#8217;s configuration</a></li>
-<li><a href="#_check_if_a_topic_exists">Check if a topic exists</a></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
         </div>
       </div>
@@ -160,18 +149,6 @@
 <li><a href="#_handling_errors">Handling errors</a></li>
 <li><a href="#_automatic_clean_up_in_verticles">Automatic clean-up in verticles</a></li>
 <li><a href="#_using_vert_x_serializers_deserializers">Using Vert.x serializers/deserializers</a></li>
-<li><a href="#_vert_x_kafka_adminutils">Vert.x Kafka AdminUtils</a>
-<ul class="sectlevel1">
-<li><a href="#_using_the_adminutils">Using the AdminUtils</a>
-<ul class="sectlevel2">
-<li><a href="#_create_a_topic">Create a topic</a></li>
-<li><a href="#_delete_a_topic">Delete a topic</a></li>
-<li><a href="#_change_a_topic_s_configuration">Change a topic&#8217;s configuration</a></li>
-<li><a href="#_check_if_a_topic_exists">Check if a topic exists</a></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
         </div>
         <div id="preamble">
@@ -185,18 +162,6 @@ messages asynchronously or reading them as a stream (even with the possibility t
 </div>
 <div class="paragraph">
 <p>As producer, the API provides methods for sending message to a topic partition like writing on a stream.</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-this module has the tech preview status, this means the API can change between versions.
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
@@ -299,6 +264,10 @@ var producer = KafkaProducer.create(vertx, config)</code></pre>
 subscribing to a set of topics being part of a consumer group (specified by the properties on creation).</p>
 </div>
 <div class="paragraph">
+<p>It&#8217;s also possible to use the <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#subscribe()">subscribe</a></code> method for
+subscribing to more topics specifying a Java regex.</p>
+</div>
+<div class="paragraph">
 <p>You also need to register a handler for handling incoming messages using the
 <code><a href="../../scaladocs/io/vertx/scala/kafka/client/consumer/KafkaConsumer.html#handler()">handler</a></code>.</p>
 </div>
@@ -309,12 +278,16 @@ consumer.handler((record: io.vertx.scala.kafka.client.consumer.KafkaConsumerReco
   println(s&quot;Processing key=${record.key()},value=${record.value()},partition=${record.partition()},offset=${record.offset()}&quot;)
 })
 
-// subscribe to several topics
+// subscribe to several topics with list
 var topics = new java.util.HashSet()
 topics.add(&quot;topic1&quot;)
 topics.add(&quot;topic2&quot;)
 topics.add(&quot;topic3&quot;)
 consumer.subscribe(topics)
+
+// or using a Java regex
+var pattern = java.util.regex.Pattern.compile(&quot;topic\\d&quot;)
+consumer.subscribe(pattern)
 
 // or just subscribe to a single topic
 consumer.subscribe(&quot;a-single-topic&quot;)</code></pre>
@@ -905,7 +878,7 @@ or partition, in this case the messages are sent in a round robin fashion across
   // only topic and message value are specified, round robin on destination partitions
   var record = KafkaProducerRecord.create(&quot;test&quot;, s&quot;message_${i}&quot;)
 
-  producer.writeFuture(record).onComplete{
+  producer.sendFuture(record).onComplete{
     case Success(result) =&gt; {
 
       var recordMetadata = result
@@ -1137,108 +1110,8 @@ config + (&quot;value.serializer&quot; -&gt; &quot;io.vertx.kafka.client.seriali
 config + (&quot;acks&quot; -&gt; &quot;1&quot;)</code></pre>
 </div>
 </div>
-</div>
-</div>
-<h1 id="_vert_x_kafka_adminutils" class="sect0">Vert.x Kafka AdminUtils</h1>
-<div class="openblock partintro">
-<div class="content">
-This component provides a vert.x wrapper around the most important functions of Kafka&#8217;s AdminUtils.
-AdminUtils are used to create, modify, and delete topics. Other functionality covered by AdminUtils,
-but not this wrapper, includes Partition Management, Broker Configuration management, etc.
-</div>
-</div>
-<div class="sect1">
-<h2 id="_using_the_adminutils">Using the AdminUtils</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_create_a_topic">Create a topic</h3>
 <div class="paragraph">
-<p>You can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#createTopic(java.lang.String,%20int,%20int)">createTopic</a></code> to create a topic.
-Parameters are: topic name, number of partitions, number of replicas, and the usual callback to handle the result.
-It might return an error, e.g. if the number of requested replicas is greater than the number of brokers.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="scala">var adminUtils = AdminUtils.create(Vertx.vertx(), &quot;localhost:2181&quot;, true)
-// Create topic 'myNewTopic' with 2 partition and 1 replicas
-adminUtils.createTopicFuture(&quot;myNewTopic&quot;, 2, 1).onComplete{
-  case Success(result) =&gt; {
-    println(&quot;Creation of topic myNewTopic successful!&quot;)}
-  case Failure(cause) =&gt; {
-    println(s&quot;$cause&quot;)
-  }
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_delete_a_topic">Delete a topic</h3>
-<div class="paragraph">
-<p>You can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#deleteTopic(java.lang.String)">deleteTopic</a></code> to delete a topic.
-Parameters are: topic name, and the usual callback to handle the result.
-It might return an error, e.g. if the topic does not exist.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="scala">var adminUtils = AdminUtils.create(Vertx.vertx(), &quot;localhost:2181&quot;, true)
-// Delete topic 'myNewTopic'
-adminUtils.deleteTopicFuture(&quot;myNewTopic&quot;).onComplete{
-  case Success(result) =&gt; {
-    println(&quot;Deletion of topic myNewTopic successful!&quot;)}
-  case Failure(cause) =&gt; {
-    println(s&quot;$cause&quot;)
-  }
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_change_a_topic_s_configuration">Change a topic&#8217;s configuration</h3>
-<div class="paragraph">
-<p>If you need to update the configuration of a topic, e.g., you want to update the retention policy,
-you can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#changeTopicConfig(java.lang.String,%20java.util.Map)">changeTopicConfig</a></code> to update a topic.
-Parameters are: topic name, a Map (String &#8594; String) with parameters to be changed,
-and the usual callback to handle the result.
-It might return an error, e.g. if the topic does not exist.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="scala">var adminUtils = AdminUtils.create(Vertx.vertx(), &quot;localhost:2181&quot;, true)
-// Set retention to 1000 ms and max size of the topic partition to 1 kiByte
-var properties = Map()
-properties + (&quot;delete.retention.ms&quot; -&gt; &quot;1000&quot;)
-properties + (&quot;retention.bytes&quot; -&gt; &quot;1024&quot;)
-adminUtils.changeTopicConfigFuture(&quot;myNewTopic&quot;, properties).onComplete{
-  case Success(result) =&gt; {
-    println(&quot;Configuration change of topic myNewTopic successful!&quot;)}
-  case Failure(cause) =&gt; {
-    println(s&quot;$cause&quot;)
-  }
-}
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_check_if_a_topic_exists">Check if a topic exists</h3>
-<div class="paragraph">
-<p>If you want to check if a topic exists, you can call <code><a href="../../scaladocs/io/vertx/scala/kafka/admin/AdminUtils.html#topicExists(java.lang.String)">topicExists</a></code>.
-Parameters are: topic name, and the usual callback to handle the result.
-It might return an error, e.g. if the topic does not exist.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="scala">var adminUtils = AdminUtils.create(Vertx.vertx(), &quot;localhost:2181&quot;, true)
-adminUtils.topicExistsFuture(&quot;myNewTopic&quot;).onComplete{
-  case Success(result) =&gt; {
-    println(s&quot;Topic myNewTopic exists: ${result}&quot;)
-  }
-  case Failure(cause) =&gt; {
-    println(s&quot;$cause&quot;)
-  }
-}</code></pre>
-</div>
-</div>
+<p>Unresolved directive in index.adoc - include::admin.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1249,7 +1122,7 @@ adminUtils.topicExistsFuture(&quot;myNewTopic&quot;).onComplete{
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:30 CEST
               
               
             </div>

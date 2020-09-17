@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -195,7 +196,7 @@ observable wherever you can use streams or asynchronous results.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-rx-java<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -208,7 +209,7 @@ observable wherever you can use streams or asynchronous results.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-rx-java:3.6.3</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-rx-java:3.9.3</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -386,13 +387,16 @@ The adapter sets the <code><a href="../../apidocs/io/vertx/rxjava/core/streams/W
 <div class="ulist">
 <ul>
 <li>
-<p>the <code>Observable</code> completes, or</p>
-</li>
-<li>
 <p>the <code>Observable</code> terminates with an error, or</p>
 </li>
 <li>
-<p>the <code><a href="../../apidocs/io/vertx/rxjava/core/streams/WriteStream.html">WriteStream</a></code> fails (e.g. HTTP connection is closed or filesystem is full)</p>
+<p>the <code><a href="../../apidocs/io/vertx/rxjava/core/streams/WriteStream.html">WriteStream</a></code> fails (e.g. HTTP connection is closed or filesystem is full), or</p>
+</li>
+<li>
+<p>the <code><a href="../../apidocs/io/vertx/rxjava/core/streams/WriteStream.html">WriteStream</a></code> ends (i.e. all writes done and file is closed), or</p>
+</li>
+<li>
+<p>the <code><a href="../../apidocs/io/vertx/rxjava/core/streams/WriteStream.html">WriteStream</a></code> ends with an error (i.e. all writes done and an error occured when closing the file)</p>
 </li>
 </ul>
 </div>
@@ -417,7 +421,7 @@ subscriber.onWriteStreamError(throwable -&gt; {
   <span class="comment">// log error</span>
 });
 
-subscriber.onComplete(() -&gt; {
+subscriber.onWriteStreamEnd(() -&gt; {
   <span class="comment">// log end of transaction to audit system...</span>
 });
 
@@ -1016,13 +1020,13 @@ requestObservable.subscribe(request -&gt; {
 <div class="sect2">
 <h3 id="_websocket_client">Websocket client</h3>
 <div class="paragraph">
-<p>The <code><a href="../../apidocs/io/vertx/rxjava/core/http/HttpClient.html#websocketStream-io.vertx.core.http.RequestOptions-">websocketStream</a></code> provides a single callback when the websocket
+<p>The <code><a href="../../apidocs/io/vertx/rxjava/core/http/HttpClient.html#rxWebSocket-int-java.lang.String-java.lang.String-">rxWebSocket</a></code> provides a single callback when the websocket
 connects, otherwise a failure:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">HttpClient client = vertx.createHttpClient(<span class="keyword">new</span> HttpClientOptions());
-client.websocketStream(<span class="integer">8080</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">/the_uri</span><span class="delimiter">&quot;</span></span>).toObservable().subscribe(
+client.rxWebSocket(<span class="integer">8080</span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">/the_uri</span><span class="delimiter">&quot;</span></span>).subscribe(
     ws -&gt; {
       <span class="comment">// Use the websocket</span>
     },
@@ -1091,7 +1095,7 @@ socketObservable.subscribe(
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:28 CEST
               
               
             </div>

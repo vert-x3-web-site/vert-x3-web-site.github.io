@@ -110,7 +110,7 @@
  You receive HTTP requests by providing a <span class='object_link'><a href="#request_handler-instance_method" title="Vertx::HttpServer#request_handler (method)">#request_handler</a></span>. As requests arrive on the server the handler
  will be called with the requests.
  <p>
- You receive WebSockets by providing a <span class='object_link'><a href="#websocket_handler-instance_method" title="Vertx::HttpServer#websocket_handler (method)">#websocket_handler</a></span>. As WebSocket connections arrive on the server, the
+ You receive WebSockets by providing a <span class='object_link'><a href="#web_socket_handler-instance_method" title="Vertx::HttpServer#web_socket_handler (method)">#web_socket_handler</a></span>. As WebSocket connections arrive on the server, the
  WebSocket is passed to the handler.
 
   </div>
@@ -443,6 +443,50 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#web_socket_handler-instance_method" title="#web_socket_handler (instance method)">- (self) <strong>web_socket_handler</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Set the WebSocket handler for the server to wsHandler.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#web_socket_stream-instance_method" title="#web_socket_stream (instance method)">- (::Vertx::ReadStream) <strong>web_socket_stream</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Return the WebSocket stream for the server.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#websocket_handler-instance_method" title="#websocket_handler (instance method)">- (self) <strong>websocket_handler</strong> { ... }</a>
     
 
@@ -457,7 +501,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Set the websocket handler for the server to wsHandler.</div></span>
+    <span class="summary_desc"><div class='inline'>Set the WebSocket handler for the server to wsHandler.</div></span>
   
 </li>
 
@@ -479,7 +523,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Return the websocket stream for the server.</div></span>
+    <span class="summary_desc"><div class='inline'>Return the WebSocket stream for the server.</div></span>
   
 </li>
 
@@ -731,15 +775,15 @@
       <pre class="lines">
 
 
-180
-181
-182
-183
-184
-185</pre>
+203
+204
+205
+206
+207
+208</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx/http_server.rb', line 180</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx/http_server.rb', line 203</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_actual_port'>actual_port</span>
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -805,17 +849,17 @@
       <pre class="lines">
 
 
-169
-170
-171
-172
-173
-174
-175
-176</pre>
+192
+193
+194
+195
+196
+197
+198
+199</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx/http_server.rb', line 169</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx/http_server.rb', line 192</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span>
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1349,34 +1393,34 @@
       <pre class="lines">
 
 
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
 164
-165</pre>
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx/http_server.rb', line 141</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx/http_server.rb', line 164</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_listen'>listen</span><span class='lparen'>(</span><span class='id identifier rubyid_param_1'>param_1</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_param_2'>param_2</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_1'>param_1</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_2'>param_2</span> <span class='op'>==</span> <span class='kw'>nil</span>
@@ -1651,9 +1695,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="websocket_handler-instance_method">
+  <h3 class="signature " id="web_socket_handler-instance_method">
   
-    - (<tt>self</tt>) <strong>websocket_handler</strong> { ... }
+    - (<tt>self</tt>) <strong>web_socket_handler</strong> { ... }
   
 
   
@@ -1661,7 +1705,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Set the websocket handler for the server to <code>wsHandler</code>. If a websocket connect handshake is successful a
+    Set the WebSocket handler for the server to <code>wsHandler</code>. If a WebSocket connect handshake is successful a
  new <span class='object_link'><a href="ServerWebSocket.html" title="Vertx::ServerWebSocket (class)">ServerWebSocket</a></span> instance will be created and passed to the handler.
 
   </div>
@@ -1714,16 +1758,184 @@
       <pre class="lines">
 
 
+136
+137
+138
+139
+140
+141
+142</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx/http_server.rb', line 136</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_web_socket_handler'>web_socket_handler</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:webSocketHandler</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Java</span><span class='op'>::</span><span class='const'>IoVertxCore</span><span class='op'>::</span><span class='const'>Handler</span><span class='period'>.</span><span class='id identifier rubyid_java_class'>java_class</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='const'>Proc</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>ServerWebSocket</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling web_socket_handler()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="web_socket_stream-instance_method">
+  
+    - (<tt><span class='object_link'><a href="ReadStream.html" title="Vertx::ReadStream (module)">::Vertx::ReadStream</a></span></tt>) <strong>web_socket_stream</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Return the WebSocket stream for the server. If a WebSocket connect handshake is successful a
+ new <span class='object_link'><a href="ServerWebSocket.html" title="Vertx::ServerWebSocket (class)">ServerWebSocket</a></span> instance will be created and passed to the stream .
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="ReadStream.html" title="Vertx::ReadStream (module)">::Vertx::ReadStream</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>the WebSocket stream</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+112
 113
 114
 115
 116
 117
 118
-119</pre>
+119
+120</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx/http_server.rb', line 113</span>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx/http_server.rb', line 112</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_web_socket_stream'>web_socket_stream</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>if</span> <span class='ivar'>@cached_web_socket_stream</span> <span class='op'>!=</span> <span class='kw'>nil</span>
+      <span class='kw'>return</span> <span class='ivar'>@cached_web_socket_stream</span>
+    <span class='kw'>end</span>
+    <span class='kw'>return</span> <span class='ivar'>@cached_web_socket_stream</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>Util</span><span class='op'>::</span><span class='const'>Utils</span><span class='period'>.</span><span class='id identifier rubyid_safe_create'>safe_create</span><span class='lparen'>(</span><span class='ivar'>@j_del</span><span class='period'>.</span><span class='id identifier rubyid_java_method'>java_method</span><span class='lparen'>(</span><span class='symbol'>:webSocketStream</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>ReadStreamImpl</span><span class='comma'>,</span><span class='op'>::</span><span class='const'>Vertx</span><span class='op'>::</span><span class='const'>ServerWebSocket</span><span class='period'>.</span><span class='id identifier rubyid_j_api_type'>j_api_type</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Invalid arguments when calling web_socket_stream()</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="websocket_handler-instance_method">
+  
+    - (<tt>self</tt>) <strong>websocket_handler</strong> { ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Set the WebSocket handler for the server to <code>wsHandler</code>. If a WebSocket connect handshake is successful a
+ new <span class='object_link'><a href="ServerWebSocket.html" title="Vertx::ServerWebSocket (class)">ServerWebSocket</a></span> instance will be created and passed to the handler.
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+125
+126
+127
+128
+129
+130
+131</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File '/Users/julien/java/vertx-aggregator/modules/vertx-lang-ruby/vertx-lang-ruby/target/classes/vertx/http_server.rb', line 125</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_websocket_handler'>websocket_handler</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1748,7 +1960,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Return the websocket stream for the server. If a websocket connect handshake is successful a
+    Return the WebSocket stream for the server. If a webSocket connect handshake is successful a
  new <span class='object_link'><a href="ServerWebSocket.html" title="Vertx::ServerWebSocket (class)">ServerWebSocket</a></span> instance will be created and passed to the stream .
 
   </div>
@@ -1766,7 +1978,7 @@
       
       
         &mdash;
-        <div class='inline'>the websocket stream</div>
+        <div class='inline'>the WebSocket stream</div>
       
     </li>
   
@@ -1823,7 +2035,7 @@
 </div>
 
     <div id="footer">
-  Generated on Wed Jan 30 21:07:48 2019 by
+  Generated on Wed Sep 16 10:09:27 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.3.3).
 </div>

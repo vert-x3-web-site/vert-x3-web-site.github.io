@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -148,7 +149,7 @@ your build descriptor:</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-sockjs-service-proxy<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
@@ -166,7 +167,7 @@ your build descriptor:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-sockjs-service-proxy:3.6.3</span><span class="delimiter">'</span></span>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-sockjs-service-proxy:3.9.3</span><span class="delimiter">'</span></span>
 compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-service-proxy:${vertx.version}</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
@@ -201,17 +202,16 @@ ProxyHelper.registerService(SomeDatabaseService.class, vertx, service,
 
 Router router = Router.router(vertx);
 <span class="comment">// Allow events for the designated addresses in/out of the event bus bridge</span>
-BridgeOptions opts = <span class="keyword">new</span> BridgeOptions()
+SockJSBridgeOptions opts = <span class="keyword">new</span> SockJSBridgeOptions()
     .addInboundPermitted(<span class="keyword">new</span> PermittedOptions()
         .setAddress(<span class="string"><span class="delimiter">&quot;</span><span class="content">database-service-address</span><span class="delimiter">&quot;</span></span>))
     .addOutboundPermitted(<span class="keyword">new</span> PermittedOptions()
         .setAddress(<span class="string"><span class="delimiter">&quot;</span><span class="content">database-service-address</span><span class="delimiter">&quot;</span></span>));
 
 <span class="comment">// Create the event bus bridge and add it to the router.</span>
-SockJSHandler ebHandler = SockJSHandler.create(vertx).bridge(opts);
-router.route(<span class="string"><span class="delimiter">&quot;</span><span class="content">/eventbus/*</span><span class="delimiter">&quot;</span></span>).handler(ebHandler);
+router.mountSubRouter(<span class="string"><span class="delimiter">&quot;</span><span class="content">/eventbus</span><span class="delimiter">&quot;</span></span>, SockJSHandler.create(vertx).bridge(opts));
 
-vertx.createHttpServer().requestHandler(router::accept).listen(<span class="integer">8080</span>);</code></pre>
+vertx.createHttpServer().requestHandler(router).listen(<span class="integer">8080</span>);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -263,7 +263,7 @@ eb.<span class="function">onopen</span> = <span class="keyword">function</span> 
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:28 CEST
               
               
             </div>

@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -112,7 +113,11 @@
 <li><a href="#InsertOptions">InsertOptions</a></li>
 <li><a href="#ObjectCmd">ObjectCmd</a></li>
 <li><a href="#RangeOptions">RangeOptions</a></li>
+<li><a href="#RedisClientType">RedisClientType</a></li>
+<li><a href="#RedisRole">RedisRole</a></li>
+<li><a href="#RedisSlaves">RedisSlaves</a></li>
 <li><a href="#ResetOptions">ResetOptions</a></li>
+<li><a href="#ResponseType">ResponseType</a></li>
 <li><a href="#ScriptDebugOptions">ScriptDebugOptions</a></li>
 <li><a href="#ShutdownOptions">ShutdownOptions</a></li>
 <li><a href="#SlotCmd">SlotCmd</a></li>
@@ -132,7 +137,11 @@
 <li><a href="#InsertOptions">InsertOptions</a></li>
 <li><a href="#ObjectCmd">ObjectCmd</a></li>
 <li><a href="#RangeOptions">RangeOptions</a></li>
+<li><a href="#RedisClientType">RedisClientType</a></li>
+<li><a href="#RedisRole">RedisRole</a></li>
+<li><a href="#RedisSlaves">RedisSlaves</a></li>
 <li><a href="#ResetOptions">ResetOptions</a></li>
+<li><a href="#ResponseType">ResponseType</a></li>
 <li><a href="#ScriptDebugOptions">ScriptDebugOptions</a></li>
 <li><a href="#ShutdownOptions">ShutdownOptions</a></li>
 <li><a href="#SlotCmd">SlotCmd</a></li>
@@ -300,7 +309,7 @@
 <div class="sect1">
 <h2 id="GeoUnit">GeoUnit</h2>
 <div class="sectionbody">
-GeoUnit represents a geo spatial unit it covers both the metric and imperial systems.
+
 <hr>
 <table class="tableblock frame-topbot grid-all spread">
 <colgroup>
@@ -418,6 +427,103 @@ GeoUnit represents a geo spatial unit it covers both the metric and imperial sys
 </div>
 </div>
 <div class="sect1">
+<h2 id="RedisClientType">RedisClientType</h2>
+<div class="sectionbody">
+Define what kind of behavior is expected from the client.
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="STANDALONE"></a><code>STANDALONE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The client should work in single server mode (the default).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="SENTINEL"></a><code>SENTINEL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The client should work in sentinel mode. When this mode is active
+use the link to define which role to get the client
+connection to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="CLUSTER"></a><code>CLUSTER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The client should work in cluster mode. When this mode is active
+use the link to define when slave nodes can be used
+for read only queries.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RedisRole">RedisRole</h2>
+<div class="sectionbody">
+Define which kind of role to be used in HA mode.
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="MASTER"></a><code>MASTER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use a MASTER node connection.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="SLAVE"></a><code>SLAVE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use a SLAVE node connection.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="SENTINEL"></a><code>SENTINEL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use a SENTINEL node connection.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RedisSlaves">RedisSlaves</h2>
+<div class="sectionbody">
+When should Redis Slave nodes be used for queries.
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="NEVER"></a><code>NEVER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Never use SLAVES, queries are always run on a MASTER node.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="SHARE"></a><code>SHARE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Queries can be randomly run on both MASTER and SLAVE nodes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="ALWAYS"></a><code>ALWAYS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Queries are always run on SLAVE nodes (never on MASTER node).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
 <h2 id="ResetOptions">ResetOptions</h2>
 <div class="sectionbody">
 
@@ -439,6 +545,45 @@ GeoUnit represents a geo spatial unit it covers both the metric and imperial sys
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock"><a id="SOFT"></a><code>SOFT</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ResponseType">ResponseType</h2>
+<div class="sectionbody">
+Define the response types that the client can receive from REDIS.
+<hr>
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="SIMPLE"></a><code>SIMPLE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C String simple String.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="ERROR"></a><code>ERROR</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C String simple String representing an error.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="INTEGER"></a><code>INTEGER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64 bit integer value.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="BULK"></a><code>BULK</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">byte array value.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="MULTI"></a><code>MULTI</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of multiple bulk responses.</p></td>
 </tr>
 </tbody>
 </table>
@@ -548,7 +693,7 @@ GeoUnit represents a geo spatial unit it covers both the metric and imperial sys
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:30 CEST
               
               
             </div>

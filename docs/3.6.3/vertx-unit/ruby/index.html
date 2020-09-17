@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -241,7 +242,7 @@ and follows the Vert.x practices.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-unit<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
  <span class="tag">&lt;scope&gt;</span>test<span class="tag">&lt;/scope&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
@@ -255,7 +256,7 @@ and follows the Vert.x practices.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">testCompile <span class="error">$</span>{io.vertx}:<span class="error">$</span>{vertx-unit}:<span class="float">3.6</span><span class="float">.3</span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">testCompile <span class="error">$</span>{io.vertx}:<span class="error">$</span>{vertx-unit}:<span class="float">3.9</span><span class="float">.3</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1052,15 +1053,15 @@ completion.handler() { |ar_err,ar|
 </div>
 <div class="paragraph">
 <p>The <code><a href="../../yardoc/VertxUnit/Completion.html">Completion</a></code> object provides also a <code><a href="../../yardoc/VertxUnit/Completion.html#resolve-instance_method">resolve</a></code> method that
-takes a <code>Future</code> object, this <code>Future</code> will be notified of the test suite execution:</p>
+takes a <code>Promise</code> object, this <code>Promise</code> will be notified of the test suite execution:</p>
 </div>
 <div class="listingblock">
-<div class="title">Resolving the start Future with the test suite</div>
+<div class="title">Resolving the start Promise with the test suite</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="ruby">completion = suite.run()
 
-<span class="comment"># When the suite completes, the future is resolved</span>
-completion.resolve(startFuture)</code></pre>
+<span class="comment"># When the suite completes, the promise is resolved</span>
+completion.resolve(startPromise)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1654,7 +1655,7 @@ via the method name:</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:34 CET
+                Last updated 2020-09-16 10:26:32 CEST
               
               
             </div>

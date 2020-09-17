@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -205,7 +206,7 @@ or deployed as a service.</p>
 <div class="listingblock">
 <div class="title">Starting a shell service available via Telnet</div>
 <div class="content">
-<pre class="CodeRay highlight"><code>vertx run -conf '{"telnetOptions":{"port":5000}}' maven:io.vertx:vertx-shell:3.6.3</code></pre>
+<pre class="CodeRay highlight"><code>vertx run -conf '{"telnetOptions":{"port":5000}}' maven:io.vertx:vertx-shell:3.9.3</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -219,7 +220,7 @@ keytool -genkey -keyalg RSA -keystore ssh.jks -keysize 2048 -validity 1095 -dnam
 # create the auth config
 echo user.admin=password &gt; auth.properties
 # start the shell
-vertx run -conf '{"sshOptions":{"port":4000,"keyPairOptions":{"path":"ssh.jks","password":"secret"},"authOptions":{"provider":"shiro","config":{"properties_path":"file:auth.properties"}}}}' maven:io.vertx:vertx-shell:3.6.3</code></pre>
+vertx run -conf '{"sshOptions":{"port":4000,"keyPairOptions":{"path":"ssh.jks","password":"secret"},"authOptions":{"provider":"shiro","config":{"properties_path":"file:auth.properties"}}}}' maven:io.vertx:vertx-shell:3.9.3</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -232,7 +233,7 @@ vertx run -conf '{"sshOptions":{"port":4000,"keyPairOptions":{"path":"ssh.jks","
 keytool -genkey -keyalg RSA -keystore keystore.jks -keysize 2048 -validity 1095 -dname CN=localhost -keypass secret -storepass secret
 # create the auth config
 echo user.admin=password &gt; auth.properties
-vertx run -conf '{"httpOptions":{"port":8080,"ssl":true,"keyStoreOptions":{"path":"keystore.jks","password":"secret"},"authOptions":{"provider":""shiro,"config":{"properties_path":"file:auth.properties"}}}}' maven:io.vertx:vertx-shell:3.6.3</code></pre>
+vertx run -conf '{"httpOptions":{"port":8080,"ssl":true,"keyStoreOptions":{"path":"keystore.jks","password":"secret"},"authOptions":{"provider":""shiro,"config":{"properties_path":"file:auth.properties"}}}}' maven:io.vertx:vertx-shell:3.9.3</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -309,7 +310,7 @@ vertx run -conf '{"httpOptions":{"port":8080,"ssl":true,"keyStoreOptions":{"path
 </td>
 <td class="content">
 when Vert.x Shell is already on your classpath you can use <code>service:io.vertx.ext.shell</code> instead
-or <code>maven:io.vertx:vertx-shell:3.6.3</code>
+or <code>maven:io.vertx:vertx-shell:3.9.3</code>
 </td>
 </tr>
 </table>
@@ -1669,7 +1670,7 @@ don&#8217;t use this mechanism.</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:30 CEST
               
               
             </div>

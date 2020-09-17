@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -200,7 +201,7 @@ instance when creating it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">HttpServerOptions options = <span class="keyword">new</span> HttpServerOptions().setMaxWebsocketFrameSize(<span class="integer">1000000</span>);
+<pre class="CodeRay highlight"><code data-lang="java">HttpServerOptions options = <span class="keyword">new</span> HttpServerOptions().setMaxWebSocketFrameSize(<span class="integer">1000000</span>);
 
 HttpServer server = vertx.createHttpServer(options);</code></pre>
 </div>
@@ -598,13 +599,13 @@ for you. The body handler is called once when all the body has been received:</p
 </div>
 </div>
 <div class="sect3">
-<h4 id="_pumping_requests">Pumping requests</h4>
+<h4 id="_streaming_requests">Streaming requests</h4>
 <div class="paragraph">
-<p>The request object is a <code><a href="../../apidocs/io/vertx/core/streams/ReadStream.html">ReadStream</a></code> so you can pump the request body to any
+<p>The request object is a <code><a href="../../apidocs/io/vertx/core/streams/ReadStream.html">ReadStream</a></code> so you can pipe the request body to any
 <code><a href="../../apidocs/io/vertx/core/streams/WriteStream.html">WriteStream</a></code> instance.</p>
 </div>
 <div class="paragraph">
-<p>See the chapter on <a href="#streams">streams and pumps</a> for a detailed explanation.</p>
+<p>See the chapter on <a href="#streams">streams</a> for a detailed explanation.</p>
 </div>
 </div>
 <div class="sect3">
@@ -680,8 +681,8 @@ exhaustion, instead, the upload data is received in chunks:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The upload object is a <code><a href="../../apidocs/io/vertx/core/streams/ReadStream.html">ReadStream</a></code> so you can pump the request body to any
-<code><a href="../../apidocs/io/vertx/core/streams/WriteStream.html">WriteStream</a></code> instance. See the chapter on <a href="#streams">streams and pumps</a> for a
+<p>The upload object is a <code><a href="../../apidocs/io/vertx/core/streams/ReadStream.html">ReadStream</a></code> so you can pipe the request body to any
+<code><a href="../../apidocs/io/vertx/core/streams/WriteStream.html">WriteStream</a></code> instance. See the chapter on <a href="#streams">streams</a> for a
 detailed explanation.</p>
 </div>
 <div class="paragraph">
@@ -706,6 +707,65 @@ to arbitrary places on your filesystem. See <a href="#Security notes">security n
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_handling_cookies">Handling cookies</h4>
+<div class="paragraph">
+<p>You use <code><a href="../../apidocs/io/vertx/core/http/HttpServerRequest.html#getCookie-java.lang.String-">getCookie</a></code> to retrieve
+a cookie by name, or use <code><a href="../../apidocs/io/vertx/core/http/HttpServerRequest.html#cookieMap--">cookieMap</a></code> to retrieve all the cookies.</p>
+</div>
+<div class="paragraph">
+<p>To remove a cookie, use <code><a href="../../apidocs/io/vertx/core/http/HttpServerResponse.html#removeCookie-java.lang.String-">removeCookie</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>To add a cookie use <code><a href="../../apidocs/io/vertx/core/http/HttpServerResponse.html#addCookie-io.vertx.core.http.Cookie-">addCookie</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>The set of cookies will be written back in the response automatically when the response headers are written so the
+browser can store them.</p>
+</div>
+<div class="paragraph">
+<p>Cookies are described by instances of <code><a href="../../apidocs/io/vertx/core/http/Cookie.html">Cookie</a></code>. This allows you to retrieve the name,
+value, domain, path and other normal cookie properties.</p>
+</div>
+<div class="paragraph">
+<p>Same Site Cookies let servers require that a cookie shouldn&#8217;t be sent with cross-site (where Site is defined by the
+registrable domain) requests, which provides some protection against cross-site request forgery attacks. This kind
+of cookies are enabled using the setter: <code><a href="../../apidocs/io/vertx/core/http/Cookie.html#setSameSite-io.vertx.core.http.CookieSameSite-">setSameSite</a></code>.</p>
+</div>
+<div class="paragraph">
+<p>Same site cookies can have one of 3 values:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>None - The browser will send cookies with both cross-site requests and same-site requests.</p>
+</li>
+<li>
+<p>Strict - he browser will only send cookies for same-site requests (requests originating from the site that set the
+cookie). If the request originated from a different URL than the URL of the current location, none of the cookies
+tagged with the Strict attribute will be included.</p>
+</li>
+<li>
+<p>Lax - Same-site cookies are withheld on cross-site subrequests, such as calls to load images or frames, but will be
+sent when a user navigates to the URL from an external site; for example, by following a link.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example of querying and adding cookies:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">Cookie someCookie = request.getCookie(<span class="string"><span class="delimiter">&quot;</span><span class="content">mycookie</span><span class="delimiter">&quot;</span></span>);
+<span class="predefined-type">String</span> cookieValue = someCookie.getValue();
+
+<span class="comment">// Do something with cookie...</span>
+
+<span class="comment">// Add a cookie - this will get written back in the response automatically</span>
+request.response().addCookie(Cookie.cookie(<span class="string"><span class="delimiter">&quot;</span><span class="content">othercookie</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">somevalue</span><span class="delimiter">&quot;</span></span>));</code></pre>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -843,7 +903,7 @@ be too late otherwise. If you are using HTTP chunking you do not have to worry.<
 <div class="sect3">
 <h4 id="_ending_http_responses">Ending HTTP responses</h4>
 <div class="paragraph">
-<p>Once you have finished with the HTTP response you should <code><a href="../../apidocs/io/vertx/core/http/HttpServerResponse.html#end-java.lang.String-">end</a></code> it.</p>
+<p>Once you have finished with the HTTP response you should <code><a href="../../apidocs/io/vertx/core/streams/WriteStream.html#end-io.vertx.core.Handler-">end</a></code> it.</p>
 </div>
 <div class="paragraph">
 <p>This can be done in several ways:</p>
@@ -976,7 +1036,7 @@ response.putTrailer(<span class="string"><span class="delimiter">&quot;</span><s
 <h4 id="_serving_files_directly_from_disk_or_the_classpath">Serving files directly from disk or the classpath</h4>
 <div class="paragraph">
 <p>If you were writing a web server, one way to serve a file from disk would be to open it as an <code><a href="../../apidocs/io/vertx/core/file/AsyncFile.html">AsyncFile</a></code>
-and pump it to the HTTP response.</p>
+and pipe it to the HTTP response.</p>
 </div>
 <div class="paragraph">
 <p>Or you could load it it one go using <code><a href="../../apidocs/io/vertx/core/file/FileSystem.html#readFile-java.lang.String-io.vertx.core.Handler-">readFile</a></code> and write it straight to the response.</p>
@@ -1085,15 +1145,15 @@ case you can just do:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_pumping_responses">Pumping responses</h4>
+<h4 id="_piping_responses">Piping responses</h4>
 <div class="paragraph">
-<p>The server response is a <code><a href="../../apidocs/io/vertx/core/streams/WriteStream.html">WriteStream</a></code> instance so you can pump to it from any
+<p>The server response is a <code><a href="../../apidocs/io/vertx/core/streams/WriteStream.html">WriteStream</a></code> instance so you can pipe to it from any
 <code><a href="../../apidocs/io/vertx/core/streams/ReadStream.html">ReadStream</a></code>, e.g. <code><a href="../../apidocs/io/vertx/core/file/AsyncFile.html">AsyncFile</a></code>, <code><a href="../../apidocs/io/vertx/core/net/NetSocket.html">NetSocket</a></code>,
 <code><a href="../../apidocs/io/vertx/core/http/WebSocket.html">WebSocket</a></code> or <code><a href="../../apidocs/io/vertx/core/http/HttpServerRequest.html">HttpServerRequest</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example which echoes the request body back in the response for any PUT methods.
-It uses a pump for the body, so it will work even if the HTTP request body is much larger than can fit in memory
+It uses a pipe for the body, so it will work even if the HTTP request body is much larger than can fit in memory
 at any one time:</p>
 </div>
 <div class="listingblock">
@@ -1102,8 +1162,7 @@ at any one time:</p>
   HttpServerResponse response = request.response();
   <span class="keyword">if</span> (request.method() == HttpMethod.PUT) {
     response.setChunked(<span class="predefined-constant">true</span>);
-    Pump.pump(request, response).start();
-    request.endHandler(v -&gt; response.end());
+    request.pipeTo(response);
   } <span class="keyword">else</span> {
     response.setStatusCode(<span class="integer">400</span>).end();
   }
@@ -1226,7 +1285,7 @@ the pushed response can be written after.</p>
 <div class="paragraph">
 <p>You can set an <code><a href="../../apidocs/io/vertx/core/http/HttpServer.html#exceptionHandler-io.vertx.core.Handler-">exceptionHandler</a></code> to receive any
 exceptions that happens before the connection is passed to the <code><a href="../../apidocs/io/vertx/core/http/HttpServer.html#requestHandler-io.vertx.core.Handler-">requestHandler</a></code>
-or to the <code><a href="../../apidocs/io/vertx/core/http/HttpServer.html#websocketHandler-io.vertx.core.Handler-">websocketHandler</a></code>, e.g during the TLS handshake.</p>
+or to the <code><a href="../../apidocs/io/vertx/core/http/HttpServer.html#webSocketHandler-io.vertx.core.Handler-">webSocketHandler</a></code>, e.g during the TLS handshake.</p>
 </div>
 </div>
 </div>
@@ -1448,7 +1507,7 @@ client.headNow(<span class="string"><span class="delimiter">&quot;</span><span c
 <h4 id="_writing_general_requests">Writing general requests</h4>
 <div class="paragraph">
 <p>At other times you don&#8217;t know the request method you want to send until run-time. For that use case we provide
-general purpose request methods such as <code><a href="../../apidocs/io/vertx/core/http/HttpClient.html#request-io.vertx.core.http.HttpMethod-io.vertx.core.http.RequestOptions-">request</a></code> which allow you to specify
+general purpose request methods such as <code><a href="../../apidocs/io/vertx/core/http/HttpClient.html#request-io.vertx.core.http.HttpMethod-io.vertx.core.net.SocketAddress-io.vertx.core.http.RequestOptions-">request</a></code> which allow you to specify
 the HTTP method at run-time:</p>
 </div>
 <div class="listingblock">
@@ -1473,7 +1532,7 @@ before sending it.</p>
 </div>
 <div class="paragraph">
 <p>To do this you can call one of the specific request methods such as <code><a href="../../apidocs/io/vertx/core/http/HttpClient.html#post-io.vertx.core.http.RequestOptions-">post</a></code> or
-one of the general purpose request methods such as <code><a href="../../apidocs/io/vertx/core/http/HttpClient.html#request-io.vertx.core.http.HttpMethod-io.vertx.core.http.RequestOptions-">request</a></code>.</p>
+one of the general purpose request methods such as <code><a href="../../apidocs/io/vertx/core/http/HttpClient.html#request-io.vertx.core.http.HttpMethod-io.vertx.core.net.SocketAddress-io.vertx.core.http.RequestOptions-">request</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>These methods don&#8217;t send the request immediately, but instead return an instance of <code><a href="../../apidocs/io/vertx/core/http/HttpClientRequest.html">HttpClientRequest</a></code>
@@ -1839,7 +1898,7 @@ and <code><a href="../../apidocs/io/vertx/core/http/HttpClientResponse.html#stat
 <h4 id="_using_the_response_as_a_stream">Using the response as a stream</h4>
 <div class="paragraph">
 <p>The <code><a href="../../apidocs/io/vertx/core/http/HttpClientResponse.html">HttpClientResponse</a></code> instance is also a <code><a href="../../apidocs/io/vertx/core/streams/ReadStream.html">ReadStream</a></code> which means
-you can pump it to any <code><a href="../../apidocs/io/vertx/core/streams/WriteStream.html">WriteStream</a></code> instance.</p>
+you can pipe it to any <code><a href="../../apidocs/io/vertx/core/streams/WriteStream.html">WriteStream</a></code> instance.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1946,9 +2005,17 @@ or immediately after the headers have been read and the response handler has bee
 <div class="sect3">
 <h4 id="_30x_redirection_handling">30x redirection handling</h4>
 <div class="paragraph">
-<p>The client can be configured to follow HTTP redirections: when the client receives an
-<code>301</code>, <code>302</code>, <code>303</code> or <code>307</code> status code, it follows the redirection provided by the <code>Location</code> response header
-and the response handler is passed the redirected response instead of the original response.</p>
+<p>The client can be configured to follow HTTP redirections provided by the <code>Location</code> response header when the client receives:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a <code>301</code>, <code>302</code>, <code>307</code> or <code>308</code> status code along with a HTTP GET or HEAD method</p>
+</li>
+<li>
+<p>a <code>303</code> status code, in addition the directed request perform an HTTP GET methodn</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example:</p>
@@ -1959,31 +2026,6 @@ and the response handler is passed the redirected response instead of the origin
   <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Received response with status code </span><span class="delimiter">&quot;</span></span> + response.statusCode());
 }).setFollowRedirects(<span class="predefined-constant">true</span>).end();</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>The redirection policy is as follow</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>on a <code>301</code>, <code>302</code> or <code>303</code> status code, follow the redirection with a <code>GET</code> method</p>
-</li>
-<li>
-<p>on a <code>307</code> status code, follow the redirection with the same HTTP method and the cached body</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-following redirections caches the request body
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>The maximum redirects is <code>16</code> by default and can be changed with <code><a href="../../apidocs/io/vertx/core/http/HttpClientOptions.html#setMaxRedirects-int-">setMaxRedirects</a></code>.</p>
@@ -2434,11 +2476,11 @@ server.connectionHandler(connection -&gt; {
 </div>
 </div>
 <div class="paragraph">
-<p>A connection handler can be set on the request to be notified when the connection happens:</p>
+<p>A connection handler can be set on the client to be notified when a connection has been established happens:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">request.connectionHandler(connection -&gt; {
+<pre class="CodeRay highlight"><code data-lang="java">client.connectionHandler(connection -&gt; {
   <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Connected to the server</span><span class="delimiter">&quot;</span></span>);
 });</code></pre>
 </div>
@@ -2749,7 +2791,7 @@ method.</p>
 <p>The <code><a href="../../apidocs/io/vertx/core/http/HttpClientOptions.html#setSsl-boolean-">setSsl</a></code> setting acts as the default client setting.</p>
 </div>
 <div class="paragraph">
-<p>The <code><a href="../../apidocs/io/vertx/core/http/RequestOptions.html#setSsl-boolean-">setSsl</a></code> overrides the default client setting</p>
+<p>The <code><a href="../../apidocs/io/vertx/core/http/RequestOptions.html#setSsl-java.lang.Boolean-">setSsl</a></code> overrides the default client setting</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2793,7 +2835,7 @@ connection between HTTP servers and HTTP clients (typically browsers).</p>
 <div class="sect4">
 <h5 id="_websocket_handler">WebSocket handler</h5>
 <div class="paragraph">
-<p>The first way involves providing a <code><a href="../../apidocs/io/vertx/core/http/HttpServer.html#websocketHandler-io.vertx.core.Handler-">websocketHandler</a></code>
+<p>The first way involves providing a <code><a href="../../apidocs/io/vertx/core/http/HttpServer.html#webSocketHandler-io.vertx.core.Handler-">webSocketHandler</a></code>
 on the server instance.</p>
 </div>
 <div class="paragraph">
@@ -2802,7 +2844,7 @@ on the server instance.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">server.websocketHandler(websocket -&gt; {
+<pre class="CodeRay highlight"><code data-lang="java">server.webSocketHandler(webSocket -&gt; {
   <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Connected!</span><span class="delimiter">&quot;</span></span>);
 });</code></pre>
 </div>
@@ -2812,29 +2854,66 @@ on the server instance.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">server.websocketHandler(websocket -&gt; {
-  <span class="keyword">if</span> (websocket.path().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">/myapi</span><span class="delimiter">&quot;</span></span>)) {
-    websocket.reject();
+<pre class="CodeRay highlight"><code data-lang="java">server.webSocketHandler(webSocket -&gt; {
+  <span class="keyword">if</span> (webSocket.path().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">/myapi</span><span class="delimiter">&quot;</span></span>)) {
+    webSocket.reject();
   } <span class="keyword">else</span> {
     <span class="comment">// Do something</span>
   }
 });</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>You can perform an asynchronous handshake by calling <code><a href="../../apidocs/io/vertx/core/http/ServerWebSocket.html#setHandshake-io.vertx.core.Future-io.vertx.core.Handler-">setHandshake</a></code> with a <code>Future</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">server.webSocketHandler(webSocket -&gt; {
+  Promise&lt;<span class="predefined-type">Integer</span>&gt; promise = Promise.promise();
+  webSocket.setHandshake(promise.future());
+  authenticate(webSocket.headers(), ar -&gt; {
+    <span class="keyword">if</span> (ar.succeeded()) {
+      <span class="comment">// Terminate the handshake with the status code 101 (Switching Protocol)</span>
+      <span class="comment">// Reject the handshake with 401 (Unauthorized)</span>
+      promise.complete(ar.succeeded() ? <span class="integer">101</span> : <span class="integer">401</span>);
+    } <span class="keyword">else</span> {
+      <span class="comment">// Will send a 500 error</span>
+      promise.fail(ar.cause());
+    }
+  });
+});</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+the WebSocket will be automatically accepted after the handler is called unless the WebSocket&#8217;s handshake has been set
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect4">
 <h5 id="_upgrading_to_websocket">Upgrading to WebSocket</h5>
 <div class="paragraph">
 <p>The second way of handling WebSockets is to handle the HTTP Upgrade request that was sent from the client, and
-call <code><a href="../../apidocs/io/vertx/core/http/HttpServerRequest.html#upgrade--">upgrade</a></code> on the server request.</p>
+call <code><a href="../../apidocs/io/vertx/core/http/HttpServerRequest.html#toWebSocket-io.vertx.core.Handler-">toWebSocket</a></code> on the server request.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">server.requestHandler(request -&gt; {
   <span class="keyword">if</span> (request.path().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">/myapi</span><span class="delimiter">&quot;</span></span>)) {
 
-    ServerWebSocket websocket = request.upgrade();
-    <span class="comment">// Do something</span>
+    request.toWebSocket(ar -&gt; {
+      <span class="keyword">if</span> (ar.succeeded()) {
+        ServerWebSocket webSocket = ar.result();
+        <span class="comment">// Do something</span>
+      }
+    });
 
   } <span class="keyword">else</span> {
     <span class="comment">// Reject</span>
@@ -2847,7 +2926,7 @@ call <code><a href="../../apidocs/io/vertx/core/http/HttpServerRequest.html#upgr
 <div class="sect4">
 <h5 id="_the_server_websocket">The server WebSocket</h5>
 <div class="paragraph">
-<p>The <code><a href="../../apidocs/io/vertx/core/http/ServerWebSocket.html">ServerWebSocket</a></code> instance enables you to retrieve the <code><a href="../../apidocs/io/vertx/core/http/ServerWebSocket.html#headers--">headers</a></code>,
+<p>The <code><a href="../../apidocs/io/vertx/core/http/ServerWebSocket.html">ServerWebSocket</a></code> instance enables you to retrieve the <code><a href="../../apidocs/io/vertx/core/http/WebSocketBase.html#headers--">headers</a></code>,
 <code><a href="../../apidocs/io/vertx/core/http/ServerWebSocket.html#path--">path</a></code>, <code><a href="../../apidocs/io/vertx/core/http/ServerWebSocket.html#query--">query</a></code> and
 <code><a href="../../apidocs/io/vertx/core/http/ServerWebSocket.html#uri--">URI</a></code> of the HTTP request of the WebSocket handshake.</p>
 </div>
@@ -2859,7 +2938,7 @@ call <code><a href="../../apidocs/io/vertx/core/http/HttpServerRequest.html#upgr
 <p>The Vert.x <code><a href="../../apidocs/io/vertx/core/http/HttpClient.html">HttpClient</a></code> supports WebSockets.</p>
 </div>
 <div class="paragraph">
-<p>You can connect a WebSocket to a server using one of the <code><a href="../../apidocs/io/vertx/core/http/HttpClient.html#websocket-io.vertx.core.http.RequestOptions-io.vertx.core.Handler-">websocket</a></code> operations and
+<p>You can connect a WebSocket to a server using one of the <code><a href="../../apidocs/io/vertx/core/http/HttpClient.html#webSocket-int-java.lang.String-java.lang.String-io.vertx.core.Handler-">webSocket</a></code> operations and
 providing a handler.</p>
 </div>
 <div class="paragraph">
@@ -2867,8 +2946,11 @@ providing a handler.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">client.websocket(<span class="string"><span class="delimiter">&quot;</span><span class="content">/some-uri</span><span class="delimiter">&quot;</span></span>, websocket -&gt; {
-  <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Connected!</span><span class="delimiter">&quot;</span></span>);
+<pre class="CodeRay highlight"><code data-lang="java">client.webSocket(<span class="string"><span class="delimiter">&quot;</span><span class="content">/some-uri</span><span class="delimiter">&quot;</span></span>, res -&gt; {
+  <span class="keyword">if</span> (res.succeeded()) {
+    WebSocket ws = res.result();
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Connected!</span><span class="delimiter">&quot;</span></span>);
+  }
 });</code></pre>
 </div>
 </div>
@@ -2883,16 +2965,16 @@ providing a handler.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Buffer</span> buffer = <span class="predefined-type">Buffer</span>.buffer().appendInt(<span class="integer">123</span>).appendFloat(<span class="float">1.23f</span>);
-websocket.writeBinaryMessage(buffer);
+webSocket.writeBinaryMessage(buffer);
 
 <span class="comment">// Write a simple text message</span>
 <span class="predefined-type">String</span> message = <span class="string"><span class="delimiter">&quot;</span><span class="content">hello</span><span class="delimiter">&quot;</span></span>;
-websocket.writeTextMessage(message);</code></pre>
+webSocket.writeTextMessage(message);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If the WebSocket message is larger than the maximum websocket frame size as configured with
-<code><a href="../../apidocs/io/vertx/core/http/HttpClientOptions.html#setMaxWebsocketFrameSize-int-">setMaxWebsocketFrameSize</a></code>
+<p>If the WebSocket message is larger than the maximum WebSocket frame size as configured with
+<code><a href="../../apidocs/io/vertx/core/http/HttpClientOptions.html#setMaxWebSocketFrameSize-int-">setMaxWebSocketFrameSize</a></code>
 then Vert.x will split it into multiple WebSocket frames before sending it on the wire.</p>
 </div>
 </div>
@@ -2918,18 +3000,18 @@ to the WebSocket using <code><a href="../../apidocs/io/vertx/core/http/WebSocket
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">WebSocketFrame frame1 = WebSocketFrame.binaryFrame(buffer1, <span class="predefined-constant">false</span>);
-websocket.writeFrame(frame1);
+webSocket.writeFrame(frame1);
 
 WebSocketFrame frame2 = WebSocketFrame.continuationFrame(buffer2, <span class="predefined-constant">false</span>);
-websocket.writeFrame(frame2);
+webSocket.writeFrame(frame2);
 
 <span class="comment">// Write the final frame</span>
 WebSocketFrame frame3 = WebSocketFrame.continuationFrame(buffer2, <span class="predefined-constant">true</span>);
-websocket.writeFrame(frame3);</code></pre>
+webSocket.writeFrame(frame3);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In many cases you just want to send a websocket message that consists of a single final frame, so we provide a couple
+<p>In many cases you just want to send a WebSocket message that consists of a single final frame, so we provide a couple
 of shortcut methods to do that with <code><a href="../../apidocs/io/vertx/core/http/WebSocket.html#writeFinalBinaryFrame-io.vertx.core.buffer.Buffer-">writeFinalBinaryFrame</a></code>
 and <code><a href="../../apidocs/io/vertx/core/http/WebSocket.html#writeFinalTextFrame-java.lang.String-">writeFinalTextFrame</a></code>.</p>
 </div>
@@ -2938,13 +3020,13 @@ and <code><a href="../../apidocs/io/vertx/core/http/WebSocket.html#writeFinalTex
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">websocket.writeFinalTextFrame(<span class="string"><span class="delimiter">&quot;</span><span class="content">Geronimo!</span><span class="delimiter">&quot;</span></span>);
+<pre class="CodeRay highlight"><code data-lang="java">webSocket.writeFinalTextFrame(<span class="string"><span class="delimiter">&quot;</span><span class="content">Geronimo!</span><span class="delimiter">&quot;</span></span>);
 
-<span class="comment">// Send a websocket messages consisting of a single final binary frame:</span>
+<span class="comment">// Send a WebSocket messages consisting of a single final binary frame:</span>
 
 <span class="predefined-type">Buffer</span> buff = <span class="predefined-type">Buffer</span>.buffer().appendInt(<span class="integer">12</span>).appendString(<span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>);
 
-websocket.writeFinalBinaryFrame(buff);</code></pre>
+webSocket.writeFinalBinaryFrame(buff);</code></pre>
 </div>
 </div>
 </div>
@@ -2959,7 +3041,7 @@ for example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">websocket.frameHandler(frame -&gt; {
+<pre class="CodeRay highlight"><code data-lang="java">webSocket.frameHandler(frame -&gt; {
   <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Received a frame of size!</span><span class="delimiter">&quot;</span></span>);
 });</code></pre>
 </div>
@@ -2972,14 +3054,29 @@ for example:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_streaming_websockets">Streaming WebSockets</h4>
+<h4 id="_piping_websockets">Piping WebSockets</h4>
 <div class="paragraph">
 <p>The <code><a href="../../apidocs/io/vertx/core/http/WebSocket.html">WebSocket</a></code> instance is also a <code><a href="../../apidocs/io/vertx/core/streams/ReadStream.html">ReadStream</a></code> and a
-<code><a href="../../apidocs/io/vertx/core/streams/WriteStream.html">WriteStream</a></code> so it can be used with pumps.</p>
+<code><a href="../../apidocs/io/vertx/core/streams/WriteStream.html">WriteStream</a></code> so it can be used with pipes.</p>
 </div>
 <div class="paragraph">
 <p>When using a WebSocket as a write stream or a read stream it can only be used with WebSockets connections that are
 used with binary frames that are no split over multiple frames.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_event_bus_handlers">Event bus handlers</h4>
+<div class="paragraph">
+<p>Every WebSocket automatically registers two handler on the event bus, and when any data are received in this handler,
+it writes them to itself. Those are local subscriptions not routed on the cluster.</p>
+</div>
+<div class="paragraph">
+<p>This enables you to write data to a WebSocket which is potentially in a completely different verticle sending data
+to the address of that handler.</p>
+</div>
+<div class="paragraph">
+<p>The addresses of the handlers are given by <code><a href="../../apidocs/io/vertx/core/http/WebSocketBase.html#binaryHandlerID--">binaryHandlerID</a></code> and
+<code><a href="../../apidocs/io/vertx/core/http/WebSocketBase.html#textHandlerID--">textHandlerID</a></code>.</p>
 </div>
 </div>
 </div>
@@ -3071,7 +3168,7 @@ when the verticle is undeployed.</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:28 CEST
               
               
             </div>

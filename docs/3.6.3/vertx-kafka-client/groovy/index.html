@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -122,18 +123,6 @@
 <li><a href="#_handling_errors">Handling errors</a></li>
 <li><a href="#_automatic_clean_up_in_verticles">Automatic clean-up in verticles</a></li>
 <li><a href="#_using_vert_x_serializers_deserializers">Using Vert.x serializers/deserializers</a></li>
-<li><a href="#_vert_x_kafka_adminutils">Vert.x Kafka AdminUtils</a>
-<ul class="sectlevel1">
-<li><a href="#_using_the_adminutils">Using the AdminUtils</a>
-<ul class="sectlevel2">
-<li><a href="#_create_a_topic">Create a topic</a></li>
-<li><a href="#_delete_a_topic">Delete a topic</a></li>
-<li><a href="#_change_a_topic_s_configuration">Change a topic&#8217;s configuration</a></li>
-<li><a href="#_check_if_a_topic_exists">Check if a topic exists</a></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
         </div>
       </div>
@@ -160,18 +149,6 @@
 <li><a href="#_handling_errors">Handling errors</a></li>
 <li><a href="#_automatic_clean_up_in_verticles">Automatic clean-up in verticles</a></li>
 <li><a href="#_using_vert_x_serializers_deserializers">Using Vert.x serializers/deserializers</a></li>
-<li><a href="#_vert_x_kafka_adminutils">Vert.x Kafka AdminUtils</a>
-<ul class="sectlevel1">
-<li><a href="#_using_the_adminutils">Using the AdminUtils</a>
-<ul class="sectlevel2">
-<li><a href="#_create_a_topic">Create a topic</a></li>
-<li><a href="#_delete_a_topic">Delete a topic</a></li>
-<li><a href="#_change_a_topic_s_configuration">Change a topic&#8217;s configuration</a></li>
-<li><a href="#_check_if_a_topic_exists">Check if a topic exists</a></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
         </div>
         <div id="preamble">
@@ -185,18 +162,6 @@ messages asynchronously or reading them as a stream (even with the possibility t
 </div>
 <div class="paragraph">
 <p>As producer, the API provides methods for sending message to a topic partition like writing on a stream.</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Warning</div>
-</td>
-<td class="content">
-this module has the tech preview status, this means the API can change between versions.
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
@@ -218,7 +183,7 @@ this module has the tech preview status, this means the API can change between v
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-kafka-client<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.6.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -231,7 +196,7 @@ this module has the tech preview status, this means the API can change between v
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile io.vertx:vertx-kafka-<span class="key">client</span>:<span class="float">3.6</span><span class="float">.3</span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile io.vertx:vertx-kafka-<span class="key">client</span>:<span class="float">3.9</span><span class="float">.3</span></code></pre>
 </div>
 </div>
 </div>
@@ -299,6 +264,10 @@ config[<span class="string"><span class="delimiter">&quot;</span><span class="co
 subscribing to a set of topics being part of a consumer group (specified by the properties on creation).</p>
 </div>
 <div class="paragraph">
+<p>It&#8217;s also possible to use the <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#subscribe-java.util.regex.Pattern-">subscribe</a></code> method for
+subscribing to more topics specifying a Java regex.</p>
+</div>
+<div class="paragraph">
 <p>You also need to register a handler for handling incoming messages using the
 <code><a href="../../apidocs/io/vertx/kafka/client/consumer/KafkaConsumer.html#handler-io.vertx.core.Handler-">handler</a></code>.</p>
 </div>
@@ -309,12 +278,16 @@ consumer.handler({ record -&gt;
   println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Processing key=</span><span class="inline"><span class="inline-delimiter">${</span>record.key()<span class="inline-delimiter">}</span></span><span class="content">,value=</span><span class="inline"><span class="inline-delimiter">${</span>record.value()<span class="inline-delimiter">}</span></span><span class="content">,partition=</span><span class="inline"><span class="inline-delimiter">${</span>record.partition()<span class="inline-delimiter">}</span></span><span class="content">,offset=</span><span class="inline"><span class="inline-delimiter">${</span>record.offset()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)
 })
 
-<span class="comment">// subscribe to several topics</span>
+<span class="comment">// subscribe to several topics with list</span>
 <span class="keyword">def</span> topics = <span class="keyword">new</span> java.util.HashSet()
 topics.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">topic1</span><span class="delimiter">&quot;</span></span>)
 topics.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">topic2</span><span class="delimiter">&quot;</span></span>)
 topics.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">topic3</span><span class="delimiter">&quot;</span></span>)
 consumer.subscribe(topics)
+
+<span class="comment">// or using a Java regex</span>
+<span class="keyword">def</span> pattern = java.util.regex.Pattern.compile(<span class="string"><span class="delimiter">&quot;</span><span class="content">topic</span><span class="char">\\</span><span class="content">d</span><span class="delimiter">&quot;</span></span>)
+consumer.subscribe(pattern)
 
 <span class="comment">// or just subscribe to a single topic</span>
 consumer.subscribe(<span class="string"><span class="delimiter">&quot;</span><span class="content">a-single-topic</span><span class="delimiter">&quot;</span></span>)</code></pre>
@@ -515,7 +488,7 @@ consumer.subscribe(<span class="string"><span class="delimiter">&quot;</span><sp
 
     vertx.setPeriodic(<span class="integer">1000</span>, { timerId -&gt;
 
-      consumer.poll(<span class="integer">100</span>, { ar1 -&gt;
+      consumer.poll(java.time.Duration.ofMillis(<span class="integer">100</span>), { ar1 -&gt;
 
         <span class="keyword">if</span> (ar1.succeeded()) {
 
@@ -890,7 +863,7 @@ or partition, in this case the messages are sent in a round robin fashion across
   <span class="comment">// only topic and message value are specified, round robin on destination partitions</span>
   <span class="keyword">def</span> record = KafkaProducerRecord.create(<span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">message_</span><span class="inline"><span class="inline-delimiter">${</span>i<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)
 
-  producer.write(record, { done -&gt;
+  producer.send(record, { done -&gt;
 
     <span class="keyword">if</span> (done.succeeded()) {
 
@@ -1121,100 +1094,8 @@ config[<span class="string"><span class="delimiter">&quot;</span><span class="co
 config[<span class="string"><span class="delimiter">&quot;</span><span class="content">acks</span><span class="delimiter">&quot;</span></span>] = <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span></code></pre>
 </div>
 </div>
-</div>
-</div>
-<h1 id="_vert_x_kafka_adminutils" class="sect0">Vert.x Kafka AdminUtils</h1>
-<div class="openblock partintro">
-<div class="content">
-This component provides a vert.x wrapper around the most important functions of Kafka&#8217;s AdminUtils.
-AdminUtils are used to create, modify, and delete topics. Other functionality covered by AdminUtils,
-but not this wrapper, includes Partition Management, Broker Configuration management, etc.
-</div>
-</div>
-<div class="sect1">
-<h2 id="_using_the_adminutils">Using the AdminUtils</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_create_a_topic">Create a topic</h3>
 <div class="paragraph">
-<p>You can call <code><a href="../../apidocs/io/vertx/kafka/admin/AdminUtils.html#createTopic-java.lang.String-int-int-io.vertx.core.Handler-">createTopic</a></code> to create a topic.
-Parameters are: topic name, number of partitions, number of replicas, and the usual callback to handle the result.
-It might return an error, e.g. if the number of requested replicas is greater than the number of brokers.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> adminUtils = AdminUtils.create(Vertx.vertx(), <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost:2181</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">true</span>)
-<span class="comment">// Create topic 'myNewTopic' with 2 partition and 1 replicas</span>
-adminUtils.createTopic(<span class="string"><span class="delimiter">&quot;</span><span class="content">myNewTopic</span><span class="delimiter">&quot;</span></span>, <span class="integer">2</span>, <span class="integer">1</span>, { result -&gt;
-  <span class="keyword">if</span> (result.succeeded()) {
-    println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Creation of topic myNewTopic successful!</span><span class="delimiter">&quot;</span></span>)} <span class="keyword">else</span> {
-    println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Creation of topic myNewTopic failed: </span><span class="inline"><span class="inline-delimiter">${</span>result.cause().getLocalizedMessage()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)}
-})</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_delete_a_topic">Delete a topic</h3>
-<div class="paragraph">
-<p>You can call <code><a href="../../apidocs/io/vertx/kafka/admin/AdminUtils.html#deleteTopic-java.lang.String-io.vertx.core.Handler-">deleteTopic</a></code> to delete a topic.
-Parameters are: topic name, and the usual callback to handle the result.
-It might return an error, e.g. if the topic does not exist.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> adminUtils = AdminUtils.create(Vertx.vertx(), <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost:2181</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">true</span>)
-<span class="comment">// Delete topic 'myNewTopic'</span>
-adminUtils.deleteTopic(<span class="string"><span class="delimiter">&quot;</span><span class="content">myNewTopic</span><span class="delimiter">&quot;</span></span>, { result -&gt;
-  <span class="keyword">if</span> (result.succeeded()) {
-    println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Deletion of topic myNewTopic successful!</span><span class="delimiter">&quot;</span></span>)} <span class="keyword">else</span> {
-    println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Deletion of topic myNewTopic failed: </span><span class="inline"><span class="inline-delimiter">${</span>result.cause().getLocalizedMessage()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)}
-})</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_change_a_topic_s_configuration">Change a topic&#8217;s configuration</h3>
-<div class="paragraph">
-<p>If you need to update the configuration of a topic, e.g., you want to update the retention policy,
-you can call <code><a href="../../apidocs/io/vertx/kafka/admin/AdminUtils.html#changeTopicConfig-java.lang.String-java.util.Map-io.vertx.core.Handler-">changeTopicConfig</a></code> to update a topic.
-Parameters are: topic name, a Map (String &#8594; String) with parameters to be changed,
-and the usual callback to handle the result.
-It might return an error, e.g. if the topic does not exist.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> adminUtils = AdminUtils.create(Vertx.vertx(), <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost:2181</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">true</span>)
-<span class="comment">// Set retention to 1000 ms and max size of the topic partition to 1 kiByte</span>
-<span class="keyword">def</span> properties = [:]
-properties[<span class="string"><span class="delimiter">&quot;</span><span class="content">delete.retention.ms</span><span class="delimiter">&quot;</span></span>] = <span class="string"><span class="delimiter">&quot;</span><span class="content">1000</span><span class="delimiter">&quot;</span></span>
-properties[<span class="string"><span class="delimiter">&quot;</span><span class="content">retention.bytes</span><span class="delimiter">&quot;</span></span>] = <span class="string"><span class="delimiter">&quot;</span><span class="content">1024</span><span class="delimiter">&quot;</span></span>
-adminUtils.changeTopicConfig(<span class="string"><span class="delimiter">&quot;</span><span class="content">myNewTopic</span><span class="delimiter">&quot;</span></span>, properties, { result -&gt;
-  <span class="keyword">if</span> (result.succeeded()) {
-    println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Configuration change of topic myNewTopic successful!</span><span class="delimiter">&quot;</span></span>)} <span class="keyword">else</span> {
-    println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Configuration change of topic myNewTopic failed: </span><span class="inline"><span class="inline-delimiter">${</span>result.cause().getLocalizedMessage()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)}
-})
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_check_if_a_topic_exists">Check if a topic exists</h3>
-<div class="paragraph">
-<p>If you want to check if a topic exists, you can call <code><a href="../../apidocs/io/vertx/kafka/admin/AdminUtils.html#topicExists-java.lang.String-io.vertx.core.Handler-">topicExists</a></code>.
-Parameters are: topic name, and the usual callback to handle the result.
-It might return an error, e.g. if the topic does not exist.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> adminUtils = AdminUtils.create(Vertx.vertx(), <span class="string"><span class="delimiter">&quot;</span><span class="content">localhost:2181</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">true</span>)
-adminUtils.topicExists(<span class="string"><span class="delimiter">&quot;</span><span class="content">myNewTopic</span><span class="delimiter">&quot;</span></span>, { result -&gt;
-  <span class="keyword">if</span> (result.succeeded()) {
-    println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Topic myNewTopic exists: </span><span class="inline"><span class="inline-delimiter">${</span>result.result()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)
-  } <span class="keyword">else</span> {
-    println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Failed to check if topic myNewTopic exists: </span><span class="inline"><span class="inline-delimiter">${</span>result.cause().getLocalizedMessage()<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)}
-})</code></pre>
-</div>
-</div>
+<p>Unresolved directive in index.adoc - include::admin.adoc[]</p>
 </div>
 </div>
 </div>
@@ -1225,7 +1106,7 @@ adminUtils.topicExists(<span class="string"><span class="delimiter">&quot;</span
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:30 CEST
               
               
             </div>

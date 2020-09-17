@@ -69,8 +69,9 @@
     </div>
     <nav class="collapse navbar-collapse" id="vertx-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://start.vertx.io">Starter</a></li>
+        <li><a href="https://start.vertx.io/">Starter</a></li>
         <li><a href="https://vertx.io/download/">Download</a></li>
+        <li><a href="https://how-to.vertx.io/">How-to</a></li>
         <li><a href="https://vertx.io/docs/3.6.3/">Documentation</a></li>
         <li><a href="https://github.com/vert-x3/wiki/wiki">Wiki</a></li>
         <li><a href="https://vertx.io/community/">Community</a></li>
@@ -358,7 +359,7 @@ described that our server should implement a <code>sayHello</code> method that r
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">GreeterGrpc.GreeterVertxImplBase service = <span class="keyword">new</span> GreeterGrpc.GreeterVertxImplBase() {
   <span class="annotation">@Override</span>
-  <span class="directive">public</span> <span class="type">void</span> sayHello(HelloRequest request, <span class="predefined-type">Future</span>&lt;HelloReply&gt; future) {
+  <span class="directive">public</span> <span class="type">void</span> sayHello(HelloRequest request, Promise&lt;HelloReply&gt; future) {
     future.complete(HelloReply.newBuilder().setMessage(request.getName()).build());
   }
 };</code></pre>
@@ -428,7 +429,7 @@ on the verticle event-loops.</p>
 
     BindableService service = <span class="keyword">new</span> GreeterGrpc.GreeterVertxImplBase() {
       <span class="annotation">@Override</span>
-      <span class="directive">public</span> <span class="type">void</span> sayHello(HelloRequest request, <span class="predefined-type">Future</span>&lt;HelloReply&gt; future) {
+      <span class="directive">public</span> <span class="type">void</span> sayHello(HelloRequest request, Promise&lt;HelloReply&gt; future) {
         future.complete(HelloReply.newBuilder().setMessage(request.getName()).build());
       }
     };
@@ -614,7 +615,7 @@ creating the Vert.x instance.</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2019-01-30 21:37:32 CET
+                Last updated 2020-09-16 10:26:28 CEST
               
               
             </div>
