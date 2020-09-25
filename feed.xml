@@ -8,6 +8,155 @@
       <atom:link href="https://vertx.io/feed.xml" rel="self" type="application/rss+xml" />
       
         <item>
+          <title>Eclipse Vert.x 4 beta 3 released!</title>
+          <description>
+      &lt;article&gt;&lt;p&gt;We are extremely pleased to announce the third 4.0 beta release of Eclipse Vert.x .&lt;/p&gt;
+&lt;p&gt;Vert.x 4 is the evolution of the Vert.x 3.x series that will bring key features to Vert.x.&lt;/p&gt;
+&lt;h4 id=&quot;http-client-request-creation&quot;&gt;HTTP client request creation&lt;/h4&gt;
+&lt;p&gt;Until Beta3, HTTP client has created lazy HTTP requests, since then creating a request
+has become an asynchronous operation guaranteeing that a slot for performing the request
+is granted:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;// Created a request&lt;/span&gt;
+HttpClientRequest request = client.get(&lt;span class=&quot;hljs-string&quot;&gt;&quot;/some-uri&quot;&lt;/span&gt;);
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// Connect to the server or reuse a connection from the pool and then try to send the request&lt;/span&gt;
+request.end();
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// Since Beta3&lt;/span&gt;
+client.get(&lt;span class=&quot;hljs-string&quot;&gt;&quot;/some-uri&quot;&lt;/span&gt;, ar -&gt; {
+  &lt;span class=&quot;hljs-comment&quot;&gt;// The client connected to the server or reused a connection from the pool&lt;/span&gt;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (ar.succeeded()) {
+    HttpClientRequest request = ar.result();
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;// Send the request&lt;/span&gt;
+    request.end();
+  }
+});&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Another (hidden) motivation to switch to this model is avoiding data races when the
+HTTP client is used outside the event-loop using futures.&lt;/p&gt;
+&lt;p&gt;Previously you could write code like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;Future&lt;HttpClientResponse&gt; get = client.get(&lt;span class=&quot;hljs-string&quot;&gt;&quot;some-uri&quot;&lt;/span&gt;);
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// Assuming we have a client that returns a future response&lt;/span&gt;
+&lt;span class=&quot;hljs-comment&quot;&gt;// assuging this is *not* on the event-loop&lt;/span&gt;
+Future&lt;Buffer&gt; fut = get.send().compose(response -&gt; {
+
+  &lt;span class=&quot;hljs-comment&quot;&gt;// Response events might have happen already&lt;/span&gt;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; response.body();
+});&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you can write instead:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;Future&lt;Buffer&gt; fut = client.get(&lt;span class=&quot;hljs-string&quot;&gt;&quot;some-uri&quot;&lt;/span&gt;).compose(request -&gt; {
+  request.send().compose(response -&gt; response.body())
+});&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;httpserverresponse-send-method&quot;&gt;HttpServerResponse send method&lt;/h4&gt;
+&lt;p&gt;In the previous beta, HTTP client request got a new simplified &lt;code&gt;send&lt;/code&gt; method to send
+a body or a stream. We did the same for the HTTP server response API:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;server.requestHandler(req -&gt; {
+  req.pause();
+  getSomeStream().onSuccess(stream -&gt; {
+    req.response().send(stream);
+  });
+});&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;http-tunnel-improvements&quot;&gt;HTTP tunnel improvements&lt;/h4&gt;
+&lt;p&gt;Creating an HTTP tunnel has now become more natural:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;client.request(HttpMethod.CONNECT, &lt;span class=&quot;hljs-string&quot;&gt;&quot;some-uri&quot;&lt;/span&gt;)
+  .onSuccess(request -&gt; {
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;// Connect to the server&lt;/span&gt;
+    request.connect(ar -&gt; {
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (ar.succeeded()) {
+        HttpClientResponse response = ar.result();
+
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (response.statusCode() != &lt;span class=&quot;hljs-number&quot;&gt;200&lt;/span&gt;) {
+          &lt;span class=&quot;hljs-comment&quot;&gt;// Connect failed for some reason&lt;/span&gt;
+        } &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; {
+          &lt;span class=&quot;hljs-comment&quot;&gt;// Tunnel created, raw buffers are transmitted on the wire&lt;/span&gt;
+          NetSocket socket = response.netSocket();
+        }
+      }
+    });
+});&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The new &lt;code&gt;connect&lt;/code&gt; method tells the client that when a &lt;code&gt;201&lt;/code&gt; response is received
+from the server then the connection should be switched to not interpret HTTP
+data anymore.&lt;/p&gt;
+&lt;p&gt;On the server, the API has become asynchronous and renamed to &lt;code&gt;toNetSocket()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;server.requestHandler(request -&gt; {
+  &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (request.method() == HttpMethod.CONNECT) {
+    &lt;span class=&quot;hljs-comment&quot;&gt;// Will send an HTTP 201 status code and switch the connection to use raw buffers&lt;/span&gt;
+    request.toNetSocket(ar -&gt; {
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (ar.succeeded()) {
+        NetSocket socket = ar.result();
+      }
+    });
+  }
+});&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;websocket-upgrade-improvements&quot;&gt;WebSocket upgrade improvements&lt;/h4&gt;
+&lt;p&gt;The server WebSocket manual upgrade operation has also become asynchronous and renamed
+to &lt;code&gt;toWebSocket()&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;server.requestHandler(request -&gt; {
+  &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (request.method() == HttpMethod.GET &amp;&amp; &lt;span class=&quot;hljs-string&quot;&gt;&quot;Upgrade&quot;&lt;/span&gt;.equals(request.getHeader(&lt;span class=&quot;hljs-string&quot;&gt;&quot;connection&quot;&lt;/span&gt;))) {
+    &lt;span class=&quot;hljs-comment&quot;&gt;// Will do the WebSocket handshake&lt;/span&gt;
+    request.toWebSocket(ar -&gt; {
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (ar.succeeded()) {
+        ServerWebSocket socket = ar.result();
+      }
+    });
+  }
+});&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;row-to-json-conversion&quot;&gt;Row to JSON conversion&lt;/h4&gt;
+&lt;p&gt;SQL client can now easily transform a &lt;code&gt;Row&lt;/code&gt; into a JSON object, this can be convienient
+for applications directly transferring JSON results to the client:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;client
+  .preparedQuery(&lt;span class=&quot;hljs-string&quot;&gt;&quot;SELECT * FROM USERS WHERE ID=$1&quot;&lt;/span&gt;)
+  .execute(Tuple.of(id))
+  .onSuccess(row -&gt; {
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (row.size() == &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;) {
+      JsonObject json = row.iterator().next().toJson();
+    }
+  });&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;oauth2-oidc-pkce&quot;&gt;OAuth2/OIDC PKCE&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;OAuth2Handler&lt;/code&gt; can now handle &lt;a href=&quot;https://tools.ietf.org/html/rfc7636&quot;&gt;PKCE&lt;/a&gt;, which means another layer of security to your application.&lt;/p&gt;
+&lt;h4 id=&quot;redis-resp3&quot;&gt;Redis RESP3&lt;/h4&gt;
+&lt;p&gt;The redis client can now speak &lt;code&gt;RESP3&lt;/code&gt; with redis servers. This means it can handle all the new types and APIs available on redis from all versions (RESP2, redis &lt; 6) and (RESP3, redis &gt;= 6).&lt;/p&gt;
+&lt;h4 id=&quot;finally&quot;&gt;Finally&lt;/h4&gt;
+&lt;p&gt;This is the Beta3 relase of Vert.x 4, you can of course expect another beta as we get feedback from the community and fix issues that we failed to catch before.&lt;/p&gt;
+&lt;p&gt;You can also read the milestone announces to know more about the overral changes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://vertx.io/blog/eclipse-vert-x-4-beta-1-released&quot;&gt;https://vertx.io/blog/eclipse-vert-x-4-beta-1-released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vertx.io/blog/eclipse-vert-x-4-milestone-5-released&quot;&gt;https://vertx.io/blog/eclipse-vert-x-4-milestone-5-released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vertx.io/blog/eclipse-vert-x-4-milestone-5-released&quot;&gt;https://vertx.io/blog/eclipse-vert-x-4-milestone-5-released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vertx.io/blog/eclipse-vert-x-4-milestone-4-released&quot;&gt;https://vertx.io/blog/eclipse-vert-x-4-milestone-4-released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vertx.io/blog/eclipse-vert-x-4-milestone-3-released&quot;&gt;https://vertx.io/blog/eclipse-vert-x-4-milestone-3-released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vertx.io/blog/eclipse-vert-x-4-milestone-2-released&quot;&gt;https://vertx.io/blog/eclipse-vert-x-4-milestone-2-released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vertx.io/blog/eclipse-vert-x-4-milestone-1-released&quot;&gt;https://vertx.io/blog/eclipse-vert-x-4-milestone-1-released&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &lt;a href=&quot;https://github.com/vert-x3/wiki/wiki/4.0.0-Deprecations-and-breaking-changes&quot;&gt;deprecations and breaking changes&lt;/a&gt;
+ can be found on the wiki.&lt;/p&gt;
+&lt;p&gt;For this release there are no Docker images.&lt;/p&gt;
+&lt;p&gt;The release artifacts have been deployed to &lt;a href=&quot;https://search.maven.org/search?q=g:io.vertx%20AND%20v:4.0.0.Beta1&quot;&gt;Maven Central&lt;/a&gt; and you can get the distribution on &lt;a href=&quot;https://repo1.maven.org/maven2/io/vertx/vertx-stack-manager/4.0.0.Beta1/&quot;&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can bootstrap a Vert.x 4.0.0.Beta3 project using &lt;a href=&quot;https://start.vertx.io&quot;&gt;https://start.vertx.io&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The documentation has been deployed on this preview web-site &lt;a href=&quot;https://vertx-web-site.github.io/docs/&quot;&gt;https://vertx-web-site.github.io/docs/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;That’s it! Happy coding and see you soon on our user or dev &lt;a href=&quot;https://vertx.io/community&quot;&gt;channels&lt;/a&gt;.&lt;/p&gt;
+&lt;/article&gt;
+      </description>
+          <pubDate>Fri, 25 Sep 2020 02:00:00 +0200</pubDate>
+          <link>https://vertx.io/blog/eclipse-vert-x-4-beta-3-released</link>
+          <guid isPermaLink="true">https://vertx.io/blog/eclipse-vert-x-4-beta-3-released</guid>
+          <author>
+            <name>vietj</name>
+            <uri>http://github.com/vietj</uri>
+          </author>
+        </item>
+      
+        <item>
           <title>Eclipse Vert.x 3.9.3 released!</title>
           <description>
       &lt;article&gt;&lt;p&gt;We are extremely pleased to announce that the Eclipse Vert.x version 3.9.3 has been released.&lt;/p&gt;
