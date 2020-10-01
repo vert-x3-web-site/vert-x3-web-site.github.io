@@ -1,0 +1,237 @@
+<!DOCTYPE html><html lang=en><head><title>JWT Authorization for Vert.x with Keycloak</title><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta content="width=device-width,initial-scale=1" name=viewport><meta content="Eclipse Vert.x is a tool-kit for building reactive applications on the JVM." name=description><link href=https://vertx.io/stylesheets/main.css media=screen rel=stylesheet><link href=https://vertx.io/stylesheets/font-awesome.min.css media=screen rel=stylesheet><link href=https://vertx.io/javascripts/styles/rainbow.min.css media=screen rel=stylesheet><!--[if lt IE 9]><script src="http://static.jboss.org/theme/js/libs/html5/pre3.6/html5.min.js"></script><![endif]--><link rel=apple-touch-icon sizes=57x57 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-57x57.png><link rel=apple-touch-icon sizes=60x60 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-60x60.png><link rel=apple-touch-icon sizes=72x72 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-72x72.png><link rel=apple-touch-icon sizes=76x76 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-76x76.png><link rel=apple-touch-icon sizes=114x114 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-114x114.png><link rel=apple-touch-icon sizes=120x120 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-120x120.png><link rel=apple-touch-icon sizes=144x144 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-144x144.png><link rel=apple-touch-icon sizes=152x152 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-152x152.png><link rel=apple-touch-icon sizes=180x180 href=https://vertx.io/assets/favicons/vertx-favicon-7/apple-touch-icon-180x180.png><link rel=icon type=image/png href=https://vertx.io/assets/favicons/vertx-favicon-7/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://vertx.io/assets/favicons/vertx-favicon-7/android-chrome-192x192.png sizes=192x192><link rel=icon type=image/png href=https://vertx.io/assets/favicons/vertx-favicon-7/favicon-96x96.png sizes=96x96><link rel=icon type=image/png href=https://vertx.io/assets/favicons/vertx-favicon-7/favicon-16x16.png sizes=16x16><link rel=manifest href=https://vertx.io/assets/favicons/vertx-favicon-7/manifest.json><link rel=mask-icon href=https://vertx.io/assets/favicons/vertx-favicon-7/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content=#7d3194><meta name=msapplication-TileImage content=https://vertx.io/assets/favicons/vertx-favicon-7/mstile-144x144.png><meta name=theme-color content=#ffffff><link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic" rel=stylesheet type=text/css><link rel=alternate type=application/rss+xml title=RSS href=https://vertx.io/feed.xml><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30144458-1', 'auto');
+    ga('create', 'UA-71153120-1', 'auto', 'tracker');
+    ga('send', 'pageview');
+    ga('tracker.send', 'pageview');</script></head><body><a href=https://vertx-web-site.github.io><img style="border: 0; position: fixed; right: 0; top:0; z-index: 9000" src=https://vertx.io/assets/beta-ribbon.svg width=140px></a> <a id=skippy class="sr-only sr-only-focusable" href=#content><div class=container><span class=skiplink-text>Skip to main content</span></div></a><header class="navbar navbar-default navbar-static-top" id=top role=banner><div class=container><div class=navbar-header><button class="navbar-toggle collapsed" type=button data-toggle=collapse data-target=#vertx-navbar-collapse><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a href="https://vertx.io/" class=navbar-brand><img alt=Brand src=https://vertx.io/assets/logo-sm.png></a></div><nav class="collapse navbar-collapse" id=vertx-navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href="https://start.vertx.io/">Starter</a></li><li><a href="https://vertx.io/download/">Download</a></li><li><a href="https://how-to.vertx.io/">How-to</a></li><li><a href="https://vertx.io/docs/">Documentation</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>Wiki</a></li><li><a href="https://vertx.io/community/">Community</a></li><li><a href="https://vertx.io/materials/">Materials</a></li><li><a href="https://vertx.io/blog/">Blog</a></li></ul></nav></div></header><div class=container><div class="row blog"><article class="col-xs-12 blog-post"><h2 class=blog-post-title>JWT Authorization for Vert.x with Keycloak</h2><p class=blog-post-meta>1st October 2020 by <a href=http://github.com/thomasdarimont>thomasdarimont</a></p><article><h1 id=jwt-authorization-for-vert-x-with-keycloak>JWT Authorization for Vert.x with Keycloak</h1><h2 id=tl-dr>TL;DR</h2><p>In this blog post you’ll learn:</p><ul><li>JWT foundations</li><li>How to protect routes with a JWT Authorization</li><li>How to extract claims from a JWT encoded token</li><li>How to apply RBAC with Keycloak Realm roles</li></ul><h3 id=hello-again>Hello again</h3><p>Hi there! In my last blog post <a href="https://vertx.io/blog/easy-sso-for-vert-x-with-keycloak/">Easy SSO for Vert.x with Keycloak</a> we learned how to configure single sign-on for a Vert.x web application with Keycloak and OpenID connect. This time we’ll see how we can protect an application with Vert.x’s <a href=https://vertx.io/docs/vertx-web/java/#_jwt_authorisation>JWT Authorization</a> support and Keycloak.</p><h3 id=keycloak-setup>Keycloak Setup</h3><p>To secure our Vert.x app, we need to use a Keycloak server for obtaining JWT tokens. Although <a href="https://www.keycloak.org/docs/latest/getting_started/">Keycloak has a great getting started guide</a> I wanted to make it a bit easier to put everything together, therefore I prepared a local Keycloak docker container <a href=https://github.com/thomasdarimont/vertx-playground/tree/master/jwt-service-vertx#start-keycloak-with-the-vertx-realm>as described here</a>, which comes with all the required configuration in place, that you can start easily.</p><p>The preconfigured Keycloak realm <code>vertx</code> contains a <code>vertx-service</code> OpenID connect client for our Vert.x app and a set of users for testing. To ease testing, the <code>vertx-service</code> is configured with <code>Direct Access Grant</code> enabled in Keycloak, which enables support for the OAuth2 resource owner password credentials grant (ROPC) flow.</p><p>To start Keycloak with the preconfigured realm, just start the docker container with the following command:</p><pre><code class=hljs>docker run \
+  -<span class=ruby>it \
+</span>  -<span class=ruby>-name vertx-keycloak \
+</span>  -<span class=ruby>-rm \
+</span>  -<span class=ruby>e <span class=hljs-constant>KEYCLOAK_USER</span>=admin \
+</span>  -<span class=ruby>e <span class=hljs-constant>KEYCLOAK_PASSWORD</span>=admin \
+</span>  -<span class=ruby>e <span class=hljs-constant>KEYCLOAK_IMPORT</span>=<span class=hljs-regexp>/tmp/vertx</span>-realm.json \
+</span>  -<span class=ruby>v <span class=hljs-variable>$PWD</span>/vertx-realm.<span class=hljs-symbol>json:</span>/tmp/vertx-realm.json \
+</span>  -<span class=ruby>v <span class=hljs-variable>$PWD</span>/<span class=hljs-symbol>data:</span>/opt/jboss/keycloak/standalone/data \
+</span>  -<span class=ruby>p <span class=hljs-number>8080</span><span class=hljs-symbol>:</span><span class=hljs-number>8080</span> \
+</span>  quay.io/keycloak/keycloak:11.0.2</code></pre><h2 id=vert-x-app>Vert.x App</h2><p>The example app consists of a single <code>Verticle</code>, that runs on <code>http://localhost:3000</code> and provides a few routes with protected resources. <a href=https://github.com/thomasdarimont/vertx-playground/tree/master/jwt-service-vertx/src/main/java/demo/MainVerticle.java>You can find the complete example here</a>.</p><p>Our web app contains the following protected routes with handlers:</p><ul><li><code>/api/greet</code> - The greeting resource, which returns a greeting message, only authenticated users can access this resource.</li><li><code>/api/user</code> - The user resource, which returns some information about the user, only users with role <code>user</code> can access this resource.</li><li><code>/api/admin</code> - The user resource, which returns some information about the admin, only users with role <code>admin</code> can access this resource.</li></ul><p>This example is built with Vert.x version 3.9.3.</p><h3 id=running-the-app-in-the-console>Running the app in the console</h3><p>To run the app, we need to build it first:</p><pre><code class=hljs>cd jwt-<span class=hljs-keyword>service</span>-vertx
+mvn clean <span class=hljs-keyword>package</span></code></pre><p>This creates a jar, which we can run:</p><pre><code class=hljs><span class=hljs-title>java</span> -jar target/<span class=hljs-regexp>*.jar</span></code></pre><p>Note, that we need to start Keycloak first, since our app fetches the configuration from Keycloak on startup.</p><h3 id=running-the-app-in-the-ide>Running the app in the IDE</h3><p>We can also run the app directly from your favourite IDE like IntelliJ Idea or Eclipse. To run the app from an IDE, we need to create a launch configuration and use the main class <code>io.vertx.core.Launcher</code>. Then set the the program arguments to <code>run demo.MainVerticle</code> and use the classpath of the <code>jwt-service-vertx</code> module. With that in place we should be able to run the app.</p><h2 id=jwt-authorization>JWT Authorization</h2><h3 id=jwt-foundations>JWT Foundations</h3><p><a href=https://tools.ietf.org/html/rfc7519>JSON Web Token (JWT)</a> is an open standard to securely exchange information between two parties in the form of <a href=https://base64.guru/standards/base64url>Base64URL</a> encoded JSON objects. A standard JWT is just a string which comprises three base64url encoded parts header, payload and a signature, which are separated by a “<code>.</code>“ character. There are other variants of JWT that can have more parts.</p><p>An example JWT can look like this:</p><pre><code class=hljs>eyJhbGciOiJSUzI<span class=hljs-number>1</span><span class=hljs-label>NiIsInR5</span>cCIgOiAiSldUIiwia<span class=hljs-number>2</span>lkIiA<span class=hljs-number>6</span>ICJj<span class=hljs-label>N00</span>xX<span class=hljs-number>2</span>hkWjAtWD<span class=hljs-label>NyZTl1</span>dmZLSFRDUWRxYXJQY<span class=hljs-label>nBMblVJMHltdkF0</span>U<span class=hljs-number>1</span>RzI<span class=hljs-label>n0</span>.eyJleHAiOjE<span class=hljs-number>2</span>MDEzMT<span class=hljs-keyword>g0</span>MjIsImlhdCI<span class=hljs-number>6</span>MTYwMTMxODEyMiwia<span class=hljs-label>nRpIjoiNzYzNWY1</span>YTEtZjFk<span class=hljs-label>Ny00</span><span class=hljs-label>NTdkLWI4</span><span class=hljs-label>NjktYWQ0</span>OTIz<span class=hljs-label>NTJmNGQyIiwiaXNzIjoiaHR0</span>cDovL<span class=hljs-number>2</span>xvY<span class=hljs-number>2</span>Fsa<span class=hljs-keyword>G9</span>zdD<span class=hljs-preprocessor>o4</span>MDgwL<span class=hljs-number>2</span>F<span class=hljs-number>1</span>dGg<span class=hljs-title>vcmVhbG1</span>zL<span class=hljs-number>3</span>Zlc<span class=hljs-label>nR4</span>IiwiYXVkIjoiYW<span class=hljs-label>Njb3</span>VudCIsI<span class=hljs-label>nN1</span>YiI<span class=hljs-number>6</span>IjI<span class=hljs-number>3</span>Yj<span class=hljs-label>NmYWMwLTlhZWMtNDQyMS04</span>MW<span class=hljs-label>NmLWQ0</span>YjAy<span class=hljs-label>NDI4</span>ZjkwMSIsI<span class=hljs-label>nR5</span>cCI<span class=hljs-number>6</span>IkJlYXJlciIsImF<span class=hljs-number>6</span>cCI<span class=hljs-number>6</span>I<span class=hljs-label>nZlcnR4</span>LX<span class=hljs-label>NlcnZpY2</span>UiLCJzZX<span class=hljs-label>NzaW9</span>uX<span class=hljs-number>3</span><span class=hljs-label>N0</span>YXRlIjoi<span class=hljs-label>Njg3</span>MDgyMTMt<span class=hljs-label>NDBiNy00</span><span class=hljs-label>NThhLWFlZTEtMzlkNmY5</span>ZGEw<span class=hljs-label>N2</span>FkIiwiYW<span class=hljs-label>NyIjoiMSIsInJlYWxtX2</span>FjY<span class=hljs-number>2</span>VzcyI<span class=hljs-number>6</span>eyJyb<span class=hljs-number>2</span>xlcyI<span class=hljs-number>6</span>WyJvZmZsaW<span class=hljs-number>5</span>lX<span class=hljs-number>2</span>FjY<span class=hljs-number>2</span>VzcyIsI<span class=hljs-label>nVtYV9</span>hdXRob<span class=hljs-number>3</span>JpemF<span class=hljs-number>0</span>aW<span class=hljs-number>9</span>uIiwidX<span class=hljs-label>NlciJdfSwicmVzb3</span>VyY<span class=hljs-number>2</span>VfYW<span class=hljs-label>NjZXNzIjp7</span>ImFjY<span class=hljs-number>291</span>b<span class=hljs-label>nQiOnsicm9</span>sZXMiOlsibWFuYWdlLWFjY<span class=hljs-number>291</span>b<span class=hljs-label>nQiLCJtYW5</span>hZ<span class=hljs-number>2</span>UtYW<span class=hljs-label>Njb3</span>VudC<span class=hljs-number>1</span>saW<span class=hljs-number>5</span>rcyIsI<span class=hljs-label>nZpZXctcHJvZmlsZSJdfX0</span>sI<span class=hljs-label>nNjb3</span>BlIjoiZW<span class=hljs-number>1</span>haWwgcHJvZmlsZSIsImVtYWlsX<span class=hljs-number>3</span>ZlcmlmaWVkIjp<span class=hljs-number>0</span>c<span class=hljs-label>nVlLCJuYW1</span>lIjoiVGhlbyBUZX<span class=hljs-label>N0</span>ZXIiLCJwcmVmZXJyZWRfdX<span class=hljs-label>Nlcm5</span>hbWUiOiJ<span class=hljs-number>0</span>ZX<span class=hljs-label>N0</span>ZXIiLCJ<span class=hljs-label>naXZlbl9</span>uYW<span class=hljs-number>1</span>lIjoiVGhlbyIsImZhbWlseV<span class=hljs-number>9</span>uYW<span class=hljs-number>1</span>lIjoiVGVzdGVyIiwiZW<span class=hljs-number>1</span>haWwiOiJ<span class=hljs-number>0</span>b<span class=hljs-number>20</span>rdGVzdGVyQGxvY<span class=hljs-number>2</span>Fsa<span class=hljs-keyword>G9</span>zdCJ<span class=hljs-number>9.</span><span class=hljs-label>NN1</span>ZGE<span class=hljs-number>3</span>f<span class=hljs-number>3</span>LHE<span class=hljs-number>0</span>u<span class=hljs-number>7</span>T<span class=hljs-number>6</span>Vfq<span class=hljs-number>5</span>yPMKoZ<span class=hljs-number>6</span>SmrUxoFopAXZ<span class=hljs-title>m5</span>wVgMOsJHB<span class=hljs-number>8</span>BgHQTD<span class=hljs-title>m7</span>u<span class=hljs-number>0</span>oTVU<span class=hljs-number>0</span>ZHlKH<span class=hljs-number>2</span>-<span class=hljs-preprocessor>o11</span>RKK<span class=hljs-number>7</span>Mz<span class=hljs-number>0</span>mLqMy<span class=hljs-number>2</span>EPdkGY<span class=hljs-number>9</span>Bqtj<span class=hljs-number>5</span>LZ<span class=hljs-number>8</span>oTp<span class=hljs-number>8</span>FaVqY<span class=hljs-number>1</span><span class=hljs-keyword>g5</span>Fr<span class=hljs-number>5</span>veXYpOMbc<span class=hljs-number>2</span>fke-e<span class=hljs-number>2</span>h<span class=hljs-keyword>G8</span>sAfSjWz<span class=hljs-number>1</span>Mq<span class=hljs-number>9</span>BUhJ<span class=hljs-number>7</span>HdK<span class=hljs-number>7</span>TTIte<span class=hljs-number>12</span>pub<span class=hljs-number>2</span><span class=hljs-label>nbUs4</span>APYystJWx<span class=hljs-number>49</span>cYmUwZ<span class=hljs-number>-5</span>c<span class=hljs-number>9</span>X<span class=hljs-number>295</span>V-<span class=hljs-label>NX9</span>UksuMSzFItZ<span class=hljs-number>4</span>cACVKi<span class=hljs-number>68</span><span class=hljs-title>m9</span>lkR<span class=hljs-number>4</span>Ru<span class=hljs-label>NQKFTuLvWsorz9</span>yRx<span class=hljs-number>884</span>e<span class=hljs-number>4</span>c<span class=hljs-label>noT_JmfSfYBIl31</span>Ff<span class=hljs-label>nQzUtCjluUzuD9</span>jVXc_vgC<span class=hljs-number>7</span><span class=hljs-label>num_0</span>AreOZiUzpglb<span class=hljs-number>8</span>UjKXjswTHF-v_<span class=hljs-label>nEIaq7</span>Ym<span class=hljs-title>M5</span>WKpeg</code></pre><p>The header and payload sections contain information as a JSON object, whereas the signature is just a plain string. JSON objects contain key value pairs which are called <code>claims</code>.</p><p>The claims information can be verified and trusted because it is digitally signed with the private key from a public/private key-pair. The signature can later be verified with a corresponding public key. The identifier of the public/private key-pair used to sign a JWT can be contained in a special claim called <code>kid</code> (key identifier) in the header section of the JWT.</p><p>An example for a JWT header that references a public/private key-pair looks like this:</p><pre><code class=hljs>{
+  "<span class=hljs-attribute>alg</span>": <span class=hljs-value><span class=hljs-string>"RS256"</span></span>,
+  "<span class=hljs-attribute>typ</span>": <span class=hljs-value><span class=hljs-string>"JWT"</span></span>,
+  "<span class=hljs-attribute>kid</span>": <span class=hljs-value><span class=hljs-string>"c7M1_hdZ0-X3re9uvfKHTCQdqarPbpLnUI0ymvAtSTs"</span>
+</span>}</code></pre><p>It is quite common to use JWTs to convey information about authentication (user identity) and authorization (scopes, user roles, permissions and other claims). OpenID providers such as <a href="https://www.keycloak.org/">Keycloak</a> support issuing OAuth2 access tokens after authentication for users to clients in the form of JWTs. An access token can then be used to access other services or APIs on behalf of the user. The server providing those services or APIs is often called <code>resource server</code>.</p><p>An example JWT payload generated by Keycloak looks like this:</p><pre><code class=hljs>{
+  "<span class=hljs-attribute>exp</span>": <span class=hljs-value><span class=hljs-number>1601318422</span></span>,
+  "<span class=hljs-attribute>iat</span>": <span class=hljs-value><span class=hljs-number>1601318122</span></span>,
+  "<span class=hljs-attribute>jti</span>": <span class=hljs-value><span class=hljs-string>"7635f5a1-f1d7-457d-b869-ad492352f4d2"</span></span>,
+  "<span class=hljs-attribute>iss</span>": <span class=hljs-value><span class=hljs-string>"http://localhost:8080/auth/realms/vertx"</span></span>,
+  "<span class=hljs-attribute>aud</span>": <span class=hljs-value><span class=hljs-string>"account"</span></span>,
+  "<span class=hljs-attribute>sub</span>": <span class=hljs-value><span class=hljs-string>"27b3fac0-9aec-4421-81cf-d4b02428f901"</span></span>,
+  "<span class=hljs-attribute>typ</span>": <span class=hljs-value><span class=hljs-string>"Bearer"</span></span>,
+  "<span class=hljs-attribute>azp</span>": <span class=hljs-value><span class=hljs-string>"vertx-service"</span></span>,
+  "<span class=hljs-attribute>session_state</span>": <span class=hljs-value><span class=hljs-string>"68708213-40b7-458a-aee1-39d6f9da07ad"</span></span>,
+  "<span class=hljs-attribute>acr</span>": <span class=hljs-value><span class=hljs-string>"1"</span></span>,
+  "<span class=hljs-attribute>realm_access</span>": <span class=hljs-value>{
+    "<span class=hljs-attribute>roles</span>": <span class=hljs-value>[
+      <span class=hljs-string>"offline_access"</span>,
+      <span class=hljs-string>"uma_authorization"</span>,
+      <span class=hljs-string>"user"</span>
+    ]
+  </span>}</span>,
+  "<span class=hljs-attribute>scope</span>": <span class=hljs-value><span class=hljs-string>"email profile"</span></span>,
+  "<span class=hljs-attribute>email_verified</span>": <span class=hljs-value><span class=hljs-literal>true</span></span>,
+  "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"Theo Tester"</span></span>,
+  "<span class=hljs-attribute>preferred_username</span>": <span class=hljs-value><span class=hljs-string>"tester"</span></span>,
+  "<span class=hljs-attribute>given_name</span>": <span class=hljs-value><span class=hljs-string>"Theo"</span></span>,
+  "<span class=hljs-attribute>family_name</span>": <span class=hljs-value><span class=hljs-string>"Tester"</span></span>,
+  "<span class=hljs-attribute>email</span>": <span class=hljs-value><span class=hljs-string>"tom+tester@localhost"</span>
+</span>}</code></pre><p>If a <code>resource server</code> receives a request with such an access token, it needs to verify and inspect the token before it can trust its content. To verify the token, the <code>resource server</code> needs to obtain the <code>public key</code> to check the token signature. This <code>public key</code> can either be configured statically or fetched dynamically from the OpenID Provider by leveraging the <code>kid</code> information from the JWT header section. Note that most <code>OpenID providers</code>, such as Keycloak, provide a dedicated endpoint for dynamic public key lookups, e.g. <code>http://localhost:8080/auth/realms/vertx/protocol/openid-connect/certs</code>. A standard for providing public key information is <a href=https://tools.ietf.org/html/rfc7517>JSON Web Key Set (JWKS)</a>. The JWKS information is usually cached by the resource server to avoid the overhead of fetching JWKS for every request.</p><p>An example response for Keycloak’s JWKS endpoint looks like this:</p><pre><code class=hljs>{
+   "<span class=hljs-attribute>keys</span>":<span class=hljs-value>[
+      {
+         "<span class=hljs-attribute>kid</span>":<span class=hljs-value><span class=hljs-string>"c7M1_hdZ0-X3re9uvfKHTCQdqarPbpLnUI0ymvAtSTs"</span></span>,
+         "<span class=hljs-attribute>kty</span>":<span class=hljs-value><span class=hljs-string>"RSA"</span></span>,
+         "<span class=hljs-attribute>alg</span>":<span class=hljs-value><span class=hljs-string>"RS256"</span></span>,
+         "<span class=hljs-attribute>use</span>":<span class=hljs-value><span class=hljs-string>"sig"</span></span>,
+         "<span class=hljs-attribute>n</span>":<span class=hljs-value><span class=hljs-string>"iFuX2bAXA99Yrv6YEvpV9tjS52krP5UJ7lFL02Zl83PPV6PiLIWKTqF71bfTKnVDxO421xAsBw9f6dlgoyxxY1H_bzJQQryQkry7DA7tI_SnKVsehLgeF-tCcjRF_MF1kM14F1A5Zsu6oYIkMZvgJIRM-ejtz3aUcdnLcTvpPrmfvj7KwRgNsfm6Q-kO0-OAf6m6LaRvaC5VpTIRoVxXNhSIiGKuZ4d05Yk0-HdOR0D0sfOujYzleJmTGBEIAmdWpZqUXiSWbzmpw8mJmacFTP9v8lsTUYZrXc69xm5fHaNJ6PO_E-IKiPKT7OeoM2l3HIK76a4azVL1Ewbv1UtMFw"</span></span>,
+         "<span class=hljs-attribute>e</span>":<span class=hljs-value><span class=hljs-string>"AQAB"</span></span>,
+         "<span class=hljs-attribute>x5c</span>":<span class=hljs-value>[
+            <span class=hljs-string>"MIICmTCCAYECBgFwplKOujANBgkqhkiG9w0BAQsFADAQMQ4wDAYDVQQDDAV2ZXJ0eDAeFw0yMDAzMDQxNjExMzNaFw0zMDAzMDQxNjEzMTNaMBAxDjAMBgNVBAMMBXZlcnR4MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiFuX2bAXA99Yrv6YEvpV9tjS52krP5UJ7lFL02Zl83PPV6PiLIWKTqF71bfTKnVDxO421xAsBw9f6dlgoyxxY1H/bzJQQryQkry7DA7tI/SnKVsehLgeF+tCcjRF/MF1kM14F1A5Zsu6oYIkMZvgJIRM+ejtz3aUcdnLcTvpPrmfvj7KwRgNsfm6Q+kO0+OAf6m6LaRvaC5VpTIRoVxXNhSIiGKuZ4d05Yk0+HdOR0D0sfOujYzleJmTGBEIAmdWpZqUXiSWbzmpw8mJmacFTP9v8lsTUYZrXc69xm5fHaNJ6PO/E+IKiPKT7OeoM2l3HIK76a4azVL1Ewbv1UtMFwIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQBxcXiTtGoo4/eMNwhagYH8QpK1n7fxgzn4mkESU3wD+rnPOAh/xFmx5c3aq8X+8W2z7oopO86ZBSQ8HfbzViBP0uwvf7s7E6Q8FOqrUNv0Kj308A7hF1IOqOhCJE2nABIWJduYz5dWZN434Q9El30L1eOYTtjBUmCdP7/CM+1bvxIT+CYrWmjI9zCMJxhuixmLffppsLCjGtNgFBemjQyCrLxpEGCfy8QGb4pTY/XaHuJ7k6ZaQkVeTbeDzaZbHc9zT5qgf6w4Gp7y+uPZdAsasrwiqm3YBtyBfaK42luk09nHpV6PRKpftnyLVPwlQiJAW6ZMckvDwmnDst70msnb"</span>
+         ]</span>,
+         "<span class=hljs-attribute>x5t</span>":<span class=hljs-value><span class=hljs-string>"MVYTXCx5cUQ8lT1ymIDDRYO7_ZI"</span></span>,
+         "<span class=hljs-attribute>x5t#S256</span>":<span class=hljs-value><span class=hljs-string>"yBDVTlfR0e7cv3HxbbkfvGKVs5W1VQtFs7haE_js3DY"</span>
+      </span>}
+   ]
+</span>}</code></pre>The `keys` array contains the JWKS structure with the public key information that belongs to the public/private key-pair which was used to sign the JWT access token from above. Note the matching `kid` claim from our earlier JWT header example. Now that we have the appropriate public key, we can use the information from the JWT header to validate the signature of the JWT access token. If the signature is valid, we can go on and check additional claims from the payload section of the JWT, such as expiration, allowed issuer and audience etc. Now that we have the necessary building blocks in place, we can finally look at how to configure JWT authorization in Vert.x. ### JWT Authorization in Vert.x Setting up JWT authorization in Vert.x is quite easy. First we need to add the `vertx-auth-jwt` module as a dependency to our project.<pre><code class="hljs xml"><span class=hljs-tag>&lt;<span class=hljs-title>dependency</span>&gt;</span>
+    <span class=hljs-tag>&lt;<span class=hljs-title>groupId</span>&gt;</span>io.vertx<span class=hljs-tag>&lt;/<span class=hljs-title>groupId</span>&gt;</span>
+    <span class=hljs-tag>&lt;<span class=hljs-title>artifactId</span>&gt;</span>vertx-auth-jwt<span class=hljs-tag>&lt;/<span class=hljs-title>artifactId</span>&gt;</span>
+<span class=hljs-tag>&lt;/<span class=hljs-title>dependency</span>&gt;</span></code></pre><p>In our example the whole JWT authorization setup happens in the method <code>setupJwtAuth</code>.</p><p>We use a <code>WebClient</code> to dynamically fetch the public key information from the <code>/protocol/openid-connect/certs</code> JWKS endpoint relative to our Keycloak issuer URL. After that, we configure a <code>JWTAuth</code> instance and customize the JWT validation via <code>JWTOptions</code> and <code>JWTAuthOptions</code>. Note that we use Keycloak’s realm roles for role based authorization via the <code>JWTAuthOptions#setPermissionsClaimKey(..)</code> method.</p><pre><code class="hljs java"><span class=hljs-function><span class=hljs-keyword>private</span> Future&lt;Startup&gt; <span class=hljs-title>setupJwtAuth</span><span class=hljs-params>(Startup startup)</span> </span>{
+
+    var jwtConfig = startup.config.getJsonObject(<span class=hljs-string>"jwt"</span>);
+    var issuer = jwtConfig.getString(<span class=hljs-string>"issuer"</span>);
+    var issuerUri = URI.create(issuer);
+
+    <span class=hljs-comment>// derive JWKS uri from Keycloak issuer URI</span>
+    var jwksUri = URI.create(jwtConfig.getString(<span class=hljs-string>"jwksUri"</span>, String.format(<span class=hljs-string>"%s://%s:%d%s"</span>,
+            issuerUri.getScheme(), issuerUri.getHost(), issuerUri.getPort(), issuerUri.getPath() + <span class=hljs-string>"/protocol/openid-connect/certs"</span>)));
+
+    var promise = Promise.&lt;JWTAuth&gt;promise();
+
+    <span class=hljs-comment>// fetch JWKS from `/certs` endpoint</span>
+    webClient.get(jwksUri.getPort(), jwksUri.getHost(), jwksUri.getPath())
+            .as(BodyCodec.jsonObject())
+            .send(ar -&gt; {
+
+                <span class=hljs-keyword>if</span> (!ar.succeeded()) {
+                    startup.bootstrap.fail(String.format(<span class=hljs-string>"Could not fetch JWKS from URI: %s"</span>, jwksUri));
+                    <span class=hljs-keyword>return</span>;
+                }
+
+                var response = ar.result();
+
+                var jwksResponse = response.body();
+                var keys = jwksResponse.getJsonArray(<span class=hljs-string>"keys"</span>);
+
+                <span class=hljs-comment>// Configure JWT validation options</span>
+                var jwtOptions = <span class=hljs-keyword>new</span> JWTOptions();
+                jwtOptions.setIssuer(issuer);
+
+                <span class=hljs-comment>// extract JWKS from keys array</span>
+                var jwks = ((List&lt;Object&gt;) keys.getList()).stream()
+                        .map(o -&gt; <span class=hljs-keyword>new</span> JsonObject((Map&lt;String, Object&gt;) o))
+                        .collect(Collectors.toList());
+
+                <span class=hljs-comment>// configure JWTAuth</span>
+                var jwtAuthOptions = <span class=hljs-keyword>new</span> JWTAuthOptions();
+                jwtAuthOptions.setJwks(jwks);
+                jwtAuthOptions.setJWTOptions(jwtOptions);
+                jwtAuthOptions.setPermissionsClaimKey(jwtConfig.getString(<span class=hljs-string>"permissionClaimsKey"</span>, <span class=hljs-string>"realm_access/roles"</span>));
+
+                JWTAuth jwtAuth = JWTAuth.create(vertx, jwtAuthOptions);
+                promise.complete(jwtAuth);
+            });
+
+    <span class=hljs-keyword>return</span> promise.future().compose(auth -&gt; {
+        jwtAuth = auth;
+        <span class=hljs-keyword>return</span> Future.succeededFuture(startup);
+    });
+}</code></pre><h3 id=protecting-routes-with-jwtauthhandler>Protecting routes with JWTAuthHandler</h3><p>Now that our <code>JWTAuth</code> is configured, we can use the <code>JWTAuthHandler</code> in the <code>setupRouter</code> method to apply JWT authorization to all routes matching the path pattern <code>/api/*</code>. The <code>JWTAuthHandler</code> validates received JWTs and performs additional checks like expiration and allowed issuers. With that in place, we configure our actual routes in <code>setupRoutes</code>.</p><pre><code class="hljs java"><span class=hljs-function><span class=hljs-keyword>private</span> Future&lt;Startup&gt; <span class=hljs-title>setupRouter</span><span class=hljs-params>(Startup startup)</span> </span>{
+
+    router = Router.router(vertx);
+
+    router.route(<span class=hljs-string>"/api/*"</span>).handler(JWTAuthHandler.create(jwtAuth));
+
+    <span class=hljs-keyword>return</span> Future.succeededFuture(startup);
+}
+
+<span class=hljs-function><span class=hljs-keyword>private</span> Future&lt;Startup&gt; <span class=hljs-title>setupRoutes</span><span class=hljs-params>(Startup startup)</span> </span>{
+
+    router.get(<span class=hljs-string>"/api/greet"</span>).handler(<span class=hljs-keyword>this</span>::handleGreet);
+    router.get(<span class=hljs-string>"/api/user"</span>).handler(<span class=hljs-keyword>this</span>::handleUserData);
+    router.get(<span class=hljs-string>"/api/admin"</span>).handler(<span class=hljs-keyword>this</span>::handleAdminData);
+
+    <span class=hljs-keyword>return</span> Future.succeededFuture(startup);
+}</code></pre><h3 id=extracting-user-information-from-jwtuser>Extracting user information from JWTUser</h3><p>To access user information in our <code>handleGreet</code> method, we cast the result of the <code>io.vertx.ext.web.RoutingContext#user</code> method to <code>JWTUser</code> which allows us to access token claim information via the <code>io.vertx.ext.auth.jwt.impl.JWTUser#principal</code> JSON object.</p><p>If we’d like to use the JWT access token for other service calls, we could extract the token from the <code>Authorization</code> header.</p><pre><code class="hljs java"><span class=hljs-function><span class=hljs-keyword>private</span> <span class=hljs-keyword>void</span> <span class=hljs-title>handleGreet</span><span class=hljs-params>(RoutingContext ctx)</span> </span>{
+
+    var jwtUser = (JWTUser) ctx.user();
+    var username = jwtUser.principal().getString(<span class=hljs-string>"preferred_username"</span>);
+    var userId = jwtUser.principal().getString(<span class=hljs-string>"sub"</span>);
+
+    var accessToken = ctx.request().getHeader(HttpHeaders.AUTHORIZATION).substring(<span class=hljs-string>"Bearer "</span>.length());
+    <span class=hljs-comment>// Use accessToken for down-stream calls if needed...</span>
+
+    ctx.request().response().end(String.format(<span class=hljs-string>"Hi %s (%s) %s%n"</span>, username, userId, Instant.now()));
+}</code></pre><h3 id=obtaining-an-access-token-from-keycloak-for-user-tester->Obtaining an Access Token from Keycloak for user <code>tester</code></h3><p>To test our application we can use the following <code>curl</code> commands in a bash like shell to obtain an JWT access token to call one of our endpoints as the user <code>tester</code> with the role <code>user</code>.</p><p>Note that this example uses the cli tool <a href="https://stedolan.github.io/jq/">jq</a> for JSON processing.</p><pre><code class="hljs bash">KC_USERNAME=tester
+KC_PASSWORD=test
+KC_CLIENT=vertx-service
+KC_CLIENT_SECRET=ecb85cc5<span class=hljs-operator>-f</span>90d-<span class=hljs-number>4</span>a03-<span class=hljs-number>8</span>fac-<span class=hljs-number>24</span>dcde57f40c
+KC_REALM=vertx
+KC_URL=http://localhost:<span class=hljs-number>8080</span>/auth
+KC_RESPONSE=$(curl  -k \
+        <span class=hljs-operator>-d</span> <span class=hljs-string>"username=<span class=hljs-variable>$KC_USERNAME</span>"</span> \
+        <span class=hljs-operator>-d</span> <span class=hljs-string>"password=<span class=hljs-variable>$KC_PASSWORD</span>"</span> \
+        <span class=hljs-operator>-d</span> <span class=hljs-string>'grant_type=password'</span> \
+        <span class=hljs-operator>-d</span> <span class=hljs-string>"client_id=<span class=hljs-variable>$KC_CLIENT</span>"</span> \
+        <span class=hljs-operator>-d</span> <span class=hljs-string>"client_secret=<span class=hljs-variable>$KC_CLIENT_SECRET</span>"</span> \
+        <span class=hljs-string>"<span class=hljs-variable>$KC_URL</span>/realms/<span class=hljs-variable>$KC_REALM</span>/protocol/openid-connect/token"</span> \
+    | jq .)
+
+KC_ACCESS_TOKEN=$(<span class=hljs-built_in>echo</span> <span class=hljs-variable>$KC_RESPONSE</span>| jq -r .access_token)
+<span class=hljs-built_in>echo</span> <span class=hljs-variable>$KC_ACCESS_TOKEN</span></code></pre><p>Here we use the JWT access token in the <code>Authorization</code> header with the <code>Bearer</code> prefix to call our <code>greet</code> route:</p><pre><code class="hljs bash">curl --silent -H <span class=hljs-string>"Authorization: Bearer <span class=hljs-variable>$KC_ACCESS_TOKEN</span>"</span> http://localhost:<span class=hljs-number>3000</span>/api/greet</code></pre><p>Example output:</p><pre><code class="hljs bash">Hi tester (<span class=hljs-number>27</span>b3fac0-<span class=hljs-number>9</span>aec-<span class=hljs-number>4421</span>-<span class=hljs-number>81</span>cf<span class=hljs-operator>-d</span>4b02428f901) <span class=hljs-number>2020</span>-<span class=hljs-number>09</span>-<span class=hljs-number>28</span>T21:<span class=hljs-number>03</span>:<span class=hljs-number>59.254230700</span>Z</code></pre><h3 id=applying-role-based-access-control-with-jwtuser>Applying Role-based Access-Control with JWTUser</h3><p>To leverage support for role based access control (RBAC) we can use the <code>io.vertx.ext.auth.User#isAuthorised</code> method to check whether the current user has the required role. If the role is present we return some data about the user, otherwise we send a response with status code 403 and a <code>forbidden</code> error message.</p><pre><code class="hljs java"><span class=hljs-function><span class=hljs-keyword>private</span> <span class=hljs-keyword>void</span> <span class=hljs-title>handleUserData</span><span class=hljs-params>(RoutingContext ctx)</span> </span>{
+
+    var jwtUser = (JWTUser) ctx.user();
+    var username = jwtUser.principal().getString(<span class=hljs-string>"preferred_username"</span>);
+    var userId = jwtUser.principal().getString(<span class=hljs-string>"sub"</span>);
+
+    jwtUser.isAuthorized(<span class=hljs-string>"user"</span>, res -&gt; {
+
+        <span class=hljs-keyword>if</span> (!res.succeeded() || !res.result()) {
+            toJsonResponse(ctx).setStatusCode(<span class=hljs-number>403</span>).end(<span class=hljs-string>"{\"error\": \"forbidden\"}"</span>);
+            <span class=hljs-keyword>return</span>;
+        }
+
+        JsonObject data = <span class=hljs-keyword>new</span> JsonObject()
+                .put(<span class=hljs-string>"type"</span>, <span class=hljs-string>"user"</span>)
+                .put(<span class=hljs-string>"username"</span>, username)
+                .put(<span class=hljs-string>"userId"</span>, userId)
+                .put(<span class=hljs-string>"timestamp"</span>, Instant.now());
+
+        toJsonResponse(ctx).end(data.toString());
+    });
+}
+
+<span class=hljs-function><span class=hljs-keyword>private</span> <span class=hljs-keyword>void</span> <span class=hljs-title>handleAdminData</span><span class=hljs-params>(RoutingContext ctx)</span> </span>{
+
+    var jwtUser = (JWTUser) ctx.user();
+    var username = jwtUser.principal().getString(<span class=hljs-string>"preferred_username"</span>);
+    var userId = jwtUser.principal().getString(<span class=hljs-string>"sub"</span>);
+
+    jwtUser.isAuthorized(<span class=hljs-string>"admin"</span>, res -&gt; {
+
+        <span class=hljs-keyword>if</span> (!res.succeeded() || !res.result()) {
+            toJsonResponse(ctx).setStatusCode(<span class=hljs-number>403</span>).end(<span class=hljs-string>"{\"error\": \"forbidden\"}"</span>);
+            <span class=hljs-keyword>return</span>;
+        }
+
+        JsonObject data = <span class=hljs-keyword>new</span> JsonObject()
+                .put(<span class=hljs-string>"type"</span>, <span class=hljs-string>"admin"</span>)
+                .put(<span class=hljs-string>"username"</span>, username)
+                .put(<span class=hljs-string>"userId"</span>, userId)
+                .put(<span class=hljs-string>"timestamp"</span>, Instant.now());
+
+        toJsonResponse(ctx).end(data.toString());
+    });
+}</code></pre><pre><code class="hljs bash">curl --silent -H <span class=hljs-string>"Authorization: Bearer <span class=hljs-variable>$KC_ACCESS_TOKEN</span>"</span> http://localhost:<span class=hljs-number>3000</span>/api/user</code></pre><p>Output:</p><pre><code class="hljs json">{"<span class=hljs-attribute>type</span>":<span class=hljs-value><span class=hljs-string>"user"</span></span>,"<span class=hljs-attribute>username</span>":<span class=hljs-value><span class=hljs-string>"tester"</span></span>,"<span class=hljs-attribute>userId</span>":<span class=hljs-value><span class=hljs-string>"27b3fac0-9aec-4421-81cf-d4b02428f901"</span></span>,"<span class=hljs-attribute>timestamp</span>":<span class=hljs-value><span class=hljs-string>"2020-09-28T21:07:49.340950300Z"</span></span>}</code></pre><pre><code class="hljs bash">curl --silent -H <span class=hljs-string>"Authorization: Bearer <span class=hljs-variable>$KC_ACCESS_TOKEN</span>"</span> http://localhost:<span class=hljs-number>3000</span>/api/admin</code></pre><p>Output:</p><pre><code class=hljs>{"<span class=hljs-attribute>error</span>": <span class=hljs-value><span class=hljs-string>"forbidden"</span></span>}</code></pre><h3 id=obtaining-an-access-token-from-keycloak-for-user-vadmin->Obtaining an Access Token from Keycloak for user <code>vadmin</code></h3><p>To check access with an <code>admin</code> role, we obtain a new token for the user <code>vadmin</code> which has the roles <code>admin</code> and <code>user</code>.</p><pre><code class="hljs bash">KC_USERNAME=vadmin
+KC_PASSWORD=test
+KC_CLIENT=vertx-service
+KC_CLIENT_SECRET=ecb85cc5<span class=hljs-operator>-f</span>90d-<span class=hljs-number>4</span>a03-<span class=hljs-number>8</span>fac-<span class=hljs-number>24</span>dcde57f40c
+KC_REALM=vertx
+KC_URL=http://localhost:<span class=hljs-number>8080</span>/auth
+KC_RESPONSE=$(curl  -k \
+        <span class=hljs-operator>-d</span> <span class=hljs-string>"username=<span class=hljs-variable>$KC_USERNAME</span>"</span> \
+        <span class=hljs-operator>-d</span> <span class=hljs-string>"password=<span class=hljs-variable>$KC_PASSWORD</span>"</span> \
+        <span class=hljs-operator>-d</span> <span class=hljs-string>'grant_type=password'</span> \
+        <span class=hljs-operator>-d</span> <span class=hljs-string>"client_id=<span class=hljs-variable>$KC_CLIENT</span>"</span> \
+        <span class=hljs-operator>-d</span> <span class=hljs-string>"client_secret=<span class=hljs-variable>$KC_CLIENT_SECRET</span>"</span> \
+        <span class=hljs-string>"<span class=hljs-variable>$KC_URL</span>/realms/<span class=hljs-variable>$KC_REALM</span>/protocol/openid-connect/token"</span> \
+    | jq .)
+
+KC_ACCESS_TOKEN=$(<span class=hljs-built_in>echo</span> <span class=hljs-variable>$KC_RESPONSE</span>| jq -r .access_token)
+<span class=hljs-built_in>echo</span> <span class=hljs-variable>$KC_ACCESS_TOKEN</span></code></pre><pre><code class="hljs bash">curl --silent -H <span class=hljs-string>"Authorization: Bearer <span class=hljs-variable>$KC_ACCESS_TOKEN</span>"</span> http://localhost:<span class=hljs-number>3000</span>/api/user</code></pre><p>Output:</p><pre><code class="hljs json">{"<span class=hljs-attribute>type</span>":<span class=hljs-value><span class=hljs-string>"user"</span></span>,"<span class=hljs-attribute>username</span>":<span class=hljs-value><span class=hljs-string>"vadmin"</span></span>,"<span class=hljs-attribute>userId</span>":<span class=hljs-value><span class=hljs-string>"75090eac-36ff-4cd8-847d-fc2941bc024e"</span></span>,"<span class=hljs-attribute>timestamp</span>":<span class=hljs-value><span class=hljs-string>"2020-09-28T21:13:05.099393900Z"</span></span>}</code></pre><pre><code class=hljs>curl --<span class=hljs-literal>silent</span> -H <span class=hljs-string>"Authorization: Bearer <span class=hljs-variable>$KC_ACCESS_TOKEN</span>"</span> http://localhost:<span class=hljs-number>3000</span>/api/<span class=hljs-literal>admin</span></code></pre><p>Output:</p><pre><code class="hljs json">{"<span class=hljs-attribute>type</span>":<span class=hljs-value><span class=hljs-string>"admin"</span></span>,"<span class=hljs-attribute>username</span>":<span class=hljs-value><span class=hljs-string>"vadmin"</span></span>,"<span class=hljs-attribute>userId</span>":<span class=hljs-value><span class=hljs-string>"75090eac-36ff-4cd8-847d-fc2941bc024e"</span></span>,"<span class=hljs-attribute>timestamp</span>":<span class=hljs-value><span class=hljs-string>"2020-09-28T21:13:34.945276500Z"</span></span>}</code></pre><h3 id=conclusion>Conclusion</h3><p>We learned how to configure a Vert.x application with JWT authorization powered by Keycloak. Although the configuration is quite complete already, there are still some parts that can be improved, like the dynamic JWKS fetching on public-key pair rotation as well as extraction of nested roles.</p><p>Nevertheless this is a good starting point for securing your own Vert.x services with JWT and Keycloak.</p><p>You can check out the <a href=https://github.com/thomasdarimont/vertx-playground/tree/master/jwt-service-vertx>complete example in keycloak-vertx Examples Repo</a>.</p><p>Thank you for your time, stay tuned for more updates! If you want to learn more about Keycloak, feel free to reach out to me. You can find me via <a href=https://twitter.com/thomasdarimont>thomasdarimont on twitter</a>.</p><p>Happy Hacking!</p></article></article></div></div><footer><div class=container><div class=row><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"><h2>Eclipse Vert.x</h2><ul class=list-unstyled><li><a href="https://vertx.io/">Home</a></li><li><a href="https://vertx.io/download/">Download</a></li><li><a href="https://vertx.io/docs/">Documentation</a></li><li><a href=https://github.com/vert-x3/wiki/wiki>Wiki</a></li><li><a href="https://vertx.io/blog/">Blog</a></li><li><a href="https://vertx.io/vertx2/" class=vertx-2-link>Vert.x 2</a></li></ul></div><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"><h2>Community</h2><ul class=list-unstyled><li><a href="https://vertx.io/community/">Help &amp; Contributors</a></li><li><a href="https://vertx.io/materials/">Learning materials</a></li><li><a href=https://groups.google.com/forum/?fromgroups#!forum/vertx>User Group</a></li><li><a href=https://groups.google.com/forum/?fromgroups#!forum/vertx-dev>Developer Group</a></li></ul></div><div class="col-xs-4 col-sm-4 col-md-2 col-lg-2"><h2>Eclipse</h2><ul class=list-unstyled><li><a href="http://www.eclipse.org/">Eclipse Foundation</a></li><li><a href=https://eclipse.org/legal/privacy.php>Privacy Policy</a></li><li><a href=https://eclipse.org/legal/termsofuse.php>Terms of Use</a></li><li><a href=https://eclipse.org/legal/copyright.php>Copyright Agent</a></li><li><a href=http://www.eclipse.org/legal>Legal Resources</a></li></ul></div><div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 copyright"><p>Eclipse Vert.x is open source and dual-licensed under the <a href=http://www.eclipse.org/legal/epl-v20.html>Eclipse Public License 2.0</a> and <a href=https://www.apache.org/licenses/LICENSE-2.0.html>Apache License 2.0</a>.</p><p>This website is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 License</a>.<br>Design by <a href=https://www.michel-kraemer.com>Michel Kr&auml;mer</a>.</p><div class=row><div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-2"><a href=http://eclipse.org><img class="logo eclipse-logo" src=https://vertx.io/assets/eclipse_logo_grey_small.png width=204 height=48></a></div><div class="col-sm-12 col-md-5 col-md-offset-1 col-lg-offset-0"><a href=http://cloudbees.com><img class="logo cloudbees-logo" src=https://vertx.io/assets/Button-Built-on-CB-1-grey.png width=180 height=48></a></div><div class="col-sm-12 col-md-5 col-md-offset-7 jprofiler"><a href=http://www.ej-technologies.com/products/jprofiler/overview.html style=text-decoration:none><img class="logo jprofiler-logo" src=https://vertx.io/assets/jprofiler-logo.png width=48 height=48><span class=jprofiler-logo>&nbsp; JPROFILER</span></a></div></div></div></div></div></footer><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js></script><script src=https://vertx.io/javascripts/bootstrap.min.js></script><script src=https://vertx.io/javascripts/highlight.pack.js></script><script>hljs.initHighlightingOnLoad();</script><link rel=stylesheet type=text/css href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"><script src=//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js></script><script>window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "transparent",
+      "text": "#f8a8ff",
+      "border": "#f8a8ff"
+    }
+  },
+  "content": {
+    "message": "This website uses anonymous cookies to ensure we provide you the best experience. ",
+    "link": "Opt out!",
+    "href": "https://tools.google.com/dlpage/gaoptout/"
+  }
+})});</script></body></html>
