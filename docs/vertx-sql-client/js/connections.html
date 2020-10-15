@@ -133,10 +133,10 @@ or borrow one from the pool:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Tuple = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-sql-client-js/tuple</span><span class="delimiter">&quot;</span></span>);
-connection.prepare(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT * FROM users WHERE first_name LIKE ?</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (ar1, ar1_err) {
+connection.prepare(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT * FROM users WHERE first_name LIKE $1</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (ar1, ar1_err) {
   <span class="keyword">if</span> (ar1_err == <span class="predefined-constant">null</span>) {
-    <span class="keyword">var</span> prepared = ar1;
-    prepared.query().execute(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">julien</span><span class="delimiter">&quot;</span></span>), <span class="keyword">function</span> (ar2, ar2_err) {
+    <span class="keyword">var</span> pq = ar1;
+    pq.query().execute(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">andy</span><span class="delimiter">&quot;</span></span>), <span class="keyword">function</span> (ar2, ar2_err) {
       <span class="keyword">if</span> (ar2_err == <span class="predefined-constant">null</span>) {
         <span class="comment">// All rows</span>
         <span class="keyword">var</span> rows = ar2;
@@ -155,7 +155,7 @@ connection.prepare(<span class="string"><span class="delimiter">&quot;</span><sp
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2020-09-16 10:26:32 CEST
+                Last updated 2020-10-15 10:35:24 CEST
               
               
             </div>

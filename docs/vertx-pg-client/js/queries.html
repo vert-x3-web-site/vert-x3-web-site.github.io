@@ -137,7 +137,7 @@ will use one of its connection to run the query and return the result to you.</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="js">client.query(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT * FROM users WHERE id='julien'</span><span class="delimiter">&quot;</span></span>).execute(<span class="keyword">function</span> (ar, ar_err) {
+<pre class="CodeRay highlight"><code data-lang="js">client.query(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT * FROM users WHERE id='andy'</span><span class="delimiter">&quot;</span></span>).execute(<span class="keyword">function</span> (ar, ar_err) {
   <span class="keyword">if</span> (ar_err == <span class="predefined-constant">null</span>) {
     <span class="keyword">var</span> result = ar;
     console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Got </span><span class="delimiter">&quot;</span></span> + result.size() + <span class="string"><span class="delimiter">&quot;</span><span class="content"> rows </span><span class="delimiter">&quot;</span></span>);
@@ -158,7 +158,7 @@ will use one of its connection to run the query and return the result to you.</p
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Tuple = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-sql-client-js/tuple</span><span class="delimiter">&quot;</span></span>);
-client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT * FROM users WHERE id=?</span><span class="delimiter">&quot;</span></span>).execute(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">julien</span><span class="delimiter">&quot;</span></span>), <span class="keyword">function</span> (ar, ar_err) {
+client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT * FROM users WHERE id=$1</span><span class="delimiter">&quot;</span></span>).execute(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">andy</span><span class="delimiter">&quot;</span></span>), <span class="keyword">function</span> (ar, ar_err) {
   <span class="keyword">if</span> (ar_err == <span class="predefined-constant">null</span>) {
     <span class="keyword">var</span> rows = ar;
     console.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Got </span><span class="delimiter">&quot;</span></span> + rows.size() + <span class="string"><span class="delimiter">&quot;</span><span class="content"> rows </span><span class="delimiter">&quot;</span></span>);
@@ -191,7 +191,7 @@ client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Tuple = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-sql-client-js/tuple</span><span class="delimiter">&quot;</span></span>);
-client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">INSERT INTO users (first_name, last_name) VALUES (?, ?)</span><span class="delimiter">&quot;</span></span>).execute(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">Julien</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Viet</span><span class="delimiter">&quot;</span></span>), <span class="keyword">function</span> (ar, ar_err) {
+client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">INSERT INTO users (first_name, last_name) VALUES ($1, $2)</span><span class="delimiter">&quot;</span></span>).execute(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">Andy</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Guibert</span><span class="delimiter">&quot;</span></span>), <span class="keyword">function</span> (ar, ar_err) {
   <span class="keyword">if</span> (ar_err == <span class="predefined-constant">null</span>) {
     <span class="keyword">var</span> rows = ar;
     console.log(rows.rowCount());
@@ -257,7 +257,7 @@ client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="js"><span class="keyword">var</span> Tuple = require(<span class="string"><span class="delimiter">&quot;</span><span class="content">vertx-sql-client-js/tuple</span><span class="delimiter">&quot;</span></span>);
-sqlConnection.prepare(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT * FROM users WHERE id = ?</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (ar, ar_err) {
+sqlConnection.prepare(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT * FROM users WHERE id= ?</span><span class="delimiter">&quot;</span></span>, <span class="keyword">function</span> (ar, ar_err) {
   <span class="keyword">if</span> (ar_err == <span class="predefined-constant">null</span>) {
     <span class="keyword">var</span> preparedStatement = ar;
     preparedStatement.query().execute(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">julien</span><span class="delimiter">&quot;</span></span>), <span class="keyword">function</span> (ar2, ar2_err) {
@@ -287,11 +287,12 @@ sqlConnection.prepare(<span class="string"><span class="delimiter">&quot;</span>
 
 <span class="comment">// Add commands to the batch</span>
 <span class="keyword">var</span> batch = [];
-batch.push(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">julien</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Julien Viet</span><span class="delimiter">&quot;</span></span>));
+batch.push(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">julien</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Julient Viet</span><span class="delimiter">&quot;</span></span>));
 batch.push(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">emad</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Emad Alblueshi</span><span class="delimiter">&quot;</span></span>));
+batch.push(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">andy</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Andy Guibert</span><span class="delimiter">&quot;</span></span>));
 
 <span class="comment">// Execute the prepared batch</span>
-client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">INSERT INTO USERS (id, name) VALUES (?, ?)</span><span class="delimiter">&quot;</span></span>).executeBatch(batch, <span class="keyword">function</span> (res, res_err) {
+client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">INSERT INTO USERS (id, name) VALUES ($1, $2)</span><span class="delimiter">&quot;</span></span>).executeBatch(batch, <span class="keyword">function</span> (res, res_err) {
   <span class="keyword">if</span> (res_err == <span class="predefined-constant">null</span>) {
 
     <span class="comment">// Process rows</span>
@@ -312,7 +313,7 @@ client.preparedQuery(<span class="string"><span class="delimiter">&quot;</span><
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2020-09-16 10:26:32 CEST
+                Last updated 2020-10-15 10:35:24 CEST
               
               
             </div>

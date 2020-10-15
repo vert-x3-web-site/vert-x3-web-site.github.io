@@ -559,7 +559,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Get a boolean value at pos.</div></span>
+    <span class="summary_desc"><div class='inline'>Get a boolean value for the given column.</div></span>
   
 </li>
 
@@ -581,7 +581,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Get a buffer value at pos.</div></span>
+    <span class="summary_desc"><div class='inline'>Get a buffer value for the given column.</div></span>
   
 </li>
 
@@ -625,7 +625,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Get a column name at pos.</div></span>
+    <span class="summary_desc"><div class='inline'>Get a column name for the given column.</div></span>
   
 </li>
 
@@ -647,7 +647,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Get a double value at pos.</div></span>
+    <span class="summary_desc"><div class='inline'>Get a double value for the given column.</div></span>
   
 </li>
 
@@ -669,7 +669,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Get a float value at pos.</div></span>
+    <span class="summary_desc"><div class='inline'>Get a float value for the given column.</div></span>
   
 </li>
 
@@ -691,7 +691,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Get an integer value at pos.</div></span>
+    <span class="summary_desc"><div class='inline'>Get an integer value for the given column.</div></span>
   
 </li>
 
@@ -713,7 +713,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Get a long value at pos.</div></span>
+    <span class="summary_desc"><div class='inline'>Get a long value for the given column.</div></span>
   
 </li>
 
@@ -735,7 +735,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Get a short value at pos.</div></span>
+    <span class="summary_desc"><div class='inline'>Get a short value for the given column.</div></span>
   
 </li>
 
@@ -757,7 +757,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Get a string value at pos.</div></span>
+    <span class="summary_desc"><div class='inline'>Get a string value for the given column.</div></span>
   
 </li>
 
@@ -779,7 +779,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>Get an object value at pos.</div></span>
+    <span class="summary_desc"><div class='inline'>Get an object value for the given column.</div></span>
   
 </li>
 
@@ -2122,7 +2122,7 @@
     
       <span class="overload">- (<tt>true</tt>, <tt>false</tt>) <strong>getBoolean</strong>(pos) </span>
     
-      <span class="overload">- (<tt>true</tt>, <tt>false</tt>) <strong>getBoolean</strong>(name) </span>
+      <span class="overload">- (<tt>true</tt>, <tt>false</tt>) <strong>getBoolean</strong>(column) </span>
     
   
 
@@ -2131,7 +2131,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Get a boolean value at <code>pos</code>.
+    Get a boolean value for the given <code>column</code>.
 
   </div>
 </div>
@@ -2175,7 +2175,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">- (<tt>true</tt>, <tt>false</tt>) <strong>getBoolean</strong>(name) </span>
+        <span class="signature">- (<tt>true</tt>, <tt>false</tt>) <strong>getBoolean</strong>(column) </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -2188,7 +2188,7 @@
   
     <li>
       
-        <span class='name'>name</span>
+        <span class='name'>column</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -2196,7 +2196,7 @@
       
       
         &mdash;
-        <div class='inline'>the column</div>
+        <div class='inline'>the column name</div>
       
     </li>
   
@@ -2219,7 +2219,7 @@
       
       
         &mdash;
-        <div class='inline'>the value or <code>null</code></div>
+        <div class='inline'>the <code>column</code> value</div>
       
     </li>
   
@@ -2275,7 +2275,7 @@
     
       <span class="overload">- (<tt><span class='object_link'><a href="../Vertx/Buffer.html" title="Vertx::Buffer (class)">::Vertx::Buffer</a></span></tt>) <strong>getBuffer</strong>(pos) </span>
     
-      <span class="overload">- (<tt><span class='object_link'><a href="../Vertx/Buffer.html" title="Vertx::Buffer (class)">::Vertx::Buffer</a></span></tt>) <strong>getBuffer</strong>(name) </span>
+      <span class="overload">- (<tt><span class='object_link'><a href="../Vertx/Buffer.html" title="Vertx::Buffer (class)">::Vertx::Buffer</a></span></tt>) <strong>getBuffer</strong>(column) </span>
     
   
 
@@ -2284,7 +2284,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Get a buffer value at <code>pos</code>.
+    Get a buffer value for the given <code>column</code>.
 
   </div>
 </div>
@@ -2328,7 +2328,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">- (<tt><span class='object_link'><a href="../Vertx/Buffer.html" title="Vertx::Buffer (class)">::Vertx::Buffer</a></span></tt>) <strong>getBuffer</strong>(name) </span>
+        <span class="signature">- (<tt><span class='object_link'><a href="../Vertx/Buffer.html" title="Vertx::Buffer (class)">::Vertx::Buffer</a></span></tt>) <strong>getBuffer</strong>(column) </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -2341,7 +2341,7 @@
   
     <li>
       
-        <span class='name'>name</span>
+        <span class='name'>column</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -2349,7 +2349,7 @@
       
       
         &mdash;
-        <div class='inline'>the column</div>
+        <div class='inline'>the column name</div>
       
     </li>
   
@@ -2372,7 +2372,7 @@
       
       
         &mdash;
-        <div class='inline'>the value or <code>null</code></div>
+        <div class='inline'>the <code>column</code> value</div>
       
     </li>
   
@@ -2527,7 +2527,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Get a column name at <code>pos</code>.
+    Get a column name for the given <code>column</code>.
 
   </div>
 </div>
@@ -2616,7 +2616,7 @@
     
       <span class="overload">- (<tt>Float</tt>) <strong>getDouble</strong>(pos) </span>
     
-      <span class="overload">- (<tt>Float</tt>) <strong>getDouble</strong>(name) </span>
+      <span class="overload">- (<tt>Float</tt>) <strong>getDouble</strong>(column) </span>
     
   
 
@@ -2625,7 +2625,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Get a double value at <code>pos</code>.
+    Get a double value for the given <code>column</code>.
 
   </div>
 </div>
@@ -2669,7 +2669,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">- (<tt>Float</tt>) <strong>getDouble</strong>(name) </span>
+        <span class="signature">- (<tt>Float</tt>) <strong>getDouble</strong>(column) </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -2682,7 +2682,7 @@
   
     <li>
       
-        <span class='name'>name</span>
+        <span class='name'>column</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -2690,7 +2690,7 @@
       
       
         &mdash;
-        <div class='inline'>the column</div>
+        <div class='inline'>the column name</div>
       
     </li>
   
@@ -2713,7 +2713,7 @@
       
       
         &mdash;
-        <div class='inline'>the value or <code>null</code></div>
+        <div class='inline'>the <code>column</code> value</div>
       
     </li>
   
@@ -2769,7 +2769,7 @@
     
       <span class="overload">- (<tt>Float</tt>) <strong>getFloat</strong>(pos) </span>
     
-      <span class="overload">- (<tt>Float</tt>) <strong>getFloat</strong>(name) </span>
+      <span class="overload">- (<tt>Float</tt>) <strong>getFloat</strong>(column) </span>
     
   
 
@@ -2778,7 +2778,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Get a float value at <code>pos</code>.
+    Get a float value for the given <code>column</code>.
 
   </div>
 </div>
@@ -2822,7 +2822,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">- (<tt>Float</tt>) <strong>getFloat</strong>(name) </span>
+        <span class="signature">- (<tt>Float</tt>) <strong>getFloat</strong>(column) </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -2835,7 +2835,7 @@
   
     <li>
       
-        <span class='name'>name</span>
+        <span class='name'>column</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -2843,7 +2843,7 @@
       
       
         &mdash;
-        <div class='inline'>the column</div>
+        <div class='inline'>the column name</div>
       
     </li>
   
@@ -2866,7 +2866,7 @@
       
       
         &mdash;
-        <div class='inline'>the value or <code>null</code></div>
+        <div class='inline'>the <code>column</code> value</div>
       
     </li>
   
@@ -2922,7 +2922,7 @@
     
       <span class="overload">- (<tt>Fixnum</tt>) <strong>getInteger</strong>(pos) </span>
     
-      <span class="overload">- (<tt>Fixnum</tt>) <strong>getInteger</strong>(name) </span>
+      <span class="overload">- (<tt>Fixnum</tt>) <strong>getInteger</strong>(column) </span>
     
   
 
@@ -2931,7 +2931,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Get an integer value at <code>pos</code>.
+    Get an integer value for the given <code>column</code>.
 
   </div>
 </div>
@@ -2975,7 +2975,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">- (<tt>Fixnum</tt>) <strong>getInteger</strong>(name) </span>
+        <span class="signature">- (<tt>Fixnum</tt>) <strong>getInteger</strong>(column) </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -2988,7 +2988,7 @@
   
     <li>
       
-        <span class='name'>name</span>
+        <span class='name'>column</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -2996,7 +2996,7 @@
       
       
         &mdash;
-        <div class='inline'>the column</div>
+        <div class='inline'>the column name</div>
       
     </li>
   
@@ -3019,7 +3019,7 @@
       
       
         &mdash;
-        <div class='inline'>the value or <code>null</code></div>
+        <div class='inline'>the <code>column</code> value</div>
       
     </li>
   
@@ -3075,7 +3075,7 @@
     
       <span class="overload">- (<tt>Fixnum</tt>) <strong>getLong</strong>(pos) </span>
     
-      <span class="overload">- (<tt>Fixnum</tt>) <strong>getLong</strong>(name) </span>
+      <span class="overload">- (<tt>Fixnum</tt>) <strong>getLong</strong>(column) </span>
     
   
 
@@ -3084,7 +3084,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Get a long value at <code>pos</code>.
+    Get a long value for the given <code>column</code>.
 
   </div>
 </div>
@@ -3128,7 +3128,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">- (<tt>Fixnum</tt>) <strong>getLong</strong>(name) </span>
+        <span class="signature">- (<tt>Fixnum</tt>) <strong>getLong</strong>(column) </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -3141,7 +3141,7 @@
   
     <li>
       
-        <span class='name'>name</span>
+        <span class='name'>column</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -3149,7 +3149,7 @@
       
       
         &mdash;
-        <div class='inline'>the column</div>
+        <div class='inline'>the column name</div>
       
     </li>
   
@@ -3172,7 +3172,7 @@
       
       
         &mdash;
-        <div class='inline'>the value or <code>null</code></div>
+        <div class='inline'>the <code>column</code> value</div>
       
     </li>
   
@@ -3228,7 +3228,7 @@
     
       <span class="overload">- (<tt>Fixnum</tt>) <strong>getShort</strong>(pos) </span>
     
-      <span class="overload">- (<tt>Fixnum</tt>) <strong>getShort</strong>(name) </span>
+      <span class="overload">- (<tt>Fixnum</tt>) <strong>getShort</strong>(column) </span>
     
   
 
@@ -3237,7 +3237,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Get a short value at <code>pos</code>.
+    Get a short value for the given <code>column</code>.
 
   </div>
 </div>
@@ -3281,7 +3281,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">- (<tt>Fixnum</tt>) <strong>getShort</strong>(name) </span>
+        <span class="signature">- (<tt>Fixnum</tt>) <strong>getShort</strong>(column) </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -3294,7 +3294,7 @@
   
     <li>
       
-        <span class='name'>name</span>
+        <span class='name'>column</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -3302,7 +3302,7 @@
       
       
         &mdash;
-        <div class='inline'>the column</div>
+        <div class='inline'>the column name</div>
       
     </li>
   
@@ -3325,7 +3325,7 @@
       
       
         &mdash;
-        <div class='inline'>the value or <code>null</code></div>
+        <div class='inline'>the <code>column</code> value</div>
       
     </li>
   
@@ -3381,7 +3381,7 @@
     
       <span class="overload">- (<tt>String</tt>) <strong>getString</strong>(pos) </span>
     
-      <span class="overload">- (<tt>String</tt>) <strong>getString</strong>(name) </span>
+      <span class="overload">- (<tt>String</tt>) <strong>getString</strong>(column) </span>
     
   
 
@@ -3390,7 +3390,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Get a string value at <code>pos</code>.
+    Get a string value for the given <code>column</code>.
 
   </div>
 </div>
@@ -3434,7 +3434,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">- (<tt>String</tt>) <strong>getString</strong>(name) </span>
+        <span class="signature">- (<tt>String</tt>) <strong>getString</strong>(column) </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -3447,7 +3447,7 @@
   
     <li>
       
-        <span class='name'>name</span>
+        <span class='name'>column</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -3455,7 +3455,7 @@
       
       
         &mdash;
-        <div class='inline'>the column</div>
+        <div class='inline'>the column name</div>
       
     </li>
   
@@ -3478,7 +3478,7 @@
       
       
         &mdash;
-        <div class='inline'>the value or <code>null</code></div>
+        <div class='inline'>the <code>column</code> value</div>
       
     </li>
   
@@ -3534,7 +3534,7 @@
     
       <span class="overload">- (<tt>Object</tt>) <strong>getValue</strong>(pos) </span>
     
-      <span class="overload">- (<tt>Object</tt>) <strong>getValue</strong>(name) </span>
+      <span class="overload">- (<tt>Object</tt>) <strong>getValue</strong>(column) </span>
     
   
 
@@ -3543,7 +3543,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    Get an object value at <code>pos</code>.
+    Get an object value for the given <code>column</code>.
 
   </div>
 </div>
@@ -3587,7 +3587,7 @@
     
       
       <li class="overload_item">
-        <span class="signature">- (<tt>Object</tt>) <strong>getValue</strong>(name) </span>
+        <span class="signature">- (<tt>Object</tt>) <strong>getValue</strong>(column) </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -3600,7 +3600,7 @@
   
     <li>
       
-        <span class='name'>name</span>
+        <span class='name'>column</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -3608,7 +3608,7 @@
       
       
         &mdash;
-        <div class='inline'>the column</div>
+        <div class='inline'>the column name</div>
       
     </li>
   
@@ -3631,7 +3631,7 @@
       
       
         &mdash;
-        <div class='inline'>the value or <code>null</code></div>
+        <div class='inline'>the <code>column</code> value</div>
       
     </li>
   
@@ -3760,7 +3760,7 @@
 </div>
 
     <div id="footer">
-  Generated on Wed Sep 16 10:09:30 2020 by
+  Generated on Thu Oct 15 10:24:40 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.3.3).
 </div>

@@ -104,7 +104,6 @@
       <div class="col-sm-12 col-md-push-9 col-md-3 hidden-xs hidden-sm">
         <div id="sidebar" data-spy="affix">
           <ul class="sectlevel1">
-<li><a href="#_vert_x_circuit_breaker">Vert.x Circuit Breaker</a></li>
 <li><a href="#_using_the_vert_x_circuit_breaker">Using the vert.x circuit breaker</a></li>
 <li><a href="#_using_the_circuit_breaker">Using the circuit breaker</a></li>
 <li><a href="#_retries">Retries</a></li>
@@ -121,7 +120,6 @@
         <div class="toc hidden-md hidden-lg">
           <h2>Table of Contents</h2>
           <ul class="sectlevel1">
-<li><a href="#_vert_x_circuit_breaker">Vert.x Circuit Breaker</a></li>
 <li><a href="#_using_the_vert_x_circuit_breaker">Using the vert.x circuit breaker</a></li>
 <li><a href="#_using_the_circuit_breaker">Using the circuit breaker</a></li>
 <li><a href="#_retries">Retries</a></li>
@@ -133,8 +131,7 @@
 <li><a href="#_using_netflix_hystrix">Using Netflix Hystrix</a></li>
 </ul>
         </div>
-        <div class="sect1">
-<h2 id="_vert_x_circuit_breaker">Vert.x Circuit Breaker</h2>
+        <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Vert.x Circuit Breaker is an implementation of the Circuit Breaker <em>pattern</em> for Vert.x. It keeps track of the
@@ -181,7 +178,7 @@ descriptor:</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-circuit-breaker<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.4<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -194,7 +191,7 @@ descriptor:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-circuit-breaker:3.9.3</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-circuit-breaker:3.9.4</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -606,7 +603,7 @@ context.runOnContext(v2 -&gt; {
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2020-09-16 10:26:28 CEST
+                Last updated 2020-10-15 10:35:22 CEST
               
               
             </div>

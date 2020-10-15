@@ -132,10 +132,10 @@ or borrow one from the pool:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">connection.prepare(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT * FROM users WHERE first_name LIKE ?</span><span class="delimiter">&quot;</span></span>, { ar1 -&gt;
+<pre class="CodeRay highlight"><code data-lang="groovy">connection.prepare(<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT * FROM users WHERE first_name LIKE </span><span class="char">\$</span><span class="content">1</span><span class="delimiter">&quot;</span></span>, { ar1 -&gt;
   <span class="keyword">if</span> (ar1.succeeded()) {
-    <span class="keyword">def</span> prepared = ar1.result()
-    prepared.query().execute(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">julien</span><span class="delimiter">&quot;</span></span>), { ar2 -&gt;
+    <span class="keyword">def</span> pq = ar1.result()
+    pq.query().execute(Tuple.of(<span class="string"><span class="delimiter">&quot;</span><span class="content">andy</span><span class="delimiter">&quot;</span></span>), { ar2 -&gt;
       <span class="keyword">if</span> (ar2.succeeded()) {
         <span class="comment">// All rows</span>
         <span class="keyword">def</span> rows = ar2.result()
@@ -154,7 +154,7 @@ or borrow one from the pool:</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2020-09-16 10:26:30 CEST
+                Last updated 2020-10-15 10:35:22 CEST
               
               
             </div>

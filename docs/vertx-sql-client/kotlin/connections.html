@@ -132,10 +132,10 @@ or borrow one from the pool:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="kotlin">connection.prepare(&quot;SELECT * FROM users WHERE first_name LIKE ?&quot;, { ar1 -&gt;
+<pre class="CodeRay highlight"><code data-lang="kotlin">connection.prepare(&quot;SELECT * FROM users WHERE first_name LIKE \$1&quot;, { ar1 -&gt;
   if (ar1.succeeded()) {
-    var prepared = ar1.result()
-    prepared.query().execute(Tuple.of(&quot;julien&quot;), { ar2 -&gt;
+    var pq = ar1.result()
+    pq.query().execute(Tuple.of(&quot;andy&quot;), { ar2 -&gt;
       if (ar2.succeeded()) {
         // All rows
         var rows = ar2.result()
@@ -154,7 +154,7 @@ or borrow one from the pool:</p>
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2020-09-16 10:26:32 CEST
+                Last updated 2020-10-15 10:35:24 CEST
               
               
             </div>

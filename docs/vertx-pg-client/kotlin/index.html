@@ -266,7 +266,7 @@ scalability and low overhead.</p>
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
  <span class="tag">&lt;groupId&gt;</span>io.vertx<span class="tag">&lt;/groupId&gt;</span>
  <span class="tag">&lt;artifactId&gt;</span>vertx-lang-kotlin<span class="tag">&lt;/artifactId&gt;</span>
- <span class="tag">&lt;version&gt;</span>3.9.3<span class="tag">&lt;/version&gt;</span>
+ <span class="tag">&lt;version&gt;</span>3.9.4<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -280,7 +280,7 @@ scalability and low overhead.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
- compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-lang-kotlin:3.9.3</span><span class="delimiter">'</span></span>
+ compile <span class="string"><span class="delimiter">'</span><span class="content">io.vertx:vertx-lang-kotlin:3.9.4</span><span class="delimiter">'</span></span>
 }</code></pre>
 </div>
 </div>
@@ -684,7 +684,7 @@ will use one of its connection to run the query and return the result to you.</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="kotlin">client.query(&quot;SELECT * FROM users WHERE id='julien'&quot;).execute({ ar -&gt;
+<pre class="CodeRay highlight"><code data-lang="kotlin">client.query(&quot;SELECT * FROM users WHERE id='andy'&quot;).execute({ ar -&gt;
   if (ar.succeeded()) {
     var result = ar.result()
     println(&quot;Got ${result.size()} rows &quot;)
@@ -704,7 +704,7 @@ will use one of its connection to run the query and return the result to you.</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="kotlin">client.preparedQuery(&quot;SELECT * FROM users WHERE id=?&quot;).execute(Tuple.of(&quot;julien&quot;), { ar -&gt;
+<pre class="CodeRay highlight"><code data-lang="kotlin">client.preparedQuery(&quot;SELECT * FROM users WHERE id=\$1&quot;).execute(Tuple.of(&quot;andy&quot;), { ar -&gt;
   if (ar.succeeded()) {
     var rows = ar.result()
     println(&quot;Got ${rows.size()} rows &quot;)
@@ -736,7 +736,7 @@ will use one of its connection to run the query and return the result to you.</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="kotlin">client.preparedQuery(&quot;INSERT INTO users (first_name, last_name) VALUES (?, ?)&quot;).execute(Tuple.of(&quot;Julien&quot;, &quot;Viet&quot;), { ar -&gt;
+<pre class="CodeRay highlight"><code data-lang="kotlin">client.preparedQuery(&quot;INSERT INTO users (first_name, last_name) VALUES (\$1, \$2)&quot;).execute(Tuple.of(&quot;Andy&quot;, &quot;Guibert&quot;), { ar -&gt;
   if (ar.succeeded()) {
     var rows = ar.result()
     println(rows.rowCount())
@@ -799,7 +799,7 @@ client.preparedQuery(&quot;SELECT * FROM users WHERE id = ?&quot;).execute(Tuple
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="kotlin">sqlConnection.prepare(&quot;SELECT * FROM users WHERE id = ?&quot;, { ar -&gt;
+<pre class="CodeRay highlight"><code data-lang="kotlin">sqlConnection.prepare(&quot;SELECT * FROM users WHERE id= ?&quot;, { ar -&gt;
   if (ar.succeeded()) {
     var preparedStatement = ar.result()
     preparedStatement.query().execute(Tuple.of(&quot;julien&quot;), { ar2 -&gt;
@@ -827,11 +827,12 @@ client.preparedQuery(&quot;SELECT * FROM users WHERE id = ?&quot;).execute(Tuple
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="kotlin">// Add commands to the batch
 var batch = mutableListOf&lt;Any?&gt;()
-batch.add(Tuple.of(&quot;julien&quot;, &quot;Julien Viet&quot;))
+batch.add(Tuple.of(&quot;julien&quot;, &quot;Julient Viet&quot;))
 batch.add(Tuple.of(&quot;emad&quot;, &quot;Emad Alblueshi&quot;))
+batch.add(Tuple.of(&quot;andy&quot;, &quot;Andy Guibert&quot;))
 
 // Execute the prepared batch
-client.preparedQuery(&quot;INSERT INTO USERS (id, name) VALUES (?, ?)&quot;).executeBatch(batch, { res -&gt;
+client.preparedQuery(&quot;INSERT INTO USERS (id, name) VALUES (\$1, \$2)&quot;).executeBatch(batch, { res -&gt;
   if (res.succeeded()) {
 
     // Process rows
@@ -880,10 +881,10 @@ or borrow one from the pool:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="kotlin">connection.prepare(&quot;SELECT * FROM users WHERE first_name LIKE ?&quot;, { ar1 -&gt;
+<pre class="CodeRay highlight"><code data-lang="kotlin">connection.prepare(&quot;SELECT * FROM users WHERE first_name LIKE \$1&quot;, { ar1 -&gt;
   if (ar1.succeeded()) {
-    var prepared = ar1.result()
-    prepared.query().execute(Tuple.of(&quot;julien&quot;), { ar2 -&gt;
+    var pq = ar1.result()
+    pq.query().execute(Tuple.of(&quot;andy&quot;), { ar2 -&gt;
       if (ar2.succeeded()) {
         // All rows
         var rows = ar2.result()
@@ -1656,7 +1657,7 @@ PgConnection.connect(vertx, options, { res -&gt;
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2020-09-16 10:26:32 CEST
+                Last updated 2020-10-15 10:35:24 CEST
               
               
             </div>

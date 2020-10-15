@@ -112,12 +112,14 @@
 <li><a href="#ConsumerGroupDescription">ConsumerGroupDescription</a></li>
 <li><a href="#ConsumerGroupListing">ConsumerGroupListing</a></li>
 <li><a href="#ListConsumerGroupOffsetsOptions">ListConsumerGroupOffsetsOptions</a></li>
+<li><a href="#ListOffsetsResultInfo">ListOffsetsResultInfo</a></li>
 <li><a href="#MemberAssignment">MemberAssignment</a></li>
 <li><a href="#MemberDescription">MemberDescription</a></li>
 <li><a href="#NewTopic">NewTopic</a></li>
 <li><a href="#Node">Node</a></li>
 <li><a href="#OffsetAndMetadata">OffsetAndMetadata</a></li>
 <li><a href="#OffsetAndTimestamp">OffsetAndTimestamp</a></li>
+<li><a href="#OffsetSpec">OffsetSpec</a></li>
 <li><a href="#PartitionInfo">PartitionInfo</a></li>
 <li><a href="#RecordMetadata">RecordMetadata</a></li>
 <li><a href="#TopicDescription">TopicDescription</a></li>
@@ -138,12 +140,14 @@
 <li><a href="#ConsumerGroupDescription">ConsumerGroupDescription</a></li>
 <li><a href="#ConsumerGroupListing">ConsumerGroupListing</a></li>
 <li><a href="#ListConsumerGroupOffsetsOptions">ListConsumerGroupOffsetsOptions</a></li>
+<li><a href="#ListOffsetsResultInfo">ListOffsetsResultInfo</a></li>
 <li><a href="#MemberAssignment">MemberAssignment</a></li>
 <li><a href="#MemberDescription">MemberDescription</a></li>
 <li><a href="#NewTopic">NewTopic</a></li>
 <li><a href="#Node">Node</a></li>
 <li><a href="#OffsetAndMetadata">OffsetAndMetadata</a></li>
 <li><a href="#OffsetAndTimestamp">OffsetAndTimestamp</a></li>
+<li><a href="#OffsetSpec">OffsetSpec</a></li>
 <li><a href="#PartitionInfo">PartitionInfo</a></li>
 <li><a href="#RecordMetadata">RecordMetadata</a></li>
 <li><a href="#TopicDescription">TopicDescription</a></li>
@@ -443,6 +447,35 @@ A listing of a consumer group in the cluster.
 </div>
 </div>
 <div class="sect1">
+<h2 id="ListOffsetsResultInfo">ListOffsetsResultInfo</h2>
+<div class="sectionbody">
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="offset"></a><code>@offset</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (long)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the offset</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="timestamp"></a><code>@timestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (long)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the timestamp</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
 <h2 id="MemberAssignment">MemberAssignment</h2>
 <div class="sectionbody">
 A description of the assignments of a specific group member
@@ -674,6 +707,30 @@ Represent information related to a Offset with timestamp information
 </div>
 </div>
 <div class="sect1">
+<h2 id="OffsetSpec">OffsetSpec</h2>
+<div class="sectionbody">
+<table class="tableblock frame-topbot grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a id="spec"></a><code>@spec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number (long)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the offset spec</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
 <h2 id="PartitionInfo">PartitionInfo</h2>
 <div class="sectionbody">
 Information about a specific Kafka topic partition
@@ -881,7 +938,7 @@ A class containing leadership, replicas and ISR information for a topic partitio
           <div id="footer">
             <div id="footer-text">
               
-                Last updated 2020-09-16 10:26:28 CEST
+                Last updated 2020-10-15 10:35:22 CEST
               
               
             </div>
