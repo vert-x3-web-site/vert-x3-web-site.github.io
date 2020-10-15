@@ -165,7 +165,7 @@ kill your_process_id -SIGTERM</code></pre><p><div class="admonition-block note">
   <span class=hljs-tag>&lt;<span class=hljs-title>artifactId</span>&gt;</span>assertj-core<span class=hljs-tag>&lt;/<span class=hljs-title>artifactId</span>&gt;</span>
   <span class=hljs-tag>&lt;<span class=hljs-title>version</span>&gt;</span>2.0.0<span class=hljs-tag>&lt;/<span class=hljs-title>version</span>&gt;</span>
   <span class=hljs-tag>&lt;<span class=hljs-title>scope</span>&gt;</span>test<span class=hljs-tag>&lt;/<span class=hljs-title>scope</span>&gt;</span>
-<span class=hljs-tag>&lt;/<span class=hljs-title>dependency</span>&gt;</span></code></pre><p>Then, create the <code>src/test/java/io/vertx/blog/first/MyRestIT.java</code> file. Unlike unit test, integration test ends with <code>IT</code>. It’s a convention from the Failsafe plugin to distinguish unit (starting or ending with <em>Test</em>) from integration tests (starting or ending with _IT_). In the created file add:</p><pre><code class="hljs java"><span class=hljs-keyword>package</span> io.vertx.blog.first;
+<span class=hljs-tag>&lt;/<span class=hljs-title>dependency</span>&gt;</span></code></pre><p>Then, create the <code>src/test/java/io/vertx/blog/first/MyRestIT.java</code> file. Unlike unit test, integration test ends with <code>IT</code>. It’s a convention from the Failsafe plugin to distinguish unit (starting or ending with <em>Test</em>) from integration tests (starting or ending with <em>IT</em>). In the created file add:</p><pre><code class="hljs java"><span class=hljs-keyword>package</span> io.vertx.blog.first;
 
 <span class=hljs-keyword>import</span> com.jayway.restassured.RestAssured;
 <span class=hljs-keyword>import</span> org.junit.AfterClass;
@@ -198,7 +198,7 @@ kill your_process_id -SIGTERM</code></pre><p><div class="admonition-block note">
       .body(<span class=hljs-string>"name"</span>, equalTo(<span class=hljs-string>"Bowmore 15 Years Laimrig"</span>))
       .body(<span class=hljs-string>"origin"</span>, equalTo(<span class=hljs-string>"Scotland, Islay"</span>))
       .body(<span class=hljs-string>"id"</span>, equalTo(id));
-}</code></pre><p>Here you can appreciate the power and expressiveness of Rest Assured. We retrieve the list of product, ensure the response is correct, and extract the _id_ of a specific bottle using a JSON (Groovy) Path expression.</p><p>Then, we try to retrieve the metadata of this individual product, and check the result.</p><p>Let’s now implement a more sophisticated scenario. Let’s add and delete a product:</p><pre><code class="hljs java"><span class=hljs-annotation>@Test</span>
+}</code></pre><p>Here you can appreciate the power and expressiveness of Rest Assured. We retrieve the list of product, ensure the response is correct, and extract the <em>id</em> of a specific bottle using a JSON (Groovy) Path expression.</p><p>Then, we try to retrieve the metadata of this individual product, and check the result.</p><p>Let’s now implement a more sophisticated scenario. Let’s add and delete a product:</p><pre><code class="hljs java"><span class=hljs-annotation>@Test</span>
 <span class=hljs-function><span class=hljs-keyword>public</span> <span class=hljs-keyword>void</span> <span class=hljs-title>checkWeCanAddAndDeleteAProduct</span><span class=hljs-params>()</span> </span>{
   <span class=hljs-comment>// Create a new bottle and retrieve the result (as a Whisky instance).</span>
   Whisky whisky = given()
