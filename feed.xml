@@ -8,6 +8,84 @@
       <atom:link href="https://vertx.io/feed.xml" rel="self" type="application/rss+xml" />
       
         <item>
+          <title>Eclipse Vert.x 4 CR1 released!</title>
+          <description>
+      &lt;article&gt;&lt;p&gt;We are extremely pleased to announce the first release candidate of Vert.x 4.0 .&lt;/p&gt;
+&lt;p&gt;We consider Vert.x 4.0 as feature complete and we will do a few release candidates to
+allow the community to test it and report issues.&lt;/p&gt;
+&lt;p&gt;Vert.x 4 is the evolution of the Vert.x 3.x series that will bring key features to Vert.x.&lt;/p&gt;
+&lt;h4 id=&quot;tracing-control&quot;&gt;Tracing control&lt;/h4&gt;
+&lt;p&gt;When a component (i.e server or client) is involved in a Vert.x instance configured with tracing, a new
+tracing policy controls the component participation in a trace:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;with &lt;em&gt;IGNORE&lt;/em&gt; the component will not be involved in the trace, e.g an HTTP client will not report
+a span in an existing trace&lt;/li&gt;
+&lt;li&gt;with &lt;em&gt;PROPAGATE&lt;/em&gt; the component will report a span and propagate when possible&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;ALWAYS&lt;/em&gt; the component will report a span or create a new trace&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;kafka-tracing&quot;&gt;Kafka tracing&lt;/h4&gt;
+&lt;p&gt;Our Kafka client is now able to propagate and report span in active traces.&lt;/p&gt;
+&lt;h4 id=&quot;web&quot;&gt;Web&lt;/h4&gt;
+&lt;p&gt;A new method has been added to &lt;code&gt;RoutingContext&lt;/code&gt; to allow sending responses from asynchronous calls using
+Vert.x futures.&lt;/p&gt;
+&lt;p&gt;For example, returning the content of a file in a single action:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs java&quot;&gt;router.route()
+  .respond(ctx -&gt;
+    vertx.fileSystem()
+      .readFile(&lt;span class=&quot;hljs-string&quot;&gt;&quot;somefile.json&quot;&lt;/span&gt;));&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This method allows composition of &lt;code&gt;Future&lt;/code&gt;s. The Future result will be processed by the &lt;code&gt;JSON&lt;/code&gt; codec if no data has been written,
+otherwise it will use the future success/failure to decide how to terminate the connection.&lt;/p&gt;
+&lt;p&gt;This method should improve the code readablility of current and future applications.&lt;/p&gt;
+&lt;h4 id=&quot;web-client-auth&quot;&gt;Web client auth&lt;/h4&gt;
+&lt;p&gt;With this release you will be able to use &lt;code&gt;Basic&lt;/code&gt;, &lt;code&gt;Digest&lt;/code&gt; and &lt;code&gt;Bearer&lt;/code&gt; authentication in a single and concise
+API: &lt;code&gt;client.authentication(new Credentials(...))&lt;/code&gt;. This is a type safe alternative to compute the headers yourself.&lt;/p&gt;
+&lt;h4 id=&quot;redis-client&quot;&gt;Redis client&lt;/h4&gt;
+&lt;p&gt;Redis clients are now garanteed to call all handlers on the correct event loop. This reduces
+context switches and remove possible races.&lt;/p&gt;
+&lt;h4 id=&quot;rabbitmq-client-tls-support&quot;&gt;RabbitMQ client TLS support&lt;/h4&gt;
+&lt;p&gt;RabbitMQ client can now connect using TLS.&lt;/p&gt;
+&lt;h4 id=&quot;sockjs-javascript-client-versionning-change&quot;&gt;SockJS JavaScript client versionning change&lt;/h4&gt;
+&lt;p&gt;SockJS event bus JavaScript client is now versionned according to the EventBus bridge protocol
+and is now independant on the Vert.x version.&lt;/p&gt;
+&lt;p&gt;That has always been the case and with Vert.x 4 we decided to make this change to simplify application
+upgrade since upgrading Vert.x will not imply to upgrade event bus bridge clients.&lt;/p&gt;
+&lt;p&gt;In order to ensure that the artifact can be used both with Vert.x 3 and Vert.x 4, a new name has
+ been choosen for it: &lt;a href=&quot;https://www.npmjs.com/package/@vertx/eventbus-bridge-client.js&quot;&gt;@vertx/eventbus-bridge-client.js&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;finally&quot;&gt;Finally&lt;/h4&gt;
+&lt;p&gt;This is the first relase candidate of Vert.x 4, you can of course expect more as we get feedback from the community and fix issues that we failed to catch before.&lt;/p&gt;
+&lt;p&gt;You can also read the previous announces to know more about the overral changes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://vertx.io/blog/eclipse-vert-x-4-beta-4-released&quot;&gt;https://vertx.io/blog/eclipse-vert-x-4-beta-4-released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vertx.io/blog/eclipse-vert-x-4-beta-3-released&quot;&gt;https://vertx.io/blog/eclipse-vert-x-4-beta-3-released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vertx.io/blog/eclipse-vert-x-4-beta-2-released&quot;&gt;https://vertx.io/blog/eclipse-vert-x-4-beta-2-released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vertx.io/blog/eclipse-vert-x-4-beta-1-released&quot;&gt;https://vertx.io/blog/eclipse-vert-x-4-beta-1-released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vertx.io/blog/eclipse-vert-x-4-milestone-5-released&quot;&gt;https://vertx.io/blog/eclipse-vert-x-4-milestone-5-released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vertx.io/blog/eclipse-vert-x-4-milestone-5-released&quot;&gt;https://vertx.io/blog/eclipse-vert-x-4-milestone-5-released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vertx.io/blog/eclipse-vert-x-4-milestone-4-released&quot;&gt;https://vertx.io/blog/eclipse-vert-x-4-milestone-4-released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vertx.io/blog/eclipse-vert-x-4-milestone-3-released&quot;&gt;https://vertx.io/blog/eclipse-vert-x-4-milestone-3-released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vertx.io/blog/eclipse-vert-x-4-milestone-2-released&quot;&gt;https://vertx.io/blog/eclipse-vert-x-4-milestone-2-released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://vertx.io/blog/eclipse-vert-x-4-milestone-1-released&quot;&gt;https://vertx.io/blog/eclipse-vert-x-4-milestone-1-released&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &lt;a href=&quot;https://github.com/vert-x3/wiki/wiki/4.0.0-Deprecations-and-breaking-changes&quot;&gt;deprecations and breaking changes&lt;/a&gt;
+ can be found on the wiki.&lt;/p&gt;
+&lt;p&gt;For this release there are no Docker images.&lt;/p&gt;
+&lt;p&gt;The release artifacts have been deployed to &lt;a href=&quot;https://search.maven.org/search?q=g:io.vertx%20AND%20v:4.0.0.CR1&quot;&gt;Maven Central&lt;/a&gt; and you can get the distribution on &lt;a href=&quot;https://repo1.maven.org/maven2/io/vertx/vertx-stack-manager/4.0.0.CR1/&quot;&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can bootstrap a Vert.x 4.0.0.CR1 project using &lt;a href=&quot;https://start.vertx.io&quot;&gt;https://start.vertx.io&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The documentation has been deployed on this preview web-site &lt;a href=&quot;https://vertx-web-site.github.io/docs/&quot;&gt;https://vertx-web-site.github.io/docs/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;That’s it! Happy coding and see you soon on our user or dev &lt;a href=&quot;https://vertx.io/community&quot;&gt;channels&lt;/a&gt;.&lt;/p&gt;
+&lt;/article&gt;
+      </description>
+          <pubDate>Wed, 04 Nov 2020 01:00:00 +0100</pubDate>
+          <link>https://vertx.io/blog/eclipse-vert-x-4-cr1-released</link>
+          <guid isPermaLink="true">https://vertx.io/blog/eclipse-vert-x-4-cr1-released</guid>
+          <author>
+            <name>vietj</name>
+            <uri>http://github.com/vietj</uri>
+          </author>
+        </item>
+      
+        <item>
           <title>Eclipse Vert.x 3.9.4 released!</title>
           <description>
       &lt;article&gt;&lt;p&gt;We are extremely pleased to announce that the Eclipse Vert.x version 3.9.4 has been released.&lt;/p&gt;
